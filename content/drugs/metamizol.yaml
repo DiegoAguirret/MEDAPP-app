@@ -38,6 +38,13 @@ rules:
       500 mg/mL: no intercambiar. Libro Peña Camarena: 15–25 mg/kg/dosis (rango mayor que el de la
       ficha AEMPS; la app usa el de la ficha).
     sourceIds: [aemps-ft-83494, aemps-ft-42304, pena-camarena]
+    countryNotes:
+      - country: PE
+        text: El FNME solo incluye metamizol inyectable (niños 10–12 mg/kg IM), dentro del rango de la ficha AEMPS. El libro Peña Camarena indica 15–25 mg/kg/dosis por vía oral.
+        sourceIds: [fnme-2008, pena-camarena]
+      - country: ES
+        text: Las gotas españolas son de 500 mg/mL (1 gota = 25 mg); las peruanas, de 400 mg/mL.
+        sourceIds: [aemps-ft-83494]
 warnings:
   - Riesgo de agranulocitosis; suspender ante fiebre, dolor de garganta o úlceras orales.
   - Puede producir hipotensión.

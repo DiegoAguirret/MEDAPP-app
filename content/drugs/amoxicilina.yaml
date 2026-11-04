@@ -44,8 +44,29 @@ rules:
     intervalHours: 12
     maxPerDoseMg: 875
     maxPerDayMg: 1750
-    notes: FDA — en lactantes de 3 meses o menos, la dosis máxima es 30 mg/kg/día cada 12 h.
-    sourceIds: [fda-amoxicillin]
+    notes: FNME y FDA — en menores de 3 meses, 30 mg/kg/día cada 12 h.
+    sourceIds: [fnme-2008, fda-amoxicillin]
+  - id: infecciones-comunes
+    indication: Infecciones comunes (mayores de 3 meses)
+    route: VO
+    ageMinDays: 90
+    basis: mg/kg/day
+    amountMin: 20
+    amountMax: 40
+    usual: 40
+    intervalHours: 8
+    maxPerDoseMg: 500
+    maxPerDayMg: 1500
+    durationText: 7 días en promedio; al menos 10 días si es estreptococo.
+    notes: >-
+      FNME — 20 mg/kg/día cada 8 h en infecciones de oído, senos o piel; 40 mg/kg/día cada 8 h en casos
+      severos e infección respiratoria baja. Con 40 kg o más, dosis de adulto (hasta 500 mg cada 8 h).
+      FDA — 20–40 mg/kg/día cada 8 h.
+    sourceIds: [fnme-2008, fda-amoxicillin, pena-camarena]
+    countryNotes:
+      - country: PE
+        text: El libro Peña Camarena usa 30–50 mg/kg/día cada 8 h.
+        sourceIds: [pena-camarena]
   - id: oma-dosis-alta
     indication: Otitis media aguda (dosis alta, 6 meses a 12 años)
     route: VO
@@ -61,6 +82,10 @@ rules:
     durationText: 10 días si es menor de 2 años o grave; 7 días entre 2 y 5 años; 5–7 días si tiene 6 años o más.
     notes: Libro Peña Camarena — otitis 80 mg/kg/día cada 8–12 h; infecciones comunes 30–50 mg/kg/día cada 8 h.
     sourceIds: [aap-aom-2013, aap-eqipp-aom, pena-camarena]
+    countryNotes:
+      - country: PE
+        text: El FNME 2008 no incluye la dosis alta para otitis (usa 20–40 mg/kg/día cada 8 h); el libro Peña Camarena sí indica 80 mg/kg/día. La dosis alta es la recomendación vigente de la AAP.
+        sourceIds: [fnme-2008, pena-camarena]
   - id: faringitis-estreptococica
     indication: Faringoamigdalitis estreptocócica (3 años o más)
     route: VO
@@ -85,6 +110,16 @@ review:
   author: Diego
   reviewers: []
 testCases:
+  - ruleId: infecciones-comunes
+    presentationId: susp-250-5
+    weightKg: 15
+    ageDays: 1095
+    expect: { mgPerDose: 200, amount: 4, unit: mL }
+  - ruleId: infecciones-comunes
+    presentationId: tab-500
+    weightKg: 45
+    ageDays: 4380
+    expect: { mgPerDose: 500, amount: 1, unit: tableta, capped: true }
   - ruleId: menores-3-meses
     presentationId: susp-250-5
     weightKg: 4

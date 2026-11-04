@@ -3,8 +3,8 @@ import { describe, expect, it } from 'vitest';
 import { checkContent } from '../src/check.ts';
 
 const sources: Source[] = [
-  { id: 'bnfc-2025', title: 'BNFC', year: 2025 },
-  { id: 'harriet-lane-23', title: 'Harriet Lane', year: 2023 },
+  { id: 'bnfc-2025', title: 'BNFC', year: 2025, kind: 'regulador', country: 'UK' },
+  { id: 'harriet-lane-23', title: 'Harriet Lane', year: 2023, kind: 'libro', country: 'US' },
 ];
 
 function drug(overrides: Record<string, unknown> = {}): Drug {
@@ -115,6 +115,12 @@ describe('checkContent', () => {
     const one = drug({ review: validated });
     one.rules[0]!.sourceIds = ['bnfc-2025'];
     expect(checkContent([one], sources, 'release', today)).toEqual([]);
+  });
+
+  it('flags an unknown source in a country note', () => {
+    const d = drug();
+    d.rules[0]!.countryNotes = [{ country: 'US', text: 'x', sourceIds: ['nope'] }];
+    expect(checkContent([d], sources, 'tester', today)[0]?.code).toBe('unknown_source');
   });
 
   it('flags duplicate drug ids', () => {

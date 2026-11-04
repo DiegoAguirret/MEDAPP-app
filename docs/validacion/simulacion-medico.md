@@ -5,16 +5,18 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **828** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **461**. Fuera del rango de edad de la regla: 367 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 461/461 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 461/461.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.43 %, máxima 4.90 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **954** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **549**. Fuera del rango de edad de la regla: 405 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 549/549 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 549/549.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.44 %, máxima 4.90 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
 | Fármaco | Regla | Presentación | Paciente | mg manual | mg app | Cantidad exacta | Cantidad app | Resultado |
 |---|---|---|---|---|---|---|---|---|
+| amoxicilina-clavulanico | menores-3-meses | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 1 mes (4.2 kg) | 63 | 63 | 0.787 | 0.8 mL | ✅  |
+| amoxicilina-clavulanico | menores-3-meses | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 2 meses (5.1 kg) | 76.5 | 76.5 | 0.956 | 1 mL | ✅  |
 | amoxicilina-clavulanico | estandar-cada-12h | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 4 meses (6.4 kg) | 144 | 144 | 1.8 | 1.8 mL | ✅  |
 | amoxicilina-clavulanico | estandar-cada-12h | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 6 meses (7.6 kg) | 171 | 171 | 2.138 | 2.1 mL | ✅  |
 | amoxicilina-clavulanico | estandar-cada-12h | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 9 meses (8.6 kg) | 193.5 | 193.5 | 2.419 | 2.4 mL | ✅  |
@@ -55,6 +57,70 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | amoxicilina | menores-3-meses | Suspensión 500 mg/5 mL | 2 meses (5.1 kg) | 76.5 | 76.5 | 0.765 | 0.8 mL | ✅  |
 | amoxicilina | menores-3-meses | Tableta 500 mg | 1 mes (4.2 kg) | 63 | 63 | 0.126 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | amoxicilina | menores-3-meses | Tableta 500 mg | 2 meses (5.1 kg) | 76.5 | 76.5 | 0.153 | 0.15 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amoxicilina | infecciones-comunes | Suspensión 125 mg/5 mL | 4 meses (6.4 kg) | 85.33 | 85.33 | 3.413 | 3.4 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 125 mg/5 mL | 6 meses (7.6 kg) | 101.33 | 101.33 | 4.053 | 4.1 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 125 mg/5 mL | 9 meses (8.6 kg) | 114.67 | 114.67 | 4.587 | 4.6 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 125 mg/5 mL | 1 año (9.6 kg) | 128 | 128 | 5.12 | 5.1 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 125 mg/5 mL | 18 meses (10.9 kg) | 145.33 | 145.33 | 5.813 | 5.8 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 125 mg/5 mL | 2 años (12.2 kg) | 162.67 | 162.67 | 6.507 | 6.5 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 125 mg/5 mL | 3 años (14.3 kg) | 190.67 | 190.67 | 7.627 | 7.6 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 125 mg/5 mL | 4 años (16.3 kg) | 217.33 | 217.33 | 8.693 | 8.7 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 125 mg/5 mL | 5 años (18.3 kg) | 244 | 244 | 9.76 | 9.8 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 125 mg/5 mL | 6 años (20.5 kg) | 273.33 | 273.33 | 10.933 | 10.9 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 125 mg/5 mL | 8 años (25.6 kg) | 341.33 | 341.33 | 13.653 | 13.7 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 125 mg/5 mL | 10 años (32 kg) | 426.67 | 426.67 | 17.067 | 17.1 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 125 mg/5 mL | 12 años (40 kg) | 500 | 500 | 20 | 20 mL | ✅ tope aplicado |
+| amoxicilina | infecciones-comunes | Suspensión 125 mg/5 mL | 14 años (50 kg) | 500 | 500 | 20 | 20 mL | ✅ tope aplicado |
+| amoxicilina | infecciones-comunes | Suspensión 125 mg/5 mL | 16 años (58 kg) | 500 | 500 | 20 | 20 mL | ✅ tope aplicado |
+| amoxicilina | infecciones-comunes | Suspensión 125 mg/5 mL | 17 años, obeso (95 kg) | 500 | 500 | 20 | 20 mL | ✅ tope aplicado |
+| amoxicilina | infecciones-comunes | Suspensión 250 mg/5 mL | 4 meses (6.4 kg) | 85.33 | 85.33 | 1.707 | 1.7 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 250 mg/5 mL | 6 meses (7.6 kg) | 101.33 | 101.33 | 2.027 | 2 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 250 mg/5 mL | 9 meses (8.6 kg) | 114.67 | 114.67 | 2.293 | 2.3 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 250 mg/5 mL | 1 año (9.6 kg) | 128 | 128 | 2.56 | 2.6 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 250 mg/5 mL | 18 meses (10.9 kg) | 145.33 | 145.33 | 2.907 | 2.9 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 250 mg/5 mL | 2 años (12.2 kg) | 162.67 | 162.67 | 3.253 | 3.3 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 250 mg/5 mL | 3 años (14.3 kg) | 190.67 | 190.67 | 3.813 | 3.8 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 250 mg/5 mL | 4 años (16.3 kg) | 217.33 | 217.33 | 4.347 | 4.3 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 250 mg/5 mL | 5 años (18.3 kg) | 244 | 244 | 4.88 | 4.9 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 250 mg/5 mL | 6 años (20.5 kg) | 273.33 | 273.33 | 5.467 | 5.5 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 250 mg/5 mL | 8 años (25.6 kg) | 341.33 | 341.33 | 6.827 | 6.8 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 250 mg/5 mL | 10 años (32 kg) | 426.67 | 426.67 | 8.533 | 8.5 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 250 mg/5 mL | 12 años (40 kg) | 500 | 500 | 10 | 10 mL | ✅ tope aplicado |
+| amoxicilina | infecciones-comunes | Suspensión 250 mg/5 mL | 14 años (50 kg) | 500 | 500 | 10 | 10 mL | ✅ tope aplicado |
+| amoxicilina | infecciones-comunes | Suspensión 250 mg/5 mL | 16 años (58 kg) | 500 | 500 | 10 | 10 mL | ✅ tope aplicado |
+| amoxicilina | infecciones-comunes | Suspensión 250 mg/5 mL | 17 años, obeso (95 kg) | 500 | 500 | 10 | 10 mL | ✅ tope aplicado |
+| amoxicilina | infecciones-comunes | Suspensión 500 mg/5 mL | 4 meses (6.4 kg) | 85.33 | 85.33 | 0.853 | 0.85 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amoxicilina | infecciones-comunes | Suspensión 500 mg/5 mL | 6 meses (7.6 kg) | 101.33 | 101.33 | 1.013 | 1 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 500 mg/5 mL | 9 meses (8.6 kg) | 114.67 | 114.67 | 1.147 | 1.1 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 500 mg/5 mL | 1 año (9.6 kg) | 128 | 128 | 1.28 | 1.3 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 500 mg/5 mL | 18 meses (10.9 kg) | 145.33 | 145.33 | 1.453 | 1.5 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 500 mg/5 mL | 2 años (12.2 kg) | 162.67 | 162.67 | 1.627 | 1.6 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 500 mg/5 mL | 3 años (14.3 kg) | 190.67 | 190.67 | 1.907 | 1.9 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 500 mg/5 mL | 4 años (16.3 kg) | 217.33 | 217.33 | 2.173 | 2.2 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 500 mg/5 mL | 5 años (18.3 kg) | 244 | 244 | 2.44 | 2.4 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 500 mg/5 mL | 6 años (20.5 kg) | 273.33 | 273.33 | 2.733 | 2.7 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 500 mg/5 mL | 8 años (25.6 kg) | 341.33 | 341.33 | 3.413 | 3.4 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 500 mg/5 mL | 10 años (32 kg) | 426.67 | 426.67 | 4.267 | 4.3 mL | ✅  |
+| amoxicilina | infecciones-comunes | Suspensión 500 mg/5 mL | 12 años (40 kg) | 500 | 500 | 5 | 5 mL | ✅ tope aplicado |
+| amoxicilina | infecciones-comunes | Suspensión 500 mg/5 mL | 14 años (50 kg) | 500 | 500 | 5 | 5 mL | ✅ tope aplicado |
+| amoxicilina | infecciones-comunes | Suspensión 500 mg/5 mL | 16 años (58 kg) | 500 | 500 | 5 | 5 mL | ✅ tope aplicado |
+| amoxicilina | infecciones-comunes | Suspensión 500 mg/5 mL | 17 años, obeso (95 kg) | 500 | 500 | 5 | 5 mL | ✅ tope aplicado |
+| amoxicilina | infecciones-comunes | Tableta 500 mg | 4 meses (6.4 kg) | 85.33 | 85.33 | 0.171 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amoxicilina | infecciones-comunes | Tableta 500 mg | 6 meses (7.6 kg) | 101.33 | 101.33 | 0.203 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amoxicilina | infecciones-comunes | Tableta 500 mg | 9 meses (8.6 kg) | 114.67 | 114.67 | 0.229 | 0.23 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amoxicilina | infecciones-comunes | Tableta 500 mg | 1 año (9.6 kg) | 128 | 128 | 0.256 | 0.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amoxicilina | infecciones-comunes | Tableta 500 mg | 18 meses (10.9 kg) | 145.33 | 145.33 | 0.291 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amoxicilina | infecciones-comunes | Tableta 500 mg | 2 años (12.2 kg) | 162.67 | 162.67 | 0.325 | 0.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amoxicilina | infecciones-comunes | Tableta 500 mg | 3 años (14.3 kg) | 190.67 | 190.67 | 0.381 | 0.38 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amoxicilina | infecciones-comunes | Tableta 500 mg | 4 años (16.3 kg) | 217.33 | 217.33 | 0.435 | 0.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amoxicilina | infecciones-comunes | Tableta 500 mg | 5 años (18.3 kg) | 244 | 244 | 0.488 | 0.49 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amoxicilina | infecciones-comunes | Tableta 500 mg | 6 años (20.5 kg) | 273.33 | 273.33 | 0.547 | 0.55 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amoxicilina | infecciones-comunes | Tableta 500 mg | 8 años (25.6 kg) | 341.33 | 341.33 | 0.683 | 0.68 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amoxicilina | infecciones-comunes | Tableta 500 mg | 10 años (32 kg) | 426.67 | 426.67 | 0.853 | 0.85 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amoxicilina | infecciones-comunes | Tableta 500 mg | 12 años (40 kg) | 500 | 500 | 1 | 1 tableta | ✅ tope aplicado |
+| amoxicilina | infecciones-comunes | Tableta 500 mg | 14 años (50 kg) | 500 | 500 | 1 | 1 tableta | ✅ tope aplicado |
+| amoxicilina | infecciones-comunes | Tableta 500 mg | 16 años (58 kg) | 500 | 500 | 1 | 1 tableta | ✅ tope aplicado |
+| amoxicilina | infecciones-comunes | Tableta 500 mg | 17 años, obeso (95 kg) | 500 | 500 | 1 | 1 tableta | ✅ tope aplicado |
 | amoxicilina | oma-dosis-alta | Suspensión 125 mg/5 mL | 6 meses (7.6 kg) | 342 | 342 | 13.68 | 13.7 mL | ✅  |
 | amoxicilina | oma-dosis-alta | Suspensión 125 mg/5 mL | 9 meses (8.6 kg) | 387 | 387 | 15.48 | 15.5 mL | ✅  |
 | amoxicilina | oma-dosis-alta | Suspensión 125 mg/5 mL | 1 año (9.6 kg) | 432 | 432 | 17.28 | 17.3 mL | ✅  |
@@ -173,6 +239,28 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | azitromicina | esquema-3-dias | Tableta 500 mg | 14 años (50 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
 | azitromicina | esquema-3-dias | Tableta 500 mg | 16 años (58 kg) | 500 | 500 | 1 | 1 tableta | ✅ tope aplicado |
 | azitromicina | esquema-3-dias | Tableta 500 mg | 17 años, obeso (95 kg) | 500 | 500 | 1 | 1 tableta | ✅ tope aplicado |
+| azitromicina | faringitis-5-dias | Suspensión 200 mg/5 mL | 2 años (12.2 kg) | 146.4 | 146.4 | 3.66 | 3.7 mL | ✅  |
+| azitromicina | faringitis-5-dias | Suspensión 200 mg/5 mL | 3 años (14.3 kg) | 171.6 | 171.6 | 4.29 | 4.3 mL | ✅  |
+| azitromicina | faringitis-5-dias | Suspensión 200 mg/5 mL | 4 años (16.3 kg) | 195.6 | 195.6 | 4.89 | 4.9 mL | ✅  |
+| azitromicina | faringitis-5-dias | Suspensión 200 mg/5 mL | 5 años (18.3 kg) | 219.6 | 219.6 | 5.49 | 5.5 mL | ✅  |
+| azitromicina | faringitis-5-dias | Suspensión 200 mg/5 mL | 6 años (20.5 kg) | 246 | 246 | 6.15 | 6.2 mL | ✅  |
+| azitromicina | faringitis-5-dias | Suspensión 200 mg/5 mL | 8 años (25.6 kg) | 307.2 | 307.2 | 7.68 | 7.7 mL | ✅  |
+| azitromicina | faringitis-5-dias | Suspensión 200 mg/5 mL | 10 años (32 kg) | 384 | 384 | 9.6 | 9.6 mL | ✅  |
+| azitromicina | faringitis-5-dias | Suspensión 200 mg/5 mL | 12 años (40 kg) | 480 | 480 | 12 | 12 mL | ✅  |
+| azitromicina | faringitis-5-dias | Suspensión 200 mg/5 mL | 14 años (50 kg) | 500 | 500 | 12.5 | 12.5 mL | ✅ tope aplicado |
+| azitromicina | faringitis-5-dias | Suspensión 200 mg/5 mL | 16 años (58 kg) | 500 | 500 | 12.5 | 12.5 mL | ✅ tope aplicado |
+| azitromicina | faringitis-5-dias | Suspensión 200 mg/5 mL | 17 años, obeso (95 kg) | 500 | 500 | 12.5 | 12.5 mL | ✅ tope aplicado |
+| azitromicina | faringitis-5-dias | Tableta 500 mg | 2 años (12.2 kg) | 146.4 | 146.4 | 0.293 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| azitromicina | faringitis-5-dias | Tableta 500 mg | 3 años (14.3 kg) | 171.6 | 171.6 | 0.343 | 0.34 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| azitromicina | faringitis-5-dias | Tableta 500 mg | 4 años (16.3 kg) | 195.6 | 195.6 | 0.391 | 0.39 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| azitromicina | faringitis-5-dias | Tableta 500 mg | 5 años (18.3 kg) | 219.6 | 219.6 | 0.439 | 0.44 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| azitromicina | faringitis-5-dias | Tableta 500 mg | 6 años (20.5 kg) | 246 | 246 | 0.492 | 0.49 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| azitromicina | faringitis-5-dias | Tableta 500 mg | 8 años (25.6 kg) | 307.2 | 307.2 | 0.614 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| azitromicina | faringitis-5-dias | Tableta 500 mg | 10 años (32 kg) | 384 | 384 | 0.768 | 0.77 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| azitromicina | faringitis-5-dias | Tableta 500 mg | 12 años (40 kg) | 480 | 480 | 0.96 | 1 tableta | ✅  |
+| azitromicina | faringitis-5-dias | Tableta 500 mg | 14 años (50 kg) | 500 | 500 | 1 | 1 tableta | ✅ tope aplicado |
+| azitromicina | faringitis-5-dias | Tableta 500 mg | 16 años (58 kg) | 500 | 500 | 1 | 1 tableta | ✅ tope aplicado |
+| azitromicina | faringitis-5-dias | Tableta 500 mg | 17 años, obeso (95 kg) | 500 | 500 | 1 | 1 tableta | ✅ tope aplicado |
 | azitromicina | esquema-5-dias-dia-1 | Suspensión 200 mg/5 mL | 6 meses (7.6 kg) | 76 | 76 | 1.9 | 1.9 mL | ✅  |
 | azitromicina | esquema-5-dias-dia-1 | Suspensión 200 mg/5 mL | 9 meses (8.6 kg) | 86 | 86 | 2.15 | 2.2 mL | ✅  |
 | azitromicina | esquema-5-dias-dia-1 | Suspensión 200 mg/5 mL | 1 año (9.6 kg) | 96 | 96 | 2.4 | 2.4 mL | ✅  |
@@ -245,7 +333,7 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | cefalexina | infecciones-habituales | Suspensión 250 mg/5 mL | 12 años (40 kg) | 500 | 500 | 10 | 10 mL | ✅  |
 | cefalexina | infecciones-habituales | Suspensión 250 mg/5 mL | 14 años (50 kg) | 625 | 625 | 12.5 | 12.5 mL | ✅  |
 | cefalexina | infecciones-habituales | Suspensión 250 mg/5 mL | 16 años (58 kg) | 725 | 725 | 14.5 | 14.5 mL | ✅  |
-| cefalexina | infecciones-habituales | Suspensión 250 mg/5 mL | 17 años, obeso (95 kg) | 1000 | 1000 | 20 | 20 mL | ✅ tope aplicado |
+| cefalexina | infecciones-habituales | Suspensión 250 mg/5 mL | 17 años, obeso (95 kg) | 750 | 750 | 15 | 15 mL | ✅ tope aplicado |
 | cefalexina | infecciones-habituales | Cápsula 500 mg | 1 año (9.6 kg) | 120 | 120 | 0.24 | 0.24 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cefalexina | infecciones-habituales | Cápsula 500 mg | 18 meses (10.9 kg) | 136.25 | 136.25 | 0.273 | 0.27 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cefalexina | infecciones-habituales | Cápsula 500 mg | 2 años (12.2 kg) | 152.5 | 152.5 | 0.305 | 0.3 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -258,7 +346,7 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | cefalexina | infecciones-habituales | Cápsula 500 mg | 12 años (40 kg) | 500 | 500 | 1 | 1 capsula | ✅  |
 | cefalexina | infecciones-habituales | Cápsula 500 mg | 14 años (50 kg) | 625 | 625 | 1.25 | 1.25 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cefalexina | infecciones-habituales | Cápsula 500 mg | 16 años (58 kg) | 725 | 725 | 1.45 | 1.45 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
-| cefalexina | infecciones-habituales | Cápsula 500 mg | 17 años, obeso (95 kg) | 1000 | 1000 | 2 | 2 capsula | ✅ tope aplicado |
+| cefalexina | infecciones-habituales | Cápsula 500 mg | 17 años, obeso (95 kg) | 750 | 750 | 1.5 | 1.5 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cefalexina | infecciones-graves | Suspensión 250 mg/5 mL | 1 año (9.6 kg) | 240 | 240 | 4.8 | 4.8 mL | ✅  |
 | cefalexina | infecciones-graves | Suspensión 250 mg/5 mL | 18 meses (10.9 kg) | 272.5 | 272.5 | 5.45 | 5.5 mL | ✅  |
 | cefalexina | infecciones-graves | Suspensión 250 mg/5 mL | 2 años (12.2 kg) | 305 | 305 | 6.1 | 6.1 mL | ✅  |
@@ -267,11 +355,11 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | cefalexina | infecciones-graves | Suspensión 250 mg/5 mL | 5 años (18.3 kg) | 457.5 | 457.5 | 9.15 | 9.2 mL | ✅  |
 | cefalexina | infecciones-graves | Suspensión 250 mg/5 mL | 6 años (20.5 kg) | 512.5 | 512.5 | 10.25 | 10.3 mL | ✅  |
 | cefalexina | infecciones-graves | Suspensión 250 mg/5 mL | 8 años (25.6 kg) | 640 | 640 | 12.8 | 12.8 mL | ✅  |
-| cefalexina | infecciones-graves | Suspensión 250 mg/5 mL | 10 años (32 kg) | 800 | 800 | 16 | 16 mL | ✅  |
-| cefalexina | infecciones-graves | Suspensión 250 mg/5 mL | 12 años (40 kg) | 1000 | 1000 | 20 | 20 mL | ✅  |
-| cefalexina | infecciones-graves | Suspensión 250 mg/5 mL | 14 años (50 kg) | 1000 | 1000 | 20 | 20 mL | ✅ tope aplicado |
-| cefalexina | infecciones-graves | Suspensión 250 mg/5 mL | 16 años (58 kg) | 1000 | 1000 | 20 | 20 mL | ✅ tope aplicado |
-| cefalexina | infecciones-graves | Suspensión 250 mg/5 mL | 17 años, obeso (95 kg) | 1000 | 1000 | 20 | 20 mL | ✅ tope aplicado |
+| cefalexina | infecciones-graves | Suspensión 250 mg/5 mL | 10 años (32 kg) | 750 | 750 | 15 | 15 mL | ✅ tope aplicado |
+| cefalexina | infecciones-graves | Suspensión 250 mg/5 mL | 12 años (40 kg) | 750 | 750 | 15 | 15 mL | ✅ tope aplicado |
+| cefalexina | infecciones-graves | Suspensión 250 mg/5 mL | 14 años (50 kg) | 750 | 750 | 15 | 15 mL | ✅ tope aplicado |
+| cefalexina | infecciones-graves | Suspensión 250 mg/5 mL | 16 años (58 kg) | 750 | 750 | 15 | 15 mL | ✅ tope aplicado |
+| cefalexina | infecciones-graves | Suspensión 250 mg/5 mL | 17 años, obeso (95 kg) | 750 | 750 | 15 | 15 mL | ✅ tope aplicado |
 | cefalexina | infecciones-graves | Cápsula 500 mg | 1 año (9.6 kg) | 240 | 240 | 0.48 | 0.48 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cefalexina | infecciones-graves | Cápsula 500 mg | 18 meses (10.9 kg) | 272.5 | 272.5 | 0.545 | 0.55 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cefalexina | infecciones-graves | Cápsula 500 mg | 2 años (12.2 kg) | 305 | 305 | 0.61 | 0.61 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -280,11 +368,11 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | cefalexina | infecciones-graves | Cápsula 500 mg | 5 años (18.3 kg) | 457.5 | 457.5 | 0.915 | 0.92 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cefalexina | infecciones-graves | Cápsula 500 mg | 6 años (20.5 kg) | 512.5 | 512.5 | 1.025 | 1 capsula | ✅  |
 | cefalexina | infecciones-graves | Cápsula 500 mg | 8 años (25.6 kg) | 640 | 640 | 1.28 | 1.28 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
-| cefalexina | infecciones-graves | Cápsula 500 mg | 10 años (32 kg) | 800 | 800 | 1.6 | 1.6 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
-| cefalexina | infecciones-graves | Cápsula 500 mg | 12 años (40 kg) | 1000 | 1000 | 2 | 2 capsula | ✅  |
-| cefalexina | infecciones-graves | Cápsula 500 mg | 14 años (50 kg) | 1000 | 1000 | 2 | 2 capsula | ✅ tope aplicado |
-| cefalexina | infecciones-graves | Cápsula 500 mg | 16 años (58 kg) | 1000 | 1000 | 2 | 2 capsula | ✅ tope aplicado |
-| cefalexina | infecciones-graves | Cápsula 500 mg | 17 años, obeso (95 kg) | 1000 | 1000 | 2 | 2 capsula | ✅ tope aplicado |
+| cefalexina | infecciones-graves | Cápsula 500 mg | 10 años (32 kg) | 750 | 750 | 1.5 | 1.5 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cefalexina | infecciones-graves | Cápsula 500 mg | 12 años (40 kg) | 750 | 750 | 1.5 | 1.5 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cefalexina | infecciones-graves | Cápsula 500 mg | 14 años (50 kg) | 750 | 750 | 1.5 | 1.5 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cefalexina | infecciones-graves | Cápsula 500 mg | 16 años (58 kg) | 750 | 750 | 1.5 | 1.5 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cefalexina | infecciones-graves | Cápsula 500 mg | 17 años, obeso (95 kg) | 750 | 750 | 1.5 | 1.5 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cetirizina | alergia-6-23-meses | Solución oral 1 mg/mL (5 mg/5 mL) | 6 meses (7.6 kg) | 2.5 | 2.5 | 2.5 | 2.5 mL | ✅  |
 | cetirizina | alergia-6-23-meses | Solución oral 1 mg/mL (5 mg/5 mL) | 9 meses (8.6 kg) | 2.5 | 2.5 | 2.5 | 2.5 mL | ✅  |
 | cetirizina | alergia-6-23-meses | Solución oral 1 mg/mL (5 mg/5 mL) | 1 año (9.6 kg) | 2.5 | 2.5 | 2.5 | 2.5 mL | ✅  |
@@ -412,8 +500,8 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | paracetamol | fiebre-dolor-vo | Solución oral 100 mg/mL | 10 años (32 kg) | 480 | 480 | 4.8 | 4.8 mL | ✅  |
 | paracetamol | fiebre-dolor-vo | Solución oral 100 mg/mL | 12 años (40 kg) | 600 | 600 | 6 | 6 mL | ✅  |
 | paracetamol | fiebre-dolor-vo | Solución oral 100 mg/mL | 14 años (50 kg) | 750 | 750 | 7.5 | 7.5 mL | ✅  |
-| paracetamol | fiebre-dolor-vo | Solución oral 100 mg/mL | 16 años (58 kg) | 750 | 750 | 7.5 | 7.5 mL | ✅ tope aplicado |
-| paracetamol | fiebre-dolor-vo | Solución oral 100 mg/mL | 17 años, obeso (95 kg) | 750 | 750 | 7.5 | 7.5 mL | ✅ tope aplicado |
+| paracetamol | fiebre-dolor-vo | Solución oral 100 mg/mL | 16 años (58 kg) | 870 | 870 | 8.7 | 8.7 mL | ✅  |
+| paracetamol | fiebre-dolor-vo | Solución oral 100 mg/mL | 17 años, obeso (95 kg) | 1000 | 1000 | 10 | 10 mL | ✅ tope aplicado |
 | paracetamol | fiebre-dolor-vo | Jarabe 120 mg/5 mL | 1 mes (4.2 kg) | 63 | 63 | 2.625 | 2.6 mL | ✅  |
 | paracetamol | fiebre-dolor-vo | Jarabe 120 mg/5 mL | 2 meses (5.1 kg) | 76.5 | 76.5 | 3.188 | 3.2 mL | ✅  |
 | paracetamol | fiebre-dolor-vo | Jarabe 120 mg/5 mL | 4 meses (6.4 kg) | 96 | 96 | 4 | 4 mL | ✅  |
@@ -429,9 +517,9 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | paracetamol | fiebre-dolor-vo | Jarabe 120 mg/5 mL | 8 años (25.6 kg) | 384 | 384 | 16 | 16 mL | ✅  |
 | paracetamol | fiebre-dolor-vo | Jarabe 120 mg/5 mL | 10 años (32 kg) | 480 | 480 | 20 | 20 mL | ✅  |
 | paracetamol | fiebre-dolor-vo | Jarabe 120 mg/5 mL | 12 años (40 kg) | 600 | 600 | 25 | 25 mL | ✅  |
-| paracetamol | fiebre-dolor-vo | Jarabe 120 mg/5 mL | 14 años (50 kg) | 750 | 750 | 31.25 | 31.2 mL | ✅  |
-| paracetamol | fiebre-dolor-vo | Jarabe 120 mg/5 mL | 16 años (58 kg) | 750 | 750 | 31.25 | 31.2 mL | ✅ tope aplicado |
-| paracetamol | fiebre-dolor-vo | Jarabe 120 mg/5 mL | 17 años, obeso (95 kg) | 750 | 750 | 31.25 | 31.2 mL | ✅ tope aplicado |
+| paracetamol | fiebre-dolor-vo | Jarabe 120 mg/5 mL | 14 años (50 kg) | 750 | 750 | 31.25 | 31.3 mL | ✅  |
+| paracetamol | fiebre-dolor-vo | Jarabe 120 mg/5 mL | 16 años (58 kg) | 870 | 870 | 36.25 | 36.3 mL | ✅  |
+| paracetamol | fiebre-dolor-vo | Jarabe 120 mg/5 mL | 17 años, obeso (95 kg) | 1000 | 1000 | 41.667 | 41.6 mL | ✅ tope aplicado |
 | paracetamol | fiebre-dolor-vo | Tableta 500 mg | 1 mes (4.2 kg) | 63 | 63 | 0.126 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | paracetamol | fiebre-dolor-vo | Tableta 500 mg | 2 meses (5.1 kg) | 76.5 | 76.5 | 0.153 | 0.15 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | paracetamol | fiebre-dolor-vo | Tableta 500 mg | 4 meses (6.4 kg) | 96 | 96 | 0.192 | 0.19 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -448,8 +536,8 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | paracetamol | fiebre-dolor-vo | Tableta 500 mg | 10 años (32 kg) | 480 | 480 | 0.96 | 1 tableta | ✅  |
 | paracetamol | fiebre-dolor-vo | Tableta 500 mg | 12 años (40 kg) | 600 | 600 | 1.2 | 1.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | paracetamol | fiebre-dolor-vo | Tableta 500 mg | 14 años (50 kg) | 750 | 750 | 1.5 | 1.5 tableta | ✅  |
-| paracetamol | fiebre-dolor-vo | Tableta 500 mg | 16 años (58 kg) | 750 | 750 | 1.5 | 1.5 tableta | ✅ tope aplicado |
-| paracetamol | fiebre-dolor-vo | Tableta 500 mg | 17 años, obeso (95 kg) | 750 | 750 | 1.5 | 1.5 tableta | ✅ tope aplicado |
+| paracetamol | fiebre-dolor-vo | Tableta 500 mg | 16 años (58 kg) | 870 | 870 | 1.74 | 1.74 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| paracetamol | fiebre-dolor-vo | Tableta 500 mg | 17 años, obeso (95 kg) | 1000 | 1000 | 2 | 2 tableta | ✅ tope aplicado |
 | prednisolona | crisis-asmatica-1-2-anos | Solución oral 15 mg/5 mL | 1 año (9.6 kg) | 9.6 | 9.6 | 3.2 | 3.2 mL | ✅  |
 | prednisolona | crisis-asmatica-1-2-anos | Solución oral 15 mg/5 mL | 18 meses (10.9 kg) | 10.9 | 10.9 | 3.633 | 3.6 mL | ✅  |
 | prednisolona | crisis-asmatica-1-2-anos | Tableta 5 mg | 1 año (9.6 kg) | 9.6 | 9.6 | 1.92 | 2 tableta | ✅  |

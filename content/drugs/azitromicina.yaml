@@ -32,6 +32,20 @@ rules:
     durationText: 3 días.
     notes: Mismo esquema en la ficha FDA, la ficha AEMPS y el libro Peña Camarena (10 mg/kg/día por 3 días).
     sourceIds: [fda-azithromycin, aemps-ft-71180, pena-camarena]
+  - id: faringitis-5-dias
+    indication: Faringoamigdalitis (2 años o más), 5 días
+    route: VO
+    ageMinDays: 730
+    basis: mg/kg/dose
+    amountMin: 12
+    amountMax: 12
+    usual: 12
+    intervalHours: 24
+    maxPerDoseMg: 500
+    maxPerDayMg: 500
+    durationText: 5 días.
+    notes: Misma pauta en el FNME, la ficha FDA y la ficha AEMPS.
+    sourceIds: [fnme-2008, fda-azithromycin, aemps-ft-71180]
   - id: esquema-5-dias-dia-1
     indication: Neumonía adquirida en la comunidad, esquema de 5 días — día 1 (6 meses o más)
     route: VO
@@ -44,8 +58,8 @@ rules:
     maxPerDoseMg: 500
     maxPerDayMg: 500
     durationText: Día 1; continuar con 5 mg/kg/día los días 2 a 5.
-    notes: La dosis diaria no debe superar la de adulto (500 mg).
-    sourceIds: [fda-azithromycin, aemps-ft-71180]
+    notes: La dosis diaria no debe superar la de adulto (500 mg). El FNME usa este esquema para la otitis.
+    sourceIds: [fnme-2008, fda-azithromycin, aemps-ft-71180]
   - id: esquema-5-dias-dias-2-5
     indication: Neumonía adquirida en la comunidad, esquema de 5 días — días 2 a 5
     route: VO
@@ -69,6 +83,16 @@ review:
   author: Diego
   reviewers: []
 testCases:
+  - ruleId: faringitis-5-dias
+    presentationId: susp-200-5
+    weightKg: 15
+    ageDays: 1095
+    expect: { mgPerDose: 180, amount: 4.5, unit: mL }
+  - ruleId: faringitis-5-dias
+    presentationId: susp-200-5
+    weightKg: 50
+    ageDays: 4380
+    expect: { mgPerDose: 500, amount: 12.5, unit: mL, capped: true }
   - ruleId: esquema-3-dias
     presentationId: susp-200-5
     weightKg: 15

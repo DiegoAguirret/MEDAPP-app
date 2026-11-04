@@ -35,7 +35,8 @@ export function checkContent(
     seen.add(drug.id);
 
     for (const rule of drug.rules) {
-      for (const sid of rule.sourceIds) {
+      const noteSources = (rule.countryNotes ?? []).flatMap((n) => n.sourceIds);
+      for (const sid of [...rule.sourceIds, ...noteSources]) {
         if (!sourceIds.has(sid)) {
           errors.push({
             drugId: drug.id,

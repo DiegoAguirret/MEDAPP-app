@@ -1,4 +1,4 @@
-import type { Drug, Source } from '@medapp/content-schema';
+import { sourcePriority, type Country, type Drug, type Source } from '@medapp/content-schema';
 import { calculateDose, formatClinical } from '@medapp/dose-engine';
 import { useMemo, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -14,6 +14,23 @@ const UNIT_LABEL: Record<string, string> = {
   capsula: 'cápsula(s)',
   supositorio: 'supositorio(s)',
 };
+
+const COUNTRY_LABEL: Record<Country, string> = {
+  PE: 'Perú',
+  US: 'EE. UU.',
+  ES: 'España',
+  UK: 'Reino Unido',
+  CA: 'Canadá',
+  INT: 'Internacional',
+};
+
+const BASIS_LABEL = {
+  'mg/kg/dose': 'mg/kg/dosis',
+  'mg/kg/day': 'mg/kg/día',
+  fixed_by_age: 'mg',
+} as const;
+
+type Choice = 'min' | 'usual' | 'max';
 
 function parseInt0(text: string): number | null {
   const t = text.trim();
@@ -37,6 +54,7 @@ export function DosePanel({
     (p) => rule?.presentationIds === undefined || rule.presentationIds.includes(p.id),
   );
   const [presId, setPresId] = useState(allowed[0]?.id ?? '');
+  const [choice, setChoice] = useState<Choice>('usual');
   const presentation = allowed.find((p) => p.id === presId) ?? allowed[0];
 
   // Datos del paciente: solo en memoria de esta pantalla, nunca se guardan.
@@ -51,10 +69,31 @@ export function DosePanel({
   const ageDays =
     years !== null && months !== null && months < 12 ? ageToDays(years, months) : null;
 
+  const chosenValue =
+    rule === undefined
+      ? undefined
+      : choice === 'min'
+        ? rule.amountMin
+        : choice === 'max'
+          ? rule.amountMax
+          : (rule.usual ?? rule.amountMin);
+
   const result = useMemo(() => {
     if (!rule || !presentation || !weight.ok || ageDays === null || !hasAge) return null;
-    return calculateDose({ rule, presentation, patient: { weightKg: weight.kg, ageDays } });
-  }, [rule, presentation, weight, ageDays, hasAge]);
+    return calculateDose({
+      rule,
+      presentation,
+      patient: { weightKg: weight.kg, ageDays },
+      ...(chosenValue === undefined ? {} : { chosenMgPerKg: chosenValue }),
+    });
+  }, [rule, presentation, weight, ageDays, hasAge, chosenValue]);
+
+  const orderedSources = (rule?.sourceIds ?? [])
+    .map((id) => sources.find((x) => x.id === id))
+    .filter((x): x is Source => x !== undefined)
+    .sort((a, b) => sourcePriority(a.kind) - sourcePriority(b.kind));
+  const sourceLabel = (src: Source) =>
+    `${src.title}${src.year === undefined ? '' : ` (${src.year})`}`;
 
   const fittingRules =
     result?.status === 'not_calculable' && result.reason === 'age_out_of_rule' && ageDays !== null
@@ -84,6 +123,7 @@ export function DosePanel({
               selected={r.id === rule.id}
               onPress={() => {
                 setRuleId(r.id);
+                setChoice('usual');
                 const nextAllowed = drug.presentations.filter(
                   (p) => r.presentationIds === undefined || r.presentationIds.includes(p.id),
                 );
@@ -103,6 +143,32 @@ export function DosePanel({
             />
           ))}
         </View>
+        {rule.amountMin !== rule.amountMax ? (
+          <>
+            <SectionTitle>Dosis dentro del rango de la ficha</SectionTitle>
+            <View style={s.wrap}>
+              <Chip
+                label={`Mínima ${fmt(rule.amountMin)} ${BASIS_LABEL[rule.basis]}`}
+                selected={choice === 'min'}
+                onPress={() => setChoice('min')}
+              />
+              {rule.usual !== undefined &&
+              rule.usual !== rule.amountMin &&
+              rule.usual !== rule.amountMax ? (
+                <Chip
+                  label={`Habitual ${fmt(rule.usual)} ${BASIS_LABEL[rule.basis]}`}
+                  selected={choice === 'usual'}
+                  onPress={() => setChoice('usual')}
+                />
+              ) : null}
+              <Chip
+                label={`Máxima ${fmt(rule.amountMax)} ${BASIS_LABEL[rule.basis]}`}
+                selected={choice === 'max' || (choice === 'usual' && rule.usual === rule.amountMax)}
+                onPress={() => setChoice('max')}
+              />
+            </View>
+          </>
+        ) : null}
       </Card>
 
       <Card>
@@ -185,14 +251,21 @@ export function DosePanel({
       <Card>
         <SectionTitle>Notas y fuentes</SectionTitle>
         {rule.notes ? <Text style={s.body}>{rule.notes}</Text> : null}
-        {rule.sourceIds.map((id) => {
-          const src = sources.find((x) => x.id === id);
-          return (
-            <Text key={id} style={s.muted}>
-              • {src ? `${src.title}${src.year === undefined ? '' : ` (${src.year})`}` : id}
-            </Text>
-          );
-        })}
+        {orderedSources.map((src, i) => (
+          <Text key={src.id} style={i === 0 ? s.body : s.muted}>
+            {i === 0 ? `Fuente principal: ${sourceLabel(src)}` : `• ${sourceLabel(src)}`}
+          </Text>
+        ))}
+        {rule.countryNotes && rule.countryNotes.length > 0 ? (
+          <>
+            <SectionTitle>Diferencias por país</SectionTitle>
+            {rule.countryNotes.map((n) => (
+              <Text key={n.country + n.text} style={s.body}>
+                {COUNTRY_LABEL[n.country]}: {n.text}
+              </Text>
+            ))}
+          </>
+        ) : null}
         {drug.warnings.map((w) => (
           <Text key={w} style={s.body}>
             ⚠ {w}

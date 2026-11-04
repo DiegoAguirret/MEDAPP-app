@@ -7,6 +7,32 @@ const id = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'id en kebab-case');
 
 export const routeSchema = z.enum(['VO', 'IV', 'IM', 'IR', 'SL', 'INH']);
 
+/** Países o ámbitos de las fuentes y de las diferencias por país. */
+export const countrySchema = z.enum(['PE', 'US', 'ES', 'UK', 'CA', 'INT']);
+
+/**
+ * Tipo de fuente. Orden de prioridad ante diferencias importantes:
+ * 1) norma peruana (MINSA/DIGEMID), 2) agencia reguladora (FDA, AEMPS…),
+ * 3) guía de sociedad científica, 4) libro o manual, 5) revisión.
+ */
+export const sourceKindSchema = z.enum(['norma-peru', 'regulador', 'guia', 'libro', 'revision']);
+const PRIORITY: Record<z.infer<typeof sourceKindSchema>, number> = {
+  'norma-peru': 1,
+  regulador: 2,
+  guia: 3,
+  libro: 4,
+  revision: 5,
+};
+export function sourcePriority(kind: z.infer<typeof sourceKindSchema>): number {
+  return PRIORITY[kind];
+}
+
+export const countryNoteSchema = z.object({
+  country: countrySchema,
+  text: z.string().min(1),
+  sourceIds: z.array(z.string().min(1)).min(1),
+});
+
 export const presentationSchema = z.object({
   id,
   label: z.string().min(1),
@@ -47,6 +73,8 @@ export const doseRuleSchema = z
     sourceIds: z.array(id).min(1, 'Cada regla necesita al menos una fuente'),
     /** Presentaciones con las que se puede usar la regla. Obligatorio en vías parenterales. */
     presentationIds: z.array(id).min(1).optional(),
+    /** Diferencias de dosis o presentación según el país o la fuente. */
+    countryNotes: z.array(countryNoteSchema).optional(),
   })
   .superRefine((r, ctx) => {
     if (r.amountMin > r.amountMax) {
@@ -175,6 +203,8 @@ export const sourceSchema = z.object({
   year: z.number().int().min(1900).max(2100).optional(),
   publisher: z.string().min(1).optional(),
   url: z.url().optional(),
+  kind: sourceKindSchema,
+  country: countrySchema,
 });
 
 export type Route = z.infer<typeof routeSchema>;
@@ -184,6 +214,9 @@ export type Review = z.infer<typeof reviewSchema>;
 export type ClinicalTestCase = z.infer<typeof clinicalTestCaseSchema>;
 export type Drug = z.infer<typeof drugSchema>;
 export type Source = z.infer<typeof sourceSchema>;
+export type SourceKind = z.infer<typeof sourceKindSchema>;
+export type Country = z.infer<typeof countrySchema>;
+export type CountryNote = z.infer<typeof countryNoteSchema>;
 
 export function parseDrug(raw: unknown): Drug {
   return drugSchema.parse(raw);

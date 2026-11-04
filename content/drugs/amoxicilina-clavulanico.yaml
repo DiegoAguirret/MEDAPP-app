@@ -18,6 +18,21 @@ presentations:
     step: 1
     brandsPE: []
 rules:
+  - id: menores-3-meses
+    indication: Lactantes menores de 3 meses (dosis expresada como amoxicilina)
+    route: VO
+    ageMinDays: 29
+    ageMaxDays: 89
+    basis: mg/kg/day
+    amountMin: 30
+    amountMax: 30
+    usual: 30
+    intervalHours: 12
+    maxPerDoseMg: 875
+    maxPerDayMg: 1750
+    notes: FNME — 15 mg/kg cada 12 h; FDA — 30 mg/kg/día cada 12 h (misma dosis).
+    presentationIds: [susp-400-57-5]
+    sourceIds: [fnme-2008, fda-amox-clav]
   - id: estandar-cada-12h
     indication: Infecciones susceptibles, pauta cada 12 h (dosis expresada como amoxicilina)
     route: VO
@@ -31,11 +46,16 @@ rules:
     maxPerDayMg: 1750
     notes: >-
       FDA — desde las 12 semanas: 25–45 mg/kg/día cada 12 h, hasta la dosis de adulto (875 mg cada 12 h);
-      más de 40 kg, dosis de adulto. Usar la formulación 7:1 (400/57). En menores de 12 semanas la ficha
-      indica 30 mg/kg/día (no incluido aquí). En la UE se usan otras proporciones cada 8 h: no
-      intercambiar presentaciones.
+      más de 40 kg, dosis de adulto. Usar la formulación 7:1 (400/57).
     presentationIds: [susp-400-57-5, tab-875-125]
-    sourceIds: [fda-amox-clav]
+    sourceIds: [fnme-2008, fda-amox-clav]
+    countryNotes:
+      - country: PE
+        text: FNME — 12.5 mg/kg cada 12 h en infecciones leves o moderadas y 22.5 mg/kg cada 12 h en otitis, neumonía o sinusitis (25–45 mg/kg/día); en Perú la suspensión es 7:1.
+        sourceIds: [fnme-2008]
+      - country: ES
+        text: En España la suspensión 4:1 se dosifica de 20/5 a 60/15 mg/kg/día en tres tomas; no intercambiar presentaciones de distinta proporción.
+        sourceIds: [aemps-ft-64111]
 warnings:
   - Diarrea frecuente por el componente clavulánico.
 contraindications:
@@ -47,6 +67,11 @@ review:
   author: Diego
   reviewers: []
 testCases:
+  - ruleId: menores-3-meses
+    presentationId: susp-400-57-5
+    weightKg: 5
+    ageDays: 60
+    expect: { mgPerDose: 75, amount: 0.9, unit: mL }
   - ruleId: estandar-cada-12h
     presentationId: susp-400-57-5
     weightKg: 10

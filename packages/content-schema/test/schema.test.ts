@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseDrug, parseSource } from '../src/index.ts';
+import { parseDrug, parseSource, sourcePriority } from '../src/index.ts';
 
 function validDrug(): Record<string, unknown> {
   return {
@@ -166,7 +166,40 @@ describe('parseDrug', () => {
 
 describe('parseSource', () => {
   it('accepts a source without a known year', () => {
-    expect(parseSource({ id: 'libro', title: 'Libro' }).year).toBeUndefined();
+    expect(
+      parseSource({ id: 'libro', title: 'Libro', kind: 'libro', country: 'PE' }).year,
+    ).toBeUndefined();
+  });
+  it('requires the kind and country of each source', () => {
+    expect(() => parseSource({ id: 'x', title: 'X' })).toThrow();
+  });
+});
+
+describe('sourcePriority', () => {
+  it('ranks Peruvian norms first, then regulators, guidelines and books', () => {
+    const order = (['libro', 'guia', 'norma-peru', 'regulador'] as const)
+      .slice()
+      .sort((a, b) => sourcePriority(a) - sourcePriority(b));
+    expect(order).toEqual(['norma-peru', 'regulador', 'guia', 'libro']);
+  });
+});
+
+describe('parseDrug countryNotes', () => {
+  it('accepts per-country differences with sources', () => {
+    const d = parseDrug(
+      mutate(
+        (x) =>
+          (x.rules[0].countryNotes = [{ country: 'US', text: 'Máx. 4 g/día', sourceIds: ['fda'] }]),
+      ),
+    );
+    expect(d.rules[0]?.countryNotes?.[0]?.country).toBe('US');
+  });
+  it('rejects a country note without sources', () => {
+    expect(() =>
+      parseDrug(
+        mutate((x) => (x.rules[0].countryNotes = [{ country: 'US', text: 'x', sourceIds: [] }])),
+      ),
+    ).toThrow();
   });
 });
 

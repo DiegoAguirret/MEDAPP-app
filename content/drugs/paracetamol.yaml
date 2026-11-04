@@ -35,12 +35,15 @@ rules:
     usual: 15
     intervalHours: 6
     maxPerDoseMg: 1000
-    maxPerDayMg: 3000
+    maxPerDayMg: 4000
     notes: >-
-      AEMPS: 15 mg/kg cada 6 h (o 10 mg/kg cada 4 h); en más de 38 kg, máximo 3 g/día.
-      FDA: de 29 días a 2 años, no superar 60 mg/kg/día.
-      Libro Peña Camarena: 10–15 mg/kg/dosis cada 4–6 h.
-    sourceIds: [aemps-ft-49302, fda-acetaminophen-iv, pena-camarena]
+      Niños: 10–15 mg/kg cada 4–6 h (FNME); la app usa cada 6 h, que limita a 60 mg/kg/día. Máximo de
+      adulto 4 g/día (FNME y FDA). De 29 días a 2 años no superar 60 mg/kg/día (FDA).
+    sourceIds: [fnme-2008, fda-acetaminophen-iv, aemps-ft-49302, pena-camarena]
+    countryNotes:
+      - country: ES
+        text: La AEMPS fija un máximo de 3 g/día en niños de más de 38 kg y 80 mg/kg/día en menores de 37 kg.
+        sourceIds: [aemps-ft-49302]
 warnings:
   - Hepatotoxicidad en sobredosis; verificar otros productos que contengan paracetamol.
 contraindications:
@@ -65,4 +68,4 @@ testCases:
     presentationId: tab-500
     weightKg: 70
     ageDays: 5475
-    expect: { mgPerDose: 750, amount: 1.5, unit: tableta, capped: true }
+    expect: { mgPerDose: 1000, amount: 2, unit: tableta, capped: true }

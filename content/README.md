@@ -13,6 +13,19 @@
 6. Al menos **3 casos de prueba**: peso bajo, peso medio y un caso que llegue al tope (`capped: true`).
 7. Marcas (`brandsPE`): solo si se verificaron en el registro de DIGEMID.
 
+## Criterio de fuentes
+- Se usan **todas** las fuentes disponibles; el mínimo es una fuente oficial por regla.
+- Cada fuente declara su `kind` y su `country`. Orden de prioridad:
+  1. **Norma peruana** (MINSA, DIGEMID: FNME, guías de práctica clínica).
+  2. **Agencia reguladora** (FDA, AEMPS): la ficha técnica más reciente.
+  3. **Guía de sociedad científica** (AAP, IDSA, GINA, CPS, OMS).
+  4. **Libro** (Peña Camarena).
+  5. **Revisión**.
+- Si las fuentes coinciden, se usa el valor común.
+- Si difieren mucho, **manda la norma peruana**. Excepción: la norma peruana es antigua y una guía vigente cambió la recomendación por evidencia nueva (p. ej. la dosis alta de amoxicilina en otitis). En ese caso se muestran las dos pautas como reglas separadas y se explica la diferencia.
+- Toda diferencia relevante va en `countryNotes` (se ve en la app como «Diferencias por país»).
+- **Texto parafraseado**, nunca copiado; el dato numérico se toma tal cual y se cita.
+
 ## Cómo se valida una ficha (médico)
 
 1. El médico recalcula a mano cada `testCase` y compara la dosis con al menos una de las fuentes citadas.

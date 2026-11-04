@@ -33,6 +33,18 @@
 | Plan C | 30 + 70 mL/kg; <12 m en 1 h + 5 h; ≥12 m en 30 min + 2.5 h | MINSA y OMS Pocket Book 2013 | "Lactantes < 12 meses: 30 ml/kg en 1 hora; luego 70 ml/kg en 5 horas" | ✅ |
 | Holliday-Segar | 100/50/20 mL/kg/día | Holliday & Segar 1957 (PubMed 13431307), revisión PMC12543346 | "100 mL/kg… first 10 kg… 50 mL/kg… 10–20 kg… 20 mL/kg… above 20 kg" | ✅ (la OMS usa 25 mL/kg por encima de 20 kg) |
 
+## Norma peruana: Formulario Nacional de Medicamentos Esenciales (DIGEMID, 2.ª ed. 2008)
+| Fármaco | FNME (niños) | Decisión en la app |
+|---|---|---|
+| Paracetamol | 10–15 mg/kg cada 4–6 h; adulto máx. 4 g/día | Máximo 4 g/día (FNME + FDA); la diferencia con la AEMPS (3 g) se muestra por país |
+| Ibuprofeno | 6 m–12 a: 5 o 10 mg/kg (fiebre alta) cada 4–6 h | Coincide; la app usa cada 8 h (rango FDA 6–8 h) |
+| Metamizol | Solo inyectable: 10–12 mg/kg IM | Respalda el rango de la AEMPS (8–16) frente al del libro |
+| Amoxicilina | <3 m: 30 mg/kg/día cada 12 h; >3 m: 20 (leve) o 40 (grave/respiratoria) mg/kg/día cada 8 h | Nueva regla «infecciones comunes» 20–40 mg/kg/día cada 8 h; la dosis alta para otitis (AAP) se mantiene aparte, con nota |
+| Amox./clav. | <3 m: 15 mg/kg cada 12 h; >3 m: 12.5–22.5 mg/kg cada 12 h; suspensión 7:1 | Coincide con la FDA; se añade la regla para menores de 3 meses |
+| Azitromicina | Otitis: 10 mg/kg el día 1 y 5 mg/kg días 2–5; faringitis (>2 a): 12 mg/kg × 5 días | Coincide; se añade la faringitis |
+| Cefalexina | 25–50 (leve-moderada) y 50–100 (grave) mg/kg/día cada 6 h; **máx. 3 g/día** | **Prioridad Perú:** máximo 3 g/día (la FDA admite 4 g, se muestra por país) |
+| Ondansetrón, cetirizina, prednisolona | No figuran para estas indicaciones (o la extracción del PDF no fue fiable) | Se mantienen las fuentes FDA, AEMPS, CPS y GINA |
+
 ## Comparación con el libro de Peña Camarena (Dosificación de medicamentos en pediatría)
 | Fármaco | Libro | App | Resultado |
 |---|---|---|---|

@@ -80,4 +80,25 @@ describe('DosePanel', () => {
     await render(<DosePanel drug={drug('paracetamol')} decimalSeparator="." sources={sources} />);
     expect(screen.getByLabelText('Peso en kilogramos').props.value).toBe('');
   });
+
+  it('lets the doctor choose the minimum of the range', async () => {
+    await render(<DosePanel drug={drug('paracetamol')} decimalSeparator="." sources={sources} />);
+    await fireEvent.press(screen.getByText('Jarabe 120 mg/5 mL'));
+    await fillPatient('10', '1', '0');
+    await fireEvent.press(screen.getByText('Mínima 10 mg/kg/dosis'));
+    expect(screen.getByTestId('result-mg')).toHaveTextContent('100 mg');
+  });
+
+  it('shows per-country differences', async () => {
+    await render(<DosePanel drug={drug('cefalexina')} decimalSeparator="." sources={sources} />);
+    expect(screen.getByText(/Diferencias por país/i)).toBeOnTheScreen();
+    expect(screen.getByText(/EE\. UU\.: La FDA admite hasta 4 g\/día/)).toBeOnTheScreen();
+  });
+
+  it('lists the Peruvian norm first and marks the main source', async () => {
+    await render(<DosePanel drug={drug('paracetamol')} decimalSeparator="." sources={sources} />);
+    expect(
+      screen.getByText(/Fuente principal: Formulario Nacional de Medicamentos Esenciales/),
+    ).toBeOnTheScreen();
+  });
 });

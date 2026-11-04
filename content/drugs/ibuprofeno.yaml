@@ -35,7 +35,11 @@ rules:
       cada 6–8 h; no superar 40 mg/kg/día. Topes de 400 mg/toma y 1200 mg/día: dosis máxima
       de venta libre para 12 años o más (FDA). Libro Peña Camarena: 5–10 mg/kg/dosis cada 6–8 h.
       Administrar con alimentos.
-    sourceIds: [fda-ibuprofen-susp, fda-ibuprofen-otc, pena-camarena]
+    sourceIds: [fnme-2008, fda-ibuprofen-susp, fda-ibuprofen-otc, pena-camarena]
+    countryNotes:
+      - country: PE
+        text: El FNME indica 5 mg/kg (o 10 mg/kg en fiebre alta) cada 4–6 h según necesidad; la app usa cada 8 h, dentro del rango de la FDA (6–8 h).
+        sourceIds: [fnme-2008]
 warnings:
   - Evitar en deshidratación por riesgo de lesión renal.
   - Riesgo de sangrado gastrointestinal.
