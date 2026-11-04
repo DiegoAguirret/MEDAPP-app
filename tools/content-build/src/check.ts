@@ -86,8 +86,12 @@ export function checkContent(
     });
 
     if (mode === 'release') {
-      if (drug.review.status !== 'validado') {
-        errors.push({ drugId: drug.id, code: 'not_validated', detail: 'ficha en borrador' });
+      if (drug.review.status === 'borrador') {
+        errors.push({
+          drugId: drug.id,
+          code: 'not_validated',
+          detail: 'ficha en borrador (sin verificar)',
+        });
       } else if (
         drug.review.nextReviewAt !== undefined &&
         new Date(`${drug.review.nextReviewAt}T00:00:00Z`) < today

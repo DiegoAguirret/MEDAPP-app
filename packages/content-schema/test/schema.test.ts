@@ -106,6 +106,29 @@ describe('parseDrug', () => {
     ).toThrow();
   });
 
+  it('accepts verificado with the verification date', () => {
+    const drug = parseDrug(
+      mutate(
+        (d) =>
+          (d.review = {
+            status: 'verificado',
+            author: 'Diego',
+            reviewers: [],
+            reviewedAt: '2026-11-05',
+          }),
+      ),
+    );
+    expect(drug.review.status).toBe('verificado');
+  });
+
+  it('rejects verificado without a verification date', () => {
+    expect(() =>
+      parseDrug(
+        mutate((d) => (d.review = { status: 'verificado', author: 'Diego', reviewers: [] })),
+      ),
+    ).toThrow();
+  });
+
   it('accepts validado with reviewer and date', () => {
     const drug = parseDrug(
       mutate(

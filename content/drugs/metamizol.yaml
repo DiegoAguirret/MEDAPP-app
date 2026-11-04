@@ -54,9 +54,10 @@ contraindications:
   - Porfiria aguda intermitente.
 diagnoses: [fiebre, dolor]
 review:
-  status: borrador
+  status: verificado
   author: Diego
   reviewers: []
+  reviewedAt: 2026-11-05
 testCases:
   - ruleId: fiebre-dolor-vo
     presentationId: jarabe-250-5

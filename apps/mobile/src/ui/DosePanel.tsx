@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { CLINICAL_DISCLAIMER, REASON_TEXT, WARNING_TEXT } from '../domain/messages';
 import { ageToDays, parseWeight } from '../domain/patientInput';
-import { Banner, Card, Chip, NumberField, SectionTitle } from './components';
+import { Banner, Card, Chip, NumberField, ReviewBadge, SectionTitle } from './components';
 import { colors, font, space } from './theme';
 
 const UNIT_LABEL: Record<string, string> = {
@@ -107,11 +107,7 @@ export function DosePanel({
 
   return (
     <View>
-      {drug.review.status === 'borrador' ? (
-        <Banner tone="danger">
-          NO VALIDADO — contenido en revisión médica. No usar en pacientes.
-        </Banner>
-      ) : null}
+      <ReviewBadge review={drug.review} />
 
       <Card>
         <SectionTitle>Indicación</SectionTitle>

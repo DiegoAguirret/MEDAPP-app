@@ -1,3 +1,4 @@
+import type { Review } from '@medapp/content-schema';
 import type { ReactNode } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View, type TextInputProps } from 'react-native';
 import { colors, font, MIN_TOUCH, radius, space } from './theme';
@@ -28,6 +29,24 @@ export function Banner({
       style={[styles.banner, { backgroundColor: palette.bg, borderColor: palette.fg }]}
     >
       <Text style={[styles.bannerText, { color: palette.fg }]}>{children}</Text>
+    </View>
+  );
+}
+
+const fmtDate = (iso: string) => iso.split('-').reverse().join('/');
+
+/** Estado de revisión de la ficha: discreto si está verificada, alerta solo si no lo está. */
+export function ReviewBadge({ review }: { review: Review }) {
+  if (review.status === 'borrador') {
+    return <Banner tone="danger">Ficha sin verificar: no usar en pacientes.</Banner>;
+  }
+  const text =
+    review.status === 'validado'
+      ? `Revisado por ${review.reviewers.join(', ')}${review.reviewedAt ? ` · ${fmtDate(review.reviewedAt)}` : ''}`
+      : `Fuentes verificadas${review.reviewedAt ? ` · ${fmtDate(review.reviewedAt)}` : ''}`;
+  return (
+    <View style={styles.badge}>
+      <Text style={styles.badgeText}>✓ {text}</Text>
     </View>
   );
 }
@@ -100,6 +119,15 @@ export const styles = StyleSheet.create({
     color: colors.muted,
     textTransform: 'uppercase',
   },
+  badge: {
+    alignSelf: 'flex-start',
+    backgroundColor: colors.okBg,
+    borderRadius: radius.sm,
+    paddingHorizontal: space.md,
+    paddingVertical: space.xs,
+    marginBottom: space.md,
+  },
+  badgeText: { color: colors.ok, fontSize: font.small, fontWeight: '700' },
   banner: { borderWidth: 1, borderRadius: radius.sm, padding: space.md, marginBottom: space.md },
   bannerText: { fontSize: font.body, fontWeight: '600' },
   chip: {

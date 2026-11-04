@@ -104,13 +104,21 @@ export const doseRuleSchema = z
 
 export const reviewSchema = z
   .object({
-    status: z.enum(['borrador', 'validado']),
+    /** borrador: sin verificar · verificado: fuentes verificadas por el autor · validado: revisado por un médico */
+    status: z.enum(['borrador', 'verificado', 'validado']),
     author: z.string().min(1),
     reviewers: z.array(z.string().min(1)),
     reviewedAt: isoDate.optional(),
     nextReviewAt: isoDate.optional(),
   })
   .superRefine((r, ctx) => {
+    if (r.status === 'verificado' && r.reviewedAt === undefined) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'verificado requiere reviewedAt',
+        path: ['reviewedAt'],
+      });
+    }
     if (r.status === 'validado') {
       if (r.reviewers.length < 1) {
         ctx.addIssue({ code: 'custom', message: 'validado requiere revisor', path: ['reviewers'] });

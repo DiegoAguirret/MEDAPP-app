@@ -106,9 +106,10 @@ contraindications:
   - Alergia a penicilinas.
 diagnoses: [otitis media aguda, faringoamigdalitis estreptocócica]
 review:
-  status: borrador
+  status: verificado
   author: Diego
   reviewers: []
+  reviewedAt: 2026-11-05
 testCases:
   - ruleId: infecciones-comunes
     presentationId: susp-250-5

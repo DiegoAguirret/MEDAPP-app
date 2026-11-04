@@ -63,9 +63,10 @@ contraindications:
   - Alergia a cefalosporinas o reacción grave e inmediata a penicilinas.
 diagnoses: [impétigo, celulitis, infección de piel]
 review:
-  status: borrador
+  status: verificado
   author: Diego
   reviewers: []
+  reviewedAt: 2026-11-05
 testCases:
   - ruleId: infecciones-graves
     presentationId: susp-250-5

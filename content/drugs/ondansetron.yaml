@@ -42,9 +42,10 @@ contraindications:
   - Síndrome de QT largo congénito.
 diagnoses: [vómitos, gastroenteritis aguda]
 review:
-  status: borrador
+  status: verificado
   author: Diego
   reviewers: []
+  reviewedAt: 2026-11-05
 testCases:
   - ruleId: vomitos-gastroenteritis
     presentationId: sol-4-5

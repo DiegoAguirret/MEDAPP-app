@@ -39,8 +39,7 @@ export default function Home() {
             del médico tratante.
           </Text>
           <Text style={s.body}>
-            Versión de prueba: las fichas marcadas «NO VALIDADO» están en revisión médica y no deben
-            usarse en pacientes.
+            Cada ficha indica sus fuentes oficiales y la fecha en que se verificaron.
           </Text>
           <Text style={s.body}>La app no guarda datos de pacientes.</Text>
           <Button label="Soy profesional de la salud y acepto" onPress={accept} />
@@ -87,7 +86,7 @@ export default function Home() {
             <Text style={s.itemSub} numberOfLines={1}>
               {item.diagnoses.join(' · ')}
             </Text>
-            {item.review.status === 'borrador' ? <Text style={s.draft}>NO VALIDADO</Text> : null}
+            {item.review.status === 'borrador' ? <Text style={s.draft}>Sin verificar</Text> : null}
           </Pressable>
         )}
       />

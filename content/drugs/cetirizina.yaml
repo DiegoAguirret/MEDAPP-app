@@ -77,9 +77,10 @@ contraindications:
   - Insuficiencia renal terminal (aclaramiento menor de 10 mL/min).
 diagnoses: [rinitis alérgica, urticaria]
 review:
-  status: borrador
+  status: verificado
   author: Diego
   reviewers: []
+  reviewedAt: 2026-11-05
 testCases:
   - ruleId: alergia-6-23-meses
     presentationId: gotas-10

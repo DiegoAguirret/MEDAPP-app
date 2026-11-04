@@ -68,9 +68,10 @@ contraindications:
   - Infección sistémica no tratada.
 diagnoses: [crisis asmática, asma]
 review:
-  status: borrador
+  status: verificado
   author: Diego
   reviewers: []
+  reviewedAt: 2026-11-05
 testCases:
   - ruleId: crisis-asmatica-1-2-anos
     presentationId: sol-15-5

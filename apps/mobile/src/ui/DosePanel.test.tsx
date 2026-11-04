@@ -39,9 +39,19 @@ describe('DosePanel', () => {
     expect(screen.getByTestId('result-mg')).toHaveTextContent('187,5 mg');
   });
 
-  it('shows the NO VALIDADO banner for draft content', async () => {
+  it('shows a verified-sources badge and no alarm banner for verified content', async () => {
     await render(<DosePanel drug={drug('paracetamol')} decimalSeparator="." sources={sources} />);
-    expect(screen.getByText(/NO VALIDADO/)).toBeOnTheScreen();
+    expect(screen.getByText(/Fuentes verificadas · 05\/11\/2026/)).toBeOnTheScreen();
+    expect(screen.queryByText(/NO VALIDADO/)).toBeNull();
+  });
+
+  it('keeps the warning banner for unverified drafts', async () => {
+    const draft = {
+      ...drug('paracetamol'),
+      review: { status: 'borrador' as const, author: 'x', reviewers: [] },
+    };
+    await render(<DosePanel drug={draft} decimalSeparator="." sources={sources} />);
+    expect(screen.getByText(/Ficha sin verificar/)).toBeOnTheScreen();
   });
 
   it('shows no result for an invalid weight', async () => {

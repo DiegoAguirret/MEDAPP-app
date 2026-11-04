@@ -107,6 +107,16 @@ describe('checkContent', () => {
     expect(checkContent([drug()], sources, 'release', today)[0]?.code).toBe('not_validated');
   });
 
+  it('accepts source-verified drugs in release mode', () => {
+    const verified = {
+      status: 'verificado',
+      author: 'Diego',
+      reviewers: [],
+      reviewedAt: '2026-11-05',
+    };
+    expect(checkContent([drug({ review: verified })], sources, 'release', today)).toEqual([]);
+  });
+
   it('accepts validated drugs in release mode', () => {
     expect(checkContent([drug({ review: validated })], sources, 'release', today)).toEqual([]);
   });

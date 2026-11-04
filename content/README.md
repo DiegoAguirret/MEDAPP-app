@@ -14,6 +14,7 @@
 7. Marcas (`brandsPE`): solo si se verificaron en el registro de DIGEMID.
 
 ## Criterio de fuentes
+
 - Se usan **todas** las fuentes disponibles; el mínimo es una fuente oficial por regla.
 - Cada fuente declara su `kind` y su `country`. Orden de prioridad:
   1. **Norma peruana** (MINSA, DIGEMID: FNME, guías de práctica clínica).

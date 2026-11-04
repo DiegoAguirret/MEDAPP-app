@@ -63,9 +63,10 @@ contraindications:
   - Antecedente de ictericia o disfunción hepática por amoxicilina-clavulánico.
 diagnoses: [otitis media aguda, sinusitis, mordedura, celulitis]
 review:
-  status: borrador
+  status: verificado
   author: Diego
   reviewers: []
+  reviewedAt: 2026-11-05
 testCases:
   - ruleId: menores-3-meses
     presentationId: susp-400-57-5

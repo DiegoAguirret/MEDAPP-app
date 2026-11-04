@@ -79,9 +79,10 @@ contraindications:
   - Hipersensibilidad a macrólidos.
 diagnoses: [neumonía adquirida en la comunidad, otitis media aguda, sinusitis]
 review:
-  status: borrador
+  status: verificado
   author: Diego
   reviewers: []
+  reviewedAt: 2026-11-05
 testCases:
   - ruleId: faringitis-5-dias
     presentationId: susp-200-5

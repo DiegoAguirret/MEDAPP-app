@@ -45,9 +45,8 @@ export default function Settings() {
           <SectionTitle>Contenido</SectionTitle>
           <Text style={s.body}>Versión: {content.bundle.contentVersion}</Text>
           <Text style={s.body}>
-            Fichas: {content.bundle.drugs.length} ·{' '}
-            {content.bundle.drugs.filter((d) => d.review.status === 'borrador').length} en revisión
-            médica
+            Fichas: {content.bundle.drugs.length} · verificadas con fuentes:{' '}
+            {content.bundle.drugs.filter((d) => d.review.status !== 'borrador').length}
           </Text>
           <SectionTitle>Fuentes</SectionTitle>
           {content.bundle.sources.map((src) => (
