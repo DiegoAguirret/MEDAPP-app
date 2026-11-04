@@ -17,7 +17,9 @@
       "predictiveBackGestureEnabled": false,
       "package": "pe.medapp.dosis",
       "versionCode": 1,
-      "permissions": ["android.permission.INTERNET"],
+      "permissions": [
+        "android.permission.INTERNET"
+      ],
       "blockedPermissions": [
         "android.permission.RECORD_AUDIO",
         "android.permission.SYSTEM_ALERT_WINDOW",
@@ -35,12 +37,15 @@
           "imageWidth": 76
         }
       ],
-      "expo-sqlite"
+      "expo-sqlite",
+      "./plugins/withRootProjectName"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
     },
-    "platforms": ["android"]
+    "platforms": [
+      "android"
+    ]
   }
 }

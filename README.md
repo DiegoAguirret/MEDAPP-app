@@ -1,17 +1,38 @@
 # MEDAPP — Dosis pediátricas (Perú)
 
-Monorepo del núcleo clínico de la app.
+Calculadora de dosis pediátricas para médicos: funciona sin conexión, cada dosis muestra su fuente y el cálculo paso a paso.
 
-- `packages/content-schema`: esquema validado de las fichas clínicas.
-- `packages/dose-engine`: motor de cálculo puro (dosis, redondeo, líquidos).
-- `packages/content-bundle`: paquete de contenido firmado con Ed25519.
-- `tools/content-build`: valida las fichas, ejecuta los casos clínicos y firma el paquete.
-- `content/`: fuentes y fichas YAML.
+> **Estado:** versión de prueba. Las 10 fichas están **en borrador** (banda «NO VALIDADO») hasta su validación médica.
 
-Diseño: `docs/superpowers/specs/2026-11-04-dosis-pediatricas-design.md`.
+## Estructura
+| Ruta | Qué es |
+|---|---|
+| `packages/content-schema` | Esquema validado (zod) de las fichas clínicas |
+| `packages/dose-engine` | Motor de cálculo puro: dosis, topes, redondeo, líquidos (100 % de cobertura) |
+| `packages/content-bundle` | Paquete de contenido firmado con Ed25519, con protección contra reenvío |
+| `tools/content-build` | Valida fichas, ejecuta los casos clínicos y firma el paquete |
+| `tools/clinical-sim` | Simulación de médico: cálculo manual independiente frente a la app |
+| `content/` | Fuentes (`sources.yaml`) y fichas YAML |
+| `apps/mobile` | App Android (Expo SDK 58, React Native 0.88, Expo Router) |
+| `docs/validacion` | Fuentes verificadas e informe de simulación |
 
+## Comandos
 ```bash
 npm install
-npm test
-npm run content:build
+npm test                    # pruebas del núcleo
+npm run sim:report          # simulación app vs. cálculo manual
+npm run content:build       # paquete de prueba (acepta borradores)
+npm run app:content         # copia el paquete a la app
+cd apps/mobile && npx jest  # pruebas de la app
 ```
+
+## APK de prueba
+```bash
+cd apps/mobile && npx expo prebuild -p android
+cd android && ./gradlew assembleRelease
+# APK: apps/mobile/android/app/build/outputs/apk/release/app-release.apk
+```
+
+## Seguridad clínica
+- La versión para Play Store (`npm run content:build:release`) solo compila si **todas** las fichas están validadas y cada regla tiene **2 fuentes**.
+- La app no guarda datos de pacientes y no muestra dosis si el contenido no pasa la verificación de firma.
