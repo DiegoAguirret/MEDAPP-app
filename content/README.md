@@ -4,6 +4,7 @@
 - `drugs/*.yaml`: una ficha por fármaco. El esquema completo está en `packages/content-schema/src/schema.ts`.
 
 ## Reglas para redactar una ficha
+
 1. **Texto propio.** Prohibido copiar texto o tablas de libros (Harriet Lane, BNFc, Lexicomp, Pediamécum, Peña Camarena). Los datos (dosis, intervalos, máximos) se verifican contra las fuentes y se citan.
 2. Cada regla cita **al menos 2 fuentes** (`sourceIds`) que existan en `sources.yaml`.
 3. **Primera fuente: la ficha técnica oficial** (DIGEMID, FDA o AEMPS). Las demás sirven para verificar cruzando datos.
@@ -13,6 +14,7 @@
 7. Marcas (`brandsPE`): solo si se verificaron en el registro de DIGEMID.
 
 ## Cómo se valida una ficha (médico)
+
 1. El médico recalcula a mano cada `testCase` y compara la dosis con al menos una de las fuentes citadas.
 2. Si todo coincide, se cambia `review` a:
    ```yaml

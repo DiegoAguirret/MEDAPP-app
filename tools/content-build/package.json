@@ -1,0 +1,12 @@
+{
+  "name": "@medapp/content-build",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@medapp/content-bundle": "0.1.0",
+    "@medapp/content-schema": "0.1.0",
+    "@medapp/dose-engine": "0.1.0",
+    "yaml": "2.9.1"
+  }
+}
