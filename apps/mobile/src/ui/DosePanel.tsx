@@ -172,9 +172,16 @@ export function DosePanel({
   }, [rule, presentation, weightKg, ageDays, hasAge, chosenValue]);
 
   const fittingRules =
-    result?.status === 'not_calculable' && result.reason === 'age_out_of_rule' && ageDays !== null
+    result?.status === 'not_calculable' &&
+    (result.reason === 'age_out_of_rule' || result.reason === 'weight_out_of_rule') &&
+    ageDays !== null &&
+    weightKg !== null
       ? drug.rules.filter(
-          (r) => ageDays >= r.ageMinDays && (r.ageMaxDays === undefined || ageDays <= r.ageMaxDays),
+          (r) =>
+            ageDays >= r.ageMinDays &&
+            (r.ageMaxDays === undefined || ageDays <= r.ageMaxDays) &&
+            (r.weightMinKg === undefined || weightKg >= r.weightMinKg) &&
+            (r.weightMaxKg === undefined || weightKg < r.weightMaxKg),
         )
       : [];
 
@@ -446,7 +453,7 @@ export function DosePanel({
         <Banner tone="warning">
           {REASON_TEXT[result.reason]}
           {fittingRules.length > 0
-            ? `\nPara esta edad: ${fittingRules.map((r) => r.indication).join(' · ')}.`
+            ? `\nPara este paciente: ${fittingRules.map((r) => r.indication).join(' · ')}.`
             : ''}
         </Banner>
       ) : null}

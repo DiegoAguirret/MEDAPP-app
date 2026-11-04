@@ -1,0 +1,89 @@
+id: salbutamol
+name: Salbutamol (vía oral)
+category: respiratorio
+synonyms: [albuterol]
+atc: R03CC02
+presentations:
+  - id: jarabe-2-5
+    label: Jarabe 2 mg/5 mL
+    form: jarabe
+    mgPerUnit: 0.4
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-4
+    label: Tableta 4 mg
+    form: tableta
+    mgPerUnit: 4
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: vo-2-5-anos
+    indication: Broncoespasmo (2 a 5 años, solo jarabe)
+    route: VO
+    ageMinDays: 730
+    ageMaxDays: 2189
+    basis: fixed_by_age
+    amountMin: 1
+    amountMax: 2
+    intervalHours: 8
+    maxPerDoseMg: 2
+    maxPerDayMg: 12
+    notes: FNME — 1 a 2 mg cada 6 a 8 h (solo jarabe); máximo 12 mg/día en menores de 6 años. Aquí se calcula cada 8 h.
+    presentationIds: [jarabe-2-5]
+    countryNotes:
+      - country: INT
+        text: >-
+          GINA 2025 — el salbutamol oral (incluidos jarabes) no se recomienda: actúa más lento y
+          tiene más efectos adversos que el inhalado.
+        sourceIds: [gina-2025]
+    sourceIds: [fnme-2008, gina-2025]
+  - id: vo-6-12-anos
+    indication: Broncoespasmo (6 a 12 años)
+    route: VO
+    ageMinDays: 2190
+    ageMaxDays: 4744
+    basis: fixed_by_age
+    amountMin: 2
+    amountMax: 4
+    intervalHours: 8
+    maxPerDoseMg: 4
+    maxPerDayMg: 24
+    notes: FNME — 2 a 4 mg 3 a 4 veces al día; máximo 24 mg/día. Aquí se calcula cada 8 h.
+    countryNotes:
+      - country: INT
+        text: >-
+          GINA 2025 — el salbutamol oral no se recomienda por su inicio más lento y mayor riesgo de
+          efectos adversos; se prefiere el inhalado.
+        sourceIds: [gina-2025]
+    sourceIds: [fnme-2008, gina-2025]
+warnings:
+  - En menores de 2 años la dosis oral no está establecida (FNME).
+  - La vía inhalada es la de elección en crisis asmática (GINA 2025).
+contraindications:
+  - Hipersensibilidad a simpaticomiméticos.
+  - Hipertensión arterial o enfermedad cardíaca.
+  - Hipertiroidismo o tirotoxicosis.
+diagnoses: [asma, broncoespasmo, sibilancias, bronquitis obstructiva, sob]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: vo-2-5-anos
+    presentationId: jarabe-2-5
+    weightKg: 14
+    ageDays: 1095
+    expect: { mgPerDose: 1, amount: 2.5, unit: mL }
+  - ruleId: vo-6-12-anos
+    presentationId: jarabe-2-5
+    weightKg: 25
+    ageDays: 2920
+    expect: { mgPerDose: 2, amount: 5, unit: mL }
+  - ruleId: vo-6-12-anos
+    presentationId: tab-4
+    weightKg: 25
+    ageDays: 2920
+    expect: { mgPerDose: 2, amount: 0.5, unit: tableta }

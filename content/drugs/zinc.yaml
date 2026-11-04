@@ -1,0 +1,64 @@
+id: zinc
+name: Zinc
+category: vitamina
+synonyms: [sulfato de zinc, gluconato de zinc]
+atc: A12CB01
+presentations:
+  - id: tab-disp-20
+    label: Tableta dispersable 20 mg (disolver en agua o leche materna)
+    form: tableta
+    mgPerUnit: 20
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: diarrea-menor-6-meses
+    indication: Diarrea aguda (menores de 6 meses)
+    route: VO
+    ageMinDays: 29
+    ageMaxDays: 179
+    basis: fixed_by_age
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    intervalHours: 24
+    maxPerDoseMg: 10
+    maxPerDayMg: 10
+    durationText: 10 a 14 días
+    notes: OMS — media tableta (10 mg) al día por 10 a 14 días.
+    sourceIds: [who-pocket-2013]
+  - id: diarrea-6-meses-o-mas
+    indication: Diarrea aguda (6 meses o más)
+    route: VO
+    ageMinDays: 180
+    basis: fixed_by_age
+    amountMin: 20
+    amountMax: 20
+    usual: 20
+    intervalHours: 24
+    maxPerDoseMg: 20
+    maxPerDayMg: 20
+    durationText: 10 a 14 días
+    notes: OMS — una tableta (20 mg) al día por 10 a 14 días.
+    sourceIds: [who-pocket-2013]
+warnings:
+  - Dar en cuanto cesen los vómitos (OMS).
+  - Las cantidades son de zinc elemental; revisa la etiqueta si el preparado es jarabe.
+contraindications: []
+diagnoses: [diarrea, diarrea aguda, eda, deshidratación]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: diarrea-menor-6-meses
+    presentationId: tab-disp-20
+    weightKg: 5
+    ageDays: 90
+    expect: { mgPerDose: 10, amount: 0.5, unit: tableta }
+  - ruleId: diarrea-6-meses-o-mas
+    presentationId: tab-disp-20
+    weightKg: 10
+    ageDays: 400
+    expect: { mgPerDose: 20, amount: 1, unit: tableta }

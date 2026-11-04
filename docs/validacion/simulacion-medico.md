@@ -5,16 +5,42 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **954** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **549**. Fuera del rango de edad de la regla: 405 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 549/549 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 549/549.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.44 %, máxima 4.90 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **1800** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **1031**. Fuera del rango de edad de la regla: 769 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 1031/1031 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 1031/1031.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.43 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
 | Fármaco | Regla | Presentación | Paciente | mg manual | mg app | Cantidad exacta | Cantidad app | Resultado |
 |---|---|---|---|---|---|---|---|---|
+| albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 2 años (12.2 kg) | 400 | 400 | 20 | 20 mL | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 3 años (14.3 kg) | 400 | 400 | 20 | 20 mL | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 4 años (16.3 kg) | 400 | 400 | 20 | 20 mL | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 5 años (18.3 kg) | 400 | 400 | 20 | 20 mL | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 6 años (20.5 kg) | 400 | 400 | 20 | 20 mL | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 8 años (25.6 kg) | 400 | 400 | 20 | 20 mL | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 10 años (32 kg) | 400 | 400 | 20 | 20 mL | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 12 años (40 kg) | 400 | 400 | 20 | 20 mL | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 14 años (50 kg) | 400 | 400 | 20 | 20 mL | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 16 años (58 kg) | 400 | 400 | 20 | 20 mL | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 17 años, obeso (95 kg) | 400 | 400 | 20 | 20 mL | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Tableta 200 mg | 2 años (12.2 kg) | 400 | 400 | 2 | 2 tableta | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Tableta 200 mg | 3 años (14.3 kg) | 400 | 400 | 2 | 2 tableta | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Tableta 200 mg | 4 años (16.3 kg) | 400 | 400 | 2 | 2 tableta | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Tableta 200 mg | 5 años (18.3 kg) | 400 | 400 | 2 | 2 tableta | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Tableta 200 mg | 6 años (20.5 kg) | 400 | 400 | 2 | 2 tableta | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Tableta 200 mg | 8 años (25.6 kg) | 400 | 400 | 2 | 2 tableta | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Tableta 200 mg | 10 años (32 kg) | 400 | 400 | 2 | 2 tableta | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Tableta 200 mg | 12 años (40 kg) | 400 | 400 | 2 | 2 tableta | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Tableta 200 mg | 14 años (50 kg) | 400 | 400 | 2 | 2 tableta | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Tableta 200 mg | 16 años (58 kg) | 400 | 400 | 2 | 2 tableta | ✅  |
+| albendazol | nematodos-2-anos-o-mas | Tableta 200 mg | 17 años, obeso (95 kg) | 400 | 400 | 2 | 2 tableta | ✅  |
+| albendazol | nematodos-1-2-anos | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 1 año (9.6 kg) | 200 | 200 | 10 | 10 mL | ✅  |
+| albendazol | nematodos-1-2-anos | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 18 meses (10.9 kg) | 200 | 200 | 10 | 10 mL | ✅  |
+| albendazol | nematodos-1-2-anos | Tableta 200 mg | 1 año (9.6 kg) | 200 | 200 | 1 | 1 tableta | ✅  |
+| albendazol | nematodos-1-2-anos | Tableta 200 mg | 18 meses (10.9 kg) | 200 | 200 | 1 | 1 tableta | ✅  |
 | amoxicilina-clavulanico | menores-3-meses | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 1 mes (4.2 kg) | 63 | 63 | 0.787 | 0.8 mL | ✅  |
 | amoxicilina-clavulanico | menores-3-meses | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 2 meses (5.1 kg) | 76.5 | 76.5 | 0.956 | 1 mL | ✅  |
 | amoxicilina-clavulanico | estandar-cada-12h | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 4 meses (6.4 kg) | 144 | 144 | 1.8 | 1.8 mL | ✅  |
@@ -410,6 +436,248 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | cetirizina | alergia-6-anos-o-mas | Tableta 10 mg | 14 años (50 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
 | cetirizina | alergia-6-anos-o-mas | Tableta 10 mg | 16 años (58 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
 | cetirizina | alergia-6-anos-o-mas | Tableta 10 mg | 17 años, obeso (95 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
+| clorfenamina | alergia-2-5-anos | Gotas 1 mg/mL | 2 años (12.2 kg) | 1 | 1 | 1 | 1 mL | ✅  |
+| clorfenamina | alergia-2-5-anos | Gotas 1 mg/mL | 3 años (14.3 kg) | 1 | 1 | 1 | 1 mL | ✅  |
+| clorfenamina | alergia-2-5-anos | Gotas 1 mg/mL | 4 años (16.3 kg) | 1 | 1 | 1 | 1 mL | ✅  |
+| clorfenamina | alergia-2-5-anos | Gotas 1 mg/mL | 5 años (18.3 kg) | 1 | 1 | 1 | 1 mL | ✅  |
+| clorfenamina | alergia-2-5-anos | Jarabe 2 mg/5 mL | 2 años (12.2 kg) | 1 | 1 | 2.5 | 2.5 mL | ✅  |
+| clorfenamina | alergia-2-5-anos | Jarabe 2 mg/5 mL | 3 años (14.3 kg) | 1 | 1 | 2.5 | 2.5 mL | ✅  |
+| clorfenamina | alergia-2-5-anos | Jarabe 2 mg/5 mL | 4 años (16.3 kg) | 1 | 1 | 2.5 | 2.5 mL | ✅  |
+| clorfenamina | alergia-2-5-anos | Jarabe 2 mg/5 mL | 5 años (18.3 kg) | 1 | 1 | 2.5 | 2.5 mL | ✅  |
+| clorfenamina | alergia-6-12-anos | Gotas 1 mg/mL | 6 años (20.5 kg) | 2 | 2 | 2 | 2 mL | ✅  |
+| clorfenamina | alergia-6-12-anos | Gotas 1 mg/mL | 8 años (25.6 kg) | 2 | 2 | 2 | 2 mL | ✅  |
+| clorfenamina | alergia-6-12-anos | Gotas 1 mg/mL | 10 años (32 kg) | 2 | 2 | 2 | 2 mL | ✅  |
+| clorfenamina | alergia-6-12-anos | Gotas 1 mg/mL | 12 años (40 kg) | 2 | 2 | 2 | 2 mL | ✅  |
+| clorfenamina | alergia-6-12-anos | Jarabe 2 mg/5 mL | 6 años (20.5 kg) | 2 | 2 | 5 | 5 mL | ✅  |
+| clorfenamina | alergia-6-12-anos | Jarabe 2 mg/5 mL | 8 años (25.6 kg) | 2 | 2 | 5 | 5 mL | ✅  |
+| clorfenamina | alergia-6-12-anos | Jarabe 2 mg/5 mL | 10 años (32 kg) | 2 | 2 | 5 | 5 mL | ✅  |
+| clorfenamina | alergia-6-12-anos | Jarabe 2 mg/5 mL | 12 años (40 kg) | 2 | 2 | 5 | 5 mL | ✅  |
+| clorfenamina | alergia-6-12-anos | Tableta 4 mg | 6 años (20.5 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
+| clorfenamina | alergia-6-12-anos | Tableta 4 mg | 8 años (25.6 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
+| clorfenamina | alergia-6-12-anos | Tableta 4 mg | 10 años (32 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
+| clorfenamina | alergia-6-12-anos | Tableta 4 mg | 12 años (40 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
+| clorfenamina | alergia-13-anos-o-mas | Gotas 1 mg/mL | 14 años (50 kg) | 4 | 4 | 4 | 4 mL | ✅  |
+| clorfenamina | alergia-13-anos-o-mas | Gotas 1 mg/mL | 16 años (58 kg) | 4 | 4 | 4 | 4 mL | ✅  |
+| clorfenamina | alergia-13-anos-o-mas | Gotas 1 mg/mL | 17 años, obeso (95 kg) | 4 | 4 | 4 | 4 mL | ✅  |
+| clorfenamina | alergia-13-anos-o-mas | Jarabe 2 mg/5 mL | 14 años (50 kg) | 4 | 4 | 10 | 10 mL | ✅  |
+| clorfenamina | alergia-13-anos-o-mas | Jarabe 2 mg/5 mL | 16 años (58 kg) | 4 | 4 | 10 | 10 mL | ✅  |
+| clorfenamina | alergia-13-anos-o-mas | Jarabe 2 mg/5 mL | 17 años, obeso (95 kg) | 4 | 4 | 10 | 10 mL | ✅  |
+| clorfenamina | alergia-13-anos-o-mas | Tableta 4 mg | 14 años (50 kg) | 4 | 4 | 1 | 1 tableta | ✅  |
+| clorfenamina | alergia-13-anos-o-mas | Tableta 4 mg | 16 años (58 kg) | 4 | 4 | 1 | 1 tableta | ✅  |
+| clorfenamina | alergia-13-anos-o-mas | Tableta 4 mg | 17 años, obeso (95 kg) | 4 | 4 | 1 | 1 tableta | ✅  |
+| cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 2 meses (5.1 kg) | 20.4 | 20.4 | 2.55 | 2.6 mL | ✅  |
+| cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 4 meses (6.4 kg) | 25.6 | 25.6 | 3.2 | 3.2 mL | ✅  |
+| cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 6 meses (7.6 kg) | 30.4 | 30.4 | 3.8 | 3.8 mL | ✅  |
+| cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 9 meses (8.6 kg) | 34.4 | 34.4 | 4.3 | 4.3 mL | ✅  |
+| cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 1 año (9.6 kg) | 38.4 | 38.4 | 4.8 | 4.8 mL | ✅  |
+| cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 18 meses (10.9 kg) | 43.6 | 43.6 | 5.45 | 5.5 mL | ✅  |
+| cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 2 años (12.2 kg) | 48.8 | 48.8 | 6.1 | 6.1 mL | ✅  |
+| cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 3 años (14.3 kg) | 57.2 | 57.2 | 7.15 | 7.2 mL | ✅  |
+| cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 4 años (16.3 kg) | 65.2 | 65.2 | 8.15 | 8.2 mL | ✅  |
+| cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 5 años (18.3 kg) | 73.2 | 73.2 | 9.15 | 9.2 mL | ✅  |
+| cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 6 años (20.5 kg) | 82 | 82 | 10.25 | 10.3 mL | ✅  |
+| cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 8 años (25.6 kg) | 102.4 | 102.4 | 12.8 | 12.8 mL | ✅  |
+| cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 10 años (32 kg) | 128 | 128 | 16 | 16 mL | ✅  |
+| cotrimoxazol | usual | Tableta 400/80 mg (dosis en trimetoprima) | 2 meses (5.1 kg) | 20.4 | 20.4 | 0.255 | 0.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 400/80 mg (dosis en trimetoprima) | 4 meses (6.4 kg) | 25.6 | 25.6 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 400/80 mg (dosis en trimetoprima) | 6 meses (7.6 kg) | 30.4 | 30.4 | 0.38 | 0.38 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 400/80 mg (dosis en trimetoprima) | 9 meses (8.6 kg) | 34.4 | 34.4 | 0.43 | 0.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 400/80 mg (dosis en trimetoprima) | 1 año (9.6 kg) | 38.4 | 38.4 | 0.48 | 0.5 tableta | ✅  |
+| cotrimoxazol | usual | Tableta 400/80 mg (dosis en trimetoprima) | 18 meses (10.9 kg) | 43.6 | 43.6 | 0.545 | 0.55 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 400/80 mg (dosis en trimetoprima) | 2 años (12.2 kg) | 48.8 | 48.8 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 400/80 mg (dosis en trimetoprima) | 3 años (14.3 kg) | 57.2 | 57.2 | 0.715 | 0.71 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 400/80 mg (dosis en trimetoprima) | 4 años (16.3 kg) | 65.2 | 65.2 | 0.815 | 0.81 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 400/80 mg (dosis en trimetoprima) | 5 años (18.3 kg) | 73.2 | 73.2 | 0.915 | 0.92 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 400/80 mg (dosis en trimetoprima) | 6 años (20.5 kg) | 82 | 82 | 1.025 | 1 tableta | ✅  |
+| cotrimoxazol | usual | Tableta 400/80 mg (dosis en trimetoprima) | 8 años (25.6 kg) | 102.4 | 102.4 | 1.28 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 400/80 mg (dosis en trimetoprima) | 10 años (32 kg) | 128 | 128 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 800/160 mg (dosis en trimetoprima) | 2 meses (5.1 kg) | 20.4 | 20.4 | 0.128 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 800/160 mg (dosis en trimetoprima) | 4 meses (6.4 kg) | 25.6 | 25.6 | 0.16 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 800/160 mg (dosis en trimetoprima) | 6 meses (7.6 kg) | 30.4 | 30.4 | 0.19 | 0.19 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 800/160 mg (dosis en trimetoprima) | 9 meses (8.6 kg) | 34.4 | 34.4 | 0.215 | 0.21 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 800/160 mg (dosis en trimetoprima) | 1 año (9.6 kg) | 38.4 | 38.4 | 0.24 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 800/160 mg (dosis en trimetoprima) | 18 meses (10.9 kg) | 43.6 | 43.6 | 0.273 | 0.27 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 800/160 mg (dosis en trimetoprima) | 2 años (12.2 kg) | 48.8 | 48.8 | 0.305 | 0.3 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 800/160 mg (dosis en trimetoprima) | 3 años (14.3 kg) | 57.2 | 57.2 | 0.358 | 0.36 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 800/160 mg (dosis en trimetoprima) | 4 años (16.3 kg) | 65.2 | 65.2 | 0.408 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 800/160 mg (dosis en trimetoprima) | 5 años (18.3 kg) | 73.2 | 73.2 | 0.458 | 0.46 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 800/160 mg (dosis en trimetoprima) | 6 años (20.5 kg) | 82 | 82 | 0.512 | 0.5 tableta | ✅  |
+| cotrimoxazol | usual | Tableta 800/160 mg (dosis en trimetoprima) | 8 años (25.6 kg) | 102.4 | 102.4 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cotrimoxazol | usual | Tableta 800/160 mg (dosis en trimetoprima) | 10 años (32 kg) | 128 | 128 | 0.8 | 0.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Suspensión 250 mg/5 mL | 1 mes (4.2 kg) | 13.13 | 13.13 | 0.263 | 0.26 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Suspensión 250 mg/5 mL | 2 meses (5.1 kg) | 15.94 | 15.94 | 0.319 | 0.32 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Suspensión 250 mg/5 mL | 4 meses (6.4 kg) | 20 | 20 | 0.4 | 0.4 mL | ✅  |
+| dicloxacilina | leve-moderada | Suspensión 250 mg/5 mL | 6 meses (7.6 kg) | 23.75 | 23.75 | 0.475 | 0.47 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Suspensión 250 mg/5 mL | 9 meses (8.6 kg) | 26.88 | 26.88 | 0.537 | 0.54 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Suspensión 250 mg/5 mL | 1 año (9.6 kg) | 30 | 30 | 0.6 | 0.6 mL | ✅  |
+| dicloxacilina | leve-moderada | Suspensión 250 mg/5 mL | 18 meses (10.9 kg) | 34.06 | 34.06 | 0.681 | 0.7 mL | ✅  |
+| dicloxacilina | leve-moderada | Suspensión 250 mg/5 mL | 2 años (12.2 kg) | 38.13 | 38.13 | 0.762 | 0.8 mL | ✅  |
+| dicloxacilina | leve-moderada | Suspensión 250 mg/5 mL | 3 años (14.3 kg) | 44.69 | 44.69 | 0.894 | 0.9 mL | ✅  |
+| dicloxacilina | leve-moderada | Suspensión 250 mg/5 mL | 4 años (16.3 kg) | 50.94 | 50.94 | 1.019 | 1 mL | ✅  |
+| dicloxacilina | leve-moderada | Suspensión 250 mg/5 mL | 5 años (18.3 kg) | 57.19 | 57.19 | 1.144 | 1.1 mL | ✅  |
+| dicloxacilina | leve-moderada | Suspensión 250 mg/5 mL | 6 años (20.5 kg) | 64.06 | 64.06 | 1.281 | 1.3 mL | ✅  |
+| dicloxacilina | leve-moderada | Suspensión 250 mg/5 mL | 8 años (25.6 kg) | 80 | 80 | 1.6 | 1.6 mL | ✅  |
+| dicloxacilina | leve-moderada | Suspensión 250 mg/5 mL | 10 años (32 kg) | 100 | 100 | 2 | 2 mL | ✅  |
+| dicloxacilina | leve-moderada | Cápsula 250 mg | 1 mes (4.2 kg) | 13.13 | 13.13 | 0.052 | 0.05 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 250 mg | 2 meses (5.1 kg) | 15.94 | 15.94 | 0.064 | 0.06 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 250 mg | 4 meses (6.4 kg) | 20 | 20 | 0.08 | 0.08 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 250 mg | 6 meses (7.6 kg) | 23.75 | 23.75 | 0.095 | 0.1 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 250 mg | 9 meses (8.6 kg) | 26.88 | 26.88 | 0.107 | 0.11 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 250 mg | 1 año (9.6 kg) | 30 | 30 | 0.12 | 0.12 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 250 mg | 18 meses (10.9 kg) | 34.06 | 34.06 | 0.136 | 0.14 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 250 mg | 2 años (12.2 kg) | 38.13 | 38.13 | 0.152 | 0.15 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 250 mg | 3 años (14.3 kg) | 44.69 | 44.69 | 0.179 | 0.18 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 250 mg | 4 años (16.3 kg) | 50.94 | 50.94 | 0.204 | 0.2 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 250 mg | 5 años (18.3 kg) | 57.19 | 57.19 | 0.229 | 0.23 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 250 mg | 6 años (20.5 kg) | 64.06 | 64.06 | 0.256 | 0.26 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 250 mg | 8 años (25.6 kg) | 80 | 80 | 0.32 | 0.32 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 250 mg | 10 años (32 kg) | 100 | 100 | 0.4 | 0.4 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 500 mg | 1 mes (4.2 kg) | 13.13 | 13.13 | 0.026 | 0.03 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 500 mg | 2 meses (5.1 kg) | 15.94 | 15.94 | 0.032 | 0.03 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 500 mg | 4 meses (6.4 kg) | 20 | 20 | 0.04 | 0.04 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 500 mg | 6 meses (7.6 kg) | 23.75 | 23.75 | 0.048 | 0.05 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 500 mg | 9 meses (8.6 kg) | 26.88 | 26.88 | 0.054 | 0.05 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 500 mg | 1 año (9.6 kg) | 30 | 30 | 0.06 | 0.06 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 500 mg | 18 meses (10.9 kg) | 34.06 | 34.06 | 0.068 | 0.07 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 500 mg | 2 años (12.2 kg) | 38.13 | 38.13 | 0.076 | 0.08 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 500 mg | 3 años (14.3 kg) | 44.69 | 44.69 | 0.089 | 0.09 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 500 mg | 4 años (16.3 kg) | 50.94 | 50.94 | 0.102 | 0.1 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 500 mg | 5 años (18.3 kg) | 57.19 | 57.19 | 0.114 | 0.11 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 500 mg | 6 años (20.5 kg) | 64.06 | 64.06 | 0.128 | 0.13 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 500 mg | 8 años (25.6 kg) | 80 | 80 | 0.16 | 0.16 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | leve-moderada | Cápsula 500 mg | 10 años (32 kg) | 100 | 100 | 0.2 | 0.2 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Suspensión 250 mg/5 mL | 1 mes (4.2 kg) | 52.5 | 52.5 | 1.05 | 1.1 mL | ✅  |
+| dicloxacilina | severa | Suspensión 250 mg/5 mL | 2 meses (5.1 kg) | 63.75 | 63.75 | 1.275 | 1.3 mL | ✅  |
+| dicloxacilina | severa | Suspensión 250 mg/5 mL | 4 meses (6.4 kg) | 80 | 80 | 1.6 | 1.6 mL | ✅  |
+| dicloxacilina | severa | Suspensión 250 mg/5 mL | 6 meses (7.6 kg) | 95 | 95 | 1.9 | 1.9 mL | ✅  |
+| dicloxacilina | severa | Suspensión 250 mg/5 mL | 9 meses (8.6 kg) | 107.5 | 107.5 | 2.15 | 2.2 mL | ✅  |
+| dicloxacilina | severa | Suspensión 250 mg/5 mL | 1 año (9.6 kg) | 120 | 120 | 2.4 | 2.4 mL | ✅  |
+| dicloxacilina | severa | Suspensión 250 mg/5 mL | 18 meses (10.9 kg) | 136.25 | 136.25 | 2.725 | 2.7 mL | ✅  |
+| dicloxacilina | severa | Suspensión 250 mg/5 mL | 2 años (12.2 kg) | 152.5 | 152.5 | 3.05 | 3.1 mL | ✅  |
+| dicloxacilina | severa | Suspensión 250 mg/5 mL | 3 años (14.3 kg) | 178.75 | 178.75 | 3.575 | 3.6 mL | ✅  |
+| dicloxacilina | severa | Suspensión 250 mg/5 mL | 4 años (16.3 kg) | 203.75 | 203.75 | 4.075 | 4.1 mL | ✅  |
+| dicloxacilina | severa | Suspensión 250 mg/5 mL | 5 años (18.3 kg) | 228.75 | 228.75 | 4.575 | 4.6 mL | ✅  |
+| dicloxacilina | severa | Suspensión 250 mg/5 mL | 6 años (20.5 kg) | 256.25 | 256.25 | 5.125 | 5.1 mL | ✅  |
+| dicloxacilina | severa | Suspensión 250 mg/5 mL | 8 años (25.6 kg) | 320 | 320 | 6.4 | 6.4 mL | ✅  |
+| dicloxacilina | severa | Suspensión 250 mg/5 mL | 10 años (32 kg) | 400 | 400 | 8 | 8 mL | ✅  |
+| dicloxacilina | severa | Cápsula 250 mg | 1 mes (4.2 kg) | 52.5 | 52.5 | 0.21 | 0.21 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 250 mg | 2 meses (5.1 kg) | 63.75 | 63.75 | 0.255 | 0.26 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 250 mg | 4 meses (6.4 kg) | 80 | 80 | 0.32 | 0.32 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 250 mg | 6 meses (7.6 kg) | 95 | 95 | 0.38 | 0.38 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 250 mg | 9 meses (8.6 kg) | 107.5 | 107.5 | 0.43 | 0.43 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 250 mg | 1 año (9.6 kg) | 120 | 120 | 0.48 | 0.48 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 250 mg | 18 meses (10.9 kg) | 136.25 | 136.25 | 0.545 | 0.55 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 250 mg | 2 años (12.2 kg) | 152.5 | 152.5 | 0.61 | 0.61 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 250 mg | 3 años (14.3 kg) | 178.75 | 178.75 | 0.715 | 0.71 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 250 mg | 4 años (16.3 kg) | 203.75 | 203.75 | 0.815 | 0.81 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 250 mg | 5 años (18.3 kg) | 228.75 | 228.75 | 0.915 | 0.92 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 250 mg | 6 años (20.5 kg) | 256.25 | 256.25 | 1.025 | 1 capsula | ✅  |
+| dicloxacilina | severa | Cápsula 250 mg | 8 años (25.6 kg) | 320 | 320 | 1.28 | 1.28 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 250 mg | 10 años (32 kg) | 400 | 400 | 1.6 | 1.6 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 500 mg | 1 mes (4.2 kg) | 52.5 | 52.5 | 0.105 | 0.1 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 500 mg | 2 meses (5.1 kg) | 63.75 | 63.75 | 0.127 | 0.13 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 500 mg | 4 meses (6.4 kg) | 80 | 80 | 0.16 | 0.16 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 500 mg | 6 meses (7.6 kg) | 95 | 95 | 0.19 | 0.19 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 500 mg | 9 meses (8.6 kg) | 107.5 | 107.5 | 0.215 | 0.21 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 500 mg | 1 año (9.6 kg) | 120 | 120 | 0.24 | 0.24 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 500 mg | 18 meses (10.9 kg) | 136.25 | 136.25 | 0.273 | 0.27 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 500 mg | 2 años (12.2 kg) | 152.5 | 152.5 | 0.305 | 0.3 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 500 mg | 3 años (14.3 kg) | 178.75 | 178.75 | 0.357 | 0.36 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 500 mg | 4 años (16.3 kg) | 203.75 | 203.75 | 0.407 | 0.41 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 500 mg | 5 años (18.3 kg) | 228.75 | 228.75 | 0.458 | 0.46 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 500 mg | 6 años (20.5 kg) | 256.25 | 256.25 | 0.512 | 0.51 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 500 mg | 8 años (25.6 kg) | 320 | 320 | 0.64 | 0.64 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dicloxacilina | severa | Cápsula 500 mg | 10 años (32 kg) | 400 | 400 | 0.8 | 0.8 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | usual | Suspensión 250 mg/5 mL | 1 mes (4.2 kg) | 31.5 | 31.5 | 0.63 | 0.6 mL | ✅  |
+| eritromicina | usual | Suspensión 250 mg/5 mL | 2 meses (5.1 kg) | 38.25 | 38.25 | 0.765 | 0.8 mL | ✅  |
+| eritromicina | usual | Suspensión 250 mg/5 mL | 4 meses (6.4 kg) | 48 | 48 | 0.96 | 1 mL | ✅  |
+| eritromicina | usual | Suspensión 250 mg/5 mL | 6 meses (7.6 kg) | 57 | 57 | 1.14 | 1.1 mL | ✅  |
+| eritromicina | usual | Suspensión 250 mg/5 mL | 9 meses (8.6 kg) | 64.5 | 64.5 | 1.29 | 1.3 mL | ✅  |
+| eritromicina | usual | Suspensión 250 mg/5 mL | 1 año (9.6 kg) | 72 | 72 | 1.44 | 1.4 mL | ✅  |
+| eritromicina | usual | Suspensión 250 mg/5 mL | 18 meses (10.9 kg) | 81.75 | 81.75 | 1.635 | 1.6 mL | ✅  |
+| eritromicina | usual | Suspensión 250 mg/5 mL | 2 años (12.2 kg) | 91.5 | 91.5 | 1.83 | 1.8 mL | ✅  |
+| eritromicina | usual | Suspensión 250 mg/5 mL | 3 años (14.3 kg) | 107.25 | 107.25 | 2.145 | 2.1 mL | ✅  |
+| eritromicina | usual | Suspensión 250 mg/5 mL | 4 años (16.3 kg) | 122.25 | 122.25 | 2.445 | 2.4 mL | ✅  |
+| eritromicina | usual | Suspensión 250 mg/5 mL | 5 años (18.3 kg) | 137.25 | 137.25 | 2.745 | 2.7 mL | ✅  |
+| eritromicina | usual | Suspensión 250 mg/5 mL | 6 años (20.5 kg) | 153.75 | 153.75 | 3.075 | 3.1 mL | ✅  |
+| eritromicina | usual | Suspensión 250 mg/5 mL | 8 años (25.6 kg) | 192 | 192 | 3.84 | 3.8 mL | ✅  |
+| eritromicina | usual | Suspensión 250 mg/5 mL | 10 años (32 kg) | 240 | 240 | 4.8 | 4.8 mL | ✅  |
+| eritromicina | usual | Suspensión 250 mg/5 mL | 12 años (40 kg) | 300 | 300 | 6 | 6 mL | ✅  |
+| eritromicina | usual | Tableta ranurada 500 mg | 1 mes (4.2 kg) | 31.5 | 31.5 | 0.063 | 0.06 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | usual | Tableta ranurada 500 mg | 2 meses (5.1 kg) | 38.25 | 38.25 | 0.076 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | usual | Tableta ranurada 500 mg | 4 meses (6.4 kg) | 48 | 48 | 0.096 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | usual | Tableta ranurada 500 mg | 6 meses (7.6 kg) | 57 | 57 | 0.114 | 0.11 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | usual | Tableta ranurada 500 mg | 9 meses (8.6 kg) | 64.5 | 64.5 | 0.129 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | usual | Tableta ranurada 500 mg | 1 año (9.6 kg) | 72 | 72 | 0.144 | 0.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | usual | Tableta ranurada 500 mg | 18 meses (10.9 kg) | 81.75 | 81.75 | 0.164 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | usual | Tableta ranurada 500 mg | 2 años (12.2 kg) | 91.5 | 91.5 | 0.183 | 0.18 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | usual | Tableta ranurada 500 mg | 3 años (14.3 kg) | 107.25 | 107.25 | 0.214 | 0.21 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | usual | Tableta ranurada 500 mg | 4 años (16.3 kg) | 122.25 | 122.25 | 0.244 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | usual | Tableta ranurada 500 mg | 5 años (18.3 kg) | 137.25 | 137.25 | 0.275 | 0.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | usual | Tableta ranurada 500 mg | 6 años (20.5 kg) | 153.75 | 153.75 | 0.307 | 0.31 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | usual | Tableta ranurada 500 mg | 8 años (25.6 kg) | 192 | 192 | 0.384 | 0.38 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | usual | Tableta ranurada 500 mg | 10 años (32 kg) | 240 | 240 | 0.48 | 0.5 tableta | ✅  |
+| eritromicina | usual | Tableta ranurada 500 mg | 12 años (40 kg) | 300 | 300 | 0.6 | 0.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | faringitis-estreptococica | Suspensión 250 mg/5 mL | 1 mes (4.2 kg) | 42 | 42 | 0.84 | 0.8 mL | ✅  |
+| eritromicina | faringitis-estreptococica | Suspensión 250 mg/5 mL | 2 meses (5.1 kg) | 51 | 51 | 1.02 | 1 mL | ✅  |
+| eritromicina | faringitis-estreptococica | Suspensión 250 mg/5 mL | 4 meses (6.4 kg) | 64 | 64 | 1.28 | 1.3 mL | ✅  |
+| eritromicina | faringitis-estreptococica | Suspensión 250 mg/5 mL | 6 meses (7.6 kg) | 76 | 76 | 1.52 | 1.5 mL | ✅  |
+| eritromicina | faringitis-estreptococica | Suspensión 250 mg/5 mL | 9 meses (8.6 kg) | 86 | 86 | 1.72 | 1.7 mL | ✅  |
+| eritromicina | faringitis-estreptococica | Suspensión 250 mg/5 mL | 1 año (9.6 kg) | 96 | 96 | 1.92 | 1.9 mL | ✅  |
+| eritromicina | faringitis-estreptococica | Suspensión 250 mg/5 mL | 18 meses (10.9 kg) | 109 | 109 | 2.18 | 2.2 mL | ✅  |
+| eritromicina | faringitis-estreptococica | Suspensión 250 mg/5 mL | 2 años (12.2 kg) | 122 | 122 | 2.44 | 2.4 mL | ✅  |
+| eritromicina | faringitis-estreptococica | Suspensión 250 mg/5 mL | 3 años (14.3 kg) | 143 | 143 | 2.86 | 2.9 mL | ✅  |
+| eritromicina | faringitis-estreptococica | Suspensión 250 mg/5 mL | 4 años (16.3 kg) | 163 | 163 | 3.26 | 3.3 mL | ✅  |
+| eritromicina | faringitis-estreptococica | Suspensión 250 mg/5 mL | 5 años (18.3 kg) | 183 | 183 | 3.66 | 3.7 mL | ✅  |
+| eritromicina | faringitis-estreptococica | Suspensión 250 mg/5 mL | 6 años (20.5 kg) | 205 | 205 | 4.1 | 4.1 mL | ✅  |
+| eritromicina | faringitis-estreptococica | Suspensión 250 mg/5 mL | 8 años (25.6 kg) | 256 | 256 | 5.12 | 5.1 mL | ✅  |
+| eritromicina | faringitis-estreptococica | Suspensión 250 mg/5 mL | 10 años (32 kg) | 320 | 320 | 6.4 | 6.4 mL | ✅  |
+| eritromicina | faringitis-estreptococica | Suspensión 250 mg/5 mL | 12 años (40 kg) | 400 | 400 | 8 | 8 mL | ✅  |
+| eritromicina | faringitis-estreptococica | Tableta ranurada 500 mg | 1 mes (4.2 kg) | 42 | 42 | 0.084 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | faringitis-estreptococica | Tableta ranurada 500 mg | 2 meses (5.1 kg) | 51 | 51 | 0.102 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | faringitis-estreptococica | Tableta ranurada 500 mg | 4 meses (6.4 kg) | 64 | 64 | 0.128 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | faringitis-estreptococica | Tableta ranurada 500 mg | 6 meses (7.6 kg) | 76 | 76 | 0.152 | 0.15 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | faringitis-estreptococica | Tableta ranurada 500 mg | 9 meses (8.6 kg) | 86 | 86 | 0.172 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | faringitis-estreptococica | Tableta ranurada 500 mg | 1 año (9.6 kg) | 96 | 96 | 0.192 | 0.19 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | faringitis-estreptococica | Tableta ranurada 500 mg | 18 meses (10.9 kg) | 109 | 109 | 0.218 | 0.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | faringitis-estreptococica | Tableta ranurada 500 mg | 2 años (12.2 kg) | 122 | 122 | 0.244 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | faringitis-estreptococica | Tableta ranurada 500 mg | 3 años (14.3 kg) | 143 | 143 | 0.286 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | faringitis-estreptococica | Tableta ranurada 500 mg | 4 años (16.3 kg) | 163 | 163 | 0.326 | 0.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | faringitis-estreptococica | Tableta ranurada 500 mg | 5 años (18.3 kg) | 183 | 183 | 0.366 | 0.37 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | faringitis-estreptococica | Tableta ranurada 500 mg | 6 años (20.5 kg) | 205 | 205 | 0.41 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | faringitis-estreptococica | Tableta ranurada 500 mg | 8 años (25.6 kg) | 256 | 256 | 0.512 | 0.5 tableta | ✅  |
+| eritromicina | faringitis-estreptococica | Tableta ranurada 500 mg | 10 años (32 kg) | 320 | 320 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | faringitis-estreptococica | Tableta ranurada 500 mg | 12 años (40 kg) | 400 | 400 | 0.8 | 0.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | tos-ferina | Suspensión 250 mg/5 mL | 1 mes (4.2 kg) | 42 | 42 | 0.84 | 0.8 mL | ✅  |
+| eritromicina | tos-ferina | Suspensión 250 mg/5 mL | 2 meses (5.1 kg) | 51 | 51 | 1.02 | 1 mL | ✅  |
+| eritromicina | tos-ferina | Suspensión 250 mg/5 mL | 4 meses (6.4 kg) | 64 | 64 | 1.28 | 1.3 mL | ✅  |
+| eritromicina | tos-ferina | Suspensión 250 mg/5 mL | 6 meses (7.6 kg) | 76 | 76 | 1.52 | 1.5 mL | ✅  |
+| eritromicina | tos-ferina | Suspensión 250 mg/5 mL | 9 meses (8.6 kg) | 86 | 86 | 1.72 | 1.7 mL | ✅  |
+| eritromicina | tos-ferina | Suspensión 250 mg/5 mL | 1 año (9.6 kg) | 96 | 96 | 1.92 | 1.9 mL | ✅  |
+| eritromicina | tos-ferina | Suspensión 250 mg/5 mL | 18 meses (10.9 kg) | 109 | 109 | 2.18 | 2.2 mL | ✅  |
+| eritromicina | tos-ferina | Suspensión 250 mg/5 mL | 2 años (12.2 kg) | 122 | 122 | 2.44 | 2.4 mL | ✅  |
+| eritromicina | tos-ferina | Suspensión 250 mg/5 mL | 3 años (14.3 kg) | 143 | 143 | 2.86 | 2.9 mL | ✅  |
+| eritromicina | tos-ferina | Suspensión 250 mg/5 mL | 4 años (16.3 kg) | 163 | 163 | 3.26 | 3.3 mL | ✅  |
+| eritromicina | tos-ferina | Suspensión 250 mg/5 mL | 5 años (18.3 kg) | 183 | 183 | 3.66 | 3.7 mL | ✅  |
+| eritromicina | tos-ferina | Suspensión 250 mg/5 mL | 6 años (20.5 kg) | 205 | 205 | 4.1 | 4.1 mL | ✅  |
+| eritromicina | tos-ferina | Suspensión 250 mg/5 mL | 8 años (25.6 kg) | 256 | 256 | 5.12 | 5.1 mL | ✅  |
+| eritromicina | tos-ferina | Suspensión 250 mg/5 mL | 10 años (32 kg) | 320 | 320 | 6.4 | 6.4 mL | ✅  |
+| eritromicina | tos-ferina | Suspensión 250 mg/5 mL | 12 años (40 kg) | 400 | 400 | 8 | 8 mL | ✅  |
+| eritromicina | tos-ferina | Tableta ranurada 500 mg | 1 mes (4.2 kg) | 42 | 42 | 0.084 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | tos-ferina | Tableta ranurada 500 mg | 2 meses (5.1 kg) | 51 | 51 | 0.102 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | tos-ferina | Tableta ranurada 500 mg | 4 meses (6.4 kg) | 64 | 64 | 0.128 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | tos-ferina | Tableta ranurada 500 mg | 6 meses (7.6 kg) | 76 | 76 | 0.152 | 0.15 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | tos-ferina | Tableta ranurada 500 mg | 9 meses (8.6 kg) | 86 | 86 | 0.172 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | tos-ferina | Tableta ranurada 500 mg | 1 año (9.6 kg) | 96 | 96 | 0.192 | 0.19 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | tos-ferina | Tableta ranurada 500 mg | 18 meses (10.9 kg) | 109 | 109 | 0.218 | 0.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | tos-ferina | Tableta ranurada 500 mg | 2 años (12.2 kg) | 122 | 122 | 0.244 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | tos-ferina | Tableta ranurada 500 mg | 3 años (14.3 kg) | 143 | 143 | 0.286 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | tos-ferina | Tableta ranurada 500 mg | 4 años (16.3 kg) | 163 | 163 | 0.326 | 0.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | tos-ferina | Tableta ranurada 500 mg | 5 años (18.3 kg) | 183 | 183 | 0.366 | 0.37 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | tos-ferina | Tableta ranurada 500 mg | 6 años (20.5 kg) | 205 | 205 | 0.41 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | tos-ferina | Tableta ranurada 500 mg | 8 años (25.6 kg) | 256 | 256 | 0.512 | 0.5 tableta | ✅  |
+| eritromicina | tos-ferina | Tableta ranurada 500 mg | 10 años (32 kg) | 320 | 320 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| eritromicina | tos-ferina | Tableta ranurada 500 mg | 12 años (40 kg) | 400 | 400 | 0.8 | 0.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | ibuprofeno | fiebre-dolor-vo | Suspensión 100 mg/5 mL | 6 meses (7.6 kg) | 76 | 76 | 3.8 | 3.8 mL | ✅  |
 | ibuprofeno | fiebre-dolor-vo | Suspensión 100 mg/5 mL | 9 meses (8.6 kg) | 86 | 86 | 4.3 | 4.3 mL | ✅  |
 | ibuprofeno | fiebre-dolor-vo | Suspensión 100 mg/5 mL | 1 año (9.6 kg) | 96 | 96 | 4.8 | 4.8 mL | ✅  |
@@ -432,6 +700,82 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | ibuprofeno | fiebre-dolor-vo | Gotas 40 mg/mL | 6 años (20.5 kg) | 205 | 205 | 5.125 | 5.1 mL | ✅  |
 | ibuprofeno | fiebre-dolor-vo | Gotas 40 mg/mL | 8 años (25.6 kg) | 256 | 256 | 6.4 | 6.4 mL | ✅  |
 | ibuprofeno | fiebre-dolor-vo | Gotas 40 mg/mL | 10 años (32 kg) | 320 | 320 | 8 | 8 mL | ✅  |
+| loratadina | alergia-menos-30-kg | Jarabe 5 mg/5 mL | 2 años (12.2 kg) | 5 | 5 | 5 | 5 mL | ✅  |
+| loratadina | alergia-menos-30-kg | Jarabe 5 mg/5 mL | 3 años (14.3 kg) | 5 | 5 | 5 | 5 mL | ✅  |
+| loratadina | alergia-menos-30-kg | Jarabe 5 mg/5 mL | 4 años (16.3 kg) | 5 | 5 | 5 | 5 mL | ✅  |
+| loratadina | alergia-menos-30-kg | Jarabe 5 mg/5 mL | 5 años (18.3 kg) | 5 | 5 | 5 | 5 mL | ✅  |
+| loratadina | alergia-menos-30-kg | Jarabe 5 mg/5 mL | 6 años (20.5 kg) | 5 | 5 | 5 | 5 mL | ✅  |
+| loratadina | alergia-menos-30-kg | Jarabe 5 mg/5 mL | 8 años (25.6 kg) | 5 | 5 | 5 | 5 mL | ✅  |
+| loratadina | alergia-30-kg-o-mas | Jarabe 5 mg/5 mL | 10 años (32 kg) | 10 | 10 | 10 | 10 mL | ✅  |
+| loratadina | alergia-30-kg-o-mas | Jarabe 5 mg/5 mL | 12 años (40 kg) | 10 | 10 | 10 | 10 mL | ✅  |
+| loratadina | alergia-30-kg-o-mas | Tableta 10 mg | 10 años (32 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
+| loratadina | alergia-30-kg-o-mas | Tableta 10 mg | 12 años (40 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
+| mebendazol | tres-dias | Suspensión 100 mg/5 mL | 2 años (12.2 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | tres-dias | Suspensión 100 mg/5 mL | 3 años (14.3 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | tres-dias | Suspensión 100 mg/5 mL | 4 años (16.3 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | tres-dias | Suspensión 100 mg/5 mL | 5 años (18.3 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | tres-dias | Suspensión 100 mg/5 mL | 6 años (20.5 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | tres-dias | Suspensión 100 mg/5 mL | 8 años (25.6 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | tres-dias | Suspensión 100 mg/5 mL | 10 años (32 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | tres-dias | Suspensión 100 mg/5 mL | 12 años (40 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | tres-dias | Suspensión 100 mg/5 mL | 14 años (50 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | tres-dias | Suspensión 100 mg/5 mL | 16 años (58 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | tres-dias | Suspensión 100 mg/5 mL | 17 años, obeso (95 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | tres-dias | Tableta 100 mg | 2 años (12.2 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | tres-dias | Tableta 100 mg | 3 años (14.3 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | tres-dias | Tableta 100 mg | 4 años (16.3 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | tres-dias | Tableta 100 mg | 5 años (18.3 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | tres-dias | Tableta 100 mg | 6 años (20.5 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | tres-dias | Tableta 100 mg | 8 años (25.6 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | tres-dias | Tableta 100 mg | 10 años (32 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | tres-dias | Tableta 100 mg | 12 años (40 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | tres-dias | Tableta 100 mg | 14 años (50 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | tres-dias | Tableta 100 mg | 16 años (58 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | tres-dias | Tableta 100 mg | 17 años, obeso (95 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | dosis-unica-500 | Suspensión 100 mg/5 mL | 2 años (12.2 kg) | 500 | 500 | 25 | 25 mL | ✅  |
+| mebendazol | dosis-unica-500 | Suspensión 100 mg/5 mL | 3 años (14.3 kg) | 500 | 500 | 25 | 25 mL | ✅  |
+| mebendazol | dosis-unica-500 | Suspensión 100 mg/5 mL | 4 años (16.3 kg) | 500 | 500 | 25 | 25 mL | ✅  |
+| mebendazol | dosis-unica-500 | Suspensión 100 mg/5 mL | 5 años (18.3 kg) | 500 | 500 | 25 | 25 mL | ✅  |
+| mebendazol | dosis-unica-500 | Suspensión 100 mg/5 mL | 6 años (20.5 kg) | 500 | 500 | 25 | 25 mL | ✅  |
+| mebendazol | dosis-unica-500 | Suspensión 100 mg/5 mL | 8 años (25.6 kg) | 500 | 500 | 25 | 25 mL | ✅  |
+| mebendazol | dosis-unica-500 | Suspensión 100 mg/5 mL | 10 años (32 kg) | 500 | 500 | 25 | 25 mL | ✅  |
+| mebendazol | dosis-unica-500 | Suspensión 100 mg/5 mL | 12 años (40 kg) | 500 | 500 | 25 | 25 mL | ✅  |
+| mebendazol | dosis-unica-500 | Suspensión 100 mg/5 mL | 14 años (50 kg) | 500 | 500 | 25 | 25 mL | ✅  |
+| mebendazol | dosis-unica-500 | Suspensión 100 mg/5 mL | 16 años (58 kg) | 500 | 500 | 25 | 25 mL | ✅  |
+| mebendazol | dosis-unica-500 | Suspensión 100 mg/5 mL | 17 años, obeso (95 kg) | 500 | 500 | 25 | 25 mL | ✅  |
+| mebendazol | dosis-unica-500 | Tableta 100 mg | 2 años (12.2 kg) | 500 | 500 | 5 | 5 tableta | ✅  |
+| mebendazol | dosis-unica-500 | Tableta 100 mg | 3 años (14.3 kg) | 500 | 500 | 5 | 5 tableta | ✅  |
+| mebendazol | dosis-unica-500 | Tableta 100 mg | 4 años (16.3 kg) | 500 | 500 | 5 | 5 tableta | ✅  |
+| mebendazol | dosis-unica-500 | Tableta 100 mg | 5 años (18.3 kg) | 500 | 500 | 5 | 5 tableta | ✅  |
+| mebendazol | dosis-unica-500 | Tableta 100 mg | 6 años (20.5 kg) | 500 | 500 | 5 | 5 tableta | ✅  |
+| mebendazol | dosis-unica-500 | Tableta 100 mg | 8 años (25.6 kg) | 500 | 500 | 5 | 5 tableta | ✅  |
+| mebendazol | dosis-unica-500 | Tableta 100 mg | 10 años (32 kg) | 500 | 500 | 5 | 5 tableta | ✅  |
+| mebendazol | dosis-unica-500 | Tableta 100 mg | 12 años (40 kg) | 500 | 500 | 5 | 5 tableta | ✅  |
+| mebendazol | dosis-unica-500 | Tableta 100 mg | 14 años (50 kg) | 500 | 500 | 5 | 5 tableta | ✅  |
+| mebendazol | dosis-unica-500 | Tableta 100 mg | 16 años (58 kg) | 500 | 500 | 5 | 5 tableta | ✅  |
+| mebendazol | dosis-unica-500 | Tableta 100 mg | 17 años, obeso (95 kg) | 500 | 500 | 5 | 5 tableta | ✅  |
+| mebendazol | oxiuros | Suspensión 100 mg/5 mL | 2 años (12.2 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | oxiuros | Suspensión 100 mg/5 mL | 3 años (14.3 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | oxiuros | Suspensión 100 mg/5 mL | 4 años (16.3 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | oxiuros | Suspensión 100 mg/5 mL | 5 años (18.3 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | oxiuros | Suspensión 100 mg/5 mL | 6 años (20.5 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | oxiuros | Suspensión 100 mg/5 mL | 8 años (25.6 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | oxiuros | Suspensión 100 mg/5 mL | 10 años (32 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | oxiuros | Suspensión 100 mg/5 mL | 12 años (40 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | oxiuros | Suspensión 100 mg/5 mL | 14 años (50 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | oxiuros | Suspensión 100 mg/5 mL | 16 años (58 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | oxiuros | Suspensión 100 mg/5 mL | 17 años, obeso (95 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| mebendazol | oxiuros | Tableta 100 mg | 2 años (12.2 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | oxiuros | Tableta 100 mg | 3 años (14.3 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | oxiuros | Tableta 100 mg | 4 años (16.3 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | oxiuros | Tableta 100 mg | 5 años (18.3 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | oxiuros | Tableta 100 mg | 6 años (20.5 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | oxiuros | Tableta 100 mg | 8 años (25.6 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | oxiuros | Tableta 100 mg | 10 años (32 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | oxiuros | Tableta 100 mg | 12 años (40 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | oxiuros | Tableta 100 mg | 14 años (50 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | oxiuros | Tableta 100 mg | 16 años (58 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| mebendazol | oxiuros | Tableta 100 mg | 17 años, obeso (95 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
 | metamizol | fiebre-dolor-vo | Jarabe 250 mg/5 mL | 4 meses (6.4 kg) | 64 | 64 | 1.28 | 1.3 mL | ✅  |
 | metamizol | fiebre-dolor-vo | Jarabe 250 mg/5 mL | 6 meses (7.6 kg) | 76 | 76 | 1.52 | 1.5 mL | ✅  |
 | metamizol | fiebre-dolor-vo | Jarabe 250 mg/5 mL | 9 meses (8.6 kg) | 86 | 86 | 1.72 | 1.7 mL | ✅  |
@@ -454,6 +798,114 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | metamizol | fiebre-dolor-vo | Gotas 400 mg/mL (medir con jeringa de 1 mL) | 5 años (18.3 kg) | 183 | 183 | 0.458 | 0.45 mL | ✅  |
 | metamizol | fiebre-dolor-vo | Gotas 400 mg/mL (medir con jeringa de 1 mL) | 6 años (20.5 kg) | 205 | 205 | 0.512 | 0.5 mL | ✅  |
 | metamizol | fiebre-dolor-vo | Gotas 400 mg/mL (medir con jeringa de 1 mL) | 8 años (25.6 kg) | 256 | 256 | 0.64 | 0.65 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 1 mes (4.2 kg) | 21 | 21 | 0.42 | 0.4 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 2 meses (5.1 kg) | 25.5 | 25.5 | 0.51 | 0.5 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 4 meses (6.4 kg) | 32 | 32 | 0.64 | 0.64 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 6 meses (7.6 kg) | 38 | 38 | 0.76 | 0.76 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 9 meses (8.6 kg) | 43 | 43 | 0.86 | 0.9 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 1 año (9.6 kg) | 48 | 48 | 0.96 | 1 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 18 meses (10.9 kg) | 54.5 | 54.5 | 1.09 | 1.1 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 2 años (12.2 kg) | 61 | 61 | 1.22 | 1.2 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 3 años (14.3 kg) | 71.5 | 71.5 | 1.43 | 1.4 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 4 años (16.3 kg) | 81.5 | 81.5 | 1.63 | 1.6 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 5 años (18.3 kg) | 91.5 | 91.5 | 1.83 | 1.8 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 6 años (20.5 kg) | 102.5 | 102.5 | 2.05 | 2.1 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 8 años (25.6 kg) | 128 | 128 | 2.56 | 2.6 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 10 años (32 kg) | 160 | 160 | 3.2 | 3.2 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 12 años (40 kg) | 200 | 200 | 4 | 4 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 14 años (50 kg) | 250 | 250 | 5 | 5 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 16 años (58 kg) | 250 | 250 | 5 | 5 mL | ✅ tope aplicado |
+| metronidazol | giardiasis | Suspensión 250 mg/5 mL | 17 años, obeso (95 kg) | 250 | 250 | 5 | 5 mL | ✅ tope aplicado |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 1 mes (4.2 kg) | 21 | 21 | 0.84 | 0.8 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 2 meses (5.1 kg) | 25.5 | 25.5 | 1.02 | 1 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 4 meses (6.4 kg) | 32 | 32 | 1.28 | 1.3 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 6 meses (7.6 kg) | 38 | 38 | 1.52 | 1.5 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 9 meses (8.6 kg) | 43 | 43 | 1.72 | 1.7 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 1 año (9.6 kg) | 48 | 48 | 1.92 | 1.9 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 18 meses (10.9 kg) | 54.5 | 54.5 | 2.18 | 2.2 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 2 años (12.2 kg) | 61 | 61 | 2.44 | 2.4 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 3 años (14.3 kg) | 71.5 | 71.5 | 2.86 | 2.9 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 4 años (16.3 kg) | 81.5 | 81.5 | 3.26 | 3.3 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 5 años (18.3 kg) | 91.5 | 91.5 | 3.66 | 3.7 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 6 años (20.5 kg) | 102.5 | 102.5 | 4.1 | 4.1 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 8 años (25.6 kg) | 128 | 128 | 5.12 | 5.1 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 10 años (32 kg) | 160 | 160 | 6.4 | 6.4 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 12 años (40 kg) | 200 | 200 | 8 | 8 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 14 años (50 kg) | 250 | 250 | 10 | 10 mL | ✅  |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 16 años (58 kg) | 250 | 250 | 10 | 10 mL | ✅ tope aplicado |
+| metronidazol | giardiasis | Suspensión 125 mg/5 mL | 17 años, obeso (95 kg) | 250 | 250 | 10 | 10 mL | ✅ tope aplicado |
+| metronidazol | giardiasis | Tableta 500 mg | 1 mes (4.2 kg) | 21 | 21 | 0.042 | 0.04 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 2 meses (5.1 kg) | 25.5 | 25.5 | 0.051 | 0.05 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 4 meses (6.4 kg) | 32 | 32 | 0.064 | 0.06 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 6 meses (7.6 kg) | 38 | 38 | 0.076 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 9 meses (8.6 kg) | 43 | 43 | 0.086 | 0.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 1 año (9.6 kg) | 48 | 48 | 0.096 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 18 meses (10.9 kg) | 54.5 | 54.5 | 0.109 | 0.11 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 2 años (12.2 kg) | 61 | 61 | 0.122 | 0.12 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 3 años (14.3 kg) | 71.5 | 71.5 | 0.143 | 0.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 4 años (16.3 kg) | 81.5 | 81.5 | 0.163 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 5 años (18.3 kg) | 91.5 | 91.5 | 0.183 | 0.18 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 6 años (20.5 kg) | 102.5 | 102.5 | 0.205 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 8 años (25.6 kg) | 128 | 128 | 0.256 | 0.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 10 años (32 kg) | 160 | 160 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 12 años (40 kg) | 200 | 200 | 0.4 | 0.4 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 14 años (50 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 16 años (58 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | giardiasis | Tableta 500 mg | 17 años, obeso (95 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 1 mes (4.2 kg) | 42 | 42 | 0.84 | 0.8 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 2 meses (5.1 kg) | 51 | 51 | 1.02 | 1 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 4 meses (6.4 kg) | 64 | 64 | 1.28 | 1.3 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 6 meses (7.6 kg) | 76 | 76 | 1.52 | 1.5 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 9 meses (8.6 kg) | 86 | 86 | 1.72 | 1.7 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 1 año (9.6 kg) | 96 | 96 | 1.92 | 1.9 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 18 meses (10.9 kg) | 109 | 109 | 2.18 | 2.2 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 2 años (12.2 kg) | 122 | 122 | 2.44 | 2.4 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 3 años (14.3 kg) | 143 | 143 | 2.86 | 2.9 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 4 años (16.3 kg) | 163 | 163 | 3.26 | 3.3 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 5 años (18.3 kg) | 183 | 183 | 3.66 | 3.7 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 6 años (20.5 kg) | 205 | 205 | 4.1 | 4.1 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 8 años (25.6 kg) | 256 | 256 | 5.12 | 5.1 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 10 años (32 kg) | 320 | 320 | 6.4 | 6.4 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 12 años (40 kg) | 400 | 400 | 8 | 8 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 14 años (50 kg) | 500 | 500 | 10 | 10 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 16 años (58 kg) | 580 | 580 | 11.6 | 11.6 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 250 mg/5 mL | 17 años, obeso (95 kg) | 750 | 750 | 15 | 15 mL | ✅ tope aplicado |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 1 mes (4.2 kg) | 42 | 42 | 1.68 | 1.7 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 2 meses (5.1 kg) | 51 | 51 | 2.04 | 2 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 4 meses (6.4 kg) | 64 | 64 | 2.56 | 2.6 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 6 meses (7.6 kg) | 76 | 76 | 3.04 | 3 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 9 meses (8.6 kg) | 86 | 86 | 3.44 | 3.4 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 1 año (9.6 kg) | 96 | 96 | 3.84 | 3.8 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 18 meses (10.9 kg) | 109 | 109 | 4.36 | 4.4 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 2 años (12.2 kg) | 122 | 122 | 4.88 | 4.9 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 3 años (14.3 kg) | 143 | 143 | 5.72 | 5.7 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 4 años (16.3 kg) | 163 | 163 | 6.52 | 6.5 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 5 años (18.3 kg) | 183 | 183 | 7.32 | 7.3 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 6 años (20.5 kg) | 205 | 205 | 8.2 | 8.2 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 8 años (25.6 kg) | 256 | 256 | 10.24 | 10.2 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 10 años (32 kg) | 320 | 320 | 12.8 | 12.8 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 12 años (40 kg) | 400 | 400 | 16 | 16 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 14 años (50 kg) | 500 | 500 | 20 | 20 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 16 años (58 kg) | 580 | 580 | 23.2 | 23.2 mL | ✅  |
+| metronidazol | amebiasis | Suspensión 125 mg/5 mL | 17 años, obeso (95 kg) | 750 | 750 | 30 | 30 mL | ✅ tope aplicado |
+| metronidazol | amebiasis | Tableta 500 mg | 1 mes (4.2 kg) | 42 | 42 | 0.084 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Tableta 500 mg | 2 meses (5.1 kg) | 51 | 51 | 0.102 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Tableta 500 mg | 4 meses (6.4 kg) | 64 | 64 | 0.128 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Tableta 500 mg | 6 meses (7.6 kg) | 76 | 76 | 0.152 | 0.15 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Tableta 500 mg | 9 meses (8.6 kg) | 86 | 86 | 0.172 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Tableta 500 mg | 1 año (9.6 kg) | 96 | 96 | 0.192 | 0.19 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Tableta 500 mg | 18 meses (10.9 kg) | 109 | 109 | 0.218 | 0.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Tableta 500 mg | 2 años (12.2 kg) | 122 | 122 | 0.244 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Tableta 500 mg | 3 años (14.3 kg) | 143 | 143 | 0.286 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Tableta 500 mg | 4 años (16.3 kg) | 163 | 163 | 0.326 | 0.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Tableta 500 mg | 5 años (18.3 kg) | 183 | 183 | 0.366 | 0.37 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Tableta 500 mg | 6 años (20.5 kg) | 205 | 205 | 0.41 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Tableta 500 mg | 8 años (25.6 kg) | 256 | 256 | 0.512 | 0.51 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Tableta 500 mg | 10 años (32 kg) | 320 | 320 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Tableta 500 mg | 12 años (40 kg) | 400 | 400 | 0.8 | 0.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Tableta 500 mg | 14 años (50 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
+| metronidazol | amebiasis | Tableta 500 mg | 16 años (58 kg) | 580 | 580 | 1.16 | 1.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metronidazol | amebiasis | Tableta 500 mg | 17 años, obeso (95 kg) | 750 | 750 | 1.5 | 1.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | ondansetron | vomitos-gastroenteritis | Solución oral 4 mg/5 mL | 6 meses (7.6 kg) | 1.14 | 1.14 | 1.425 | 1.4 mL | ✅  |
 | ondansetron | vomitos-gastroenteritis | Solución oral 4 mg/5 mL | 9 meses (8.6 kg) | 1.29 | 1.29 | 1.612 | 1.6 mL | ✅  |
 | ondansetron | vomitos-gastroenteritis | Solución oral 4 mg/5 mL | 1 año (9.6 kg) | 1.44 | 1.44 | 1.8 | 1.8 mL | ✅  |
@@ -564,3 +1016,33 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | prednisolona | crisis-asmatica-6-anos-o-mas | Tableta 5 mg | 14 años (50 kg) | 40 | 40 | 8 | 8 tableta | ✅ tope aplicado |
 | prednisolona | crisis-asmatica-6-anos-o-mas | Tableta 5 mg | 16 años (58 kg) | 40 | 40 | 8 | 8 tableta | ✅ tope aplicado |
 | prednisolona | crisis-asmatica-6-anos-o-mas | Tableta 5 mg | 17 años, obeso (95 kg) | 40 | 40 | 8 | 8 tableta | ✅ tope aplicado |
+| salbutamol | vo-2-5-anos | Jarabe 2 mg/5 mL | 2 años (12.2 kg) | 1 | 1 | 2.5 | 2.5 mL | ✅  |
+| salbutamol | vo-2-5-anos | Jarabe 2 mg/5 mL | 3 años (14.3 kg) | 1 | 1 | 2.5 | 2.5 mL | ✅  |
+| salbutamol | vo-2-5-anos | Jarabe 2 mg/5 mL | 4 años (16.3 kg) | 1 | 1 | 2.5 | 2.5 mL | ✅  |
+| salbutamol | vo-2-5-anos | Jarabe 2 mg/5 mL | 5 años (18.3 kg) | 1 | 1 | 2.5 | 2.5 mL | ✅  |
+| salbutamol | vo-6-12-anos | Jarabe 2 mg/5 mL | 6 años (20.5 kg) | 2 | 2 | 5 | 5 mL | ✅  |
+| salbutamol | vo-6-12-anos | Jarabe 2 mg/5 mL | 8 años (25.6 kg) | 2 | 2 | 5 | 5 mL | ✅  |
+| salbutamol | vo-6-12-anos | Jarabe 2 mg/5 mL | 10 años (32 kg) | 2 | 2 | 5 | 5 mL | ✅  |
+| salbutamol | vo-6-12-anos | Jarabe 2 mg/5 mL | 12 años (40 kg) | 2 | 2 | 5 | 5 mL | ✅  |
+| salbutamol | vo-6-12-anos | Tableta 4 mg | 6 años (20.5 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
+| salbutamol | vo-6-12-anos | Tableta 4 mg | 8 años (25.6 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
+| salbutamol | vo-6-12-anos | Tableta 4 mg | 10 años (32 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
+| salbutamol | vo-6-12-anos | Tableta 4 mg | 12 años (40 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
+| zinc | diarrea-menor-6-meses | Tableta dispersable 20 mg (disolver en agua o leche materna) | 1 mes (4.2 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
+| zinc | diarrea-menor-6-meses | Tableta dispersable 20 mg (disolver en agua o leche materna) | 2 meses (5.1 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
+| zinc | diarrea-menor-6-meses | Tableta dispersable 20 mg (disolver en agua o leche materna) | 4 meses (6.4 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
+| zinc | diarrea-6-meses-o-mas | Tableta dispersable 20 mg (disolver en agua o leche materna) | 6 meses (7.6 kg) | 20 | 20 | 1 | 1 tableta | ✅  |
+| zinc | diarrea-6-meses-o-mas | Tableta dispersable 20 mg (disolver en agua o leche materna) | 9 meses (8.6 kg) | 20 | 20 | 1 | 1 tableta | ✅  |
+| zinc | diarrea-6-meses-o-mas | Tableta dispersable 20 mg (disolver en agua o leche materna) | 1 año (9.6 kg) | 20 | 20 | 1 | 1 tableta | ✅  |
+| zinc | diarrea-6-meses-o-mas | Tableta dispersable 20 mg (disolver en agua o leche materna) | 18 meses (10.9 kg) | 20 | 20 | 1 | 1 tableta | ✅  |
+| zinc | diarrea-6-meses-o-mas | Tableta dispersable 20 mg (disolver en agua o leche materna) | 2 años (12.2 kg) | 20 | 20 | 1 | 1 tableta | ✅  |
+| zinc | diarrea-6-meses-o-mas | Tableta dispersable 20 mg (disolver en agua o leche materna) | 3 años (14.3 kg) | 20 | 20 | 1 | 1 tableta | ✅  |
+| zinc | diarrea-6-meses-o-mas | Tableta dispersable 20 mg (disolver en agua o leche materna) | 4 años (16.3 kg) | 20 | 20 | 1 | 1 tableta | ✅  |
+| zinc | diarrea-6-meses-o-mas | Tableta dispersable 20 mg (disolver en agua o leche materna) | 5 años (18.3 kg) | 20 | 20 | 1 | 1 tableta | ✅  |
+| zinc | diarrea-6-meses-o-mas | Tableta dispersable 20 mg (disolver en agua o leche materna) | 6 años (20.5 kg) | 20 | 20 | 1 | 1 tableta | ✅  |
+| zinc | diarrea-6-meses-o-mas | Tableta dispersable 20 mg (disolver en agua o leche materna) | 8 años (25.6 kg) | 20 | 20 | 1 | 1 tableta | ✅  |
+| zinc | diarrea-6-meses-o-mas | Tableta dispersable 20 mg (disolver en agua o leche materna) | 10 años (32 kg) | 20 | 20 | 1 | 1 tableta | ✅  |
+| zinc | diarrea-6-meses-o-mas | Tableta dispersable 20 mg (disolver en agua o leche materna) | 12 años (40 kg) | 20 | 20 | 1 | 1 tableta | ✅  |
+| zinc | diarrea-6-meses-o-mas | Tableta dispersable 20 mg (disolver en agua o leche materna) | 14 años (50 kg) | 20 | 20 | 1 | 1 tableta | ✅  |
+| zinc | diarrea-6-meses-o-mas | Tableta dispersable 20 mg (disolver en agua o leche materna) | 16 años (58 kg) | 20 | 20 | 1 | 1 tableta | ✅  |
+| zinc | diarrea-6-meses-o-mas | Tableta dispersable 20 mg (disolver en agua o leche materna) | 17 años, obeso (95 kg) | 20 | 20 | 1 | 1 tableta | ✅  |

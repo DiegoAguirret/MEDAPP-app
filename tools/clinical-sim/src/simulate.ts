@@ -64,7 +64,9 @@ export function simulate(drugs: Drug[]): SimRow[] {
           };
           const inAge =
             pt.ageDays >= Math.max(rule.ageMinDays, 29) &&
-            (rule.ageMaxDays === undefined || pt.ageDays <= rule.ageMaxDays);
+            (rule.ageMaxDays === undefined || pt.ageDays <= rule.ageMaxDays) &&
+            (rule.weightMinKg === undefined || pt.weightKg >= rule.weightMinKg) &&
+            (rule.weightMaxKg === undefined || pt.weightKg < rule.weightMaxKg);
           const app = calculateDose({
             rule,
             presentation: pres,
@@ -80,8 +82,8 @@ export function simulate(drugs: Drug[]): SimRow[] {
               appAmount: app.status === 'ok' ? app.amount.value : null,
               note:
                 app.status === 'not_calculable'
-                  ? `fuera de edad: la app no calcula (${app.reason})`
-                  : 'ERROR: la app calculó fuera del rango de edad',
+                  ? `fuera de edad o peso: la app no calcula (${app.reason})`
+                  : 'ERROR: la app calculó fuera del rango de edad o peso',
             });
             continue;
           }

@@ -1,0 +1,70 @@
+id: cotrimoxazol
+name: Cotrimoxazol (sulfametoxazol + trimetoprima)
+category: antibiotico
+synonyms: [sulfametoxazol, trimetoprima, trimetoprim, sulfametoxazol trimetoprima, smx tmp]
+atc: J01EE01
+presentations:
+  - id: susp-200-40
+    label: Suspensión 200/40 mg por 5 mL (dosis en trimetoprima)
+    form: suspension
+    mgPerUnit: 8
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-400-80
+    label: Tableta 400/80 mg (dosis en trimetoprima)
+    form: tableta
+    mgPerUnit: 80
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+  - id: tab-800-160
+    label: Tableta 800/160 mg (dosis en trimetoprima)
+    form: tableta
+    mgPerUnit: 160
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: usual
+    indication: Infección urinaria, otitis media, shigelosis (dosis usual)
+    route: VO
+    ageMinDays: 60
+    weightMaxKg: 40
+    basis: mg/kg/day
+    amountMin: 8
+    amountMax: 12
+    intervalHours: 12
+    maxPerDoseMg: 160
+    maxPerDayMg: 320
+    notes: >-
+      Dosis expresada en trimetoprima (TMP). FNME — mayores de 2 meses hasta 40 kg: 8 a 12
+      mg/kg/día de TMP (40 a 60 mg/kg/día de sulfametoxazol) cada 12 h; adulto, 160 mg de TMP cada
+      12 h (tope usado aquí).
+    sourceIds: [fnme-2008]
+warnings:
+  - Todas las cantidades se calculan sobre la trimetoprima, el segundo número de la etiqueta.
+  - Evitar en neonatos prematuros o con ictericia (OMS).
+  - En insuficiencia renal con depuración de 15 a 30 mL/min, reducir la dosis a la mitad; menos de 15 mL/min, no recomendado (FNME).
+contraindications:
+  - Hipersensibilidad al sulfametoxazol, a la trimetoprima o a otras sulfonamidas.
+  - Menores de 2 meses.
+  - Porfiria.
+  - Anemia megaloblástica.
+diagnoses: [infección urinaria, itu, otitis media, shigelosis, disentería, neumocistis]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: usual
+    presentationId: susp-200-40
+    weightKg: 10
+    ageDays: 400
+    expect: { mgPerDose: 40, amount: 5, unit: mL }
+  - ruleId: usual
+    presentationId: susp-200-40
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 80, amount: 10, unit: mL }

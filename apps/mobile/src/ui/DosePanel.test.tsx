@@ -88,6 +88,25 @@ describe('DosePanel — cálculo', () => {
   });
 });
 
+describe('DosePanel — bandas de peso', () => {
+  it('loratadina: 20 kg en la indicación de 30 kg o más no calcula y sugiere la correcta', async () => {
+    await show('loratadina');
+    await fireEvent.press(screen.getByLabelText('Cambiar indicación'));
+    await fireEvent.press(screen.getByText(/30 kg o más/));
+    await fillPatient('20', '6', '0');
+    expect(screen.queryByTestId('result-mg')).toBeNull();
+    expect(screen.getByText(/fuera del rango de peso/)).toBeOnTheScreen();
+    expect(screen.getByText(/Para este paciente: .*menos de 30 kg/)).toBeOnTheScreen();
+  });
+
+  it('loratadina: 20 kg, 6 años → 5 mg = 5 mL de jarabe', async () => {
+    await show('loratadina');
+    await fillPatient('20', '6', '0');
+    expect(screen.getByTestId('result-mg')).toHaveTextContent('5 mg');
+    expect(screen.getByTestId('result-amount')).toHaveTextContent('5 mL');
+  });
+});
+
 describe('DosePanel — seguridad', () => {
   it('shows a verified-sources badge and no alarm banner', async () => {
     await show('paracetamol');

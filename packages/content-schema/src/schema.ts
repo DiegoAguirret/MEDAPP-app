@@ -68,6 +68,10 @@ export const doseRuleSchema = z
     route: routeSchema,
     ageMinDays: nonNegative,
     ageMaxDays: positive.optional(),
+    /** Peso mínimo de la indicación (incluido), p. ej. «30 kg o más». */
+    weightMinKg: positive.optional(),
+    /** Peso tope de la indicación (excluido), p. ej. «menos de 30 kg». */
+    weightMaxKg: positive.optional(),
     /** Con `fixed_by_age`, las cantidades son mg por dosis. */
     basis: z.enum(['mg/kg/dose', 'mg/kg/day', 'fixed_by_age']),
     amountMin: positive,
@@ -101,6 +105,17 @@ export const doseRuleSchema = z
     }
     if (r.ageMaxDays !== undefined && r.ageMaxDays <= r.ageMinDays) {
       ctx.addIssue({ code: 'custom', message: 'ageMaxDays <= ageMinDays', path: ['ageMaxDays'] });
+    }
+    if (
+      r.weightMinKg !== undefined &&
+      r.weightMaxKg !== undefined &&
+      r.weightMaxKg <= r.weightMinKg
+    ) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'weightMaxKg <= weightMinKg',
+        path: ['weightMaxKg'],
+      });
     }
     if ((r.route === 'IV' || r.route === 'IM') && r.presentationIds === undefined) {
       ctx.addIssue({

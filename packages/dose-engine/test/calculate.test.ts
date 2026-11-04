@@ -214,6 +214,33 @@ describe('calculateDose — guards', () => {
     expect(r).toEqual({ status: 'not_calculable', reason: 'age_out_of_rule' });
   });
 
+  it('rejects a weight below the rule minimum (loratadina 10 mg desde 30 kg)', () => {
+    const r = calculateDose({
+      rule: rule({ weightMinKg: 30 }),
+      presentation: presentation(),
+      patient: { weightKg: 22, ageDays: 2555 },
+    });
+    expect(r).toEqual({ status: 'not_calculable', reason: 'weight_out_of_rule' });
+  });
+
+  it('rejects a weight at or above the rule maximum (loratadina 5 mg bajo 30 kg)', () => {
+    const r = calculateDose({
+      rule: rule({ weightMaxKg: 30 }),
+      presentation: presentation(),
+      patient: { weightKg: 30, ageDays: 2555 },
+    });
+    expect(r).toEqual({ status: 'not_calculable', reason: 'weight_out_of_rule' });
+  });
+
+  it('accepts a weight inside the rule band', () => {
+    const r = calculateDose({
+      rule: rule({ weightMinKg: 30 }),
+      presentation: presentation(),
+      patient: { weightKg: 30, ageDays: 2555 },
+    });
+    expect(r.status).toBe('ok');
+  });
+
   it('warns but still calculates for an implausible weight', () => {
     const r = ok(
       calculateDose({

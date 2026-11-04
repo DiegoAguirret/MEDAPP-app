@@ -1,0 +1,89 @@
+id: mebendazol
+name: Mebendazol
+category: antiparasitario
+synonyms: []
+atc: P02CA01
+presentations:
+  - id: susp-100-5
+    label: Suspensión 100 mg/5 mL
+    form: suspension
+    mgPerUnit: 20
+    unit: mL
+    step: 0.5
+    brandsPE: [Pantelmin, Penalcol]
+  - id: tab-100
+    label: Tableta 100 mg
+    form: tableta
+    mgPerUnit: 100
+    unit: tableta
+    step: 1
+    brandsPE: [Pantelmin, Penalcol]
+rules:
+  - id: tres-dias
+    indication: Ascariasis, tricocefalosis o uncinariasis (3 días)
+    route: VO
+    ageMinDays: 730
+    basis: fixed_by_age
+    amountMin: 100
+    amountMax: 100
+    usual: 100
+    intervalHours: 12
+    maxPerDoseMg: 100
+    maxPerDayMg: 200
+    durationText: 3 días
+    notes: FNME — mayores de 2 años, igual que adultos, 100 mg cada 12 h por 3 días. OMS — misma pauta.
+    sourceIds: [fnme-2008, who-pocket-2013]
+  - id: dosis-unica-500
+    indication: Ascariasis (dosis única)
+    route: VO
+    ageMinDays: 730
+    basis: fixed_by_age
+    amountMin: 500
+    amountMax: 500
+    usual: 500
+    intervalHours: 24
+    maxPerDoseMg: 500
+    maxPerDayMg: 500
+    durationText: dosis única
+    notes: FNME — mayores de 2 años, 500 mg en dosis única. OMS — misma pauta.
+    sourceIds: [fnme-2008, who-pocket-2013]
+  - id: oxiuros
+    indication: Oxiuros (enterobiasis)
+    route: VO
+    ageMinDays: 730
+    basis: fixed_by_age
+    amountMin: 100
+    amountMax: 100
+    usual: 100
+    intervalHours: 24
+    maxPerDoseMg: 100
+    maxPerDayMg: 100
+    durationText: dosis única; repetir a las 2 a 4 semanas
+    notes: FNME — 100 mg en dosis única, repetir a las 2 a 4 semanas y tratar a toda la familia.
+    sourceIds: [fnme-2008]
+warnings:
+  - El libro de Peña Camarena indica usar con precaución en menores de 2 años.
+contraindications:
+  - Hipersensibilidad al mebendazol.
+diagnoses: [parásitos, ascaris, oxiuros, enterobiasis, tricocefalo, uncinarias, helmintiasis]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: tres-dias
+    presentationId: susp-100-5
+    weightKg: 14
+    ageDays: 1095
+    expect: { mgPerDose: 100, amount: 5, unit: mL }
+  - ruleId: dosis-unica-500
+    presentationId: susp-100-5
+    weightKg: 14
+    ageDays: 1095
+    expect: { mgPerDose: 500, amount: 25, unit: mL }
+  - ruleId: oxiuros
+    presentationId: tab-100
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 100, amount: 1, unit: tableta }

@@ -1,0 +1,108 @@
+id: clorfenamina
+name: Clorfenamina
+category: antihistaminico
+synonyms: [clorfeniramina, clorfenamina maleato]
+atc: R06AB04
+presentations:
+  - id: gotas-1
+    label: Gotas 1 mg/mL
+    form: gotas
+    mgPerUnit: 1
+    unit: mL
+    step: 0.1
+    brandsPE: [Cloroalergan]
+  - id: jarabe-2-5
+    label: Jarabe 2 mg/5 mL
+    form: jarabe
+    mgPerUnit: 0.4
+    unit: mL
+    step: 0.1
+    brandsPE: [Cloroalergan]
+  - id: tab-4
+    label: Tableta 4 mg
+    form: tableta
+    mgPerUnit: 4
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: alergia-2-5-anos
+    indication: Reacción alérgica, urticaria o rinitis alérgica (2 a 5 años)
+    route: VO
+    ageMinDays: 730
+    ageMaxDays: 2189
+    basis: fixed_by_age
+    amountMin: 1
+    amountMax: 1
+    usual: 1
+    intervalHours: 6
+    maxPerDoseMg: 1
+    maxPerDayMg: 6
+    notes: >-
+      FNME — 1 mg cada 4 a 6 h, sin pasar de 6 mg/día; aquí se calcula cada 6 h. Libro Peña
+      Camarena — 0.35 mg/kg/día cada 6 h.
+    presentationIds: [gotas-1, jarabe-2-5]
+    sourceIds: [fnme-2008, pena-camarena]
+  - id: alergia-6-12-anos
+    indication: Reacción alérgica, urticaria o rinitis alérgica (6 a 12 años)
+    route: VO
+    ageMinDays: 2190
+    ageMaxDays: 4744
+    basis: fixed_by_age
+    amountMin: 2
+    amountMax: 2
+    usual: 2
+    intervalHours: 6
+    maxPerDoseMg: 2
+    maxPerDayMg: 12
+    notes: FNME — 2 mg cada 4 a 6 h, sin pasar de 12 mg/día; aquí se calcula cada 6 h.
+    sourceIds: [fnme-2008]
+  - id: alergia-13-anos-o-mas
+    indication: Reacción alérgica, urticaria o rinitis alérgica (13 años o más, dosis de adulto)
+    route: VO
+    ageMinDays: 4745
+    basis: fixed_by_age
+    amountMin: 4
+    amountMax: 4
+    usual: 4
+    intervalHours: 6
+    maxPerDoseMg: 4
+    maxPerDayMg: 24
+    notes: FNME — adultos 4 mg cada 4 a 6 h según necesidad, sin pasar de 24 mg/día.
+    sourceIds: [fnme-2008]
+warnings:
+  - Produce somnolencia.
+  - En niños puede causar reacciones paradójicas con hiperexcitabilidad; en recién nacidos y prematuros, excitación del sistema nervioso y convulsiones.
+  - El FNME da para 1 a 2 años 0.0875 mg/kg cada 6 h, sin tope; esa pauta no se calcula en la app.
+contraindications:
+  - Hipersensibilidad a la clorfenamina.
+  - Uso simultáneo de inhibidores de la MAO.
+  - Crisis asmática.
+  - Recién nacidos.
+diagnoses: [urticaria, rinitis alérgica, alergia, picadura de insecto, conjuntivitis alérgica]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: alergia-2-5-anos
+    presentationId: jarabe-2-5
+    weightKg: 14
+    ageDays: 1095
+    expect: { mgPerDose: 1, amount: 2.5, unit: mL }
+  - ruleId: alergia-2-5-anos
+    presentationId: gotas-1
+    weightKg: 14
+    ageDays: 1095
+    expect: { mgPerDose: 1, amount: 1, unit: mL }
+  - ruleId: alergia-6-12-anos
+    presentationId: jarabe-2-5
+    weightKg: 25
+    ageDays: 2920
+    expect: { mgPerDose: 2, amount: 5, unit: mL }
+  - ruleId: alergia-13-anos-o-mas
+    presentationId: tab-4
+    weightKg: 50
+    ageDays: 5110
+    expect: { mgPerDose: 4, amount: 1, unit: tableta }

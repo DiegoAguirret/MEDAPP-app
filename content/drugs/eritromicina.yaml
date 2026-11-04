@@ -1,0 +1,96 @@
+id: eritromicina
+name: Eritromicina
+category: antibiotico
+synonyms: []
+atc: J01FA01
+presentations:
+  - id: susp-250-5
+    label: Suspensión 250 mg/5 mL
+    form: suspension
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-500
+    label: Tableta ranurada 500 mg
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: usual
+    indication: Infecciones respiratorias y de piel (dosis usual)
+    route: VO
+    ageMinDays: 29
+    weightMaxKg: 45
+    basis: mg/kg/dose
+    amountMin: 7.5
+    amountMax: 12.5
+    intervalHours: 6
+    maxPerDoseMg: 1000
+    maxPerDayMg: 4000
+    notes: >-
+      FNME — 7.5 a 12.5 mg/kg cada 6 h (o 15 a 25 mg/kg cada 12 h). Desde 45 kg y más de 8 años,
+      dosis de adulto; dosis máxima 4 g/día.
+    sourceIds: [fnme-2008]
+  - id: faringitis-estreptococica
+    indication: Faringitis por estreptococo (alérgicos a penicilina)
+    route: VO
+    ageMinDays: 29
+    weightMaxKg: 45
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 15
+    intervalHours: 12
+    maxPerDoseMg: 500
+    maxPerDayMg: 1000
+    durationText: 10 días
+    notes: FNME — 10 a 15 mg/kg cada 12 h por 10 días (o 5 a 7.5 mg/kg cada 6 h); adulto, 500 mg cada 12 h, que es el tope usado aquí.
+    sourceIds: [fnme-2008]
+  - id: tos-ferina
+    indication: Tos ferina (pertusis)
+    route: VO
+    ageMinDays: 29
+    weightMaxKg: 45
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 12.5
+    intervalHours: 6
+    maxPerDoseMg: 500
+    maxPerDayMg: 2000
+    durationText: 14 días
+    notes: FNME — 10 a 12.5 mg/kg cada 6 h por 14 días; en adultos, máximo 2 g/día.
+    countryNotes:
+      - country: INT
+        text: OMS (Pocket Book 2013) — eritromicina estolato 12.5 mg/kg cuatro veces al día por 10 días.
+        sourceIds: [who-pocket-2013]
+    sourceIds: [fnme-2008, who-pocket-2013]
+warnings:
+  - No dar junto con teofilina (aminofilina) por riesgo de reacciones graves (OMS).
+contraindications:
+  - Hipersensibilidad a la eritromicina.
+  - Disfunción o enfermedad hepática previa (eritromicina estolato).
+  - Uso junto con astemizol, terfenadina o cisaprida (arritmias que pueden ser fatales).
+diagnoses: [tos ferina, faringitis, amigdalitis, neumonía atípica, alergia a penicilina, clamidia]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: usual
+    presentationId: susp-250-5
+    weightKg: 10
+    ageDays: 400
+    expect: { mgPerDose: 75, amount: 1.5, unit: mL }
+  - ruleId: faringitis-estreptococica
+    presentationId: susp-250-5
+    weightKg: 10
+    ageDays: 1095
+    expect: { mgPerDose: 100, amount: 2, unit: mL }
+  - ruleId: tos-ferina
+    presentationId: susp-250-5
+    weightKg: 6
+    ageDays: 120
+    expect: { mgPerDose: 60, amount: 1.2, unit: mL }

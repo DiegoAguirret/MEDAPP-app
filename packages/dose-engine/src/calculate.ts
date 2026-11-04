@@ -25,6 +25,12 @@ export function calculateDose(input: CalculateInput): DoseResult {
   if (ageDays < rule.ageMinDays || (rule.ageMaxDays !== undefined && ageDays > rule.ageMaxDays)) {
     return { status: 'not_calculable', reason: 'age_out_of_rule' };
   }
+  if (
+    (rule.weightMinKg !== undefined && weightKg < rule.weightMinKg) ||
+    (rule.weightMaxKg !== undefined && weightKg >= rule.weightMaxKg)
+  ) {
+    return { status: 'not_calculable', reason: 'weight_out_of_rule' };
+  }
   if (rule.presentationIds !== undefined && !rule.presentationIds.includes(presentation.id)) {
     return { status: 'not_calculable', reason: 'presentation_not_allowed' };
   }

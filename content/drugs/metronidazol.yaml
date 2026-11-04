@@ -1,0 +1,90 @@
+id: metronidazol
+name: Metronidazol
+category: antiparasitario
+synonyms: []
+atc: P01AB01
+presentations:
+  - id: susp-250-5
+    label: Suspensión 250 mg/5 mL
+    form: suspension
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: [Flagyl]
+  - id: susp-125-5
+    label: Suspensión 125 mg/5 mL
+    form: suspension
+    mgPerUnit: 25
+    unit: mL
+    step: 0.1
+    brandsPE: [Flagyl]
+  - id: tab-500
+    label: Tableta 500 mg
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 1
+    brandsPE: [Flagyl]
+rules:
+  - id: giardiasis
+    indication: Giardiasis
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 15
+    amountMax: 15
+    usual: 15
+    intervalHours: 8
+    maxPerDoseMg: 250
+    maxPerDayMg: 750
+    durationText: 5 a 7 días
+    notes: >-
+      FNME — 15 mg/kg/día en 3 dosis por 5 a 7 días; adulto, 250 mg cada 8 h (tope usado aquí).
+      Libro Peña Camarena — 15 mg/kg/día cada 8 h por 5 a 10 días.
+    countryNotes:
+      - country: INT
+        text: OMS (Pocket Book 2013) — para giardiasis y amebiasis, 10 mg/kg tres veces al día (30 mg/kg/día).
+        sourceIds: [who-pocket-2013]
+    sourceIds: [fnme-2008, pena-camarena, who-pocket-2013]
+  - id: amebiasis
+    indication: Amebiasis intestinal o absceso hepático amebiano
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 30
+    amountMax: 50
+    intervalHours: 8
+    maxPerDoseMg: 750
+    maxPerDayMg: 2250
+    durationText: 5 a 10 días
+    notes: >-
+      FNME — 30 a 50 mg/kg/día en 3 dosis por 5 a 10 días; adulto, 750 mg cada 8 h (tope usado
+      aquí). Libro Peña Camarena — 30 a 50 mg/kg/día cada 8 h por 7 a 10 días.
+    sourceIds: [fnme-2008, pena-camarena]
+warnings:
+  - Los alimentos retrasan su absorción pero no la reducen.
+  - La dosis máxima diaria de adulto por cualquier vía es 4 g (FNME).
+contraindications:
+  - Hipersensibilidad al metronidazol o a otros componentes de la fórmula.
+diagnoses: [giardiasis, amebiasis, diarrea con sangre, disentería, absceso hepático, parásitos]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: giardiasis
+    presentationId: susp-250-5
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 50, amount: 1, unit: mL }
+  - ruleId: amebiasis
+    presentationId: susp-250-5
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 100, amount: 2, unit: mL }
+  - ruleId: amebiasis
+    presentationId: susp-125-5
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 100, amount: 4, unit: mL }

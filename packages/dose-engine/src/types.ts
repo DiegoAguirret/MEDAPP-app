@@ -30,6 +30,7 @@ export type NotCalculableReason =
   | 'invalid_weight'
   | 'invalid_age'
   | 'age_out_of_rule'
+  | 'weight_out_of_rule'
   | 'choice_out_of_range'
   | 'presentation_not_allowed';
 

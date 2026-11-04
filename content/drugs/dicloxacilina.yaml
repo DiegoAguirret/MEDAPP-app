@@ -1,0 +1,89 @@
+id: dicloxacilina
+name: Dicloxacilina
+category: antibiotico
+synonyms: []
+atc: J01CF01
+presentations:
+  - id: susp-250-5
+    label: Suspensión 250 mg/5 mL
+    form: suspension
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: [Posipen, Dicloxal]
+  - id: cap-250
+    label: Cápsula 250 mg
+    form: capsula
+    mgPerUnit: 250
+    unit: capsula
+    step: 1
+    brandsPE: [Posipen, Dicloxal]
+  - id: cap-500
+    label: Cápsula 500 mg
+    form: capsula
+    mgPerUnit: 500
+    unit: capsula
+    step: 1
+    brandsPE: [Posipen, Dicloxal]
+rules:
+  - id: leve-moderada
+    indication: Infección leve a moderada por estafilococo (piel, partes blandas)
+    route: VO
+    ageMinDays: 29
+    weightMaxKg: 40
+    basis: mg/kg/day
+    amountMin: 12.5
+    amountMax: 25
+    intervalHours: 6
+    maxPerDoseMg: 250
+    maxPerDayMg: 1000
+    notes: >-
+      FNME — menores de 40 kg, 12.5 a 25 mg/kg/día cada 6 h; desde 40 kg, dosis de adulto (125 a
+      250 mg cada 6 h), que es el tope usado aquí.
+    sourceIds: [fnme-2008, pena-camarena]
+  - id: severa
+    indication: Infección severa por estafilococo
+    route: VO
+    ageMinDays: 29
+    weightMaxKg: 40
+    basis: mg/kg/day
+    amountMin: 50
+    amountMax: 100
+    intervalHours: 6
+    maxPerDoseMg: 500
+    maxPerDayMg: 2000
+    notes: >-
+      FNME — 50 a 100 mg/kg/día cada 6 h; adulto con infección severa, 250 a 500 mg cada 6 h. Libro
+      Peña Camarena — 25 a 100 mg/kg/día, dosis máxima 2 g/día (tope usado aquí).
+    countryNotes:
+      - country: PE
+        text: El FNME cita 6 g/día como dosis máxima de adulto; el libro de Peña Camarena limita a 2 g/día en niños.
+        sourceIds: [fnme-2008, pena-camarena]
+    sourceIds: [fnme-2008, pena-camarena]
+warnings:
+  - Uso en neonatos no recomendado (FNME).
+  - Los alimentos disminuyen su absorción (FNME).
+contraindications:
+  - Hipersensibilidad a la dicloxacilina o a otras penicilinas.
+diagnoses: [impétigo, celulitis, absceso, infección de piel, estafilococo, forúnculo]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: leve-moderada
+    presentationId: susp-250-5
+    weightKg: 16
+    ageDays: 1460
+    expect: { mgPerDose: 50, amount: 1, unit: mL }
+  - ruleId: severa
+    presentationId: susp-250-5
+    weightKg: 16
+    ageDays: 1460
+    expect: { mgPerDose: 200, amount: 4, unit: mL }
+  - ruleId: severa
+    presentationId: susp-250-5
+    weightKg: 36
+    ageDays: 4015
+    expect: { mgPerDose: 450, amount: 9, unit: mL }

@@ -1,0 +1,80 @@
+id: albendazol
+name: Albendazol
+category: antiparasitario
+synonyms: []
+atc: P02CA03
+presentations:
+  - id: susp-100-5
+    label: Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg)
+    form: suspension
+    mgPerUnit: 20
+    unit: mL
+    step: 0.5
+    brandsPE: [Zentel]
+  - id: tab-200
+    label: Tableta 200 mg
+    form: tableta
+    mgPerUnit: 200
+    unit: tableta
+    step: 1
+    brandsPE: [Zentel]
+rules:
+  - id: nematodos-2-anos-o-mas
+    indication: Nemátodos intestinales (2 años o más)
+    route: VO
+    ageMinDays: 730
+    basis: fixed_by_age
+    amountMin: 400
+    amountMax: 400
+    usual: 400
+    intervalHours: 24
+    maxPerDoseMg: 400
+    maxPerDayMg: 400
+    durationText: dosis única
+    notes: FNME — mayores de 2 años, 400 mg en dosis única. Libro Peña Camarena — igual.
+    sourceIds: [fnme-2008, pena-camarena]
+  - id: nematodos-1-2-anos
+    indication: Nemátodos intestinales (1 a 2 años)
+    route: VO
+    ageMinDays: 365
+    ageMaxDays: 729
+    basis: fixed_by_age
+    amountMin: 200
+    amountMax: 200
+    usual: 200
+    intervalHours: 24
+    maxPerDoseMg: 200
+    maxPerDayMg: 200
+    durationText: dosis única
+    notes: >-
+      FNME — menores de 2 años, 200 mg en dosis única; en helmintiasis mixta, 200 mg/día por 3 días.
+      El FNME no fija una edad mínima: la app calcula desde el año de edad.
+    sourceIds: [fnme-2008, pena-camarena]
+warnings:
+  - Para hidatidosis, neurocisticercosis y estrongiloidiasis las pautas son otras (15 mg/kg/día); no se calculan aquí.
+contraindications:
+  - Hipersensibilidad al albendazol o a otros benzimidazoles.
+  - Encefalitis aguda o severa por neurocisticercosis.
+  - Embarazo.
+diagnoses: [parásitos, ascaris, oxiuros, tricocefalo, uncinarias, helmintiasis, desparasitación]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: nematodos-2-anos-o-mas
+    presentationId: susp-100-5
+    weightKg: 14
+    ageDays: 1095
+    expect: { mgPerDose: 400, amount: 20, unit: mL }
+  - ruleId: nematodos-2-anos-o-mas
+    presentationId: tab-200
+    weightKg: 25
+    ageDays: 2920
+    expect: { mgPerDose: 400, amount: 2, unit: tableta }
+  - ruleId: nematodos-1-2-anos
+    presentationId: susp-100-5
+    weightKg: 10
+    ageDays: 500
+    expect: { mgPerDose: 200, amount: 10, unit: mL }

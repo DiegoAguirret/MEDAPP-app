@@ -22,14 +22,14 @@ describe('Home', () => {
   it('shows categories with their drug counts', async () => {
     await render(<Home drugs={drugs} recalled={new Set()} {...handlers()} />);
     expect(screen.getByText('Antibióticos')).toBeOnTheScreen();
-    expect(screen.getByLabelText('Antibióticos, 4 fármacos')).toBeOnTheScreen();
+    expect(screen.getByLabelText('Antibióticos, 7 fármacos')).toBeOnTheScreen();
     expect(screen.getByLabelText('Analgésicos y antipiréticos, 3 fármacos')).toBeOnTheScreen();
   });
 
   it('opens a category', async () => {
     const h = handlers();
     await render(<Home drugs={drugs} recalled={new Set()} {...h} />);
-    await fireEvent.press(screen.getByLabelText('Antibióticos, 4 fármacos'));
+    await fireEvent.press(screen.getByLabelText('Antibióticos, 7 fármacos'));
     expect(h.onOpenCategory).toHaveBeenCalledWith('antibiotico');
   });
 
