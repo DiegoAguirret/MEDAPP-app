@@ -25,10 +25,24 @@ presentations:
     step: 1
     brandsPE: []
 rules:
+  - id: menores-3-meses
+    indication: Infecciones susceptibles en lactantes menores de 3 meses
+    route: VO
+    ageMinDays: 29
+    ageMaxDays: 89
+    basis: mg/kg/day
+    amountMin: 20
+    amountMax: 30
+    usual: 30
+    intervalHours: 12
+    maxPerDoseMg: 500
+    maxPerDayMg: 1000
+    notes: Función renal inmadura; no superar 30 mg/kg/día. Valorar indicación de manejo hospitalario.
+    sourceIds: [fda-label, harriet-lane-23]
   - id: oma-dosis-alta
     indication: Otitis media aguda (dosis alta)
     route: VO
-    ageMinDays: 29
+    ageMinDays: 180
     basis: mg/kg/day
     amountMin: 80
     amountMax: 90
@@ -41,7 +55,7 @@ rules:
   - id: faringitis-estreptococica
     indication: Faringoamigdalitis estreptocócica
     route: VO
-    ageMinDays: 29
+    ageMinDays: 1095
     basis: mg/kg/day
     amountMin: 50
     amountMax: 50
@@ -61,6 +75,11 @@ review:
   author: Diego
   reviewers: []
 testCases:
+  - ruleId: menores-3-meses
+    presentationId: susp-250-5
+    weightKg: 4
+    ageDays: 40
+    expect: { mgPerDose: 60, amount: 1.2, unit: mL }
   - ruleId: oma-dosis-alta
     presentationId: susp-250-5
     weightKg: 12

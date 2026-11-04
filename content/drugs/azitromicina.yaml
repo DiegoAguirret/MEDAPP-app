@@ -15,7 +15,7 @@ presentations:
     form: tableta
     mgPerUnit: 500
     unit: tableta
-    step: 0.5
+    step: 1
     brandsPE: []
 rules:
   - id: esquema-5-dias-dia-1
