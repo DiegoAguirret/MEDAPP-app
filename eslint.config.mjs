@@ -11,4 +11,5 @@ export default tseslint.config(
     },
   },
   { files: ['tools/**/src/cli.ts'], rules: { 'no-console': 'off' } },
+  { files: ['**/test/**/*.ts'], rules: { '@typescript-eslint/no-non-null-assertion': 'off' } },
 );
