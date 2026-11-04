@@ -10,3 +10,4 @@ export type {
   Patient,
   Warning,
 } from './types.ts';
+export { bsaMosteller, dehydrationPlan, hollidaySegar, type FluidPhase } from './fluids.ts';
