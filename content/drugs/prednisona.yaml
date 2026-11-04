@@ -1,0 +1,73 @@
+id: prednisona
+name: Prednisona
+category: corticoide
+synonyms: []
+atc: H02AB07
+presentations:
+  - id: jarabe-5-5
+    label: Jarabe 5 mg/5 mL
+    form: jarabe
+    mgPerUnit: 1
+    unit: mL
+    step: 0.5
+    brandsPE: []
+  - id: tab-5
+    label: Tableta 5 mg
+    form: tableta
+    mgPerUnit: 5
+    unit: tableta
+    step: 0.5
+    brandsPE: [Meticorten]
+  - id: tab-20
+    label: Tableta 20 mg
+    form: tableta
+    mgPerUnit: 20
+    unit: tableta
+    step: 0.5
+    brandsPE: [Meticorten]
+rules:
+  - id: antiinflamatorio
+    indication: Uso antiinflamatorio o inmunosupresor (dosis usual)
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 1
+    amountMax: 2
+    intervalHours: 24
+    maxPerDoseMg: 80
+    maxPerDayMg: 80
+    notes: >-
+      Libro Peña Camarena — 1 a 2 mg/kg/día (o 60 mg/m²/día) cada 12 a 24 h; dosis máxima 80
+      mg/día. Aquí se calcula en una toma diaria. FNME — no da dosis pediátrica; presentaciones
+      tableta 5 mg y jarabe 5 mg/5 mL.
+    countryNotes:
+      - country: INT
+        text: >-
+          GINA 2025 — en crisis asmática se usa prednisolona 1–2 mg/kg/día con topes de 20 a 40 mg
+          según la edad; usa la ficha de prednisolona para el asma.
+        sourceIds: [gina-2025]
+    sourceIds: [pena-camarena, fnme-2008]
+warnings:
+  - Para crisis asmática usa la ficha de prednisolona, que aplica los topes de la GINA.
+contraindications:
+  - Infección sistémica sin tratamiento antimicrobiano específico.
+  - Infección fúngica sistémica.
+  - Vacunas de virus vivos durante dosis inmunosupresoras.
+  - Hipersensibilidad a los componentes.
+diagnoses: [corticoide, inflamación, inmunosupresión]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: antiinflamatorio
+    presentationId: jarabe-5-5
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 10, amount: 10, unit: mL }
+  - ruleId: antiinflamatorio
+    presentationId: tab-20
+    weightKg: 50
+    ageDays: 4745
+    expect: { mgPerDose: 50, amount: 2.5, unit: tableta }

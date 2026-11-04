@@ -1,0 +1,83 @@
+id: ceftriaxona
+name: Ceftriaxona
+category: antibiotico
+synonyms: [ceftriaxone]
+atc: J01DD04
+presentations:
+  - id: vial-1g-iv
+    label: Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL)
+    form: ampolla
+    mgPerUnit: 100
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: usual-iv
+    indication: Infección bacteriana (dosis usual, IV)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 50
+    amountMax: 75
+    usual: 75
+    intervalHours: 24
+    maxPerDoseMg: 2000
+    maxPerDayMg: 4000
+    notes: >-
+      FNME — neonatos y niños 50 a 75 mg/kg/día cada 12 a 24 h, iniciar con 75 mg/kg/día; dosis
+      máxima en niños 4 g/día; adulto, 1 a 2 g por dosis (tope por dosis usado aquí). Pasar IV
+      directo en 2 a 4 min o en infusión de 10 a 30 min.
+    presentationIds: [vial-1g-iv]
+    countryNotes:
+      - country: INT
+        text: OMS (Pocket Book 2013) — 80 mg/kg/día IV en una dosis, en infusión de 30 min o inyección de 3 min.
+        sourceIds: [who-pocket-2013]
+    sourceIds: [fnme-2008, who-pocket-2013]
+  - id: meningitis-iv
+    indication: Meningitis bacteriana (IV)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 50
+    amountMax: 50
+    usual: 50
+    intervalHours: 12
+    maxPerDoseMg: 2000
+    maxPerDayMg: 4000
+    durationText: 7 a 21 días según el germen
+    notes: >-
+      OMS — 50 mg/kg cada 12 h. FNME — más de 45 kg, 1 a 2 g cada 12 h (tope por dosis usado
+      aquí); dosis máxima en niños 4 g/día.
+    presentationIds: [vial-1g-iv]
+    countryNotes:
+      - country: INT
+        text: La OMS fija como máximo 4 g por dosis; el FNME, 1 a 2 g cada 12 h en mayores de 45 kg. La app usa el tope del FNME.
+        sourceIds: [who-pocket-2013, fnme-2008]
+    sourceIds: [who-pocket-2013, fnme-2008]
+warnings:
+  - Por vía IM, el FNME limita a 1 g por sitio de aplicación. La concentración IM depende del diluyente; usa «Personalizar concentración».
+  - En insuficiencia renal grave se reajusta la dosis (FNME).
+contraindications:
+  - Hipersensibilidad a la ceftriaxona, a otras cefalosporinas o a las penicilinas.
+diagnoses: [neumonía, meningitis, sepsis, infección grave]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: usual-iv
+    presentationId: vial-1g-iv
+    weightKg: 10
+    ageDays: 400
+    expect: { mgPerDose: 750, amount: 7.5, unit: mL }
+  - ruleId: meningitis-iv
+    presentationId: vial-1g-iv
+    weightKg: 10
+    ageDays: 400
+    expect: { mgPerDose: 500, amount: 5, unit: mL }
+  - ruleId: meningitis-iv
+    presentationId: vial-1g-iv
+    weightKg: 50
+    ageDays: 4745
+    expect: { mgPerDose: 2000, amount: 20, unit: mL }

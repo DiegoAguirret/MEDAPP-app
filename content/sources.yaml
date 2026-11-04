@@ -186,3 +186,52 @@
   url: https://cima.aemps.es/cima/dochtml/ft/64111/FT_64111.html
   kind: regulador
   country: ES
+- id: minsa-nts213-2024
+  title: NTS N.° 213-MINSA/DGIESP-2024, Prevención y control de la anemia por deficiencia de hierro (aprobada por RM N.° 251-2024-MINSA)
+  publisher: Ministerio de Salud del Perú
+  year: 2024
+  url: https://cdn.www.gob.pe/uploads/document/file/6166763/5440166-resolucion-ministerial-n-251-2024-minsa.pdf
+  kind: norma-peru
+  country: PE
+- id: fda-acyclovir
+  title: Acyclovir tablets — prescribing information (FDA, DailyMed set 0910335b-6796-459f-b97e-d7ef5439a060)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=0910335b-6796-459f-b97e-d7ef5439a060
+  kind: regulador
+  country: US
+- id: fda-fluconazole
+  title: Fluconazole tablets — prescribing information (FDA, DailyMed set 01df20c4-7b94-044e-e063-6394a90a406a)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=01df20c4-7b94-044e-e063-6394a90a406a
+  kind: regulador
+  country: US
+- id: fda-ivermectin
+  title: Ivermectin tablets — prescribing information (FDA, DailyMed set 104a5045-94b1-4022-bc49-719521f30f0d)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=104a5045-94b1-4022-bc49-719521f30f0d
+  kind: regulador
+  country: US
+- id: fda-nitazoxanide
+  title: Alinia (nitazoxanide) tablets and oral suspension — prescribing information (FDA, DailyMed set 56b1575a-dff4-4c5a-a159-2f858e7a0cb8)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2024
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=56b1575a-dff4-4c5a-a159-2f858e7a0cb8
+  kind: regulador
+  country: US
+- id: fda-nitrofurantoin
+  title: Nitrofurantoin oral suspension 25 mg/5 mL — prescribing information (FDA, DailyMed set 04af8b73-7e15-7da8-e063-6294a90af284)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2024
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=04af8b73-7e15-7da8-e063-6294a90af284
+  kind: regulador
+  country: US
+- id: fda-dimenhydrinate-otc
+  title: Dimenhydrinate 50 mg tablets — Drug Facts (FDA, DailyMed set 00a327c6-6b86-4702-8c04-55c405c1404c)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=00a327c6-6b86-4702-8c04-55c405c1404c
+  kind: regulador
+  country: US

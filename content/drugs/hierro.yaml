@@ -1,0 +1,158 @@
+id: hierro
+name: Hierro (sulfato ferroso o polimaltosado)
+category: vitamina
+synonyms: [sulfato ferroso, complejo polimaltosado férrico, hierro polimaltosado, fierro]
+atc: B03AA07
+presentations:
+  - id: gotas-sf
+    label: Sulfato ferroso gotas (1 gota = 1.25 mg de hierro elemental)
+    form: gotas
+    mgPerUnit: 1.25
+    unit: gota
+    step: 1
+    brandsPE: []
+  - id: gotas-pmf
+    label: Complejo polimaltosado férrico gotas (1 gota = 2.5 mg de hierro elemental)
+    form: gotas
+    mgPerUnit: 2.5
+    unit: gota
+    step: 1
+    brandsPE: []
+  - id: jarabe-sf
+    label: Sulfato ferroso jarabe 15 mg/5 mL de hierro elemental
+    form: jarabe
+    mgPerUnit: 3
+    unit: mL
+    step: 0.5
+    brandsPE: []
+  - id: jarabe-pmf
+    label: Complejo polimaltosado férrico jarabe 50 mg/5 mL de hierro elemental
+    form: jarabe
+    mgPerUnit: 10
+    unit: mL
+    step: 0.5
+    brandsPE: []
+  - id: tab-sf-60
+    label: Sulfato ferroso tableta 60 mg de hierro elemental
+    form: tableta
+    mgPerUnit: 60
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: anemia-menor-6-meses
+    indication: Anemia por deficiencia de hierro (menor de 6 meses, a término y con buen peso al nacer)
+    route: VO
+    ageMinDays: 29
+    ageMaxDays: 179
+    basis: mg/kg/day
+    amountMin: 3
+    amountMax: 3
+    usual: 3
+    intervalHours: 24
+    maxPerDoseMg: 40
+    maxPerDayMg: 40
+    durationText: 6 meses continuos
+    notes: NTS 213-MINSA 2024 (Tabla 16) — 3 mg/kg/día de hierro elemental en gotas, diario, máximo 40 mg/día, por 6 meses.
+    presentationIds: [gotas-sf, gotas-pmf]
+    countryNotes:
+      - country: PE
+        text: >-
+          El FNME 2008 indicaba 6 mg/kg/día de 6 meses a 2 años y 3 mg/kg/día de 2 a 12 años, en 3
+          tomas. La NTS 213-MINSA 2024 vigente lo reemplaza por 3 mg/kg/día en una toma.
+        sourceIds: [fnme-2008, minsa-nts213-2024]
+    sourceIds: [minsa-nts213-2024]
+  - id: anemia-6-35-meses
+    indication: Anemia por deficiencia de hierro (6 a 35 meses)
+    route: VO
+    ageMinDays: 180
+    ageMaxDays: 1094
+    basis: mg/kg/day
+    amountMin: 3
+    amountMax: 3
+    usual: 3
+    intervalHours: 24
+    maxPerDoseMg: 70
+    maxPerDayMg: 70
+    durationText: 6 meses continuos
+    notes: NTS 213-MINSA 2024 (Tabla 17) — 3 mg/kg/día de hierro elemental en gotas o jarabe, diario, máximo 70 mg/día, por 6 meses.
+    presentationIds: [gotas-sf, gotas-pmf, jarabe-sf, jarabe-pmf]
+    countryNotes:
+      - country: PE
+        text: >-
+          El FNME 2008 indicaba 6 mg/kg/día de 6 meses a 2 años en 3 tomas; la NTS 213-MINSA 2024
+          vigente lo reemplaza por 3 mg/kg/día en una toma.
+        sourceIds: [fnme-2008, minsa-nts213-2024]
+    sourceIds: [minsa-nts213-2024]
+  - id: anemia-36-59-meses
+    indication: Anemia por deficiencia de hierro (36 a 59 meses)
+    route: VO
+    ageMinDays: 1095
+    ageMaxDays: 1824
+    basis: mg/kg/day
+    amountMin: 3
+    amountMax: 3
+    usual: 3
+    intervalHours: 24
+    maxPerDoseMg: 90
+    maxPerDayMg: 90
+    durationText: 6 meses continuos
+    notes: NTS 213-MINSA 2024 (Tabla 17) — 3 mg/kg/día de hierro elemental en jarabe, diario, máximo 90 mg/día, por 6 meses.
+    presentationIds: [jarabe-sf, jarabe-pmf]
+    sourceIds: [minsa-nts213-2024]
+  - id: anemia-5-11-anos
+    indication: Anemia por deficiencia de hierro (5 a 11 años)
+    route: VO
+    ageMinDays: 1825
+    ageMaxDays: 4379
+    basis: mg/kg/day
+    amountMin: 3
+    amountMax: 3
+    usual: 3
+    intervalHours: 24
+    maxPerDoseMg: 120
+    maxPerDayMg: 120
+    durationText: 6 meses continuos
+    notes: NTS 213-MINSA 2024 (Tabla 17) — 3 mg/kg/día de hierro elemental en jarabe o tabletas, diario, máximo 120 mg/día, por 6 meses.
+    presentationIds: [jarabe-sf, jarabe-pmf, tab-sf-60]
+    sourceIds: [minsa-nts213-2024]
+warnings:
+  - Todas las dosis son de hierro elemental, no de la sal; las concentraciones son las de la Tabla 3 de la NTS 213.
+  - Al terminar el tratamiento se pasa a la suplementación preventiva según la edad (NTS 213). Esa pauta no se calcula aquí.
+  - Los alimentos y la falta de ácido gástrico disminuyen su absorción (FNME).
+contraindications:
+  - Hipersensibilidad al sulfato ferroso.
+  - Anemia no ferropénica.
+  - Hemosiderosis o hemocromatosis.
+diagnoses: [anemia, anemia ferropénica, deficiencia de hierro]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: anemia-menor-6-meses
+    presentationId: gotas-sf
+    weightKg: 5
+    ageDays: 120
+    expect: { mgPerDose: 15, amount: 12, unit: gota }
+  - ruleId: anemia-6-35-meses
+    presentationId: jarabe-sf
+    weightKg: 10
+    ageDays: 400
+    expect: { mgPerDose: 30, amount: 10, unit: mL }
+  - ruleId: anemia-6-35-meses
+    presentationId: gotas-pmf
+    weightKg: 10
+    ageDays: 400
+    expect: { mgPerDose: 30, amount: 12, unit: gota }
+  - ruleId: anemia-36-59-meses
+    presentationId: jarabe-pmf
+    weightKg: 32
+    ageDays: 1500
+    expect: { mgPerDose: 90, amount: 9, unit: mL }
+  - ruleId: anemia-5-11-anos
+    presentationId: tab-sf-60
+    weightKg: 20
+    ageDays: 2555
+    expect: { mgPerDose: 60, amount: 1, unit: tableta }

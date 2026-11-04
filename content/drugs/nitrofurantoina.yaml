@@ -1,0 +1,74 @@
+id: nitrofurantoina
+name: Nitrofurantoína
+category: antibiotico
+synonyms: [nitrofurantoin]
+atc: J01XE01
+presentations:
+  - id: susp-25-5
+    label: Suspensión 25 mg/5 mL
+    form: suspension
+    mgPerUnit: 5
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-100
+    label: Tableta 100 mg
+    form: tableta
+    mgPerUnit: 100
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: itu-no-complicada
+    indication: Infección urinaria no complicada
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 5
+    amountMax: 7
+    intervalHours: 6
+    maxPerDoseMg: 100
+    maxPerDayMg: 400
+    durationText: 7 días
+    notes: >-
+      FNME y FDA — 5 a 7 mg/kg/día en 4 dosis, desde el mes de edad; FNME, por 7 días. Adultos,
+      50 a 100 mg 4 veces al día (tope usado aquí).
+    sourceIds: [fnme-2008, fda-nitrofurantoin]
+  - id: profilaxis
+    indication: Profilaxis de infección urinaria recurrente
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 1
+    amountMax: 1
+    usual: 1
+    intervalHours: 24
+    maxPerDoseMg: 100
+    maxPerDayMg: 100
+    notes: >-
+      FNME y FDA — 1 mg/kg/día en una dosis (o dividida en dos). Adultos, 50 a 100 mg al acostarse
+      (tope usado aquí).
+    sourceIds: [fnme-2008, fda-nitrofurantoin]
+warnings:
+  - No usar con depuración de creatinina menor de 60 mL/min (FNME).
+contraindications:
+  - Hipersensibilidad a la nitrofurantoína.
+  - Menores de 1 mes.
+  - Insuficiencia renal moderada a severa.
+diagnoses: [infección urinaria, itu, cistitis, profilaxis urinaria]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: itu-no-complicada
+    presentationId: susp-25-5
+    weightKg: 10
+    ageDays: 400
+    expect: { mgPerDose: 12.5, amount: 2.5, unit: mL }
+  - ruleId: profilaxis
+    presentationId: susp-25-5
+    weightKg: 15
+    ageDays: 1095
+    expect: { mgPerDose: 15, amount: 3, unit: mL }

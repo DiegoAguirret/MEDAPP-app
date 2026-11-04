@@ -1,0 +1,68 @@
+id: dimenhidrinato
+name: Dimenhidrinato
+category: gastrointestinal
+synonyms: [dimenhydrinate]
+atc: R06AA11
+presentations:
+  - id: tab-50
+    label: Tableta 50 mg
+    form: tableta
+    mgPerUnit: 50
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: mareo-2-5-anos
+    indication: Mareo del viajero, náuseas (2 a 5 años)
+    route: VO
+    ageMinDays: 730
+    ageMaxDays: 2189
+    basis: fixed_by_age
+    amountMin: 12.5
+    amountMax: 25
+    usual: 25
+    intervalHours: 8
+    maxPerDoseMg: 25
+    maxPerDayMg: 75
+    notes: >-
+      FDA — media tableta (25 mg) cada 6 a 8 h, sin pasar de 75 mg en 24 h; la primera dosis, 30 a
+      60 min antes del viaje. FNME — 12.5 a 25 mg. Aquí se calcula cada 8 h.
+    sourceIds: [fda-dimenhydrinate-otc, fnme-2008]
+  - id: mareo-6-11-anos
+    indication: Mareo del viajero, náuseas (6 a 11 años)
+    route: VO
+    ageMinDays: 2190
+    ageMaxDays: 4379
+    basis: fixed_by_age
+    amountMin: 25
+    amountMax: 50
+    intervalHours: 8
+    maxPerDoseMg: 50
+    maxPerDayMg: 150
+    notes: >-
+      FDA — media a una tableta (25 a 50 mg) cada 6 a 8 h, sin pasar de 150 mg en 24 h. FNME — 25 a
+      50 mg cada 6 a 8 h, máximo 150 mg/día. Aquí se calcula cada 8 h.
+    sourceIds: [fda-dimenhydrinate-otc, fnme-2008]
+warnings:
+  - Produce somnolencia.
+  - No se recomienda en neonatos prematuros ni a término (FNME).
+contraindications:
+  - Hipersensibilidad al dimenhidrinato.
+  - Neonatos.
+diagnoses: [mareo, náuseas, vómitos, cinetosis]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: mareo-2-5-anos
+    presentationId: tab-50
+    weightKg: 15
+    ageDays: 1460
+    expect: { mgPerDose: 25, amount: 0.5, unit: tableta }
+  - ruleId: mareo-6-11-anos
+    presentationId: tab-50
+    weightKg: 25
+    ageDays: 2920
+    expect: { mgPerDose: 25, amount: 0.5, unit: tableta }

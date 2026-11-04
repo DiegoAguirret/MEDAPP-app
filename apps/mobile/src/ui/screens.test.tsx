@@ -11,6 +11,7 @@ import { Onboarding } from './Onboarding';
 
 const bundle = JSON.parse(BUNDLE_JSON) as Bundle;
 const drugs = bundle.drugs as Drug[];
+const antibiotics = `Antibióticos, ${drugs.filter((d) => d.category === 'antibiotico').length} fármacos`;
 
 describe('Home', () => {
   const handlers = () => ({
@@ -22,14 +23,14 @@ describe('Home', () => {
   it('shows categories with their drug counts', async () => {
     await render(<Home drugs={drugs} recalled={new Set()} {...handlers()} />);
     expect(screen.getByText('Antibióticos')).toBeOnTheScreen();
-    expect(screen.getByLabelText('Antibióticos, 7 fármacos')).toBeOnTheScreen();
+    expect(screen.getByLabelText(antibiotics)).toBeOnTheScreen();
     expect(screen.getByLabelText('Analgésicos y antipiréticos, 3 fármacos')).toBeOnTheScreen();
   });
 
   it('opens a category', async () => {
     const h = handlers();
     await render(<Home drugs={drugs} recalled={new Set()} {...h} />);
-    await fireEvent.press(screen.getByLabelText('Antibióticos, 7 fármacos'));
+    await fireEvent.press(screen.getByLabelText(antibiotics));
     expect(h.onOpenCategory).toHaveBeenCalledWith('antibiotico');
   });
 

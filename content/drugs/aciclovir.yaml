@@ -1,0 +1,67 @@
+id: aciclovir
+name: Aciclovir
+category: antiviral
+synonyms: [acyclovir]
+atc: J05AB01
+presentations:
+  - id: susp-200-5
+    label: Suspensión 200 mg/5 mL
+    form: suspension
+    mgPerUnit: 40
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-200
+    label: Tableta 200 mg
+    form: tableta
+    mgPerUnit: 200
+    unit: tableta
+    step: 1
+    brandsPE: []
+  - id: tab-400
+    label: Tableta 400 mg
+    form: tableta
+    mgPerUnit: 400
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: varicela
+    indication: Varicela (2 años o más)
+    route: VO
+    ageMinDays: 730
+    basis: mg/kg/dose
+    amountMin: 20
+    amountMax: 20
+    usual: 20
+    intervalHours: 6
+    maxPerDoseMg: 800
+    maxPerDayMg: 3200
+    durationText: 5 días
+    notes: >-
+      FDA — 20 mg/kg por dosis 4 veces al día (80 mg/kg/día) por 5 días; desde 40 kg, dosis de
+      adulto, 800 mg 4 veces al día (tope usado aquí). FNME — 20 mg/kg en mayores de 2 años y menos
+      de 40 kg por 5 días.
+    sourceIds: [fda-acyclovir, fnme-2008]
+warnings:
+  - Por vía oral, la seguridad en menores de 2 años no está establecida (FDA).
+  - En daño renal se reduce la dosis o se alarga el intervalo según la depuración de creatinina (FNME).
+contraindications:
+  - Hipersensibilidad al aciclovir o al valaciclovir.
+diagnoses: [varicela, herpes, herpes zoster, virus]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: varicela
+    presentationId: susp-200-5
+    weightKg: 15
+    ageDays: 1095
+    expect: { mgPerDose: 300, amount: 7.5, unit: mL }
+  - ruleId: varicela
+    presentationId: tab-400
+    weightKg: 45
+    ageDays: 4380
+    expect: { mgPerDose: 800, amount: 2, unit: tableta }

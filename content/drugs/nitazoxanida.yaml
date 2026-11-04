@@ -1,0 +1,94 @@
+id: nitazoxanida
+name: Nitazoxanida
+category: antiparasitario
+synonyms: [nitazoxanide]
+atc: P01AX11
+presentations:
+  - id: susp-100-5
+    label: Suspensión 100 mg/5 mL
+    form: suspension
+    mgPerUnit: 20
+    unit: mL
+    step: 0.5
+    brandsPE: []
+  - id: tab-500
+    label: Tableta 500 mg
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: diarrea-1-3-anos
+    indication: Diarrea por Giardia o Cryptosporidium (1 a 3 años)
+    route: VO
+    ageMinDays: 365
+    ageMaxDays: 1459
+    basis: fixed_by_age
+    amountMin: 100
+    amountMax: 100
+    usual: 100
+    intervalHours: 12
+    maxPerDoseMg: 100
+    maxPerDayMg: 200
+    durationText: 3 días
+    notes: FDA — 5 mL de suspensión (100 mg) cada 12 h con alimentos por 3 días.
+    presentationIds: [susp-100-5]
+    sourceIds: [fda-nitazoxanide]
+  - id: diarrea-4-11-anos
+    indication: Diarrea por Giardia o Cryptosporidium (4 a 11 años)
+    route: VO
+    ageMinDays: 1460
+    ageMaxDays: 4379
+    basis: fixed_by_age
+    amountMin: 200
+    amountMax: 200
+    usual: 200
+    intervalHours: 12
+    maxPerDoseMg: 200
+    maxPerDayMg: 400
+    durationText: 3 días
+    notes: FDA — 10 mL de suspensión (200 mg) cada 12 h con alimentos por 3 días. La tableta no se usa hasta los 11 años.
+    presentationIds: [susp-100-5]
+    sourceIds: [fda-nitazoxanide]
+  - id: diarrea-12-anos-o-mas
+    indication: Diarrea por Giardia o Cryptosporidium (12 años o más)
+    route: VO
+    ageMinDays: 4380
+    basis: fixed_by_age
+    amountMin: 500
+    amountMax: 500
+    usual: 500
+    intervalHours: 12
+    maxPerDoseMg: 500
+    maxPerDayMg: 1000
+    durationText: 3 días
+    notes: FDA — una tableta de 500 mg (o 25 mL de suspensión) cada 12 h con alimentos por 3 días.
+    sourceIds: [fda-nitazoxanide]
+warnings:
+  - Dar con alimentos (FDA).
+  - No figura en el FNME 2008; la pauta es la de la ficha FDA.
+contraindications:
+  - Hipersensibilidad a la nitazoxanida o a otro componente de la fórmula.
+diagnoses: [giardiasis, criptosporidiosis, diarrea, parásitos]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: diarrea-1-3-anos
+    presentationId: susp-100-5
+    weightKg: 12
+    ageDays: 730
+    expect: { mgPerDose: 100, amount: 5, unit: mL }
+  - ruleId: diarrea-4-11-anos
+    presentationId: susp-100-5
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 200, amount: 10, unit: mL }
+  - ruleId: diarrea-12-anos-o-mas
+    presentationId: tab-500
+    weightKg: 45
+    ageDays: 4745
+    expect: { mgPerDose: 500, amount: 1, unit: tableta }

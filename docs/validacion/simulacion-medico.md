@@ -5,16 +5,49 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **1800** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **1031**. Fuera del rango de edad de la regla: 769 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 1031/1031 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 1031/1031.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.43 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **2466** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **1372**. Fuera del rango de edad de la regla: 1094 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 1372/1372 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 1372/1372.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.49 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
 | Fármaco | Regla | Presentación | Paciente | mg manual | mg app | Cantidad exacta | Cantidad app | Resultado |
 |---|---|---|---|---|---|---|---|---|
+| aciclovir | varicela | Suspensión 200 mg/5 mL | 2 años (12.2 kg) | 244 | 244 | 6.1 | 6.1 mL | ✅  |
+| aciclovir | varicela | Suspensión 200 mg/5 mL | 3 años (14.3 kg) | 286 | 286 | 7.15 | 7.2 mL | ✅  |
+| aciclovir | varicela | Suspensión 200 mg/5 mL | 4 años (16.3 kg) | 326 | 326 | 8.15 | 8.2 mL | ✅  |
+| aciclovir | varicela | Suspensión 200 mg/5 mL | 5 años (18.3 kg) | 366 | 366 | 9.15 | 9.2 mL | ✅  |
+| aciclovir | varicela | Suspensión 200 mg/5 mL | 6 años (20.5 kg) | 410 | 410 | 10.25 | 10.3 mL | ✅  |
+| aciclovir | varicela | Suspensión 200 mg/5 mL | 8 años (25.6 kg) | 512 | 512 | 12.8 | 12.8 mL | ✅  |
+| aciclovir | varicela | Suspensión 200 mg/5 mL | 10 años (32 kg) | 640 | 640 | 16 | 16 mL | ✅  |
+| aciclovir | varicela | Suspensión 200 mg/5 mL | 12 años (40 kg) | 800 | 800 | 20 | 20 mL | ✅  |
+| aciclovir | varicela | Suspensión 200 mg/5 mL | 14 años (50 kg) | 800 | 800 | 20 | 20 mL | ✅ tope aplicado |
+| aciclovir | varicela | Suspensión 200 mg/5 mL | 16 años (58 kg) | 800 | 800 | 20 | 20 mL | ✅ tope aplicado |
+| aciclovir | varicela | Suspensión 200 mg/5 mL | 17 años, obeso (95 kg) | 800 | 800 | 20 | 20 mL | ✅ tope aplicado |
+| aciclovir | varicela | Tableta 200 mg | 2 años (12.2 kg) | 244 | 244 | 1.22 | 1.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| aciclovir | varicela | Tableta 200 mg | 3 años (14.3 kg) | 286 | 286 | 1.43 | 1.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| aciclovir | varicela | Tableta 200 mg | 4 años (16.3 kg) | 326 | 326 | 1.63 | 1.63 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| aciclovir | varicela | Tableta 200 mg | 5 años (18.3 kg) | 366 | 366 | 1.83 | 1.83 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| aciclovir | varicela | Tableta 200 mg | 6 años (20.5 kg) | 410 | 410 | 2.05 | 2 tableta | ✅  |
+| aciclovir | varicela | Tableta 200 mg | 8 años (25.6 kg) | 512 | 512 | 2.56 | 2.56 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| aciclovir | varicela | Tableta 200 mg | 10 años (32 kg) | 640 | 640 | 3.2 | 3.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| aciclovir | varicela | Tableta 200 mg | 12 años (40 kg) | 800 | 800 | 4 | 4 tableta | ✅  |
+| aciclovir | varicela | Tableta 200 mg | 14 años (50 kg) | 800 | 800 | 4 | 4 tableta | ✅ tope aplicado |
+| aciclovir | varicela | Tableta 200 mg | 16 años (58 kg) | 800 | 800 | 4 | 4 tableta | ✅ tope aplicado |
+| aciclovir | varicela | Tableta 200 mg | 17 años, obeso (95 kg) | 800 | 800 | 4 | 4 tableta | ✅ tope aplicado |
+| aciclovir | varicela | Tableta 400 mg | 2 años (12.2 kg) | 244 | 244 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| aciclovir | varicela | Tableta 400 mg | 3 años (14.3 kg) | 286 | 286 | 0.715 | 0.71 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| aciclovir | varicela | Tableta 400 mg | 4 años (16.3 kg) | 326 | 326 | 0.815 | 0.81 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| aciclovir | varicela | Tableta 400 mg | 5 años (18.3 kg) | 366 | 366 | 0.915 | 0.92 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| aciclovir | varicela | Tableta 400 mg | 6 años (20.5 kg) | 410 | 410 | 1.025 | 1 tableta | ✅  |
+| aciclovir | varicela | Tableta 400 mg | 8 años (25.6 kg) | 512 | 512 | 1.28 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| aciclovir | varicela | Tableta 400 mg | 10 años (32 kg) | 640 | 640 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| aciclovir | varicela | Tableta 400 mg | 12 años (40 kg) | 800 | 800 | 2 | 2 tableta | ✅  |
+| aciclovir | varicela | Tableta 400 mg | 14 años (50 kg) | 800 | 800 | 2 | 2 tableta | ✅ tope aplicado |
+| aciclovir | varicela | Tableta 400 mg | 16 años (58 kg) | 800 | 800 | 2 | 2 tableta | ✅ tope aplicado |
+| aciclovir | varicela | Tableta 400 mg | 17 años, obeso (95 kg) | 800 | 800 | 2 | 2 tableta | ✅ tope aplicado |
 | albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 2 años (12.2 kg) | 400 | 400 | 20 | 20 mL | ✅  |
 | albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 3 años (14.3 kg) | 400 | 400 | 20 | 20 mL | ✅  |
 | albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 4 años (16.3 kg) | 400 | 400 | 20 | 20 mL | ✅  |
@@ -235,6 +268,42 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | amoxicilina | faringitis-estreptococica | Tableta 500 mg | 14 años (50 kg) | 1000 | 1000 | 2 | 2 tableta | ✅ tope aplicado |
 | amoxicilina | faringitis-estreptococica | Tableta 500 mg | 16 años (58 kg) | 1000 | 1000 | 2 | 2 tableta | ✅ tope aplicado |
 | amoxicilina | faringitis-estreptococica | Tableta 500 mg | 17 años, obeso (95 kg) | 1000 | 1000 | 2 | 2 tableta | ✅ tope aplicado |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 1 mes (4.2 kg) | 210 | 210 | 1.05 | 1.1 mL | ✅  |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 2 meses (5.1 kg) | 255 | 255 | 1.275 | 1.3 mL | ✅  |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 4 meses (6.4 kg) | 320 | 320 | 1.6 | 1.6 mL | ✅  |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 6 meses (7.6 kg) | 380 | 380 | 1.9 | 1.9 mL | ✅  |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 9 meses (8.6 kg) | 430 | 430 | 2.15 | 2.2 mL | ✅  |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 1 año (9.6 kg) | 480 | 480 | 2.4 | 2.4 mL | ✅  |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 18 meses (10.9 kg) | 545 | 545 | 2.725 | 2.7 mL | ✅  |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 2 años (12.2 kg) | 610 | 610 | 3.05 | 3.1 mL | ✅  |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 3 años (14.3 kg) | 715 | 715 | 3.575 | 3.6 mL | ✅  |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 4 años (16.3 kg) | 815 | 815 | 4.075 | 4.1 mL | ✅  |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 5 años (18.3 kg) | 915 | 915 | 4.575 | 4.6 mL | ✅  |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 6 años (20.5 kg) | 1025 | 1025 | 5.125 | 5.1 mL | ✅  |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 8 años (25.6 kg) | 1280 | 1280 | 6.4 | 6.4 mL | ✅  |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 10 años (32 kg) | 1600 | 1600 | 8 | 8 mL | ✅  |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 12 años (40 kg) | 2000 | 2000 | 10 | 10 mL | ✅  |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 14 años (50 kg) | 2000 | 2000 | 10 | 10 mL | ✅ tope aplicado |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 16 años (58 kg) | 2000 | 2000 | 10 | 10 mL | ✅ tope aplicado |
+| ampicilina | moderada-severa-iv | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 17 años, obeso (95 kg) | 2000 | 2000 | 10 | 10 mL | ✅ tope aplicado |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 1 mes (4.2 kg) | 210 | 210 | 1.05 | 1.1 mL | ✅  |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 2 meses (5.1 kg) | 255 | 255 | 1.275 | 1.3 mL | ✅  |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 4 meses (6.4 kg) | 320 | 320 | 1.6 | 1.6 mL | ✅  |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 6 meses (7.6 kg) | 380 | 380 | 1.9 | 1.9 mL | ✅  |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 9 meses (8.6 kg) | 430 | 430 | 2.15 | 2.2 mL | ✅  |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 1 año (9.6 kg) | 480 | 480 | 2.4 | 2.4 mL | ✅  |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 18 meses (10.9 kg) | 545 | 545 | 2.725 | 2.7 mL | ✅  |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 2 años (12.2 kg) | 610 | 610 | 3.05 | 3.1 mL | ✅  |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 3 años (14.3 kg) | 715 | 715 | 3.575 | 3.6 mL | ✅  |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 4 años (16.3 kg) | 815 | 815 | 4.075 | 4.1 mL | ✅  |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 5 años (18.3 kg) | 915 | 915 | 4.575 | 4.6 mL | ✅  |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 6 años (20.5 kg) | 1025 | 1025 | 5.125 | 5.1 mL | ✅  |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 8 años (25.6 kg) | 1280 | 1280 | 6.4 | 6.4 mL | ✅  |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 10 años (32 kg) | 1600 | 1600 | 8 | 8 mL | ✅  |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 12 años (40 kg) | 2000 | 2000 | 10 | 10 mL | ✅  |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 14 años (50 kg) | 2000 | 2000 | 10 | 10 mL | ✅ tope aplicado |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 16 años (58 kg) | 2000 | 2000 | 10 | 10 mL | ✅ tope aplicado |
+| ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 17 años, obeso (95 kg) | 2000 | 2000 | 10 | 10 mL | ✅ tope aplicado |
 | azitromicina | esquema-3-dias | Suspensión 200 mg/5 mL | 6 meses (7.6 kg) | 76 | 76 | 1.9 | 1.9 mL | ✅  |
 | azitromicina | esquema-3-dias | Suspensión 200 mg/5 mL | 9 meses (8.6 kg) | 86 | 86 | 2.15 | 2.2 mL | ✅  |
 | azitromicina | esquema-3-dias | Suspensión 200 mg/5 mL | 1 año (9.6 kg) | 96 | 96 | 2.4 | 2.4 mL | ✅  |
@@ -399,6 +468,42 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | cefalexina | infecciones-graves | Cápsula 500 mg | 14 años (50 kg) | 750 | 750 | 1.5 | 1.5 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cefalexina | infecciones-graves | Cápsula 500 mg | 16 años (58 kg) | 750 | 750 | 1.5 | 1.5 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cefalexina | infecciones-graves | Cápsula 500 mg | 17 años, obeso (95 kg) | 750 | 750 | 1.5 | 1.5 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 1 mes (4.2 kg) | 315 | 315 | 3.15 | 3.2 mL | ✅  |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 2 meses (5.1 kg) | 382.5 | 382.5 | 3.825 | 3.8 mL | ✅  |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 4 meses (6.4 kg) | 480 | 480 | 4.8 | 4.8 mL | ✅  |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 6 meses (7.6 kg) | 570 | 570 | 5.7 | 5.7 mL | ✅  |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 9 meses (8.6 kg) | 645 | 645 | 6.45 | 6.5 mL | ✅  |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 1 año (9.6 kg) | 720 | 720 | 7.2 | 7.2 mL | ✅  |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 18 meses (10.9 kg) | 817.5 | 817.5 | 8.175 | 8.2 mL | ✅  |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 2 años (12.2 kg) | 915 | 915 | 9.15 | 9.2 mL | ✅  |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 3 años (14.3 kg) | 1072.5 | 1072.5 | 10.725 | 10.7 mL | ✅  |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 4 años (16.3 kg) | 1222.5 | 1222.5 | 12.225 | 12.2 mL | ✅  |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 5 años (18.3 kg) | 1372.5 | 1372.5 | 13.725 | 13.7 mL | ✅  |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 6 años (20.5 kg) | 1537.5 | 1537.5 | 15.375 | 15.4 mL | ✅  |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 8 años (25.6 kg) | 1920 | 1920 | 19.2 | 19.2 mL | ✅  |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 10 años (32 kg) | 2000 | 2000 | 20 | 20 mL | ✅ tope aplicado |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 12 años (40 kg) | 2000 | 2000 | 20 | 20 mL | ✅ tope aplicado |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 14 años (50 kg) | 2000 | 2000 | 20 | 20 mL | ✅ tope aplicado |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 16 años (58 kg) | 2000 | 2000 | 20 | 20 mL | ✅ tope aplicado |
+| ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 17 años, obeso (95 kg) | 2000 | 2000 | 20 | 20 mL | ✅ tope aplicado |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 1 mes (4.2 kg) | 210 | 210 | 2.1 | 2.1 mL | ✅  |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 2 meses (5.1 kg) | 255 | 255 | 2.55 | 2.6 mL | ✅  |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 4 meses (6.4 kg) | 320 | 320 | 3.2 | 3.2 mL | ✅  |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 6 meses (7.6 kg) | 380 | 380 | 3.8 | 3.8 mL | ✅  |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 9 meses (8.6 kg) | 430 | 430 | 4.3 | 4.3 mL | ✅  |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 1 año (9.6 kg) | 480 | 480 | 4.8 | 4.8 mL | ✅  |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 18 meses (10.9 kg) | 545 | 545 | 5.45 | 5.5 mL | ✅  |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 2 años (12.2 kg) | 610 | 610 | 6.1 | 6.1 mL | ✅  |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 3 años (14.3 kg) | 715 | 715 | 7.15 | 7.2 mL | ✅  |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 4 años (16.3 kg) | 815 | 815 | 8.15 | 8.2 mL | ✅  |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 5 años (18.3 kg) | 915 | 915 | 9.15 | 9.2 mL | ✅  |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 6 años (20.5 kg) | 1025 | 1025 | 10.25 | 10.3 mL | ✅  |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 8 años (25.6 kg) | 1280 | 1280 | 12.8 | 12.8 mL | ✅  |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 10 años (32 kg) | 1600 | 1600 | 16 | 16 mL | ✅  |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 12 años (40 kg) | 2000 | 2000 | 20 | 20 mL | ✅  |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 14 años (50 kg) | 2000 | 2000 | 20 | 20 mL | ✅ tope aplicado |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 16 años (58 kg) | 2000 | 2000 | 20 | 20 mL | ✅ tope aplicado |
+| ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 17 años, obeso (95 kg) | 2000 | 2000 | 20 | 20 mL | ✅ tope aplicado |
 | cetirizina | alergia-6-23-meses | Solución oral 1 mg/mL (5 mg/5 mL) | 6 meses (7.6 kg) | 2.5 | 2.5 | 2.5 | 2.5 mL | ✅  |
 | cetirizina | alergia-6-23-meses | Solución oral 1 mg/mL (5 mg/5 mL) | 9 meses (8.6 kg) | 2.5 | 2.5 | 2.5 | 2.5 mL | ✅  |
 | cetirizina | alergia-6-23-meses | Solución oral 1 mg/mL (5 mg/5 mL) | 1 año (9.6 kg) | 2.5 | 2.5 | 2.5 | 2.5 mL | ✅  |
@@ -588,6 +693,13 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | dicloxacilina | severa | Cápsula 500 mg | 6 años (20.5 kg) | 256.25 | 256.25 | 0.512 | 0.51 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | dicloxacilina | severa | Cápsula 500 mg | 8 años (25.6 kg) | 320 | 320 | 0.64 | 0.64 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | dicloxacilina | severa | Cápsula 500 mg | 10 años (32 kg) | 400 | 400 | 0.8 | 0.8 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dimenhidrinato | mareo-2-5-anos | Tableta 50 mg | 2 años (12.2 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
+| dimenhidrinato | mareo-2-5-anos | Tableta 50 mg | 3 años (14.3 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
+| dimenhidrinato | mareo-2-5-anos | Tableta 50 mg | 4 años (16.3 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
+| dimenhidrinato | mareo-2-5-anos | Tableta 50 mg | 5 años (18.3 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
+| dimenhidrinato | mareo-6-11-anos | Tableta 50 mg | 6 años (20.5 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
+| dimenhidrinato | mareo-6-11-anos | Tableta 50 mg | 8 años (25.6 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
+| dimenhidrinato | mareo-6-11-anos | Tableta 50 mg | 10 años (32 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
 | eritromicina | usual | Suspensión 250 mg/5 mL | 1 mes (4.2 kg) | 31.5 | 31.5 | 0.63 | 0.6 mL | ✅  |
 | eritromicina | usual | Suspensión 250 mg/5 mL | 2 meses (5.1 kg) | 38.25 | 38.25 | 0.765 | 0.8 mL | ✅  |
 | eritromicina | usual | Suspensión 250 mg/5 mL | 4 meses (6.4 kg) | 48 | 48 | 0.96 | 1 mL | ✅  |
@@ -678,6 +790,84 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | eritromicina | tos-ferina | Tableta ranurada 500 mg | 8 años (25.6 kg) | 256 | 256 | 0.512 | 0.5 tableta | ✅  |
 | eritromicina | tos-ferina | Tableta ranurada 500 mg | 10 años (32 kg) | 320 | 320 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | eritromicina | tos-ferina | Tableta ranurada 500 mg | 12 años (40 kg) | 400 | 400 | 0.8 | 0.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 1 mes (4.2 kg) | 25.2 | 25.2 | 2.52 | 2.5 mL | ✅  |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 2 meses (5.1 kg) | 30.6 | 30.6 | 3.06 | 3.1 mL | ✅  |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 4 meses (6.4 kg) | 38.4 | 38.4 | 3.84 | 3.8 mL | ✅  |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 6 meses (7.6 kg) | 45.6 | 45.6 | 4.56 | 4.6 mL | ✅  |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 9 meses (8.6 kg) | 51.6 | 51.6 | 5.16 | 5.2 mL | ✅  |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 1 año (9.6 kg) | 57.6 | 57.6 | 5.76 | 5.8 mL | ✅  |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 18 meses (10.9 kg) | 65.4 | 65.4 | 6.54 | 6.5 mL | ✅  |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 2 años (12.2 kg) | 73.2 | 73.2 | 7.32 | 7.3 mL | ✅  |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 3 años (14.3 kg) | 85.8 | 85.8 | 8.58 | 8.6 mL | ✅  |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 4 años (16.3 kg) | 97.8 | 97.8 | 9.78 | 9.8 mL | ✅  |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 5 años (18.3 kg) | 109.8 | 109.8 | 10.98 | 11 mL | ✅  |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 6 años (20.5 kg) | 123 | 123 | 12.3 | 12.3 mL | ✅  |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 8 años (25.6 kg) | 153.6 | 153.6 | 15.36 | 15.4 mL | ✅  |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 10 años (32 kg) | 192 | 192 | 19.2 | 19.2 mL | ✅  |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 12 años (40 kg) | 200 | 200 | 20 | 20 mL | ✅ tope aplicado |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 14 años (50 kg) | 200 | 200 | 20 | 20 mL | ✅ tope aplicado |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 16 años (58 kg) | 200 | 200 | 20 | 20 mL | ✅ tope aplicado |
+| fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 17 años, obeso (95 kg) | 200 | 200 | 20 | 20 mL | ✅ tope aplicado |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 1 mes (4.2 kg) | 12.6 | 12.6 | 1.26 | 1.3 mL | ✅  |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 2 meses (5.1 kg) | 15.3 | 15.3 | 1.53 | 1.5 mL | ✅  |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 4 meses (6.4 kg) | 19.2 | 19.2 | 1.92 | 1.9 mL | ✅  |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 6 meses (7.6 kg) | 22.8 | 22.8 | 2.28 | 2.3 mL | ✅  |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 9 meses (8.6 kg) | 25.8 | 25.8 | 2.58 | 2.6 mL | ✅  |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 1 año (9.6 kg) | 28.8 | 28.8 | 2.88 | 2.9 mL | ✅  |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 18 meses (10.9 kg) | 32.7 | 32.7 | 3.27 | 3.3 mL | ✅  |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 2 años (12.2 kg) | 36.6 | 36.6 | 3.66 | 3.7 mL | ✅  |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 3 años (14.3 kg) | 42.9 | 42.9 | 4.29 | 4.3 mL | ✅  |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 4 años (16.3 kg) | 48.9 | 48.9 | 4.89 | 4.9 mL | ✅  |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 5 años (18.3 kg) | 54.9 | 54.9 | 5.49 | 5.5 mL | ✅  |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 6 años (20.5 kg) | 61.5 | 61.5 | 6.15 | 6.2 mL | ✅  |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 8 años (25.6 kg) | 76.8 | 76.8 | 7.68 | 7.7 mL | ✅  |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 10 años (32 kg) | 96 | 96 | 9.6 | 9.6 mL | ✅  |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 12 años (40 kg) | 100 | 100 | 10 | 10 mL | ✅ tope aplicado |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 14 años (50 kg) | 100 | 100 | 10 | 10 mL | ✅ tope aplicado |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 16 años (58 kg) | 100 | 100 | 10 | 10 mL | ✅ tope aplicado |
+| fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 17 años, obeso (95 kg) | 100 | 100 | 10 | 10 mL | ✅ tope aplicado |
+| hierro | anemia-menor-6-meses | Sulfato ferroso gotas (1 gota = 1.25 mg de hierro elemental) | 1 mes (4.2 kg) | 12.6 | 12.6 | 10.08 | 10 gota | ✅  |
+| hierro | anemia-menor-6-meses | Sulfato ferroso gotas (1 gota = 1.25 mg de hierro elemental) | 2 meses (5.1 kg) | 15.3 | 15.3 | 12.24 | 12 gota | ✅  |
+| hierro | anemia-menor-6-meses | Sulfato ferroso gotas (1 gota = 1.25 mg de hierro elemental) | 4 meses (6.4 kg) | 19.2 | 19.2 | 15.36 | 15 gota | ✅  |
+| hierro | anemia-menor-6-meses | Complejo polimaltosado férrico gotas (1 gota = 2.5 mg de hierro elemental) | 1 mes (4.2 kg) | 12.6 | 12.6 | 5.04 | 5 gota | ✅  |
+| hierro | anemia-menor-6-meses | Complejo polimaltosado férrico gotas (1 gota = 2.5 mg de hierro elemental) | 2 meses (5.1 kg) | 15.3 | 15.3 | 6.12 | 6 gota | ✅  |
+| hierro | anemia-menor-6-meses | Complejo polimaltosado férrico gotas (1 gota = 2.5 mg de hierro elemental) | 4 meses (6.4 kg) | 19.2 | 19.2 | 7.68 | 8 gota | ✅  |
+| hierro | anemia-6-35-meses | Sulfato ferroso gotas (1 gota = 1.25 mg de hierro elemental) | 6 meses (7.6 kg) | 22.8 | 22.8 | 18.24 | 18 gota | ✅  |
+| hierro | anemia-6-35-meses | Sulfato ferroso gotas (1 gota = 1.25 mg de hierro elemental) | 9 meses (8.6 kg) | 25.8 | 25.8 | 20.64 | 21 gota | ✅  |
+| hierro | anemia-6-35-meses | Sulfato ferroso gotas (1 gota = 1.25 mg de hierro elemental) | 1 año (9.6 kg) | 28.8 | 28.8 | 23.04 | 23 gota | ✅  |
+| hierro | anemia-6-35-meses | Sulfato ferroso gotas (1 gota = 1.25 mg de hierro elemental) | 18 meses (10.9 kg) | 32.7 | 32.7 | 26.16 | 26 gota | ✅  |
+| hierro | anemia-6-35-meses | Sulfato ferroso gotas (1 gota = 1.25 mg de hierro elemental) | 2 años (12.2 kg) | 36.6 | 36.6 | 29.28 | 29 gota | ✅  |
+| hierro | anemia-6-35-meses | Complejo polimaltosado férrico gotas (1 gota = 2.5 mg de hierro elemental) | 6 meses (7.6 kg) | 22.8 | 22.8 | 9.12 | 9 gota | ✅  |
+| hierro | anemia-6-35-meses | Complejo polimaltosado férrico gotas (1 gota = 2.5 mg de hierro elemental) | 9 meses (8.6 kg) | 25.8 | 25.8 | 10.32 | 10 gota | ✅  |
+| hierro | anemia-6-35-meses | Complejo polimaltosado férrico gotas (1 gota = 2.5 mg de hierro elemental) | 1 año (9.6 kg) | 28.8 | 28.8 | 11.52 | 12 gota | ✅  |
+| hierro | anemia-6-35-meses | Complejo polimaltosado férrico gotas (1 gota = 2.5 mg de hierro elemental) | 18 meses (10.9 kg) | 32.7 | 32.7 | 13.08 | 13 gota | ✅  |
+| hierro | anemia-6-35-meses | Complejo polimaltosado férrico gotas (1 gota = 2.5 mg de hierro elemental) | 2 años (12.2 kg) | 36.6 | 36.6 | 14.64 | 15 gota | ✅  |
+| hierro | anemia-6-35-meses | Sulfato ferroso jarabe 15 mg/5 mL de hierro elemental | 6 meses (7.6 kg) | 22.8 | 22.8 | 7.6 | 7.5 mL | ✅  |
+| hierro | anemia-6-35-meses | Sulfato ferroso jarabe 15 mg/5 mL de hierro elemental | 9 meses (8.6 kg) | 25.8 | 25.8 | 8.6 | 8.5 mL | ✅  |
+| hierro | anemia-6-35-meses | Sulfato ferroso jarabe 15 mg/5 mL de hierro elemental | 1 año (9.6 kg) | 28.8 | 28.8 | 9.6 | 9.5 mL | ✅  |
+| hierro | anemia-6-35-meses | Sulfato ferroso jarabe 15 mg/5 mL de hierro elemental | 18 meses (10.9 kg) | 32.7 | 32.7 | 10.9 | 11 mL | ✅  |
+| hierro | anemia-6-35-meses | Sulfato ferroso jarabe 15 mg/5 mL de hierro elemental | 2 años (12.2 kg) | 36.6 | 36.6 | 12.2 | 12 mL | ✅  |
+| hierro | anemia-6-35-meses | Complejo polimaltosado férrico jarabe 50 mg/5 mL de hierro elemental | 6 meses (7.6 kg) | 22.8 | 22.8 | 2.28 | 2.28 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hierro | anemia-6-35-meses | Complejo polimaltosado férrico jarabe 50 mg/5 mL de hierro elemental | 9 meses (8.6 kg) | 25.8 | 25.8 | 2.58 | 2.5 mL | ✅  |
+| hierro | anemia-6-35-meses | Complejo polimaltosado férrico jarabe 50 mg/5 mL de hierro elemental | 1 año (9.6 kg) | 28.8 | 28.8 | 2.88 | 3 mL | ✅  |
+| hierro | anemia-6-35-meses | Complejo polimaltosado férrico jarabe 50 mg/5 mL de hierro elemental | 18 meses (10.9 kg) | 32.7 | 32.7 | 3.27 | 3.27 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hierro | anemia-6-35-meses | Complejo polimaltosado férrico jarabe 50 mg/5 mL de hierro elemental | 2 años (12.2 kg) | 36.6 | 36.6 | 3.66 | 3.5 mL | ✅  |
+| hierro | anemia-36-59-meses | Sulfato ferroso jarabe 15 mg/5 mL de hierro elemental | 3 años (14.3 kg) | 42.9 | 42.9 | 14.3 | 14.5 mL | ✅  |
+| hierro | anemia-36-59-meses | Sulfato ferroso jarabe 15 mg/5 mL de hierro elemental | 4 años (16.3 kg) | 48.9 | 48.9 | 16.3 | 16.5 mL | ✅  |
+| hierro | anemia-36-59-meses | Complejo polimaltosado férrico jarabe 50 mg/5 mL de hierro elemental | 3 años (14.3 kg) | 42.9 | 42.9 | 4.29 | 4.5 mL | ✅  |
+| hierro | anemia-36-59-meses | Complejo polimaltosado férrico jarabe 50 mg/5 mL de hierro elemental | 4 años (16.3 kg) | 48.9 | 48.9 | 4.89 | 5 mL | ✅  |
+| hierro | anemia-5-11-anos | Sulfato ferroso jarabe 15 mg/5 mL de hierro elemental | 5 años (18.3 kg) | 54.9 | 54.9 | 18.3 | 18.5 mL | ✅  |
+| hierro | anemia-5-11-anos | Sulfato ferroso jarabe 15 mg/5 mL de hierro elemental | 6 años (20.5 kg) | 61.5 | 61.5 | 20.5 | 20.5 mL | ✅  |
+| hierro | anemia-5-11-anos | Sulfato ferroso jarabe 15 mg/5 mL de hierro elemental | 8 años (25.6 kg) | 76.8 | 76.8 | 25.6 | 25.5 mL | ✅  |
+| hierro | anemia-5-11-anos | Sulfato ferroso jarabe 15 mg/5 mL de hierro elemental | 10 años (32 kg) | 96 | 96 | 32 | 32 mL | ✅  |
+| hierro | anemia-5-11-anos | Complejo polimaltosado férrico jarabe 50 mg/5 mL de hierro elemental | 5 años (18.3 kg) | 54.9 | 54.9 | 5.49 | 5.5 mL | ✅  |
+| hierro | anemia-5-11-anos | Complejo polimaltosado férrico jarabe 50 mg/5 mL de hierro elemental | 6 años (20.5 kg) | 61.5 | 61.5 | 6.15 | 6 mL | ✅  |
+| hierro | anemia-5-11-anos | Complejo polimaltosado férrico jarabe 50 mg/5 mL de hierro elemental | 8 años (25.6 kg) | 76.8 | 76.8 | 7.68 | 7.5 mL | ✅  |
+| hierro | anemia-5-11-anos | Complejo polimaltosado férrico jarabe 50 mg/5 mL de hierro elemental | 10 años (32 kg) | 96 | 96 | 9.6 | 9.5 mL | ✅  |
+| hierro | anemia-5-11-anos | Sulfato ferroso tableta 60 mg de hierro elemental | 5 años (18.3 kg) | 54.9 | 54.9 | 0.915 | 0.92 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hierro | anemia-5-11-anos | Sulfato ferroso tableta 60 mg de hierro elemental | 6 años (20.5 kg) | 61.5 | 61.5 | 1.025 | 1 tableta | ✅  |
+| hierro | anemia-5-11-anos | Sulfato ferroso tableta 60 mg de hierro elemental | 8 años (25.6 kg) | 76.8 | 76.8 | 1.28 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hierro | anemia-5-11-anos | Sulfato ferroso tableta 60 mg de hierro elemental | 10 años (32 kg) | 96 | 96 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | ibuprofeno | fiebre-dolor-vo | Suspensión 100 mg/5 mL | 6 meses (7.6 kg) | 76 | 76 | 3.8 | 3.8 mL | ✅  |
 | ibuprofeno | fiebre-dolor-vo | Suspensión 100 mg/5 mL | 9 meses (8.6 kg) | 86 | 86 | 4.3 | 4.3 mL | ✅  |
 | ibuprofeno | fiebre-dolor-vo | Suspensión 100 mg/5 mL | 1 año (9.6 kg) | 96 | 96 | 4.8 | 4.8 mL | ✅  |
@@ -700,6 +890,14 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | ibuprofeno | fiebre-dolor-vo | Gotas 40 mg/mL | 6 años (20.5 kg) | 205 | 205 | 5.125 | 5.1 mL | ✅  |
 | ibuprofeno | fiebre-dolor-vo | Gotas 40 mg/mL | 8 años (25.6 kg) | 256 | 256 | 6.4 | 6.4 mL | ✅  |
 | ibuprofeno | fiebre-dolor-vo | Gotas 40 mg/mL | 10 años (32 kg) | 320 | 320 | 8 | 8 mL | ✅  |
+| ivermectina | estrongiloidiasis-15-24-kg | Tableta 6 mg | 4 años (16.3 kg) | 3 | 3 | 0.5 | 0.5 tableta | ✅  |
+| ivermectina | estrongiloidiasis-15-24-kg | Tableta 6 mg | 5 años (18.3 kg) | 3 | 3 | 0.5 | 0.5 tableta | ✅  |
+| ivermectina | estrongiloidiasis-15-24-kg | Tableta 6 mg | 6 años (20.5 kg) | 3 | 3 | 0.5 | 0.5 tableta | ✅  |
+| ivermectina | estrongiloidiasis-25-35-kg | Tableta 6 mg | 8 años (25.6 kg) | 6 | 6 | 1 | 1 tableta | ✅  |
+| ivermectina | estrongiloidiasis-25-35-kg | Tableta 6 mg | 10 años (32 kg) | 6 | 6 | 1 | 1 tableta | ✅  |
+| ivermectina | estrongiloidiasis-36-50-kg | Tableta 6 mg | 12 años (40 kg) | 9 | 9 | 1.5 | 1.5 tableta | ✅  |
+| ivermectina | estrongiloidiasis-36-50-kg | Tableta 6 mg | 14 años (50 kg) | 9 | 9 | 1.5 | 1.5 tableta | ✅  |
+| ivermectina | estrongiloidiasis-51-65-kg | Tableta 6 mg | 16 años (58 kg) | 12 | 12 | 2 | 2 tableta | ✅  |
 | loratadina | alergia-menos-30-kg | Jarabe 5 mg/5 mL | 2 años (12.2 kg) | 5 | 5 | 5 | 5 mL | ✅  |
 | loratadina | alergia-menos-30-kg | Jarabe 5 mg/5 mL | 3 años (14.3 kg) | 5 | 5 | 5 | 5 mL | ✅  |
 | loratadina | alergia-menos-30-kg | Jarabe 5 mg/5 mL | 4 años (16.3 kg) | 5 | 5 | 5 | 5 mL | ✅  |
@@ -906,6 +1104,95 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | metronidazol | amebiasis | Tableta 500 mg | 14 años (50 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
 | metronidazol | amebiasis | Tableta 500 mg | 16 años (58 kg) | 580 | 580 | 1.16 | 1.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | metronidazol | amebiasis | Tableta 500 mg | 17 años, obeso (95 kg) | 750 | 750 | 1.5 | 1.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitazoxanida | diarrea-1-3-anos | Suspensión 100 mg/5 mL | 1 año (9.6 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| nitazoxanida | diarrea-1-3-anos | Suspensión 100 mg/5 mL | 18 meses (10.9 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| nitazoxanida | diarrea-1-3-anos | Suspensión 100 mg/5 mL | 2 años (12.2 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| nitazoxanida | diarrea-1-3-anos | Suspensión 100 mg/5 mL | 3 años (14.3 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| nitazoxanida | diarrea-4-11-anos | Suspensión 100 mg/5 mL | 4 años (16.3 kg) | 200 | 200 | 10 | 10 mL | ✅  |
+| nitazoxanida | diarrea-4-11-anos | Suspensión 100 mg/5 mL | 5 años (18.3 kg) | 200 | 200 | 10 | 10 mL | ✅  |
+| nitazoxanida | diarrea-4-11-anos | Suspensión 100 mg/5 mL | 6 años (20.5 kg) | 200 | 200 | 10 | 10 mL | ✅  |
+| nitazoxanida | diarrea-4-11-anos | Suspensión 100 mg/5 mL | 8 años (25.6 kg) | 200 | 200 | 10 | 10 mL | ✅  |
+| nitazoxanida | diarrea-4-11-anos | Suspensión 100 mg/5 mL | 10 años (32 kg) | 200 | 200 | 10 | 10 mL | ✅  |
+| nitazoxanida | diarrea-12-anos-o-mas | Suspensión 100 mg/5 mL | 12 años (40 kg) | 500 | 500 | 25 | 25 mL | ✅  |
+| nitazoxanida | diarrea-12-anos-o-mas | Suspensión 100 mg/5 mL | 14 años (50 kg) | 500 | 500 | 25 | 25 mL | ✅  |
+| nitazoxanida | diarrea-12-anos-o-mas | Suspensión 100 mg/5 mL | 16 años (58 kg) | 500 | 500 | 25 | 25 mL | ✅  |
+| nitazoxanida | diarrea-12-anos-o-mas | Suspensión 100 mg/5 mL | 17 años, obeso (95 kg) | 500 | 500 | 25 | 25 mL | ✅  |
+| nitazoxanida | diarrea-12-anos-o-mas | Tableta 500 mg | 12 años (40 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
+| nitazoxanida | diarrea-12-anos-o-mas | Tableta 500 mg | 14 años (50 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
+| nitazoxanida | diarrea-12-anos-o-mas | Tableta 500 mg | 16 años (58 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
+| nitazoxanida | diarrea-12-anos-o-mas | Tableta 500 mg | 17 años, obeso (95 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 1 mes (4.2 kg) | 5.25 | 5.25 | 1.05 | 1.1 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 2 meses (5.1 kg) | 6.38 | 6.38 | 1.275 | 1.3 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 4 meses (6.4 kg) | 8 | 8 | 1.6 | 1.6 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 6 meses (7.6 kg) | 9.5 | 9.5 | 1.9 | 1.9 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 9 meses (8.6 kg) | 10.75 | 10.75 | 2.15 | 2.2 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 1 año (9.6 kg) | 12 | 12 | 2.4 | 2.4 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 18 meses (10.9 kg) | 13.63 | 13.63 | 2.725 | 2.7 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 2 años (12.2 kg) | 15.25 | 15.25 | 3.05 | 3.1 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 3 años (14.3 kg) | 17.88 | 17.88 | 3.575 | 3.6 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 4 años (16.3 kg) | 20.38 | 20.38 | 4.075 | 4.1 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 5 años (18.3 kg) | 22.88 | 22.88 | 4.575 | 4.6 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 6 años (20.5 kg) | 25.63 | 25.63 | 5.125 | 5.1 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 8 años (25.6 kg) | 32 | 32 | 6.4 | 6.4 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 10 años (32 kg) | 40 | 40 | 8 | 8 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 12 años (40 kg) | 50 | 50 | 10 | 10 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 14 años (50 kg) | 62.5 | 62.5 | 12.5 | 12.5 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 16 años (58 kg) | 72.5 | 72.5 | 14.5 | 14.5 mL | ✅  |
+| nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 17 años, obeso (95 kg) | 100 | 100 | 20 | 20 mL | ✅ tope aplicado |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 1 mes (4.2 kg) | 5.25 | 5.25 | 0.052 | 0.05 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 2 meses (5.1 kg) | 6.38 | 6.38 | 0.064 | 0.06 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 4 meses (6.4 kg) | 8 | 8 | 0.08 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 6 meses (7.6 kg) | 9.5 | 9.5 | 0.095 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 9 meses (8.6 kg) | 10.75 | 10.75 | 0.107 | 0.11 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 1 año (9.6 kg) | 12 | 12 | 0.12 | 0.12 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 18 meses (10.9 kg) | 13.63 | 13.63 | 0.136 | 0.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 2 años (12.2 kg) | 15.25 | 15.25 | 0.152 | 0.15 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 3 años (14.3 kg) | 17.88 | 17.88 | 0.179 | 0.18 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 4 años (16.3 kg) | 20.38 | 20.38 | 0.204 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 5 años (18.3 kg) | 22.88 | 22.88 | 0.229 | 0.23 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 6 años (20.5 kg) | 25.63 | 25.63 | 0.256 | 0.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 8 años (25.6 kg) | 32 | 32 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 10 años (32 kg) | 40 | 40 | 0.4 | 0.4 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 12 años (40 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 14 años (50 kg) | 62.5 | 62.5 | 0.625 | 0.63 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 16 años (58 kg) | 72.5 | 72.5 | 0.725 | 0.72 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | itu-no-complicada | Tableta 100 mg | 17 años, obeso (95 kg) | 100 | 100 | 1 | 1 tableta | ✅ tope aplicado |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 1 mes (4.2 kg) | 4.2 | 4.2 | 0.84 | 0.8 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 2 meses (5.1 kg) | 5.1 | 5.1 | 1.02 | 1 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 4 meses (6.4 kg) | 6.4 | 6.4 | 1.28 | 1.3 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 6 meses (7.6 kg) | 7.6 | 7.6 | 1.52 | 1.5 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 9 meses (8.6 kg) | 8.6 | 8.6 | 1.72 | 1.7 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 1 año (9.6 kg) | 9.6 | 9.6 | 1.92 | 1.9 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 18 meses (10.9 kg) | 10.9 | 10.9 | 2.18 | 2.2 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 2 años (12.2 kg) | 12.2 | 12.2 | 2.44 | 2.4 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 3 años (14.3 kg) | 14.3 | 14.3 | 2.86 | 2.9 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 4 años (16.3 kg) | 16.3 | 16.3 | 3.26 | 3.3 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 5 años (18.3 kg) | 18.3 | 18.3 | 3.66 | 3.7 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 6 años (20.5 kg) | 20.5 | 20.5 | 4.1 | 4.1 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 8 años (25.6 kg) | 25.6 | 25.6 | 5.12 | 5.1 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 10 años (32 kg) | 32 | 32 | 6.4 | 6.4 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 12 años (40 kg) | 40 | 40 | 8 | 8 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 14 años (50 kg) | 50 | 50 | 10 | 10 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 16 años (58 kg) | 58 | 58 | 11.6 | 11.6 mL | ✅  |
+| nitrofurantoina | profilaxis | Suspensión 25 mg/5 mL | 17 años, obeso (95 kg) | 95 | 95 | 19 | 19 mL | ✅  |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 1 mes (4.2 kg) | 4.2 | 4.2 | 0.042 | 0.04 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 2 meses (5.1 kg) | 5.1 | 5.1 | 0.051 | 0.05 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 4 meses (6.4 kg) | 6.4 | 6.4 | 0.064 | 0.06 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 6 meses (7.6 kg) | 7.6 | 7.6 | 0.076 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 9 meses (8.6 kg) | 8.6 | 8.6 | 0.086 | 0.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 1 año (9.6 kg) | 9.6 | 9.6 | 0.096 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 18 meses (10.9 kg) | 10.9 | 10.9 | 0.109 | 0.11 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 2 años (12.2 kg) | 12.2 | 12.2 | 0.122 | 0.12 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 3 años (14.3 kg) | 14.3 | 14.3 | 0.143 | 0.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 4 años (16.3 kg) | 16.3 | 16.3 | 0.163 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 5 años (18.3 kg) | 18.3 | 18.3 | 0.183 | 0.18 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 6 años (20.5 kg) | 20.5 | 20.5 | 0.205 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 8 años (25.6 kg) | 25.6 | 25.6 | 0.256 | 0.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 10 años (32 kg) | 32 | 32 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 12 años (40 kg) | 40 | 40 | 0.4 | 0.4 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 14 años (50 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 16 años (58 kg) | 58 | 58 | 0.58 | 0.58 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitrofurantoina | profilaxis | Tableta 100 mg | 17 años, obeso (95 kg) | 95 | 95 | 0.95 | 0.95 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | ondansetron | vomitos-gastroenteritis | Solución oral 4 mg/5 mL | 6 meses (7.6 kg) | 1.14 | 1.14 | 1.425 | 1.4 mL | ✅  |
 | ondansetron | vomitos-gastroenteritis | Solución oral 4 mg/5 mL | 9 meses (8.6 kg) | 1.29 | 1.29 | 1.612 | 1.6 mL | ✅  |
 | ondansetron | vomitos-gastroenteritis | Solución oral 4 mg/5 mL | 1 año (9.6 kg) | 1.44 | 1.44 | 1.8 | 1.8 mL | ✅  |
@@ -1016,6 +1303,60 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | prednisolona | crisis-asmatica-6-anos-o-mas | Tableta 5 mg | 14 años (50 kg) | 40 | 40 | 8 | 8 tableta | ✅ tope aplicado |
 | prednisolona | crisis-asmatica-6-anos-o-mas | Tableta 5 mg | 16 años (58 kg) | 40 | 40 | 8 | 8 tableta | ✅ tope aplicado |
 | prednisolona | crisis-asmatica-6-anos-o-mas | Tableta 5 mg | 17 años, obeso (95 kg) | 40 | 40 | 8 | 8 tableta | ✅ tope aplicado |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 1 mes (4.2 kg) | 4.2 | 4.2 | 4.2 | 4 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 2 meses (5.1 kg) | 5.1 | 5.1 | 5.1 | 5 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 4 meses (6.4 kg) | 6.4 | 6.4 | 6.4 | 6.5 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 6 meses (7.6 kg) | 7.6 | 7.6 | 7.6 | 7.5 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 9 meses (8.6 kg) | 8.6 | 8.6 | 8.6 | 8.5 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 1 año (9.6 kg) | 9.6 | 9.6 | 9.6 | 9.5 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 18 meses (10.9 kg) | 10.9 | 10.9 | 10.9 | 11 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 2 años (12.2 kg) | 12.2 | 12.2 | 12.2 | 12 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 3 años (14.3 kg) | 14.3 | 14.3 | 14.3 | 14.5 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 4 años (16.3 kg) | 16.3 | 16.3 | 16.3 | 16.5 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 5 años (18.3 kg) | 18.3 | 18.3 | 18.3 | 18.5 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 6 años (20.5 kg) | 20.5 | 20.5 | 20.5 | 20.5 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 8 años (25.6 kg) | 25.6 | 25.6 | 25.6 | 25.5 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 10 años (32 kg) | 32 | 32 | 32 | 32 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 12 años (40 kg) | 40 | 40 | 40 | 40 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 14 años (50 kg) | 50 | 50 | 50 | 50 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 16 años (58 kg) | 58 | 58 | 58 | 58 mL | ✅  |
+| prednisona | antiinflamatorio | Jarabe 5 mg/5 mL | 17 años, obeso (95 kg) | 80 | 80 | 80 | 80 mL | ✅ tope aplicado |
+| prednisona | antiinflamatorio | Tableta 5 mg | 1 mes (4.2 kg) | 4.2 | 4.2 | 0.84 | 0.84 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 5 mg | 2 meses (5.1 kg) | 5.1 | 5.1 | 1.02 | 1 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 5 mg | 4 meses (6.4 kg) | 6.4 | 6.4 | 1.28 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 5 mg | 6 meses (7.6 kg) | 7.6 | 7.6 | 1.52 | 1.5 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 5 mg | 9 meses (8.6 kg) | 8.6 | 8.6 | 1.72 | 1.72 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 5 mg | 1 año (9.6 kg) | 9.6 | 9.6 | 1.92 | 2 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 5 mg | 18 meses (10.9 kg) | 10.9 | 10.9 | 2.18 | 2.18 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 5 mg | 2 años (12.2 kg) | 12.2 | 12.2 | 2.44 | 2.5 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 5 mg | 3 años (14.3 kg) | 14.3 | 14.3 | 2.86 | 3 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 5 mg | 4 años (16.3 kg) | 16.3 | 16.3 | 3.26 | 3.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 5 mg | 5 años (18.3 kg) | 18.3 | 18.3 | 3.66 | 3.5 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 5 mg | 6 años (20.5 kg) | 20.5 | 20.5 | 4.1 | 4 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 5 mg | 8 años (25.6 kg) | 25.6 | 25.6 | 5.12 | 5 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 5 mg | 10 años (32 kg) | 32 | 32 | 6.4 | 6.5 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 5 mg | 12 años (40 kg) | 40 | 40 | 8 | 8 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 5 mg | 14 años (50 kg) | 50 | 50 | 10 | 10 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 5 mg | 16 años (58 kg) | 58 | 58 | 11.6 | 11.5 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 5 mg | 17 años, obeso (95 kg) | 80 | 80 | 16 | 16 tableta | ✅ tope aplicado |
+| prednisona | antiinflamatorio | Tableta 20 mg | 1 mes (4.2 kg) | 4.2 | 4.2 | 0.21 | 0.21 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 20 mg | 2 meses (5.1 kg) | 5.1 | 5.1 | 0.255 | 0.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 20 mg | 4 meses (6.4 kg) | 6.4 | 6.4 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 20 mg | 6 meses (7.6 kg) | 7.6 | 7.6 | 0.38 | 0.38 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 20 mg | 9 meses (8.6 kg) | 8.6 | 8.6 | 0.43 | 0.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 20 mg | 1 año (9.6 kg) | 9.6 | 9.6 | 0.48 | 0.5 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 20 mg | 18 meses (10.9 kg) | 10.9 | 10.9 | 0.545 | 0.55 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 20 mg | 2 años (12.2 kg) | 12.2 | 12.2 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 20 mg | 3 años (14.3 kg) | 14.3 | 14.3 | 0.715 | 0.71 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 20 mg | 4 años (16.3 kg) | 16.3 | 16.3 | 0.815 | 0.81 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 20 mg | 5 años (18.3 kg) | 18.3 | 18.3 | 0.915 | 0.92 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 20 mg | 6 años (20.5 kg) | 20.5 | 20.5 | 1.025 | 1 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 20 mg | 8 años (25.6 kg) | 25.6 | 25.6 | 1.28 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 20 mg | 10 años (32 kg) | 32 | 32 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| prednisona | antiinflamatorio | Tableta 20 mg | 12 años (40 kg) | 40 | 40 | 2 | 2 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 20 mg | 14 años (50 kg) | 50 | 50 | 2.5 | 2.5 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 20 mg | 16 años (58 kg) | 58 | 58 | 2.9 | 3 tableta | ✅  |
+| prednisona | antiinflamatorio | Tableta 20 mg | 17 años, obeso (95 kg) | 80 | 80 | 4 | 4 tableta | ✅ tope aplicado |
 | salbutamol | vo-2-5-anos | Jarabe 2 mg/5 mL | 2 años (12.2 kg) | 1 | 1 | 2.5 | 2.5 mL | ✅  |
 | salbutamol | vo-2-5-anos | Jarabe 2 mg/5 mL | 3 años (14.3 kg) | 1 | 1 | 2.5 | 2.5 mL | ✅  |
 | salbutamol | vo-2-5-anos | Jarabe 2 mg/5 mL | 4 años (16.3 kg) | 1 | 1 | 2.5 | 2.5 mL | ✅  |

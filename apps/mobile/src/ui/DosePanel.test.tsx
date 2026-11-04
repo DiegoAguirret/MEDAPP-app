@@ -107,6 +107,25 @@ describe('DosePanel — bandas de peso', () => {
   });
 });
 
+describe('DosePanel — hierro (NTS 213-MINSA 2024)', () => {
+  it('10 kg, 1 año, sulfato ferroso gotas → 30 mg = 24 gotas', async () => {
+    await show('hierro');
+    await fireEvent.press(screen.getByLabelText('Cambiar indicación'));
+    await fireEvent.press(screen.getByText(/6 a 35 meses/));
+    await fillPatient('10', '1', '0');
+    expect(screen.getByTestId('result-mg')).toHaveTextContent('30 mg');
+    expect(screen.getByTestId('result-amount')).toHaveTextContent('24 gotas');
+  });
+
+  it('aplica el tope de 70 mg/día de 6 a 35 meses', async () => {
+    await show('hierro');
+    await fireEvent.press(screen.getByLabelText('Cambiar indicación'));
+    await fireEvent.press(screen.getByText(/6 a 35 meses/));
+    await fillPatient('25', '2', '6');
+    expect(screen.getByTestId('result-mg')).toHaveTextContent('70 mg');
+  });
+});
+
 describe('DosePanel — seguridad', () => {
   it('shows a verified-sources badge and no alarm banner', async () => {
     await show('paracetamol');

@@ -1,0 +1,72 @@
+id: ampicilina
+name: Ampicilina
+category: antibiotico
+synonyms: [ampicillin]
+atc: J01CA01
+presentations:
+  - id: vial-500-reconst
+    label: Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL)
+    form: ampolla
+    mgPerUnit: 200
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: moderada-severa-iv
+    indication: Infección moderada a severa (IV)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 25
+    amountMax: 50
+    usual: 50
+    intervalHours: 6
+    maxPerDoseMg: 2000
+    maxPerDayMg: 8000
+    notes: >-
+      OMS — 50 mg/kg cada 6 h IM o IV. FNME — menos de 20 kg, 100 a 200 mg/kg/día cada 6 h; desde
+      20 kg, dosis de adulto, 0.5 a 2 g cada 6 h (tope usado aquí). Pasar IV en 3 a 5 min hasta 500
+      mg y en 10 a 15 min de 1 a 2 g.
+    presentationIds: [vial-500-reconst]
+    sourceIds: [who-pocket-2013, fnme-2008]
+  - id: moderada-severa-im
+    indication: Infección moderada a severa (IM)
+    route: IM
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 25
+    amountMax: 50
+    usual: 50
+    intervalHours: 6
+    maxPerDoseMg: 2000
+    maxPerDayMg: 8000
+    notes: OMS — 50 mg/kg cada 6 h IM o IV, con el vial de 500 mg reconstituido a 500 mg/2.5 mL. FNME — 100 a 200 mg/kg/día cada 6 h.
+    presentationIds: [vial-500-reconst]
+    sourceIds: [who-pocket-2013, fnme-2008]
+warnings:
+  - En neonatos la dosis y el intervalo dependen de la edad y el peso al nacer (FNME, OMS); no se calculan aquí.
+  - En insuficiencia renal se alarga el intervalo según la depuración de creatinina (FNME).
+contraindications:
+  - Hipersensibilidad a la ampicilina o a otras penicilinas.
+diagnoses: [neumonía, meningitis, sepsis, infección grave]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: moderada-severa-iv
+    presentationId: vial-500-reconst
+    weightKg: 10
+    ageDays: 400
+    expect: { mgPerDose: 500, amount: 2.5, unit: mL }
+  - ruleId: moderada-severa-im
+    presentationId: vial-500-reconst
+    weightKg: 6
+    ageDays: 120
+    expect: { mgPerDose: 300, amount: 1.5, unit: mL }
+  - ruleId: moderada-severa-iv
+    presentationId: vial-500-reconst
+    weightKg: 50
+    ageDays: 4745
+    expect: { mgPerDose: 2000, amount: 10, unit: mL }

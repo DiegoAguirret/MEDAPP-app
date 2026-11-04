@@ -102,3 +102,31 @@ Fuente principal: FNME 2008 (DIGEMID), sección «Niños» de cada monografía. 
 - **Clorfenamina de 1 a 2 años:** el FNME da 0.0875 mg/kg c/6 h sin tope, así que esa pauta no se calcula.
 - **Peso por indicación:** se añadió al motor `weightMinKg` (incluido) y `weightMaxKg` (excluido). La loratadina, la dicloxacilina, la eritromicina y el cotrimoxazol los usan.
 - **Marcas:** solo las que lista el libro de Peña. Se descartó una marca cuyo nombre salió dudoso en el escaneo.
+
+## Fase B, lote 2 (10 fármacos) — verificado el 04/11/2026
+
+Fuentes nuevas: **NTS 213-MINSA/DGIESP-2024** sobre anemia, aprobada por la RM 251-2024-MINSA y descargada de gob.pe. También seis fichas FDA de DailyMed obtenidas con openFDA: aciclovir, fluconazol, ivermectina, nitazoxanida (Alinia), nitrofurantoína suspensión y dimenhidrinato OTC. Cuando el texto escaneado del FNME salió dañado («6 mg el primer día», «máximo 80 mg diario»), manda la ficha FDA, que dice lo mismo con las unidades completas.
+
+| Fármaco          | Dosis                                                                                                | Tope usado                                                                  | Fuentes                                                             |
+| ---------------- | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Aciclovir        | Varicela, 2 años o más: 20 mg/kg c/6 h × 5 d                                                         | 800 mg/toma (adulto desde 40 kg)                                            | FDA; FNME (igual)                                                   |
+| Fluconazol       | Candidiasis orofaríngea/esofágica: 6 mg/kg el día 1, luego 3 mg/kg/día                               | 200 mg el día 1; 100 mg/día                                                 | FDA (dosis adulto 200 → 100 mg); FNME                               |
+| Ivermectina      | Estrongiloidiasis, dosis única por peso: 15–24 kg 3 mg; 25–35 kg 6 mg; 36–50 kg 9 mg; 51–65 kg 12 mg | por banda                                                                   | FDA (tabla, unos 200 µg/kg; no en menores de 15 kg); FNME 200 µg/kg |
+| Nitazoxanida     | 1–3 años 100 mg; 4–11 años 200 mg; 12 años o más 500 mg; c/12 h × 3 d                                | dosis fijas                                                                 | FDA (no figura en el FNME)                                          |
+| Nitrofurantoína  | ITU 5–7 mg/kg/día c/6 h × 7 d; profilaxis 1 mg/kg/día                                                | 100 mg/toma                                                                 | FNME y FDA (coinciden)                                              |
+| Hierro           | Anemia: 3 mg/kg/día de hierro elemental, una toma, 6 meses                                           | 40 mg (menores de 6 m) · 70 mg (6–35 m) · 90 mg (36–59 m) · 120 mg (5–11 a) | NTS 213-2024, tablas 3, 16 y 17                                     |
+| Prednisona       | 1–2 mg/kg/día                                                                                        | 80 mg/día                                                                   | Libro Peña; FNME (presentaciones); GINA para el asma (nota)         |
+| Ceftriaxona IV   | 50–75 mg/kg/día (inicio 75); meningitis 50 mg/kg c/12 h                                              | 2 g/dosis; 4 g/día                                                          | FNME; OMS (80 mg/kg/día; reconstitución 1 g/10 mL)                  |
+| Ampicilina IV/IM | 25–50 mg/kg c/6 h (OMS 50)                                                                           | 2 g/dosis; 8 g/día                                                          | OMS (reconstitución 500 mg/2.5 mL); FNME                            |
+| Dimenhidrinato   | 2–5 años 12.5–25 mg c/6–8 h (máx. 75 mg/día); 6–11 años 25–50 mg (máx. 150 mg/día)                   | por edad                                                                    | FDA OTC; FNME                                                       |
+
+### Decisiones tomadas en este lote
+
+- **Hierro:** se sigue la NTS 213-2024, que es la norma peruana vigente, y no el FNME 2008, que daba 6 mg/kg/día de 6 meses a 2 años. La diferencia se muestra como nota de Perú. La suplementación preventiva (2 mg/kg/día) no se calcula todavía porque su tope no se pudo leer en el PDF.
+- **Ivermectina:** por bandas de peso de la FDA y no por mg/kg, porque así los topes son exactos. Media tableta de 6 mg equivale a 3 mg.
+- **Ceftriaxona y ampicilina:** solo con la reconstitución de la OMS. Si el servicio diluye distinto, se usa «Personalizar concentración».
+- **No incluidos:** gentamicina (sin tope pediátrico en las fuentes; requiere niveles), anticonvulsivantes de mantenimiento (se titulan) y omeprazol (la única presentación del FNME es de 20 mg).
+
+### Pendiente
+
+- La NTS 213 fue modificada por la RM 429-2024-MINSA. Falta confirmar que la modificación no cambia las dosis de tratamiento.

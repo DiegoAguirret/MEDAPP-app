@@ -1,0 +1,81 @@
+id: fluconazol
+name: Fluconazol
+category: antifungico
+synonyms: [fluconazole]
+atc: J02AC01
+presentations:
+  - id: susp-50-5
+    label: Suspensión 50 mg/5 mL
+    form: suspension
+    mgPerUnit: 10
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-150
+    label: Tableta 150 mg
+    form: tableta
+    mgPerUnit: 150
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: orofaringea-dia-1
+    indication: Candidiasis orofaríngea o esofágica (primer día)
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 6
+    amountMax: 6
+    usual: 6
+    intervalHours: 24
+    maxPerDoseMg: 200
+    maxPerDayMg: 200
+    durationText: solo el primer día
+    notes: FDA — 6 mg/kg el primer día; en adultos, 200 mg el primer día (tope usado aquí). FNME — igual.
+    presentationIds: [susp-50-5]
+    sourceIds: [fda-fluconazole, fnme-2008]
+  - id: orofaringea-desde-dia-2
+    indication: Candidiasis orofaríngea o esofágica (desde el segundo día)
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 3
+    amountMax: 3
+    usual: 3
+    intervalHours: 24
+    maxPerDoseMg: 100
+    maxPerDayMg: 100
+    durationText: al menos 2 semanas (orofaríngea) o 3 semanas (esofágica)
+    notes: >-
+      FDA — 3 mg/kg una vez al día; en adultos, 100 mg/día (tope usado aquí). En la esofágica se
+      puede subir hasta 12 mg/kg/día según la respuesta. FNME — continuar 2 semanas después de que
+      los exámenes sean negativos.
+    presentationIds: [susp-50-5]
+    sourceIds: [fda-fluconazole, fnme-2008]
+warnings:
+  - En neonatos prematuros, durante las 2 primeras semanas de vida, la misma dosis se da cada 72 h (FDA).
+  - Ajustar la dosis en insuficiencia renal (FDA).
+contraindications:
+  - Hipersensibilidad al fluconazol.
+diagnoses: [candidiasis, muguet, candidiasis oral, hongos, micosis]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: orofaringea-dia-1
+    presentationId: susp-50-5
+    weightKg: 8
+    ageDays: 240
+    expect: { mgPerDose: 48, amount: 4.8, unit: mL }
+  - ruleId: orofaringea-desde-dia-2
+    presentationId: susp-50-5
+    weightKg: 8
+    ageDays: 240
+    expect: { mgPerDose: 24, amount: 2.4, unit: mL }
+  - ruleId: orofaringea-desde-dia-2
+    presentationId: susp-50-5
+    weightKg: 40
+    ageDays: 4380
+    expect: { mgPerDose: 100, amount: 10, unit: mL }

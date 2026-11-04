@@ -1,0 +1,105 @@
+id: ivermectina
+name: Ivermectina
+category: antiparasitario
+synonyms: [ivermectin]
+atc: P02CF01
+presentations:
+  - id: tab-6
+    label: Tableta 6 mg
+    form: tableta
+    mgPerUnit: 6
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: estrongiloidiasis-15-24-kg
+    indication: Estrongiloidiasis (15 a 24 kg)
+    route: VO
+    ageMinDays: 29
+    weightMinKg: 15
+    weightMaxKg: 25
+    basis: fixed_by_age
+    amountMin: 3
+    amountMax: 3
+    usual: 3
+    intervalHours: 24
+    maxPerDoseMg: 3
+    maxPerDayMg: 3
+    durationText: dosis única
+    notes: FDA — tabla por peso para unos 200 µg/kg en dosis única. FNME — 200 µg/kg/día por 1 a 2 días; niños igual que adultos.
+    sourceIds: [fda-ivermectin, fnme-2008]
+  - id: estrongiloidiasis-25-35-kg
+    indication: Estrongiloidiasis (25 a 35 kg)
+    route: VO
+    ageMinDays: 29
+    weightMinKg: 25
+    weightMaxKg: 36
+    basis: fixed_by_age
+    amountMin: 6
+    amountMax: 6
+    usual: 6
+    intervalHours: 24
+    maxPerDoseMg: 6
+    maxPerDayMg: 6
+    durationText: dosis única
+    notes: FDA — tabla por peso para unos 200 µg/kg en dosis única. FNME — 200 µg/kg/día por 1 a 2 días.
+    sourceIds: [fda-ivermectin, fnme-2008]
+  - id: estrongiloidiasis-36-50-kg
+    indication: Estrongiloidiasis (36 a 50 kg)
+    route: VO
+    ageMinDays: 29
+    weightMinKg: 36
+    weightMaxKg: 51
+    basis: fixed_by_age
+    amountMin: 9
+    amountMax: 9
+    usual: 9
+    intervalHours: 24
+    maxPerDoseMg: 9
+    maxPerDayMg: 9
+    durationText: dosis única
+    notes: FDA — tabla por peso para unos 200 µg/kg en dosis única. FNME — 200 µg/kg/día por 1 a 2 días.
+    sourceIds: [fda-ivermectin, fnme-2008]
+  - id: estrongiloidiasis-51-65-kg
+    indication: Estrongiloidiasis (51 a 65 kg)
+    route: VO
+    ageMinDays: 29
+    weightMinKg: 51
+    weightMaxKg: 66
+    basis: fixed_by_age
+    amountMin: 12
+    amountMax: 12
+    usual: 12
+    intervalHours: 24
+    maxPerDoseMg: 12
+    maxPerDayMg: 12
+    durationText: dosis única
+    notes: FDA — tabla por peso para unos 200 µg/kg en dosis única. FNME — 200 µg/kg/día por 1 a 2 días.
+    sourceIds: [fda-ivermectin, fnme-2008]
+warnings:
+  - La seguridad en menores de 15 kg no está establecida (FDA).
+  - Media tableta de 6 mg = 3 mg. Si la tableta no se puede partir, usa una presentación de 3 mg.
+contraindications:
+  - Hipersensibilidad a la ivermectina.
+diagnoses: [estrongiloidiasis, strongyloides, parásitos]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: estrongiloidiasis-15-24-kg
+    presentationId: tab-6
+    weightKg: 18
+    ageDays: 1825
+    expect: { mgPerDose: 3, amount: 0.5, unit: tableta }
+  - ruleId: estrongiloidiasis-25-35-kg
+    presentationId: tab-6
+    weightKg: 30
+    ageDays: 3285
+    expect: { mgPerDose: 6, amount: 1, unit: tableta }
+  - ruleId: estrongiloidiasis-36-50-kg
+    presentationId: tab-6
+    weightKg: 40
+    ageDays: 4380
+    expect: { mgPerDose: 9, amount: 1.5, unit: tableta }
