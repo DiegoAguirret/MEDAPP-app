@@ -18,5 +18,5 @@ export default tseslint.config(
     plugins: { 'react-hooks': reactHooks },
     rules: { 'react-hooks/rules-of-hooks': 'error', 'react-hooks/exhaustive-deps': 'error' },
   },
-  { files: ['apps/mobile/*.js', 'apps/mobile/*.config.js'], rules: { '@typescript-eslint/no-require-imports': 'off' } },
+  { files: ['apps/mobile/*.js', 'apps/mobile/plugins/*.js'], rules: { '@typescript-eslint/no-require-imports': 'off' } },
 );

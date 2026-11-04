@@ -9,7 +9,7 @@ presentations:
     mgPerUnit: 50
     unit: mL
     step: 0.1
-    brandsPE: []
+    brandsPE: [Keflex, Ceporex]
   - id: cap-500
     label: Cápsula 500 mg
     form: capsula
@@ -32,9 +32,23 @@ rules:
     durationText: 7–14 días; al menos 10 días en infecciones por estreptococo beta-hemolítico.
     notes: >-
       FDA: 25–50 mg/kg/día en dosis iguales (50–100 mg/kg/día en infecciones graves). La ficha no fija
-      el intervalo pediátrico: aquí se usa cada 6 h, la pauta habitual de la ficha (a confirmar por el
-      médico). Máximo de adulto: 4 g/día en 2 a 4 dosis.
-    sourceIds: [fda-cephalexin]
+      el intervalo pediátrico; el libro Peña Camarena indica cada 6 h. Máximo de adulto: 4 g/día en 2 a
+      4 dosis.
+    sourceIds: [fda-cephalexin, pena-camarena]
+  - id: infecciones-graves
+    indication: Infecciones graves (mayores de 1 año)
+    route: VO
+    ageMinDays: 365
+    basis: mg/kg/day
+    amountMin: 50
+    amountMax: 100
+    usual: 100
+    intervalHours: 6
+    maxPerDoseMg: 1000
+    maxPerDayMg: 4000
+    durationText: 7–14 días según evolución.
+    notes: FDA — 50–100 mg/kg/día en infecciones graves. Libro Peña Camarena — 50–100 mg/kg/día cada 6 h, máximo 4 g/día.
+    sourceIds: [fda-cephalexin, pena-camarena]
 warnings:
   - Posible alergia cruzada con penicilinas.
 contraindications:
@@ -45,6 +59,16 @@ review:
   author: Diego
   reviewers: []
 testCases:
+  - ruleId: infecciones-graves
+    presentationId: susp-250-5
+    weightKg: 10
+    ageDays: 365
+    expect: { mgPerDose: 250, amount: 5, unit: mL }
+  - ruleId: infecciones-graves
+    presentationId: cap-500
+    weightKg: 50
+    ageDays: 5110
+    expect: { mgPerDose: 1000, amount: 2, unit: capsula, capped: true }
   - ruleId: infecciones-habituales
     presentationId: susp-250-5
     weightKg: 10

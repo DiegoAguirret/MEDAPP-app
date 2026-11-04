@@ -2,7 +2,7 @@
 
 **Fecha:** 2026-11-05 · **Método:** cada valor se tomó de un documento descargado y leído en esta fecha (openFDA/DailyMed, CIMA-AEMPS, PubMed/PMC, OMS IRIS, MINSA/DGE, GINA, CPS). No se usaron datos de memoria. Las citas son textuales y breves (las etiquetas de la FDA son de dominio público).
 
-> Las 10 fichas siguen en **borrador** hasta que un médico las valide. La versión para Play Store exige **2 fuentes por regla**. Las reglas marcadas con ⚠️ tienen hoy una sola fuente oficial verificada.
+> Las 10 fichas siguen en **borrador** hasta que un médico las valide. Basta **1 fuente oficial** por regla. El libro de Peña Camarena se usa como fuente adicional y para las presentaciones y marcas comercializadas en Perú.
 
 | Fármaco | Valor en la app | Fuente | Cita / dato verificado | Estado |
 |---|---|---|---|---|
@@ -33,6 +33,21 @@
 | Plan C | 30 + 70 mL/kg; <12 m en 1 h + 5 h; ≥12 m en 30 min + 2.5 h | MINSA y OMS Pocket Book 2013 | "Lactantes < 12 meses: 30 ml/kg en 1 hora; luego 70 ml/kg en 5 horas" | ✅ |
 | Holliday-Segar | 100/50/20 mL/kg/día | Holliday & Segar 1957 (PubMed 13431307), revisión PMC12543346 | "100 mL/kg… first 10 kg… 50 mL/kg… 10–20 kg… 20 mL/kg… above 20 kg" | ✅ (la OMS usa 25 mL/kg por encima de 20 kg) |
 
+## Comparación con el libro de Peña Camarena (Dosificación de medicamentos en pediatría)
+| Fármaco | Libro | App | Resultado |
+|---|---|---|---|
+| Paracetamol | 10–15 mg/kg/dosis cada 4–6 h; gotas 100 mg/mL; jarabe 120 mg/5 mL | 10–15 mg/kg cada 6 h | Coincide |
+| Ibuprofeno | 5–10 mg/kg/dosis cada 6–8 h; jarabe 100 mg/5 mL; gotas 40 mg/mL | 5–10 mg/kg cada 8 h | Coincide; se añaden las gotas 40 mg/mL |
+| Metamizol | 15–25 mg/kg/dosis; **gotas 400 mg/mL**; jarabe 250 mg/5 mL | 8–16 mg/kg (AEMPS) | **Difiere**: la app usa la ficha AEMPS y muestra el rango del libro como nota; se usan las presentaciones peruanas |
+| Amoxicilina | 30–50 mg/kg/día cada 8 h; otitis 80 mg/kg/día cada 8–12 h | otitis 80–90 mg/kg/día cada 12 h | Coincide; se añade el jarabe 125 mg/5 mL |
+| Azitromicina | 10 mg/kg/día por 3 días | se añade el esquema de 3 días (también en FDA y AEMPS) | Coincide |
+| Cefalexina | 50–100 mg/kg/día cada 6 h, máx. 4 g/día | 25–50 habitual y 50–100 en graves, cada 6 h | Coincide; el libro confirma el intervalo cada 6 h |
+| Cetirizina | 0.25 mg/kg/día cada 12–24 h; no en menores de 6 meses; gotas 10 mg/mL | dosis fija por edad (FDA) | Método distinto, mismo límite de edad; se añaden las gotas 10 mg/mL |
+| Prednisona | 1–2 mg/kg/día (máx. 60 mg) | prednisolona 1–2 mg/kg/día con topes GINA | Coincide en mg/kg |
+| Ondansetrón | No figura | CPS / IDSA | — |
+
+Las marcas (Panadol, Atamel, Afebril, Doloral, Antalgina, Velamox, Amoxidal, Zitromax, Keflex, Alermizol) son las que lista el libro; pueden haber cambiado desde su edición.
+
 ## Correcciones aplicadas tras la verificación
 - **Paracetamol:** máximo diario de 4 g → 3 g (AEMPS). Una nota indica 60 mg/kg/día en menores de 2 años (FDA).
 - **Cefalexina:** desde 1 año (antes, desde 1 mes).
@@ -44,6 +59,5 @@
 - **Fuentes no descargadas** (Harriet Lane, BNFc, Pediamécum, Red Book): retiradas de las citas.
 
 ## Pendientes que solo puede cerrar un médico o un registro oficial
-1. Presentaciones y marcas comercializadas en Perú (registro DIGEMID). Las concentraciones usadas son estándar, pero su comercialización en Perú no está verificada.
-2. Segunda fuente para las reglas ⚠️. Sin ella, la versión para Play Store no compila.
-3. Intervalo pediátrico de cefalexina (la ficha FDA no lo fija).
+1. Confirmar con el registro DIGEMID que las presentaciones y marcas del libro siguen comercializándose.
+2. Que el médico revise las dos diferencias con el libro: dosis de metamizol y método de la cetirizina.

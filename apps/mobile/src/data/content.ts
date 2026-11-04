@@ -37,13 +37,11 @@ export function loadVerifiedContent(raw: RawContent, publicKeyHex: string): Load
   }
 }
 
+/** Diacríticos combinantes (U+0300–U+036F) tras descomponer en NFD. */
+const COMBINING_MARKS = new RegExp('[\u0300-\u036f]', 'g');
+
 export function normalize(text: string): string {
-  // Elimina los diacríticos combinantes (U+0300–U+036F) tras descomponer en NFD.
-  return text
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .toLowerCase()
-    .trim();
+  return text.normalize('NFD').replace(COMBINING_MARKS, '').toLowerCase().trim();
 }
 
 function haystack(d: Drug): string {

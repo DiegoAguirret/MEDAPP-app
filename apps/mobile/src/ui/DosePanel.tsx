@@ -189,7 +189,7 @@ export function DosePanel({
           const src = sources.find((x) => x.id === id);
           return (
             <Text key={id} style={s.muted}>
-              • {src ? `${src.title} (${src.year})` : id}
+              • {src ? `${src.title}${src.year === undefined ? '' : ` (${src.year})`}` : id}
             </Text>
           );
         })}

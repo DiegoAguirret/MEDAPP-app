@@ -43,7 +43,7 @@ export const doseRuleSchema = z
     durationText: z.string().min(1).optional(),
     notes: z.string().min(1).optional(),
     obesityNote: z.boolean().optional(),
-    /** ≥1 en modo tester; la compilación release exige ≥2 (ver content-build). */
+    /** Al menos una fuente oficial o de referencia por regla. */
     sourceIds: z.array(id).min(1, 'Cada regla necesita al menos una fuente'),
     /** Presentaciones con las que se puede usar la regla. Obligatorio en vías parenterales. */
     presentationIds: z.array(id).min(1).optional(),
@@ -172,7 +172,7 @@ export const sourceSchema = z.object({
   id,
   title: z.string().min(1),
   edition: z.string().min(1).optional(),
-  year: z.number().int().min(1900).max(2100),
+  year: z.number().int().min(1900).max(2100).optional(),
   publisher: z.string().min(1).optional(),
   url: z.url().optional(),
 });

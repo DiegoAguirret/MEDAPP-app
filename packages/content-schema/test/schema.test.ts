@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseDrug } from '../src/index.ts';
+import { parseDrug, parseSource } from '../src/index.ts';
 
 function validDrug(): Record<string, unknown> {
   return {
@@ -161,6 +161,12 @@ describe('parseDrug', () => {
         ),
       ),
     ).toThrow();
+  });
+});
+
+describe('parseSource', () => {
+  it('accepts a source without a known year', () => {
+    expect(parseSource({ id: 'libro', title: 'Libro' }).year).toBeUndefined();
   });
 });
 

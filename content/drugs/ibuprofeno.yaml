@@ -9,14 +9,14 @@ presentations:
     mgPerUnit: 20
     unit: mL
     step: 0.1
-    brandsPE: []
-  - id: susp-200-5
-    label: Suspensión 200 mg/5 mL
-    form: suspension
+    brandsPE: [Afebril, Adax, Doloral]
+  - id: gotas-40
+    label: Gotas 40 mg/mL
+    form: gotas
     mgPerUnit: 40
     unit: mL
     step: 0.1
-    brandsPE: []
+    brandsPE: [Doloral]
 rules:
   - id: fiebre-dolor-vo
     indication: Fiebre o dolor leve a moderado (6 meses a 11 años)
@@ -33,8 +33,9 @@ rules:
     notes: >-
       FDA: fiebre 5 mg/kg si la temperatura es menor de 39.2 °C (102.5 °F) y 10 mg/kg si es mayor;
       cada 6–8 h; no superar 40 mg/kg/día. Topes de 400 mg/toma y 1200 mg/día: dosis máxima
-      de venta libre para 12 años o más (FDA). Administrar con alimentos.
-    sourceIds: [fda-ibuprofen-susp, fda-ibuprofen-otc]
+      de venta libre para 12 años o más (FDA). Libro Peña Camarena: 5–10 mg/kg/dosis cada 6–8 h.
+      Administrar con alimentos.
+    sourceIds: [fda-ibuprofen-susp, fda-ibuprofen-otc, pena-camarena]
 warnings:
   - Evitar en deshidratación por riesgo de lesión renal.
   - Riesgo de sangrado gastrointestinal.
@@ -52,7 +53,7 @@ testCases:
     ageDays: 365
     expect: { mgPerDose: 100, amount: 5, unit: mL }
   - ruleId: fiebre-dolor-vo
-    presentationId: susp-200-5
+    presentationId: gotas-40
     weightKg: 15
     ageDays: 1095
     expect: { mgPerDose: 150, amount: 3.8, unit: mL }

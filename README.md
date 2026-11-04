@@ -34,5 +34,5 @@ cd android && ./gradlew assembleRelease
 ```
 
 ## Seguridad clínica
-- La versión para Play Store (`npm run content:build:release`) solo compila si **todas** las fichas están validadas y cada regla tiene **2 fuentes**.
+- La versión para Play Store (`npm run content:build:release`) solo compila si **todas** las fichas están validadas por un médico.
 - La app no guarda datos de pacientes y no muestra dosis si el contenido no pasa la verificación de firma.

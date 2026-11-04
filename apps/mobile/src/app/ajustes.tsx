@@ -56,7 +56,8 @@ export default function Settings() {
               style={src.url ? s.link : s.body}
               onPress={src.url ? () => void Linking.openURL(src.url ?? '') : undefined}
             >
-              • {src.title} ({src.year})
+              • {src.title}
+              {src.year === undefined ? '' : ` (${src.year})`}
             </Text>
           ))}
         </Card>

@@ -16,7 +16,7 @@ presentations:
     mgPerUnit: 24
     unit: mL
     step: 0.1
-    brandsPE: []
+    brandsPE: [Panadol, Atamel]
   - id: tab-500
     label: Tableta 500 mg
     form: tableta
@@ -39,7 +39,8 @@ rules:
     notes: >-
       AEMPS: 15 mg/kg cada 6 h (o 10 mg/kg cada 4 h); en más de 38 kg, máximo 3 g/día.
       FDA: de 29 días a 2 años, no superar 60 mg/kg/día.
-    sourceIds: [aemps-ft-49302, fda-acetaminophen-iv]
+      Libro Peña Camarena: 10–15 mg/kg/dosis cada 4–6 h.
+    sourceIds: [aemps-ft-49302, fda-acetaminophen-iv, pena-camarena]
 warnings:
   - Hepatotoxicidad en sobredosis; verificar otros productos que contengan paracetamol.
 contraindications:

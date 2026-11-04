@@ -4,15 +4,16 @@ import { loadContent } from '../../content-build/src/load.ts';
 import { simulate, type SimRow } from './simulate.ts';
 
 const ROOT = resolve(import.meta.dirname, '../../..');
-const n = (v: number | null, d = 2): string =>
-  v === null ? '—' : String(Number(v.toFixed(d)));
+const n = (v: number | null, d = 2): string => (v === null ? '—' : String(Number(v.toFixed(d))));
 
 const { drugs } = loadContent(resolve(ROOT, 'content'));
 const rows = simulate(drugs);
 const calc = rows.filter((r) => r.verdict !== 'not_applicable');
 const ok = calc.filter((r) => r.verdict === 'ok');
 const mism = rows.filter((r) => r.verdict === 'mismatch');
-const exactMg = calc.filter((r) => r.appMg !== null && r.manualMg !== null && r.appMg === r.manualMg);
+const exactMg = calc.filter(
+  (r) => r.appMg !== null && r.manualMg !== null && r.appMg === r.manualMg,
+);
 const errs = calc
   .filter((r) => r.appAmount !== null && r.manualAmount !== null)
   .map((r) => (Math.abs((r.appAmount ?? 0) - (r.manualAmount ?? 0)) / (r.manualAmount ?? 1)) * 100);

@@ -9,7 +9,7 @@ presentations:
     mgPerUnit: 40
     unit: mL
     step: 0.1
-    brandsPE: []
+    brandsPE: [Zitromax]
   - id: tab-500
     label: Tableta 500 mg
     form: tableta
@@ -18,6 +18,20 @@ presentations:
     step: 1
     brandsPE: []
 rules:
+  - id: esquema-3-dias
+    indication: Otitis media aguda o sinusitis, esquema de 3 días (6 meses o más)
+    route: VO
+    ageMinDays: 180
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    intervalHours: 24
+    maxPerDoseMg: 500
+    maxPerDayMg: 500
+    durationText: 3 días.
+    notes: Mismo esquema en la ficha FDA, la ficha AEMPS y el libro Peña Camarena (10 mg/kg/día por 3 días).
+    sourceIds: [fda-azithromycin, aemps-ft-71180, pena-camarena]
   - id: esquema-5-dias-dia-1
     indication: Neumonía adquirida en la comunidad, esquema de 5 días — día 1 (6 meses o más)
     route: VO
@@ -55,6 +69,11 @@ review:
   author: Diego
   reviewers: []
 testCases:
+  - ruleId: esquema-3-dias
+    presentationId: susp-200-5
+    weightKg: 15
+    ageDays: 1095
+    expect: { mgPerDose: 150, amount: 3.8, unit: mL }
   - ruleId: esquema-5-dias-dia-1
     presentationId: susp-200-5
     weightKg: 10

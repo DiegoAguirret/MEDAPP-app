@@ -3,25 +3,32 @@ name: Amoxicilina
 synonyms: []
 atc: J01CA04
 presentations:
+  - id: susp-125-5
+    label: Suspensión 125 mg/5 mL
+    form: suspension
+    mgPerUnit: 25
+    unit: mL
+    step: 0.1
+    brandsPE: [Velamox]
   - id: susp-250-5
     label: Suspensión 250 mg/5 mL
     form: suspension
     mgPerUnit: 50
     unit: mL
     step: 0.1
-    brandsPE: []
+    brandsPE: [Velamox]
   - id: susp-500-5
     label: Suspensión 500 mg/5 mL
     form: suspension
     mgPerUnit: 100
     unit: mL
     step: 0.1
-    brandsPE: []
-  - id: cap-500
-    label: Cápsula 500 mg
-    form: capsula
+    brandsPE: [Velamox, Amoxidal]
+  - id: tab-500
+    label: Tableta 500 mg
+    form: tableta
     mgPerUnit: 500
-    unit: capsula
+    unit: tableta
     step: 1
     brandsPE: []
 rules:
@@ -52,7 +59,8 @@ rules:
     maxPerDoseMg: 2000
     maxPerDayMg: 4000
     durationText: 10 días si es menor de 2 años o grave; 7 días entre 2 y 5 años; 5–7 días si tiene 6 años o más.
-    sourceIds: [aap-aom-2013, aap-eqipp-aom]
+    notes: Libro Peña Camarena — otitis 80 mg/kg/día cada 8–12 h; infecciones comunes 30–50 mg/kg/día cada 8 h.
+    sourceIds: [aap-aom-2013, aap-eqipp-aom, pena-camarena]
   - id: faringitis-estreptococica
     indication: Faringoamigdalitis estreptocócica (3 años o más)
     route: VO
@@ -93,7 +101,7 @@ testCases:
     ageDays: 1825
     expect: { mgPerDose: 1000, amount: 10, unit: mL }
   - ruleId: faringitis-estreptococica
-    presentationId: cap-500
+    presentationId: tab-500
     weightKg: 30
     ageDays: 3285
-    expect: { mgPerDose: 1000, amount: 2, unit: capsula, capped: true }
+    expect: { mgPerDose: 1000, amount: 2, unit: tableta, capped: true }

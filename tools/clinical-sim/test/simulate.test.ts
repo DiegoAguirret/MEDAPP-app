@@ -72,7 +72,7 @@ describe('the simulation catches deliberate errors', () => {
   it('detects a mistyped concentration (250 mg/5 mL entered as 25 mg/mL)', () => {
     const drugs = clone();
     const amox = drugs.find((d) => d.id === 'amoxicilina')!;
-    amox.presentations[0]!.mgPerUnit = 25;
+    amox.presentations.find((p) => p.id === 'susp-250-5')!.mgPerUnit = 25;
     expect(simulate(drugs).some((r) => r.verdict === 'mismatch')).toBe(true);
   });
 

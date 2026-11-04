@@ -3,13 +3,20 @@ name: Metamizol
 synonyms: [dipirona]
 atc: N02BB02
 presentations:
-  - id: gotas-500
-    label: Gotas orales 500 mg/mL — 1 gota = 25 mg
+  - id: jarabe-250-5
+    label: Jarabe 250 mg/5 mL
+    form: jarabe
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: [Antalgina, Repriman]
+  - id: gotas-400
+    label: Gotas 400 mg/mL (medir con jeringa de 1 mL)
     form: gotas
-    mgPerUnit: 25
-    unit: gota
-    step: 1
-    brandsPE: []
+    mgPerUnit: 400
+    unit: mL
+    step: 0.05
+    brandsPE: [Antalgina]
 rules:
   - id: fiebre-dolor-vo
     indication: Fiebre o dolor (3 meses a 8 años, hasta 30 kg)
@@ -27,8 +34,10 @@ rules:
       AEMPS (gotas): 8–16 mg/kg por dosis en niños de hasta 7–9 años; 10 mg/kg suele bastar para la
       fiebre. Intervalo de 6–8 h y hasta 4 dosis al día (ficha inyectable). La ficha no incluye dosis
       para menores de 3 meses ni de 5 kg. Tope de 500 mg/dosis y 2000 mg/día: tramo de 24–30 kg de la
-      tabla de la ficha.
-    sourceIds: [aemps-ft-83494, aemps-ft-42304]
+      tabla de la ficha. En Perú las gotas son de 400 mg/mL (libro Peña Camarena); en España, de
+      500 mg/mL: no intercambiar. Libro Peña Camarena: 15–25 mg/kg/dosis (rango mayor que el de la
+      ficha AEMPS; la app usa el de la ficha).
+    sourceIds: [aemps-ft-83494, aemps-ft-42304, pena-camarena]
 warnings:
   - Riesgo de agranulocitosis; suspender ante fiebre, dolor de garganta o úlceras orales.
   - Puede producir hipotensión.
@@ -43,18 +52,18 @@ review:
   reviewers: []
 testCases:
   - ruleId: fiebre-dolor-vo
-    presentationId: gotas-500
+    presentationId: jarabe-250-5
     weightKg: 10
     ageDays: 365
-    expect: { mgPerDose: 100, amount: 4, unit: gota }
+    expect: { mgPerDose: 100, amount: 2, unit: mL }
   - ruleId: fiebre-dolor-vo
-    presentationId: gotas-500
+    presentationId: jarabe-250-5
     weightKg: 20
     ageDays: 1825
-    expect: { mgPerDose: 200, amount: 8, unit: gota }
+    expect: { mgPerDose: 200, amount: 4, unit: mL }
   - ruleId: fiebre-dolor-vo
-    presentationId: gotas-500
+    presentationId: gotas-400
     weightKg: 35
     ageDays: 3200
     chosenMgPerKg: 16
-    expect: { mgPerDose: 500, amount: 20, unit: gota, capped: true }
+    expect: { mgPerDose: 500, amount: 1.25, unit: mL, capped: true }

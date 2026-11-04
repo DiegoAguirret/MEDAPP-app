@@ -9,7 +9,14 @@ presentations:
     mgPerUnit: 1
     unit: mL
     step: 0.1
-    brandsPE: []
+    brandsPE: [Alermizol, Zyrtec]
+  - id: gotas-10
+    label: Gotas 10 mg/mL (medir con jeringa de 1 mL)
+    form: gotas
+    mgPerUnit: 10
+    unit: mL
+    step: 0.05
+    brandsPE: [Alermizol]
   - id: tab-10
     label: Tableta 10 mg
     form: tableta
@@ -30,9 +37,11 @@ rules:
     intervalHours: 24
     maxPerDoseMg: 2.5
     maxPerDayMg: 2.5
-    notes: FDA — de 12 a 23 meses se puede aumentar a 2.5 mg cada 12 h (máximo 5 mg/día).
-    presentationIds: [sol-1]
-    sourceIds: [fda-cetirizine-rx]
+    notes: >-
+      FDA — de 12 a 23 meses se puede aumentar a 2.5 mg cada 12 h (máximo 5 mg/día). Libro Peña
+      Camarena — 0.25 mg/kg/día cada 12–24 h; no recomendado en menores de 6 meses.
+    presentationIds: [sol-1, gotas-10]
+    sourceIds: [fda-cetirizine-rx, pena-camarena]
   - id: alergia-2-5-anos
     indication: Rinitis alérgica o urticaria (2 a 5 años)
     route: VO
@@ -46,7 +55,7 @@ rules:
     maxPerDoseMg: 5
     maxPerDayMg: 5
     notes: FDA — inicio 2.5 mg/día, máximo 5 mg/día. AEMPS — 2.5 mg cada 12 h (mismo total).
-    presentationIds: [sol-1]
+    presentationIds: [sol-1, gotas-10]
     sourceIds: [fda-cetirizine-rx, aemps-ft-80453]
   - id: alergia-6-anos-o-mas
     indication: Rinitis alérgica o urticaria (6 años o más)
@@ -72,6 +81,11 @@ review:
   author: Diego
   reviewers: []
 testCases:
+  - ruleId: alergia-6-23-meses
+    presentationId: gotas-10
+    weightKg: 9
+    ageDays: 400
+    expect: { mgPerDose: 2.5, amount: 0.25, unit: mL }
   - ruleId: alergia-6-23-meses
     presentationId: sol-1
     weightKg: 8
