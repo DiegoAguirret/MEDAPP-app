@@ -5,6 +5,7 @@ function validDrug(): Record<string, unknown> {
   return {
     id: 'paracetamol',
     name: 'Paracetamol',
+    category: 'analgesico',
     synonyms: ['acetaminofén'],
     presentations: [
       {
@@ -60,6 +61,10 @@ function mutate(fn: (d: Mutable) => void): unknown {
 describe('parseDrug', () => {
   it('accepts a minimal valid drug', () => {
     expect(parseDrug(validDrug()).id).toBe('paracetamol');
+  });
+
+  it('rejects an unknown category', () => {
+    expect(() => parseDrug(mutate((d) => (d.category = 'magia')))).toThrow();
   });
 
   it('rejects amountMin greater than amountMax', () => {

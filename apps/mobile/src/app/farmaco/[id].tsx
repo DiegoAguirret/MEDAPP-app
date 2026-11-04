@@ -1,9 +1,11 @@
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
+import { CATEGORIES } from '../../domain/categories';
 import { getContent } from '../../state/content';
 import { useSettings } from '../../state/settings';
 import { Banner } from '../../ui/components';
 import { DosePanel } from '../../ui/DosePanel';
+import { FavoriteButton } from '../../ui/FavoriteButton';
 import { space } from '../../ui/theme';
 
 export default function DrugScreen() {
@@ -24,7 +26,13 @@ export default function DrugScreen() {
   }
   return (
     <KeyboardAvoidingView style={s.flex} behavior="height">
-      <Stack.Screen options={{ title: drug.tallMan ?? drug.name }} />
+      <Stack.Screen
+        options={{
+          title: drug.tallMan ?? drug.name,
+          headerBackTitle: CATEGORIES[drug.category].label,
+          headerRight: () => <FavoriteButton drugId={drug.id} />,
+        }}
+      />
       <ScrollView contentContainerStyle={s.screen} keyboardShouldPersistTaps="handled">
         <DosePanel
           key={drug.id}

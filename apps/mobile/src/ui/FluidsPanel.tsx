@@ -1,12 +1,14 @@
 import { bsaMosteller, dehydrationPlan, formatClinical, hollidaySegar } from '@medapp/dose-engine';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { CLINICAL_DISCLAIMER, REASON_TEXT } from '../domain/messages';
 import { parseHeight, parseWeight } from '../domain/patientInput';
 import { Card, Chip, NumberField, SectionTitle } from './components';
-import { colors, font, space } from './theme';
+import { font, space, useColors, type Palette } from './theme';
 
 export function FluidsPanel({ decimalSeparator }: { decimalSeparator: '.' | ',' }) {
+  const c = useColors();
+  const s = useMemo(() => makeStyles(c), [c]);
   const fmt = (n: number) => formatClinical(n, decimalSeparator);
   const [weightText, setWeightText] = useState('');
   const [heightText, setHeightText] = useState('');
@@ -94,10 +96,12 @@ export function FluidsPanel({ decimalSeparator }: { decimalSeparator: '.' | ',' 
   );
 }
 
-const s = StyleSheet.create({
-  wrap: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
-  error: { color: colors.danger, fontSize: font.body },
-  big: { fontSize: font.big, fontWeight: '800', color: colors.primary },
-  body: { fontSize: font.body, color: colors.text },
-  muted: { fontSize: font.small, color: colors.muted },
-});
+function makeStyles(colors: Palette) {
+  return StyleSheet.create({
+    wrap: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
+    error: { color: colors.danger, fontSize: font.body },
+    big: { fontSize: font.big, fontWeight: '800', color: colors.primary },
+    body: { fontSize: font.body, color: colors.text },
+    muted: { fontSize: font.small, color: colors.muted },
+  });
+}

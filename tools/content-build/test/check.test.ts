@@ -11,6 +11,7 @@ function drug(overrides: Record<string, unknown> = {}): Drug {
   return parseDrug({
     id: 'paracetamol',
     name: 'Paracetamol',
+    category: 'analgesico',
     synonyms: [],
     presentations: [
       {

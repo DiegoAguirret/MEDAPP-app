@@ -4,11 +4,14 @@ export type WeightParse =
   { ok: true; kg: number } | { ok: false; error: 'empty' | 'invalid' | 'out_of_range' };
 
 /** Acepta "12,5" o "12.5". Rechaza texto, unidades, notación científica y varios separadores. */
-export function parseWeight(text: string): WeightParse {
+const KG_PER_LB = 0.45359237;
+
+export function parseWeight(text: string, unit: 'kg' | 'lb' = 'kg'): WeightParse {
   const t = text.trim();
   if (t === '') return { ok: false, error: 'empty' };
   if (!/^-?\d+(?:[.,]\d+)?$/.test(t)) return { ok: false, error: 'invalid' };
-  const kg = Number(t.replace(',', '.'));
+  const value = Number(t.replace(',', '.'));
+  const kg = unit === 'lb' ? value * KG_PER_LB : value;
   if (!(kg > 0) || kg > MAX_WEIGHT_KG) return { ok: false, error: 'out_of_range' };
   return { ok: true, kg };
 }

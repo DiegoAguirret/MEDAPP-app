@@ -1,17 +1,17 @@
 import { KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
 import { useSettings } from '../state/settings';
-import { FluidsPanel } from '../ui/FluidsPanel';
+import { ManualPanel } from '../ui/ManualPanel';
 import { space } from '../ui/theme';
 
-export default function Calculators() {
+export default function ManualScreen() {
   const { decimal } = useSettings();
   return (
     <KeyboardAvoidingView style={s.flex} behavior="height">
-      <ScrollView contentContainerStyle={s.screen} keyboardShouldPersistTaps="handled">
-        <FluidsPanel decimalSeparator={decimal} />
+      <ScrollView contentContainerStyle={s.pad} keyboardShouldPersistTaps="handled">
+        <ManualPanel decimalSeparator={decimal} />
       </ScrollView>
     </KeyboardAvoidingView>
   );
 }
 
-const s = StyleSheet.create({ flex: { flex: 1 }, screen: { padding: space.lg } });
+const s = StyleSheet.create({ flex: { flex: 1 }, pad: { padding: space.lg } });

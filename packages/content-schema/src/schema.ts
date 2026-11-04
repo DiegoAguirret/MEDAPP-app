@@ -27,6 +27,22 @@ export function sourcePriority(kind: z.infer<typeof sourceKindSchema>): number {
   return PRIORITY[kind];
 }
 
+export const categorySchema = z.enum([
+  'antibiotico',
+  'analgesico',
+  'antihistaminico',
+  'respiratorio',
+  'corticoide',
+  'gastrointestinal',
+  'antiparasitario',
+  'antiviral',
+  'antifungico',
+  'anticonvulsivante',
+  'cardiovascular',
+  'vitamina',
+  'otro',
+]);
+
 export const countryNoteSchema = z.object({
   country: countrySchema,
   text: z.string().min(1),
@@ -151,6 +167,7 @@ export const drugSchema = z
   .object({
     id,
     name: z.string().min(1),
+    category: categorySchema,
     tallMan: z.string().min(1).optional(),
     synonyms: z.array(z.string().min(1)),
     atc: z.string().min(1).optional(),
@@ -224,6 +241,7 @@ export type Drug = z.infer<typeof drugSchema>;
 export type Source = z.infer<typeof sourceSchema>;
 export type SourceKind = z.infer<typeof sourceKindSchema>;
 export type Country = z.infer<typeof countrySchema>;
+export type Category = z.infer<typeof categorySchema>;
 export type CountryNote = z.infer<typeof countryNoteSchema>;
 
 export function parseDrug(raw: unknown): Drug {

@@ -1,5 +1,6 @@
 id: amoxicilina-clavulanico
 name: Amoxicilina + ácido clavulánico
+category: antibiotico
 synonyms: [co-amoxiclav]
 atc: J01CR02
 presentations:
