@@ -235,3 +235,66 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=00a327c6-6b86-4702-8c04-55c405c1404c
   kind: regulador
   country: US
+- id: fda-griseofulvin
+  title: Griseofulvin microsize tablets — prescribing information (FDA, DailyMed set 1c26d7a6-17d9-4a95-a4ee-cfc5fe6bb95d)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=1c26d7a6-17d9-4a95-a4ee-cfc5fe6bb95d
+  kind: regulador
+  country: US
+- id: fda-furosemide-inj
+  title: Furosemide injection — prescribing information (FDA, DailyMed set 08a44bdd-028d-41af-9d4e-70971b0bcc4e)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=08a44bdd-028d-41af-9d4e-70971b0bcc4e
+  kind: regulador
+  country: US
+- id: fda-metoclopramide
+  title: Metoclopramide oral solution — prescribing information (FDA, DailyMed set 0034a97a-fb05-418a-a234-de278907cd2a)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=0034a97a-fb05-418a-a234-de278907cd2a
+  kind: regulador
+  country: US
+- id: fda-hydroxyzine
+  title: Hydroxyzine hydrochloride — prescribing information (FDA, DailyMed set 0de7a377-7a8f-4119-b172-1eadb4b7e1be)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=0de7a377-7a8f-4119-b172-1eadb4b7e1be
+  kind: regulador
+  country: US
+- id: fda-clarithromycin
+  title: Clarithromycin — prescribing information (FDA, DailyMed set de33ba3a-9df1-4076-8d5f-b603d2698096)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=de33ba3a-9df1-4076-8d5f-b603d2698096
+  kind: regulador
+  country: US
+- id: fda-oseltamivir
+  title: Oseltamivir phosphate for oral suspension and capsules — prescribing information (FDA, DailyMed set 07958a9a-2360-4380-b7da-5371ed80a271)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=07958a9a-2360-4380-b7da-5371ed80a271
+  kind: regulador
+  country: US
+- id: fda-clindamycin-ped
+  title: Clindamycin palmitate hydrochloride for oral solution (Pediatric) — prescribing information (FDA, DailyMed set 0800afad-e4cd-4f70-aaa1-a14547be4729)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=0800afad-e4cd-4f70-aaa1-a14547be4729
+  kind: regulador
+  country: US
+- id: fda-clindamycin-caps
+  title: Clindamycin hydrochloride capsules — prescribing information (FDA, DailyMed set 07f5d841-9c58-4dd1-b0bc-e12553931c8e)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2023
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=07f5d841-9c58-4dd1-b0bc-e12553931c8e
+  kind: regulador
+  country: US
+- id: fda-cefadroxil
+  title: Cefadroxil for oral suspension — prescribing information (FDA, DailyMed set 27009a05-4d2b-4618-be76-39f348240eda)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=27009a05-4d2b-4618-be76-39f348240eda
+  kind: regulador
+  country: US

@@ -1,0 +1,74 @@
+id: pirantel
+name: Pirantel (pamoato)
+category: antiparasitario
+synonyms: [pamoato de pirantel, pyrantel]
+atc: P02CC01
+presentations:
+  - id: susp-250-5
+    label: Suspensión 250 mg/5 mL (como pirantel base)
+    form: suspension
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: [Combantrin]
+  - id: tab-125
+    label: Tableta 125 mg
+    form: tableta
+    mgPerUnit: 125
+    unit: tableta
+    step: 1
+    brandsPE: [Combantrin]
+rules:
+  - id: ascaris-oxiuros
+    indication: Ascariasis u oxiuriasis (dosis única)
+    route: VO
+    ageMinDays: 730
+    basis: mg/kg/dose
+    amountMin: 11
+    amountMax: 11
+    usual: 11
+    intervalHours: 24
+    maxPerDoseMg: 1000
+    maxPerDayMg: 1000
+    durationText: dosis única; en oxiuros repetir a las 2 a 4 semanas
+    notes: >-
+      FNME — mayores de 2 años, igual que adultos: 11 mg/kg en dosis única, hasta 1 g. Libro Peña
+      Camarena — 10 mg/kg en dosis única, máximo 1 g; repetir en 2 semanas.
+    sourceIds: [fnme-2008, pena-camarena]
+  - id: uncinariasis
+    indication: Uncinariasis (anquilostoma)
+    route: VO
+    ageMinDays: 730
+    basis: mg/kg/dose
+    amountMin: 11
+    amountMax: 11
+    usual: 11
+    intervalHours: 24
+    maxPerDoseMg: 1000
+    maxPerDayMg: 1000
+    durationText: 3 días
+    notes: FNME — 11 mg/kg/día (hasta 1 g) una vez al día por 3 días.
+    sourceIds: [fnme-2008]
+warnings:
+  - El libro de Peña Camarena no lo recomienda en menores de 1 año; el FNME lo indica desde los 2 años.
+contraindications:
+  - Hipersensibilidad al pirantel.
+  - Miastenia grave.
+  - Uso junto con piperazina.
+diagnoses: [parásitos, ascaris, oxiuros, enterobiasis, uncinarias, anquilostoma]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: ascaris-oxiuros
+    presentationId: susp-250-5
+    weightKg: 10
+    ageDays: 900
+    expect: { mgPerDose: 110, amount: 2.2, unit: mL }
+  - ruleId: uncinariasis
+    presentationId: susp-250-5
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 220, amount: 4.4, unit: mL }

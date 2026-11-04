@@ -1,0 +1,70 @@
+id: clindamicina
+name: Clindamicina
+category: antibiotico
+synonyms: [clindamycin]
+atc: J01FF01
+presentations:
+  - id: sol-75-5
+    label: Solución oral 75 mg/5 mL (palmitato)
+    form: suspension
+    mgPerUnit: 15
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: cap-300
+    label: Cápsula 300 mg
+    form: capsula
+    mgPerUnit: 300
+    unit: capsula
+    step: 1
+    brandsPE: []
+rules:
+  - id: serias
+    indication: Infecciones serias (piel, partes blandas, anaerobios)
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 8
+    amountMax: 16
+    intervalHours: 8
+    maxPerDoseMg: 300
+    maxPerDayMg: 1200
+    notes: >-
+      FDA — 8 a 16 mg/kg/día en 3 o 4 dosis (aquí cada 8 h); adultos, 150 a 300 mg cada 6 h (tope
+      usado aquí). Con 10 kg o menos, la dosis mínima es 37.5 mg 3 veces al día.
+    sourceIds: [fda-clindamycin-ped, fda-clindamycin-caps]
+  - id: mas-severas
+    indication: Infecciones más severas
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 17
+    amountMax: 25
+    intervalHours: 8
+    maxPerDoseMg: 450
+    maxPerDayMg: 1800
+    notes: FDA — 17 a 25 mg/kg/día en 3 o 4 dosis (aquí cada 8 h); adultos, 300 a 450 mg cada 6 h (tope usado aquí).
+    sourceIds: [fda-clindamycin-ped, fda-clindamycin-caps]
+warnings:
+  - Suspender si aparece diarrea importante; riesgo de colitis por Clostridioides difficile (FDA, recuadro negro).
+  - Dosificar por peso total aunque haya obesidad (FDA).
+  - No figura en el FNME 2008; la pauta es la de la ficha FDA.
+contraindications:
+  - Hipersensibilidad a la clindamicina o a la lincomicina.
+diagnoses: [celulitis, absceso, infección de piel, anaerobios, estafilococo, alergia a penicilina]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: serias
+    presentationId: sol-75-5
+    weightKg: 15
+    ageDays: 1460
+    expect: { mgPerDose: 40, amount: 2.7, unit: mL }
+  - ruleId: mas-severas
+    presentationId: sol-75-5
+    weightKg: 15
+    ageDays: 1460
+    expect: { mgPerDose: 85, amount: 5.7, unit: mL }

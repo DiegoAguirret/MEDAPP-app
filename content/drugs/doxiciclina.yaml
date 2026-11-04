@@ -1,0 +1,73 @@
+id: doxiciclina
+name: Doxiciclina
+category: antibiotico
+synonyms: [doxycycline]
+atc: J01AA02
+presentations:
+  - id: tab-100
+    label: Tableta 100 mg
+    form: tableta
+    mgPerUnit: 100
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: dia-1-o-severa
+    indication: Primer día, o infección severa (más de 8 años, 45 kg o menos)
+    route: VO
+    ageMinDays: 2920
+    weightMaxKg: 45.1
+    basis: mg/kg/dose
+    amountMin: 2.2
+    amountMax: 2.2
+    usual: 2.2
+    intervalHours: 12
+    maxPerDoseMg: 100
+    maxPerDayMg: 200
+    notes: >-
+      FNME — mayores de 8 años con 45 kg o menos: 2.2 mg/kg 2 veces el primer día; en infecciones
+      severas, 4.4 mg/kg/día en 2 dosis. Desde 45 kg, dosis de adulto (100 mg por toma, tope usado
+      aquí).
+    sourceIds: [fnme-2008]
+  - id: mantenimiento
+    indication: Mantenimiento desde el segundo día (más de 8 años, 45 kg o menos)
+    route: VO
+    ageMinDays: 2920
+    weightMaxKg: 45.1
+    basis: mg/kg/day
+    amountMin: 2.2
+    amountMax: 2.2
+    usual: 2.2
+    intervalHours: 24
+    maxPerDoseMg: 100
+    maxPerDayMg: 100
+    notes: FNME — desde el segundo día, 2.2 mg/kg/día en 1 o 2 tomas; aquí en una toma.
+    sourceIds: [fnme-2008]
+warnings:
+  - No usar en menores de 8 años (FNME).
+contraindications:
+  - Hipersensibilidad a la doxiciclina u otras tetraciclinas.
+  - Embarazo o lactancia.
+  - Menores de 8 años.
+diagnoses: [rickettsia, leptospirosis, mycoplasma, brucelosis, cólera, malaria, acné, tetraciclina]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: dia-1-o-severa
+    presentationId: tab-100
+    weightKg: 23
+    ageDays: 3285
+    expect: { mgPerDose: 50.6, amount: 0.5, unit: tableta }
+  - ruleId: dia-1-o-severa
+    presentationId: tab-100
+    weightKg: 44
+    ageDays: 4380
+    expect: { mgPerDose: 96.8, amount: 1, unit: tableta }
+  - ruleId: mantenimiento
+    presentationId: tab-100
+    weightKg: 23
+    ageDays: 3285
+    expect: { mgPerDose: 50.6, amount: 0.5, unit: tableta }

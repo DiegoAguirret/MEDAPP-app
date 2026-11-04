@@ -130,3 +130,29 @@ Fuentes nuevas: **NTS 213-MINSA/DGIESP-2024** sobre anemia, aprobada por la RM 2
 ### Pendiente
 
 - La NTS 213 fue modificada por la RM 429-2024-MINSA. Falta confirmar que la modificación no cambia las dosis de tratamiento.
+
+## Fase B, lote 3 (10 fármacos) — verificado el 04/11/2026
+
+Fuentes nuevas: nueve fichas FDA de DailyMed obtenidas con openFDA. Las presentaciones y marcas peruanas salen del libro de Peña Camarena (Klaricid, Claxio, Grisovin, Atarax, Primperan, Combantrin, Duracef, Cefadrox).
+
+| Fármaco        | Dosis                                                                                            | Tope usado                                | Fuentes                                                            |
+| -------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------- | ------------------------------------------------------------------ |
+| Pirantel       | 11 mg/kg dosis única (oxiuros: repetir a las 2–4 sem); uncinarias × 3 d; desde 2 años            | 1 g                                       | FNME; Peña (10 mg/kg, máx. 1 g)                                    |
+| Griseofulvina  | 13–22 kg: 125–250 mg/día; 22 kg o más: 250–500 mg/día                                            | por banda                                 | FNME; FDA (las mismas bandas en libras, 10 mg/kg/día); Peña        |
+| Furosemida     | IV/IM 0.5–1.5 mg/kg (máx. 20 mg/día); VO 1–3 mg/kg/día                                           | 20 mg/día IV; 80 mg/día VO                | FNME; FDA IV (1 mg/kg, hasta 6 mg/kg, como nota de EE. UU.); Peña  |
+| Metoclopramida | 0.1–0.2 mg/kg c/8 h, desde 10 kg                                                                 | 10 mg/dosis                               | OMS; FNME (IV); Peña; recuadro negro de la FDA (discinesia tardía) |
+| Hidroxicina    | 0.5–2 mg/kg/dosis c/8 h                                                                          | 50 mg/día bajo 6 años; 100 mg/día desde 6 | Peña (mg/kg); FDA (topes diarios)                                  |
+| Claritromicina | 7.5 mg/kg c/12 h × 10 d, desde 6 meses                                                           | 500 mg/dosis                              | FDA; Peña (15 mg/kg/día)                                           |
+| Oseltamivir    | Menos de 1 año 3 mg/kg c/12 h; 1–12 años por peso: 30 / 45 / 60 / 75 mg c/12 h × 5 d             | por banda; dosis adulto 75 mg             | FDA (tabla 1)                                                      |
+| Clindamicina   | Serias 8–16 mg/kg/día; más severas 17–25 mg/kg/día, c/8 h                                        | 300 / 450 mg por toma (dosis de adulto)   | FDA solución pediátrica y cápsulas                                 |
+| Cefadroxilo    | 30 mg/kg/día c/12 h                                                                              | 1 g/día (tabla pediátrica FDA)            | FDA; Peña (40–50 mg/kg/día, como nota de Perú)                     |
+| Doxiciclina    | Más de 8 años y 45 kg o menos: 2.2 mg/kg c/12 h el día 1 o en casos severos; luego 2.2 mg/kg/día | 100 mg por toma                           | FNME                                                               |
+
+### Decisiones tomadas en este lote
+
+- **Adrenalina para anafilaxia:** pasa a la Fase C. Se repite cada 5 a 15 min y el motor solo maneja intervalos desde 4 h, así que la ficha mostraría «cada 4 h», lo que sería engañoso. Hay que agregar dosis repetibles en minutos.
+- **Cefuroxima:** no está en el FNME y la suspensión no figura en openFDA; queda fuera.
+- **Metoclopramida:** se usa la pauta de la OMS con su límite de 10 kg y el recuadro negro de la FDA como advertencia. El libro de Peña da una dosis mayor (0.2–0.3 mg/kg).
+- **Furosemida IV:** se respeta el tope del FNME (20 mg/día), que es más bajo que el de la FDA (hasta 6 mg/kg); la diferencia se muestra como nota de EE. UU.
+- **Oseltamivir en menores de 1 año:** la FDA no da tope, así que se usa la dosis de adulto (75 mg) como techo.
+- **Clindamicina, oseltamivir y claritromicina:** no figuran en el FNME 2008. Las presentaciones son las de la ficha FDA o del libro; conviene confirmarlas en el registro de DIGEMID.

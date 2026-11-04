@@ -1,0 +1,72 @@
+id: hidroxicina
+name: Hidroxicina
+category: antihistaminico
+synonyms: [hidroxizina, hydroxyzine]
+atc: N05BB01
+presentations:
+  - id: jarabe-10-5
+    label: Jarabe 10 mg/5 mL
+    form: jarabe
+    mgPerUnit: 2
+    unit: mL
+    step: 0.1
+    brandsPE: [Atarax]
+  - id: tab-25
+    label: Tableta 25 mg
+    form: tableta
+    mgPerUnit: 25
+    unit: tableta
+    step: 0.5
+    brandsPE: [Atarax]
+rules:
+  - id: prurito-menor-6-anos
+    indication: Prurito, urticaria o ansiedad (menores de 6 años)
+    route: VO
+    ageMinDays: 29
+    ageMaxDays: 2189
+    basis: mg/kg/dose
+    amountMin: 0.5
+    amountMax: 2
+    intervalHours: 8
+    maxPerDoseMg: 50
+    maxPerDayMg: 50
+    notes: >-
+      Libro Peña Camarena — 0.5 a 2 mg/kg por dosis cada 8 a 12 h. FDA — menores de 6 años, 50 mg/día
+      en dosis divididas (tope diario usado aquí).
+    sourceIds: [pena-camarena, fda-hydroxyzine]
+  - id: prurito-6-anos-o-mas
+    indication: Prurito, urticaria o ansiedad (6 años o más)
+    route: VO
+    ageMinDays: 2190
+    basis: mg/kg/dose
+    amountMin: 0.5
+    amountMax: 2
+    intervalHours: 8
+    maxPerDoseMg: 100
+    maxPerDayMg: 100
+    notes: >-
+      Libro Peña Camarena — 0.5 a 2 mg/kg por dosis cada 8 a 12 h. FDA — mayores de 6 años, 50 a 100
+      mg/día en dosis divididas (tope diario usado aquí).
+    sourceIds: [pena-camarena, fda-hydroxyzine]
+warnings:
+  - Produce somnolencia.
+contraindications:
+  - Hipersensibilidad a la hidroxicina, la cetirizina o la levocetirizina.
+  - QT prolongado.
+diagnoses: [prurito, picazón, urticaria, dermatitis atópica, ansiedad]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: prurito-menor-6-anos
+    presentationId: jarabe-10-5
+    weightKg: 12
+    ageDays: 730
+    expect: { mgPerDose: 6, amount: 3, unit: mL }
+  - ruleId: prurito-6-anos-o-mas
+    presentationId: jarabe-10-5
+    weightKg: 24
+    ageDays: 2920
+    expect: { mgPerDose: 12, amount: 6, unit: mL }

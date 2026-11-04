@@ -1,0 +1,69 @@
+id: claritromicina
+name: Claritromicina
+category: antibiotico
+synonyms: [clarithromycin]
+atc: J01FA09
+presentations:
+  - id: susp-125-5
+    label: Suspensión 125 mg/5 mL
+    form: suspension
+    mgPerUnit: 25
+    unit: mL
+    step: 0.1
+    brandsPE: [Klaricid, Claxio]
+  - id: susp-250-5
+    label: Suspensión 250 mg/5 mL
+    form: suspension
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: [Klaricid, Claxio]
+  - id: tab-500
+    label: Tableta 500 mg
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 1
+    brandsPE: [Klaricid, Claxio]
+rules:
+  - id: usual
+    indication: Otitis, faringitis, sinusitis, neumonía o piel (alérgicos a penicilina)
+    route: VO
+    ageMinDays: 180
+    basis: mg/kg/dose
+    amountMin: 7.5
+    amountMax: 7.5
+    usual: 7.5
+    intervalHours: 12
+    maxPerDoseMg: 500
+    maxPerDayMg: 1000
+    durationText: 10 días
+    notes: >-
+      FDA — 15 mg/kg/día dividido cada 12 h por 10 días, hasta la dosis de adulto (500 mg cada 12 h,
+      tope usado aquí); eficacia establecida desde los 6 meses. Libro Peña Camarena — 15 mg/kg/día
+      cada 12 h.
+    sourceIds: [fda-clarithromycin, pena-camarena]
+warnings:
+  - No figura en el FNME 2008; la pauta es la de la ficha FDA.
+  - Interacciones graves con cisaprida, pimozida, colchicina y algunas estatinas (FDA).
+contraindications:
+  - Hipersensibilidad a la claritromicina o a otro macrólido.
+  - Uso junto con cisaprida o pimozida.
+  - Ictericia colestásica o disfunción hepática previa con claritromicina.
+diagnoses: [otitis media, faringitis, sinusitis, neumonía, alergia a penicilina, macrólido]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: usual
+    presentationId: susp-125-5
+    weightKg: 10
+    ageDays: 400
+    expect: { mgPerDose: 75, amount: 3, unit: mL }
+  - ruleId: usual
+    presentationId: susp-250-5
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 150, amount: 3, unit: mL }

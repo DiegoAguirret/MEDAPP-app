@@ -1,0 +1,84 @@
+id: furosemida
+name: Furosemida
+category: cardiovascular
+synonyms: [furosemide]
+atc: C03CA01
+presentations:
+  - id: amp-10
+    label: Ampolla 10 mg/mL (2 mL)
+    form: ampolla
+    mgPerUnit: 10
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-40
+    label: Tableta 40 mg
+    form: tableta
+    mgPerUnit: 40
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: edema-iv
+    indication: Edema (IV o IM lenta)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 0.5
+    amountMax: 1.5
+    usual: 1
+    intervalHours: 24
+    maxPerDoseMg: 20
+    maxPerDayMg: 20
+    notes: >-
+      FNME — niños, IM o IV lenta 0.5 a 1.5 mg/kg hasta una dosis diaria máxima de 20 mg; pasar a no
+      más de 4 mg/min. Si se repite en el día, el total no pasa de 20 mg.
+    presentationIds: [amp-10]
+    countryNotes:
+      - country: US
+        text: >-
+          FDA — 1 mg/kg IV o IM; si no hay respuesta, subir 1 mg/kg no antes de 2 h después; no pasar
+          de 6 mg/kg. En prematuros, máximo 1 mg/kg/día.
+        sourceIds: [fda-furosemide-inj]
+    sourceIds: [fnme-2008, fda-furosemide-inj]
+  - id: edema-vo
+    indication: Edema (vía oral)
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 1
+    amountMax: 3
+    intervalHours: 24
+    maxPerDoseMg: 80
+    maxPerDayMg: 80
+    notes: >-
+      FNME — niños 1 a 3 mg/kg/día; adulto, 40 mg en la mañana y hasta 80 mg/día en edema resistente
+      (tope usado aquí). Libro Peña Camarena — 1 a 2 mg/kg por dosis cada 12 a 24 h.
+    sourceIds: [fnme-2008, pena-camarena]
+warnings:
+  - La tableta de 40 mg no permite dosis pequeñas; en lactantes usa la vía IV o «Personalizar concentración».
+contraindications:
+  - Estados precomatosos asociados a cirrosis hepática.
+  - Insuficiencia renal con anuria.
+diagnoses: [edema, oliguria, sobrecarga hídrica, diurético]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: edema-iv
+    presentationId: amp-10
+    weightKg: 10
+    ageDays: 400
+    expect: { mgPerDose: 10, amount: 1, unit: mL }
+  - ruleId: edema-iv
+    presentationId: amp-10
+    weightKg: 30
+    ageDays: 3285
+    expect: { mgPerDose: 20, amount: 2, unit: mL }
+  - ruleId: edema-vo
+    presentationId: tab-40
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 20, amount: 0.5, unit: tableta }

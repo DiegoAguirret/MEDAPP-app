@@ -1,0 +1,168 @@
+id: oseltamivir
+name: Oseltamivir
+category: antiviral
+synonyms: [tamiflu]
+atc: J05AH02
+presentations:
+  - id: susp-6
+    label: Suspensión 6 mg/mL
+    form: suspension
+    mgPerUnit: 6
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: cap-30
+    label: Cápsula 30 mg
+    form: capsula
+    mgPerUnit: 30
+    unit: capsula
+    step: 1
+    brandsPE: []
+  - id: cap-45
+    label: Cápsula 45 mg
+    form: capsula
+    mgPerUnit: 45
+    unit: capsula
+    step: 1
+    brandsPE: []
+  - id: cap-75
+    label: Cápsula 75 mg
+    form: capsula
+    mgPerUnit: 75
+    unit: capsula
+    step: 1
+    brandsPE: []
+rules:
+  - id: influenza-menor-1-ano
+    indication: Tratamiento de influenza (menores de 1 año)
+    route: VO
+    ageMinDays: 29
+    ageMaxDays: 364
+    basis: mg/kg/dose
+    amountMin: 3
+    amountMax: 3
+    usual: 3
+    intervalHours: 12
+    maxPerDoseMg: 75
+    maxPerDayMg: 150
+    durationText: 5 días
+    notes: FDA — desde las 2 semanas hasta antes del año, 3 mg/kg 2 veces al día por 5 días (0.5 mL/kg de la suspensión de 6 mg/mL).
+    presentationIds: [susp-6]
+    sourceIds: [fda-oseltamivir]
+  - id: influenza-hasta-15-kg
+    indication: Tratamiento de influenza (1 a 12 años, hasta 15 kg)
+    route: VO
+    ageMinDays: 365
+    ageMaxDays: 4744
+    weightMaxKg: 15.1
+    basis: fixed_by_age
+    amountMin: 30
+    amountMax: 30
+    usual: 30
+    intervalHours: 12
+    maxPerDoseMg: 30
+    maxPerDayMg: 60
+    durationText: 5 días
+    notes: FDA — 15 kg o menos, 30 mg 2 veces al día por 5 días (5 mL de la suspensión).
+    sourceIds: [fda-oseltamivir]
+  - id: influenza-15-23-kg
+    indication: Tratamiento de influenza (1 a 12 años, 15.1 a 23 kg)
+    route: VO
+    ageMinDays: 365
+    ageMaxDays: 4744
+    weightMinKg: 15.1
+    weightMaxKg: 23.1
+    basis: fixed_by_age
+    amountMin: 45
+    amountMax: 45
+    usual: 45
+    intervalHours: 12
+    maxPerDoseMg: 45
+    maxPerDayMg: 90
+    durationText: 5 días
+    notes: FDA — de 15.1 a 23 kg, 45 mg 2 veces al día por 5 días (7.5 mL de la suspensión).
+    sourceIds: [fda-oseltamivir]
+  - id: influenza-23-40-kg
+    indication: Tratamiento de influenza (1 a 12 años, 23.1 a 40 kg)
+    route: VO
+    ageMinDays: 365
+    ageMaxDays: 4744
+    weightMinKg: 23.1
+    weightMaxKg: 40.1
+    basis: fixed_by_age
+    amountMin: 60
+    amountMax: 60
+    usual: 60
+    intervalHours: 12
+    maxPerDoseMg: 60
+    maxPerDayMg: 120
+    durationText: 5 días
+    notes: FDA — de 23.1 a 40 kg, 60 mg 2 veces al día por 5 días (10 mL de la suspensión).
+    sourceIds: [fda-oseltamivir]
+  - id: influenza-mas-40-kg
+    indication: Tratamiento de influenza (1 a 12 años, más de 40 kg)
+    route: VO
+    ageMinDays: 365
+    ageMaxDays: 4744
+    weightMinKg: 40.1
+    basis: fixed_by_age
+    amountMin: 75
+    amountMax: 75
+    usual: 75
+    intervalHours: 12
+    maxPerDoseMg: 75
+    maxPerDayMg: 150
+    durationText: 5 días
+    notes: FDA — 40.1 kg o más, 75 mg 2 veces al día por 5 días (12.5 mL de la suspensión).
+    sourceIds: [fda-oseltamivir]
+  - id: influenza-13-anos-o-mas
+    indication: Tratamiento de influenza (13 años o más)
+    route: VO
+    ageMinDays: 4745
+    basis: fixed_by_age
+    amountMin: 75
+    amountMax: 75
+    usual: 75
+    intervalHours: 12
+    maxPerDoseMg: 75
+    maxPerDayMg: 150
+    durationText: 5 días
+    notes: FDA — adultos y adolescentes de 13 años o más, 75 mg 2 veces al día por 5 días.
+    sourceIds: [fda-oseltamivir]
+warnings:
+  - Ajustar la dosis en insuficiencia renal (FDA).
+  - El tope en menores de 1 año es la dosis de adulto; la FDA no fija otro.
+contraindications:
+  - Hipersensibilidad grave al oseltamivir o a un componente del producto.
+diagnoses: [influenza, gripe, h1n1]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: influenza-menor-1-ano
+    presentationId: susp-6
+    weightKg: 8
+    ageDays: 240
+    expect: { mgPerDose: 24, amount: 4, unit: mL }
+  - ruleId: influenza-hasta-15-kg
+    presentationId: susp-6
+    weightKg: 12
+    ageDays: 730
+    expect: { mgPerDose: 30, amount: 5, unit: mL }
+  - ruleId: influenza-15-23-kg
+    presentationId: susp-6
+    weightKg: 18
+    ageDays: 1825
+    expect: { mgPerDose: 45, amount: 7.5, unit: mL }
+  - ruleId: influenza-23-40-kg
+    presentationId: susp-6
+    weightKg: 30
+    ageDays: 3285
+    expect: { mgPerDose: 60, amount: 10, unit: mL }
+  - ruleId: influenza-mas-40-kg
+    presentationId: cap-75
+    weightKg: 45
+    ageDays: 4380
+    expect: { mgPerDose: 75, amount: 1, unit: capsula }

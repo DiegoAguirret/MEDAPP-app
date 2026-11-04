@@ -1,0 +1,87 @@
+id: metoclopramida
+name: Metoclopramida
+category: gastrointestinal
+synonyms: [metoclopramide]
+atc: A03FA01
+presentations:
+  - id: jarabe-5-5
+    label: Jarabe 5 mg/5 mL
+    form: jarabe
+    mgPerUnit: 1
+    unit: mL
+    step: 0.1
+    brandsPE: [Primperan]
+  - id: amp-10-2
+    label: Ampolla 10 mg/2 mL
+    form: ampolla
+    mgPerUnit: 5
+    unit: mL
+    step: 0.1
+    brandsPE: [Primperan]
+  - id: tab-10
+    label: Tableta 10 mg
+    form: tableta
+    mgPerUnit: 10
+    unit: tableta
+    step: 0.25
+    brandsPE: [Primperan]
+rules:
+  - id: nauseas-vo
+    indication: Náuseas y vómitos (vía oral, 10 kg o más)
+    route: VO
+    ageMinDays: 29
+    weightMinKg: 10
+    basis: mg/kg/dose
+    amountMin: 0.1
+    amountMax: 0.2
+    intervalHours: 8
+    maxPerDoseMg: 10
+    maxPerDayMg: 30
+    notes: >-
+      OMS — 0.1 a 0.2 mg/kg cada 8 h según necesidad, máximo 10 mg por dosis; la tabla de la OMS no
+      da dosis bajo 10 kg. Libro Peña Camarena — 0.2 a 0.3 mg/kg por dosis cada 6 a 8 h.
+    presentationIds: [jarabe-5-5, tab-10]
+    sourceIds: [who-pocket-2013, pena-camarena]
+  - id: nauseas-iv-im
+    indication: Náuseas y vómitos (IV o IM, 10 kg o más)
+    route: IV
+    ageMinDays: 29
+    weightMinKg: 10
+    basis: mg/kg/dose
+    amountMin: 0.1
+    amountMax: 0.2
+    intervalHours: 8
+    maxPerDoseMg: 10
+    maxPerDayMg: 30
+    notes: >-
+      OMS — 0.1 a 0.2 mg/kg cada 8 h, máximo 10 mg por dosis (inyectable 5 mg/mL). FNME — vómito
+      postquirúrgico 0.25 mg/kg IV cada 6 a 8 h.
+    presentationIds: [amp-10-2]
+    sourceIds: [who-pocket-2013, fnme-2008]
+warnings:
+  - >-
+    FDA (recuadro negro) — puede causar discinesia tardía, a menudo irreversible; el riesgo crece
+    con la duración y la dosis total. En niños su seguridad no está establecida.
+  - En neonatos su eliminación es lenta y hay más riesgo de metahemoglobinemia (FDA).
+contraindications:
+  - Hemorragia, obstrucción mecánica o perforación gastrointestinal.
+  - Feocromocitoma.
+  - Epilepsia.
+  - Hipersensibilidad o intolerancia a la metoclopramida.
+diagnoses: [náuseas, vómitos]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: nauseas-vo
+    presentationId: jarabe-5-5
+    weightKg: 15
+    ageDays: 1460
+    expect: { mgPerDose: 1.5, amount: 1.5, unit: mL }
+  - ruleId: nauseas-iv-im
+    presentationId: amp-10-2
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 2, amount: 0.4, unit: mL }

@@ -1,0 +1,76 @@
+id: griseofulvina
+name: Griseofulvina
+category: antifungico
+synonyms: [griseofulvin]
+atc: D01BA01
+presentations:
+  - id: tab-250
+    label: Tableta 250 mg (microsize)
+    form: tableta
+    mgPerUnit: 250
+    unit: tableta
+    step: 0.5
+    brandsPE: [Grisovin]
+  - id: tab-500
+    label: Tableta 500 mg (microsize)
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 0.5
+    brandsPE: [Grisovin, Sporostatin]
+rules:
+  - id: tinas-13-22-kg
+    indication: Tiña de la cabeza, del cuerpo o de los pies (13 a 22 kg)
+    route: VO
+    ageMinDays: 730
+    weightMinKg: 13
+    weightMaxKg: 22
+    basis: fixed_by_age
+    amountMin: 125
+    amountMax: 250
+    intervalHours: 24
+    maxPerDoseMg: 250
+    maxPerDayMg: 250
+    durationText: tiña de la cabeza 4 a 6 semanas; del cuerpo 2 a 4; de los pies 4 a 8
+    notes: >-
+      FNME — de 13 a 22 kg, 125 a 250 mg/día. FDA — mayores de 2 años, 10 mg/kg/día (de 30 a 50
+      libras, 125 a 250 mg/día). Libro Peña Camarena — 10 mg/kg/día cada 24 h.
+    sourceIds: [fnme-2008, fda-griseofulvin, pena-camarena]
+  - id: tinas-22-kg-o-mas
+    indication: Tiña de la cabeza, del cuerpo o de los pies (22 kg o más)
+    route: VO
+    ageMinDays: 730
+    weightMinKg: 22
+    basis: fixed_by_age
+    amountMin: 250
+    amountMax: 500
+    intervalHours: 24
+    maxPerDoseMg: 500
+    maxPerDayMg: 500
+    durationText: tiña de la cabeza 4 a 6 semanas; del cuerpo 2 a 4; de los pies 4 a 8
+    notes: FNME — más de 22 kg, 250 a 500 mg/día. FDA — más de 50 libras, 250 a 500 mg/día.
+    sourceIds: [fnme-2008, fda-griseofulvin]
+warnings:
+  - Por debajo de 13 kg el FNME no da dosis; la FDA da 10 mg/kg/día desde los 2 años.
+contraindications:
+  - Hipersensibilidad a la griseofulvina.
+  - Porfiria.
+  - Insuficiencia hepática.
+  - Lupus eritematoso o síndromes parecidos.
+diagnoses: [tiña capitis, tiña, tinea, dermatofitosis, hongos, micosis]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: tinas-13-22-kg
+    presentationId: tab-250
+    weightKg: 16
+    ageDays: 1460
+    expect: { mgPerDose: 125, amount: 0.5, unit: tableta }
+  - ruleId: tinas-22-kg-o-mas
+    presentationId: tab-250
+    weightKg: 28
+    ageDays: 2920
+    expect: { mgPerDose: 250, amount: 1, unit: tableta }

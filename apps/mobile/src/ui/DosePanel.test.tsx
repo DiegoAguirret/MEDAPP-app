@@ -126,6 +126,24 @@ describe('DosePanel — hierro (NTS 213-MINSA 2024)', () => {
   });
 });
 
+describe('DosePanel — oseltamivir por bandas de peso (FDA)', () => {
+  it('18 kg, 5 años en la indicación de menores de 1 año: sugiere la banda de 15.1 a 23 kg', async () => {
+    await show('oseltamivir');
+    await fillPatient('18', '5', '0');
+    expect(screen.queryByTestId('result-mg')).toBeNull();
+    expect(screen.getByText(/Para este paciente: .*15\.1 a 23 kg/)).toBeOnTheScreen();
+  });
+
+  it('18 kg, 5 años en su banda → 45 mg = 7.5 mL', async () => {
+    await show('oseltamivir');
+    await fireEvent.press(screen.getByLabelText('Cambiar indicación'));
+    await fireEvent.press(screen.getByText(/15\.1 a 23 kg/));
+    await fillPatient('18', '5', '0');
+    expect(screen.getByTestId('result-mg')).toHaveTextContent('45 mg');
+    expect(screen.getByTestId('result-amount')).toHaveTextContent('7.5 mL');
+  });
+});
+
 describe('DosePanel — seguridad', () => {
   it('shows a verified-sources badge and no alarm banner', async () => {
     await show('paracetamol');
