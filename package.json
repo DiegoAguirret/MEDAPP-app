@@ -25,6 +25,7 @@
     "@types/node": "26.6.6",
     "@vitest/coverage-v8": "5.1.0",
     "eslint": "10.14.0",
+    "eslint-plugin-react-hooks": "7.1.1",
     "fast-check": "4.10.2",
     "prettier": "3.9.10",
     "tsx": "4.23.15",
@@ -34,5 +35,8 @@
   },
   "allowScripts": {
     "esbuild@0.28.2": true
+  },
+  "overrides": {
+    "react": "19.3.0"
   }
 }

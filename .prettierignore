@@ -3,3 +3,5 @@ dist
 coverage
 .superpowers
 package-lock.json
+apps/mobile/android
+apps/mobile/src/content/bundled.ts
