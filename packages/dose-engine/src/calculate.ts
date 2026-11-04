@@ -1,4 +1,4 @@
-import { formatNumber } from './format.ts';
+import { formatClinical } from './format.ts';
 import { isWeightPlausible } from './plausibility.ts';
 import { roundToStep } from './rounding.ts';
 import type { CalcStep, CalculateInput, DoseResult, Warning } from './types.ts';
@@ -7,7 +7,7 @@ export const MIN_AGE_DAYS = 29;
 export const MAX_WEIGHT_KG = 150;
 const EPS = 1e-9;
 
-const f = (n: number): string => formatNumber(n);
+const f = (n: number): string => formatClinical(n);
 
 export function calculateDose(input: CalculateInput): DoseResult {
   const { rule, presentation, patient, chosenMgPerKg } = input;
@@ -24,6 +24,9 @@ export function calculateDose(input: CalculateInput): DoseResult {
   }
   if (ageDays < rule.ageMinDays || (rule.ageMaxDays !== undefined && ageDays > rule.ageMaxDays)) {
     return { status: 'not_calculable', reason: 'age_out_of_rule' };
+  }
+  if (rule.presentationIds !== undefined && !rule.presentationIds.includes(presentation.id)) {
+    return { status: 'not_calculable', reason: 'presentation_not_allowed' };
   }
   if (
     chosenMgPerKg !== undefined &&

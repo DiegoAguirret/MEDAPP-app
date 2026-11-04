@@ -71,3 +71,9 @@ describe('dehydrationPlan', () => {
     expect(() => dehydrationPlan('B', 0, 400)).toThrow(RangeError);
   });
 });
+
+describe('dehydrationPlan age validation', () => {
+  it.each([Number.NaN, -1, Number.POSITIVE_INFINITY])('rejects age %s', (age) => {
+    expect(() => dehydrationPlan('C', 8, age)).toThrow(RangeError);
+  });
+});

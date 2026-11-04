@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatNumber } from '../src/format.ts';
+import { formatClinical, formatNumber } from '../src/format.ts';
 
 describe('formatNumber', () => {
   it('drops trailing zeros on integers', () => {
@@ -25,5 +25,23 @@ describe('formatNumber', () => {
   it('rounds to maxDecimals', () => {
     expect(formatNumber(0.125, { maxDecimals: 2 })).toBe('0.13');
     expect(formatNumber(2.5, { maxDecimals: 0 })).toBe('3');
+  });
+});
+
+describe('formatClinical', () => {
+  it.each([
+    [0.005, '0.005'],
+    [0.015, '0.015'],
+    [0.0123456, '0.0123'],
+    [0.5, '0.5'],
+    [6.25, '6.25'],
+    [150, '150'],
+    [1000, '1000'],
+    [0, '0'],
+  ])('%s → %s', (v, s) => {
+    expect(formatClinical(v)).toBe(s);
+  });
+  it('supports comma', () => {
+    expect(formatClinical(0.015, ',')).toBe('0,015');
   });
 });

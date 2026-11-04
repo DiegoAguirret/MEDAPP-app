@@ -69,6 +69,7 @@ export function dehydrationPlan(
   ageDays: number,
 ): { phases: FluidPhase[]; steps: CalcStep[] } {
   requirePositive(weightKg);
+  if (!(Number.isFinite(ageDays) && ageDays >= 0)) throw new RangeError('Edad inválida');
   if (plan === 'B') {
     const ml = roundDecimals(weightKg * 75, 0);
     return {

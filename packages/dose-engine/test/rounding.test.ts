@@ -46,3 +46,9 @@ describe('roundToStep with microscopic volumes', () => {
     expect(r.value).toBeCloseTo(0.004, 6);
   });
 });
+
+describe('roundToStep exact fallback precision', () => {
+  it.each([0.015, 0.022, 0.034])('returns %s exactly (3 significant figures)', (x) => {
+    expect(roundToStep(x, 0.1, 1).value).toBe(x);
+  });
+});

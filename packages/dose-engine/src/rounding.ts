@@ -29,7 +29,7 @@ export function roundToStep(exactAmount: number, step: number, maxAmount: number
   return { value, exact: exactAmount, errorPct, exceeds5pct };
 }
 
-/** Dos decimales, o 2 cifras significativas si el valor es menor que 0.01. */
+/** Valor exacto con 3 cifras significativas (error de presentación < 0.5 %). */
 function toSignificant(value: number): number {
-  return value >= 0.01 ? roundDecimals(value, 2) : Number(value.toPrecision(2));
+  return Number(value.toPrecision(3));
 }

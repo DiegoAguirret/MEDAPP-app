@@ -26,7 +26,12 @@ export type Warning =
   'weight_implausible' | 'rounding_exceeds_5pct' | 'obesity_check' | 'capped_adult_max';
 
 export type NotCalculableReason =
-  'neonate_v2' | 'invalid_weight' | 'invalid_age' | 'age_out_of_rule' | 'choice_out_of_range';
+  | 'neonate_v2'
+  | 'invalid_weight'
+  | 'invalid_age'
+  | 'age_out_of_rule'
+  | 'choice_out_of_range'
+  | 'presentation_not_allowed';
 
 export type DoseResult =
   | { status: 'not_calculable'; reason: NotCalculableReason }

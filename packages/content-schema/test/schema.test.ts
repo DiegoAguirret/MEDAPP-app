@@ -158,3 +158,18 @@ describe('parseDrug', () => {
     ).toThrow();
   });
 });
+
+describe('parseDrug presentationIds', () => {
+  it('rejects presentationIds that do not exist', () => {
+    expect(() => parseDrug(mutate((d) => (d.rules[0].presentationIds = ['nope'])))).toThrow();
+  });
+  it('requires presentationIds for parenteral rules', () => {
+    expect(() => parseDrug(mutate((d) => (d.rules[0].route = 'IV')))).toThrow();
+  });
+  it('accepts valid presentationIds', () => {
+    expect(
+      parseDrug(mutate((d) => (d.rules[0].presentationIds = ['susp-120-5']))).rules[0]
+        ?.presentationIds,
+    ).toEqual(['susp-120-5']);
+  });
+});

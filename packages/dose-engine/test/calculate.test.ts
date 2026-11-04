@@ -292,3 +292,61 @@ describe('isWeightPlausible', () => {
     expect(isWeightPlausible(kg, days)).toBe(expected);
   });
 });
+
+describe('calculateDose — small doses keep their precision', () => {
+  it('shows 0.005 mg/kg and 0.015 mg instead of rounding to 2 decimals', () => {
+    const r = ok(
+      calculateDose({
+        rule: rule({
+          amountMin: 0.005,
+          amountMax: 0.005,
+          usual: 0.005,
+          maxPerDoseMg: 1,
+          maxPerDayMg: 4,
+        }),
+        presentation: presentation({ mgPerUnit: 0.05 }),
+        patient: { weightKg: 3, ageDays: 60 },
+      }),
+    );
+    expect(r.steps[0]?.expression).toBe('3 kg × 0.005 mg/kg');
+    expect(r.steps[0]?.result).toBe('0.015 mg');
+    expect(r.steps.at(-1)?.result).toBe('0.3 mL');
+  });
+
+  it('never shows 0 for a tiny but positive volume', () => {
+    const r = ok(
+      calculateDose({
+        rule: rule({
+          amountMin: 0.01,
+          amountMax: 0.01,
+          usual: 0.01,
+          maxPerDoseMg: 1,
+          maxPerDayMg: 4,
+        }),
+        presentation: presentation({ mgPerUnit: 50 }),
+        patient: { weightKg: 3, ageDays: 60 },
+      }),
+    );
+    expect(r.steps.at(-1)?.result).not.toMatch(/^0 /);
+  });
+});
+
+describe('calculateDose — presentation must match the rule', () => {
+  it('rejects a presentation not listed in presentationIds', () => {
+    const r = calculateDose({
+      rule: rule({ presentationIds: ['other'] }),
+      presentation: presentation(),
+      patient: toddler,
+    });
+    expect(r).toEqual({ status: 'not_calculable', reason: 'presentation_not_allowed' });
+  });
+
+  it('accepts a listed presentation', () => {
+    const r = calculateDose({
+      rule: rule({ presentationIds: ['p'] }),
+      presentation: presentation(),
+      patient: toddler,
+    });
+    expect(r.status).toBe('ok');
+  });
+});

@@ -44,6 +44,8 @@ export const doseRuleSchema = z
     notes: z.string().min(1).optional(),
     obesityNote: z.boolean().optional(),
     sourceIds: z.array(id).min(2, 'Cada regla necesita al menos 2 fuentes'),
+    /** Presentaciones con las que se puede usar la regla. Obligatorio en vías parenterales. */
+    presentationIds: z.array(id).min(1).optional(),
   })
   .superRefine((r, ctx) => {
     if (r.amountMin > r.amountMax) {
@@ -54,6 +56,13 @@ export const doseRuleSchema = z
     }
     if (r.ageMaxDays !== undefined && r.ageMaxDays <= r.ageMinDays) {
       ctx.addIssue({ code: 'custom', message: 'ageMaxDays <= ageMinDays', path: ['ageMaxDays'] });
+    }
+    if ((r.route === 'IV' || r.route === 'IM') && r.presentationIds === undefined) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'Las reglas IV/IM deben listar presentationIds',
+        path: ['presentationIds'],
+      });
     }
     if (r.maxPerDoseMg > r.maxPerDayMg) {
       ctx.addIssue({
@@ -129,6 +138,17 @@ export const drugSchema = z
         path: ['presentations'],
       });
     }
+    d.rules.forEach((r, i) => {
+      for (const pid of r.presentationIds ?? []) {
+        if (!presIds.has(pid)) {
+          ctx.addIssue({
+            code: 'custom',
+            message: `presentación desconocida ${pid}`,
+            path: ['rules', i],
+          });
+        }
+      }
+    });
     d.testCases.forEach((tc, i) => {
       if (!ruleIds.has(tc.ruleId)) {
         ctx.addIssue({
