@@ -19,7 +19,7 @@ presentations:
     brandsPE: []
 rules:
   - id: esquema-5-dias-dia-1
-    indication: Esquema de 5 días — día 1 (neumonía atípica, alergia a penicilina)
+    indication: Neumonía adquirida en la comunidad, esquema de 5 días — día 1 (6 meses o más)
     route: VO
     ageMinDays: 180
     basis: mg/kg/dose
@@ -29,10 +29,11 @@ rules:
     intervalHours: 24
     maxPerDoseMg: 500
     maxPerDayMg: 500
-    durationText: Día 1; luego continuar con la dosis de los días 2 a 5.
-    sourceIds: [harriet-lane-23, bnfc-2025, fda-label]
+    durationText: Día 1; continuar con 5 mg/kg/día los días 2 a 5.
+    notes: La dosis diaria no debe superar la de adulto (500 mg).
+    sourceIds: [fda-azithromycin, aemps-ft-71180]
   - id: esquema-5-dias-dias-2-5
-    indication: Esquema de 5 días — días 2 a 5
+    indication: Neumonía adquirida en la comunidad, esquema de 5 días — días 2 a 5
     route: VO
     ageMinDays: 180
     basis: mg/kg/dose
@@ -43,12 +44,12 @@ rules:
     maxPerDoseMg: 250
     maxPerDayMg: 250
     durationText: Días 2 a 5.
-    sourceIds: [harriet-lane-23, bnfc-2025, fda-label]
+    sourceIds: [fda-azithromycin, aemps-ft-71180]
 warnings:
   - Prolongación del intervalo QT; precaución con otros fármacos que lo prolongan.
 contraindications:
   - Hipersensibilidad a macrólidos.
-diagnoses: [neumonía atípica, tos ferina, faringoamigdalitis en alérgicos a penicilina]
+diagnoses: [neumonía adquirida en la comunidad, otitis media aguda, sinusitis]
 review:
   status: borrador
   author: Diego
@@ -69,3 +70,8 @@ testCases:
     weightKg: 60
     ageDays: 5110
     expect: { mgPerDose: 500, amount: 12.5, unit: mL, capped: true }
+  - ruleId: esquema-5-dias-dias-2-5
+    presentationId: susp-200-5
+    weightKg: 60
+    ageDays: 5110
+    expect: { mgPerDose: 250, amount: 6.2, unit: mL, capped: true }

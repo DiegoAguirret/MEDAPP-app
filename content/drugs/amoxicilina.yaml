@@ -26,23 +26,24 @@ presentations:
     brandsPE: []
 rules:
   - id: menores-3-meses
-    indication: Infecciones susceptibles en lactantes menores de 3 meses
+    indication: Lactantes de hasta 3 meses (dosis máxima de la ficha)
     route: VO
     ageMinDays: 29
     ageMaxDays: 89
     basis: mg/kg/day
-    amountMin: 20
+    amountMin: 30
     amountMax: 30
     usual: 30
     intervalHours: 12
-    maxPerDoseMg: 500
-    maxPerDayMg: 1000
-    notes: Función renal inmadura; no superar 30 mg/kg/día. Valorar indicación de manejo hospitalario.
-    sourceIds: [fda-label, harriet-lane-23]
+    maxPerDoseMg: 875
+    maxPerDayMg: 1750
+    notes: FDA — en lactantes de 3 meses o menos, la dosis máxima es 30 mg/kg/día cada 12 h.
+    sourceIds: [fda-amoxicillin]
   - id: oma-dosis-alta
-    indication: Otitis media aguda (dosis alta)
+    indication: Otitis media aguda (dosis alta, 6 meses a 12 años)
     route: VO
     ageMinDays: 180
+    ageMaxDays: 4744
     basis: mg/kg/day
     amountMin: 80
     amountMax: 90
@@ -50,10 +51,10 @@ rules:
     intervalHours: 12
     maxPerDoseMg: 2000
     maxPerDayMg: 4000
-    durationText: 10 días en menores de 2 años; 5–7 días en mayores, según evolución.
-    sourceIds: [aap-aom-2013, harriet-lane-23, bnfc-2025]
+    durationText: 10 días si es menor de 2 años o grave; 7 días entre 2 y 5 años; 5–7 días si tiene 6 años o más.
+    sourceIds: [aap-aom-2013, aap-eqipp-aom]
   - id: faringitis-estreptococica
-    indication: Faringoamigdalitis estreptocócica
+    indication: Faringoamigdalitis estreptocócica (3 años o más)
     route: VO
     ageMinDays: 1095
     basis: mg/kg/day
@@ -64,7 +65,8 @@ rules:
     maxPerDoseMg: 1000
     maxPerDayMg: 1000
     durationText: 10 días.
-    sourceIds: [aap-redbook-2024, harriet-lane-23]
+    notes: IDSA — alternativa de 25 mg/kg cada 12 h (máximo 500 mg por dosis). No se indican pruebas diagnósticas en menores de 3 años.
+    sourceIds: [idsa-gas-2012]
 warnings:
   - Exantema frecuente en mononucleosis infecciosa.
 contraindications:

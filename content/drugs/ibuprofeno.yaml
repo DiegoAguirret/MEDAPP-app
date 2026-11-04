@@ -17,18 +17,12 @@ presentations:
     unit: mL
     step: 0.1
     brandsPE: []
-  - id: tab-400
-    label: Tableta 400 mg
-    form: tableta
-    mgPerUnit: 400
-    unit: tableta
-    step: 1
-    brandsPE: []
 rules:
   - id: fiebre-dolor-vo
-    indication: Fiebre o dolor leve a moderado
+    indication: Fiebre o dolor leve a moderado (6 meses a 11 años)
     route: VO
     ageMinDays: 180
+    ageMaxDays: 4379
     basis: mg/kg/dose
     amountMin: 5
     amountMax: 10
@@ -36,14 +30,16 @@ rules:
     intervalHours: 8
     maxPerDoseMg: 400
     maxPerDayMg: 1200
-    notes: No superar 40 mg/kg/día. Administrar con alimentos.
-    sourceIds: [bnfc-2025, harriet-lane-23, fda-label]
+    notes: >-
+      FDA: fiebre 5 mg/kg si la temperatura es menor de 39.2 °C (102.5 °F) y 10 mg/kg si es mayor;
+      cada 6–8 h; no superar 40 mg/kg/día. Topes de 400 mg/toma y 1200 mg/día: dosis máxima
+      de venta libre para 12 años o más (FDA). Administrar con alimentos.
+    sourceIds: [fda-ibuprofen-susp, fda-ibuprofen-otc]
 warnings:
   - Evitar en deshidratación por riesgo de lesión renal.
   - Riesgo de sangrado gastrointestinal.
 contraindications:
   - Hipersensibilidad a AINE o asma inducida por AINE.
-  - Varicela activa (riesgo de infecciones cutáneas graves).
 diagnoses: [fiebre, dolor]
 review:
   status: borrador
@@ -63,5 +59,5 @@ testCases:
   - ruleId: fiebre-dolor-vo
     presentationId: susp-100-5
     weightKg: 45
-    ageDays: 4380
+    ageDays: 4300
     expect: { mgPerDose: 400, amount: 20, unit: mL, capped: true }

@@ -111,6 +111,13 @@ describe('checkContent', () => {
     expect(checkContent([drug({ review: validated })], sources, 'release', today)).toEqual([]);
   });
 
+  it('requires two sources per rule only in release mode', () => {
+    const one = drug({ review: validated });
+    one.rules[0]!.sourceIds = ['bnfc-2025'];
+    expect(checkContent([one], sources, 'tester', today)).toEqual([]);
+    expect(checkContent([one], sources, 'release', today)[0]?.code).toBe('insufficient_sources');
+  });
+
   it('flags duplicate drug ids', () => {
     const errors = checkContent([drug(), drug()], sources, 'tester', today);
     expect(errors.map((e) => e.code)).toContain('duplicate_id');

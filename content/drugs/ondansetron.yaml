@@ -12,7 +12,7 @@ presentations:
     step: 0.1
     brandsPE: []
   - id: tab-4
-    label: Tableta 4 mg
+    label: Tableta bucodispersable 4 mg
     form: tableta
     mgPerUnit: 4
     unit: tableta
@@ -20,18 +20,22 @@ presentations:
     brandsPE: []
 rules:
   - id: vomitos-gastroenteritis
-    indication: Vómitos en gastroenteritis aguda (para permitir la rehidratación oral)
+    indication: Vómitos en gastroenteritis aguda, para permitir la rehidratación oral (6 meses o más)
     route: VO
     ageMinDays: 180
     basis: mg/kg/dose
     amountMin: 0.15
     amountMax: 0.15
     usual: 0.15
-    intervalHours: 8
-    maxPerDoseMg: 4
-    maxPerDayMg: 12
-    durationText: Habitualmente dosis única.
-    sourceIds: [harriet-lane-23, bnfc-2025, minsa-eda]
+    intervalHours: 24
+    maxPerDoseMg: 8
+    maxPerDayMg: 8
+    durationText: Dosis única.
+    notes: >-
+      Sociedad Canadiense de Pediatría: dosis única de 0.15 mg/kg (máximo 8 mg) desde los 6 meses;
+      alternativa por peso: 8–15 kg 2 mg, 15–30 kg 4 mg, más de 30 kg 6–8 mg. IDSA 2017: puede
+      darse en mayores de 4 años; sin recomendación en menores.
+    sourceIds: [cps-ondansetron-2018, idsa-diarrhea-2017]
 warnings:
   - Prolongación del intervalo QT.
 contraindications:
@@ -54,6 +58,6 @@ testCases:
     expect: { mgPerDose: 3, amount: 3.8, unit: mL }
   - ruleId: vomitos-gastroenteritis
     presentationId: sol-4-5
-    weightKg: 40
-    ageDays: 4380
-    expect: { mgPerDose: 4, amount: 5, unit: mL, capped: true }
+    weightKg: 60
+    ageDays: 5110
+    expect: { mgPerDose: 8, amount: 10, unit: mL, capped: true }

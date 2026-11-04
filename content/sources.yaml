@@ -1,54 +1,122 @@
-# Fuentes citables por las fichas. Se citan; nunca se copia su texto ni sus tablas.
-- id: bnfc-2025
-  title: BNF for Children (BNFC) 2025–2026
-  publisher: BMJ Group, Royal Pharmaceutical Society y RCPCH
+# Solo documentos descargados y leídos (verificación del 2026-11-05).
+# Cada cita y valor extraído está en docs/validacion/fuentes-verificadas.md.
+- id: fda-acetaminophen-iv
+  title: Acetaminophen injection — prescribing information (FDA, DailyMed set 0f67c1bd-915b-4681-88dd-22f5154a80b3)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2024
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=0f67c1bd-915b-4681-88dd-22f5154a80b3
+- id: aemps-ft-49302
+  title: Ficha técnica Apiretal 100 mg/ml solución oral (nº reg. 49302)
+  publisher: AEMPS — CIMA
   year: 2025
-  url: https://bnfc.nice.org.uk/
-- id: harriet-lane-23
-  title: The Harriet Lane Handbook
-  edition: 23.ª ed.
-  publisher: Elsevier
+  url: https://cima.aemps.es/cima/dochtml/ft/49302/FT_49302.html
+- id: fda-ibuprofen-susp
+  title: Ibuprofen oral suspension — prescribing information (FDA, DailyMed set 141b7964-cce6-74e4-e063-6294a90af746)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2024
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=141b7964-cce6-74e4-e063-6294a90af746
+- id: fda-ibuprofen-otc
+  title: Ibuprofen 200 mg tablets — Drug Facts (FDA, DailyMed set 00653b7c-7099-487e-9a01-e89781c21323)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=00653b7c-7099-487e-9a01-e89781c21323
+- id: aemps-ft-83494
+  title: Ficha técnica Metamizol Normon 500 mg/ml gotas orales en solución (nº reg. 83494)
+  publisher: AEMPS — CIMA
+  year: 2024
+  url: https://cima.aemps.es/cima/dochtml/ft/83494/FT_83494.html
+- id: aemps-ft-42304
+  title: Ficha técnica Nolotil 0,4 g/ml solución inyectable (nº reg. 42304)
+  publisher: AEMPS — CIMA
+  year: 2024
+  url: https://cima.aemps.es/cima/dochtml/ft/42304/FT_42304.html
+- id: fda-amoxicillin
+  title: Amoxicillin — prescribing information (FDA, DailyMed set 00fbd46e-05fd-4f8a-9f59-a7a4d01c8e54)
+  publisher: U.S. FDA / National Library of Medicine
   year: 2023
-- id: pediamecum-aep
-  title: Pediamécum — Comité de Medicamentos de la Asociación Española de Pediatría
-  publisher: AEP
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=00fbd46e-05fd-4f8a-9f59-a7a4d01c8e54
+- id: aap-aom-2013
+  title: The Diagnosis and Management of Acute Otitis Media (Lieberthal et al., Pediatrics 2013;131:e964) — resumen PubMed 23439909
+  publisher: American Academy of Pediatrics
+  year: 2013
+  url: https://pubmed.ncbi.nlm.nih.gov/23439909/
+- id: aap-eqipp-aom
+  title: AAP EQIPP — Acute Otitis Media flowchart (basado en Lieberthal 2013)
+  publisher: American Academy of Pediatrics
+  year: 2021
+  url: https://eqipp.aap.org/File%20Library/Courses/Antibiotics/FlowchartAOM.pdf
+- id: idsa-gas-2012
+  title: Clinical Practice Guideline for Group A Streptococcal Pharyngitis (Shulman et al., Clin Infect Dis 2012)
+  publisher: Infectious Diseases Society of America
+  year: 2012
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC7108032/
+- id: fda-amox-clav
+  title: Amoxicillin and clavulanate potassium — prescribing information (FDA, DailyMed set 00cf4429-e37c-4490-b22d-3cd796124296)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2024
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=00cf4429-e37c-4490-b22d-3cd796124296
+- id: fda-azithromycin
+  title: Azithromycin — prescribing information (FDA, DailyMed set 003307c5-3f73-4a5d-a704-bfdea3c656e8)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=003307c5-3f73-4a5d-a704-bfdea3c656e8
+- id: aemps-ft-71180
+  title: Ficha técnica Azitromicina Sandoz 200 mg/5 ml polvo para suspensión oral (nº reg. 71180)
+  publisher: AEMPS — CIMA
   year: 2025
-  url: https://www.aeped.es/comites/cm/pediamecum
-- id: fda-label
-  title: Ficha técnica aprobada por la FDA (DailyMed)
-  publisher: U.S. National Library of Medicine
+  url: https://cima.aemps.es/cima/dochtml/ft/71180/FT_71180.html
+- id: fda-cephalexin
+  title: Cephalexin — prescribing information (FDA, DailyMed set 02b5cd6f-3df8-43c1-879d-217fcf55231a)
+  publisher: U.S. FDA / National Library of Medicine
   year: 2025
-  url: https://dailymed.nlm.nih.gov/
-- id: aemps-cima
-  title: Ficha técnica autorizada (CIMA)
-  publisher: Agencia Española de Medicamentos y Productos Sanitarios
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=02b5cd6f-3df8-43c1-879d-217fcf55231a
+- id: fda-cetirizine-rx
+  title: Cetirizine hydrochloride oral solution — prescribing information (FDA, DailyMed set 05324e41-ee3f-0e4b-e063-6294a90a102c)
+  publisher: U.S. FDA / National Library of Medicine
   year: 2025
-  url: https://cima.aemps.es/
-- id: digemid-ficha
-  title: Ficha técnica / inserto del registro sanitario en Perú
-  publisher: DIGEMID — Ministerio de Salud del Perú
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=05324e41-ee3f-0e4b-e063-6294a90a102c
+- id: aemps-ft-80453
+  title: Ficha técnica Cetirizina Cipla 1 mg/ml solución oral (nº reg. 80453)
+  publisher: AEMPS — CIMA
   year: 2025
-  url: https://www.digemid.minsa.gob.pe/
-- id: minsa-eda
-  title: Guía de práctica clínica para el diagnóstico y tratamiento de la enfermedad diarreica aguda en la niña y el niño
-  publisher: Ministerio de Salud del Perú
+  url: https://cima.aemps.es/cima/dochtml/ft/80453/FT_80453.html
+- id: cps-ondansetron-2018
+  title: Oral ondansetron for paediatric gastroenteritis — practice point
+  publisher: Canadian Paediatric Society
+  year: 2018
+  url: https://cps.ca/en/documents/position/oral-ondansetron
+- id: idsa-diarrhea-2017
+  title: 2017 IDSA Clinical Practice Guidelines for the Diagnosis and Management of Infectious Diarrhea (Shane et al.)
+  publisher: Infectious Diseases Society of America
   year: 2017
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC5850553/
+- id: fda-prednisolone-sol
+  title: Prednisolone sodium phosphate oral solution — prescribing information (FDA, DailyMed set 14b7f41b-4df1-42cb-bd1b-c74b28de2670)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2021
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=14b7f41b-4df1-42cb-bd1b-c74b28de2670
+- id: gina-2025
+  title: Global Strategy for Asthma Management and Prevention — 2025 update
+  publisher: Global Initiative for Asthma
+  year: 2025
+  url: https://ginasthma.org/wp-content/uploads/2025/11/GINA-2025-Update-25_11_08-WMS.pdf
 - id: who-pocket-2013
-  title: Pocket Book of Hospital Care for Children
-  edition: 2.ª ed.
+  title: Pocket Book of Hospital Care for Children, 2.ª ed.
   publisher: Organización Mundial de la Salud
   year: 2013
-- id: aap-redbook-2024
-  title: Red Book — Report of the Committee on Infectious Diseases
-  edition: 33.ª ed. (2024–2027)
-  publisher: American Academy of Pediatrics
-  year: 2024
-- id: aap-aom-2013
-  title: The Diagnosis and Management of Acute Otitis Media (Lieberthal et al.)
-  publisher: Pediatrics 131(3)
-  year: 2013
-- id: gina-2024
-  title: Global Strategy for Asthma Management and Prevention
-  publisher: Global Initiative for Asthma
-  year: 2024
-  url: https://ginasthma.org/
+  url: https://iris.who.int/handle/10665/81170
+- id: minsa-eda-2017
+  title: Guía de práctica clínica para el diagnóstico y tratamiento de la enfermedad diarreica aguda en la niña y el niño (RM 755-2017/MINSA), flujogramas reproducidos por DGE/MINSA
+  publisher: Ministerio de Salud del Perú
+  year: 2017
+  url: https://www.dge.gob.pe/portal/docs/tools/teleconferencia/2021/SE112021/04.pdf
+- id: holliday-segar-1957
+  title: The maintenance need for water in parenteral fluid therapy (Holliday & Segar, Pediatrics 1957;19:823) — PubMed 13431307
+  publisher: Pediatrics
+  year: 1957
+  url: https://pubmed.ncbi.nlm.nih.gov/13431307/
+- id: fda-cetirizine-otc
+  title: Cetirizine HCl oral solution — Drug Facts (FDA, DailyMed set 0210f9e5-c35b-4cfa-92d1-48555e99f1f3)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=0210f9e5-c35b-4cfa-92d1-48555e99f1f3

@@ -15,7 +15,7 @@ presentations:
     form: tableta
     mgPerUnit: 5
     unit: tableta
-    step: 0.5
+    step: 1
     brandsPE: []
 rules:
   - id: crisis-asmatica-1-2-anos
@@ -31,7 +31,8 @@ rules:
     maxPerDoseMg: 20
     maxPerDayMg: 20
     durationText: 3–5 días.
-    sourceIds: [gina-2024, bnfc-2025, harriet-lane-23]
+    notes: GINA 2025 — máximo 20 mg/día en menores de 2 años (en otra página del mismo informe el corte figura como 0–2 años).
+    sourceIds: [fda-prednisolone-sol, gina-2025]
   - id: crisis-asmatica-2-5-anos
     indication: Crisis asmática moderada a grave (2 a 5 años)
     route: VO
@@ -45,7 +46,8 @@ rules:
     maxPerDoseMg: 30
     maxPerDayMg: 30
     durationText: 3–5 días.
-    sourceIds: [gina-2024, bnfc-2025, harriet-lane-23]
+    notes: GINA 2025 — máximo 30 mg/día de 2 a 5 años.
+    sourceIds: [fda-prednisolone-sol, gina-2025]
   - id: crisis-asmatica-6-anos-o-mas
     indication: Crisis asmática moderada a grave (6 años o más)
     route: VO
@@ -58,8 +60,8 @@ rules:
     maxPerDoseMg: 40
     maxPerDayMg: 40
     durationText: 3–5 días.
-    notes: BNFc admite hasta 40 mg; GINA usa topes menores en edades menores. Topes por edad a confirmar por el médico validador.
-    sourceIds: [gina-2024, bnfc-2025, harriet-lane-23]
+    notes: GINA 2025 — 6 a 11 años, 1–2 mg/kg/día hasta 40 mg/día durante 3–5 días.
+    sourceIds: [fda-prednisolone-sol, gina-2025]
 warnings:
   - Hiperglucemia y cambios de conducta en tratamientos cortos.
 contraindications:

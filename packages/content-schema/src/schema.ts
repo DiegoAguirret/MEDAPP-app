@@ -13,7 +13,7 @@ export const presentationSchema = z.object({
   form: z.enum(['suspension', 'jarabe', 'gotas', 'tableta', 'capsula', 'supositorio', 'ampolla']),
   /** mg contenidos en una unidad (`unit`). Suspensión 250 mg/5 mL → 50 (mg por mL). */
   mgPerUnit: positive,
-  unit: z.enum(['mL', 'tableta', 'capsula', 'supositorio']),
+  unit: z.enum(['mL', 'gota', 'tableta', 'capsula', 'supositorio']),
   /** Menor cantidad medible de `unit` (0.1 mL, 0.5 tableta, 1 supositorio). */
   step: positive,
   brandsPE: z.array(z.string().min(1)),
@@ -43,7 +43,8 @@ export const doseRuleSchema = z
     durationText: z.string().min(1).optional(),
     notes: z.string().min(1).optional(),
     obesityNote: z.boolean().optional(),
-    sourceIds: z.array(id).min(2, 'Cada regla necesita al menos 2 fuentes'),
+    /** ≥1 en modo tester; la compilación release exige ≥2 (ver content-build). */
+    sourceIds: z.array(id).min(1, 'Cada regla necesita al menos una fuente'),
     /** Presentaciones con las que se puede usar la regla. Obligatorio en vías parenterales. */
     presentationIds: z.array(id).min(1).optional(),
   })

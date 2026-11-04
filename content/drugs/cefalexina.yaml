@@ -18,8 +18,8 @@ presentations:
     step: 1
     brandsPE: []
 rules:
-  - id: piel-partes-blandas
-    indication: Infecciones de piel y partes blandas no complicadas
+  - id: infecciones-habituales
+    indication: Infecciones habituales (mayores de 1 año)
     route: VO
     ageMinDays: 365
     basis: mg/kg/day
@@ -29,29 +29,33 @@ rules:
     intervalHours: 6
     maxPerDoseMg: 1000
     maxPerDayMg: 4000
-    durationText: 5–10 días según evolución.
-    sourceIds: [harriet-lane-23, bnfc-2025, fda-label]
+    durationText: 7–14 días; al menos 10 días en infecciones por estreptococo beta-hemolítico.
+    notes: >-
+      FDA: 25–50 mg/kg/día en dosis iguales (50–100 mg/kg/día en infecciones graves). La ficha no fija
+      el intervalo pediátrico: aquí se usa cada 6 h, la pauta habitual de la ficha (a confirmar por el
+      médico). Máximo de adulto: 4 g/día en 2 a 4 dosis.
+    sourceIds: [fda-cephalexin]
 warnings:
   - Posible alergia cruzada con penicilinas.
 contraindications:
-  - Alergia a cefalosporinas.
+  - Alergia a cefalosporinas o reacción grave e inmediata a penicilinas.
 diagnoses: [impétigo, celulitis, infección de piel]
 review:
   status: borrador
   author: Diego
   reviewers: []
 testCases:
-  - ruleId: piel-partes-blandas
+  - ruleId: infecciones-habituales
     presentationId: susp-250-5
     weightKg: 10
     ageDays: 365
     expect: { mgPerDose: 125, amount: 2.5, unit: mL }
-  - ruleId: piel-partes-blandas
+  - ruleId: infecciones-habituales
     presentationId: susp-250-5
     weightKg: 20
     ageDays: 1825
     expect: { mgPerDose: 250, amount: 5, unit: mL }
-  - ruleId: piel-partes-blandas
+  - ruleId: infecciones-habituales
     presentationId: cap-500
     weightKg: 90
     ageDays: 5840

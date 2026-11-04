@@ -53,15 +53,21 @@ export function bsaMosteller(weightKg: number, heightCm: number): number {
 
 export interface FluidPhase {
   ml: number;
+  /** Límite superior cuando la norma da un rango de volumen. */
+  mlMax?: number;
   minutes: number;
+  /** Límite superior cuando la norma da un rango de tiempo. */
+  minutesMax?: number;
   fluid: string;
 }
 
-const ISOTONIC = 'Lactato de Ringer o NaCl 0.9 %';
+const ISOTONIC = 'Solución polielectrolítica (MINSA) o Lactato de Ringer (OMS)';
 
 /**
- * Planes de rehidratación B (SRO) y C (endovenoso), según la OMS.
- * PENDIENTE: contrastar con la norma técnica vigente del MINSA (EDA).
+ * Planes de rehidratación según la GPC de EDA del MINSA (RM 755-2017):
+ * - Plan B: SRO 50–100 mL/kg en 3–4 h (la OMS usa 75 mL/kg en 4 h).
+ * - Plan C sin shock: 100 mL/kg; menores de 12 meses 30 mL/kg en 1 h y 70 mL/kg en 5 h;
+ *   desde 12 meses 30 mL/kg en 30 min y 70 mL/kg en 2.5 h (igual a la OMS).
  */
 export function dehydrationPlan(
   plan: 'B' | 'C',
@@ -71,11 +77,16 @@ export function dehydrationPlan(
   requirePositive(weightKg);
   if (!(Number.isFinite(ageDays) && ageDays >= 0)) throw new RangeError('Edad inválida');
   if (plan === 'B') {
-    const ml = roundDecimals(weightKg * 75, 0);
+    const ml = roundDecimals(weightKg * 50, 0);
+    const mlMax = roundDecimals(weightKg * 100, 0);
     return {
-      phases: [{ ml, minutes: 240, fluid: 'SRO' }],
+      phases: [{ ml, mlMax, minutes: 180, minutesMax: 240, fluid: 'SRO' }],
       steps: [
-        { label: 'SRO en 4 h', expression: `${f(weightKg)} kg × 75 mL/kg`, result: `${f(ml)} mL` },
+        {
+          label: 'SRO en 3–4 h',
+          expression: `${f(weightKg)} kg × 50–100 mL/kg`,
+          result: `${f(ml)}–${f(mlMax)} mL`,
+        },
       ],
     };
   }

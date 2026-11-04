@@ -18,6 +18,8 @@ export interface ManualResult {
  * Si la etiqueta incluye dos fármacos ("400 mg/57 mg por 5 mL"), usa el primero.
  */
 export function concentrationFromLabel(label: string): number | null {
+  const perDrop = /1\s*gota\s*=\s*(\d+(?:[.,]\d+)?)\s*mg/i.exec(label);
+  if (perDrop) return Number((perDrop[1] ?? '').replace(',', '.'));
   const perVolume =
     /(\d+(?:[.,]\d+)?)\s*mg(?:\s*\/\s*\d+(?:[.,]\d+)?\s*mg)?\s*(?:\/|por)\s*(\d+(?:[.,]\d+)?)?\s*mL/i.exec(
       label,

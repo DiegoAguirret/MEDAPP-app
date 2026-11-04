@@ -122,8 +122,13 @@ describe('parseDrug', () => {
     expect(drug.review.status).toBe('validado');
   });
 
-  it('rejects a rule with fewer than 2 sources', () => {
-    expect(() => parseDrug(mutate((d) => (d.rules[0].sourceIds = ['bnfc-2025'])))).toThrow();
+  it('rejects a rule without sources', () => {
+    expect(() => parseDrug(mutate((d) => (d.rules[0].sourceIds = [])))).toThrow();
+  });
+
+  it('accepts drops (gota) as a unit', () => {
+    const drug = parseDrug(mutate((d) => (d.presentations[0].unit = 'gota')));
+    expect(drug.presentations[0]?.unit).toBe('gota');
   });
 
   it('rejects empty testCases', () => {

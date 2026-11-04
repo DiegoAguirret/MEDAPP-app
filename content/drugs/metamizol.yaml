@@ -3,34 +3,32 @@ name: Metamizol
 synonyms: [dipirona]
 atc: N02BB02
 presentations:
-  - id: jarabe-250-5
-    label: Jarabe 250 mg/5 mL
-    form: jarabe
-    mgPerUnit: 50
-    unit: mL
-    step: 0.1
-    brandsPE: []
-  - id: tab-500
-    label: Tableta 500 mg
-    form: tableta
-    mgPerUnit: 500
-    unit: tableta
+  - id: gotas-500
+    label: Gotas orales 500 mg/mL — 1 gota = 25 mg
+    form: gotas
+    mgPerUnit: 25
+    unit: gota
     step: 1
     brandsPE: []
 rules:
   - id: fiebre-dolor-vo
-    indication: Fiebre o dolor que no responde a otros antipiréticos
+    indication: Fiebre o dolor (3 meses a 8 años, hasta 30 kg)
     route: VO
     ageMinDays: 90
+    ageMaxDays: 3284
     basis: mg/kg/dose
     amountMin: 8
     amountMax: 16
-    usual: 12
+    usual: 10
     intervalHours: 6
-    maxPerDoseMg: 1000
-    maxPerDayMg: 4000
-    notes: No usar en menores de 3 meses ni con menos de 5 kg.
-    sourceIds: [aemps-cima, pediamecum-aep, digemid-ficha]
+    maxPerDoseMg: 500
+    maxPerDayMg: 2000
+    notes: >-
+      AEMPS (gotas): 8–16 mg/kg por dosis en niños de hasta 7–9 años; 10 mg/kg suele bastar para la
+      fiebre. Intervalo de 6–8 h y hasta 4 dosis al día (ficha inyectable). La ficha no incluye dosis
+      para menores de 3 meses ni de 5 kg. Tope de 500 mg/dosis y 2000 mg/día: tramo de 24–30 kg de la
+      tabla de la ficha.
+    sourceIds: [aemps-ft-83494, aemps-ft-42304]
 warnings:
   - Riesgo de agranulocitosis; suspender ante fiebre, dolor de garganta o úlceras orales.
   - Puede producir hipotensión.
@@ -45,18 +43,18 @@ review:
   reviewers: []
 testCases:
   - ruleId: fiebre-dolor-vo
-    presentationId: jarabe-250-5
+    presentationId: gotas-500
     weightKg: 10
     ageDays: 365
-    expect: { mgPerDose: 120, amount: 2.4, unit: mL }
+    expect: { mgPerDose: 100, amount: 4, unit: gota }
   - ruleId: fiebre-dolor-vo
-    presentationId: jarabe-250-5
+    presentationId: gotas-500
     weightKg: 20
     ageDays: 1825
-    expect: { mgPerDose: 240, amount: 4.8, unit: mL }
+    expect: { mgPerDose: 200, amount: 8, unit: gota }
   - ruleId: fiebre-dolor-vo
-    presentationId: tab-500
-    weightKg: 80
-    ageDays: 5840
+    presentationId: gotas-500
+    weightKg: 35
+    ageDays: 3200
     chosenMgPerKg: 16
-    expect: { mgPerDose: 1000, amount: 2, unit: tableta, capped: true }
+    expect: { mgPerDose: 500, amount: 20, unit: gota, capped: true }

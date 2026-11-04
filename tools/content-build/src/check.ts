@@ -2,7 +2,12 @@ import type { Drug, Source } from '@medapp/content-schema';
 import { calculateDose } from '@medapp/dose-engine';
 
 export type CheckErrorCode =
-  'unknown_source' | 'test_case_failed' | 'not_validated' | 'duplicate_id' | 'review_overdue';
+  | 'unknown_source'
+  | 'insufficient_sources'
+  | 'test_case_failed'
+  | 'not_validated'
+  | 'duplicate_id'
+  | 'review_overdue';
 
 export interface CheckError {
   drugId: string;
@@ -35,6 +40,13 @@ export function checkContent(
     seen.add(drug.id);
 
     for (const rule of drug.rules) {
+      if (mode === 'release' && new Set(rule.sourceIds).size < 2) {
+        errors.push({
+          drugId: drug.id,
+          code: 'insufficient_sources',
+          detail: `regla ${rule.id}: se requieren al menos 2 fuentes verificadas`,
+        });
+      }
       for (const sid of rule.sourceIds) {
         if (!sourceIds.has(sid)) {
           errors.push({

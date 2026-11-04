@@ -12,6 +12,7 @@ describe('concentrationFromLabel', () => {
     ['Solución oral 4 mg/5 mL', 0.8],
     ['Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina)', 80],
     ['Tableta 500 mg', 500],
+    ['Gotas orales 500 mg/mL — 1 gota = 25 mg', 25],
     ['Solución oral 1 mg/mL (5 mg/5 mL)', 1],
   ])('%s → %s', (label, mg) => {
     expect(concentrationFromLabel(label)).toBeCloseTo(mg, 9);

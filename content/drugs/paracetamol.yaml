@@ -4,7 +4,7 @@ synonyms: [acetaminofén]
 atc: N02BE01
 presentations:
   - id: gotas-100
-    label: Gotas 100 mg/mL
+    label: Solución oral 100 mg/mL
     form: gotas
     mgPerUnit: 100
     unit: mL
@@ -35,9 +35,11 @@ rules:
     usual: 15
     intervalHours: 6
     maxPerDoseMg: 1000
-    maxPerDayMg: 4000
-    notes: No superar 75 mg/kg/día ni 4 g/día. En menores de 3 meses con fiebre, priorizar la evaluación médica.
-    sourceIds: [bnfc-2025, harriet-lane-23, fda-label]
+    maxPerDayMg: 3000
+    notes: >-
+      AEMPS: 15 mg/kg cada 6 h (o 10 mg/kg cada 4 h); en más de 38 kg, máximo 3 g/día.
+      FDA: de 29 días a 2 años, no superar 60 mg/kg/día.
+    sourceIds: [aemps-ft-49302, fda-acetaminophen-iv]
 warnings:
   - Hepatotoxicidad en sobredosis; verificar otros productos que contengan paracetamol.
 contraindications:
@@ -62,4 +64,4 @@ testCases:
     presentationId: tab-500
     weightKg: 70
     ageDays: 5475
-    expect: { mgPerDose: 1000, amount: 2, unit: tableta, capped: true }
+    expect: { mgPerDose: 750, amount: 1.5, unit: tableta, capped: true }

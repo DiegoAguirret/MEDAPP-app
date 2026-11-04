@@ -61,14 +61,14 @@ describe('real content', () => {
   });
 
   it('starts cephalexin at 1 year as in the FDA label', () => {
-    expect(ruleOf('cefalexina', 'piel-partes-blandas').ageMinDays).toBe(365);
+    expect(ruleOf('cefalexina', 'infecciones-habituales').ageMinDays).toBe(365);
   });
 
   it.each([
-    ['ibuprofeno', 'tab-400'],
     ['ondansetron', 'tab-4'],
     ['azitromicina', 'tab-500'],
-    ['metamizol', 'tab-500'],
+    ['prednisolona', 'tab-5'],
+    ['cetirizina', 'tab-10'],
   ])('does not split the non-scored %s %s', (drugId, presId) => {
     const p = drug(drugId).presentations.find((x) => x.id === presId);
     expect(p?.step).toBe(1);

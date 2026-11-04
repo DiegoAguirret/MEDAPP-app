@@ -15,11 +15,11 @@ presentations:
     form: tableta
     mgPerUnit: 10
     unit: tableta
-    step: 0.5
+    step: 1
     brandsPE: []
 rules:
   - id: alergia-6-23-meses
-    indication: Rinitis alérgica o urticaria (6 a 23 meses)
+    indication: Rinitis alérgica perenne o urticaria crónica (6 a 23 meses)
     route: VO
     ageMinDays: 180
     ageMaxDays: 729
@@ -30,7 +30,9 @@ rules:
     intervalHours: 24
     maxPerDoseMg: 2.5
     maxPerDayMg: 2.5
-    sourceIds: [fda-label, harriet-lane-23]
+    notes: FDA — de 12 a 23 meses se puede aumentar a 2.5 mg cada 12 h (máximo 5 mg/día).
+    presentationIds: [sol-1]
+    sourceIds: [fda-cetirizine-rx]
   - id: alergia-2-5-anos
     indication: Rinitis alérgica o urticaria (2 a 5 años)
     route: VO
@@ -43,7 +45,9 @@ rules:
     intervalHours: 24
     maxPerDoseMg: 5
     maxPerDayMg: 5
-    sourceIds: [fda-label, harriet-lane-23, bnfc-2025]
+    notes: FDA — inicio 2.5 mg/día, máximo 5 mg/día. AEMPS — 2.5 mg cada 12 h (mismo total).
+    presentationIds: [sol-1]
+    sourceIds: [fda-cetirizine-rx, aemps-ft-80453]
   - id: alergia-6-anos-o-mas
     indication: Rinitis alérgica o urticaria (6 años o más)
     route: VO
@@ -55,12 +59,13 @@ rules:
     intervalHours: 24
     maxPerDoseMg: 10
     maxPerDayMg: 10
-    sourceIds: [fda-label, harriet-lane-23, bnfc-2025]
+    notes: FDA — 5 o 10 mg una vez al día, máximo 10 mg/día. AEMPS — de 6 a 12 años, 5 mg cada 12 h (mismo total).
+    sourceIds: [fda-cetirizine-otc, aemps-ft-80453]
 warnings:
   - Puede causar somnolencia.
   - Ajustar la dosis en insuficiencia renal.
 contraindications:
-  - Insuficiencia renal grave.
+  - Insuficiencia renal terminal (aclaramiento menor de 10 mL/min).
 diagnoses: [rinitis alérgica, urticaria]
 review:
   status: borrador

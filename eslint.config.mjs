@@ -1,7 +1,7 @@
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['**/node_modules/**', '**/dist/**', '**/coverage/**', '.superpowers/**'] },
+  { ignores: ['**/node_modules/**', '**/dist/**', '**/coverage/**', '.superpowers/**', 'apps/**'] },
   ...tseslint.configs.strict,
   {
     rules: {
@@ -10,6 +10,6 @@ export default tseslint.config(
       eqeqeq: ['error', 'always'],
     },
   },
-  { files: ['tools/**/src/cli.ts'], rules: { 'no-console': 'off' } },
+  { files: ['tools/**/src/cli.ts', 'tools/**/src/report.ts', 'scripts/**'], rules: { 'no-console': 'off' } },
   { files: ['**/test/**/*.ts'], rules: { '@typescript-eslint/no-non-null-assertion': 'off' } },
 );

@@ -36,9 +36,11 @@ describe('bsaMosteller', () => {
 });
 
 describe('dehydrationPlan', () => {
-  it('plan B: 75 mL/kg of ORS over 4 hours', () => {
+  it('plan B (MINSA): 50 to 100 mL/kg of ORS over 3 to 4 hours', () => {
     const p = dehydrationPlan('B', 10, 400);
-    expect(p.phases).toEqual([{ ml: 750, minutes: 240, fluid: 'SRO' }]);
+    expect(p.phases).toEqual([
+      { ml: 500, mlMax: 1000, minutes: 180, minutesMax: 240, fluid: 'SRO' },
+    ]);
   });
 
   it('plan C under 12 months: 30 mL/kg in 1 h then 70 mL/kg in 5 h', () => {
@@ -59,7 +61,7 @@ describe('dehydrationPlan', () => {
 
   it('plan C uses an isotonic IV fluid', () => {
     expect(dehydrationPlan('C', 15, 3 * 365).phases[0]?.fluid).toBe(
-      'Lactato de Ringer o NaCl 0.9 %',
+      'Solución polielectrolítica (MINSA) o Lactato de Ringer (OMS)',
     );
   });
 
