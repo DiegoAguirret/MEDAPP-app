@@ -19,7 +19,14 @@ export interface Manifest {
   sha256: string;
   recalledDrugIds: string[];
   minAppVersion: string;
+  /** Entero creciente en cada publicación. La app rechaza un manifiesto que no sea más nuevo. */
+  sequence: number;
+  issuedAt: string;
 }
+
+/** Etiquetas de dominio: una firma de manifiesto no sirve como firma de paquete y viceversa. */
+const BUNDLE_TAG = 'medapp-bundle-v1\n';
+const MANIFEST_TAG = 'medapp-manifest-v1\n';
 
 /** JSON determinista: claves ordenadas, sin espacios. Es lo que se firma. */
 export function canonicalJson(value: unknown): string {
@@ -54,15 +61,24 @@ export function publicKeyFromPrivate(privateKeyHex: string): string {
   return bytesToHex(ed25519.getPublicKey(hexToBytes(privateKeyHex)));
 }
 
-function signText(text: string, privateKeyHex: string): string {
-  return bytesToHex(ed25519.sign(utf8ToBytes(text), hexToBytes(privateKeyHex)));
+function signText(tag: string, text: string, privateKeyHex: string): string {
+  return bytesToHex(ed25519.sign(utf8ToBytes(tag + text), hexToBytes(privateKeyHex)));
 }
 
 /** Verifica firma y que el texto sea JSON canónico. Nunca lanza excepción. */
-function verifyText(text: string, signatureHex: string, publicKeyHex: string): boolean {
+function verifyText(
+  tag: string,
+  text: string,
+  signatureHex: string,
+  publicKeyHex: string,
+): boolean {
   try {
     if (canonicalJson(JSON.parse(text)) !== text) return false;
-    return ed25519.verify(hexToBytes(signatureHex), utf8ToBytes(text), hexToBytes(publicKeyHex));
+    return ed25519.verify(
+      hexToBytes(signatureHex),
+      utf8ToBytes(tag + text),
+      hexToBytes(publicKeyHex),
+    );
   } catch {
     return false;
   }
@@ -73,7 +89,7 @@ export function signBundle(
   privateKeyHex: string,
 ): { bundleJson: string; signatureHex: string } {
   const bundleJson = canonicalJson(bundle);
-  return { bundleJson, signatureHex: signText(bundleJson, privateKeyHex) };
+  return { bundleJson, signatureHex: signText(BUNDLE_TAG, bundleJson, privateKeyHex) };
 }
 
 export function verifyBundle(
@@ -81,7 +97,7 @@ export function verifyBundle(
   signatureHex: string,
   publicKeyHex: string,
 ): boolean {
-  return verifyText(bundleJson, signatureHex, publicKeyHex);
+  return verifyText(BUNDLE_TAG, bundleJson, signatureHex, publicKeyHex);
 }
 
 export function signManifest(
@@ -89,7 +105,7 @@ export function signManifest(
   privateKeyHex: string,
 ): { manifestJson: string; signatureHex: string } {
   const manifestJson = canonicalJson(manifest);
-  return { manifestJson, signatureHex: signText(manifestJson, privateKeyHex) };
+  return { manifestJson, signatureHex: signText(MANIFEST_TAG, manifestJson, privateKeyHex) };
 }
 
 export function verifyManifest(
@@ -97,5 +113,10 @@ export function verifyManifest(
   signatureHex: string,
   publicKeyHex: string,
 ): boolean {
-  return verifyText(manifestJson, signatureHex, publicKeyHex);
+  return verifyText(MANIFEST_TAG, manifestJson, signatureHex, publicKeyHex);
+}
+
+/** Protección contra reenvío de manifiestos antiguos (p. ej. anteriores a un retiro). */
+export function isManifestNewer(current: Manifest | null, candidate: Manifest): boolean {
+  return current === null || candidate.sequence > current.sequence;
 }

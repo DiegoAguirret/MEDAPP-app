@@ -53,7 +53,15 @@ export function loadContent(contentDir: string): {
 
   const recallsFile = join(contentDir, 'recalls.yaml');
   const recalls = existsSync(recallsFile) ? readYaml(recallsFile) : [];
-  const recalledDrugIds = Array.isArray(recalls) ? recalls.map(String) : [];
+  if (!Array.isArray(recalls) || !recalls.every((r) => typeof r === 'string')) {
+    throw new ContentLoadError(`${recallsFile} debe ser una lista de ids de fármacos`);
+  }
+  const known = new Set(drugs.map((d) => d.id));
+  const unknown = recalls.filter((r) => !known.has(r));
+  if (unknown.length > 0) {
+    throw new ContentLoadError(`${recallsFile}: ids desconocidos ${unknown.join(', ')}`);
+  }
+  const recalledDrugIds: string[] = recalls;
 
   return { drugs, sources, recalledDrugIds };
 }

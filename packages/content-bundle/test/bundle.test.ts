@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   canonicalJson,
   generateKeyPair,
+  isManifestNewer,
   sha256Hex,
   signBundle,
   signManifest,
@@ -69,6 +70,8 @@ describe('manifest signature', () => {
     sha256: sha256Hex('{}'),
     recalledDrugIds: ['metamizol'],
     minAppVersion: '1.0.0',
+    sequence: 1762214400,
+    issuedAt: '2026-11-04T00:00:00.000Z',
   };
 
   it('verifies a signed manifest', () => {
@@ -88,5 +91,47 @@ describe('sha256Hex', () => {
     expect(sha256Hex('abc')).toBe(
       'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad',
     );
+  });
+});
+
+describe('domain separation', () => {
+  const { privateKeyHex, publicKeyHex } = generateKeyPair();
+  const manifest: Manifest = {
+    contentVersion: 'x',
+    sha256: sha256Hex('{}'),
+    recalledDrugIds: [],
+    minAppVersion: '1.0.0',
+    sequence: 2,
+    issuedAt: '2026-11-04T00:00:00.000Z',
+  };
+
+  it('a signed manifest is not accepted as a bundle', () => {
+    const { manifestJson, signatureHex } = signManifest(manifest, privateKeyHex);
+    expect(verifyBundle(manifestJson, signatureHex, publicKeyHex)).toBe(false);
+  });
+
+  it('a signed bundle is not accepted as a manifest', () => {
+    const { bundleJson, signatureHex } = signBundle(bundle, privateKeyHex);
+    expect(verifyManifest(bundleJson, signatureHex, publicKeyHex)).toBe(false);
+  });
+});
+
+describe('isManifestNewer (rollback protection)', () => {
+  const base = {
+    contentVersion: 'x',
+    sha256: 'h',
+    recalledDrugIds: [],
+    minAppVersion: '1.0.0',
+    issuedAt: '2026-11-04T00:00:00.000Z',
+  };
+  it('accepts a higher sequence', () => {
+    expect(isManifestNewer({ ...base, sequence: 1 }, { ...base, sequence: 2 })).toBe(true);
+  });
+  it('rejects an equal or older sequence (replay)', () => {
+    expect(isManifestNewer({ ...base, sequence: 2 }, { ...base, sequence: 2 })).toBe(false);
+    expect(isManifestNewer({ ...base, sequence: 3 }, { ...base, sequence: 2 })).toBe(false);
+  });
+  it('accepts any manifest when there is none yet', () => {
+    expect(isManifestNewer(null, { ...base, sequence: 1 })).toBe(true);
   });
 });

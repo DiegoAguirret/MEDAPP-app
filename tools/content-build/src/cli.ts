@@ -71,6 +71,9 @@ function main(): number {
     sha256: sha256Hex(bundleJson),
     recalledDrugIds,
     minAppVersion: MIN_APP_VERSION,
+    // Segundos desde 1970: crece en cada publicación sin estado adicional.
+    sequence: Math.floor(Date.now() / 1000),
+    issuedAt: new Date().toISOString(),
   };
   const signedManifest = signManifest(manifest, privateKey);
 
