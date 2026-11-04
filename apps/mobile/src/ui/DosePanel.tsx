@@ -9,7 +9,9 @@ import {
 } from '@medapp/content-schema';
 import { calculateDose, formatClinical } from '@medapp/dose-engine';
 import { useMemo, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { Pressable, ScrollView, Share, StyleSheet, Text, View } from 'react-native';
+import { CATEGORIES } from '../domain/categories';
 import { customPresentation } from '../domain/custom';
 import { CLINICAL_DISCLAIMER, REASON_TEXT, WARNING_TEXT } from '../domain/messages';
 import { ageToDays, parseWeight } from '../domain/patientInput';
@@ -19,12 +21,11 @@ import {
   Chip,
   Collapsible,
   NumberField,
-  Pill,
   ReviewBadge,
   SectionTitle,
   Segmented,
 } from './components';
-import { font, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
+import { family, font, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
 
 const COUNTRY_LABEL: Record<Country, string> = {
   PE: 'Perú',
@@ -41,6 +42,15 @@ const ROUTE_LABEL: Record<Route, string> = {
   IR: 'Rectal',
   SL: 'Sublingual',
   INH: 'Inhalada',
+};
+/** Vía tal como se escribe en la receta. */
+const ROUTE_RX: Record<Route, string> = {
+  VO: 'vía oral',
+  IV: 'vía IV',
+  IM: 'vía IM',
+  IR: 'vía rectal',
+  SL: 'vía sublingual',
+  INH: 'vía inhalada',
 };
 const BASIS_LABEL = {
   'mg/kg/dose': 'mg/kg/dosis',
@@ -190,55 +200,88 @@ export function DosePanel({
     }
   };
 
+  const amountText = result?.status === 'ok' ? `${fmt(result.amount.value)} ${unit}` : '';
+  const rxLine =
+    result?.status === 'ok' && presentation
+      ? `${drug.name} ${presentation.label}: ${amountText} ${ROUTE_RX[rule.route]} cada ${rule.intervalHours} h` +
+        (rule.durationText ? `, ${rule.durationText}` : '') +
+        ` (${fmt(result.mgPerDose.chosen)} mg por toma; ${fmt(result.mgPerDay)} mg/día).`
+      : '';
+
   return (
     <View>
-      <ReviewBadge review={drug.review} />
+      <View style={s.head}>
+        <Text accessibilityRole="header" style={s.drugName}>
+          {drug.tallMan ?? drug.name}
+        </Text>
+        <Text style={s.drugMeta}>{CATEGORIES[drug.category].label}</Text>
+        <ReviewBadge review={drug.review} />
+      </View>
 
       <Card>
         {routes.length > 1 ? (
-          <>
-            <SectionTitle>Vía de administración</SectionTitle>
-            <Segmented
-              label="Vía de administración"
-              options={routes.map((r) => ({ value: r, label: ROUTE_LABEL[r] }))}
-              value={route}
-              onChange={(r) => {
-                setRoute(r);
-                const first = drug.rules.find((x) => x.route === r);
-                if (first) selectRule(first);
-              }}
-            />
-          </>
+          <Segmented
+            label="Vía de administración"
+            options={routes.map((r) => ({ value: r, label: ROUTE_LABEL[r] }))}
+            value={route}
+            onChange={(r) => {
+              setRoute(r);
+              const first = drug.rules.find((x) => x.route === r);
+              if (first) selectRule(first);
+            }}
+          />
         ) : null}
         <SectionTitle>Indicación</SectionTitle>
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Cambiar indicación"
+          accessibilityState={{ expanded: pickingRule }}
           onPress={() => setPickingRule((v) => !v)}
-          style={s.indication}
+          style={({ pressed }) => [s.indication, pressed && { opacity: 0.7 }]}
         >
-          <View style={s.indicationTop}>
+          <View style={s.flex}>
             <Text style={s.indicationTitle}>{rule.indication}</Text>
-            <Text style={s.indicationCount}>
-              {ruleIndex + 1}/{rulesForRoute.length} · toca para cambiar
+            <Text style={s.indicationSub}>
+              {rangeText(rule, fmt)} · cada {rule.intervalHours} h
             </Text>
           </View>
-          <Pill>{rangeText(rule, fmt)}</Pill>
+          {rulesForRoute.length > 1 ? (
+            <View style={s.indicationSide}>
+              <Text style={s.indicationCount}>
+                {ruleIndex + 1} de {rulesForRoute.length}
+              </Text>
+              <Ionicons
+                name={pickingRule ? 'chevron-up' : 'chevron-down'}
+                size={18}
+                color={c.muted}
+              />
+            </View>
+          ) : null}
         </Pressable>
-        {pickingRule
-          ? rulesForRoute.map((r) => (
-              <Pressable
-                key={r.id}
-                accessibilityRole="radio"
-                accessibilityState={{ selected: r.id === rule.id }}
-                onPress={() => selectRule(r)}
-                style={[s.option, r.id === rule.id && s.optionOn]}
-              >
-                <Text style={s.optionText}>{r.indication}</Text>
-                <Text style={s.optionSub}>{rangeText(r, fmt)}</Text>
-              </Pressable>
-            ))
-          : null}
+        {pickingRule ? (
+          <View style={s.options}>
+            {rulesForRoute.map((r, i) => {
+              const on = r.id === rule.id;
+              return (
+                <Pressable
+                  key={r.id}
+                  accessibilityRole="radio"
+                  accessibilityState={{ selected: on }}
+                  onPress={() => selectRule(r)}
+                  style={[s.option, i > 0 && s.ruled]}
+                >
+                  <View style={s.flex}>
+                    <Text style={s.optionText}>{r.indication}</Text>
+                    <Text style={s.optionSub}>
+                      {rangeText(r, fmt)} · cada {r.intervalHours} h
+                    </Text>
+                  </View>
+                  {on ? <Ionicons name="checkmark" size={20} color={c.accent} /> : null}
+                </Pressable>
+              );
+            })}
+          </View>
+        ) : null}
         {rule.amountMin !== rule.amountMax ? (
           <View style={s.wrap}>
             <Chip
@@ -264,44 +307,44 @@ export function DosePanel({
         ) : null}
       </Card>
 
-      <SectionTitle>Presentación</SectionTitle>
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={s.presRow}
-      >
-        {allowed.map((p) => {
-          const on = p.id === presId;
-          return (
-            <Pressable
-              key={p.id}
-              accessibilityRole="radio"
-              accessibilityState={{ selected: on }}
-              onPress={() => setPresId(p.id)}
-              style={[s.presCard, on && s.presCardOn]}
-            >
-              <Text style={[s.presForm, on && s.presTextOn]}>{FORM_LABEL[p.form]}</Text>
-              <Text style={[s.presLabel, on && s.presTextOn]}>{p.label}</Text>
-              {p.brandsPE.length > 0 ? (
-                <Text style={[s.presBrands, on && s.presTextOn]} numberOfLines={1}>
-                  {p.brandsPE.join(' · ')}
-                </Text>
-              ) : null}
-            </Pressable>
-          );
-        })}
-        <Pressable
-          accessibilityRole="radio"
-          accessibilityState={{ selected: presId === CUSTOM_ID }}
-          onPress={() => setPresId(CUSTOM_ID)}
-          style={[s.presCard, s.presCustom, presId === CUSTOM_ID && s.presCardOn]}
+      <View style={s.block}>
+        <SectionTitle>Presentación</SectionTitle>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={s.presRow}
         >
-          <Text style={[s.presPlus, presId === CUSTOM_ID && s.presTextOn]}>＋</Text>
-          <Text style={[s.presLabel, presId === CUSTOM_ID && s.presTextOn]}>
-            Personalizar concentración
-          </Text>
-        </Pressable>
-      </ScrollView>
+          {allowed.map((p) => {
+            const on = p.id === presId;
+            return (
+              <Pressable
+                key={p.id}
+                accessibilityRole="radio"
+                accessibilityState={{ selected: on }}
+                onPress={() => setPresId(p.id)}
+                style={[s.presCard, on && s.presCardOn]}
+              >
+                <Text style={s.presForm}>{FORM_LABEL[p.form]}</Text>
+                <Text style={s.presLabel}>{p.label}</Text>
+                {p.brandsPE.length > 0 ? (
+                  <Text style={s.presBrands} numberOfLines={2}>
+                    {p.brandsPE.join(' · ')}
+                  </Text>
+                ) : null}
+              </Pressable>
+            );
+          })}
+          <Pressable
+            accessibilityRole="radio"
+            accessibilityState={{ selected: presId === CUSTOM_ID }}
+            onPress={() => setPresId(CUSTOM_ID)}
+            style={[s.presCard, s.presCustom, presId === CUSTOM_ID && s.presCardOn]}
+          >
+            <Ionicons name="add" size={22} color={c.text} />
+            <Text style={s.presLabel}>Personalizar concentración</Text>
+          </Pressable>
+        </ScrollView>
+      </View>
       {presId === CUSTOM_ID ? (
         <Card>
           <View style={s.row}>
@@ -328,7 +371,7 @@ export function DosePanel({
 
       <Card>
         <View style={s.headRow}>
-          <SectionTitle>Peso del paciente</SectionTitle>
+          <SectionTitle>Peso</SectionTitle>
           <Segmented
             label="Unidad de peso"
             options={[
@@ -353,8 +396,8 @@ export function DosePanel({
           <Text style={s.error}>{REASON_TEXT.invalid_weight}</Text>
         ) : null}
 
-        <View style={s.headRow}>
-          <SectionTitle>Edad del paciente</SectionTitle>
+        <View style={[s.headRow, s.gapTop]}>
+          <SectionTitle>Edad</SectionTitle>
           <Segmented
             label="Formato de edad"
             options={[
@@ -410,23 +453,40 @@ export function DosePanel({
 
       {result?.status === 'ok' ? (
         <View style={s.result}>
-          <Text style={s.resultLabel}>DOSIS POR TOMA</Text>
-          <Text testID="result-mg" style={s.resultMg}>
-            {fmt(result.mgPerDose.chosen)} mg
-          </Text>
+          <View style={s.resultTop}>
+            <Text style={s.rx}>Rp/</Text>
+            <Text style={s.resultFor} numberOfLines={2}>
+              {presentation ? presentation.label : ''}
+            </Text>
+          </View>
           <Text testID="result-amount" style={s.resultAmount}>
-            {fmt(result.amount.value)} {unit}
+            {amountText}
           </Text>
-          <Text style={s.resultSub}>
-            Cada {rule.intervalHours} h · {fmt(result.dosesPerDay)} tomas/día ·{' '}
-            {fmt(result.mgPerDay)} mg/día
+          <Text style={s.resultLine}>
+            <Text testID="result-mg" style={s.resultMg}>
+              {fmt(result.mgPerDose.chosen)} mg
+            </Text>
+            {` por toma · ${ROUTE_RX[rule.route]} cada ${rule.intervalHours} h`}
           </Text>
-          {rule.durationText ? (
-            <Text style={s.resultSub}>Duración: {rule.durationText}</Text>
-          ) : null}
-          <Text style={s.resultSub}>
-            Rango de la ficha: {fmt(result.mgPerDose.min)}–{fmt(result.mgPerDose.max)} mg por toma
-          </Text>
+          <View style={s.facts}>
+            <Fact s={s} label="Tomas al día" value={fmt(result.dosesPerDay)} />
+            <Fact s={s} label="Total diario" value={`${fmt(result.mgPerDay)} mg`} />
+            <Fact
+              s={s}
+              label="Rango por toma"
+              value={`${fmt(result.mgPerDose.min)}–${fmt(result.mgPerDose.max)} mg`}
+            />
+            {rule.durationText ? <Fact s={s} label="Duración" value={rule.durationText} /> : null}
+          </View>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Compartir indicación"
+            onPress={() => void Share.share({ message: rxLine })}
+            style={({ pressed }) => [s.share, pressed && { opacity: 0.7 }]}
+          >
+            <Ionicons name="share-outline" size={18} color={c.accent} />
+            <Text style={s.shareText}>Compartir indicación</Text>
+          </Pressable>
         </View>
       ) : null}
       {result?.status === 'ok'
@@ -457,7 +517,7 @@ export function DosePanel({
         <Collapsible title="Contraindicaciones" count={drug.contraindications.length} tone="danger">
           {drug.contraindications.map((x) => (
             <Text key={x} style={s.body}>
-              ⛔ {x}
+              {x}
             </Text>
           ))}
         </Collapsible>
@@ -466,16 +526,17 @@ export function DosePanel({
         <Collapsible title="Advertencias" count={drug.warnings.length} tone="warning">
           {drug.warnings.map((x) => (
             <Text key={x} style={s.body}>
-              ⚠ {x}
+              {x}
             </Text>
           ))}
         </Collapsible>
       ) : null}
       {rule.countryNotes && rule.countryNotes.length > 0 ? (
-        <Collapsible title="Diferencias por país" count={rule.countryNotes.length} tone="ok">
+        <Collapsible title="Diferencias por país" count={rule.countryNotes.length}>
           {rule.countryNotes.map((n) => (
             <Text key={n.country + n.text} style={s.body}>
-              {COUNTRY_LABEL[n.country]}: {n.text}
+              <Text style={s.strong}>{COUNTRY_LABEL[n.country]}: </Text>
+              {n.text}
             </Text>
           ))}
         </Collapsible>
@@ -483,7 +544,7 @@ export function DosePanel({
       <Collapsible title="Fuentes" count={orderedSources.length}>
         {orderedSources.map((src, i) => (
           <Text key={src.id} style={i === 0 ? s.body : s.muted}>
-            {i === 0 ? `Fuente principal: ${sourceLabel(src)}` : `• ${sourceLabel(src)}`}
+            {i === 0 ? `Fuente principal: ${sourceLabel(src)}` : sourceLabel(src)}
           </Text>
         ))}
       </Collapsible>
@@ -492,10 +553,27 @@ export function DosePanel({
   );
 }
 
+type Styles = ReturnType<typeof makeStyles>;
+
+function Fact({ s, label, value }: { s: Styles; label: string; value: string }) {
+  return (
+    <View style={s.fact}>
+      <Text style={s.factLabel}>{label}</Text>
+      <Text style={s.factValue}>{value}</Text>
+    </View>
+  );
+}
+
 function makeStyles(c: Palette) {
   return StyleSheet.create({
+    flex: { flex: 1 },
+    head: { gap: 4, marginBottom: 20 },
+    drugName: { fontFamily: family.serif, fontSize: 34, lineHeight: 38, color: c.text },
+    drugMeta: { fontFamily: family.regular, fontSize: 15, color: c.muted, marginBottom: 4 },
+    block: { gap: 10, marginBottom: space.md },
     wrap: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
     row: { flexDirection: 'row', gap: space.md },
+    gapTop: { marginTop: space.sm },
     headRow: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -504,69 +582,109 @@ function makeStyles(c: Palette) {
       flexWrap: 'wrap',
     },
     indication: {
-      borderWidth: 1,
-      borderColor: c.border,
-      borderRadius: radius.sm,
-      padding: space.md,
-      gap: space.sm,
-      backgroundColor: c.bg,
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: space.md,
+      borderRadius: radius.md,
+      backgroundColor: c.raised,
+      paddingHorizontal: space.lg,
+      paddingVertical: 14,
       minHeight: MIN_TOUCH,
     },
-    indicationTop: { gap: space.xs },
-    indicationTitle: { color: c.text, fontSize: font.title, fontWeight: '800' },
-    indicationCount: { color: c.muted, fontSize: font.small, fontWeight: '700' },
+    indicationTitle: { fontFamily: family.semibold, color: c.text, fontSize: 17, lineHeight: 23 },
+    indicationSub: { fontFamily: family.regular, color: c.muted, fontSize: 14, marginTop: 2 },
+    indicationSide: { flexDirection: 'row', alignItems: 'center', gap: 4 },
+    indicationCount: {
+      fontFamily: family.medium,
+      color: c.muted,
+      fontSize: 13,
+      fontVariant: ['tabular-nums'],
+    },
+    options: { backgroundColor: c.raised, borderRadius: radius.md, paddingHorizontal: space.lg },
     option: {
-      borderWidth: 1,
-      borderColor: c.border,
-      borderRadius: radius.sm,
-      padding: space.md,
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: space.md,
+      paddingVertical: space.md,
       minHeight: MIN_TOUCH,
     },
-    optionOn: { borderColor: c.primary, backgroundColor: c.primarySoft },
-    optionText: { color: c.text, fontSize: font.body, fontWeight: '700' },
-    optionSub: { color: c.muted, fontSize: font.small },
-    presRow: { gap: space.sm, paddingVertical: space.sm, paddingRight: space.lg },
+    ruled: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: c.control },
+    optionText: { fontFamily: family.medium, color: c.text, fontSize: 15 },
+    optionSub: { fontFamily: family.regular, color: c.muted, fontSize: 13 },
+    presRow: { gap: 10, paddingRight: 20 },
     presCard: {
-      width: 150,
-      minHeight: 96,
+      width: 156,
+      minHeight: 104,
       borderRadius: radius.md,
       borderWidth: 1,
       borderColor: c.border,
-      backgroundColor: c.card,
-      padding: space.md,
-      gap: space.xs,
-      justifyContent: 'center',
+      backgroundColor: c.ground,
+      padding: 14,
+      gap: 3,
     },
-    presCardOn: { backgroundColor: c.primary, borderColor: c.primary },
-    presCustom: { borderStyle: 'dashed', alignItems: 'center' },
-    presForm: {
-      color: c.muted,
-      fontSize: font.small,
-      fontWeight: '800',
-      textTransform: 'uppercase',
-    },
-    presLabel: { color: c.text, fontSize: font.body, fontWeight: '700' },
-    presBrands: { color: c.muted, fontSize: font.small },
-    presPlus: { color: c.primary, fontSize: 28, fontWeight: '800' },
-    presTextOn: { color: c.primaryText },
+    presCardOn: { borderColor: c.ink, borderWidth: 2, padding: 13 },
+    presCustom: { borderStyle: 'dashed', borderColor: c.control, justifyContent: 'center' },
+    presForm: { fontFamily: family.regular, color: c.muted, fontSize: 13 },
+    presLabel: { fontFamily: family.semibold, color: c.text, fontSize: 15, lineHeight: 20 },
+    presBrands: { fontFamily: family.regular, color: c.muted, fontSize: 13, lineHeight: 18 },
     result: {
-      backgroundColor: c.primary,
+      backgroundColor: c.accentSoft,
       borderRadius: radius.lg,
-      padding: space.xl,
+      padding: 20,
       marginBottom: space.md,
-      gap: space.xs,
+      gap: 6,
     },
-    resultLabel: { color: c.primaryText, fontSize: font.small, fontWeight: '800', opacity: 0.85 },
-    resultMg: { color: c.primaryText, fontSize: 40, fontWeight: '900' },
-    resultAmount: { color: c.primaryText, fontSize: font.big, fontWeight: '800' },
-    resultSub: { color: c.primaryText, fontSize: font.body, opacity: 0.9 },
-    error: { color: c.danger, fontSize: font.body },
-    body: { fontSize: font.body, color: c.text },
-    muted: { fontSize: font.small, color: c.muted },
+    resultTop: { flexDirection: 'row', alignItems: 'baseline', gap: 10 },
+    rx: { fontFamily: family.serif, fontSize: 22, color: c.accent },
+    resultFor: { flex: 1, fontFamily: family.medium, fontSize: 15, color: c.text },
+    resultAmount: {
+      fontFamily: family.serif,
+      fontSize: font.figure,
+      lineHeight: 46,
+      color: c.accent,
+      fontVariant: ['tabular-nums'],
+    },
+    resultLine: { fontFamily: family.regular, fontSize: 16, lineHeight: 22, color: c.text },
+    resultMg: { fontFamily: family.semibold, color: c.text, fontVariant: ['tabular-nums'] },
+    facts: {
+      marginTop: space.sm,
+      borderTopWidth: StyleSheet.hairlineWidth,
+      borderTopColor: c.accent,
+      paddingTop: space.sm,
+    },
+    fact: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      gap: space.md,
+      paddingVertical: 5,
+    },
+    factLabel: { fontFamily: family.regular, fontSize: 14, color: c.muted },
+    factValue: {
+      flexShrink: 1,
+      textAlign: 'right',
+      fontFamily: family.medium,
+      fontSize: 14,
+      color: c.text,
+      fontVariant: ['tabular-nums'],
+    },
+    share: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 8,
+      alignSelf: 'flex-start',
+      minHeight: MIN_TOUCH,
+      marginTop: 2,
+    },
+    shareText: { fontFamily: family.semibold, fontSize: 15, color: c.accent },
+    error: { fontFamily: family.regular, color: c.danger, fontSize: 15 },
+    body: { fontFamily: family.regular, fontSize: 15, lineHeight: 22, color: c.text },
+    strong: { fontFamily: family.semibold },
+    muted: { fontFamily: family.regular, fontSize: 14, lineHeight: 20, color: c.muted },
     disclaimer: {
-      fontSize: font.small,
+      fontFamily: family.regular,
+      fontSize: 13,
+      lineHeight: 19,
       color: c.muted,
-      fontStyle: 'italic',
       marginVertical: space.md,
     },
   });

@@ -4,10 +4,8 @@ import { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { searchDrugs } from '../data/content';
 import { CATEGORIES, CATEGORY_ORDER } from '../domain/categories';
-import { DrugRow } from './DrugRow';
-import { font, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
-
-const SOURCE_BADGES = ['FNME · DIGEMID', 'MINSA', 'FDA', 'AEMPS', 'OMS'];
+import { DrugList } from './DrugRow';
+import { family, font, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
 
 export function Home({
   drugs,
@@ -25,7 +23,11 @@ export function Home({
   const c = useColors();
   const s = useMemo(() => makeStyles(c), [c]);
   const [query, setQuery] = useState('');
-  const visible = useMemo(() => drugs.filter((d) => !recalled.has(d.id)), [drugs, recalled]);
+  const visible = useMemo(
+    () =>
+      drugs.filter((d) => !recalled.has(d.id)).sort((a, b) => a.name.localeCompare(b.name, 'es')),
+    [drugs, recalled],
+  );
   const results = useMemo(
     () => (query.trim() === '' ? [] : searchDrugs(visible, query, recalled)),
     [visible, query, recalled],
@@ -35,80 +37,99 @@ export function Home({
     for (const d of visible) m.set(d.category, (m.get(d.category) ?? 0) + 1);
     return m;
   }, [visible]);
+  const categories = CATEGORY_ORDER.filter((cat) => (counts.get(cat) ?? 0) > 0);
+  const searching = query.trim() !== '';
 
   return (
     <View style={s.screen}>
-      <Text style={s.brand}>Dosis Pediátricas</Text>
-      <View style={s.badges}>
-        {SOURCE_BADGES.map((b) => (
-          <Text key={b} style={s.badge}>
-            {b}
+      <View style={s.head}>
+        <Text accessibilityRole="header" style={s.brand}>
+          Dosis pediátricas
+        </Text>
+        <Text style={s.lede}>
+          {visible.length} fármacos con fuentes de DIGEMID (FNME), MINSA, FDA, AEMPS y OMS.
+        </Text>
+      </View>
+
+      <View style={s.search}>
+        <Ionicons name="search-outline" size={20} color={c.muted} />
+        <TextInput
+          accessibilityLabel="Buscar fármaco o diagnóstico"
+          placeholder="Fármaco o diagnóstico"
+          placeholderTextColor={c.muted}
+          value={query}
+          onChangeText={setQuery}
+          style={s.searchInput}
+          autoCorrect={false}
+          returnKeyType="search"
+        />
+        {searching ? (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Borrar búsqueda"
+            onPress={() => setQuery('')}
+            hitSlop={12}
+          >
+            <Ionicons name="close-circle" size={20} color={c.muted} />
+          </Pressable>
+        ) : null}
+      </View>
+
+      {searching ? (
+        results.length === 0 ? (
+          <Text style={s.empty}>
+            Nada coincide con «{query.trim()}». Prueba con el nombre genérico o el diagnóstico, o
+            usa la calculadora manual.
           </Text>
-        ))}
-      </View>
-
-      <View style={s.searchRow}>
-        <View style={s.search}>
-          <Ionicons name="search" size={20} color={c.muted} />
-          <TextInput
-            accessibilityLabel="Buscar fármaco o diagnóstico"
-            placeholder="Buscar fármaco o diagnóstico"
-            placeholderTextColor={c.muted}
-            value={query}
-            onChangeText={setQuery}
-            style={s.searchInput}
-            autoCorrect={false}
-          />
-        </View>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Calculadora manual"
-          onPress={onOpenManual}
-          style={s.manual}
-        >
-          <Ionicons name="calculator" size={22} color={c.primaryText} />
-          <Text style={s.manualText}>MANUAL</Text>
-        </Pressable>
-      </View>
-
-      {query.trim() !== '' ? (
-        <View>
-          {results.length === 0 ? <Text style={s.muted}>Sin resultados.</Text> : null}
-          {results.map((d) => (
-            <DrugRow key={d.id} drug={d} onPress={() => onOpenDrug(d.id)} />
-          ))}
-        </View>
+        ) : (
+          <DrugList drugs={results} onOpen={onOpenDrug} />
+        )
       ) : (
         <>
-          <Text style={s.section}>CATEGORÍAS</Text>
-          <View style={s.grid}>
-            {CATEGORY_ORDER.filter((cat) => (counts.get(cat) ?? 0) > 0).map((cat) => {
-              const meta = CATEGORIES[cat];
-              const n = counts.get(cat) ?? 0;
-              return (
-                <Pressable
-                  key={cat}
-                  accessibilityRole="button"
-                  accessibilityLabel={`${meta.label}, ${n} fármacos`}
-                  onPress={() => onOpenCategory(cat)}
-                  style={[s.tile, { borderLeftColor: meta.color }]}
-                >
-                  <View style={[s.tileIcon, { backgroundColor: meta.color + '22' }]}>
-                    <Ionicons
-                      name={meta.icon as keyof typeof Ionicons.glyphMap}
-                      size={24}
-                      color={meta.color}
-                    />
-                  </View>
-                  <Text style={s.tileTitle} numberOfLines={2}>
-                    {meta.label}
-                  </Text>
-                  <Text style={[s.tileCount, { color: meta.color }]}>
-                    {n} {n === 1 ? 'fármaco' : 'fármacos'}
-                  </Text>
-                </Pressable>
-              );
-            })}
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Calculadora manual"
+            onPress={onOpenManual}
+            style={({ pressed }) => [s.manual, pressed && { opacity: 0.7 }]}
+          >
+            <Ionicons name="calculator-outline" size={22} color={c.text} />
+            <View style={s.flex}>
+              <Text style={s.manualTitle}>Calculadora manual</Text>
+              <Text style={s.manualSub}>Cualquier fármaco: mg/kg, intervalo y concentración</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={18} color={c.muted} />
+          </Pressable>
+
+          <View style={s.block}>
+            <Text style={s.section}>Categorías</Text>
+            <View style={s.panel}>
+              {categories.map((cat, i) => {
+                const n = counts.get(cat) ?? 0;
+                const label = CATEGORIES[cat].label;
+                return (
+                  <Pressable
+                    key={cat}
+                    accessibilityRole="button"
+                    accessibilityLabel={`${label}, ${n} fármacos`}
+                    onPress={() => onOpenCategory(cat)}
+                    style={({ pressed }) => [
+                      s.catRow,
+                      i > 0 && s.ruled,
+                      pressed && { opacity: 0.6 },
+                    ]}
+                  >
+                    <Text style={s.catLabel}>{label}</Text>
+                    <Text style={s.catCount}>{n}</Text>
+                    <Ionicons name="chevron-forward" size={18} color={c.muted} />
+                  </Pressable>
+                );
+              })}
+            </View>
+          </View>
+
+          <View style={s.block}>
+            <Text style={s.section}>Todos los fármacos</Text>
+            <DrugList drugs={visible} onOpen={onOpenDrug} />
           </View>
         </>
       )}
@@ -118,65 +139,56 @@ export function Home({
 
 function makeStyles(c: Palette) {
   return StyleSheet.create({
-    screen: { padding: space.lg, gap: space.md },
-    brand: { fontSize: 30, fontWeight: '900', color: c.text, letterSpacing: -0.5 },
-    badges: { flexDirection: 'row', flexWrap: 'wrap', gap: space.xs },
-    badge: {
-      fontSize: 11,
-      fontWeight: '800',
-      color: c.muted,
-      borderWidth: 1,
-      borderColor: c.border,
-      borderRadius: radius.sm,
-      paddingHorizontal: space.sm,
-      paddingVertical: 3,
-      letterSpacing: 0.5,
-    },
-    searchRow: { flexDirection: 'row', gap: space.sm },
+    screen: { paddingHorizontal: 20, paddingTop: space.xl, paddingBottom: space.xxl, gap: 20 },
+    flex: { flex: 1 },
+    head: { gap: 6 },
+    brand: { fontFamily: family.serif, fontSize: 34, lineHeight: 38, color: c.text },
+    lede: { fontFamily: family.regular, fontSize: 15, lineHeight: 21, color: c.muted },
     search: {
-      flex: 1,
       flexDirection: 'row',
       alignItems: 'center',
       gap: space.sm,
-      minHeight: 56,
-      backgroundColor: c.card,
-      borderWidth: 1,
-      borderColor: c.border,
-      borderRadius: radius.md,
-      paddingHorizontal: space.md,
+      minHeight: 52,
+      backgroundColor: c.surface,
+      borderRadius: radius.pill,
+      paddingHorizontal: 18,
     },
-    searchInput: { flex: 1, fontSize: font.body, color: c.text, minHeight: MIN_TOUCH },
+    searchInput: {
+      flex: 1,
+      fontFamily: family.regular,
+      fontSize: font.body,
+      color: c.text,
+      minHeight: MIN_TOUCH,
+    },
+    empty: { fontFamily: family.regular, color: c.muted, fontSize: 15, lineHeight: 22 },
     manual: {
-      width: 84,
-      backgroundColor: c.primary,
-      borderRadius: radius.md,
+      flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'center',
-      gap: 2,
-    },
-    manualText: { color: c.primaryText, fontSize: 11, fontWeight: '900', letterSpacing: 0.5 },
-    section: { fontSize: font.small, fontWeight: '800', color: c.muted, letterSpacing: 0.8 },
-    grid: { flexDirection: 'row', flexWrap: 'wrap', gap: space.md },
-    tile: {
-      width: '47%',
-      minHeight: 120,
-      backgroundColor: c.card,
-      borderRadius: radius.md,
+      gap: 14,
       borderWidth: 1,
       borderColor: c.border,
-      borderLeftWidth: 5,
-      padding: space.md,
-      gap: space.sm,
+      borderRadius: radius.lg,
+      paddingHorizontal: space.lg,
+      paddingVertical: 14,
     },
-    tileIcon: {
-      width: 44,
-      height: 44,
-      borderRadius: radius.sm,
+    manualTitle: { fontFamily: family.semibold, fontSize: font.body, color: c.text },
+    manualSub: { fontFamily: family.regular, fontSize: 14, color: c.muted },
+    block: { gap: 10 },
+    section: { fontFamily: family.semibold, fontSize: 14, color: c.text },
+    panel: { backgroundColor: c.surface, borderRadius: radius.lg, paddingHorizontal: space.lg },
+    catRow: {
+      flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'center',
+      gap: space.md,
+      minHeight: 54,
     },
-    tileTitle: { fontSize: font.body, fontWeight: '800', color: c.text },
-    tileCount: { fontSize: font.small, fontWeight: '800' },
-    muted: { color: c.muted, fontSize: font.body },
+    ruled: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: c.control },
+    catLabel: { flex: 1, fontFamily: family.medium, fontSize: font.body, color: c.text },
+    catCount: {
+      fontFamily: family.regular,
+      fontSize: 15,
+      color: c.muted,
+      fontVariant: ['tabular-nums'],
+    },
   });
 }

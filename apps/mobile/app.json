@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "Dosis Pediátricas (beta)",
+    "name": "Dosis Pediátricas",
     "slug": "medapp-dosis",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "medappdosis",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#1B6E66",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
@@ -17,9 +17,7 @@
       "predictiveBackGestureEnabled": false,
       "package": "pe.medapp.dosis",
       "versionCode": 1,
-      "permissions": [
-        "android.permission.INTERNET"
-      ],
+      "permissions": ["android.permission.INTERNET"],
       "blockedPermissions": [
         "android.permission.RECORD_AUDIO",
         "android.permission.SYSTEM_ALERT_WINDOW",
@@ -32,9 +30,14 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#208AEF",
           "image": "./assets/images/splash-icon.png",
-          "imageWidth": 76
+          "imageWidth": 220,
+          "resizeMode": "contain",
+          "backgroundColor": "#FFFFFF",
+          "dark": {
+            "image": "./assets/images/splash-icon-dark.png",
+            "backgroundColor": "#000000"
+          }
         }
       ],
       "expo-sqlite",
@@ -44,8 +47,12 @@
       "typedRoutes": true,
       "reactCompiler": true
     },
-    "platforms": [
-      "android"
-    ]
+    "platforms": ["android", "web"],
+    "web": {
+      "output": "single",
+      "bundler": "metro",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "backgroundColor": "#FFFFFF"
   }
 }

@@ -5,3 +5,4 @@ keys/
 coverage/
 *.log
 .superpowers/
+.taste-skill/

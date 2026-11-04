@@ -5,7 +5,7 @@ import { customPresentation, manualRule } from '../domain/custom';
 import { CLINICAL_DISCLAIMER, REASON_TEXT, WARNING_TEXT } from '../domain/messages';
 import { parseWeight } from '../domain/patientInput';
 import { Banner, Card, NumberField, SectionTitle, Segmented } from './components';
-import { font, radius, space, useColors, type Palette } from './theme';
+import { family, font, radius, space, useColors, type Palette } from './theme';
 
 type Interval = 4 | 6 | 8 | 12 | 24;
 const INTERVALS = ['4', '6', '8', '12', '24'] as const;
@@ -110,15 +110,15 @@ export function ManualPanel({ decimalSeparator }: { decimalSeparator: '.' | ',' 
 
       {result?.status === 'ok' ? (
         <View style={s.result}>
-          <Text style={s.resultLabel}>DOSIS POR TOMA</Text>
-          <Text testID="result-mg" style={s.resultMg}>
-            {fmt(result.mgPerDose.chosen)} mg
-          </Text>
+          <Text style={s.rx}>Rp/</Text>
           <Text testID="result-amount" style={s.resultAmount}>
             {fmt(result.amount.value)} mL
           </Text>
           <Text style={s.resultSub}>
-            Cada {interval} h · {fmt(result.dosesPerDay)} tomas/día · {fmt(result.mgPerDay)} mg/día
+            <Text testID="result-mg" style={s.resultMg}>
+              {fmt(result.mgPerDose.chosen)} mg
+            </Text>
+            {` por toma · cada ${interval} h · ${fmt(result.dosesPerDay)} tomas/día · ${fmt(result.mgPerDay)} mg/día`}
           </Text>
         </View>
       ) : null}
@@ -151,23 +151,30 @@ export function ManualPanel({ decimalSeparator }: { decimalSeparator: '.' | ',' 
 function makeStyles(c: Palette) {
   return StyleSheet.create({
     row: { flexDirection: 'row', gap: space.md },
-    error: { color: c.danger, fontSize: font.body },
-    body: { fontSize: font.body, color: c.text },
+    error: { fontFamily: family.regular, color: c.danger, fontSize: 15 },
+    body: { fontFamily: family.regular, fontSize: 15, lineHeight: 22, color: c.text },
     result: {
-      backgroundColor: c.primary,
+      backgroundColor: c.accentSoft,
       borderRadius: radius.lg,
-      padding: space.xl,
+      padding: 20,
       marginBottom: space.md,
-      gap: space.xs,
+      gap: 6,
     },
-    resultLabel: { color: c.primaryText, fontSize: font.small, fontWeight: '800', opacity: 0.85 },
-    resultMg: { color: c.primaryText, fontSize: 40, fontWeight: '900' },
-    resultAmount: { color: c.primaryText, fontSize: font.big, fontWeight: '800' },
-    resultSub: { color: c.primaryText, fontSize: font.body, opacity: 0.9 },
+    rx: { fontFamily: family.serif, fontSize: 22, color: c.accent },
+    resultAmount: {
+      fontFamily: family.serif,
+      fontSize: font.figure,
+      lineHeight: 46,
+      color: c.accent,
+      fontVariant: ['tabular-nums'],
+    },
+    resultMg: { fontFamily: family.semibold, color: c.text },
+    resultSub: { fontFamily: family.regular, color: c.text, fontSize: 16, lineHeight: 22 },
     disclaimer: {
-      fontSize: font.small,
+      fontFamily: family.regular,
+      fontSize: 13,
+      lineHeight: 19,
       color: c.muted,
-      fontStyle: 'italic',
       marginVertical: space.md,
     },
   });

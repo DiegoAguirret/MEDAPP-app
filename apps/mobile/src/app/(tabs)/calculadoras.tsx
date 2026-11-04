@@ -12,7 +12,7 @@ export default function CalculadorasTab() {
       <ScrollView contentContainerStyle={s.pad} keyboardShouldPersistTaps="handled">
         <Card>
           <SectionTitle>Dosis libre</SectionTitle>
-          <Button label="Abrir calculadora manual (mg/kg)" onPress={() => router.push('/manual')} />
+          <Button label="Abrir calculadora manual" onPress={() => router.push('/manual')} />
         </Card>
         <FluidsPanel decimalSeparator={decimal} />
       </ScrollView>
@@ -20,4 +20,4 @@ export default function CalculadorasTab() {
   );
 }
 
-const s = StyleSheet.create({ flex: { flex: 1 }, pad: { padding: space.lg } });
+const s = StyleSheet.create({ flex: { flex: 1 }, pad: { padding: 20, paddingBottom: space.xxl } });

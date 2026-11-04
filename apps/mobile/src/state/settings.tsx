@@ -1,4 +1,4 @@
-import Storage from 'expo-sqlite/kv-store';
+import { prefs } from './storage';
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react';
 
 /** Solo preferencias del médico. Nunca datos de pacientes. */
@@ -25,7 +25,7 @@ interface Settings {
 
 function readFavorites(): string[] {
   try {
-    const raw = Storage.getItemSync(KEYS.favorites);
+    const raw = prefs.get(KEYS.favorites);
     const parsed: unknown = raw ? JSON.parse(raw) : [];
     return Array.isArray(parsed) ? parsed.filter((x): x is string => typeof x === 'string') : [];
   } catch {
@@ -36,32 +36,32 @@ function readFavorites(): string[] {
 const SettingsContext = createContext<Settings | null>(null);
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
-  const [accepted, setAccepted] = useState(() => Storage.getItemSync(KEYS.disclaimer) === 'yes');
+  const [accepted, setAccepted] = useState(() => prefs.get(KEYS.disclaimer) === 'yes');
   const [decimal, setDecimal] = useState<'.' | ','>(() =>
-    Storage.getItemSync(KEYS.decimal) === ',' ? ',' : '.',
+    prefs.get(KEYS.decimal) === ',' ? ',' : '.',
   );
   const [theme, setTheme] = useState<ThemeMode>(() => {
-    const v = Storage.getItemSync(KEYS.theme);
+    const v = prefs.get(KEYS.theme);
     return v === 'light' || v === 'dark' ? v : 'system';
   });
   const [favorites, setFavorites] = useState<string[]>(readFavorites);
 
   const accept = useCallback(() => {
-    Storage.setItemSync(KEYS.disclaimer, 'yes');
+    prefs.set(KEYS.disclaimer, 'yes');
     setAccepted(true);
   }, []);
   const changeDecimal = useCallback((sep: '.' | ',') => {
-    Storage.setItemSync(KEYS.decimal, sep);
+    prefs.set(KEYS.decimal, sep);
     setDecimal(sep);
   }, []);
   const changeTheme = useCallback((mode: ThemeMode) => {
-    Storage.setItemSync(KEYS.theme, mode);
+    prefs.set(KEYS.theme, mode);
     setTheme(mode);
   }, []);
   const toggleFavorite = useCallback((id: string) => {
     setFavorites((prev) => {
       const next = prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id];
-      Storage.setItemSync(KEYS.favorites, JSON.stringify(next));
+      prefs.set(KEYS.favorites, JSON.stringify(next));
       return next;
     });
   }, []);

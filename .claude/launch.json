@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "app-movil",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "scripts\\preview.cmd"],
+      "port": 8082
+    }
+  ]
+}

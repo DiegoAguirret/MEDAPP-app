@@ -1,86 +1,122 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { useMemo, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from './components';
-import { font, radius, space, useColors, type Palette } from './theme';
+import { family, radius, space, useColors, type Palette } from './theme';
 
-const SLIDES = [
-  {
-    icon: 'medkit-outline',
-    title: 'Dosis pediátricas con fuentes',
-    text: 'Cada ficha cita su fuente principal (FNME de DIGEMID, MINSA, FDA, AEMPS, guías) y muestra las diferencias por país.',
-  },
-  {
-    icon: 'calculator-outline',
-    title: 'Elige, ingresa y calcula',
-    text: 'Elige la indicación y la presentación, ingresa peso y edad: verás mg, mL, frecuencia, topes y el cálculo paso a paso.',
-  },
-  {
-    icon: 'shield-checkmark-outline',
-    title: 'Herramienta para profesionales',
-    text: 'La decisión clínica es responsabilidad del médico tratante. La app no guarda datos de pacientes.',
-  },
-] as const;
-
+/** Bienvenida de tres pasos. La primera muestra un resultado real de la app (10 kg, FNME). */
 export function Onboarding({ onDone }: { onDone: () => void }) {
   const c = useColors();
   const s = useMemo(() => makeStyles(c), [c]);
   const [i, setI] = useState(0);
-  const slide = SLIDES[i] ?? SLIDES[0];
-  const last = i === SLIDES.length - 1;
+  const last = i === 2;
+
   return (
-    <View style={s.screen}>
-      <View style={s.iconWrap}>
-        <Ionicons name={slide.icon} size={64} color={c.primary} />
+    <SafeAreaView style={s.screen}>
+      <ScrollView contentContainerStyle={s.content}>
+        <Text style={s.step}>{i + 1} de 3</Text>
+
+        {i === 0 ? (
+          <>
+            <Text accessibilityRole="header" style={s.title}>
+              Dosis pediátricas
+            </Text>
+            <Text style={s.text}>
+              La dosis por peso en mg y en mL, con la fuente que la respalda: el Formulario Nacional
+              (DIGEMID), las normas del MINSA y las fichas de FDA y AEMPS.
+            </Text>
+            <View style={s.specimen}>
+              <View style={s.specimenTop}>
+                <Text style={s.rx}>Rp/</Text>
+                <Text style={s.specimenDrug}>Paracetamol jarabe 120 mg/5 mL</Text>
+              </View>
+              <Text style={s.figure}>6.3 mL</Text>
+              <Text style={s.specimenLine}>
+                <Text style={s.strong}>150 mg</Text> por toma · vía oral cada 6 h
+              </Text>
+              <Text style={s.specimenNote}>Paciente de 10 kg · fuente principal: FNME</Text>
+            </View>
+          </>
+        ) : null}
+
+        {i === 1 ? (
+          <>
+            <Text accessibilityRole="header" style={s.title}>
+              Elige, ingresa y lee
+            </Text>
+            <View style={s.lines}>
+              <Line s={s} title="Elige" text="la indicación y la presentación que tienes a mano." />
+              <Line s={s} title="Ingresa" text="el peso, en kg o lb, y la edad." />
+              <Line
+                s={s}
+                title="Lee"
+                text="los mL a indicar, los mg, la frecuencia y los topes. Debajo está el cálculo paso a paso y las diferencias por país."
+              />
+            </View>
+          </>
+        ) : null}
+
+        {i === 2 ? (
+          <>
+            <Text accessibilityRole="header" style={s.title}>
+              Para profesionales de la salud
+            </Text>
+            <Text style={s.text}>
+              La app calcula; la decisión clínica es del médico tratante. Revisa siempre la
+              presentación que tienes en la mano antes de indicar.
+            </Text>
+            <Text style={s.text}>
+              No se guardan datos de pacientes: el peso y la edad se borran al salir de la ficha.
+            </Text>
+          </>
+        ) : null}
+      </ScrollView>
+
+      <View style={s.footer}>
+        {last ? (
+          <Button label="Soy profesional de la salud y acepto" onPress={onDone} />
+        ) : (
+          <Button label="Siguiente" onPress={() => setI(i + 1)} />
+        )}
+        {i > 0 ? <Button variant="quiet" label="Atrás" onPress={() => setI(i - 1)} /> : null}
       </View>
-      <Text style={s.title}>{slide.title}</Text>
-      <Text style={s.text}>{slide.text}</Text>
-      <View style={s.dots}>
-        {SLIDES.map((sl, k) => (
-          <View key={sl.title} style={[s.dot, k === i && s.dotOn]} />
-        ))}
-      </View>
-      {last ? (
-        <Button label="Soy profesional de la salud y acepto" onPress={onDone} />
-      ) : (
-        <Pressable accessibilityRole="button" onPress={() => setI(i + 1)} style={s.next}>
-          <Text style={s.nextText}>Siguiente</Text>
-        </Pressable>
-      )}
-    </View>
+    </SafeAreaView>
+  );
+}
+
+type Styles = ReturnType<typeof makeStyles>;
+
+function Line({ s, title, text }: { s: Styles; title: string; text: string }) {
+  return (
+    <Text style={s.text}>
+      <Text style={s.strong}>{title} </Text>
+      {text}
+    </Text>
   );
 }
 
 function makeStyles(c: Palette) {
   return StyleSheet.create({
-    screen: {
-      flex: 1,
-      padding: space.xl,
-      justifyContent: 'center',
-      gap: space.lg,
-      backgroundColor: c.bg,
+    screen: { flex: 1, backgroundColor: c.ground },
+    content: { paddingHorizontal: space.xl, paddingTop: 56, paddingBottom: space.xl, gap: 20 },
+    step: { fontFamily: family.medium, fontSize: 14, color: c.muted },
+    title: { fontFamily: family.serif, fontSize: 40, lineHeight: 44, color: c.text },
+    text: { fontFamily: family.regular, fontSize: 17, lineHeight: 26, color: c.text },
+    strong: { fontFamily: family.semibold },
+    lines: { gap: 14 },
+    specimen: {
+      marginTop: space.sm,
+      backgroundColor: c.accentSoft,
+      borderRadius: radius.lg,
+      padding: 20,
+      gap: 6,
     },
-    iconWrap: {
-      alignSelf: 'center',
-      width: 120,
-      height: 120,
-      borderRadius: 60,
-      backgroundColor: c.primarySoft,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    title: { fontSize: 26, fontWeight: '900', color: c.text, textAlign: 'center' },
-    text: { fontSize: font.body, color: c.muted, textAlign: 'center', lineHeight: 24 },
-    dots: { flexDirection: 'row', justifyContent: 'center', gap: space.sm },
-    dot: { width: 8, height: 8, borderRadius: 4, backgroundColor: c.border },
-    dotOn: { width: 24, backgroundColor: c.primary },
-    next: {
-      minHeight: 52,
-      borderRadius: radius.sm,
-      backgroundColor: c.primarySoft,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    nextText: { color: c.primary, fontWeight: '800', fontSize: font.body },
+    specimenTop: { flexDirection: 'row', alignItems: 'baseline', gap: 10 },
+    rx: { fontFamily: family.serif, fontSize: 22, color: c.accent },
+    specimenDrug: { flex: 1, fontFamily: family.medium, fontSize: 15, color: c.text },
+    figure: { fontFamily: family.serif, fontSize: 40, lineHeight: 46, color: c.accent },
+    specimenLine: { fontFamily: family.regular, fontSize: 16, color: c.text },
+    specimenNote: { fontFamily: family.regular, fontSize: 13, color: c.muted, marginTop: 4 },
+    footer: { paddingHorizontal: space.xl, paddingBottom: space.lg, gap: space.xs },
   });
 }

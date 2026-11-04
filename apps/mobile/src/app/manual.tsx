@@ -14,4 +14,4 @@ export default function ManualScreen() {
   );
 }
 
-const s = StyleSheet.create({ flex: { flex: 1 }, pad: { padding: space.lg } });
+const s = StyleSheet.create({ flex: { flex: 1 }, pad: { padding: 20, paddingBottom: space.xxl } });

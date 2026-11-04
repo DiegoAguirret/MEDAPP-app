@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { CLINICAL_DISCLAIMER, REASON_TEXT } from '../domain/messages';
 import { parseHeight, parseWeight } from '../domain/patientInput';
 import { Card, Chip, NumberField, SectionTitle } from './components';
-import { font, space, useColors, type Palette } from './theme';
+import { family, space, useColors, type Palette } from './theme';
 
 export function FluidsPanel({ decimalSeparator }: { decimalSeparator: '.' | ',' }) {
   const c = useColors();
@@ -99,9 +99,15 @@ export function FluidsPanel({ decimalSeparator }: { decimalSeparator: '.' | ',' 
 function makeStyles(colors: Palette) {
   return StyleSheet.create({
     wrap: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
-    error: { color: colors.danger, fontSize: font.body },
-    big: { fontSize: font.big, fontWeight: '800', color: colors.primary },
-    body: { fontSize: font.body, color: colors.text },
-    muted: { fontSize: font.small, color: colors.muted },
+    error: { fontFamily: family.regular, color: colors.danger, fontSize: 15 },
+    big: {
+      fontFamily: family.serif,
+      fontSize: 34,
+      lineHeight: 40,
+      color: colors.accent,
+      fontVariant: ['tabular-nums'],
+    },
+    body: { fontFamily: family.regular, fontSize: 15, lineHeight: 22, color: colors.text },
+    muted: { fontFamily: family.regular, fontSize: 13, lineHeight: 19, color: colors.muted },
   });
 }

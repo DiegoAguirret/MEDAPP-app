@@ -2,21 +2,16 @@ import { router } from 'expo-router';
 import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getContent } from '../../state/content';
-import { useSettings } from '../../state/settings';
 import { Banner } from '../../ui/components';
 import { Home } from '../../ui/Home';
-import { Onboarding } from '../../ui/Onboarding';
 import { space, useColors } from '../../ui/theme';
 
 export default function DosisTab() {
   const content = getContent();
-  const { accepted, accept } = useSettings();
   const c = useColors();
 
-  if (!accepted) return <Onboarding onDone={accept} />;
-
   return (
-    <SafeAreaView style={[s.flex, { backgroundColor: c.bg }]} edges={['top']}>
+    <SafeAreaView style={[s.flex, { backgroundColor: c.ground }]} edges={['top']}>
       <ScrollView keyboardShouldPersistTaps="handled">
         {content.ok ? (
           <Home

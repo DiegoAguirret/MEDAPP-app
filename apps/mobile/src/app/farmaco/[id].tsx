@@ -28,7 +28,7 @@ export default function DrugScreen() {
     <KeyboardAvoidingView style={s.flex} behavior="height">
       <Stack.Screen
         options={{
-          title: drug.tallMan ?? drug.name,
+          title: '',
           headerBackTitle: CATEGORIES[drug.category].label,
           headerRight: () => <FavoriteButton drugId={drug.id} />,
         }}
@@ -45,4 +45,7 @@ export default function DrugScreen() {
   );
 }
 
-const s = StyleSheet.create({ flex: { flex: 1 }, screen: { padding: space.lg } });
+const s = StyleSheet.create({
+  flex: { flex: 1 },
+  screen: { padding: 20, paddingBottom: space.xxl },
+});

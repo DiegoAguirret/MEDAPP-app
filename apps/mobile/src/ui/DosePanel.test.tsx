@@ -80,7 +80,7 @@ describe('DosePanel — cálculo', () => {
 
   it('changes the indication from the selector', async () => {
     await show('azitromicina');
-    expect(screen.getByText(/1\/4 · toca para cambiar/)).toBeOnTheScreen();
+    expect(screen.getByText(/1 de 4/)).toBeOnTheScreen();
     await fireEvent.press(screen.getByLabelText('Cambiar indicación'));
     await fireEvent.press(screen.getByText(/Faringoamigdalitis \(2 años o más\)/));
     await fillPatient('15', '3', '0');

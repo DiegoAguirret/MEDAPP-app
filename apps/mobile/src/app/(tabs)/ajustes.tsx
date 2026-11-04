@@ -3,13 +3,13 @@ import { CLINICAL_DISCLAIMER } from '../../domain/messages';
 import { getContent } from '../../state/content';
 import { useSettings, type ThemeMode } from '../../state/settings';
 import { Card, Collapsible, SectionTitle, Segmented } from '../../ui/components';
-import { font, space, useColors } from '../../ui/theme';
+import { family, font, space, useColors } from '../../ui/theme';
 
 export default function AjustesTab() {
   const content = getContent();
   const { decimal, changeDecimal, theme, changeTheme } = useSettings();
   const c = useColors();
-  const body = { fontSize: font.body, color: c.text };
+  const body = { fontFamily: family.regular, fontSize: 15, lineHeight: 22, color: c.text };
   return (
     <ScrollView contentContainerStyle={s.pad}>
       <Card>
@@ -56,14 +56,14 @@ export default function AjustesTab() {
 
       {content.ok ? (
         <Collapsible title="Fuentes" count={content.bundle.sources.length}>
-          <Text style={{ color: c.muted, fontSize: font.small }}>
+          <Text style={{ fontFamily: family.regular, color: c.muted, fontSize: font.small }}>
             Versión del contenido {content.bundle.contentVersion} · {content.bundle.drugs.length}{' '}
             fichas
           </Text>
           {content.bundle.sources.map((src) => (
             <Text
               key={src.id}
-              style={src.url ? { ...body, color: c.primary } : body}
+              style={src.url ? { ...body, color: c.accent } : body}
               onPress={src.url ? () => void Linking.openURL(src.url ?? '') : undefined}
             >
               • {src.title}
@@ -76,4 +76,4 @@ export default function AjustesTab() {
   );
 }
 
-const s = StyleSheet.create({ pad: { padding: space.lg } });
+const s = StyleSheet.create({ pad: { padding: 20, paddingBottom: space.xxl } });

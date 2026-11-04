@@ -20,7 +20,7 @@ export function FavoriteButton({ drugId }: { drugId: string }) {
         justifyContent: 'center',
       }}
     >
-      <Ionicons name={on ? 'star' : 'star-outline'} size={24} color={on ? '#F2B705' : c.muted} />
+      <Ionicons name={on ? 'star' : 'star-outline'} size={24} color={on ? c.accent : c.text} />
     </Pressable>
   );
 }

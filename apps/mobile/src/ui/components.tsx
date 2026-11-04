@@ -1,3 +1,4 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import type { Review } from '@medapp/content-schema';
 import { useMemo, useState, type ReactNode } from 'react';
 import {
@@ -9,117 +10,118 @@ import {
   type TextInputProps,
   type ViewStyle,
 } from 'react-native';
-import { font, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
+import { family, font, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
 
 function makeStyles(c: Palette) {
   return StyleSheet.create({
     card: {
-      backgroundColor: c.card,
-      borderRadius: radius.md,
-      borderWidth: 1,
-      borderColor: c.border,
-      padding: space.lg,
+      backgroundColor: c.surface,
+      borderRadius: radius.lg,
+      padding: 20,
       marginBottom: space.md,
+      gap: space.md,
+    },
+    section: { fontFamily: family.semibold, fontSize: 14, color: c.text },
+    banner: {
+      flexDirection: 'row',
       gap: space.sm,
-    },
-    section: {
-      fontSize: font.small,
-      fontWeight: '800',
-      letterSpacing: 0.6,
-      color: c.muted,
-      textTransform: 'uppercase',
-    },
-    banner: { borderWidth: 1, borderRadius: radius.sm, padding: space.md, marginBottom: space.md },
-    bannerText: { fontSize: font.body, fontWeight: '600' },
-    badge: {
-      alignSelf: 'flex-start',
-      backgroundColor: c.okBg,
-      borderRadius: radius.sm,
-      paddingHorizontal: space.md,
-      paddingVertical: space.xs,
+      borderWidth: 1,
+      borderRadius: radius.md,
+      paddingHorizontal: space.lg,
+      paddingVertical: space.md,
       marginBottom: space.md,
     },
-    badgeText: { color: c.ok, fontSize: font.small, fontWeight: '700' },
+    bannerText: { flex: 1, fontFamily: family.medium, fontSize: 14, lineHeight: 20 },
+    review: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+    reviewText: { fontFamily: family.regular, fontSize: font.small, color: c.muted },
     pill: {
       alignSelf: 'flex-start',
-      backgroundColor: c.primarySoft,
-      borderRadius: 999,
-      paddingHorizontal: space.md,
-      paddingVertical: space.xs,
+      backgroundColor: c.rule,
+      borderRadius: radius.pill,
+      paddingHorizontal: 10,
+      paddingVertical: 3,
     },
-    pillText: { color: c.primary, fontSize: font.small, fontWeight: '700' },
+    pillText: { fontFamily: family.medium, color: c.text, fontSize: 12 },
     chip: {
-      minHeight: MIN_TOUCH,
+      minHeight: 44,
       justifyContent: 'center',
-      paddingHorizontal: space.md,
-      borderRadius: radius.sm,
-      backgroundColor: c.chip,
+      paddingHorizontal: space.lg,
+      borderRadius: radius.pill,
+      backgroundColor: c.raised,
       borderWidth: 1,
-      borderColor: c.border,
+      borderColor: c.control,
     },
-    chipSelected: { backgroundColor: c.primary, borderColor: c.primary },
-    chipText: { color: c.text, fontSize: font.body },
-    chipTextSelected: { color: c.primaryText, fontWeight: '700' },
+    chipSelected: { backgroundColor: c.ink, borderColor: c.ink },
+    chipText: { fontFamily: family.medium, color: c.text, fontSize: 15 },
+    chipTextSelected: { color: c.onInk },
     segment: {
       flexDirection: 'row',
-      backgroundColor: c.chip,
-      borderRadius: radius.sm,
+      backgroundColor: c.rule,
+      borderRadius: radius.pill,
       padding: 3,
       alignSelf: 'flex-start',
     },
     segmentItem: {
-      minHeight: 40,
+      minHeight: 38,
       minWidth: 56,
-      paddingHorizontal: space.md,
+      paddingHorizontal: 14,
       alignItems: 'center',
       justifyContent: 'center',
-      borderRadius: radius.sm - 2,
+      borderRadius: radius.pill,
     },
-    segmentItemOn: { backgroundColor: c.primary },
-    segmentText: { color: c.muted, fontWeight: '700', fontSize: font.small },
-    segmentTextOn: { color: c.primaryText },
-    field: { flex: 1, gap: space.xs },
-    fieldLabel: { color: c.muted, fontSize: font.small, fontWeight: '700' },
-    inputRow: { flexDirection: 'row', alignItems: 'center', gap: space.xs },
+    segmentItemOn: { backgroundColor: c.selected },
+    segmentText: { fontFamily: family.medium, color: c.muted, fontSize: 14 },
+    segmentTextOn: { color: c.text },
+    field: { flex: 1, gap: 6 },
+    fieldLabel: { fontFamily: family.medium, color: c.muted, fontSize: font.small },
+    inputRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      minHeight: 52,
+      borderWidth: 1,
+      borderColor: c.control,
+      borderRadius: 14,
+      backgroundColor: c.raised,
+      paddingHorizontal: 14,
+      gap: space.xs,
+    },
     input: {
       flex: 1,
-      minHeight: 56,
-      borderWidth: 1,
-      borderColor: c.border,
-      borderRadius: radius.sm,
-      paddingHorizontal: space.md,
-      fontSize: 24,
-      fontWeight: '700',
+      minWidth: 0,
+      width: '100%',
+      minHeight: 50,
+      fontFamily: family.semibold,
+      fontSize: 22,
       color: c.text,
-      backgroundColor: c.bg,
+      fontVariant: ['tabular-nums'],
+      padding: 0,
     },
-    suffix: { color: c.muted, fontSize: font.body },
+    suffix: { fontFamily: family.regular, color: c.muted, fontSize: 15 },
     button: {
+      minHeight: 52,
+      backgroundColor: c.ink,
+      borderRadius: radius.pill,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingHorizontal: space.xl,
+    },
+    buttonText: { fontFamily: family.semibold, color: c.onInk, fontSize: font.body },
+    quiet: {
       minHeight: MIN_TOUCH,
-      backgroundColor: c.primary,
-      borderRadius: radius.sm,
       alignItems: 'center',
       justifyContent: 'center',
       paddingHorizontal: space.lg,
     },
-    buttonText: { color: c.primaryText, fontSize: font.body, fontWeight: '800' },
+    quietText: { fontFamily: family.semibold, color: c.text, fontSize: 15 },
     collapsibleHead: {
       minHeight: MIN_TOUCH,
       flexDirection: 'row',
       alignItems: 'center',
       gap: space.sm,
     },
-    collapsibleTitle: { flex: 1, color: c.text, fontSize: font.body, fontWeight: '700' },
-    count: {
-      minWidth: 28,
-      height: 28,
-      borderRadius: 14,
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingHorizontal: 6,
-    },
-    countText: { color: '#FFFFFF', fontWeight: '800', fontSize: font.small },
-    chevron: { color: c.muted, fontSize: font.title },
+    collapsibleTitle: { flex: 1, fontFamily: family.medium, color: c.text, fontSize: font.body },
+    count: { fontFamily: family.medium, fontSize: 14, fontVariant: ['tabular-nums'] },
+    collapsibleBody: { gap: space.sm, paddingBottom: space.xs },
   });
 }
 
@@ -128,6 +130,7 @@ export function useStyles() {
   return useMemo(() => makeStyles(c), [c]);
 }
 
+/** Panel tonal: agrupa sin bordes ni sombras. */
 export function Card({ children, style }: { children: ReactNode; style?: ViewStyle }) {
   const s = useStyles();
   return <View style={[s.card, style]}>{children}</View>;
@@ -148,15 +151,21 @@ export function Banner({
   const s = useStyles();
   const c = useColors();
   const palette = {
-    danger: { bg: c.dangerBg, fg: c.danger },
-    warning: { bg: c.warningBg, fg: c.warning },
-    ok: { bg: c.okBg, fg: c.ok },
+    danger: { bg: c.dangerBg, fg: c.danger, icon: 'alert-circle-outline' },
+    warning: { bg: c.warningBg, fg: c.warning, icon: 'information-circle-outline' },
+    ok: { bg: c.okBg, fg: c.ok, icon: 'checkmark-circle-outline' },
   }[tone];
   return (
     <View
       accessibilityRole="alert"
-      style={[s.banner, { backgroundColor: palette.bg, borderColor: palette.fg }]}
+      style={[s.banner, { backgroundColor: palette.bg, borderColor: palette.bg }]}
     >
+      <Ionicons
+        name={palette.icon as keyof typeof Ionicons.glyphMap}
+        size={18}
+        color={palette.fg}
+        style={{ marginTop: 1 }}
+      />
       <Text style={[s.bannerText, { color: palette.fg }]}>{children}</Text>
     </View>
   );
@@ -164,9 +173,10 @@ export function Banner({
 
 const fmtDate = (iso: string) => iso.split('-').reverse().join('/');
 
-/** Estado de revisión de la ficha: discreto si está verificada, alerta solo si no lo está. */
+/** Estado de revisión de la ficha: una línea discreta si está verificada, alerta solo si no lo está. */
 export function ReviewBadge({ review }: { review: Review }) {
   const s = useStyles();
+  const c = useColors();
   if (review.status === 'borrador') {
     return <Banner tone="danger">Ficha sin verificar: no usar en pacientes.</Banner>;
   }
@@ -176,8 +186,9 @@ export function ReviewBadge({ review }: { review: Review }) {
       ? `Revisado por ${review.reviewers.join(', ')}${date}`
       : `Fuentes verificadas${date}`;
   return (
-    <View style={s.badge}>
-      <Text style={s.badgeText}>✓ {text}</Text>
+    <View style={s.review}>
+      <Ionicons name="checkmark-circle-outline" size={15} color={c.ok} />
+      <Text style={s.reviewText}>{text}</Text>
     </View>
   );
 }
@@ -206,14 +217,14 @@ export function Chip({
       accessibilityRole="radio"
       accessibilityState={{ selected }}
       onPress={onPress}
-      style={[s.chip, selected && s.chipSelected]}
+      style={({ pressed }) => [s.chip, selected && s.chipSelected, pressed && { opacity: 0.7 }]}
     >
       <Text style={[s.chipText, selected && s.chipTextSelected]}>{label}</Text>
     </Pressable>
   );
 }
 
-/** Selector compacto de 2–4 opciones (kg/lb, años/días, oral/IV…). */
+/** Selector compacto de 2–5 opciones (kg/lb, años/días, oral/IV…). */
 export function Segmented<T extends string>({
   options,
   value,
@@ -271,16 +282,29 @@ export function NumberField({
   );
 }
 
-export function Button({ label, onPress }: { label: string; onPress: () => void }) {
+export function Button({
+  label,
+  onPress,
+  variant = 'primary',
+}: {
+  label: string;
+  onPress: () => void;
+  variant?: 'primary' | 'quiet';
+}) {
   const s = useStyles();
+  const quiet = variant === 'quiet';
   return (
-    <Pressable accessibilityRole="button" onPress={onPress} style={s.button}>
-      <Text style={s.buttonText}>{label}</Text>
+    <Pressable
+      accessibilityRole="button"
+      onPress={onPress}
+      style={({ pressed }) => [quiet ? s.quiet : s.button, pressed && { opacity: 0.75 }]}
+    >
+      <Text style={quiet ? s.quietText : s.buttonText}>{label}</Text>
     </Pressable>
   );
 }
 
-/** Sección plegable con contador, como «Contraindicaciones (3)». */
+/** Sección plegable con contador, como «Contraindicaciones 3». */
 export function Collapsible({
   title,
   count,
@@ -297,9 +321,9 @@ export function Collapsible({
   const s = useStyles();
   const c = useColors();
   const [open, setOpen] = useState(initiallyOpen);
-  const bg = { primary: c.primary, danger: c.danger, warning: c.warning, ok: c.ok }[tone];
+  const countColor = { primary: c.muted, danger: c.danger, warning: c.warning, ok: c.ok }[tone];
   return (
-    <View style={s.card}>
+    <View style={[s.card, { paddingVertical: space.sm }]}>
       <Pressable
         accessibilityRole="button"
         accessibilityState={{ expanded: open }}
@@ -308,14 +332,10 @@ export function Collapsible({
         style={s.collapsibleHead}
       >
         <Text style={s.collapsibleTitle}>{title}</Text>
-        {count !== undefined ? (
-          <View style={[s.count, { backgroundColor: bg }]}>
-            <Text style={s.countText}>{count}</Text>
-          </View>
-        ) : null}
-        <Text style={s.chevron}>{open ? '▴' : '▾'}</Text>
+        {count !== undefined ? <Text style={[s.count, { color: countColor }]}>{count}</Text> : null}
+        <Ionicons name={open ? 'chevron-up' : 'chevron-down'} size={18} color={c.muted} />
       </Pressable>
-      {open ? children : null}
+      {open ? <View style={s.collapsibleBody}>{children}</View> : null}
     </View>
   );
 }
