@@ -60,6 +60,10 @@ describe('real content', () => {
     expect(r.status === 'ok' && r.mgPerDose.chosen).toBe(30);
   });
 
+  it('starts cephalexin at 1 year as in the FDA label', () => {
+    expect(ruleOf('cefalexina', 'piel-partes-blandas').ageMinDays).toBe(365);
+  });
+
   it.each([
     ['ibuprofeno', 'tab-400'],
     ['ondansetron', 'tab-4'],

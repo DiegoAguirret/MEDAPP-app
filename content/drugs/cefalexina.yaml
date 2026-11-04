@@ -21,7 +21,7 @@ rules:
   - id: piel-partes-blandas
     indication: Infecciones de piel y partes blandas no complicadas
     route: VO
-    ageMinDays: 29
+    ageMinDays: 365
     basis: mg/kg/day
     amountMin: 25
     amountMax: 50
