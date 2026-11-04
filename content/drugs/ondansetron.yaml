@@ -1,0 +1,59 @@
+id: ondansetron
+name: Ondansetrón
+tallMan: ONDANSETRÓN
+synonyms: []
+atc: A04AA01
+presentations:
+  - id: sol-4-5
+    label: Solución oral 4 mg/5 mL
+    form: jarabe
+    mgPerUnit: 0.8
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-4
+    label: Tableta 4 mg
+    form: tableta
+    mgPerUnit: 4
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: vomitos-gastroenteritis
+    indication: Vómitos en gastroenteritis aguda (para permitir la rehidratación oral)
+    route: VO
+    ageMinDays: 180
+    basis: mg/kg/dose
+    amountMin: 0.15
+    amountMax: 0.15
+    usual: 0.15
+    intervalHours: 8
+    maxPerDoseMg: 4
+    maxPerDayMg: 12
+    durationText: Habitualmente dosis única.
+    sourceIds: [harriet-lane-23, bnfc-2025, minsa-eda]
+warnings:
+  - Prolongación del intervalo QT.
+contraindications:
+  - Síndrome de QT largo congénito.
+diagnoses: [vómitos, gastroenteritis aguda]
+review:
+  status: borrador
+  author: Diego
+  reviewers: []
+testCases:
+  - ruleId: vomitos-gastroenteritis
+    presentationId: sol-4-5
+    weightKg: 10
+    ageDays: 365
+    expect: { mgPerDose: 1.5, amount: 1.9, unit: mL }
+  - ruleId: vomitos-gastroenteritis
+    presentationId: sol-4-5
+    weightKg: 20
+    ageDays: 1825
+    expect: { mgPerDose: 3, amount: 3.8, unit: mL }
+  - ruleId: vomitos-gastroenteritis
+    presentationId: sol-4-5
+    weightKg: 40
+    ageDays: 4380
+    expect: { mgPerDose: 4, amount: 5, unit: mL, capped: true }

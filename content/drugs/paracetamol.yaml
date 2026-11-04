@@ -1,0 +1,65 @@
+id: paracetamol
+name: Paracetamol
+synonyms: [acetaminofén]
+atc: N02BE01
+presentations:
+  - id: gotas-100
+    label: Gotas 100 mg/mL
+    form: gotas
+    mgPerUnit: 100
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: jarabe-120-5
+    label: Jarabe 120 mg/5 mL
+    form: jarabe
+    mgPerUnit: 24
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-500
+    label: Tableta 500 mg
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: fiebre-dolor-vo
+    indication: Fiebre o dolor leve a moderado
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 15
+    usual: 15
+    intervalHours: 6
+    maxPerDoseMg: 1000
+    maxPerDayMg: 4000
+    notes: No superar 75 mg/kg/día ni 4 g/día. En menores de 3 meses con fiebre, priorizar la evaluación médica.
+    sourceIds: [bnfc-2025, harriet-lane-23, fda-label]
+warnings:
+  - Hepatotoxicidad en sobredosis; verificar otros productos que contengan paracetamol.
+contraindications:
+  - Insuficiencia hepática grave.
+diagnoses: [fiebre, dolor]
+review:
+  status: borrador
+  author: Diego
+  reviewers: []
+testCases:
+  - ruleId: fiebre-dolor-vo
+    presentationId: jarabe-120-5
+    weightKg: 10
+    ageDays: 400
+    expect: { mgPerDose: 150, amount: 6.3, unit: mL }
+  - ruleId: fiebre-dolor-vo
+    presentationId: gotas-100
+    weightKg: 6
+    ageDays: 120
+    expect: { mgPerDose: 90, amount: 0.9, unit: mL }
+  - ruleId: fiebre-dolor-vo
+    presentationId: tab-500
+    weightKg: 70
+    ageDays: 5475
+    expect: { mgPerDose: 1000, amount: 2, unit: tableta, capped: true }

@@ -1,0 +1,59 @@
+id: amoxicilina-clavulanico
+name: Amoxicilina + ácido clavulánico
+synonyms: [co-amoxiclav]
+atc: J01CR02
+presentations:
+  - id: susp-400-57-5
+    label: Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina)
+    form: suspension
+    mgPerUnit: 80
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-875-125
+    label: Tableta 875 mg/125 mg (dosis como amoxicilina)
+    form: tableta
+    mgPerUnit: 875
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: estandar-vo
+    indication: Infecciones respiratorias, de piel o mordeduras (dosis expresada como amoxicilina)
+    route: VO
+    ageMinDays: 90
+    basis: mg/kg/day
+    amountMin: 25
+    amountMax: 45
+    usual: 45
+    intervalHours: 12
+    maxPerDoseMg: 875
+    maxPerDayMg: 1750
+    notes: Usar la formulación 7:1 (400/57). No intercambiar presentaciones de distinta proporción.
+    sourceIds: [harriet-lane-23, bnfc-2025, fda-label]
+warnings:
+  - Diarrea frecuente por el componente clavulánico.
+contraindications:
+  - Alergia a penicilinas.
+  - Antecedente de ictericia o disfunción hepática por amoxicilina-clavulánico.
+diagnoses: [otitis media aguda, sinusitis, mordedura, celulitis]
+review:
+  status: borrador
+  author: Diego
+  reviewers: []
+testCases:
+  - ruleId: estandar-vo
+    presentationId: susp-400-57-5
+    weightKg: 10
+    ageDays: 365
+    expect: { mgPerDose: 225, amount: 2.8, unit: mL }
+  - ruleId: estandar-vo
+    presentationId: susp-400-57-5
+    weightKg: 20
+    ageDays: 1825
+    expect: { mgPerDose: 450, amount: 5.6, unit: mL }
+  - ruleId: estandar-vo
+    presentationId: tab-875-125
+    weightKg: 45
+    ageDays: 4380
+    expect: { mgPerDose: 875, amount: 1, unit: tableta, capped: true }

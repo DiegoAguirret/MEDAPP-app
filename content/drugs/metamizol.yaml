@@ -1,0 +1,62 @@
+id: metamizol
+name: Metamizol
+synonyms: [dipirona]
+atc: N02BB02
+presentations:
+  - id: jarabe-250-5
+    label: Jarabe 250 mg/5 mL
+    form: jarabe
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-500
+    label: Tableta 500 mg
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: fiebre-dolor-vo
+    indication: Fiebre o dolor que no responde a otros antipiréticos
+    route: VO
+    ageMinDays: 90
+    basis: mg/kg/dose
+    amountMin: 8
+    amountMax: 16
+    usual: 12
+    intervalHours: 6
+    maxPerDoseMg: 1000
+    maxPerDayMg: 4000
+    notes: No usar en menores de 3 meses ni con menos de 5 kg.
+    sourceIds: [aemps-cima, pediamecum-aep, digemid-ficha]
+warnings:
+  - Riesgo de agranulocitosis; suspender ante fiebre, dolor de garganta o úlceras orales.
+  - Puede producir hipotensión.
+contraindications:
+  - Antecedente de agranulocitosis o alteraciones de la médula ósea.
+  - Déficit de glucosa-6-fosfato deshidrogenasa.
+  - Porfiria aguda intermitente.
+diagnoses: [fiebre, dolor]
+review:
+  status: borrador
+  author: Diego
+  reviewers: []
+testCases:
+  - ruleId: fiebre-dolor-vo
+    presentationId: jarabe-250-5
+    weightKg: 10
+    ageDays: 365
+    expect: { mgPerDose: 120, amount: 2.4, unit: mL }
+  - ruleId: fiebre-dolor-vo
+    presentationId: jarabe-250-5
+    weightKg: 20
+    ageDays: 1825
+    expect: { mgPerDose: 240, amount: 4.8, unit: mL }
+  - ruleId: fiebre-dolor-vo
+    presentationId: tab-500
+    weightKg: 80
+    ageDays: 5840
+    chosenMgPerKg: 16
+    expect: { mgPerDose: 1000, amount: 2, unit: tableta, capped: true }
