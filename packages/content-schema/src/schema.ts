@@ -31,7 +31,13 @@ export const doseRuleSchema = z
     amountMin: positive,
     amountMax: positive,
     usual: positive.optional(),
-    intervalHours: z.union([z.literal(4), z.literal(6), z.literal(8), z.literal(12), z.literal(24)]),
+    intervalHours: z.union([
+      z.literal(4),
+      z.literal(6),
+      z.literal(8),
+      z.literal(12),
+      z.literal(24),
+    ]),
     maxPerDoseMg: positive,
     maxPerDayMg: positive,
     durationText: z.string().min(1).optional(),
@@ -50,7 +56,11 @@ export const doseRuleSchema = z
       ctx.addIssue({ code: 'custom', message: 'ageMaxDays <= ageMinDays', path: ['ageMaxDays'] });
     }
     if (r.maxPerDoseMg > r.maxPerDayMg) {
-      ctx.addIssue({ code: 'custom', message: 'maxPerDoseMg > maxPerDayMg', path: ['maxPerDoseMg'] });
+      ctx.addIssue({
+        code: 'custom',
+        message: 'maxPerDoseMg > maxPerDayMg',
+        path: ['maxPerDoseMg'],
+      });
     }
   });
 
@@ -68,7 +78,11 @@ export const reviewSchema = z
         ctx.addIssue({ code: 'custom', message: 'validado requiere revisor', path: ['reviewers'] });
       }
       if (r.reviewedAt === undefined) {
-        ctx.addIssue({ code: 'custom', message: 'validado requiere reviewedAt', path: ['reviewedAt'] });
+        ctx.addIssue({
+          code: 'custom',
+          message: 'validado requiere reviewedAt',
+          path: ['reviewedAt'],
+        });
       }
     }
   });
@@ -109,11 +123,19 @@ export const drugSchema = z
       ctx.addIssue({ code: 'custom', message: 'ids de regla duplicados', path: ['rules'] });
     }
     if (presIds.size !== d.presentations.length) {
-      ctx.addIssue({ code: 'custom', message: 'ids de presentación duplicados', path: ['presentations'] });
+      ctx.addIssue({
+        code: 'custom',
+        message: 'ids de presentación duplicados',
+        path: ['presentations'],
+      });
     }
     d.testCases.forEach((tc, i) => {
       if (!ruleIds.has(tc.ruleId)) {
-        ctx.addIssue({ code: 'custom', message: `regla desconocida ${tc.ruleId}`, path: ['testCases', i] });
+        ctx.addIssue({
+          code: 'custom',
+          message: `regla desconocida ${tc.ruleId}`,
+          path: ['testCases', i],
+        });
       }
       if (!presIds.has(tc.presentationId)) {
         ctx.addIssue({

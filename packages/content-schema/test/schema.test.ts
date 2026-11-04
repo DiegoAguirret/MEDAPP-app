@@ -84,7 +84,9 @@ describe('parseDrug', () => {
 
   it('rejects validado without reviewedAt', () => {
     expect(() =>
-      parseDrug(mutate((d) => (d.review = { status: 'validado', author: 'Diego', reviewers: ['Dr. X'] }))),
+      parseDrug(
+        mutate((d) => (d.review = { status: 'validado', author: 'Diego', reviewers: ['Dr. X'] })),
+      ),
     ).toThrow();
   });
 
@@ -93,7 +95,12 @@ describe('parseDrug', () => {
       parseDrug(
         mutate(
           (d) =>
-            (d.review = { status: 'validado', author: 'Diego', reviewers: [], reviewedAt: '2026-11-04' }),
+            (d.review = {
+              status: 'validado',
+              author: 'Diego',
+              reviewers: [],
+              reviewedAt: '2026-11-04',
+            }),
         ),
       ),
     ).toThrow();
@@ -140,7 +147,12 @@ describe('parseDrug', () => {
       parseDrug(
         mutate(
           (d) =>
-            (d.review = { status: 'validado', author: 'Diego', reviewers: ['Dr. X'], reviewedAt: '04/11/2026' }),
+            (d.review = {
+              status: 'validado',
+              author: 'Diego',
+              reviewers: ['Dr. X'],
+              reviewedAt: '04/11/2026',
+            }),
         ),
       ),
     ).toThrow();

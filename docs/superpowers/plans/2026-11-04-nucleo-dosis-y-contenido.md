@@ -11,6 +11,7 @@
 **Spec:** `docs/superpowers/specs/2026-11-04-dosis-pediatricas-design.md` (la §0 prevalece).
 
 ## Global Constraints
+
 - TypeScript `strict: true` y `noUncheckedIndexedAccess: true`. Prohibido `any` (`@typescript-eslint/no-explicit-any: error`).
 - `dose-engine` y `content-schema` no importan nada de red, sistema de archivos ni React. Solo `zod` en `content-schema`.
 - Unidades internas: mg, kg, días, mL y horas. Toda conversión ocurre en el motor.
@@ -27,6 +28,7 @@
 - Texto clínico redactado por nosotros. No se copian tablas ni texto de libros (spec §6.2).
 
 ## Review Focus
+
 1. **Peso con coma decimal o con ceros** ("12,5", "0", "-3", "500"): el motor recibe números ya parseados, así que la validación de entrada pertenece al Plan 2. Aquí, `calculateDose` debe rechazar un peso ≤ 0 o > 150 kg con `reason: 'invalid_weight'` → prueba en la Tarea 4.
 2. **Dosis por día que supera el tope aunque la dosis por toma no** (p. ej. un intervalo de 4 h): se aplica también `maxPerDayMg`, recalculando la dosis por toma → prueba en la Tarea 4.
 3. **Regla por edad sin peso** (cetirizina): debe calcular solo con la edad e ignorar el peso para la dosis, aunque lo use para la plausibilidad → prueba en la Tarea 4.
@@ -38,6 +40,7 @@
 ### Task 0: Entorno de desarrollo y repositorio
 
 **Files:**
+
 - Create: `package.json`, `tsconfig.base.json`, `eslint.config.mjs`, `.prettierrc`, `.gitignore`, `.editorconfig`, `vitest.workspace.ts`, `README.md`, `.github/workflows/ci.yml`
 
 - [ ] **Step 1:** Instalar Node.js 22 LTS con `winget install OpenJS.NodeJS.LTS`. Verificar con `node -v`: debe mostrar `v22.x`.
@@ -51,10 +54,12 @@
 ### Task 1: Esquema del contenido clínico (`packages/content-schema`)
 
 **Files:**
+
 - Create: `packages/content-schema/src/schema.ts`, `src/index.ts`, `package.json`, `tsconfig.json`
 - Test: `packages/content-schema/test/schema.test.ts`
 
 **Interfaces:**
+
 - Produces (tipos derivados de zod con `z.infer`):
   - `Route = 'VO' | 'IV' | 'IM' | 'IR' | 'SL' | 'INH'`
   - `Presentation { id: string; label: string; form: 'suspension'|'jarabe'|'gotas'|'tableta'|'capsula'|'supositorio'|'ampolla'; mgPerUnit: number; unit: 'mL'|'tableta'|'capsula'|'supositorio'; step: number; brandsPE: string[] }` (suspensión 250 mg/5 mL → `mgPerUnit: 50`, `unit: 'mL'`, `step: 0.1`; tableta ranurada 500 mg → `step: 0.5`)
@@ -74,10 +79,12 @@
 ### Task 2: Formato de números (`packages/dose-engine/src/format.ts`)
 
 **Files:**
+
 - Create: `packages/dose-engine/src/format.ts`, `package.json`, `tsconfig.json`
 - Test: `packages/dose-engine/test/format.test.ts`
 
 **Interfaces:**
+
 - Produces: `formatNumber(value: number, opts?: { maxDecimals?: number; decimalSeparator?: '.' | ',' }): string` (por defecto `maxDecimals: 2`, `decimalSeparator: '.'`)
 
 - [ ] **Step 1: Pruebas.**
@@ -94,10 +101,12 @@
 ### Task 3: Redondeo a volumen medible (`packages/dose-engine/src/rounding.ts`)
 
 **Files:**
+
 - Create: `packages/dose-engine/src/rounding.ts`
 - Test: `packages/dose-engine/test/rounding.test.ts`
 
 **Interfaces:**
+
 - Produces: `roundToStep(exactAmount: number, step: number, maxAmount: number): { value: number; exact: number; errorPct: number; exceeds5pct: boolean }`
 
 - [ ] **Step 1: Pruebas.**
@@ -115,10 +124,12 @@
 ### Task 4: Cálculo de dosis (`packages/dose-engine/src/calculate.ts`, `plausibility.ts`)
 
 **Files:**
+
 - Create: `packages/dose-engine/src/calculate.ts`, `src/plausibility.ts`, `src/types.ts`, `src/index.ts`
 - Test: `packages/dose-engine/test/calculate.test.ts`, `test/calculate.property.test.ts`
 
 **Interfaces:**
+
 - Consumes: `DoseRule`, `Presentation` (Tarea 1); `roundToStep` (Tarea 3)
 - Produces:
   - `calculateDose(input: { rule: DoseRule; presentation: Presentation; patient: { weightKg: number; ageDays: number }; chosenMgPerKg?: number }): DoseResult`
@@ -128,6 +139,7 @@
   - `isWeightPlausible(weightKg: number, ageDays: number): boolean`
 
 **Lógica:**
+
 - `dosesPerDay = 24 / intervalHours`.
 - `mg/kg/dose`: `chosen = weight × (chosenMgPerKg ?? usual ?? amountMin)`.
 - `mg/kg/day`: el valor por kg se divide entre `dosesPerDay`.
@@ -163,10 +175,12 @@
 ### Task 5: Calculadoras de líquidos (`packages/dose-engine/src/fluids.ts`)
 
 **Files:**
+
 - Create: `packages/dose-engine/src/fluids.ts`
 - Test: `packages/dose-engine/test/fluids.test.ts`
 
 **Interfaces:**
+
 - Produces:
   - `hollidaySegar(weightKg: number): { mlPerDay: number; mlPerHour: number; steps: CalcStep[] }`: 100 mL/kg por los primeros 10 kg, 50 mL/kg por los siguientes 10 kg y 20 mL/kg por cada kg adicional. Máximo 2400 mL/día.
   - `bsaMosteller(weightKg: number, heightCm: number): number`: √(cm × kg / 3600), con 2 decimales.
@@ -192,9 +206,11 @@
 ### Task 6: Fuentes y 10 fichas piloto (`content/`)
 
 **Files:**
+
 - Create: `content/sources.yaml`, `content/drugs/{paracetamol,ibuprofeno,metamizol,amoxicilina,amoxicilina-clavulanico,azitromicina,cefalexina,cetirizina,ondansetron,prednisolona}.yaml`, `content/README.md` (guía para redactar una ficha)
 
 **Interfaces:**
+
 - Consumes: `drugSchema` (Tarea 1)
 
 - [ ] **Step 1:** Crear `sources.yaml` con los identificadores estables que citarán las fichas:
@@ -211,10 +227,12 @@
 ### Task 7: Paquete firmado (`packages/content-bundle`)
 
 **Files:**
+
 - Create: `packages/content-bundle/src/{bundle.ts,sign.ts,verify.ts,index.ts}`
 - Test: `packages/content-bundle/test/bundle.test.ts`
 
 **Interfaces:**
+
 - Consumes: `Drug`, `Source` (Tarea 1)
 - Produces:
   - `Bundle = { schemaVersion: 1; contentVersion: string; generatedAt: string; mode: 'tester'|'release'; drugs: Drug[]; sources: Source[] }`
@@ -237,10 +255,12 @@
 ### Task 8: Herramienta de compilación del contenido (`tools/content-build`)
 
 **Files:**
+
 - Create: `tools/content-build/src/{cli.ts,load.ts,check.ts,keygen.ts}`, `package.json`
 - Test: `tools/content-build/test/check.test.ts`
 
 **Interfaces:**
+
 - Consumes: `parseDrug`, `sourceSchema` (Tarea 1); `calculateDose` (Tarea 4); `signBundle`, `signManifest` (Tarea 7)
 - Produces:
   - Comando `npm run content:build`: modo tester; usa una clave de desarrollo en `keys/dev.key`, que se genera si no existe.
@@ -262,7 +282,9 @@
 ---
 
 ## Plan 2 (se escribe al terminar este)
+
 App Android con Expo y React Native:
+
 - Pantallas de §8 del spec.
 - Paquete base incluido y actualización verificada.
 - Retiro remoto de fichas y banda "NO VALIDADO" en las builds de tester.
