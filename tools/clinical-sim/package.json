@@ -1,0 +1,10 @@
+{
+  "name": "@medapp/clinical-sim",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@medapp/content-schema": "0.1.0",
+    "@medapp/dose-engine": "0.1.0"
+  }
+}
