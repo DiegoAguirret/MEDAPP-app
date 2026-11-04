@@ -1,0 +1,93 @@
+id: prednisolona
+name: Prednisolona
+synonyms: []
+atc: H02AB06
+presentations:
+  - id: sol-15-5
+    label: Solución oral 15 mg/5 mL
+    form: jarabe
+    mgPerUnit: 3
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-5
+    label: Tableta 5 mg
+    form: tableta
+    mgPerUnit: 5
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: crisis-asmatica-1-2-anos
+    indication: Crisis asmática moderada a grave (1 a 2 años)
+    route: VO
+    ageMinDays: 365
+    ageMaxDays: 729
+    basis: mg/kg/day
+    amountMin: 1
+    amountMax: 2
+    usual: 1
+    intervalHours: 24
+    maxPerDoseMg: 20
+    maxPerDayMg: 20
+    durationText: 3–5 días.
+    sourceIds: [gina-2024, bnfc-2025, harriet-lane-23]
+  - id: crisis-asmatica-2-5-anos
+    indication: Crisis asmática moderada a grave (2 a 5 años)
+    route: VO
+    ageMinDays: 730
+    ageMaxDays: 2189
+    basis: mg/kg/day
+    amountMin: 1
+    amountMax: 2
+    usual: 1
+    intervalHours: 24
+    maxPerDoseMg: 30
+    maxPerDayMg: 30
+    durationText: 3–5 días.
+    sourceIds: [gina-2024, bnfc-2025, harriet-lane-23]
+  - id: crisis-asmatica-6-anos-o-mas
+    indication: Crisis asmática moderada a grave (6 años o más)
+    route: VO
+    ageMinDays: 2190
+    basis: mg/kg/day
+    amountMin: 1
+    amountMax: 2
+    usual: 1
+    intervalHours: 24
+    maxPerDoseMg: 40
+    maxPerDayMg: 40
+    durationText: 3–5 días.
+    notes: BNFc admite hasta 40 mg; GINA usa topes menores en edades menores. Topes por edad a confirmar por el médico validador.
+    sourceIds: [gina-2024, bnfc-2025, harriet-lane-23]
+warnings:
+  - Hiperglucemia y cambios de conducta en tratamientos cortos.
+contraindications:
+  - Infección sistémica no tratada.
+diagnoses: [crisis asmática, asma]
+review:
+  status: borrador
+  author: Diego
+  reviewers: []
+testCases:
+  - ruleId: crisis-asmatica-1-2-anos
+    presentationId: sol-15-5
+    weightKg: 10
+    ageDays: 400
+    expect: { mgPerDose: 10, amount: 3.3, unit: mL }
+  - ruleId: crisis-asmatica-2-5-anos
+    presentationId: sol-15-5
+    weightKg: 20
+    ageDays: 1825
+    expect: { mgPerDose: 20, amount: 6.7, unit: mL }
+  - ruleId: crisis-asmatica-6-anos-o-mas
+    presentationId: tab-5
+    weightKg: 45
+    ageDays: 4380
+    expect: { mgPerDose: 40, amount: 8, unit: tableta, capped: true }
+  - ruleId: crisis-asmatica-1-2-anos
+    presentationId: sol-15-5
+    weightKg: 12
+    ageDays: 600
+    chosenMgPerKg: 2
+    expect: { mgPerDose: 20, amount: 6.6, unit: mL, capped: true }

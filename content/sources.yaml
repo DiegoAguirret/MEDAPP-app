@@ -1,0 +1,54 @@
+# Fuentes citables por las fichas. Se citan; nunca se copia su texto ni sus tablas.
+- id: bnfc-2025
+  title: BNF for Children (BNFC) 2025–2026
+  publisher: BMJ Group, Royal Pharmaceutical Society y RCPCH
+  year: 2025
+  url: https://bnfc.nice.org.uk/
+- id: harriet-lane-23
+  title: The Harriet Lane Handbook
+  edition: 23.ª ed.
+  publisher: Elsevier
+  year: 2023
+- id: pediamecum-aep
+  title: Pediamécum — Comité de Medicamentos de la Asociación Española de Pediatría
+  publisher: AEP
+  year: 2025
+  url: https://www.aeped.es/comites/cm/pediamecum
+- id: fda-label
+  title: Ficha técnica aprobada por la FDA (DailyMed)
+  publisher: U.S. National Library of Medicine
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/
+- id: aemps-cima
+  title: Ficha técnica autorizada (CIMA)
+  publisher: Agencia Española de Medicamentos y Productos Sanitarios
+  year: 2025
+  url: https://cima.aemps.es/
+- id: digemid-ficha
+  title: Ficha técnica / inserto del registro sanitario en Perú
+  publisher: DIGEMID — Ministerio de Salud del Perú
+  year: 2025
+  url: https://www.digemid.minsa.gob.pe/
+- id: minsa-eda
+  title: Guía de práctica clínica para el diagnóstico y tratamiento de la enfermedad diarreica aguda en la niña y el niño
+  publisher: Ministerio de Salud del Perú
+  year: 2017
+- id: who-pocket-2013
+  title: Pocket Book of Hospital Care for Children
+  edition: 2.ª ed.
+  publisher: Organización Mundial de la Salud
+  year: 2013
+- id: aap-redbook-2024
+  title: Red Book — Report of the Committee on Infectious Diseases
+  edition: 33.ª ed. (2024–2027)
+  publisher: American Academy of Pediatrics
+  year: 2024
+- id: aap-aom-2013
+  title: The Diagnosis and Management of Acute Otitis Media (Lieberthal et al.)
+  publisher: Pediatrics 131(3)
+  year: 2013
+- id: gina-2024
+  title: Global Strategy for Asthma Management and Prevention
+  publisher: Global Initiative for Asthma
+  year: 2024
+  url: https://ginasthma.org/

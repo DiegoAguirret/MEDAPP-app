@@ -1,0 +1,97 @@
+id: amoxicilina
+name: Amoxicilina
+synonyms: []
+atc: J01CA04
+presentations:
+  - id: susp-250-5
+    label: Suspensión 250 mg/5 mL
+    form: suspension
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: susp-500-5
+    label: Suspensión 500 mg/5 mL
+    form: suspension
+    mgPerUnit: 100
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: cap-500
+    label: Cápsula 500 mg
+    form: capsula
+    mgPerUnit: 500
+    unit: capsula
+    step: 1
+    brandsPE: []
+rules:
+  - id: menores-3-meses
+    indication: Infecciones susceptibles en lactantes menores de 3 meses
+    route: VO
+    ageMinDays: 29
+    ageMaxDays: 89
+    basis: mg/kg/day
+    amountMin: 20
+    amountMax: 30
+    usual: 30
+    intervalHours: 12
+    maxPerDoseMg: 500
+    maxPerDayMg: 1000
+    notes: Función renal inmadura; no superar 30 mg/kg/día. Valorar indicación de manejo hospitalario.
+    sourceIds: [fda-label, harriet-lane-23]
+  - id: oma-dosis-alta
+    indication: Otitis media aguda (dosis alta)
+    route: VO
+    ageMinDays: 180
+    basis: mg/kg/day
+    amountMin: 80
+    amountMax: 90
+    usual: 90
+    intervalHours: 12
+    maxPerDoseMg: 2000
+    maxPerDayMg: 4000
+    durationText: 10 días en menores de 2 años; 5–7 días en mayores, según evolución.
+    sourceIds: [aap-aom-2013, harriet-lane-23, bnfc-2025]
+  - id: faringitis-estreptococica
+    indication: Faringoamigdalitis estreptocócica
+    route: VO
+    ageMinDays: 1095
+    basis: mg/kg/day
+    amountMin: 50
+    amountMax: 50
+    usual: 50
+    intervalHours: 24
+    maxPerDoseMg: 1000
+    maxPerDayMg: 1000
+    durationText: 10 días.
+    sourceIds: [aap-redbook-2024, harriet-lane-23]
+warnings:
+  - Exantema frecuente en mononucleosis infecciosa.
+contraindications:
+  - Alergia a penicilinas.
+diagnoses: [otitis media aguda, faringoamigdalitis estreptocócica]
+review:
+  status: borrador
+  author: Diego
+  reviewers: []
+testCases:
+  - ruleId: menores-3-meses
+    presentationId: susp-250-5
+    weightKg: 4
+    ageDays: 40
+    expect: { mgPerDose: 60, amount: 1.2, unit: mL }
+  - ruleId: oma-dosis-alta
+    presentationId: susp-250-5
+    weightKg: 12
+    ageDays: 730
+    expect: { mgPerDose: 540, amount: 10.8, unit: mL }
+  - ruleId: faringitis-estreptococica
+    presentationId: susp-500-5
+    weightKg: 20
+    ageDays: 1825
+    expect: { mgPerDose: 1000, amount: 10, unit: mL }
+  - ruleId: faringitis-estreptococica
+    presentationId: cap-500
+    weightKg: 30
+    ageDays: 3285
+    expect: { mgPerDose: 1000, amount: 2, unit: capsula, capped: true }

@@ -1,0 +1,71 @@
+id: azitromicina
+name: Azitromicina
+synonyms: []
+atc: J01FA10
+presentations:
+  - id: susp-200-5
+    label: Suspensión 200 mg/5 mL
+    form: suspension
+    mgPerUnit: 40
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-500
+    label: Tableta 500 mg
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: esquema-5-dias-dia-1
+    indication: Esquema de 5 días — día 1 (neumonía atípica, alergia a penicilina)
+    route: VO
+    ageMinDays: 180
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    intervalHours: 24
+    maxPerDoseMg: 500
+    maxPerDayMg: 500
+    durationText: Día 1; luego continuar con la dosis de los días 2 a 5.
+    sourceIds: [harriet-lane-23, bnfc-2025, fda-label]
+  - id: esquema-5-dias-dias-2-5
+    indication: Esquema de 5 días — días 2 a 5
+    route: VO
+    ageMinDays: 180
+    basis: mg/kg/dose
+    amountMin: 5
+    amountMax: 5
+    usual: 5
+    intervalHours: 24
+    maxPerDoseMg: 250
+    maxPerDayMg: 250
+    durationText: Días 2 a 5.
+    sourceIds: [harriet-lane-23, bnfc-2025, fda-label]
+warnings:
+  - Prolongación del intervalo QT; precaución con otros fármacos que lo prolongan.
+contraindications:
+  - Hipersensibilidad a macrólidos.
+diagnoses: [neumonía atípica, tos ferina, faringoamigdalitis en alérgicos a penicilina]
+review:
+  status: borrador
+  author: Diego
+  reviewers: []
+testCases:
+  - ruleId: esquema-5-dias-dia-1
+    presentationId: susp-200-5
+    weightKg: 10
+    ageDays: 365
+    expect: { mgPerDose: 100, amount: 2.5, unit: mL }
+  - ruleId: esquema-5-dias-dias-2-5
+    presentationId: susp-200-5
+    weightKg: 10
+    ageDays: 365
+    expect: { mgPerDose: 50, amount: 1.3, unit: mL }
+  - ruleId: esquema-5-dias-dia-1
+    presentationId: susp-200-5
+    weightKg: 60
+    ageDays: 5110
+    expect: { mgPerDose: 500, amount: 12.5, unit: mL, capped: true }

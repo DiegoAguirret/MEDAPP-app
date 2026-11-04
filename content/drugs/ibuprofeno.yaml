@@ -1,0 +1,67 @@
+id: ibuprofeno
+name: Ibuprofeno
+synonyms: []
+atc: M01AE01
+presentations:
+  - id: susp-100-5
+    label: Suspensión 100 mg/5 mL
+    form: suspension
+    mgPerUnit: 20
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: susp-200-5
+    label: Suspensión 200 mg/5 mL
+    form: suspension
+    mgPerUnit: 40
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-400
+    label: Tableta 400 mg
+    form: tableta
+    mgPerUnit: 400
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: fiebre-dolor-vo
+    indication: Fiebre o dolor leve a moderado
+    route: VO
+    ageMinDays: 180
+    basis: mg/kg/dose
+    amountMin: 5
+    amountMax: 10
+    usual: 10
+    intervalHours: 8
+    maxPerDoseMg: 400
+    maxPerDayMg: 1200
+    notes: No superar 40 mg/kg/día. Administrar con alimentos.
+    sourceIds: [bnfc-2025, harriet-lane-23, fda-label]
+warnings:
+  - Evitar en deshidratación por riesgo de lesión renal.
+  - Riesgo de sangrado gastrointestinal.
+contraindications:
+  - Hipersensibilidad a AINE o asma inducida por AINE.
+  - Varicela activa (riesgo de infecciones cutáneas graves).
+diagnoses: [fiebre, dolor]
+review:
+  status: borrador
+  author: Diego
+  reviewers: []
+testCases:
+  - ruleId: fiebre-dolor-vo
+    presentationId: susp-100-5
+    weightKg: 10
+    ageDays: 365
+    expect: { mgPerDose: 100, amount: 5, unit: mL }
+  - ruleId: fiebre-dolor-vo
+    presentationId: susp-200-5
+    weightKg: 15
+    ageDays: 1095
+    expect: { mgPerDose: 150, amount: 3.8, unit: mL }
+  - ruleId: fiebre-dolor-vo
+    presentationId: susp-100-5
+    weightKg: 45
+    ageDays: 4380
+    expect: { mgPerDose: 400, amount: 20, unit: mL, capped: true }

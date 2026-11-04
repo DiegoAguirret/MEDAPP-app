@@ -1,0 +1,58 @@
+id: cefalexina
+name: Cefalexina
+synonyms: []
+atc: J01DB01
+presentations:
+  - id: susp-250-5
+    label: Suspensión 250 mg/5 mL
+    form: suspension
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: cap-500
+    label: Cápsula 500 mg
+    form: capsula
+    mgPerUnit: 500
+    unit: capsula
+    step: 1
+    brandsPE: []
+rules:
+  - id: piel-partes-blandas
+    indication: Infecciones de piel y partes blandas no complicadas
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 25
+    amountMax: 50
+    usual: 50
+    intervalHours: 6
+    maxPerDoseMg: 1000
+    maxPerDayMg: 4000
+    durationText: 5–10 días según evolución.
+    sourceIds: [harriet-lane-23, bnfc-2025, fda-label]
+warnings:
+  - Posible alergia cruzada con penicilinas.
+contraindications:
+  - Alergia a cefalosporinas.
+diagnoses: [impétigo, celulitis, infección de piel]
+review:
+  status: borrador
+  author: Diego
+  reviewers: []
+testCases:
+  - ruleId: piel-partes-blandas
+    presentationId: susp-250-5
+    weightKg: 10
+    ageDays: 365
+    expect: { mgPerDose: 125, amount: 2.5, unit: mL }
+  - ruleId: piel-partes-blandas
+    presentationId: susp-250-5
+    weightKg: 20
+    ageDays: 1825
+    expect: { mgPerDose: 250, amount: 5, unit: mL }
+  - ruleId: piel-partes-blandas
+    presentationId: cap-500
+    weightKg: 90
+    ageDays: 5840
+    expect: { mgPerDose: 1000, amount: 2, unit: capsula, capped: true }
