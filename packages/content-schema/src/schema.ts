@@ -78,6 +78,8 @@ export const doseRuleSchema = z
     route: routeSchema,
     ageMinDays: nonNegative,
     ageMaxDays: positive.optional(),
+    /** Regla con fuente neonatal: solo así se calcula en menores de 29 días. */
+    neonatal: z.literal(true).optional(),
     /** Peso mínimo de la indicación (incluido), p. ej. «30 kg o más». */
     weightMinKg: positive.optional(),
     /** Peso tope de la indicación (excluido), p. ej. «menos de 30 kg». */
@@ -137,6 +139,13 @@ export const doseRuleSchema = z
         code: 'custom',
         message: 'mg/kg/día requiere intervalHours',
         path: ['basis'],
+      });
+    }
+    if (r.ageMinDays < 29 && r.neonatal !== true) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'Una regla desde antes de los 29 días debe marcarse neonatal',
+        path: ['ageMinDays'],
       });
     }
     if (r.amountMin > r.amountMax) {

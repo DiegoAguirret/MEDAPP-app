@@ -218,6 +218,19 @@ describe('parseDrug', () => {
     expect(() => parseDrug(d)).toThrow();
   });
 
+  it('rejects a rule below 29 days that is not marked neonatal', () => {
+    expect(() => parseDrug(mutate((x) => (x.rules[0].ageMinDays = 0)))).toThrow();
+  });
+
+  it('accepts a neonatal rule from day 0', () => {
+    const d = mutate((x) => {
+      x.rules[0].ageMinDays = 0;
+      x.rules[0].ageMaxDays = 28;
+      x.rules[0].neonatal = true;
+    });
+    expect(() => parseDrug(d)).not.toThrow();
+  });
+
   it('rejects ageMaxDays not greater than ageMinDays', () => {
     expect(() => parseDrug(mutate((d) => (d.rules[0].ageMaxDays = 29)))).toThrow();
   });

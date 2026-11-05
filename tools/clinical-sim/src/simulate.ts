@@ -4,6 +4,9 @@ import { concentrationFromLabel, manualDose } from './manual.ts';
 
 /** Pacientes típicos de consulta (peso medio aproximado por edad) más extremos. */
 export const PATIENTS: readonly { label: string; ageDays: number; weightKg: number }[] = [
+  { label: '3 días, bajo peso (2 kg)', ageDays: 3, weightKg: 2 },
+  { label: '5 días (3.2 kg)', ageDays: 5, weightKg: 3.2 },
+  { label: '15 días (3.6 kg)', ageDays: 15, weightKg: 3.6 },
   { label: '1 mes', ageDays: 30, weightKg: 4.2 },
   { label: '2 meses', ageDays: 60, weightKg: 5.1 },
   { label: '4 meses', ageDays: 120, weightKg: 6.4 },
@@ -63,7 +66,8 @@ export function simulate(drugs: Drug[]): SimRow[] {
             unit: pres.unit,
           };
           const inAge =
-            pt.ageDays >= Math.max(rule.ageMinDays, 29) &&
+            pt.ageDays >=
+              (rule.neonatal === true ? rule.ageMinDays : Math.max(rule.ageMinDays, 29)) &&
             (rule.ageMaxDays === undefined || pt.ageDays <= rule.ageMaxDays) &&
             (rule.weightMinKg === undefined || pt.weightKg >= rule.weightMinKg) &&
             (rule.weightMaxKg === undefined || pt.weightKg < rule.weightMaxKg);

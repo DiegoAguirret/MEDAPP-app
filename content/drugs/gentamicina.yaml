@@ -1,0 +1,99 @@
+id: gentamicina
+name: Gentamicina (neonatos)
+category: antibiotico
+synonyms: [gentamicin, aminoglucósido]
+atc: J01GB03
+presentations:
+  - id: sol-10
+    label: Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril)
+    form: ampolla
+    mgPerUnit: 10
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: semana-1-bajo-peso
+    indication: Primera semana de vida, bajo peso al nacer (menos de 2.5 kg)
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 6
+    weightMinKg: 1
+    weightMaxKg: 2.5
+    basis: mg/kg/dose
+    amountMin: 3
+    amountMax: 3
+    usual: 3
+    intervalHours: 24
+    maxPerDoseMg: 7.5
+    maxPerDayMg: 7.5
+    notes: >-
+      OMS (tabla neonatal) — primera semana, bajo peso al nacer: 3 mg/kg IM o IV una vez al día.
+      Calcular con el peso exacto. La tabla de la OMS cubre de 1 a 4.5 kg.
+    presentationIds: [sol-10]
+    sourceIds: [who-pocket-2013]
+  - id: semana-1-peso-normal
+    indication: Primera semana de vida, peso normal al nacer (2.5 kg o más)
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 6
+    weightMinKg: 2.5
+    weightMaxKg: 4.5
+    basis: mg/kg/dose
+    amountMin: 5
+    amountMax: 5
+    usual: 5
+    intervalHours: 24
+    maxPerDoseMg: 22.5
+    maxPerDayMg: 22.5
+    notes: >-
+      OMS (tabla neonatal) — primera semana, peso normal al nacer: 5 mg/kg IM o IV una vez al día.
+    presentationIds: [sol-10]
+    sourceIds: [who-pocket-2013]
+  - id: semanas-2-4
+    indication: Semanas 2 a 4 de vida
+    route: IV
+    neonatal: true
+    ageMinDays: 7
+    ageMaxDays: 28
+    weightMinKg: 1
+    weightMaxKg: 4.5
+    basis: mg/kg/dose
+    amountMin: 7.5
+    amountMax: 7.5
+    usual: 7.5
+    intervalHours: 24
+    maxPerDoseMg: 33.75
+    maxPerDayMg: 33.75
+    notes: >-
+      OMS (tabla neonatal) — semanas 2 a 4 de vida: 7.5 mg/kg IM o IV una vez al día.
+    presentationIds: [sol-10]
+    sourceIds: [who-pocket-2013]
+warnings:
+  - En la primera semana la OMS distingue por peso al nacer; la app usa el peso que ingresas. Si el peso al nacer fue menor de 2.5 kg, elige la indicación de bajo peso.
+  - La pauta pediátrica fuera del período neonatal todavía no está en la app.
+contraindications:
+  - Hipersensibilidad a los aminoglucósidos.
+diagnoses: [sepsis neonatal, infección neonatal, neonato, recién nacido, aminoglucósido]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: semana-1-bajo-peso
+    presentationId: sol-10
+    weightKg: 2
+    ageDays: 3
+    expect: { mgPerDose: 6, amount: 0.6, unit: mL }
+  - ruleId: semana-1-peso-normal
+    presentationId: sol-10
+    weightKg: 3
+    ageDays: 3
+    expect: { mgPerDose: 15, amount: 1.5, unit: mL }
+  - ruleId: semanas-2-4
+    presentationId: sol-10
+    weightKg: 3.6
+    ageDays: 15
+    expect: { mgPerDose: 27, amount: 2.7, unit: mL }

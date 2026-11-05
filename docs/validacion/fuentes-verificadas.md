@@ -191,3 +191,19 @@ En las reglas repetibles o de dosis única, `maxPerDayMg` es el **máximo acumul
   - Carbón activado: va en gramos por edad y no en mL.
   - Hidrocortisona IV: la OMS dice que no aporta beneficio frente a la prednisolona oral en el asma.
   - Midazolam para convulsiones: el FNME solo lo da para sedación.
+
+## Neonatos (primeras reglas) — verificado el 05/11/2026
+
+**Cambio en el motor:** en menores de 29 días solo se calculan reglas marcadas `neonatal: true`. El esquema exige esa marca en toda regla que empiece antes de los 29 días. Las demás reglas siguen devolviendo «no es para menores de 1 mes».
+
+| Fármaco         | Dosis neonatal                                                                                          | Fuente              | Comprobación                                                                            |
+| --------------- | ------------------------------------------------------------------------------------------------------- | ------------------- | --------------------------------------------------------------------------------------- |
+| Gentamicina     | 1.ª semana: 3 mg/kg/día con bajo peso al nacer, 5 mg/kg/día con peso normal; semanas 2–4: 7.5 mg/kg/día | OMS, tabla neonatal | Los volúmenes de la tabla (10 mg/mL) coinciden con el texto en todas las bandas de peso |
+| Fenobarbital    | Menos de 2 semanas: 20 mg/kg IV/IM (10 mg/kg a los 30 min si sigue)                                     | OMS                 | Cuadro 9: 2 kg → 0.2 mL de 200 mg/mL = 40 mg                                            |
+| Glucosa al 10 % | 2 mL/kg IV y luego infusión de 5 mL/kg/h                                                                | OMS                 | —                                                                                       |
+| Diazepam rectal | Desde 2 semanas: 0.5 mg/kg                                                                              | OMS                 | Cuadro 9: de 2 semanas a 2 meses (menos de 4 kg), 0.3 mL                                |
+
+### No incluido, para que lo revise el médico
+
+- **Ampicilina neonatal:** el texto de la OMS dice 50 mg/kg, pero su tabla de volúmenes (250 mg/1.5 mL) equivale a unos 100 mg/kg. El FNME da dosis **por día** (50–100 mg/kg/día según peso y edad) y su texto escaneado está dañado. Con tres cifras que no coinciden, no se calcula.
+- **Cefotaxima y cloxacilina neonatales:** dependen de si el bebé es prematuro, y la app todavía no pregunta la edad gestacional.

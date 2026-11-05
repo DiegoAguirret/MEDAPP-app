@@ -32,6 +32,26 @@ rules:
       kg.
     presentationIds: [dx-10]
     sourceIds: [who-pocket-2013]
+  - id: hipoglucemia-neonatal
+    indication: Hipoglucemia neonatal (bolo IV)
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    weightMaxKg: 5
+    basis: mg/kg/dose
+    amountMin: 200
+    amountMax: 200
+    usual: 200
+    once: true
+    maxPerDoseMg: 1000
+    maxPerDayMg: 1000
+    notes: >-
+      OMS — en el lactante pequeño con glucemia menor de 2.2 mmol/L (40 mg/dL), glucosa al 10 % 2
+      mL/kg IV; luego infusión de 5 mL/kg por hora de glucosa al 10 % mientras se reinicia la
+      alimentación. La app calcula hasta 5 kg.
+    presentationIds: [dx-10]
+    sourceIds: [who-pocket-2013]
 warnings:
   - Alimentar al niño en cuanto esté consciente (OMS).
 contraindications: []
@@ -52,3 +72,8 @@ testCases:
     weightKg: 8
     ageDays: 270
     expect: { mgPerDose: 4000, amount: 40, unit: mL }
+  - ruleId: hipoglucemia-neonatal
+    presentationId: dx-10
+    weightKg: 3
+    ageDays: 2
+    expect: { mgPerDose: 600, amount: 6, unit: mL }

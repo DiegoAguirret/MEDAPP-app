@@ -274,3 +274,32 @@ describe('DosePanel — paciente compartido', () => {
     first.unmount();
   });
 });
+
+describe('DosePanel — neonatos', () => {
+  async function fillNeonate(weight: string, days: string) {
+    await fireEvent.changeText(screen.getByLabelText('Peso en kilogramos'), weight);
+    await fireEvent.press(screen.getByText('Días'));
+    await fireEvent.changeText(screen.getByLabelText('Edad en días'), days);
+  }
+
+  it('gentamicina, 3 kg y 3 días: elige peso normal, 15 mg = 1.5 mL', async () => {
+    await show('gentamicina');
+    await fillNeonate('3', '3');
+    expect(screen.getAllByText(/peso normal al nacer/).length).toBeGreaterThan(0);
+    expect(screen.getByTestId('result-mg')).toHaveTextContent('15 mg');
+    expect(screen.getByTestId('result-amount')).toHaveTextContent('1.5 mL');
+  });
+
+  it('gentamicina, 2 kg y 3 días: bajo peso, 6 mg = 0.6 mL', async () => {
+    await show('gentamicina');
+    await fillNeonate('2', '3');
+    expect(screen.getByTestId('result-amount')).toHaveTextContent('0.6 mL');
+  });
+
+  it('paracetamol no calcula en un neonato de 10 días', async () => {
+    await show('paracetamol');
+    await fillNeonate('3.5', '10');
+    expect(screen.queryByTestId('result-mg')).toBeNull();
+    expect(screen.getByText(/no es para menores de 1 mes/)).toBeOnTheScreen();
+  });
+});

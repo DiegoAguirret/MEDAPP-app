@@ -16,7 +16,8 @@ rules:
   - id: convulsion-rectal
     indication: Convulsión (vía rectal)
     route: IR
-    ageMinDays: 29
+    neonatal: true
+    ageMinDays: 14
     basis: mg/kg/dose
     amountMin: 0.5
     amountMax: 0.5
@@ -74,7 +75,7 @@ rules:
 warnings:
   - Tener siempre bolsa y mascarilla del tamaño adecuado; puede deprimir la respiración (OMS).
   - Si sigue convulsionando 10 min después de la segunda dosis, pasar a fenobarbital o fenitoína (OMS).
-  - En menores de 2 semanas la OMS usa fenobarbital en lugar de diazepam.
+  - En menores de 2 semanas la OMS usa fenobarbital en lugar de diazepam. La vía rectal se calcula desde las 2 semanas (en la tabla de la OMS, de 2 semanas a 2 meses son 0.3 mL).
 contraindications:
   - Hipersensibilidad al diazepam.
   - Administración intraarterial.
@@ -118,3 +119,8 @@ testCases:
     weightKg: 20
     ageDays: 2190
     expect: { mgPerDose: 5, amount: 1, unit: mL }
+  - ruleId: convulsion-rectal
+    presentationId: amp-10-2
+    weightKg: 3.5
+    ageDays: 20
+    expect: { mgPerDose: 1.75, amount: 0.35, unit: mL }

@@ -168,6 +168,48 @@ describe('calculateDose — fixed_by_age', () => {
   });
 });
 
+describe('calculateDose — neonatos (reglas neonatales explícitas)', () => {
+  it('ampicilina neonatal 50 mg/kg cada 12 h: 3 kg, 4 días → 150 mg', () => {
+    const r = ok(
+      calculateDose({
+        rule: rule({
+          neonatal: true,
+          ageMinDays: 0,
+          ageMaxDays: 6,
+          amountMin: 50,
+          amountMax: 50,
+          usual: 50,
+          intervalHours: 12,
+          maxPerDoseMg: 225,
+          maxPerDayMg: 450,
+        }),
+        presentation: presentation({ mgPerUnit: 250 / 1.5, step: 0.1 }),
+        patient: { weightKg: 3, ageDays: 4 },
+      }),
+    );
+    expect(r.mgPerDose.chosen).toBe(150);
+    expect(r.amount.value).toBe(0.9);
+  });
+
+  it('still refuses a non-neonatal rule for a 4-day-old', () => {
+    const r = calculateDose({
+      rule: rule({ ageMinDays: 0 }),
+      presentation: presentation(),
+      patient: { weightKg: 3, ageDays: 4 },
+    });
+    expect(r).toEqual({ status: 'not_calculable', reason: 'neonate_v2' });
+  });
+
+  it('a neonatal rule respects its own age band', () => {
+    const r = calculateDose({
+      rule: rule({ neonatal: true, ageMinDays: 7, ageMaxDays: 28 }),
+      presentation: presentation(),
+      patient: { weightKg: 3, ageDays: 3 },
+    });
+    expect(r).toEqual({ status: 'not_calculable', reason: 'age_out_of_rule' });
+  });
+});
+
 describe('calculateDose — guards', () => {
   it('does not calculate for neonates under 29 days', () => {
     const r = calculateDose({

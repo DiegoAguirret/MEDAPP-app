@@ -21,7 +21,7 @@ export function calculateDose(input: CalculateInput): DoseResult {
   if (!(ageDays >= 0)) {
     return { status: 'not_calculable', reason: 'invalid_age' };
   }
-  if (ageDays < MIN_AGE_DAYS) {
+  if (ageDays < MIN_AGE_DAYS && rule.neonatal !== true) {
     return { status: 'not_calculable', reason: 'neonate_v2' };
   }
   if (ageDays < rule.ageMinDays || (rule.ageMaxDays !== undefined && ageDays > rule.ageMaxDays)) {

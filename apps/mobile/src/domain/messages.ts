@@ -11,7 +11,7 @@ export const WARNING_TEXT: Record<Warning, string> = {
 
 export const REASON_TEXT: Record<NotCalculableReason, string> = {
   neonate_v2:
-    'La app no calcula dosis en menores de 1 mes (neonatos). Consulte una referencia neonatal.',
+    'Esta indicación no es para menores de 1 mes. Si la ficha tiene una indicación neonatal, elígela; si no, consulte una referencia neonatal.',
   invalid_weight: 'Ingrese un peso entre 0.1 y 150 kg.',
   invalid_age: 'Ingrese una edad válida.',
   age_out_of_rule: 'La edad está fuera del rango de edad de esta indicación.',
