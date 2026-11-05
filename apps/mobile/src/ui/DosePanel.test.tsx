@@ -177,7 +177,9 @@ describe('DosePanel — urgencias', () => {
 describe('DosePanel — seguridad', () => {
   it('shows a verified-sources badge and no alarm banner', async () => {
     await show('paracetamol');
-    expect(screen.getByText(/Fuentes verificadas · 05\/11\/2026/)).toBeOnTheScreen();
+    expect(
+      screen.getByText('Dosis cotejadas con sus fuentes el 4 nov. 2026 · falta revisión médica'),
+    ).toBeOnTheScreen();
     expect(screen.queryByText(/NO VALIDADO/)).toBeNull();
   });
 

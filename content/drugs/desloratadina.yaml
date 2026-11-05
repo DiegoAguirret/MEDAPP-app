@@ -87,7 +87,7 @@ review:
   status: verificado
   author: Diego
   reviewers: []
-  reviewedAt: 2026-11-05
+  reviewedAt: 2026-11-04
 testCases:
   - ruleId: 6-11-meses
     presentationId: sol-0-5

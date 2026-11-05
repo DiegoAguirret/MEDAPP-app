@@ -183,7 +183,25 @@ export function Banner({
   );
 }
 
-const fmtDate = (iso: string) => iso.split('-').reverse().join('/');
+const MONTHS = [
+  'ene.',
+  'feb.',
+  'mar.',
+  'abr.',
+  'may.',
+  'jun.',
+  'jul.',
+  'ago.',
+  'sept.',
+  'oct.',
+  'nov.',
+  'dic.',
+];
+/** «2026-11-04» → «4 nov. 2026»: sin la ambigüedad de 04/11 (¿4 de noviembre o 11 de abril?). */
+export const fmtDate = (iso: string) => {
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${d} ${MONTHS[(m ?? 1) - 1]} ${y}`;
+};
 
 /** Estado de revisión de la ficha: una línea discreta si está verificada, alerta solo si no lo está. */
 export function ReviewBadge({ review }: { review: Review }) {
@@ -192,11 +210,13 @@ export function ReviewBadge({ review }: { review: Review }) {
   if (review.status === 'borrador') {
     return <Banner tone="danger">Ficha sin verificar: no usar en pacientes.</Banner>;
   }
-  const date = review.reviewedAt ? ` · ${fmtDate(review.reviewedAt)}` : '';
+  // Dice qué se hizo, cuándo y qué falta: no es la fecha de hoy ni una revisión médica.
+  const on = review.reviewedAt ? ` el ${fmtDate(review.reviewedAt)}` : '';
   const text =
     review.status === 'validado'
-      ? `Revisado por ${review.reviewers.join(', ')}${date}`
-      : `Fuentes verificadas${date}`;
+      ? `Revisado por ${review.reviewers.join(', ')}${on}`
+      : `Dosis cotejadas con sus fuentes${on}` +
+        (review.reviewers.length === 0 ? ' · falta revisión médica' : '');
   return (
     <View style={s.review}>
       <Ionicons name="checkmark-circle-outline" size={15} color={c.ok} />

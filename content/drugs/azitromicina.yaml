@@ -83,7 +83,7 @@ review:
   status: verificado
   author: Diego
   reviewers: []
-  reviewedAt: 2026-11-05
+  reviewedAt: 2026-11-04
 testCases:
   - ruleId: faringitis-5-dias
     presentationId: susp-200-5

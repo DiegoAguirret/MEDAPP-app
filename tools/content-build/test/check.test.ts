@@ -71,6 +71,15 @@ describe('checkContent', () => {
     expect(checkContent([drug()], sources, 'tester', today)).toEqual([]);
   });
 
+  it('rejects a review date later than today (in tester and release mode)', () => {
+    const d = drug({ review: { ...validated, reviewedAt: '2026-11-06' } });
+    for (const mode of ['tester', 'release'] as const) {
+      expect(checkContent([d], sources, mode, today)).toEqual([
+        expect.objectContaining({ drugId: 'paracetamol', code: 'review_in_future' }),
+      ]);
+    }
+  });
+
   it('flags an unknown source', () => {
     const d = drug();
     d.rules[0]!.sourceIds = ['bnfc-2025', 'nope'];
@@ -113,7 +122,7 @@ describe('checkContent', () => {
       status: 'verificado',
       author: 'Diego',
       reviewers: [],
-      reviewedAt: '2026-11-05',
+      reviewedAt: '2026-11-04',
     };
     expect(checkContent([drug({ review: verified })], sources, 'release', today)).toEqual([]);
   });

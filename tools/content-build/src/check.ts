@@ -2,7 +2,12 @@ import type { Drug, Source } from '@medapp/content-schema';
 import { calculateDose } from '@medapp/dose-engine';
 
 export type CheckErrorCode =
-  'unknown_source' | 'test_case_failed' | 'not_validated' | 'duplicate_id' | 'review_overdue';
+  | 'unknown_source'
+  | 'test_case_failed'
+  | 'not_validated'
+  | 'duplicate_id'
+  | 'review_overdue'
+  | 'review_in_future';
 
 export interface CheckError {
   drugId: string;
@@ -12,6 +17,10 @@ export interface CheckError {
 
 const TOLERANCE = 0.01;
 const close = (a: number, b: number): boolean => Math.abs(a - b) <= TOLERANCE;
+
+/** Fecha local AAAA-MM-DD (la del médico que firma, no la de UTC). */
+const localIsoDate = (d: Date): string =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
 /**
  * Comprueba la coherencia del contenido: fuentes existentes, casos clínicos
@@ -84,6 +93,15 @@ export function checkContent(
         });
       }
     });
+
+    // Una revisión no puede tener fecha futura: en la app se leería como «revisada hoy».
+    if (drug.review.reviewedAt !== undefined && drug.review.reviewedAt > localIsoDate(today)) {
+      errors.push({
+        drugId: drug.id,
+        code: 'review_in_future',
+        detail: `fecha de revisión ${drug.review.reviewedAt} posterior a hoy (${localIsoDate(today)})`,
+      });
+    }
 
     if (mode === 'release') {
       if (drug.review.status === 'borrador') {

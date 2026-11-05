@@ -1,6 +1,6 @@
 # Verificación de las fichas contra fuentes oficiales
 
-**Fecha:** 2026-11-05 · **Método:** cada valor se tomó de un documento descargado y leído en esta fecha (openFDA/DailyMed, CIMA-AEMPS, PubMed/PMC, OMS IRIS, MINSA/DGE, GINA, CPS). No se usaron datos de memoria. Las citas son textuales y breves (las etiquetas de la FDA son de dominio público).
+**Fecha:** 2026-11-04 · **Método:** cada valor se tomó de un documento descargado y leído en esta fecha (openFDA/DailyMed, CIMA-AEMPS, PubMed/PMC, OMS IRIS, MINSA/DGE, GINA, CPS). No se usaron datos de memoria. Las citas son textuales y breves (las etiquetas de la FDA son de dominio público).
 
 > Las 10 fichas siguen en **borrador** hasta que un médico las valide. Basta **1 fuente oficial** por regla. El libro de Peña Camarena se usa como fuente adicional y para las presentaciones y marcas comercializadas en Perú.
 
@@ -157,7 +157,7 @@ Fuentes nuevas: nueve fichas FDA de DailyMed obtenidas con openFDA. Las presenta
 - **Oseltamivir en menores de 1 año:** la FDA no da tope, así que se usa la dosis de adulto (75 mg) como techo.
 - **Clindamicina, oseltamivir y claritromicina:** no figuran en el FNME 2008. Las presentaciones son las de la ficha FDA o del libro; conviene confirmarlas en el registro de DIGEMID.
 
-## Fase C, urgencias — verificado el 05/11/2026
+## Fase C, urgencias — verificado el 04/11/2026
 
 **Cambio en el motor.** Cada regla tiene ahora exactamente una de tres pautas:
 
@@ -192,7 +192,7 @@ En las reglas repetibles o de dosis única, `maxPerDayMg` es el **máximo acumul
   - Hidrocortisona IV: la OMS dice que no aporta beneficio frente a la prednisolona oral en el asma.
   - Midazolam para convulsiones: el FNME solo lo da para sedación.
 
-## Neonatos (primeras reglas) — verificado el 05/11/2026
+## Neonatos (primeras reglas) — verificado el 04/11/2026
 
 **Cambio en el motor:** en menores de 29 días solo se calculan reglas marcadas `neonatal: true`. El esquema exige esa marca en toda regla que empiece antes de los 29 días. Las demás reglas siguen devolviendo «no es para menores de 1 mes».
 
@@ -208,7 +208,7 @@ En las reglas repetibles o de dosis única, `maxPerDayMg` es el **máximo acumul
 - **Ampicilina neonatal:** el texto de la OMS dice 50 mg/kg, pero su tabla de volúmenes (250 mg/1.5 mL) equivale a unos 100 mg/kg. El FNME da dosis **por día** (50–100 mg/kg/día según peso y edad) y su texto escaneado está dañado. Con tres cifras que no coinciden, no se calcula.
 - **Cefotaxima y cloxacilina neonatales:** dependen de si el bebé es prematuro, y la app todavía no pregunta la edad gestacional.
 
-## Lote 4: alergia y asma — verificado el 05/11/2026
+## Lote 4: alergia y asma — verificado el 04/11/2026
 
 **Unidades nuevas:** `puff` (inhalador) y `sobre` (granulado). El resultado se lee como «4 puffs».
 
