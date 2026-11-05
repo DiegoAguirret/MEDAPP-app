@@ -3,6 +3,7 @@ import type { Drug } from '@medapp/content-schema';
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { BUNDLE_JSON } from '../content/bundled';
 import { PatientProvider } from '../state/patient';
+import { TipsProvider } from '../state/tips';
 import { DosePanel } from './DosePanel';
 
 const bundle = JSON.parse(BUNDLE_JSON) as Bundle;
@@ -332,5 +333,38 @@ describe('DosePanel — paciente ya ingresado', () => {
     expect(screen.queryByLabelText('Peso en kilogramos')).toBeNull();
     await fireEvent.press(screen.getByLabelText('Editar paciente'));
     expect(screen.getByLabelText('Peso en kilogramos')).toHaveDisplayValue('10');
+  });
+});
+
+describe('DosePanel — guías de uso', () => {
+  const withTips = (id: string) =>
+    render(
+      <TipsProvider>
+        <DosePanel drug={drug(id)} decimalSeparator="." sources={sources} />
+      </TipsProvider>,
+    );
+  const gotIt = () => fireEvent.press(screen.getByRole('button', { name: 'Entendido' }));
+
+  it('sin paciente explica que se ingresa una vez; con paciente sigue la franja y el resto', async () => {
+    await withTips('paracetamol');
+    expect(screen.getByText('El paciente se ingresa una vez')).toBeOnTheScreen();
+    await gotIt();
+    expect(screen.queryByRole('button', { name: 'Entendido' })).toBeNull();
+    await fillPatient('12', '2', '3');
+    expect(screen.getByText('El color es el peso')).toBeOnTheScreen();
+    await gotIt();
+    // Paracetamol tiene una sola indicación oral: la guía de indicación no aplica.
+    expect(screen.getByText('Desliza las presentaciones')).toBeOnTheScreen();
+    await gotIt();
+    expect(screen.getByText('Lo que vas a medir')).toBeOnTheScreen();
+    await gotIt();
+    expect(screen.queryByRole('button', { name: 'Entendido' })).toBeNull();
+  });
+
+  it('el cálculo no cambia con la guía en pantalla', async () => {
+    await withTips('paracetamol');
+    await fireEvent.press(screen.getByText('Jarabe 120 mg/5 mL'));
+    await fillPatient('10', '1', '1');
+    expect(screen.getByTestId('result-amount')).toHaveTextContent('6.3 mL');
   });
 });

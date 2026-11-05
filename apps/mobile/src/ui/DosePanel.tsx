@@ -15,8 +15,10 @@ import { Pressable, ScrollView, Share, StyleSheet, Text, View } from 'react-nati
 import { CATEGORIES } from '../domain/categories';
 import { isScheduled, scheduleText } from '../domain/schedule';
 import { usePatient } from '../state/patient';
+import { useTipQueue } from '../state/tips';
 import { weightZone } from '../domain/zones';
 import { Reveal } from './motion';
+import { Tip } from './Tip';
 import { PatientBand } from './PatientBand';
 import { PatientCard } from './PatientCard';
 import { customPresentation } from '../domain/custom';
@@ -186,6 +188,15 @@ export function DosePanel({
   const sourceLabel = (src: Source) =>
     `${src.title}${src.year === undefined ? '' : ` (${src.year})`}`;
 
+  // Guías de la ficha, una a la vez, en el orden en que se usa la pantalla.
+  const tips = useTipQueue([
+    ['paciente', !reading.complete],
+    ['franja', reading.complete],
+    ['indicacion', autoChosen && rulesForRoute.length > 1],
+    ['presentacion', reading.complete && allowed.length > 1],
+    ['resultado', result?.status === 'ok'],
+  ]);
+
   if (!rule) return <Banner tone="danger">Ficha incompleta.</Banner>;
   const unit = presentation ? (UNIT_LABEL[presentation.unit] ?? presentation.unit) : '';
 
@@ -252,6 +263,7 @@ export function DosePanel({
           </Pressable>
         ) : null}
       </View>
+      <Tip id="franja" queue={tips} />
 
       {showPatientForm ? (
         <PatientCard
@@ -261,6 +273,7 @@ export function DosePanel({
           hideClear={reading.complete}
         />
       ) : null}
+      <Tip id="paciente" queue={tips} />
 
       <Card>
         {routes.length > 1 ? (
@@ -354,6 +367,7 @@ export function DosePanel({
           </View>
         ) : null}
       </Card>
+      <Tip id="indicacion" queue={tips} />
 
       <View style={s.block}>
         <SectionTitle>Presentación</SectionTitle>
@@ -395,6 +409,7 @@ export function DosePanel({
           </Pressable>
         </ScrollView>
       </View>
+      <Tip id="presentacion" queue={tips} />
       {presId === CUSTOM_ID ? (
         <Card>
           <View style={s.row}>
@@ -484,6 +499,7 @@ export function DosePanel({
           </Pressable>
         </View>
       ) : null}
+      {result?.status === 'ok' ? <Tip id="resultado" queue={tips} /> : null}
       {result?.status === 'ok'
         ? result.warnings.map((w) => (
             <Banner key={w} tone="warning">

@@ -8,11 +8,13 @@ import { CLINICAL_DISCLAIMER } from '../domain/messages';
 import { readPatient } from '../domain/patientInput';
 import { scheduleText } from '../domain/schedule';
 import { usePatient } from '../state/patient';
+import { useTipQueue } from '../state/tips';
 import { SectionTitle } from './components';
 import { weightZone } from '../domain/zones';
 import { PressableScale } from './motion';
 import { PatientBand } from './PatientBand';
 import { PatientCard } from './PatientCard';
+import { Tip } from './Tip';
 import { family, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
 
 /** Orden de la hoja: primero lo que salva la vida en minutos. */
@@ -75,6 +77,10 @@ export function EmergencySheet({
         : [],
     [drugs, recalled, complete, weightKg, ageDays],
   );
+  const tips = useTipQueue([
+    ['franja', complete],
+    ['hoja', items.length > 0],
+  ]);
 
   return (
     <View style={s.screen}>
@@ -91,6 +97,7 @@ export function EmergencySheet({
       </View>
 
       <PatientBand patient={patient} decimalSeparator={decimalSeparator} />
+      <Tip id="franja" queue={tips} />
       <PatientCard patient={patient} decimalSeparator={decimalSeparator} hideClear={complete} />
 
       {items.length === 0 ? (
@@ -107,6 +114,7 @@ export function EmergencySheet({
             {items.length} dosis para {fmt(weightKg ?? 0)} kg
             {weightKg !== null && weightZone(weightKg) ? ` · ${weightZone(weightKg)?.name}` : ''}
           </SectionTitle>
+          <Tip id="hoja" queue={tips} />
           <View style={s.list}>
             {items.map((item) => (
               <Item

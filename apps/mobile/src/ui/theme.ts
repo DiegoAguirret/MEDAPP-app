@@ -35,6 +35,10 @@ export interface Palette {
   warningBg: string;
   ok: string;
   okBg: string;
+  /** Globo de guía (invertido sobre la pantalla). */
+  tip: string;
+  onTip: string;
+  tipMuted: string;
 }
 
 export const lightColors: Palette = {
@@ -58,6 +62,9 @@ export const lightColors: Palette = {
   warningBg: '#FFF4E0',
   ok: '#1E7B45',
   okBg: '#E5F4EA',
+  tip: '#1B2430',
+  onTip: '#FFFFFF',
+  tipMuted: '#B8C0CC',
 };
 
 export const darkColors: Palette = {
@@ -81,6 +88,9 @@ export const darkColors: Palette = {
   warningBg: '#33270F',
   ok: '#73D49A',
   okBg: '#12301F',
+  tip: '#2D3542',
+  onTip: '#F2F4F7',
+  tipMuted: '#B8C0CC',
 };
 
 /**

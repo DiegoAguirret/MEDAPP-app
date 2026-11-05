@@ -10,6 +10,7 @@ import { useEffect, type ReactNode } from 'react';
 import { useColorScheme } from 'react-native';
 import { PatientProvider } from '../state/patient';
 import { SettingsProvider, useSettings } from '../state/settings';
+import { TipsProvider } from '../state/tips';
 import { Onboarding } from '../ui/Onboarding';
 import { darkColors, family, lightColors, ThemeContext, type Palette } from '../ui/theme';
 
@@ -72,9 +73,11 @@ export default function RootLayout() {
   return (
     <SettingsProvider>
       <PatientProvider>
-        <Themed>
-          <Navigator />
-        </Themed>
+        <TipsProvider>
+          <Themed>
+            <Navigator />
+          </Themed>
+        </TipsProvider>
       </PatientProvider>
     </SettingsProvider>
   );

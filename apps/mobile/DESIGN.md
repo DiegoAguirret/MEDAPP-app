@@ -57,3 +57,7 @@ React Native Animated (ui/motion.tsx), with every move honoring the system Reduc
 ## Signature move
 
 The band header. Patient band → weight and age → «Nuevo paciente». It sits on Dosis, on every drug card, and on Urgencias, where the rescue list is titled with the band (for example, «Franja amarilla · 14 kg»).
+
+## Guides
+
+Inline coach marks (ui/Tip.tsx) explain what isn't obvious: the band color, the auto-picked indication, presentations that scroll sideways, the result block, and the Urgencias sheet. Each screen shows one at a time, in the order the screen is used. Each guide has «Entendido» and «Omitir guía» (which turns all of them off), and Ajustes has «Volver a ver las guías». Every guide shows once, and only the ids of the ones seen are stored. The bubble is inverted (tip #1B2430 light, #2D3542 dark), with the tape-yellow bulb and a pointer toward what it explains. It fades and rises in over 220 ms unless Reduce motion is on. The copy describes the app and never gives clinical advice.

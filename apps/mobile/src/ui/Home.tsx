@@ -4,10 +4,13 @@ import { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { searchDrugs } from '../data/content';
 import { CATEGORIES, CATEGORY_ORDER } from '../domain/categories';
+import { readPatient } from '../domain/patientInput';
 import { usePatient } from '../state/patient';
+import { useTipQueue } from '../state/tips';
 import { DrugList } from './DrugRow';
 import { PressableScale } from './motion';
 import { PatientBand } from './PatientBand';
+import { Tip } from './Tip';
 import { family, MIN_TOUCH, radius, space, type, useColors, type Palette } from './theme';
 
 export function Home({
@@ -31,6 +34,10 @@ export function Home({
   const s = useMemo(() => makeStyles(c), [c]);
   const [query, setQuery] = useState('');
   const patient = usePatient();
+  const tips = useTipQueue([
+    ['urgencias', onOpenEmergency !== undefined],
+    ['franja', readPatient(patient).complete],
+  ]);
   const visible = useMemo(
     () =>
       drugs.filter((d) => !recalled.has(d.id)).sort((a, b) => a.name.localeCompare(b.name, 'es')),
@@ -63,6 +70,7 @@ export function Home({
       </View>
 
       <PatientBand patient={patient} decimalSeparator={decimalSeparator} />
+      <Tip id="franja" queue={tips} />
 
       <View style={s.search}>
         <MaterialCommunityIcons name="magnify" size={22} color={c.muted} />
@@ -127,6 +135,7 @@ export function Home({
               <Text style={s.quickText}>Cálculo manual</Text>
             </PressableScale>
           </View>
+          <Tip id="urgencias" queue={tips} />
 
           <Text style={s.section}>Categorías</Text>
           <View style={s.grid}>

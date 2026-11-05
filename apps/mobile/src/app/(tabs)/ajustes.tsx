@@ -1,15 +1,19 @@
 import Constants from 'expo-constants';
+import { useState } from 'react';
 import { Linking, ScrollView, StyleSheet, Text } from 'react-native';
 import { CLINICAL_DISCLAIMER } from '../../domain/messages';
 import { getContent } from '../../state/content';
 import { useSettings, type ThemeMode } from '../../state/settings';
-import { Card, Collapsible, SectionTitle, Segmented } from '../../ui/components';
+import { useTips } from '../../state/tips';
+import { Button, Card, Collapsible, SectionTitle, Segmented } from '../../ui/components';
 import { family, font, space, useColors } from '../../ui/theme';
 
 export default function AjustesTab() {
   const content = getContent();
   const { decimal, changeDecimal, theme, changeTheme } = useSettings();
   const c = useColors();
+  const tips = useTips();
+  const [tipsBack, setTipsBack] = useState(false);
   const body = { fontFamily: family.regular, fontSize: 15, lineHeight: 22, color: c.text };
   return (
     <ScrollView contentContainerStyle={s.pad}>
@@ -35,6 +39,27 @@ export default function AjustesTab() {
           value={decimal}
           onChange={changeDecimal}
         />
+      </Card>
+
+      <Card>
+        <SectionTitle>Guías de uso</SectionTitle>
+        <Text style={body}>
+          Globos breves que explican la franja de color, la indicación automática y otros detalles.
+          Cada uno sale una sola vez.
+        </Text>
+        <Button
+          label="Volver a ver las guías"
+          variant="quiet"
+          onPress={() => {
+            tips.reset();
+            setTipsBack(true);
+          }}
+        />
+        {tipsBack ? (
+          <Text accessibilityLiveRegion="polite" style={[body, { color: c.muted }]}>
+            Listo: las verás otra vez al usar la app.
+          </Text>
+        ) : null}
       </Card>
 
       <Card>
