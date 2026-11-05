@@ -1,0 +1,120 @@
+id: diazepam
+name: Diazepam
+category: anticonvulsivante
+emergency: true
+synonyms: []
+atc: N05BA01
+presentations:
+  - id: amp-10-2
+    label: Ampolla 10 mg/2 mL (5 mg/mL)
+    form: ampolla
+    mgPerUnit: 5
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: convulsion-rectal
+    indication: Convulsión (vía rectal)
+    route: IR
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 0.5
+    amountMax: 0.5
+    usual: 0.5
+    repeatMinutes: { min: 10, max: 10 }
+    maxDoses: 2
+    maxPerDoseMg: 10
+    maxPerDayMg: 20
+    notes: >-
+      OMS — 0.5 mg/kg (0.1 mL/kg de la solución 10 mg/2 mL) con jeringa de 1 mL sin aguja,
+      introducida 4 a 5 cm en el recto; si sigue convulsionando a los 10 min, una segunda dosis; no
+      más de dos dosis. Tope de 10 mg por dosis según la dosis máxima del FNME en mayores de 5 años.
+    presentationIds: [amp-10-2]
+    sourceIds: [who-pocket-2013, fnme-2008]
+  - id: convulsion-iv-menor-5
+    indication: Convulsión o estado epiléptico (IV lenta, menores de 5 años)
+    route: IV
+    ageMinDays: 29
+    ageMaxDays: 1824
+    basis: mg/kg/dose
+    amountMin: 0.2
+    amountMax: 0.3
+    usual: 0.25
+    repeatMinutes: { min: 10, max: 10 }
+    maxDoses: 2
+    maxPerDoseMg: 5
+    maxPerDayMg: 5
+    notes: >-
+      OMS — 0.2 a 0.3 mg/kg IV (0.25 mg/kg si hay vía puesta); no más de dos dosis. FNME — de 30 días
+      a 4 años, IV lenta hasta un máximo de 5 mg en total (tope acumulado usado aquí: 2.5 mg por
+      dosis).
+    presentationIds: [amp-10-2]
+    countryNotes:
+      - country: INT
+        text: La OMS no fija un tope en mg; el FNME limita el total a 5 mg en menores de 5 años. La app aplica el del FNME.
+        sourceIds: [who-pocket-2013, fnme-2008]
+    sourceIds: [who-pocket-2013, fnme-2008]
+  - id: convulsion-iv-5-o-mas
+    indication: Convulsión o estado epiléptico (IV lenta, 5 años o más)
+    route: IV
+    ageMinDays: 1825
+    basis: mg/kg/dose
+    amountMin: 0.2
+    amountMax: 0.3
+    usual: 0.25
+    repeatMinutes: { min: 10, max: 10 }
+    maxDoses: 2
+    maxPerDoseMg: 10
+    maxPerDayMg: 10
+    notes: >-
+      OMS — 0.2 a 0.3 mg/kg IV; no más de dos dosis. FNME — 5 años o más, IV lenta hasta un máximo de
+      10 mg en total (tope acumulado usado aquí: 5 mg por dosis).
+    presentationIds: [amp-10-2]
+    sourceIds: [who-pocket-2013, fnme-2008]
+warnings:
+  - Tener siempre bolsa y mascarilla del tamaño adecuado; puede deprimir la respiración (OMS).
+  - Si sigue convulsionando 10 min después de la segunda dosis, pasar a fenobarbital o fenitoína (OMS).
+  - En menores de 2 semanas la OMS usa fenobarbital en lugar de diazepam.
+contraindications:
+  - Hipersensibilidad al diazepam.
+  - Administración intraarterial.
+diagnoses:
+  [
+    convulsión,
+    convulsiones,
+    estado epiléptico,
+    status epiléptico,
+    crisis convulsiva,
+    convulsión febril,
+  ]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: convulsion-rectal
+    presentationId: amp-10-2
+    weightKg: 12
+    ageDays: 730
+    expect: { mgPerDose: 6, amount: 1.2, unit: mL }
+  - ruleId: convulsion-rectal
+    presentationId: amp-10-2
+    weightKg: 30
+    ageDays: 3285
+    expect: { mgPerDose: 10, amount: 2, unit: mL }
+  - ruleId: convulsion-iv-menor-5
+    presentationId: amp-10-2
+    weightKg: 8
+    ageDays: 300
+    expect: { mgPerDose: 2, amount: 0.4, unit: mL }
+  - ruleId: convulsion-iv-menor-5
+    presentationId: amp-10-2
+    weightKg: 12
+    ageDays: 730
+    expect: { mgPerDose: 2.5, amount: 0.5, unit: mL }
+  - ruleId: convulsion-iv-5-o-mas
+    presentationId: amp-10-2
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 5, amount: 1, unit: mL }

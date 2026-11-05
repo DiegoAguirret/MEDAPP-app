@@ -45,6 +45,14 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
+        name="urgencias"
+        options={{
+          title: 'Urgencias',
+          headerShown: false,
+          tabBarIcon: icon('pulse-outline', 'pulse'),
+        }}
+      />
+      <Tabs.Screen
         name="calculadoras"
         options={{ title: 'Calculadoras', tabBarIcon: icon('calculator-outline', 'calculator') }}
       />

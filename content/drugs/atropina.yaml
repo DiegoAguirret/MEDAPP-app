@@ -1,0 +1,62 @@
+id: atropina
+name: Atropina
+category: urgencia
+emergency: true
+synonyms: [sulfato de atropina, atropine]
+atc: A03BA01
+presentations:
+  - id: amp-1
+    label: Ampolla 1 mg/mL
+    form: ampolla
+    mgPerUnit: 1
+    unit: mL
+    step: 0.05
+    brandsPE: []
+  - id: amp-0-5
+    label: Ampolla 0.5 mg/mL
+    form: ampolla
+    mgPerUnit: 0.5
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: organofosforados
+    indication: Intoxicación por organofosforados o carbamatos (IV)
+    route: IV
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 0.05
+    amountMax: 0.05
+    usual: 0.05
+    repeatMinutes: { min: 5, max: 5 }
+    maxPerDoseMg: 2.5
+    maxPerDayMg: 2.5
+    notes: >-
+      FNME — antídoto de inhibidores de la acetilcolinesterasa: 0.05 mg/kg por dosis IV, repetir
+      cada 5 min hasta la atropinización; para mantenerla, repetir cada 1 a 4 h. El FNME no da tope
+      en mg; la app calcula hasta 50 kg.
+    presentationIds: [amp-1, amp-0-5]
+    sourceIds: [fnme-2008]
+warnings:
+  - En otros usos la dosis pediátrica habitual es 0.01 a 0.03 mg/kg (FNME).
+contraindications:
+  - Hipersensibilidad a la atropina.
+  - Obstrucción intestinal, íleo paralítico o megacolon tóxico.
+diagnoses: [organofosforados, carbamatos, intoxicación por plaguicidas, insecticida, envenenamiento]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: organofosforados
+    presentationId: amp-1
+    weightKg: 12
+    ageDays: 730
+    expect: { mgPerDose: 0.6, amount: 0.6, unit: mL }
+  - ruleId: organofosforados
+    presentationId: amp-0-5
+    weightKg: 12
+    ageDays: 730
+    expect: { mgPerDose: 0.6, amount: 1.2, unit: mL }

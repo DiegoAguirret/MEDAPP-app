@@ -171,6 +171,53 @@ describe('parseDrug', () => {
     expect(() => parseDrug(mutate((d) => (d.testCases[0].presentationId = 'nope')))).toThrow();
   });
 
+  it('accepts a repeatable emergency rule (every 5–15 min) without intervalHours', () => {
+    const d = mutate((x) => {
+      delete x.rules[0].intervalHours;
+      x.rules[0].repeatMinutes = { min: 5, max: 15 };
+    });
+    expect(() => parseDrug(d)).not.toThrow();
+  });
+
+  it('accepts a single loading dose (once) without intervalHours', () => {
+    const d = mutate((x) => {
+      delete x.rules[0].intervalHours;
+      x.rules[0].once = true;
+    });
+    expect(() => parseDrug(d)).not.toThrow();
+  });
+
+  it('rejects a rule with no schedule at all', () => {
+    expect(() => parseDrug(mutate((x) => delete x.rules[0].intervalHours))).toThrow();
+  });
+
+  it('rejects a rule with both intervalHours and repeatMinutes', () => {
+    expect(() =>
+      parseDrug(mutate((x) => (x.rules[0].repeatMinutes = { min: 5, max: 15 }))),
+    ).toThrow();
+  });
+
+  it('rejects repeatMinutes with min greater than max', () => {
+    const d = mutate((x) => {
+      delete x.rules[0].intervalHours;
+      x.rules[0].repeatMinutes = { min: 20, max: 10 };
+    });
+    expect(() => parseDrug(d)).toThrow();
+  });
+
+  it('rejects maxDoses on a scheduled (intervalHours) rule', () => {
+    expect(() => parseDrug(mutate((x) => (x.rules[0].maxDoses = 2)))).toThrow();
+  });
+
+  it('rejects mg/kg/day on a repeatable rule', () => {
+    const d = mutate((x) => {
+      delete x.rules[0].intervalHours;
+      x.rules[0].repeatMinutes = { min: 5, max: 15 };
+      x.rules[0].basis = 'mg/kg/day';
+    });
+    expect(() => parseDrug(d)).toThrow();
+  });
+
   it('rejects ageMaxDays not greater than ageMinDays', () => {
     expect(() => parseDrug(mutate((d) => (d.rules[0].ageMaxDays = 29)))).toThrow();
   });

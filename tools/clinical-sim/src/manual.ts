@@ -40,7 +40,8 @@ export function manualDose(
   chosen?: number,
 ): ManualResult {
   const value = chosen ?? rule.usual ?? rule.amountMin;
-  const timesPerDay = 24 / rule.intervalHours;
+  const timesPerDay =
+    rule.intervalHours !== undefined ? 24 / rule.intervalHours : (rule.maxDoses ?? 1);
 
   let perDose: number;
   if (rule.basis === 'fixed_by_age') perDose = value;

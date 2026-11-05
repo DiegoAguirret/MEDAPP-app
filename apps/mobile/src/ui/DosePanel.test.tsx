@@ -144,6 +144,24 @@ describe('DosePanel — oseltamivir por bandas de peso (FDA)', () => {
   });
 });
 
+describe('DosePanel — urgencias', () => {
+  it('adrenalina IM: pauta repetible, tope por dosis y sin «tomas al día»', async () => {
+    await show('adrenalina');
+    await fillPatient('12', '2', '0');
+    expect(screen.getByTestId('result-amount')).toHaveTextContent('0.12 mL');
+    expect(screen.getAllByText(/repetir cada 5–15 min si es necesario/).length).toBeGreaterThan(0);
+    expect(screen.getByText('Tope por dosis')).toBeOnTheScreen();
+    expect(screen.queryByText('Tomas al día')).toBeNull();
+  });
+
+  it('diazepam rectal muestra el máximo de 2 dosis', async () => {
+    await show('diazepam');
+    await fillPatient('12', '2', '0');
+    expect(screen.getByTestId('result-amount')).toHaveTextContent('1.2 mL');
+    expect(screen.getByText('Máximo de dosis')).toBeOnTheScreen();
+  });
+});
+
 describe('DosePanel — seguridad', () => {
   it('shows a verified-sources badge and no alarm banner', async () => {
     await show('paracetamol');

@@ -8,6 +8,8 @@ export const MAX_WEIGHT_KG = 150;
 const EPS = 1e-9;
 
 const f = (n: number): string => formatClinical(n);
+const scheduleMinutes = (r: { min: number; max: number }): string =>
+  r.min === r.max ? f(r.min) : `${f(r.min)}–${f(r.max)}`;
 
 export function calculateDose(input: CalculateInput): DoseResult {
   const { rule, presentation, patient, chosenMgPerKg } = input;
@@ -41,7 +43,9 @@ export function calculateDose(input: CalculateInput): DoseResult {
     return { status: 'not_calculable', reason: 'choice_out_of_range' };
   }
 
-  const dosesPerDay = 24 / rule.intervalHours;
+  // Pauta programada: tomas por día. Repetible o única: dosis del episodio (tope acumulado).
+  const dosesPerDay =
+    rule.intervalHours !== undefined ? 24 / rule.intervalHours : (rule.maxDoses ?? 1);
   const selected = chosenMgPerKg ?? rule.usual ?? rule.amountMin;
   const steps: CalcStep[] = [];
 
@@ -87,7 +91,9 @@ export function calculateDose(input: CalculateInput): DoseResult {
       expression:
         cappedBy === 'per_dose'
           ? `Máximo ${f(rule.maxPerDoseMg)} mg por toma`
-          : `Máximo ${f(rule.maxPerDayMg)} mg/día ÷ ${f(dosesPerDay)} tomas`,
+          : rule.intervalHours !== undefined
+            ? `Máximo ${f(rule.maxPerDayMg)} mg/día ÷ ${f(dosesPerDay)} tomas`
+            : `Máximo acumulado ${f(rule.maxPerDayMg)} mg ÷ ${f(dosesPerDay)} dosis`,
       result: `${f(cap)} mg`,
     });
   }
@@ -98,11 +104,22 @@ export function calculateDose(input: CalculateInput): DoseResult {
     chosen,
   };
 
-  steps.push({
-    label: 'Frecuencia',
-    expression: `Cada ${f(rule.intervalHours)} h`,
-    result: `${f(dosesPerDay)} tomas/día`,
-  });
+  steps.push(
+    rule.intervalHours !== undefined
+      ? {
+          label: 'Frecuencia',
+          expression: `Cada ${f(rule.intervalHours)} h`,
+          result: `${f(dosesPerDay)} tomas/día`,
+        }
+      : rule.repeatMinutes !== undefined
+        ? {
+            label: 'Frecuencia',
+            expression: `Repetir cada ${scheduleMinutes(rule.repeatMinutes)} min si es necesario`,
+            result:
+              rule.maxDoses === undefined ? 'según respuesta' : `máximo ${f(rule.maxDoses)} dosis`,
+          }
+        : { label: 'Frecuencia', expression: 'Dosis única', result: '1 dosis' },
+  );
 
   const rounding = roundToStep(
     chosen / presentation.mgPerUnit,

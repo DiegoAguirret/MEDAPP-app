@@ -1,0 +1,54 @@
+id: glucosa
+name: Glucosa (dextrosa) al 10 %
+category: urgencia
+emergency: true
+synonyms: [dextrosa, dextrosa 10, glucosa 10, hipoglicemia]
+atc: B05BA03
+presentations:
+  - id: dx-10
+    label: Dextrosa al 10 % (100 mg/mL)
+    form: ampolla
+    mgPerUnit: 100
+    unit: mL
+    step: 1
+    brandsPE: []
+rules:
+  - id: hipoglucemia
+    indication: Hipoglucemia (bolo IV)
+    route: IV
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 500
+    amountMax: 500
+    usual: 500
+    repeatMinutes: { min: 30, max: 30 }
+    maxPerDoseMg: 25000
+    maxPerDayMg: 25000
+    notes: >-
+      OMS — 5 mL/kg de glucosa al 10 % IV rápida (0.5 g/kg) si la glucemia es menor de 2.5 mmol/L
+      (45 mg/dL), o menor de 3 mmol/L (54 mg/dL) en desnutrición grave, o si no se puede medir.
+      Volver a medir a los 30 min y repetir si sigue baja. La OMS no da tope; la app calcula hasta 50
+      kg.
+    presentationIds: [dx-10]
+    sourceIds: [who-pocket-2013]
+warnings:
+  - Alimentar al niño en cuanto esté consciente (OMS).
+contraindications: []
+diagnoses: [hipoglucemia, hipoglicemia, glucosa baja, convulsión, inconsciencia]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: hipoglucemia
+    presentationId: dx-10
+    weightKg: 12
+    ageDays: 730
+    expect: { mgPerDose: 6000, amount: 60, unit: mL }
+  - ruleId: hipoglucemia
+    presentationId: dx-10
+    weightKg: 8
+    ageDays: 270
+    expect: { mgPerDose: 4000, amount: 40, unit: mL }

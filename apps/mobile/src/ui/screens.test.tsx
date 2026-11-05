@@ -5,6 +5,7 @@ import { Text } from 'react-native';
 import { BUNDLE_JSON } from '../content/bundled';
 import { SettingsProvider, useSettings } from '../state/settings';
 import { FavoriteButton } from './FavoriteButton';
+import { EmergencySheet } from './EmergencySheet';
 import { Home } from './Home';
 import { ManualPanel } from './ManualPanel';
 import { Onboarding } from './Onboarding';
@@ -129,5 +130,41 @@ describe('Onboarding', () => {
     await fireEvent.press(screen.getByText('Siguiente'));
     await fireEvent.press(screen.getByText('Soy profesional de la salud y acepto'));
     expect(onDone).toHaveBeenCalled();
+  });
+});
+
+describe('EmergencySheet', () => {
+  it('asks for weight and age first', async () => {
+    await render(
+      <EmergencySheet
+        drugs={drugs}
+        recalled={new Set()}
+        decimalSeparator="."
+        onOpenDrug={jest.fn()}
+      />,
+    );
+    expect(screen.getByText('Ingresa el peso y la edad para ver las dosis.')).toBeOnTheScreen();
+  });
+
+  it('12 kg, 2 años: adrenalina IM 0.12 mL first and opens the drug', async () => {
+    const onOpenDrug = jest.fn();
+    await render(
+      <EmergencySheet
+        drugs={drugs}
+        recalled={new Set()}
+        decimalSeparator="."
+        onOpenDrug={onOpenDrug}
+      />,
+    );
+    await fireEvent.changeText(screen.getByLabelText('Peso en kilogramos'), '12');
+    await fireEvent.changeText(screen.getByLabelText('Edad, años'), '2');
+    const adrenalina = screen.getByLabelText(/^Adrenalina \(epinefrina\), Anafilaxia.*0\.12 mL$/);
+    expect(adrenalina).toBeOnTheScreen();
+    expect(screen.getByText('repetir cada 5–15 min si es necesario')).toBeOnTheScreen();
+    expect(
+      screen.getByLabelText(/^Diazepam, Convulsión \(vía rectal\), 1\.2 mL$/),
+    ).toBeOnTheScreen();
+    await fireEvent.press(adrenalina);
+    expect(onOpenDrug).toHaveBeenCalledWith('adrenalina');
   });
 });

@@ -1,6 +1,7 @@
 id: salbutamol
-name: Salbutamol (vía oral)
+name: Salbutamol
 category: respiratorio
+emergency: true
 synonyms: [albuterol]
 atc: R03CC02
 presentations:
@@ -8,6 +9,13 @@ presentations:
     label: Jarabe 2 mg/5 mL
     form: jarabe
     mgPerUnit: 0.4
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: neb-5
+    label: Solución para nebulizar 5 mg/mL
+    form: nebulizacion
+    mgPerUnit: 5
     unit: mL
     step: 0.1
     brandsPE: []
@@ -19,6 +27,28 @@ presentations:
     step: 0.5
     brandsPE: []
 rules:
+  - id: crisis-nebulizado
+    indication: Crisis asmática o broncoespasmo (nebulizado)
+    route: INH
+    ageMinDays: 29
+    basis: fixed_by_age
+    amountMin: 2.5
+    amountMax: 2.5
+    usual: 2.5
+    repeatMinutes: { min: 20, max: 20 }
+    maxDoses: 3
+    maxPerDoseMg: 2.5
+    maxPerDayMg: 7.5
+    notes: >-
+      GINA 2025 — 2.5 mg por nebulizador, una vez en crisis leve y cada 20 min hasta 3 dosis en la
+      primera hora en crisis moderada o severa. OMS — nebulizador 2.5 mg por dosis (solución 5
+      mg/mL). Completar con suero fisiológico hasta 4 mL (Peña Camarena).
+    presentationIds: [neb-5]
+    countryNotes:
+      - country: PE
+        text: El libro de Peña Camarena indica 0.10 a 0.15 mg/kg por dosis (0.03 mL/kg de la solución 5 mg/mL), máximo 5 mg.
+        sourceIds: [pena-camarena]
+    sourceIds: [gina-2025, who-pocket-2013, pena-camarena]
   - id: vo-2-5-anos
     indication: Broncoespasmo (2 a 5 años, solo jarabe)
     route: VO
@@ -50,6 +80,7 @@ rules:
     intervalHours: 8
     maxPerDoseMg: 4
     maxPerDayMg: 24
+    presentationIds: [jarabe-2-5, tab-4]
     notes: FNME — 2 a 4 mg 3 a 4 veces al día; máximo 24 mg/día. Aquí se calcula cada 8 h.
     countryNotes:
       - country: INT
@@ -60,7 +91,7 @@ rules:
     sourceIds: [fnme-2008, gina-2025]
 warnings:
   - En menores de 2 años la dosis oral no está establecida (FNME).
-  - La vía inhalada es la de elección en crisis asmática (GINA 2025).
+  - La vía inhalada es la de elección en crisis asmática (GINA 2025). Si no responde a las 3 nebulizaciones en 1 a 2 h, referir al hospital.
 contraindications:
   - Hipersensibilidad a simpaticomiméticos.
   - Hipertensión arterial o enfermedad cardíaca.
@@ -72,6 +103,11 @@ review:
   reviewers: []
   reviewedAt: 2026-11-04
 testCases:
+  - ruleId: crisis-nebulizado
+    presentationId: neb-5
+    weightKg: 14
+    ageDays: 1095
+    expect: { mgPerDose: 2.5, amount: 0.5, unit: mL }
   - ruleId: vo-2-5-anos
     presentationId: jarabe-2-5
     weightKg: 14

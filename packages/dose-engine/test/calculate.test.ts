@@ -377,3 +377,100 @@ describe('calculateDose — presentation must match the rule', () => {
     expect(r.status).toBe('ok');
   });
 });
+
+describe('calculateDose — urgencias (dosis repetibles y únicas)', () => {
+  const adrenalina = presentation({
+    id: 'amp',
+    label: 'Ampolla 1 mg/mL',
+    mgPerUnit: 1,
+    step: 0.01,
+  });
+
+  it('adrenalina IM 0.01 mg/kg, 12 kg → 0.12 mg = 0.12 mL, repetible', () => {
+    const r = ok(
+      calculateDose({
+        rule: rule({
+          route: 'IM',
+          amountMin: 0.01,
+          amountMax: 0.01,
+          usual: 0.01,
+          intervalHours: undefined,
+          repeatMinutes: { min: 5, max: 15 },
+          maxPerDoseMg: 0.3,
+          maxPerDayMg: 0.3,
+        }),
+        presentation: adrenalina,
+        patient: { weightKg: 12, ageDays: 1095 },
+      }),
+    );
+    expect(r.mgPerDose.chosen).toBeCloseTo(0.12, 10);
+    expect(r.amount.value).toBe(0.12);
+    expect(r.dosesPerDay).toBe(1);
+    expect(r.steps.find((s) => s.label === 'Frecuencia')?.expression).toBe(
+      'Repetir cada 5–15 min si es necesario',
+    );
+  });
+
+  it('caps adrenalina IM at 0.3 mg for 40 kg', () => {
+    const r = ok(
+      calculateDose({
+        rule: rule({
+          amountMin: 0.01,
+          amountMax: 0.01,
+          usual: 0.01,
+          intervalHours: undefined,
+          repeatMinutes: { min: 5, max: 15 },
+          maxPerDoseMg: 0.3,
+          maxPerDayMg: 0.3,
+        }),
+        presentation: adrenalina,
+        patient: { weightKg: 40, ageDays: 4000 },
+      }),
+    );
+    expect(r.mgPerDose.chosen).toBeCloseTo(0.3, 10);
+    expect(r.cappedBy).toBe('per_dose');
+  });
+
+  it('splits an episode maximum across maxDoses', () => {
+    const r = ok(
+      calculateDose({
+        rule: rule({
+          amountMin: 0.5,
+          amountMax: 0.5,
+          usual: 0.5,
+          intervalHours: undefined,
+          repeatMinutes: { min: 10, max: 10 },
+          maxDoses: 2,
+          maxPerDoseMg: 10,
+          maxPerDayMg: 10,
+        }),
+        presentation: presentation({ mgPerUnit: 5, step: 0.05 }),
+        patient: { weightKg: 30, ageDays: 3000 },
+      }),
+    );
+    expect(r.dosesPerDay).toBe(2);
+    expect(r.mgPerDose.chosen).toBe(5);
+    expect(r.cappedBy).toBe('per_day');
+  });
+
+  it('a single loading dose reads «Dosis única»', () => {
+    const r = ok(
+      calculateDose({
+        rule: rule({
+          amountMin: 20,
+          amountMax: 20,
+          usual: 20,
+          intervalHours: undefined,
+          once: true,
+          maxPerDoseMg: 1000,
+          maxPerDayMg: 1000,
+        }),
+        presentation: presentation({ mgPerUnit: 100, step: 0.1 }),
+        patient: { weightKg: 10, ageDays: 400 },
+      }),
+    );
+    expect(r.mgPerDose.chosen).toBe(200);
+    expect(r.amount.value).toBe(2);
+    expect(r.steps.find((s) => s.label === 'Frecuencia')?.expression).toBe('Dosis única');
+  });
+});

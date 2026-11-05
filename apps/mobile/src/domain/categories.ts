@@ -2,6 +2,7 @@ import type { Category } from '@medapp/content-schema';
 
 /** Etiqueta de cada categoría, en el orden en que se muestran. */
 export const CATEGORIES: Record<Category, { label: string }> = {
+  urgencia: { label: 'Urgencias y antídotos' },
   analgesico: { label: 'Analgésicos y antipiréticos' },
   antibiotico: { label: 'Antibióticos' },
   antihistaminico: { label: 'Antihistamínicos' },

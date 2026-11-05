@@ -40,6 +40,7 @@ export const categorySchema = z.enum([
   'anticonvulsivante',
   'cardiovascular',
   'vitamina',
+  'urgencia',
   'otro',
 ]);
 
@@ -52,7 +53,16 @@ export const countryNoteSchema = z.object({
 export const presentationSchema = z.object({
   id,
   label: z.string().min(1),
-  form: z.enum(['suspension', 'jarabe', 'gotas', 'tableta', 'capsula', 'supositorio', 'ampolla']),
+  form: z.enum([
+    'suspension',
+    'jarabe',
+    'gotas',
+    'tableta',
+    'capsula',
+    'supositorio',
+    'ampolla',
+    'nebulizacion',
+  ]),
   /** mg contenidos en una unidad (`unit`). Suspensión 250 mg/5 mL → 50 (mg por mL). */
   mgPerUnit: positive,
   unit: z.enum(['mL', 'gota', 'tableta', 'capsula', 'supositorio']),
@@ -77,14 +87,18 @@ export const doseRuleSchema = z
     amountMin: positive,
     amountMax: positive,
     usual: positive.optional(),
-    intervalHours: z.union([
-      z.literal(4),
-      z.literal(6),
-      z.literal(8),
-      z.literal(12),
-      z.literal(24),
-    ]),
+    /** Cada cuántas horas (pautas programadas). Exactamente uno de intervalHours, repeatMinutes u once. */
+    intervalHours: z
+      .union([z.literal(4), z.literal(6), z.literal(8), z.literal(12), z.literal(24)])
+      .optional(),
+    /** Urgencias: repetir cada min–max minutos si es necesario. */
+    repeatMinutes: z.object({ min: positive, max: positive }).optional(),
+    /** Dosis única (carga, antídoto). */
+    once: z.literal(true).optional(),
+    /** Solo en reglas repetibles: número máximo de dosis del episodio. */
+    maxDoses: z.number().int().positive().optional(),
     maxPerDoseMg: positive,
+    /** Máximo por día; en reglas repetibles o de dosis única, máximo acumulado del episodio. */
     maxPerDayMg: positive,
     durationText: z.string().min(1).optional(),
     notes: z.string().min(1).optional(),
@@ -97,6 +111,34 @@ export const doseRuleSchema = z
     countryNotes: z.array(countryNoteSchema).optional(),
   })
   .superRefine((r, ctx) => {
+    const schedules =
+      (r.intervalHours === undefined ? 0 : 1) +
+      (r.repeatMinutes === undefined ? 0 : 1) +
+      (r.once === undefined ? 0 : 1);
+    if (schedules !== 1) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'Cada regla necesita exactamente uno de intervalHours, repeatMinutes u once',
+        path: ['intervalHours'],
+      });
+    }
+    if (r.repeatMinutes !== undefined && r.repeatMinutes.min > r.repeatMinutes.max) {
+      ctx.addIssue({ code: 'custom', message: 'repeatMinutes.min > max', path: ['repeatMinutes'] });
+    }
+    if (r.maxDoses !== undefined && r.repeatMinutes === undefined) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'maxDoses solo aplica a reglas repetibles',
+        path: ['maxDoses'],
+      });
+    }
+    if (r.basis === 'mg/kg/day' && r.intervalHours === undefined) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'mg/kg/día requiere intervalHours',
+        path: ['basis'],
+      });
+    }
     if (r.amountMin > r.amountMax) {
       ctx.addIssue({ code: 'custom', message: 'amountMin > amountMax', path: ['amountMin'] });
     }
@@ -183,6 +225,8 @@ export const drugSchema = z
     id,
     name: z.string().min(1),
     category: categorySchema,
+    /** Aparece en la hoja de urgencias por peso. */
+    emergency: z.boolean().optional(),
     tallMan: z.string().min(1).optional(),
     synonyms: z.array(z.string().min(1)),
     atc: z.string().min(1).optional(),

@@ -156,3 +156,38 @@ Fuentes nuevas: nueve fichas FDA de DailyMed obtenidas con openFDA. Las presenta
 - **Furosemida IV:** se respeta el tope del FNME (20 mg/día), que es más bajo que el de la FDA (hasta 6 mg/kg); la diferencia se muestra como nota de EE. UU.
 - **Oseltamivir en menores de 1 año:** la FDA no da tope, así que se usa la dosis de adulto (75 mg) como techo.
 - **Clindamicina, oseltamivir y claritromicina:** no figuran en el FNME 2008. Las presentaciones son las de la ficha FDA o del libro; conviene confirmarlas en el registro de DIGEMID.
+
+## Fase C, urgencias — verificado el 05/11/2026
+
+**Cambio en el motor.** Cada regla tiene ahora exactamente una de tres pautas:
+
+- `intervalHours`: cada N horas.
+- `repeatMinutes`: repetir cada X–Y minutos si es necesario, con `maxDoses` opcional.
+- `once`: dosis única de carga.
+
+En las reglas repetibles o de dosis única, `maxPerDayMg` es el **máximo acumulado del episodio** y se reparte entre `maxDoses`. La ficha muestra «repetir cada…», «máximo de dosis» y «tope por dosis», en lugar de «tomas al día».
+
+**Hoja de urgencias (nueva pestaña).** Con el peso y la edad, muestra todas las dosis de rescate que aplican, ordenadas por prioridad. Cada una lleva mL, mg, vía, pauta y presentación.
+
+| Fármaco                     | Dosis                                                              | Tope                                                    | Fuentes                                                         |
+| --------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------- | --------------------------------------------------------------- |
+| Adrenalina IM (anafilaxia)  | 0.01 mg/kg de 1:1000; repetir c/5–15 min                           | 0.3 mg                                                  | FNME; OMS (dosis fijas 0.15/0.3 mL, como nota internacional)    |
+| Adrenalina IV (paro)        | 0.005–0.01 mg/kg de 1:10 000; repetir c/3–5 min                    | 0.5 mg/dosis                                            | FNME; OMS (dilución 1 + 9 mL)                                   |
+| Salbutamol nebulizado       | 2.5 mg (0.5 mL de 5 mg/mL) c/20 min, máximo 3 dosis en la 1.ª hora | 2.5 mg                                                  | GINA 2025; OMS; Peña (0.15 mg/kg, máx. 5 mg, como nota de Perú) |
+| Diazepam rectal             | 0.5 mg/kg; 2.ª dosis a los 10 min; no más de 2                     | 10 mg/dosis                                             | OMS; tope del FNME                                              |
+| Diazepam IV                 | 0.2–0.3 mg/kg; máximo 2 dosis                                      | acumulado 5 mg (menos de 5 años) / 10 mg (5 años o más) | OMS; FNME                                                       |
+| Fenobarbital IV/IM (carga)  | 15–20 mg/kg, dosis única                                           | sin tope en las fuentes (calcula hasta 50 kg)           | OMS; FNME                                                       |
+| Fenitoína IV (carga)        | 15–20 mg/kg, ≤1 mg/kg/min                                          | sin tope en las fuentes (calcula hasta 50 kg)           | FNME; OMS                                                       |
+| Glucosa al 10 %             | 5 mL/kg (0.5 g/kg); repetir a los 30 min si sigue baja             | sin tope (calcula hasta 50 kg)                          | OMS                                                             |
+| Naloxona                    | 0.01 mg/kg IV; repetir si no responde                              | 2 mg/dosis (adulto)                                     | OMS; FNME                                                       |
+| Atropina (organofosforados) | 0.05 mg/kg IV c/5 min hasta atropinización                         | sin tope (calcula hasta 50 kg)                          | FNME                                                            |
+
+### Decisiones tomadas
+
+- **Diazepam IV:** se aplica el máximo acumulado del FNME (5 mg en menores de 5 años), que es más conservador que la OMS. En 12 kg da 2.5 mg por dosis en lugar de 3 mg. La diferencia se muestra como nota.
+- **Cargas sin tope en mg** (fenobarbital, fenitoína, glucosa, atropina): no se inventa un tope. La regla se limita a 50 kg, así que el tope técnico (dosis × 50 kg) nunca corta la dosis de la fuente.
+- **No incluidos:**
+  - Ipratropio nebulizado: el FNME solo trae aerosol de 20 µg y la app aún no calcula puffs.
+  - Carbón activado: va en gramos por edad y no en mL.
+  - Hidrocortisona IV: la OMS dice que no aporta beneficio frente a la prednisolona oral en el asma.
+  - Midazolam para convulsiones: el FNME solo lo da para sedación.

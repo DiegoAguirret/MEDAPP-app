@@ -12,6 +12,7 @@ import { useMemo, useState } from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Pressable, ScrollView, Share, StyleSheet, Text, View } from 'react-native';
 import { CATEGORIES } from '../domain/categories';
+import { isScheduled, scheduleText } from '../domain/schedule';
 import { customPresentation } from '../domain/custom';
 import { CLINICAL_DISCLAIMER, REASON_TEXT, WARNING_TEXT } from '../domain/messages';
 import { ageToDays, parseWeight } from '../domain/patientInput';
@@ -72,6 +73,7 @@ const FORM_LABEL: Record<Presentation['form'], string> = {
   capsula: 'Cápsula',
   supositorio: 'Supositorio',
   ampolla: 'Ampolla',
+  nebulizacion: 'Nebulización',
 };
 
 type Choice = 'min' | 'usual' | 'max';
@@ -210,7 +212,7 @@ export function DosePanel({
   const amountText = result?.status === 'ok' ? `${fmt(result.amount.value)} ${unit}` : '';
   const rxLine =
     result?.status === 'ok' && presentation
-      ? `${drug.name} ${presentation.label}: ${amountText} ${ROUTE_RX[rule.route]} cada ${rule.intervalHours} h` +
+      ? `${drug.name} ${presentation.label}: ${amountText} ${ROUTE_RX[rule.route]} ${scheduleText(rule)}` +
         (rule.durationText ? `, ${rule.durationText}` : '') +
         ` (${fmt(result.mgPerDose.chosen)} mg por toma; ${fmt(result.mgPerDay)} mg/día).`
       : '';
@@ -249,7 +251,7 @@ export function DosePanel({
           <View style={s.flex}>
             <Text style={s.indicationTitle}>{rule.indication}</Text>
             <Text style={s.indicationSub}>
-              {rangeText(rule, fmt)} · cada {rule.intervalHours} h
+              {rangeText(rule, fmt)} · {scheduleText(rule)}
             </Text>
           </View>
           {rulesForRoute.length > 1 ? (
@@ -280,7 +282,7 @@ export function DosePanel({
                   <View style={s.flex}>
                     <Text style={s.optionText}>{r.indication}</Text>
                     <Text style={s.optionSub}>
-                      {rangeText(r, fmt)} · cada {r.intervalHours} h
+                      {rangeText(r, fmt)} · {scheduleText(r)}
                     </Text>
                   </View>
                   {on ? <Ionicons name="checkmark" size={20} color={c.accent} /> : null}
@@ -473,14 +475,24 @@ export function DosePanel({
             <Text testID="result-mg" style={s.resultMg}>
               {fmt(result.mgPerDose.chosen)} mg
             </Text>
-            {` por toma · ${ROUTE_RX[rule.route]} cada ${rule.intervalHours} h`}
+            {` por ${isScheduled(rule) ? 'toma' : 'dosis'} · ${ROUTE_RX[rule.route]} ${scheduleText(rule)}`}
           </Text>
           <View style={s.facts}>
-            <Fact s={s} label="Tomas al día" value={fmt(result.dosesPerDay)} />
-            <Fact s={s} label="Total diario" value={`${fmt(result.mgPerDay)} mg`} />
+            {isScheduled(rule) ? (
+              <>
+                <Fact s={s} label="Tomas al día" value={fmt(result.dosesPerDay)} />
+                <Fact s={s} label="Total diario" value={`${fmt(result.mgPerDay)} mg`} />
+              </>
+            ) : null}
+            {rule.maxDoses !== undefined ? (
+              <Fact s={s} label="Máximo de dosis" value={fmt(rule.maxDoses)} />
+            ) : null}
+            {!isScheduled(rule) ? (
+              <Fact s={s} label="Tope por dosis" value={`${fmt(rule.maxPerDoseMg)} mg`} />
+            ) : null}
             <Fact
               s={s}
-              label="Rango por toma"
+              label={isScheduled(rule) ? 'Rango por toma' : 'Rango por dosis'}
               value={`${fmt(result.mgPerDose.min)}–${fmt(result.mgPerDose.max)} mg`}
             />
             {rule.durationText ? <Fact s={s} label="Duración" value={rule.durationText} /> : null}

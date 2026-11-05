@@ -1,0 +1,61 @@
+id: naloxona
+name: Naloxona
+category: urgencia
+emergency: true
+synonyms: [naloxone]
+atc: V03AB15
+presentations:
+  - id: amp-0-4
+    label: Ampolla 0.4 mg/mL
+    form: ampolla
+    mgPerUnit: 0.4
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: intoxicacion-opiaceos
+    indication: Intoxicación por opiáceos (IV; IM si no hay vía)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 0.01
+    amountMax: 0.01
+    usual: 0.01
+    repeatMinutes: { min: 2, max: 3 }
+    maxPerDoseMg: 2
+    maxPerDayMg: 2
+    notes: >-
+      OMS — 10 µg/kg IV; si no responde, otra dosis de 10 µg/kg; pueden necesitarse más si empeora
+      la respiración; IM si no hay vía IV (actúa más lento). FNME — 0.01 mg/kg IV, IM o SC; en
+      adultos se repite cada 2 a 3 min, dosis de 0.4 a 2 mg (tope usado aquí).
+    presentationIds: [amp-0-4]
+    sourceIds: [who-pocket-2013, fnme-2008]
+warnings:
+  - Pueden necesitarse más dosis si la respiración vuelve a empeorar (OMS).
+contraindications:
+  - Hipersensibilidad a la naloxona.
+diagnoses:
+  [
+    intoxicación por opiáceos,
+    sobredosis de opioides,
+    depresión respiratoria,
+    tramadol,
+    morfina,
+    codeína,
+  ]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: intoxicacion-opiaceos
+    presentationId: amp-0-4
+    weightKg: 12
+    ageDays: 730
+    expect: { mgPerDose: 0.12, amount: 0.3, unit: mL }
+  - ruleId: intoxicacion-opiaceos
+    presentationId: amp-0-4
+    weightKg: 30
+    ageDays: 3285
+    expect: { mgPerDose: 0.3, amount: 0.75, unit: mL }

@@ -1,0 +1,55 @@
+id: fenobarbital
+name: Fenobarbital
+category: anticonvulsivante
+emergency: true
+synonyms: [phenobarbital]
+atc: N03AA02
+presentations:
+  - id: amp-200-2
+    label: Ampolla 200 mg/2 mL (100 mg/mL)
+    form: ampolla
+    mgPerUnit: 100
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: estado-epileptico-carga
+    indication: Estado epiléptico (dosis de carga IV o IM)
+    route: IV
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 15
+    amountMax: 20
+    usual: 15
+    once: true
+    maxPerDoseMg: 1000
+    maxPerDayMg: 1000
+    notes: >-
+      OMS — 15 mg/kg IM o IV en 15 min si persiste la convulsión tras dos dosis de diazepam. FNME —
+      15 a 20 mg/kg IV en 10 a 15 min, a no más de 100 mg/min. Las fuentes no dan tope en mg; la
+      app calcula hasta 50 kg.
+    presentationIds: [amp-200-2]
+    sourceIds: [who-pocket-2013, fnme-2008]
+warnings:
+  - En menores de 2 semanas la OMS usa 20 mg/kg y, si persiste, 10 mg/kg a los 30 min.
+contraindications:
+  - Hipersensibilidad al fenobarbital.
+  - Porfiria intermitente aguda.
+diagnoses: [estado epiléptico, status epiléptico, convulsión, convulsiones]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: estado-epileptico-carga
+    presentationId: amp-200-2
+    weightKg: 10
+    ageDays: 400
+    expect: { mgPerDose: 150, amount: 1.5, unit: mL }
+  - ruleId: estado-epileptico-carga
+    presentationId: amp-200-2
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 300, amount: 3, unit: mL }

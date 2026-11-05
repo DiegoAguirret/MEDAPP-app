@@ -1,0 +1,54 @@
+id: fenitoina
+name: Fenitoína
+category: anticonvulsivante
+emergency: true
+synonyms: [fenitoína sódica, difenilhidantoína, phenytoin]
+atc: N03AB02
+presentations:
+  - id: amp-50
+    label: Ampolla 50 mg/mL
+    form: ampolla
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: estado-epileptico-carga
+    indication: Estado epiléptico (dosis de carga IV)
+    route: IV
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 15
+    amountMax: 20
+    once: true
+    maxPerDoseMg: 1000
+    maxPerDayMg: 1000
+    notes: >-
+      FNME — 15 a 20 mg/kg IV, a no más de 1 mg/kg/min. OMS — 15 a 18 mg/kg IV en 60 min, por una
+      vía distinta a la del diazepam. Las fuentes no dan tope en mg; la app calcula hasta 50 kg.
+    presentationIds: [amp-50]
+    sourceIds: [fnme-2008, who-pocket-2013]
+warnings:
+  - Es cáustica; asegurar una buena vía venosa, porque la extravasación daña el tejido (OMS).
+  - No mezclar en la misma vía que el diazepam (OMS).
+  - Mantenimiento posterior 4 a 8 mg/kg/día cada 8 a 12 h, sin pasar de 300 mg/día (FNME); se controla con niveles séricos.
+contraindications:
+  - Hipersensibilidad a la fenitoína.
+diagnoses: [estado epiléptico, status epiléptico, convulsión, convulsiones]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-04
+testCases:
+  - ruleId: estado-epileptico-carga
+    presentationId: amp-50
+    weightKg: 10
+    ageDays: 400
+    expect: { mgPerDose: 150, amount: 3, unit: mL }
+  - ruleId: estado-epileptico-carga
+    presentationId: amp-50
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 300, amount: 6, unit: mL }
