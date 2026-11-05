@@ -1,8 +1,7 @@
 name: CI
+# Solo a mano (pestaña Actions → «Run workflow»): nunca corre solo ni gasta minutos de Actions.
 on:
-  push:
-    branches: [main]
-  pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:

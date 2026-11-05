@@ -27,6 +27,7 @@ cd apps/mobile && npx jest  # pruebas de la app
 ```
 
 ## APK de prueba
+El APK se genera al final, cuando esté lista la primera versión. En Windows, la compilación local necesita activar las rutas largas (LongPathsEnabled).
 ```bash
 cd apps/mobile && npx expo prebuild -p android
 cd android && ./gradlew assembleRelease
