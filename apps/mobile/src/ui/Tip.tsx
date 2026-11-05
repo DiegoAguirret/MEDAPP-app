@@ -104,11 +104,14 @@ function Bubble({ id, step, total }: { id: TipId; step: number; total: number })
           </Pressable>
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel="Entendido"
+            accessibilityLabel={step < total ? 'Siguiente' : 'Entendido'}
             onPress={() => close(() => markSeen(id))}
             style={({ pressed }) => [s.ok, pressed && { opacity: 0.8 }]}
           >
-            <Text style={s.okText}>Entendido</Text>
+            <Text style={s.okText}>{step < total ? 'Siguiente' : 'Entendido'}</Text>
+            {step < total ? (
+              <MaterialCommunityIcons name="arrow-right" size={16} color={c.tip} />
+            ) : null}
           </Pressable>
         </View>
       </View>
@@ -167,6 +170,8 @@ function makeStyles(c: Palette) {
     skip: { minHeight: MIN_TOUCH, justifyContent: 'center', paddingHorizontal: space.sm },
     skipText: { fontFamily: family.medium, fontSize: 14, color: c.tipMuted },
     ok: {
+      flexDirection: 'row',
+      gap: 4,
       minHeight: 40,
       paddingHorizontal: space.lg,
       borderRadius: radius.pill,

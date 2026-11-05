@@ -18,6 +18,7 @@ import { usePatient } from '../state/patient';
 import { useTipQueue } from '../state/tips';
 import { weightZone } from '../domain/zones';
 import { Reveal } from './motion';
+import { Sheet } from './Sheet';
 import { Tip } from './Tip';
 import { PatientBand } from './PatientBand';
 import { PatientCard } from './PatientCard';
@@ -293,14 +294,15 @@ export function DosePanel({
           accessibilityRole="button"
           accessibilityLabel="Cambiar indicación"
           accessibilityState={{ expanded: pickingRule }}
-          onPress={() => setPickingRule((v) => !v)}
+          onPress={() => setPickingRule(true)}
           style={({ pressed }) => [s.indication, pressed && { opacity: 0.7 }]}
         >
           <View style={s.flex}>
             <Text style={s.indicationTitle}>{rule.indication}</Text>
-            <Text style={s.indicationSub}>
-              {rangeText(rule, fmt)} · {scheduleText(rule)}
-            </Text>
+            <View style={s.indicationMeta}>
+              <Text style={s.rangePill}>{rangeText(rule, fmt)}</Text>
+              <Text style={s.indicationSub}>{scheduleText(rule)}</Text>
+            </View>
             {autoChosen ? <Text style={s.autoHint}>Elegida según la edad y el peso</Text> : null}
           </View>
           {rulesForRoute.length > 1 ? (
@@ -308,41 +310,42 @@ export function DosePanel({
               <Text style={s.indicationCount}>
                 {ruleIndex + 1} de {rulesForRoute.length}
               </Text>
-              <Ionicons
-                name={pickingRule ? 'chevron-up' : 'chevron-down'}
-                size={18}
-                color={c.muted}
-              />
+              <Text style={s.indicationTap}>Cambiar</Text>
             </View>
           ) : null}
         </Pressable>
-        {pickingRule ? (
-          <View style={s.options}>
-            {rulesForRoute.map((r, i) => {
-              const on = r.id === rule.id;
-              return (
-                <Pressable
-                  key={r.id}
-                  accessibilityRole="radio"
-                  accessibilityState={{ selected: on }}
-                  onPress={() => selectRule(r)}
-                  style={[s.option, i > 0 && s.ruled]}
-                >
-                  <View style={s.flex}>
-                    <Text style={s.optionText}>{r.indication}</Text>
-                    <Text style={s.optionSub}>
-                      {rangeText(r, fmt)} · {scheduleText(r)}
-                    </Text>
-                    {reading.complete && !fits(r) ? (
-                      <Text style={s.optionNo}>No aplica a este paciente</Text>
-                    ) : null}
+        {rule.notes ? <Note key={rule.id} text={rule.notes} s={s} /> : null}
+        <Sheet
+          visible={pickingRule}
+          title="Elegir indicación"
+          subtitle={rulesForRoute.length === 1 ? '1 opción' : `${rulesForRoute.length} opciones`}
+          icon="clipboard-text-outline"
+          onClose={() => setPickingRule(false)}
+        >
+          {rulesForRoute.map((r) => {
+            const on = r.id === rule.id;
+            const no = reading.complete && !fits(r);
+            return (
+              <Pressable
+                key={r.id}
+                accessibilityRole="radio"
+                accessibilityState={{ selected: on }}
+                onPress={() => selectRule(r)}
+                style={({ pressed }) => [s.option, on && s.optionOn, pressed && { opacity: 0.75 }]}
+              >
+                <View style={s.flex}>
+                  <Text style={s.optionText}>{r.indication}</Text>
+                  <View style={s.indicationMeta}>
+                    <Text style={s.rangePill}>{rangeText(r, fmt)}</Text>
+                    <Text style={s.optionSub}>{scheduleText(r)}</Text>
                   </View>
-                  {on ? <Ionicons name="checkmark" size={20} color={c.accent} /> : null}
-                </Pressable>
-              );
-            })}
-          </View>
-        ) : null}
+                  {no ? <Text style={s.optionNo}>No aplica a este paciente</Text> : null}
+                </View>
+                {on ? <Ionicons name="checkmark-circle" size={22} color={c.accent} /> : null}
+              </Pressable>
+            );
+          })}
+        </Sheet>
         {rule.amountMin !== rule.amountMax ? (
           <View style={s.wrap}>
             <Chip
@@ -518,12 +521,6 @@ export function DosePanel({
         </Collapsible>
       ) : null}
 
-      {rule.notes ? (
-        <Card>
-          <SectionTitle>Notas de la indicación</SectionTitle>
-          <Text style={s.body}>{rule.notes}</Text>
-        </Card>
-      ) : null}
       {drug.contraindications.length > 0 ? (
         <Collapsible title="Contraindicaciones" count={drug.contraindications.length} tone="danger">
           {drug.contraindications.map((x) => (
@@ -565,6 +562,35 @@ export function DosePanel({
 }
 
 type Styles = ReturnType<typeof makeStyles>;
+
+/** Nota de la indicación: dos líneas y «Ver más» (las notas citan fuentes y pueden ser largas). */
+function Note({ text, s }: { text: string; s: Styles }) {
+  const c = useColors();
+  const [open, setOpen] = useState(false);
+  const long = text.length > 110;
+  return (
+    <View style={s.note}>
+      <Ionicons name="information-circle-outline" size={18} color={c.muted} style={s.noteIcon} />
+      <View style={s.flex}>
+        <Text style={s.noteText} numberOfLines={open || !long ? undefined : 2}>
+          {text}
+        </Text>
+        {long ? (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={open ? 'Ver menos' : 'Ver más'}
+            onPress={() => setOpen((v) => !v)}
+            hitSlop={8}
+            style={s.noteMore}
+          >
+            <Text style={s.noteMoreText}>{open ? 'Ver menos' : 'Ver más'}</Text>
+            <Ionicons name={open ? 'chevron-up' : 'chevron-down'} size={14} color={c.accent} />
+          </Pressable>
+        ) : null}
+      </View>
+    </View>
+  );
+}
 
 function Fact({ s, label, value }: { s: Styles; label: string; value: string }) {
   return (
@@ -622,23 +648,57 @@ function makeStyles(c: Palette) {
     },
     indicationTitle: { fontFamily: family.bold, color: c.text, fontSize: 17, lineHeight: 23 },
     indicationSub: { fontFamily: family.regular, color: c.muted, fontSize: 14, marginTop: 2 },
-    indicationSide: { flexDirection: 'row', alignItems: 'center', gap: 4 },
+    indicationSide: { alignItems: 'flex-end', gap: 2 },
+    indicationTap: { fontFamily: family.bold, fontSize: 12, color: c.accent },
+    indicationMeta: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      flexWrap: 'wrap',
+      gap: 6,
+      marginTop: 6,
+    },
+    rangePill: {
+      fontFamily: family.bold,
+      fontSize: 13,
+      color: c.accent,
+      backgroundColor: c.accentSoft,
+      paddingHorizontal: 10,
+      paddingVertical: 3,
+      borderRadius: radius.pill,
+      overflow: 'hidden',
+      fontVariant: ['tabular-nums'],
+    },
+    note: { flexDirection: 'row', gap: space.sm, paddingHorizontal: 2 },
+    noteIcon: { marginTop: 1 },
+    noteText: { fontFamily: family.regular, fontSize: 14, lineHeight: 20, color: c.muted },
+    noteMore: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 2,
+      alignSelf: 'flex-start',
+      minHeight: 32,
+    },
+    noteMoreText: { fontFamily: family.bold, fontSize: 13, color: c.accent },
     indicationCount: {
       fontFamily: family.medium,
       color: c.muted,
       fontSize: 13,
       fontVariant: ['tabular-nums'],
     },
-    options: { backgroundColor: c.raised, borderRadius: radius.md, paddingHorizontal: space.lg },
     option: {
       flexDirection: 'row',
       alignItems: 'center',
       gap: space.md,
-      paddingVertical: space.md,
+      padding: space.lg,
       minHeight: MIN_TOUCH,
+      backgroundColor: c.surface,
+      borderRadius: radius.lg,
+      borderWidth: 1,
+      borderColor: c.border,
     },
+    optionOn: { borderColor: c.accent, borderWidth: 2, padding: space.lg - 1 },
     ruled: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: c.control },
-    optionText: { fontFamily: family.medium, color: c.text, fontSize: 15 },
+    optionText: { fontFamily: family.bold, color: c.text, fontSize: 16, lineHeight: 21 },
     optionSub: { fontFamily: family.regular, color: c.muted, fontSize: 13 },
     presRow: { gap: 10, paddingRight: 20 },
     presCard: {

@@ -33,6 +33,11 @@ export function PatientCard({
   const fmt = (n: number) => formatClinical(n, decimalSeparator);
   const { weight, ageInvalid } = readPatient(patient);
   const zone = weight.ok ? weightZone(weight.kg) : null;
+  const needWeight = patient.weightText.trim() === '';
+  const needAge =
+    patient.ageMode === 'ym'
+      ? patient.yearsText.trim() === '' && patient.monthsText.trim() === ''
+      : patient.daysText.trim() === '';
   const focus = {
     onFocus: () => onEditingChange?.(true),
     onBlur: () => onEditingChange?.(false),
@@ -53,6 +58,15 @@ export function PatientCard({
         ) : (
           <SectionTitle>Paciente</SectionTitle>
         )}
+        {!intro && (needWeight || needAge) ? (
+          <Text style={s.missing}>
+            {needWeight && needAge
+              ? 'Faltan peso y edad'
+              : needWeight
+                ? 'Falta el peso'
+                : 'Falta la edad'}
+          </Text>
+        ) : null}
         {hasData && !hideClear ? (
           <Pressable
             accessibilityRole="button"
@@ -84,6 +98,7 @@ export function PatientCard({
           <NumberField
             label={patient.weightUnit === 'kg' ? 'Peso en kilogramos' : 'Peso en libras'}
             caption="Peso"
+            required={needWeight}
             suffix={patient.weightUnit}
             value={patient.weightText}
             onChangeText={(v) => patient.update({ weightText: v })}
@@ -96,6 +111,7 @@ export function PatientCard({
             <NumberField
               label="Edad, años"
               caption="Años"
+              required={needAge}
               value={patient.yearsText}
               onChangeText={(v) => patient.update({ yearsText: v })}
               keyboardType="number-pad"
@@ -117,6 +133,7 @@ export function PatientCard({
             <NumberField
               label="Edad en días"
               caption="Días de vida"
+              required={needAge}
               value={patient.daysText}
               onChangeText={(v) => patient.update({ daysText: v })}
               keyboardType="number-pad"
@@ -177,6 +194,16 @@ function makeStyles(c: Palette) {
       justifyContent: 'space-between',
     },
     clear: { fontFamily: family.bold, fontSize: 14, color: c.accent },
+    missing: {
+      fontFamily: family.bold,
+      fontSize: 12,
+      color: c.warning,
+      backgroundColor: c.warningBg,
+      paddingHorizontal: 10,
+      paddingVertical: 3,
+      borderRadius: 999,
+      overflow: 'hidden',
+    },
     introTitle: { fontFamily: family.black, fontSize: type.title + 1, color: c.text },
     introTape: { gap: 6, marginTop: -4 },
     introHint: { fontFamily: family.medium, fontSize: type.label, color: c.muted },

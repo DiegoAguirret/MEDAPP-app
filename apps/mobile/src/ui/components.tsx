@@ -293,6 +293,7 @@ export function NumberField({
   label,
   caption,
   suffix,
+  required = false,
   ...props
 }: {
   /** Nombre accesible (y visible si no hay caption). */
@@ -300,6 +301,8 @@ export function NumberField({
   /** Rótulo visible corto, p. ej. «Peso» para «Peso en kilogramos». */
   caption?: string;
   suffix?: string;
+  /** Falta para calcular: borde de aviso (la tarjeta dice qué falta). */
+  required?: boolean;
 } & Omit<TextInputProps, 'style'>) {
   const s = useStyles();
   const c = useColors();
@@ -307,7 +310,13 @@ export function NumberField({
   return (
     <View style={s.field}>
       <Text style={s.fieldLabel}>{caption ?? label}</Text>
-      <View style={[s.inputRow, focused && { borderColor: c.accent }]}>
+      <View
+        style={[
+          s.inputRow,
+          required && { borderColor: c.warning },
+          focused && { borderColor: c.accent },
+        ]}
+      >
         <TextInput
           accessibilityLabel={label}
           keyboardType="decimal-pad"

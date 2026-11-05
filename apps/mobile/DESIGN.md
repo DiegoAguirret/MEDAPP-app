@@ -66,6 +66,15 @@ Patient first, then search, then browse. Each comes in one form only.
 - **Explorar:** vertical category tiles (icon and count on top, full name below, 114 dp). One «Todos A–Z» tile opens the lettered index.
 - Urgencias and Cálculos live only in the navigation bar, whose active tab gets an accent-soft pill that widens in over 220 ms. Icons are outline when idle and filled when active: medication, alarm-light, calculator, star, cog.
 
+## Drug card (guided)
+
+- **Indication:** the card shows the mg/kg range as an accent pill plus the schedule. «1 de N · Cambiar» opens a bottom sheet (ui/Sheet.tsx: scrim, handle, title, count, X) listing every option with its range. The chosen option has a 2 px accent border and a check, and options that don't fit read «No aplica a este paciente».
+- **Note:** the indication note sits under it, clamped to 2 lines, with «Ver más».
+- **Missing data:** fields still needed get a warning border, and the patient card header says what is missing («Faltan peso y edad»).
+- **«i» button:** in the header, it opens «Cómo usar esta ficha» (the four steps, this card's sources, «Repetir la guía»).
+- **Drug rows:** each row carries its routes as small green chips (Oral, IV, IM, Inhalado, Rectal).
+- **Guides:** they say «Siguiente →» while more remain and «Entendido» on the last.
+
 ## Signature move
 
 The band header. Patient band → weight and age → «Nuevo paciente». It sits on Dosis, on every drug card, and on Urgencias, where the rescue list is titled with the band (for example, «Franja amarilla · 14 kg»).

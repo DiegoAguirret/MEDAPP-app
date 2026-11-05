@@ -1,12 +1,23 @@
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import type { Drug } from '@medapp/content-schema';
+import type { Drug, Route } from '@medapp/content-schema';
 import { useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { CATEGORIES } from '../domain/categories';
 import { PressableScale } from './motion';
 import { family, MIN_TOUCH, radius, space, type, useColors, type Palette } from './theme';
 
-/** Fila de un fármaco: ícono de su categoría, nombre y para qué se usa. */
+/** Vías en la lista (como en Pediatrum): se ve de un vistazo si hay oral, IV o IM. */
+const ROUTE_CHIP: Record<Route, string> = {
+  VO: 'Oral',
+  IV: 'IV',
+  IM: 'IM',
+  IR: 'Rectal',
+  SL: 'SL',
+  INH: 'Inhalado',
+};
+const ROUTE_ORDER: Route[] = ['VO', 'IV', 'IM', 'INH', 'IR', 'SL'];
+
+/** Fila de un fármaco: ícono de su categoría, nombre, vías y para qué se usa. */
 export function DrugRow({
   drug,
   onPress,
@@ -19,6 +30,7 @@ export function DrugRow({
   const c = useColors();
   const s = useMemo(() => makeStyles(c), [c]);
   const cat = CATEGORIES[drug.category];
+  const routes = ROUTE_ORDER.filter((r) => drug.rules.some((rule) => rule.route === r));
   return (
     <PressableScale
       accessibilityRole="button"
@@ -30,9 +42,16 @@ export function DrugRow({
         <MaterialCommunityIcons name={cat.icon} size={20} color={cat.hue} />
       </View>
       <View style={s.body}>
-        <Text style={s.title} numberOfLines={1}>
-          {drug.tallMan ?? drug.name}
-        </Text>
+        <View style={s.titleRow}>
+          <Text style={s.title} numberOfLines={1}>
+            {drug.tallMan ?? drug.name}
+          </Text>
+          {routes.map((r) => (
+            <Text key={r} style={s.route}>
+              {ROUTE_CHIP[r]}
+            </Text>
+          ))}
+        </View>
         <Text style={s.sub} numberOfLines={1}>
           {drug.diagnoses.join(' · ')}
         </Text>
@@ -109,7 +128,18 @@ function makeStyles(c: Palette) {
       justifyContent: 'center',
     },
     body: { flex: 1, gap: 1 },
-    title: { fontFamily: family.bold, fontSize: 16, color: c.text },
+    titleRow: { flexDirection: 'row', alignItems: 'center', gap: 5 },
+    title: { flexShrink: 1, fontFamily: family.bold, fontSize: 16, color: c.text, marginRight: 2 },
+    route: {
+      fontFamily: family.bold,
+      fontSize: 11,
+      color: c.ok,
+      backgroundColor: c.okBg,
+      paddingHorizontal: 6,
+      paddingVertical: 1,
+      borderRadius: radius.pill,
+      overflow: 'hidden',
+    },
     sub: { fontFamily: family.regular, fontSize: type.label, color: c.muted },
     index: { gap: space.lg },
     group: { gap: 6 },

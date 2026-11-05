@@ -4,6 +4,9 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react-nativ
 import { Text } from 'react-native';
 import { BUNDLE_JSON } from '../content/bundled';
 import { SettingsProvider, useSettings } from '../state/settings';
+import { TipsProvider } from '../state/tips';
+import { DrugInfoSheet } from './DrugInfoSheet';
+import { DrugList } from './DrugRow';
 import { FavoriteButton } from './FavoriteButton';
 import { EmergencySheet } from './EmergencySheet';
 import { Home } from './Home';
@@ -97,6 +100,32 @@ describe('Home', () => {
   it('hides recalled drugs from the counts', async () => {
     await render(<Home drugs={drugs} recalled={new Set(['metamizol'])} {...handlers()} />);
     expect(screen.getByLabelText('Analgésicos y antipiréticos, 2 fármacos')).toBeOnTheScreen();
+  });
+});
+
+describe('DrugList', () => {
+  it('muestra las vías de cada fármaco', async () => {
+    await render(
+      <DrugList drugs={drugs.filter((d) => d.id === 'adrenalina')} onOpen={jest.fn()} />,
+    );
+    expect(screen.getByText('IM')).toBeOnTheScreen();
+    expect(screen.getByText('IV')).toBeOnTheScreen();
+  });
+});
+
+describe('DrugInfoSheet', () => {
+  it('explica cómo usar la ficha, lista sus fuentes y permite repetir la guía', async () => {
+    const onClose = jest.fn();
+    const amox = drugs.find((d) => d.id === 'amoxicilina')!;
+    await render(
+      <TipsProvider>
+        <DrugInfoSheet visible drug={amox} sources={bundle.sources} onClose={onClose} />
+      </TipsProvider>,
+    );
+    expect(screen.getByText('Cómo usar esta ficha')).toBeOnTheScreen();
+    expect(screen.getByText(/Formulario Nacional/)).toBeOnTheScreen();
+    await fireEvent.press(screen.getByRole('button', { name: 'Repetir la guía' }));
+    expect(onClose).toHaveBeenCalled();
   });
 });
 

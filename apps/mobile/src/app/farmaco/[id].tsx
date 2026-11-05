@@ -1,18 +1,22 @@
 import { Stack, useLocalSearchParams } from 'expo-router';
-import { useEffect } from 'react';
-import { KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { useEffect, useState } from 'react';
+import { KeyboardAvoidingView, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { CATEGORIES } from '../../domain/categories';
 import { getContent } from '../../state/content';
 import { useSettings } from '../../state/settings';
 import { Banner } from '../../ui/components';
 import { DosePanel } from '../../ui/DosePanel';
+import { DrugInfoSheet } from '../../ui/DrugInfoSheet';
 import { FavoriteButton } from '../../ui/FavoriteButton';
-import { space } from '../../ui/theme';
+import { MIN_TOUCH, space, useColors } from '../../ui/theme';
 
 export default function DrugScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const content = getContent();
   const { decimal, pushRecent } = useSettings();
+  const c = useColors();
+  const [info, setInfo] = useState(false);
   const drug =
     content.ok && !content.recalled.has(id)
       ? content.bundle.drugs.find((d) => d.id === id)
@@ -35,7 +39,20 @@ export default function DrugScreen() {
         options={{
           title: '',
           headerBackTitle: CATEGORIES[drug.category].label,
-          headerRight: () => <FavoriteButton drugId={drug.id} />,
+          headerRight: () => (
+            <View style={s.actions}>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Cómo usar esta ficha"
+                onPress={() => setInfo(true)}
+                hitSlop={8}
+                style={s.action}
+              >
+                <MaterialCommunityIcons name="information-outline" size={24} color={c.text} />
+              </Pressable>
+              <FavoriteButton drugId={drug.id} />
+            </View>
+          ),
         }}
       />
       <ScrollView contentContainerStyle={s.screen} keyboardShouldPersistTaps="handled">
@@ -46,11 +63,24 @@ export default function DrugScreen() {
           sources={content.bundle.sources}
         />
       </ScrollView>
+      <DrugInfoSheet
+        visible={info}
+        drug={drug}
+        sources={content.bundle.sources}
+        onClose={() => setInfo(false)}
+      />
     </KeyboardAvoidingView>
   );
 }
 
 const s = StyleSheet.create({
   flex: { flex: 1 },
+  actions: { flexDirection: 'row', alignItems: 'center' },
+  action: {
+    minWidth: MIN_TOUCH,
+    minHeight: MIN_TOUCH,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   screen: { padding: 20, paddingBottom: space.xxl },
 });

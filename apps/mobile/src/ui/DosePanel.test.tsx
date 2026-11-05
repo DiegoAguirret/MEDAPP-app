@@ -90,6 +90,33 @@ describe('DosePanel — cálculo', () => {
   });
 });
 
+describe('DosePanel — ficha guiada', () => {
+  it('elige la indicación en una hoja, con su rango por kg, y la cierra al elegir', async () => {
+    await show('azitromicina');
+    await fireEvent.press(screen.getByLabelText('Cambiar indicación'));
+    expect(screen.getByText('Elegir indicación')).toBeOnTheScreen();
+    expect(screen.getByText('4 opciones')).toBeOnTheScreen();
+    await fireEvent.press(screen.getByText(/Faringoamigdalitis \(2 años o más\)/));
+    expect(screen.queryByText('Elegir indicación')).toBeNull();
+  });
+
+  it('muestra la nota de la indicación abreviada, con «Ver más»', async () => {
+    await show('amoxicilina');
+    await fillPatient('15', '3', '0');
+    await fireEvent.press(screen.getByRole('button', { name: 'Ver más' }));
+    expect(screen.getByRole('button', { name: 'Ver menos' })).toBeOnTheScreen();
+  });
+
+  it('marca peso y edad como requeridos hasta llenarlos', async () => {
+    await show('paracetamol');
+    expect(screen.getByText('Faltan peso y edad')).toBeOnTheScreen();
+    await fireEvent.changeText(screen.getByLabelText('Peso en kilogramos'), '10');
+    expect(screen.getByText('Falta la edad')).toBeOnTheScreen();
+    await fireEvent.changeText(screen.getByLabelText('Edad, años'), '1');
+    expect(screen.queryByText(/^Falta/)).toBeNull();
+  });
+});
+
 describe('DosePanel — bandas de peso', () => {
   it('loratadina: 20 kg en la indicación de 30 kg o más no calcula y sugiere la correcta', async () => {
     await show('loratadina');
@@ -345,13 +372,14 @@ describe('DosePanel — guías de uso', () => {
         <DosePanel drug={drug(id)} decimalSeparator="." sources={sources} />
       </TipsProvider>,
     );
-  const gotIt = () => fireEvent.press(screen.getByRole('button', { name: 'Entendido' }));
+  const gotIt = () =>
+    fireEvent.press(screen.getByRole('button', { name: /^(Siguiente|Entendido)$/ }));
 
   it('sin paciente explica que se ingresa una vez; con paciente sigue la franja y el resto', async () => {
     await withTips('paracetamol');
     expect(screen.getByText('El paciente se ingresa una vez')).toBeOnTheScreen();
     await gotIt();
-    expect(screen.queryByRole('button', { name: 'Entendido' })).toBeNull();
+    expect(screen.queryByRole('button', { name: /^(Siguiente|Entendido)$/ })).toBeNull();
     await fillPatient('12', '2', '3');
     expect(screen.getByText('El color es el peso')).toBeOnTheScreen();
     await gotIt();
@@ -360,7 +388,7 @@ describe('DosePanel — guías de uso', () => {
     await gotIt();
     expect(screen.getByText('Lo que vas a medir')).toBeOnTheScreen();
     await gotIt();
-    expect(screen.queryByRole('button', { name: 'Entendido' })).toBeNull();
+    expect(screen.queryByRole('button', { name: /^(Siguiente|Entendido)$/ })).toBeNull();
   });
 
   it('el cálculo no cambia con la guía en pantalla', async () => {
