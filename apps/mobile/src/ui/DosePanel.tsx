@@ -10,10 +10,14 @@ import {
 import { calculateDose, formatClinical } from '@medapp/dose-engine';
 import { useMemo, useState } from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Pressable, ScrollView, Share, StyleSheet, Text, View } from 'react-native';
 import { CATEGORIES } from '../domain/categories';
 import { isScheduled, scheduleText } from '../domain/schedule';
 import { usePatient } from '../state/patient';
+import { weightZone } from '../domain/zones';
+import { Reveal } from './motion';
+import { PatientBand } from './PatientBand';
 import { PatientCard } from './PatientCard';
 import { customPresentation } from '../domain/custom';
 import { CLINICAL_DISCLAIMER, REASON_TEXT, WARNING_TEXT } from '../domain/messages';
@@ -117,6 +121,10 @@ export function DosePanel({
   const patient = usePatient();
   const reading = readPatient(patient);
   const { weightKg, ageDays, hasAge } = reading;
+  // Si el paciente ya venía completo de otra ficha, sus datos se pliegan tras «Editar».
+  const [editingPatient, setEditingPatient] = useState(!reading.complete);
+  const showPatientForm = editingPatient || !reading.complete;
+  const zone = weightKg === null ? null : weightZone(weightKg);
   const fits = (r: DoseRule) =>
     ageDays !== null && weightKg !== null && ruleFits(r, ageDays, weightKg);
 
@@ -204,18 +212,55 @@ export function DosePanel({
   return (
     <View>
       <View style={s.head}>
-        <Text accessibilityRole="header" style={s.drugName}>
-          {drug.tallMan ?? drug.name}
-        </Text>
-        <Text style={s.drugMeta}>{CATEGORIES[drug.category].label}</Text>
+        <View style={[s.headIcon, { backgroundColor: CATEGORIES[drug.category].hue + '1F' }]}>
+          <MaterialCommunityIcons
+            name={CATEGORIES[drug.category].icon}
+            size={24}
+            color={CATEGORIES[drug.category].hue}
+          />
+        </View>
+        <View style={s.flex}>
+          <Text accessibilityRole="header" style={s.drugName}>
+            {drug.tallMan ?? drug.name}
+          </Text>
+          <Text style={s.drugMeta}>{CATEGORIES[drug.category].label}</Text>
+        </View>
+      </View>
+      <View style={s.review}>
         <ReviewBadge review={drug.review} />
       </View>
 
-      <PatientCard
-        patient={patient}
-        decimalSeparator={decimalSeparator}
-        onClear={() => setPickedRuleId(null)}
-      />
+      <View style={s.bandWrap}>
+        <PatientBand
+          patient={patient}
+          decimalSeparator={decimalSeparator}
+          onClear={() => {
+            setPickedRuleId(null);
+            setEditingPatient(true);
+          }}
+        />
+        {reading.complete && !showPatientForm ? (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Editar paciente"
+            onPress={() => setEditingPatient(true)}
+            hitSlop={8}
+            style={s.editPatient}
+          >
+            <MaterialCommunityIcons name="pencil-outline" size={16} color={c.accent} />
+            <Text style={s.editPatientText}>Editar peso o edad</Text>
+          </Pressable>
+        ) : null}
+      </View>
+
+      {showPatientForm ? (
+        <PatientCard
+          patient={patient}
+          decimalSeparator={decimalSeparator}
+          onClear={() => setPickedRuleId(null)}
+          hideClear={reading.complete}
+        />
+      ) : null}
 
       <Card>
         {routes.length > 1 ? (
@@ -385,15 +430,23 @@ export function DosePanel({
 
       {result?.status === 'ok' ? (
         <View style={s.result}>
+          {zone ? (
+            <View
+              style={[s.resultTape, { backgroundColor: zone.fill }]}
+              accessibilityLabel={zone.label}
+            />
+          ) : null}
           <View style={s.resultTop}>
             <Text style={s.rx}>Rp/</Text>
             <Text style={s.resultFor} numberOfLines={2}>
               {presentation ? presentation.label : ''}
             </Text>
           </View>
-          <Text testID="result-amount" style={s.resultAmount}>
-            {amountText}
-          </Text>
+          <Reveal trigger={amountText}>
+            <Text testID="result-amount" style={s.resultAmount}>
+              {amountText}
+            </Text>
+          </Reveal>
           <Text style={s.resultLine}>
             <Text testID="result-mg" style={s.resultMg}>
               {fmt(result.mgPerDose.chosen)} mg
@@ -509,9 +562,27 @@ function Fact({ s, label, value }: { s: Styles; label: string; value: string }) 
 function makeStyles(c: Palette) {
   return StyleSheet.create({
     flex: { flex: 1 },
-    head: { gap: 4, marginBottom: 20 },
-    drugName: { fontFamily: family.black, fontSize: 34, lineHeight: 38, color: c.text },
-    drugMeta: { fontFamily: family.regular, fontSize: 15, color: c.muted, marginBottom: 4 },
+    head: { flexDirection: 'row', alignItems: 'center', gap: space.md },
+    headIcon: {
+      width: 46,
+      height: 46,
+      borderRadius: radius.md,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    drugName: { fontFamily: family.black, fontSize: 26, lineHeight: 30, color: c.text },
+    drugMeta: { fontFamily: family.regular, fontSize: 13, color: c.muted },
+    review: { marginTop: 6, marginBottom: space.md },
+    bandWrap: { marginBottom: space.md, gap: 6 },
+    editPatient: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 6,
+      alignSelf: 'flex-start',
+      minHeight: 36,
+    },
+    editPatientText: { fontFamily: family.bold, fontSize: 14, color: c.accent },
+    resultTape: { height: 6, borderRadius: 3, marginBottom: 4 },
     block: { gap: 10, marginBottom: space.md },
     wrap: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
     row: { flexDirection: 'row', gap: space.md },
@@ -576,7 +647,7 @@ function makeStyles(c: Palette) {
     result: {
       backgroundColor: c.accentSoft,
       borderRadius: radius.lg,
-      padding: 20,
+      padding: space.lg,
       marginBottom: space.md,
       gap: 6,
     },

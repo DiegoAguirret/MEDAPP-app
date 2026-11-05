@@ -262,14 +262,21 @@ export function Segmented<T extends string>({
 
 export function NumberField({
   label,
+  caption,
   suffix,
   ...props
-}: { label: string; suffix?: string } & Omit<TextInputProps, 'style'>) {
+}: {
+  /** Nombre accesible (y visible si no hay caption). */
+  label: string;
+  /** Rótulo visible corto, p. ej. «Peso» para «Peso en kilogramos». */
+  caption?: string;
+  suffix?: string;
+} & Omit<TextInputProps, 'style'>) {
   const s = useStyles();
   const c = useColors();
   return (
     <View style={s.field}>
-      <Text style={s.fieldLabel}>{label}</Text>
+      <Text style={s.fieldLabel}>{caption ?? label}</Text>
       <View style={s.inputRow}>
         <TextInput
           accessibilityLabel={label}

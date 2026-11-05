@@ -12,10 +12,13 @@ export function PatientCard({
   patient,
   decimalSeparator,
   onClear,
+  hideClear = false,
 }: {
   patient: PatientState;
   decimalSeparator: '.' | ',';
   onClear?: () => void;
+  /** La franja del paciente ya muestra «Nuevo». */
+  hideClear?: boolean;
 }) {
   const c = useColors();
   const s = useMemo(() => makeStyles(c), [c]);
@@ -31,7 +34,7 @@ export function PatientCard({
     <Card>
       <View style={s.headRow}>
         <SectionTitle>Paciente</SectionTitle>
-        {hasData ? (
+        {hasData && !hideClear ? (
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Nuevo paciente"
@@ -45,8 +48,50 @@ export function PatientCard({
           </Pressable>
         ) : null}
       </View>
-      <View style={s.headRow}>
-        <Text style={s.fieldGroup}>Peso</Text>
+      <View style={s.row}>
+        <View style={s.weight}>
+          <NumberField
+            label={patient.weightUnit === 'kg' ? 'Peso en kilogramos' : 'Peso en libras'}
+            caption="Peso"
+            suffix={patient.weightUnit}
+            value={patient.weightText}
+            onChangeText={(v) => patient.update({ weightText: v })}
+            placeholder="0"
+          />
+        </View>
+        {patient.ageMode === 'ym' ? (
+          <>
+            <NumberField
+              label="Edad, años"
+              caption="Años"
+              value={patient.yearsText}
+              onChangeText={(v) => patient.update({ yearsText: v })}
+              keyboardType="number-pad"
+              placeholder="0"
+            />
+            <NumberField
+              label="Edad, meses"
+              caption="Meses"
+              value={patient.monthsText}
+              onChangeText={(v) => patient.update({ monthsText: v })}
+              keyboardType="number-pad"
+              placeholder="0"
+            />
+          </>
+        ) : (
+          <View style={s.days}>
+            <NumberField
+              label="Edad en días"
+              caption="Días de vida"
+              value={patient.daysText}
+              onChangeText={(v) => patient.update({ daysText: v })}
+              keyboardType="number-pad"
+              placeholder="0"
+            />
+          </View>
+        )}
+      </View>
+      <View style={s.toggles}>
         <Segmented
           label="Unidad de peso"
           options={[
@@ -56,62 +101,22 @@ export function PatientCard({
           value={patient.weightUnit}
           onChange={(u) => patient.update({ weightUnit: u })}
         />
-      </View>
-      <NumberField
-        label={patient.weightUnit === 'kg' ? 'Peso en kilogramos' : 'Peso en libras'}
-        suffix={patient.weightUnit}
-        value={patient.weightText}
-        onChangeText={(v) => patient.update({ weightText: v })}
-        placeholder="0"
-      />
-      {patient.weightUnit === 'lb' && weight.ok ? (
-        <Text style={s.muted}>≈ {fmt(weight.kg)} kg</Text>
-      ) : null}
-      {patient.weightText.trim() !== '' && !weight.ok ? (
-        <Text style={s.error}>{REASON_TEXT.invalid_weight}</Text>
-      ) : null}
-
-      <View style={[s.headRow, s.gapTop]}>
-        <Text style={s.fieldGroup}>Edad</Text>
         <Segmented
           label="Formato de edad"
           options={[
-            { value: 'ym', label: 'Años y meses' },
+            { value: 'ym', label: 'Años/meses' },
             { value: 'd', label: 'Días' },
           ]}
           value={patient.ageMode}
           onChange={(m) => patient.update({ ageMode: m })}
         />
       </View>
-      {patient.ageMode === 'ym' ? (
-        <View style={s.row}>
-          <NumberField
-            label="Edad, años"
-            suffix="años"
-            value={patient.yearsText}
-            onChangeText={(v) => patient.update({ yearsText: v })}
-            keyboardType="number-pad"
-            placeholder="0"
-          />
-          <NumberField
-            label="Edad, meses"
-            suffix="meses"
-            value={patient.monthsText}
-            onChangeText={(v) => patient.update({ monthsText: v })}
-            keyboardType="number-pad"
-            placeholder="0"
-          />
-        </View>
-      ) : (
-        <NumberField
-          label="Edad en días"
-          suffix="días"
-          value={patient.daysText}
-          onChangeText={(v) => patient.update({ daysText: v })}
-          keyboardType="number-pad"
-          placeholder="0"
-        />
-      )}
+      {patient.weightUnit === 'lb' && weight.ok ? (
+        <Text style={s.muted}>≈ {fmt(weight.kg)} kg</Text>
+      ) : null}
+      {patient.weightText.trim() !== '' && !weight.ok ? (
+        <Text style={s.error}>{REASON_TEXT.invalid_weight}</Text>
+      ) : null}
       {ageInvalid ? <Text style={s.error}>Revise la edad (meses de 0 a 11).</Text> : null}
     </Card>
   );
@@ -127,7 +132,15 @@ function makeStyles(c: Palette) {
       flexWrap: 'wrap',
     },
     gapTop: { marginTop: space.sm },
-    row: { flexDirection: 'row', gap: space.md },
+    row: { flexDirection: 'row', gap: space.sm },
+    weight: { flex: 1.25 },
+    days: { flex: 2 },
+    toggles: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      gap: space.sm,
+      justifyContent: 'space-between',
+    },
     clear: { fontFamily: family.bold, fontSize: 14, color: c.accent },
     fieldGroup: { fontFamily: family.medium, fontSize: 14, color: c.muted },
     muted: { fontFamily: family.regular, fontSize: 14, lineHeight: 20, color: c.muted },

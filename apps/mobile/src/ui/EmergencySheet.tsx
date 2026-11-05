@@ -2,13 +2,16 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import type { Drug, Route } from '@medapp/content-schema';
 import { formatClinical } from '@medapp/dose-engine';
 import { useMemo } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { emergencyItems, type EmergencyItem } from '../domain/emergency';
 import { CLINICAL_DISCLAIMER } from '../domain/messages';
 import { readPatient } from '../domain/patientInput';
 import { scheduleText } from '../domain/schedule';
 import { usePatient } from '../state/patient';
 import { SectionTitle } from './components';
+import { weightZone } from '../domain/zones';
+import { PressableScale } from './motion';
+import { PatientBand } from './PatientBand';
 import { PatientCard } from './PatientCard';
 import { family, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
 
@@ -76,16 +79,19 @@ export function EmergencySheet({
   return (
     <View style={s.screen}>
       <View style={s.head}>
-        <Text accessibilityRole="header" style={s.title}>
-          Urgencias
-        </Text>
-        <Text style={s.lede}>
-          Dosis de rescate calculadas con el peso. Antes de administrar, confirma la vía y la
-          dilución.
-        </Text>
+        <View style={s.headIcon}>
+          <Ionicons name="medkit" size={22} color="#FFFFFF" />
+        </View>
+        <View style={s.flex}>
+          <Text accessibilityRole="header" style={s.title}>
+            Urgencias
+          </Text>
+          <Text style={s.lede}>Rescate por peso · confirma vía y dilución</Text>
+        </View>
       </View>
 
-      <PatientCard patient={patient} decimalSeparator={decimalSeparator} />
+      <PatientBand patient={patient} decimalSeparator={decimalSeparator} />
+      <PatientCard patient={patient} decimalSeparator={decimalSeparator} hideClear={complete} />
 
       {items.length === 0 ? (
         <View style={[s.empty, { borderColor: c.control }]}>
@@ -99,17 +105,19 @@ export function EmergencySheet({
         <View style={s.block}>
           <SectionTitle>
             {items.length} dosis para {fmt(weightKg ?? 0)} kg
+            {weightKg !== null && weightZone(weightKg) ? ` · ${weightZone(weightKg)?.name}` : ''}
           </SectionTitle>
-          {items.map((item) => (
-            <Item
-              key={`${item.drug.id}/${item.rule.id}`}
-              item={item}
-              s={s}
-              c={c}
-              fmt={fmt}
-              onPress={() => onOpenDrug(item.drug.id)}
-            />
-          ))}
+          <View style={s.list}>
+            {items.map((item) => (
+              <Item
+                key={`${item.drug.id}/${item.rule.id}`}
+                item={item}
+                s={s}
+                fmt={fmt}
+                onPress={() => onOpenDrug(item.drug.id)}
+              />
+            ))}
+          </View>
         </View>
       )}
       <Text style={s.disclaimer}>{CLINICAL_DISCLAIMER}</Text>
@@ -122,13 +130,11 @@ type Styles = ReturnType<typeof makeStyles>;
 function Item({
   item,
   s,
-  c,
   fmt,
   onPress,
 }: {
   item: EmergencyItem;
   s: Styles;
-  c: Palette;
   fmt: (n: number) => string;
   onPress: () => void;
 }) {
@@ -137,77 +143,116 @@ function Item({
   const amount = `${fmt(result.amount.value)} ${unit}`;
   const limit = rule.maxDoses === undefined ? '' : ` · máximo ${rule.maxDoses} dosis`;
   return (
-    <Pressable
+    <PressableScale
       accessibilityRole="button"
       accessibilityLabel={`${drug.name}, ${rule.indication}, ${amount}`}
       onPress={onPress}
-      style={({ pressed }) => [s.item, pressed && { opacity: 0.7 }]}
+      scaleTo={0.98}
+      style={s.item}
     >
-      <View style={s.itemTop}>
-        <Text style={s.drug}>{drug.name}</Text>
-        <Text style={s.route}>{ROUTE_SHORT[rule.route]}</Text>
+      <View style={s.itemBody}>
+        <View style={s.itemTop}>
+          <Text style={s.drug} numberOfLines={1}>
+            {drug.name}
+          </Text>
+          <Text style={s.route}>{ROUTE_SHORT[rule.route]}</Text>
+        </View>
+        <Text style={s.indication} numberOfLines={2}>
+          {rule.indication}
+        </Text>
+        <Text style={s.schedule}>
+          {scheduleText(rule)}
+          {limit}
+        </Text>
+        <Text style={s.presentation} numberOfLines={1}>
+          {presentation.label}
+        </Text>
+        {result.warnings.includes('rounding_exceeds_5pct') ? (
+          <Text style={s.warn}>Cantidad exacta: no es medible con esta presentación.</Text>
+        ) : null}
       </View>
-      <Text style={s.indication}>{rule.indication}</Text>
-      <View style={s.doseRow}>
+      <View style={s.dose}>
         <Text style={s.amount}>{amount}</Text>
         <Text style={s.mg}>{fmt(result.mgPerDose.chosen)} mg</Text>
-        <Ionicons name="chevron-forward" size={18} color={c.muted} style={s.chev} />
       </View>
-      <Text style={s.schedule}>
-        {scheduleText(rule)}
-        {limit}
-      </Text>
-      <Text style={s.presentation}>{presentation.label}</Text>
-      {result.warnings.includes('rounding_exceeds_5pct') ? (
-        <Text style={s.warn}>Cantidad exacta: no es medible con esta presentación.</Text>
-      ) : null}
-    </Pressable>
+    </PressableScale>
   );
 }
 
 function makeStyles(c: Palette) {
   return StyleSheet.create({
-    screen: { paddingHorizontal: 20, paddingTop: space.xl, paddingBottom: space.xxl, gap: 16 },
-    head: { gap: 6 },
-    title: { fontFamily: family.black, fontSize: 34, lineHeight: 38, color: c.text },
-    lede: { fontFamily: family.regular, fontSize: 15, lineHeight: 21, color: c.muted },
+    screen: {
+      paddingHorizontal: space.lg,
+      paddingTop: space.lg,
+      paddingBottom: space.xxl,
+      gap: 12,
+    },
+    flex: { flex: 1 },
+    head: { flexDirection: 'row', alignItems: 'center', gap: space.md },
+    headIcon: {
+      width: 44,
+      height: 44,
+      borderRadius: radius.md,
+      backgroundColor: '#C62828',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    title: { fontFamily: family.black, fontSize: 26, lineHeight: 30, color: c.text },
+    lede: { fontFamily: family.regular, fontSize: 13, color: c.muted },
     empty: {
       borderWidth: 1,
       borderStyle: 'dashed',
       borderRadius: radius.lg,
-      padding: 20,
+      padding: space.lg,
     },
     emptyText: { fontFamily: family.regular, fontSize: 15, lineHeight: 21, color: c.muted },
     block: { gap: 10 },
-    item: {
+    list: {
       backgroundColor: c.surface,
       borderRadius: radius.lg,
-      padding: space.lg,
-      gap: 4,
-      minHeight: MIN_TOUCH,
+      borderWidth: StyleSheet.hairlineWidth,
+      borderColor: c.border,
+      overflow: 'hidden',
     },
+    item: {
+      flexDirection: 'row',
+      gap: space.md,
+      paddingHorizontal: space.md,
+      paddingVertical: 12,
+      minHeight: MIN_TOUCH,
+      borderTopWidth: StyleSheet.hairlineWidth,
+      borderTopColor: c.border,
+    },
+    itemBody: { flex: 1, gap: 2 },
     itemTop: { flexDirection: 'row', alignItems: 'baseline', gap: space.sm },
-    drug: { flex: 1, fontFamily: family.bold, fontSize: 16, color: c.text },
-    route: { fontFamily: family.medium, fontSize: 13, color: c.muted },
-    indication: { fontFamily: family.regular, fontSize: 14, color: c.muted },
-    doseRow: { flexDirection: 'row', alignItems: 'baseline', gap: 10, marginTop: 4 },
+    drug: { flexShrink: 1, fontFamily: family.bold, fontSize: 16, color: c.text },
+    route: {
+      fontFamily: family.bold,
+      fontSize: 11,
+      color: c.accent,
+      backgroundColor: c.accentSoft,
+      paddingHorizontal: 6,
+      paddingVertical: 1,
+      borderRadius: 999,
+      overflow: 'hidden',
+    },
+    indication: { fontFamily: family.regular, fontSize: 13, color: c.muted },
+    schedule: { fontFamily: family.medium, fontSize: 13, color: c.text },
+    presentation: { fontFamily: family.regular, fontSize: 12, color: c.muted },
+    dose: { alignItems: 'flex-end', justifyContent: 'center', minWidth: 96 },
     amount: {
       fontFamily: family.black,
-      fontSize: 30,
-      lineHeight: 36,
+      fontSize: 26,
+      lineHeight: 30,
       color: c.accent,
       fontVariant: ['tabular-nums'],
     },
     mg: {
-      flex: 1,
       fontFamily: family.medium,
-      fontSize: 15,
+      fontSize: 13,
       color: c.text,
       fontVariant: ['tabular-nums'],
     },
-    chev: { alignSelf: 'center' },
-    schedule: { fontFamily: family.medium, fontSize: 14, color: c.text },
-    presentation: { fontFamily: family.regular, fontSize: 13, color: c.muted },
     warn: { fontFamily: family.regular, fontSize: 13, color: c.warning },
     disclaimer: {
       fontFamily: family.regular,

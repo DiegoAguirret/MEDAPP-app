@@ -1,13 +1,13 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Tabs } from 'expo-router';
 import { StyleSheet, type ColorValue } from 'react-native';
 import { family, useColors } from '../../ui/theme';
 
-type IconName = keyof typeof Ionicons.glyphMap;
+type IconName = keyof typeof MaterialCommunityIcons.glyphMap;
 const icon =
   (off: IconName, on: IconName) =>
   ({ color, size, focused }: { color: ColorValue; size: number; focused: boolean }) => (
-    <Ionicons
+    <MaterialCommunityIcons
       name={focused ? on : off}
       color={typeof color === 'string' ? color : undefined}
       size={size - 2}
@@ -19,17 +19,17 @@ export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: c.text,
+        tabBarActiveTintColor: c.accent,
         tabBarInactiveTintColor: c.muted,
         tabBarStyle: {
-          backgroundColor: c.ground,
+          backgroundColor: c.surface,
           borderTopColor: c.border,
           borderTopWidth: StyleSheet.hairlineWidth,
           elevation: 0,
           height: 64,
           paddingBottom: 8,
         },
-        tabBarLabelStyle: { fontFamily: family.medium, fontSize: 12 },
+        tabBarLabelStyle: { fontFamily: family.bold, fontSize: 11 },
         headerStyle: { backgroundColor: c.ground },
         headerShadowVisible: false,
         headerTitleStyle: { color: c.text, fontFamily: family.bold, fontSize: 18 },
@@ -41,7 +41,7 @@ export default function TabsLayout() {
         options={{
           title: 'Dosis',
           headerShown: false,
-          tabBarIcon: icon('eyedrop-outline', 'eyedrop'),
+          tabBarIcon: icon('eyedropper', 'eyedropper'),
         }}
       />
       <Tabs.Screen
@@ -49,12 +49,15 @@ export default function TabsLayout() {
         options={{
           title: 'Urgencias',
           headerShown: false,
-          tabBarIcon: icon('pulse-outline', 'pulse'),
+          tabBarIcon: icon('ambulance', 'ambulance'),
         }}
       />
       <Tabs.Screen
         name="calculadoras"
-        options={{ title: 'Cálculos', tabBarIcon: icon('calculator-outline', 'calculator') }}
+        options={{
+          title: 'Cálculos',
+          tabBarIcon: icon('calculator-variant-outline', 'calculator-variant'),
+        }}
       />
       <Tabs.Screen
         name="favoritos"
@@ -62,7 +65,7 @@ export default function TabsLayout() {
       />
       <Tabs.Screen
         name="ajustes"
-        options={{ title: 'Ajustes', tabBarIcon: icon('options-outline', 'options') }}
+        options={{ title: 'Ajustes', tabBarIcon: icon('cog-outline', 'cog') }}
       />
     </Tabs>
   );

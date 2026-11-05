@@ -313,3 +313,24 @@ describe('DosePanel — inhaladores (puffs)', () => {
     expect(screen.getByText('Máximo de dosis')).toBeOnTheScreen();
   });
 });
+
+describe('DosePanel — paciente ya ingresado', () => {
+  it('una ficha abierta con el paciente completo pliega sus datos y calcula de inmediato', async () => {
+    const { rerender } = await render(
+      <PatientProvider>
+        <DosePanel drug={drug('paracetamol')} decimalSeparator="." sources={sources} />
+      </PatientProvider>,
+    );
+    await fireEvent.changeText(screen.getByLabelText('Peso en kilogramos'), '10');
+    await fireEvent.changeText(screen.getByLabelText('Edad, años'), '2');
+    await rerender(
+      <PatientProvider>
+        <DosePanel key="otra" drug={drug('ibuprofeno')} decimalSeparator="." sources={sources} />
+      </PatientProvider>,
+    );
+    expect(screen.getByTestId('result-mg')).toBeOnTheScreen();
+    expect(screen.queryByLabelText('Peso en kilogramos')).toBeNull();
+    await fireEvent.press(screen.getByLabelText('Editar paciente'));
+    expect(screen.getByLabelText('Peso en kilogramos')).toHaveDisplayValue('10');
+  });
+});

@@ -145,10 +145,12 @@ export function Home({
                   <View style={[s.tileIcon, { backgroundColor: meta.hue + '1F' }]}>
                     <MaterialCommunityIcons name={meta.icon} size={22} color={meta.hue} />
                   </View>
-                  <Text style={s.tileLabel} numberOfLines={2}>
-                    {meta.label}
-                  </Text>
-                  <Text style={s.tileCount}>{n === 1 ? '1 fármaco' : `${n} fármacos`}</Text>
+                  <View style={s.flex}>
+                    <Text style={s.tileLabel} numberOfLines={2}>
+                      {meta.label}
+                    </Text>
+                    <Text style={s.tileCount}>{n === 1 ? '1 fármaco' : `${n} fármacos`}</Text>
+                  </View>
                 </PressableScale>
               );
             })}
@@ -230,9 +232,12 @@ function makeStyles(c: Palette) {
       borderRadius: radius.lg,
       borderWidth: StyleSheet.hairlineWidth,
       borderColor: c.border,
-      padding: 12,
-      gap: 6,
-      minHeight: 108,
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingHorizontal: 10,
+      paddingVertical: 10,
+      gap: 10,
+      minHeight: 64,
     },
     tileIcon: {
       width: 38,
@@ -241,7 +246,7 @@ function makeStyles(c: Palette) {
       alignItems: 'center',
       justifyContent: 'center',
     },
-    tileLabel: { fontFamily: family.bold, fontSize: 15, lineHeight: 19, color: c.text },
+    tileLabel: { fontFamily: family.bold, fontSize: 14, lineHeight: 18, color: c.text },
     tileCount: {
       fontFamily: family.medium,
       fontSize: type.caption,
