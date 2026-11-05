@@ -19,6 +19,7 @@
     "content:build": "tsx tools/content-build/src/cli.ts --mode tester",
     "content:build:release": "tsx tools/content-build/src/cli.ts --mode release",
     "app:content": "npm run content:build && node scripts/copy-content.mjs",
+    "app:content:release": "npm run content:build:release && node scripts/copy-content.mjs",
     "sim:report": "tsx tools/clinical-sim/src/report.ts"
   },
   "devDependencies": {

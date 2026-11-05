@@ -1,3 +1,4 @@
+import Constants from 'expo-constants';
 import { Linking, ScrollView, StyleSheet, Text } from 'react-native';
 import { CLINICAL_DISCLAIMER } from '../../domain/messages';
 import { getContent } from '../../state/content';
@@ -52,6 +53,35 @@ export default function AjustesTab() {
           se guardan datos de pacientes.
         </Text>
         <Text style={body}>{CLINICAL_DISCLAIMER}</Text>
+      </Card>
+
+      <Card>
+        <SectionTitle>Privacidad</SectionTitle>
+        <Text style={body}>No hay cuentas ni registro.</Text>
+        <Text style={body}>
+          La app no envía datos a ningún servidor: todo el contenido clínico viene dentro de la app.
+        </Text>
+        <Text style={body}>
+          El peso y la edad del paciente quedan solo en la memoria del teléfono y se borran al
+          cerrar la app o al tocar «Nuevo paciente».
+        </Text>
+        <Text style={body}>
+          En el teléfono solo se guardan tus preferencias: tema, separador decimal y favoritos.
+        </Text>
+      </Card>
+
+      <Card>
+        <SectionTitle>Acerca de</SectionTitle>
+        <Text style={body}>
+          Dosis Pediátricas · versión {Constants.expoConfig?.version ?? '1.0.0'}
+        </Text>
+        {content.ok ? (
+          <Text style={body}>
+            Contenido {content.bundle.contentVersion} · {content.bundle.drugs.length} fichas
+            verificadas
+          </Text>
+        ) : null}
+        <Text style={body}>Hecha en Lima, Perú, para médicos que atienden niños.</Text>
       </Card>
 
       {content.ok ? (

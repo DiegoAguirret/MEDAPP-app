@@ -19,9 +19,14 @@ const MIN_APP_VERSION = '1.0.0';
 
 function signingKey(mode: 'tester' | 'release'): string {
   if (mode === 'release') {
-    const key = process.env['CONTENT_SIGNING_KEY'];
+    const releaseFile = join(ROOT, 'keys', 'release.key');
+    const key =
+      process.env['CONTENT_SIGNING_KEY'] ??
+      (existsSync(releaseFile) ? readFileSync(releaseFile, 'utf8').trim() : undefined);
     if (key === undefined || !/^[0-9a-f]{64}$/i.test(key)) {
-      throw new Error('Modo release: defina CONTENT_SIGNING_KEY (clave Ed25519 en hexadecimal).');
+      throw new Error(
+        'Modo release: defina CONTENT_SIGNING_KEY o cree keys/release.key (clave Ed25519 en hexadecimal).',
+      );
     }
     return key;
   }
