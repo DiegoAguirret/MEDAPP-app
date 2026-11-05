@@ -18,7 +18,7 @@ The patient's weight falls in one of the color bands of pediatric resuscitation 
 
 ## Color strategy
 
-Committed. The band color owns the patient header and the tape strip. Everything else is a clean neutral ground: white surfaces on #F4F5F7, ink #1B2430, muted #5B6472. Primary actions use the brand blue #1F5FAD. Categories use their own icon hues, as tinted chips only. Danger #C62828 and warning #B26A00 appear only where they mean something. The dark theme is first-class: ground #0E1116, surfaces #171B22, ink #F2F4F7. Band fills stay the same in dark.
+Committed. The band color owns the patient header and the tape strip. Everything else is a clean neutral ground: white surfaces on #F4F5F7, ink #1B2430, muted #5B6472. Primary actions use the brand blue #1F5FAD. Categories use their own hues: the icon on a solid hue square with a white glyph, over a tile with an 8 % tint and a hue hairline. Danger #C62828 and warning #B26A00 appear only where they mean something. The dark theme is first-class: ground #0E1116, surfaces #171B22, ink #F2F4F7. Band fills stay the same in dark.
 
 ## Type
 
@@ -53,6 +53,18 @@ React Native Animated (ui/motion.tsx), with every move honoring the system Reduc
 - **Header band:** its color crossfades in 220 ms when the band changes.
 - **Dose figures:** re-enter (fade and 6 dp rise, 180 ms) when the value changes.
 - **Sections:** expanding sections use a layout transition.
+- **Home entrance:** category tiles enter once, staggered by 32 ms (fade from 35 % and a 10 dp rise, 280 ms).
+- **Tape:** the patient's zone widens and lights up in 260 ms as the weight changes.
+
+## Home
+
+Patient first, then search, then browse. Each comes in one form only.
+
+- **Patient:** «¿Para quién es la dosis?» shows the tape, which marks the zone while the weight is typed. With a complete patient, it turns into the band header.
+- **Search:** a pill field. Results come with a count; a search with no results offers «Abrir cálculo manual».
+- **Recientes:** chips of the last 8 drug cards opened (ids only).
+- **Explorar:** vertical category tiles (icon and count on top, full name below, 114 dp). One «Todos A–Z» tile opens the lettered index.
+- Urgencias and Cálculos live only in the navigation bar, whose active tab gets an accent-soft pill that widens in over 220 ms. Icons are outline when idle and filled when active: medication, alarm-light, calculator, star, cog.
 
 ## Signature move
 

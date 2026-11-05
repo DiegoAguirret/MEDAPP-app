@@ -7,7 +7,11 @@ const KEYS = {
   decimal: 'decimalSeparator',
   theme: 'theme',
   favorites: 'favorites',
+  recents: 'recentDrugsV1',
 } as const;
+
+/** Cuántos fármacos recientes se recuerdan (solo ids de fichas, nunca datos del paciente). */
+const MAX_RECENTS = 8;
 
 export type ThemeMode = 'system' | 'light' | 'dark';
 
@@ -21,11 +25,14 @@ interface Settings {
   favorites: string[];
   isFavorite: (id: string) => boolean;
   toggleFavorite: (id: string) => void;
+  /** Fichas abiertas hace poco, la última primero. */
+  recents: string[];
+  pushRecent: (id: string) => void;
 }
 
-function readFavorites(): string[] {
+function readIds(key: string): string[] {
   try {
-    const raw = prefs.get(KEYS.favorites);
+    const raw = prefs.get(key);
     const parsed: unknown = raw ? JSON.parse(raw) : [];
     return Array.isArray(parsed) ? parsed.filter((x): x is string => typeof x === 'string') : [];
   } catch {
@@ -44,7 +51,8 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     const v = prefs.get(KEYS.theme);
     return v === 'light' || v === 'dark' ? v : 'system';
   });
-  const [favorites, setFavorites] = useState<string[]>(readFavorites);
+  const [favorites, setFavorites] = useState<string[]>(() => readIds(KEYS.favorites));
+  const [recents, setRecents] = useState<string[]>(() => readIds(KEYS.recents));
 
   const accept = useCallback(() => {
     prefs.set(KEYS.disclaimer, 'yes');
@@ -66,6 +74,15 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
+  const pushRecent = useCallback((id: string) => {
+    setRecents((prev) => {
+      if (prev[0] === id) return prev;
+      const next = [id, ...prev.filter((x) => x !== id)].slice(0, MAX_RECENTS);
+      prefs.set(KEYS.recents, JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
   const value = useMemo<Settings>(
     () => ({
       accepted,
@@ -77,8 +94,21 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       favorites,
       isFavorite: (id) => favorites.includes(id),
       toggleFavorite,
+      recents,
+      pushRecent,
     }),
-    [accepted, accept, decimal, changeDecimal, theme, changeTheme, favorites, toggleFavorite],
+    [
+      accepted,
+      accept,
+      decimal,
+      changeDecimal,
+      theme,
+      changeTheme,
+      favorites,
+      toggleFavorite,
+      recents,
+      pushRecent,
+    ],
   );
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;
 }

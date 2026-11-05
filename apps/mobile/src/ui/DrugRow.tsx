@@ -55,6 +55,35 @@ export function DrugList({ drugs, onOpen }: { drugs: Drug[]; onOpen: (id: string
   );
 }
 
+/** Primera letra sin tilde, para agrupar el índice (Á → A). */
+const initial = (name: string) => name.normalize('NFD').replace(/[̀-ͯ]/g, '').charAt(0).toUpperCase();
+
+/** Índice alfabético: una tarjeta por letra, con la letra como encabezado. */
+export function DrugIndex({ drugs, onOpen }: { drugs: Drug[]; onOpen: (id: string) => void }) {
+  const c = useColors();
+  const s = useMemo(() => makeStyles(c), [c]);
+  const groups = useMemo(() => {
+    const m = new Map<string, Drug[]>();
+    for (const d of [...drugs].sort((a, b) => a.name.localeCompare(b.name, 'es'))) {
+      const k = initial(d.name);
+      m.set(k, [...(m.get(k) ?? []), d]);
+    }
+    return [...m.entries()];
+  }, [drugs]);
+  return (
+    <View style={s.index}>
+      {groups.map(([letter, list]) => (
+        <View key={letter} style={s.group}>
+          <Text accessibilityRole="header" style={[s.letter, { color: c.accent }]}>
+            {letter}
+          </Text>
+          <DrugList drugs={list} onOpen={onOpen} />
+        </View>
+      ))}
+    </View>
+  );
+}
+
 function makeStyles(c: Palette) {
   return StyleSheet.create({
     panel: {
@@ -82,5 +111,8 @@ function makeStyles(c: Palette) {
     body: { flex: 1, gap: 1 },
     title: { fontFamily: family.bold, fontSize: 16, color: c.text },
     sub: { fontFamily: family.regular, fontSize: type.label, color: c.muted },
+    index: { gap: space.lg },
+    group: { gap: 6 },
+    letter: { fontFamily: family.black, fontSize: type.title, paddingLeft: 4 },
   });
 }

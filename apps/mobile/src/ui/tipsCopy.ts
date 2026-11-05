@@ -11,12 +11,6 @@ export interface TipCopy {
 }
 
 export const TIPS = {
-  urgencias: {
-    title: 'Urgencias, todo de una vez',
-    body: 'Con el peso y la edad, la hoja de Urgencias calcula juntas todas las dosis de rescate.',
-    pointer: 'up',
-    align: 'start',
-  },
   paciente: {
     title: 'El paciente se ingresa una vez',
     body: 'El peso y la edad pasan a todas las fichas y a Urgencias hasta que toques «Nuevo». No se guardan en el teléfono.',

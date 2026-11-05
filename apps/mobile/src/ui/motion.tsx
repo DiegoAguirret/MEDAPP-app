@@ -119,3 +119,46 @@ export function useColorFade(color: string): Animated.AnimatedInterpolation<stri
   if (pair[0] === pair[1]) return color;
   return v.interpolate({ inputRange: [0, 1], outputRange: pair });
 }
+
+/**
+ * Entrada escalonada al montar (fundido y ascenso de 10 dp, 280 ms, 32 ms entre elementos).
+ * Parte ya visible (35 %) para no dejar huecos si la animación se interrumpe.
+ */
+export function Enter({
+  index,
+  children,
+  style,
+}: {
+  index: number;
+  children: ReactNode;
+  style?: StyleProp<ViewStyle>;
+}) {
+  const reduce = useReduceMotion();
+  const v = useRef(new Animated.Value(reduce ? 1 : 0)).current;
+  useEffect(() => {
+    if (reduce) {
+      v.setValue(1);
+      return;
+    }
+    Animated.timing(v, {
+      toValue: 1,
+      duration: 280,
+      delay: Math.min(index, 12) * 32,
+      easing: Easing.out(Easing.exp),
+      useNativeDriver: true,
+    }).start();
+  }, [index, reduce, v]);
+  return (
+    <Animated.View
+      style={[
+        style,
+        {
+          opacity: v.interpolate({ inputRange: [0, 1], outputRange: [0.35, 1] }),
+          transform: [{ translateY: v.interpolate({ inputRange: [0, 1], outputRange: [10, 0] }) }],
+        },
+      ]}
+    >
+      {children}
+    </Animated.View>
+  );
+}

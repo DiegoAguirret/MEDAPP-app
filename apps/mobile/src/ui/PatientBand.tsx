@@ -2,9 +2,10 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useMemo } from 'react';
 import { Animated, Pressable, StyleSheet, Text, View } from 'react-native';
 import { patientSummary, readPatient } from '../domain/patientInput';
-import { weightZone, ZONES } from '../domain/zones';
+import { weightZone } from '../domain/zones';
 import type { PatientState } from '../state/patient';
 import { useColorFade } from './motion';
+import { Tape } from './Tape';
 import { family, radius, space, type, useColors, type Palette } from './theme';
 
 /**
@@ -58,18 +59,8 @@ export function PatientBand({
           <Text style={[s.clearText, { color: onFill }]}>Nuevo</Text>
         </Pressable>
       </Animated.View>
-      <View style={s.tape} importantForAccessibility="no-hide-descendants">
-        {ZONES.map((z) => (
-          <View
-            key={z.id}
-            style={[
-              s.tapeCell,
-              { backgroundColor: z.fill },
-              z.id === 'blanco' && s.tapeWhite,
-              zone?.id === z.id && s.tapeOn,
-            ]}
-          />
-        ))}
+      <View style={s.tapeWrap}>
+        <Tape activeId={zone?.id ?? null} />
       </View>
     </View>
   );
@@ -104,9 +95,6 @@ function makeStyles(c: Palette) {
       borderWidth: 1.5,
     },
     clearText: { fontFamily: family.bold, fontSize: type.label },
-    tape: { flexDirection: 'row', gap: 2, marginTop: 6, height: 6 },
-    tapeCell: { flex: 1, borderRadius: 2, opacity: 0.45 },
-    tapeWhite: { borderWidth: 1, borderColor: c.control },
-    tapeOn: { flex: 2.4, opacity: 1 },
+    tapeWrap: { marginTop: 6 },
   });
 }

@@ -10,7 +10,7 @@ import { space, useColors } from '../../ui/theme';
 export default function DosisTab() {
   const content = getContent();
   const c = useColors();
-  const { decimal } = useSettings();
+  const { decimal, recents } = useSettings();
 
   return (
     <SafeAreaView style={[s.flex, { backgroundColor: c.ground }]} edges={['top']}>
@@ -23,7 +23,7 @@ export default function DosisTab() {
             onOpenDrug={(id) => router.push({ pathname: '/farmaco/[id]', params: { id } })}
             onOpenCategory={(id) => router.push({ pathname: '/categoria/[id]', params: { id } })}
             onOpenManual={() => router.push('/manual')}
-            onOpenEmergency={() => router.push('/urgencias')}
+            recentIds={recents}
           />
         ) : (
           <Banner tone="danger">

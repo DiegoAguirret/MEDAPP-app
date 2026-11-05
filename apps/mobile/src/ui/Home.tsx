@@ -1,43 +1,55 @@
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import type { Category, Drug } from '@medapp/content-schema';
 import { useMemo, useState } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { searchDrugs } from '../data/content';
 import { CATEGORIES, CATEGORY_ORDER } from '../domain/categories';
 import { readPatient } from '../domain/patientInput';
 import { usePatient } from '../state/patient';
 import { useTipQueue } from '../state/tips';
+import { Button } from './components';
 import { DrugList } from './DrugRow';
-import { PressableScale } from './motion';
+import { Enter, PressableScale, Reveal } from './motion';
 import { PatientBand } from './PatientBand';
+import { PatientCard } from './PatientCard';
 import { Tip } from './Tip';
 import { family, MIN_TOUCH, radius, space, type, useColors, type Palette } from './theme';
 
+/** Destino del índice alfabético completo (las categorías lo engloban; no se repite abajo). */
+export const ALL_DRUGS = 'todos';
+
+/**
+ * Inicio: primero el paciente (la cinta se marca al escribir el peso), luego buscar o explorar.
+ * Urgencias y Cálculos viven en la barra inferior; aquí no se repiten.
+ */
 export function Home({
   drugs,
   recalled,
   onOpenDrug,
   onOpenCategory,
   onOpenManual,
-  onOpenEmergency,
+  recentIds = [],
   decimalSeparator = '.',
 }: {
   decimalSeparator?: '.' | ',';
   drugs: Drug[];
   recalled: Set<string>;
   onOpenDrug: (id: string) => void;
-  onOpenCategory: (c: Category) => void;
+  onOpenCategory: (c: Category | typeof ALL_DRUGS) => void;
   onOpenManual: () => void;
-  onOpenEmergency?: () => void;
+  /** Fichas abiertas hace poco, la última primero. */
+  recentIds?: string[];
 }) {
   const c = useColors();
   const s = useMemo(() => makeStyles(c), [c]);
   const [query, setQuery] = useState('');
   const patient = usePatient();
+  const { complete } = readPatient(patient);
   const tips = useTipQueue([
-    ['urgencias', onOpenEmergency !== undefined],
-    ['franja', readPatient(patient).complete],
+    ['paciente', !complete],
+    ['franja', complete],
   ]);
+
   const visible = useMemo(
     () =>
       drugs.filter((d) => !recalled.has(d.id)).sort((a, b) => a.name.localeCompare(b.name, 'es')),
@@ -52,6 +64,13 @@ export function Home({
     for (const d of visible) m.set(d.category, (m.get(d.category) ?? 0) + 1);
     return m;
   }, [visible]);
+  const recents = useMemo(
+    () =>
+      recentIds
+        .map((id) => visible.find((d) => d.id === id))
+        .filter((d): d is Drug => d !== undefined),
+    [recentIds, visible],
+  );
   const categories = CATEGORY_ORDER.filter((cat) => (counts.get(cat) ?? 0) > 0);
   const searching = query.trim() !== '';
 
@@ -69,7 +88,12 @@ export function Home({
         </View>
       </View>
 
-      <PatientBand patient={patient} decimalSeparator={decimalSeparator} />
+      {complete ? (
+        <PatientBand patient={patient} decimalSeparator={decimalSeparator} />
+      ) : (
+        <PatientCard patient={patient} decimalSeparator={decimalSeparator} intro />
+      )}
+      <Tip id="paciente" queue={tips} />
       <Tip id="franja" queue={tips} />
 
       <View style={s.search}>
@@ -98,75 +122,113 @@ export function Home({
 
       {searching ? (
         results.length === 0 ? (
-          <Text style={s.empty}>
-            Nada coincide con «{query.trim()}». Prueba con el nombre genérico o el diagnóstico, o
-            usa la calculadora manual.
-          </Text>
+          <View style={s.empty}>
+            <MaterialCommunityIcons name="text-search" size={28} color={c.muted} />
+            <Text style={s.emptyText}>
+              Nada coincide con «{query.trim()}». Prueba con el nombre genérico o el diagnóstico.
+            </Text>
+            <Button label="Abrir cálculo manual" variant="quiet" onPress={onOpenManual} />
+          </View>
         ) : (
-          <DrugList drugs={results} onOpen={onOpenDrug} />
+          <Reveal trigger={results.length}>
+            <Text style={s.count}>
+              {results.length === 1 ? '1 resultado' : `${results.length} resultados`}
+            </Text>
+            <DrugList drugs={results} onOpen={onOpenDrug} />
+          </Reveal>
         )
       ) : (
         <>
-          <View style={s.quick}>
-            {onOpenEmergency ? (
-              <PressableScale
-                accessibilityRole="button"
-                accessibilityLabel="Hoja de urgencias"
-                onPress={onOpenEmergency}
-                outerStyle={s.flex}
-                style={[s.quickBtn, s.quickUrgent]}
+          {recents.length > 0 ? (
+            <View style={s.block}>
+              <View style={s.sectionRow}>
+                <MaterialCommunityIcons name="history" size={18} color={c.muted} />
+                <Text style={s.section}>Recientes</Text>
+              </View>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={s.recentRow}
+                style={s.bleed}
               >
-                <MaterialCommunityIcons name="ambulance" size={20} color="#FFFFFF" />
-                <Text style={[s.quickText, s.quickTextOn]}>Urgencias</Text>
-              </PressableScale>
-            ) : null}
-            <PressableScale
-              accessibilityRole="button"
-              accessibilityLabel="Calculadora manual"
-              onPress={onOpenManual}
-              outerStyle={s.flex}
-              style={s.quickBtn}
-            >
-              <MaterialCommunityIcons
-                name="calculator-variant-outline"
-                size={20}
-                color={c.accent}
-              />
-              <Text style={s.quickText}>Cálculo manual</Text>
-            </PressableScale>
-          </View>
-          <Tip id="urgencias" queue={tips} />
+                {recents.map((d) => {
+                  const meta = CATEGORIES[d.category];
+                  return (
+                    <PressableScale
+                      key={d.id}
+                      accessibilityRole="button"
+                      accessibilityLabel={`Abrir ${d.name}`}
+                      onPress={() => onOpenDrug(d.id)}
+                      style={s.recent}
+                    >
+                      <View style={[s.recentDot, { backgroundColor: meta.hue }]}>
+                        <MaterialCommunityIcons name={meta.icon} size={14} color="#FFFFFF" />
+                      </View>
+                      <Text style={s.recentText} numberOfLines={1}>
+                        {d.name}
+                      </Text>
+                    </PressableScale>
+                  );
+                })}
+              </ScrollView>
+            </View>
+          ) : null}
 
-          <Text style={s.section}>Categorías</Text>
-          <View style={s.grid}>
-            {categories.map((cat) => {
-              const n = counts.get(cat) ?? 0;
-              const meta = CATEGORIES[cat];
-              return (
+          <View style={s.block}>
+            <View style={s.sectionRow}>
+              <MaterialCommunityIcons name="view-grid-outline" size={18} color={c.muted} />
+              <Text style={s.section}>Explorar</Text>
+            </View>
+            <View style={s.grid}>
+              {categories.map((cat, i) => {
+                const n = counts.get(cat) ?? 0;
+                const meta = CATEGORIES[cat];
+                return (
+                  <Enter key={cat} index={i} style={s.tileOuter}>
+                    <PressableScale
+                      accessibilityRole="button"
+                      accessibilityLabel={`${meta.label}, ${n} fármacos`}
+                      onPress={() => onOpenCategory(cat)}
+                      style={[s.tile, { borderColor: meta.hue + '38' }]}
+                    >
+                      <View
+                        style={[StyleSheet.absoluteFill, { backgroundColor: meta.hue + '14' }]}
+                      />
+                      <View style={s.tileTop}>
+                        <View style={[s.tileIcon, { backgroundColor: meta.hue }]}>
+                          <MaterialCommunityIcons name={meta.icon} size={22} color="#FFFFFF" />
+                        </View>
+                        <Text style={s.tileCount}>{n}</Text>
+                      </View>
+                      <Text style={s.tileLabel} numberOfLines={2}>
+                        {meta.label}
+                      </Text>
+                    </PressableScale>
+                  </Enter>
+                );
+              })}
+              <Enter index={categories.length} style={s.tileOuter}>
                 <PressableScale
-                  key={cat}
                   accessibilityRole="button"
-                  accessibilityLabel={`${meta.label}, ${n} fármacos`}
-                  onPress={() => onOpenCategory(cat)}
-                  outerStyle={s.tileOuter}
-                  style={s.tile}
+                  accessibilityLabel={`Todos de la A a la Z, ${visible.length} fármacos`}
+                  onPress={() => onOpenCategory(ALL_DRUGS)}
+                  style={[s.tile, { borderColor: c.control }]}
                 >
-                  <View style={[s.tileIcon, { backgroundColor: meta.hue + '1F' }]}>
-                    <MaterialCommunityIcons name={meta.icon} size={22} color={meta.hue} />
+                  <View style={s.tileTop}>
+                    <View style={[s.tileIcon, { backgroundColor: c.text }]}>
+                      <MaterialCommunityIcons
+                        name="sort-alphabetical-variant"
+                        size={22}
+                        color={c.surface}
+                      />
+                    </View>
+                    <Text style={s.tileCount}>{visible.length}</Text>
                   </View>
-                  <View style={s.flex}>
-                    <Text style={s.tileLabel} numberOfLines={2}>
-                      {meta.label}
-                    </Text>
-                    <Text style={s.tileCount}>{n === 1 ? '1 fármaco' : `${n} fármacos`}</Text>
-                  </View>
+                  <Text style={s.tileLabel}>Todos A–Z</Text>
                 </PressableScale>
-              );
-            })}
+              </Enter>
+            </View>
           </View>
-
-          <Text style={s.section}>Todos los fármacos</Text>
-          <DrugList drugs={visible} onOpen={onOpenDrug} />
         </>
       )}
     </View>
@@ -182,7 +244,7 @@ function makeStyles(c: Palette) {
       gap: 12,
     },
     flex: { flex: 1 },
-    head: { flexDirection: 'row', alignItems: 'center', gap: space.md },
+    head: { flexDirection: 'row', alignItems: 'center', gap: space.md, marginBottom: 2 },
     mark: {
       width: 44,
       height: 44,
@@ -198,12 +260,12 @@ function makeStyles(c: Palette) {
       flexDirection: 'row',
       alignItems: 'center',
       gap: space.sm,
-      minHeight: 50,
+      minHeight: 52,
       backgroundColor: c.surface,
-      borderRadius: radius.md,
+      borderRadius: radius.pill,
       borderWidth: 1,
       borderColor: c.control,
-      paddingHorizontal: 14,
+      paddingHorizontal: space.lg,
     },
     searchInput: {
       flex: 1,
@@ -212,53 +274,70 @@ function makeStyles(c: Palette) {
       color: c.text,
       minHeight: MIN_TOUCH,
     },
-    empty: { fontFamily: family.regular, color: c.muted, fontSize: type.body, lineHeight: 22 },
-    quick: { flexDirection: 'row', gap: space.sm },
-    quickBtn: {
+    empty: { alignItems: 'center', gap: space.sm, paddingVertical: space.lg },
+    emptyText: {
+      fontFamily: family.regular,
+      color: c.muted,
+      fontSize: type.body,
+      lineHeight: 22,
+      textAlign: 'center',
+    },
+    count: {
+      fontFamily: family.medium,
+      fontSize: type.label,
+      color: c.muted,
+      marginBottom: space.sm,
+    },
+    block: { gap: 10, marginTop: space.sm },
+    sectionRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+    section: { fontFamily: family.bold, fontSize: type.title, color: c.text },
+    bleed: { marginHorizontal: -space.lg },
+    recentRow: { gap: space.sm, paddingHorizontal: space.lg },
+    recent: {
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'center',
-      gap: 8,
-      minHeight: MIN_TOUCH,
-      borderRadius: radius.md,
+      gap: space.sm,
+      minHeight: 44,
+      maxWidth: 220,
+      paddingLeft: 6,
+      paddingRight: 14,
+      borderRadius: radius.pill,
       backgroundColor: c.surface,
       borderWidth: StyleSheet.hairlineWidth,
       borderColor: c.border,
     },
-    quickUrgent: { backgroundColor: '#C62828', borderColor: '#C62828' },
-    quickText: { fontFamily: family.bold, fontSize: 15, color: c.accent },
-    quickTextOn: { color: '#FFFFFF' },
-    section: {
-      fontFamily: family.bold,
-      fontSize: type.title,
-      color: c.text,
-      marginTop: space.sm,
+    recentDot: {
+      width: 30,
+      height: 30,
+      borderRadius: 15,
+      alignItems: 'center',
+      justifyContent: 'center',
     },
+    recentText: { flexShrink: 1, fontFamily: family.bold, fontSize: 14, color: c.text },
     grid: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
     tileOuter: { width: '48.6%' },
     tile: {
       backgroundColor: c.surface,
       borderRadius: radius.lg,
-      borderWidth: StyleSheet.hairlineWidth,
-      borderColor: c.border,
-      flexDirection: 'row',
-      alignItems: 'center',
-      paddingHorizontal: 10,
-      paddingVertical: 10,
+      borderWidth: 1,
+      padding: 12,
       gap: 10,
-      minHeight: 64,
+      minHeight: 114,
+      justifyContent: 'space-between',
+      overflow: 'hidden',
     },
+    tileTop: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' },
     tileIcon: {
-      width: 38,
-      height: 38,
-      borderRadius: radius.sm,
+      width: 40,
+      height: 40,
+      borderRadius: radius.md,
       alignItems: 'center',
       justifyContent: 'center',
     },
-    tileLabel: { fontFamily: family.bold, fontSize: 14, lineHeight: 18, color: c.text },
+    tileLabel: { fontFamily: family.bold, fontSize: 15, lineHeight: 19, color: c.text },
     tileCount: {
-      fontFamily: family.medium,
-      fontSize: type.caption,
+      fontFamily: family.black,
+      fontSize: type.title,
       color: c.muted,
       fontVariant: ['tabular-nums'],
     },

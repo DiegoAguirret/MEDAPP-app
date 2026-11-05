@@ -46,11 +46,38 @@ describe('Home', () => {
     expect(h.onOpenDrug).toHaveBeenCalledWith('ondansetron');
   });
 
-  it('opens the manual calculator', async () => {
+  it('offers the manual calculator when the search finds nothing', async () => {
     const h = handlers();
     await render(<Home drugs={drugs} recalled={new Set()} {...h} />);
-    await fireEvent.press(screen.getByLabelText('Calculadora manual'));
+    await fireEvent.changeText(screen.getByLabelText('Buscar fármaco o diagnóstico'), 'zzzz');
+    await fireEvent.press(screen.getByText('Abrir cálculo manual'));
     expect(h.onOpenManual).toHaveBeenCalled();
+  });
+
+  it('does not repeat the tab bar or the full list: categories plus one A–Z entry', async () => {
+    const h = handlers();
+    await render(<Home drugs={drugs} recalled={new Set()} {...h} />);
+    expect(screen.queryByLabelText('Hoja de urgencias')).toBeNull();
+    expect(screen.queryByLabelText('Calculadora manual')).toBeNull();
+    expect(screen.queryByText(/^paracetamol$/i)).toBeNull();
+    await fireEvent.press(screen.getByLabelText(`Todos de la A a la Z, ${drugs.length} fármacos`));
+    expect(h.onOpenCategory).toHaveBeenCalledWith('todos');
+  });
+
+  it('asks for the patient first', async () => {
+    await render(<Home drugs={drugs} recalled={new Set()} {...handlers()} />);
+    expect(screen.getByText('¿Para quién es la dosis?')).toBeOnTheScreen();
+    await fireEvent.changeText(screen.getByLabelText('Peso en kilogramos'), '12');
+    expect(screen.getByText('Franja amarilla · 12–14 kg')).toBeOnTheScreen();
+  });
+
+  it('shows recent drugs and opens them', async () => {
+    const h = handlers();
+    await render(
+      <Home drugs={drugs} recalled={new Set()} recentIds={['ibuprofeno', 'gone']} {...h} />,
+    );
+    await fireEvent.press(screen.getByLabelText('Abrir Ibuprofeno'));
+    expect(h.onOpenDrug).toHaveBeenCalledWith('ibuprofeno');
   });
 
   it('hides recalled drugs from the counts', async () => {

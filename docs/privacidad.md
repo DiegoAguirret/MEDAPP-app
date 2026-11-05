@@ -20,7 +20,7 @@ La app no pide nombres, documentos de identidad ni ningún otro dato que identif
 
 ## Datos que se guardan en el teléfono
 
-Solo las preferencias del usuario: el tema (claro u oscuro), el separador decimal, los fármacos marcados como favoritos y la aceptación del aviso inicial. Se pueden borrar desinstalando la app o borrando sus datos desde los ajustes de Android.
+Solo las preferencias del usuario: el tema (claro u oscuro), el separador decimal, los fármacos marcados como favoritos, las últimas fichas abiertas (solo el nombre del fármaco, hasta 8), las guías de uso ya vistas y la aceptación del aviso inicial. Se pueden borrar desinstalando la app o borrando sus datos desde los ajustes de Android.
 
 ## Compartir una indicación
 

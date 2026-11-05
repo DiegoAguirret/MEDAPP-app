@@ -1,4 +1,5 @@
 import { Stack, useLocalSearchParams } from 'expo-router';
+import { useEffect } from 'react';
 import { KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
 import { CATEGORIES } from '../../domain/categories';
 import { getContent } from '../../state/content';
@@ -11,11 +12,15 @@ import { space } from '../../ui/theme';
 export default function DrugScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const content = getContent();
-  const { decimal } = useSettings();
+  const { decimal, pushRecent } = useSettings();
   const drug =
     content.ok && !content.recalled.has(id)
       ? content.bundle.drugs.find((d) => d.id === id)
       : undefined;
+  const openedId = drug?.id;
+  useEffect(() => {
+    if (openedId !== undefined) pushRecent(openedId);
+  }, [openedId, pushRecent]);
 
   if (!content.ok || drug === undefined) {
     return (
