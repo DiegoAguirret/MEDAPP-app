@@ -32,7 +32,7 @@ export default function TabsLayout() {
         tabBarLabelStyle: { fontFamily: family.medium, fontSize: 12 },
         headerStyle: { backgroundColor: c.ground },
         headerShadowVisible: false,
-        headerTitleStyle: { color: c.text, fontFamily: family.semibold, fontSize: 18 },
+        headerTitleStyle: { color: c.text, fontFamily: family.bold, fontSize: 18 },
         sceneStyle: { backgroundColor: c.ground },
       }}
     >

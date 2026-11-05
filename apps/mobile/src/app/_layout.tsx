@@ -1,7 +1,7 @@
-import { InstrumentSans_400Regular } from '@expo-google-fonts/instrument-sans/400Regular';
-import { InstrumentSans_500Medium } from '@expo-google-fonts/instrument-sans/500Medium';
-import { InstrumentSans_600SemiBold } from '@expo-google-fonts/instrument-sans/600SemiBold';
-import { InstrumentSerif_400Regular } from '@expo-google-fonts/instrument-serif/400Regular';
+import { Roboto_400Regular } from '@expo-google-fonts/roboto/400Regular';
+import { Roboto_500Medium } from '@expo-google-fonts/roboto/500Medium';
+import { Roboto_700Bold } from '@expo-google-fonts/roboto/700Bold';
+import { Roboto_900Black } from '@expo-google-fonts/roboto/900Black';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -42,7 +42,7 @@ function Navigator() {
         headerStyle: { backgroundColor: c.ground },
         headerShadowVisible: false,
         headerTintColor: c.text,
-        headerTitleStyle: { color: c.text, fontFamily: family.semibold, fontSize: 18 },
+        headerTitleStyle: { color: c.text, fontFamily: family.bold, fontSize: 18 },
         headerBackButtonDisplayMode: 'minimal',
         contentStyle: { backgroundColor: c.ground },
       }}
@@ -57,10 +57,10 @@ function Navigator() {
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    InstrumentSans_400Regular,
-    InstrumentSans_500Medium,
-    InstrumentSans_600SemiBold,
-    InstrumentSerif_400Regular,
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Roboto_700Bold,
+    Roboto_900Black,
   });
   const ready = loaded || error !== null;
 

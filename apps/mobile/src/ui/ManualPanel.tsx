@@ -160,15 +160,15 @@ function makeStyles(c: Palette) {
       marginBottom: space.md,
       gap: 6,
     },
-    rx: { fontFamily: family.serif, fontSize: 22, color: c.accent },
+    rx: { fontFamily: family.black, fontSize: 22, color: c.accent },
     resultAmount: {
-      fontFamily: family.serif,
+      fontFamily: family.black,
       fontSize: font.figure,
       lineHeight: 46,
       color: c.accent,
       fontVariant: ['tabular-nums'],
     },
-    resultMg: { fontFamily: family.semibold, color: c.text },
+    resultMg: { fontFamily: family.bold, color: c.text },
     resultSub: { fontFamily: family.regular, color: c.text, fontSize: 16, lineHeight: 22 },
     disclaimer: {
       fontFamily: family.regular,

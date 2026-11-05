@@ -101,7 +101,7 @@ function makeStyles(colors: Palette) {
     wrap: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
     error: { fontFamily: family.regular, color: colors.danger, fontSize: 15 },
     big: {
-      fontFamily: family.serif,
+      fontFamily: family.black,
       fontSize: 34,
       lineHeight: 40,
       color: colors.accent,

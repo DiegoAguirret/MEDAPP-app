@@ -1,4 +1,5 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { LayoutAnimation } from 'react-native';
 import type { Review } from '@medapp/content-schema';
 import { useMemo, useState, type ReactNode } from 'react';
 import {
@@ -17,11 +18,13 @@ function makeStyles(c: Palette) {
     card: {
       backgroundColor: c.surface,
       borderRadius: radius.lg,
-      padding: 20,
+      borderWidth: StyleSheet.hairlineWidth,
+      borderColor: c.border,
+      padding: space.lg,
       marginBottom: space.md,
       gap: space.md,
     },
-    section: { fontFamily: family.semibold, fontSize: 14, color: c.text },
+    section: { fontFamily: family.bold, fontSize: 14, color: c.text },
     banner: {
       flexDirection: 'row',
       gap: space.sm,
@@ -90,7 +93,7 @@ function makeStyles(c: Palette) {
       minWidth: 0,
       width: '100%',
       minHeight: 50,
-      fontFamily: family.semibold,
+      fontFamily: family.bold,
       fontSize: 22,
       color: c.text,
       fontVariant: ['tabular-nums'],
@@ -105,14 +108,14 @@ function makeStyles(c: Palette) {
       justifyContent: 'center',
       paddingHorizontal: space.xl,
     },
-    buttonText: { fontFamily: family.semibold, color: c.onInk, fontSize: font.body },
+    buttonText: { fontFamily: family.bold, color: c.onInk, fontSize: font.body },
     quiet: {
       minHeight: MIN_TOUCH,
       alignItems: 'center',
       justifyContent: 'center',
       paddingHorizontal: space.lg,
     },
-    quietText: { fontFamily: family.semibold, color: c.text, fontSize: 15 },
+    quietText: { fontFamily: family.bold, color: c.text, fontSize: 15 },
     collapsibleHead: {
       minHeight: MIN_TOUCH,
       flexDirection: 'row',
@@ -328,7 +331,10 @@ export function Collapsible({
         accessibilityRole="button"
         accessibilityState={{ expanded: open }}
         accessibilityLabel={title}
-        onPress={() => setOpen((v) => !v)}
+        onPress={() => {
+          LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+          setOpen((v) => !v);
+        }}
         style={s.collapsibleHead}
       >
         <Text style={s.collapsibleTitle}>{title}</Text>

@@ -1,13 +1,14 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import type { Category, Drug } from '@medapp/content-schema';
 import { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { searchDrugs } from '../data/content';
 import { CATEGORIES, CATEGORY_ORDER } from '../domain/categories';
-import { patientSummary, readPatient } from '../domain/patientInput';
 import { usePatient } from '../state/patient';
 import { DrugList } from './DrugRow';
-import { family, font, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
+import { PressableScale } from './motion';
+import { PatientBand } from './PatientBand';
+import { family, MIN_TOUCH, radius, space, type, useColors, type Palette } from './theme';
 
 export function Home({
   drugs,
@@ -15,6 +16,7 @@ export function Home({
   onOpenDrug,
   onOpenCategory,
   onOpenManual,
+  onOpenEmergency,
   decimalSeparator = '.',
 }: {
   decimalSeparator?: '.' | ',';
@@ -23,12 +25,12 @@ export function Home({
   onOpenDrug: (id: string) => void;
   onOpenCategory: (c: Category) => void;
   onOpenManual: () => void;
+  onOpenEmergency?: () => void;
 }) {
   const c = useColors();
   const s = useMemo(() => makeStyles(c), [c]);
   const [query, setQuery] = useState('');
   const patient = usePatient();
-  const summary = patientSummary(readPatient(patient), decimalSeparator);
   const visible = useMemo(
     () =>
       drugs.filter((d) => !recalled.has(d.id)).sort((a, b) => a.name.localeCompare(b.name, 'es')),
@@ -49,33 +51,21 @@ export function Home({
   return (
     <View style={s.screen}>
       <View style={s.head}>
-        <Text accessibilityRole="header" style={s.brand}>
-          Dosis pediátricas
-        </Text>
-        <Text style={s.lede}>
-          {visible.length} fármacos con fuentes de DIGEMID (FNME), MINSA, FDA, AEMPS y OMS.
-        </Text>
+        <View style={s.mark}>
+          <Text style={s.markText}>Rp/</Text>
+        </View>
+        <View style={s.flex}>
+          <Text accessibilityRole="header" style={s.brand}>
+            Dosis pediátricas
+          </Text>
+          <Text style={s.lede}>{visible.length} fármacos · FNME, MINSA, FDA, OMS</Text>
+        </View>
       </View>
 
-      {summary !== null ? (
-        <View style={s.patientBar}>
-          <View style={s.flex}>
-            <Text style={s.patientLabel}>Paciente actual</Text>
-            <Text style={s.patientValue}>{summary}</Text>
-          </View>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Nuevo paciente"
-            onPress={patient.clear}
-            hitSlop={10}
-          >
-            <Text style={s.patientClear}>Nuevo paciente</Text>
-          </Pressable>
-        </View>
-      ) : null}
+      <PatientBand patient={patient} decimalSeparator={decimalSeparator} />
 
       <View style={s.search}>
-        <Ionicons name="search-outline" size={20} color={c.muted} />
+        <MaterialCommunityIcons name="magnify" size={22} color={c.muted} />
         <TextInput
           accessibilityLabel="Buscar fármaco o diagnóstico"
           placeholder="Fármaco o diagnóstico"
@@ -93,7 +83,7 @@ export function Home({
             onPress={() => setQuery('')}
             hitSlop={12}
           >
-            <Ionicons name="close-circle" size={20} color={c.muted} />
+            <MaterialCommunityIcons name="close-circle" size={20} color={c.muted} />
           </Pressable>
         ) : null}
       </View>
@@ -109,51 +99,63 @@ export function Home({
         )
       ) : (
         <>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Calculadora manual"
-            onPress={onOpenManual}
-            style={({ pressed }) => [s.manual, pressed && { opacity: 0.7 }]}
-          >
-            <Ionicons name="calculator-outline" size={22} color={c.text} />
-            <View style={s.flex}>
-              <Text style={s.manualTitle}>Calculadora manual</Text>
-              <Text style={s.manualSub}>Cualquier fármaco: mg/kg, intervalo y concentración</Text>
-            </View>
-            <Ionicons name="chevron-forward" size={18} color={c.muted} />
-          </Pressable>
-
-          <View style={s.block}>
-            <Text style={s.section}>Categorías</Text>
-            <View style={s.panel}>
-              {categories.map((cat, i) => {
-                const n = counts.get(cat) ?? 0;
-                const label = CATEGORIES[cat].label;
-                return (
-                  <Pressable
-                    key={cat}
-                    accessibilityRole="button"
-                    accessibilityLabel={`${label}, ${n} fármacos`}
-                    onPress={() => onOpenCategory(cat)}
-                    style={({ pressed }) => [
-                      s.catRow,
-                      i > 0 && s.ruled,
-                      pressed && { opacity: 0.6 },
-                    ]}
-                  >
-                    <Text style={s.catLabel}>{label}</Text>
-                    <Text style={s.catCount}>{n}</Text>
-                    <Ionicons name="chevron-forward" size={18} color={c.muted} />
-                  </Pressable>
-                );
-              })}
-            </View>
+          <View style={s.quick}>
+            {onOpenEmergency ? (
+              <PressableScale
+                accessibilityRole="button"
+                accessibilityLabel="Hoja de urgencias"
+                onPress={onOpenEmergency}
+                outerStyle={s.flex}
+                style={[s.quickBtn, s.quickUrgent]}
+              >
+                <MaterialCommunityIcons name="ambulance" size={20} color="#FFFFFF" />
+                <Text style={[s.quickText, s.quickTextOn]}>Urgencias</Text>
+              </PressableScale>
+            ) : null}
+            <PressableScale
+              accessibilityRole="button"
+              accessibilityLabel="Calculadora manual"
+              onPress={onOpenManual}
+              outerStyle={s.flex}
+              style={s.quickBtn}
+            >
+              <MaterialCommunityIcons
+                name="calculator-variant-outline"
+                size={20}
+                color={c.accent}
+              />
+              <Text style={s.quickText}>Cálculo manual</Text>
+            </PressableScale>
           </View>
 
-          <View style={s.block}>
-            <Text style={s.section}>Todos los fármacos</Text>
-            <DrugList drugs={visible} onOpen={onOpenDrug} />
+          <Text style={s.section}>Categorías</Text>
+          <View style={s.grid}>
+            {categories.map((cat) => {
+              const n = counts.get(cat) ?? 0;
+              const meta = CATEGORIES[cat];
+              return (
+                <PressableScale
+                  key={cat}
+                  accessibilityRole="button"
+                  accessibilityLabel={`${meta.label}, ${n} fármacos`}
+                  onPress={() => onOpenCategory(cat)}
+                  outerStyle={s.tileOuter}
+                  style={s.tile}
+                >
+                  <View style={[s.tileIcon, { backgroundColor: meta.hue + '1F' }]}>
+                    <MaterialCommunityIcons name={meta.icon} size={22} color={meta.hue} />
+                  </View>
+                  <Text style={s.tileLabel} numberOfLines={2}>
+                    {meta.label}
+                  </Text>
+                  <Text style={s.tileCount}>{n === 1 ? '1 fármaco' : `${n} fármacos`}</Text>
+                </PressableScale>
+              );
+            })}
           </View>
+
+          <Text style={s.section}>Todos los fármacos</Text>
+          <DrugList drugs={visible} onOpen={onOpenDrug} />
         </>
       )}
     </View>
@@ -162,71 +164,87 @@ export function Home({
 
 function makeStyles(c: Palette) {
   return StyleSheet.create({
-    screen: { paddingHorizontal: 20, paddingTop: space.xl, paddingBottom: space.xxl, gap: 20 },
-    flex: { flex: 1 },
-    head: { gap: 6 },
-    brand: { fontFamily: family.serif, fontSize: 34, lineHeight: 38, color: c.text },
-    lede: { fontFamily: family.regular, fontSize: 15, lineHeight: 21, color: c.muted },
-    patientBar: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      gap: space.md,
-      backgroundColor: c.accentSoft,
-      borderRadius: radius.lg,
+    screen: {
       paddingHorizontal: space.lg,
-      paddingVertical: 12,
+      paddingTop: space.lg,
+      paddingBottom: space.xxl,
+      gap: 12,
     },
-    patientLabel: { fontFamily: family.medium, fontSize: 13, color: c.muted },
-    patientValue: {
-      fontFamily: family.semibold,
-      fontSize: 16,
-      color: c.text,
-      fontVariant: ['tabular-nums'],
+    flex: { flex: 1 },
+    head: { flexDirection: 'row', alignItems: 'center', gap: space.md },
+    mark: {
+      width: 44,
+      height: 44,
+      borderRadius: radius.md,
+      backgroundColor: c.accent,
+      alignItems: 'center',
+      justifyContent: 'center',
     },
-    patientClear: { fontFamily: family.semibold, fontSize: 14, color: c.accent },
+    markText: { fontFamily: family.black, fontSize: 17, color: c.onAccent },
+    brand: { fontFamily: family.black, fontSize: type.headline, lineHeight: 30, color: c.text },
+    lede: { fontFamily: family.regular, fontSize: type.label, color: c.muted },
     search: {
       flexDirection: 'row',
       alignItems: 'center',
       gap: space.sm,
-      minHeight: 52,
+      minHeight: 50,
       backgroundColor: c.surface,
-      borderRadius: radius.pill,
-      paddingHorizontal: 18,
+      borderRadius: radius.md,
+      borderWidth: 1,
+      borderColor: c.control,
+      paddingHorizontal: 14,
     },
     searchInput: {
       flex: 1,
       fontFamily: family.regular,
-      fontSize: font.body,
+      fontSize: 16,
       color: c.text,
       minHeight: MIN_TOUCH,
     },
-    empty: { fontFamily: family.regular, color: c.muted, fontSize: 15, lineHeight: 22 },
-    manual: {
+    empty: { fontFamily: family.regular, color: c.muted, fontSize: type.body, lineHeight: 22 },
+    quick: { flexDirection: 'row', gap: space.sm },
+    quickBtn: {
       flexDirection: 'row',
       alignItems: 'center',
-      gap: 14,
-      borderWidth: 1,
+      justifyContent: 'center',
+      gap: 8,
+      minHeight: MIN_TOUCH,
+      borderRadius: radius.md,
+      backgroundColor: c.surface,
+      borderWidth: StyleSheet.hairlineWidth,
       borderColor: c.border,
+    },
+    quickUrgent: { backgroundColor: '#C62828', borderColor: '#C62828' },
+    quickText: { fontFamily: family.bold, fontSize: 15, color: c.accent },
+    quickTextOn: { color: '#FFFFFF' },
+    section: {
+      fontFamily: family.bold,
+      fontSize: type.title,
+      color: c.text,
+      marginTop: space.sm,
+    },
+    grid: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
+    tileOuter: { width: '48.6%' },
+    tile: {
+      backgroundColor: c.surface,
       borderRadius: radius.lg,
-      paddingHorizontal: space.lg,
-      paddingVertical: 14,
+      borderWidth: StyleSheet.hairlineWidth,
+      borderColor: c.border,
+      padding: 12,
+      gap: 6,
+      minHeight: 108,
     },
-    manualTitle: { fontFamily: family.semibold, fontSize: font.body, color: c.text },
-    manualSub: { fontFamily: family.regular, fontSize: 14, color: c.muted },
-    block: { gap: 10 },
-    section: { fontFamily: family.semibold, fontSize: 14, color: c.text },
-    panel: { backgroundColor: c.surface, borderRadius: radius.lg, paddingHorizontal: space.lg },
-    catRow: {
-      flexDirection: 'row',
+    tileIcon: {
+      width: 38,
+      height: 38,
+      borderRadius: radius.sm,
       alignItems: 'center',
-      gap: space.md,
-      minHeight: 54,
+      justifyContent: 'center',
     },
-    ruled: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: c.control },
-    catLabel: { flex: 1, fontFamily: family.medium, fontSize: font.body, color: c.text },
-    catCount: {
-      fontFamily: family.regular,
-      fontSize: 15,
+    tileLabel: { fontFamily: family.bold, fontSize: 15, lineHeight: 19, color: c.text },
+    tileCount: {
+      fontFamily: family.medium,
+      fontSize: type.caption,
       color: c.muted,
       fontVariant: ['tabular-nums'],
     },

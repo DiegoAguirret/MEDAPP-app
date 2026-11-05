@@ -1,10 +1,12 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import type { Drug } from '@medapp/content-schema';
 import { useMemo } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { family, font, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
+import { StyleSheet, Text, View } from 'react-native';
+import { CATEGORIES } from '../domain/categories';
+import { PressableScale } from './motion';
+import { family, MIN_TOUCH, radius, space, type, useColors, type Palette } from './theme';
 
-/** Fila de un fármaco: nombre en la voz de receta y, debajo, para qué se usa. */
+/** Fila de un fármaco: ícono de su categoría, nombre y para qué se usa. */
 export function DrugRow({
   drug,
   onPress,
@@ -16,24 +18,31 @@ export function DrugRow({
 }) {
   const c = useColors();
   const s = useMemo(() => makeStyles(c), [c]);
+  const cat = CATEGORIES[drug.category];
   return (
-    <Pressable
+    <PressableScale
       accessibilityRole="button"
       onPress={onPress}
-      style={({ pressed }) => [s.row, !first && s.ruled, pressed && { opacity: 0.6 }]}
+      scaleTo={0.98}
+      style={[s.row, !first && s.ruled]}
     >
+      <View style={[s.chip, { backgroundColor: cat.hue + '1F' }]}>
+        <MaterialCommunityIcons name={cat.icon} size={20} color={cat.hue} />
+      </View>
       <View style={s.body}>
-        <Text style={s.title}>{drug.tallMan ?? drug.name}</Text>
+        <Text style={s.title} numberOfLines={1}>
+          {drug.tallMan ?? drug.name}
+        </Text>
         <Text style={s.sub} numberOfLines={1}>
           {drug.diagnoses.join(' · ')}
         </Text>
       </View>
-      <Ionicons name="chevron-forward" size={18} color={c.muted} />
-    </Pressable>
+      <MaterialCommunityIcons name="chevron-right" size={20} color={c.muted} />
+    </PressableScale>
   );
 }
 
-/** Lista de fármacos en un panel, separados por líneas finas. */
+/** Lista de fármacos en una tarjeta, separados por líneas finas. */
 export function DrugList({ drugs, onOpen }: { drugs: Drug[]; onOpen: (id: string) => void }) {
   const c = useColors();
   const s = useMemo(() => makeStyles(c), [c]);
@@ -51,18 +60,27 @@ function makeStyles(c: Palette) {
     panel: {
       backgroundColor: c.surface,
       borderRadius: radius.lg,
-      paddingHorizontal: space.lg,
+      paddingHorizontal: space.md,
+      borderWidth: StyleSheet.hairlineWidth,
+      borderColor: c.border,
     },
     row: {
       flexDirection: 'row',
       alignItems: 'center',
       gap: space.md,
-      minHeight: MIN_TOUCH + 16,
-      paddingVertical: space.md,
+      minHeight: MIN_TOUCH + 8,
+      paddingVertical: 9,
     },
-    ruled: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: c.control },
-    body: { flex: 1, gap: 2 },
-    title: { fontFamily: family.semibold, fontSize: font.body, color: c.text, letterSpacing: 0.2 },
-    sub: { fontFamily: family.regular, fontSize: 14, color: c.muted },
+    ruled: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: c.border },
+    chip: {
+      width: 36,
+      height: 36,
+      borderRadius: radius.sm,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    body: { flex: 1, gap: 1 },
+    title: { fontFamily: family.bold, fontSize: 16, color: c.text },
+    sub: { fontFamily: family.regular, fontSize: type.label, color: c.muted },
   });
 }

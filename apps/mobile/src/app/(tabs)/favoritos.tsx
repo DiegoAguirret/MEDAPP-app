@@ -37,6 +37,6 @@ export default function FavoritosTab() {
 const s = StyleSheet.create({
   pad: { padding: 20 },
   empty: { borderWidth: 1, borderStyle: 'dashed', borderRadius: radius.lg, padding: 20, gap: 6 },
-  emptyTitle: { fontFamily: family.semibold, fontSize: 16 },
+  emptyTitle: { fontFamily: family.bold, fontSize: 16 },
   emptyText: { fontFamily: family.regular, fontSize: 15, lineHeight: 21 },
 });

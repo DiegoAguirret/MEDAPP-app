@@ -169,7 +169,7 @@ function makeStyles(c: Palette) {
   return StyleSheet.create({
     screen: { paddingHorizontal: 20, paddingTop: space.xl, paddingBottom: space.xxl, gap: 16 },
     head: { gap: 6 },
-    title: { fontFamily: family.serif, fontSize: 34, lineHeight: 38, color: c.text },
+    title: { fontFamily: family.black, fontSize: 34, lineHeight: 38, color: c.text },
     lede: { fontFamily: family.regular, fontSize: 15, lineHeight: 21, color: c.muted },
     empty: {
       borderWidth: 1,
@@ -187,12 +187,12 @@ function makeStyles(c: Palette) {
       minHeight: MIN_TOUCH,
     },
     itemTop: { flexDirection: 'row', alignItems: 'baseline', gap: space.sm },
-    drug: { flex: 1, fontFamily: family.semibold, fontSize: 16, color: c.text },
+    drug: { flex: 1, fontFamily: family.bold, fontSize: 16, color: c.text },
     route: { fontFamily: family.medium, fontSize: 13, color: c.muted },
     indication: { fontFamily: family.regular, fontSize: 14, color: c.muted },
     doseRow: { flexDirection: 'row', alignItems: 'baseline', gap: 10, marginTop: 4 },
     amount: {
-      fontFamily: family.serif,
+      fontFamily: family.black,
       fontSize: 30,
       lineHeight: 36,
       color: c.accent,

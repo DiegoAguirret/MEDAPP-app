@@ -128,7 +128,7 @@ function makeStyles(c: Palette) {
     },
     gapTop: { marginTop: space.sm },
     row: { flexDirection: 'row', gap: space.md },
-    clear: { fontFamily: family.semibold, fontSize: 14, color: c.accent },
+    clear: { fontFamily: family.bold, fontSize: 14, color: c.accent },
     fieldGroup: { fontFamily: family.medium, fontSize: 14, color: c.muted },
     muted: { fontFamily: family.regular, fontSize: 14, lineHeight: 20, color: c.muted },
     error: { fontFamily: family.regular, color: c.danger, fontSize: 15 },

@@ -6,3 +6,4 @@ coverage/
 *.log
 .superpowers/
 .taste-skill/
+apps/mobile/.impeccable/mocks/

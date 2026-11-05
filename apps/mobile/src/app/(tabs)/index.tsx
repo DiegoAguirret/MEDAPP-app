@@ -23,6 +23,7 @@ export default function DosisTab() {
             onOpenDrug={(id) => router.push({ pathname: '/farmaco/[id]', params: { id } })}
             onOpenCategory={(id) => router.push({ pathname: '/categoria/[id]', params: { id } })}
             onOpenManual={() => router.push('/manual')}
+            onOpenEmergency={() => router.push('/urgencias')}
           />
         ) : (
           <Banner tone="danger">
