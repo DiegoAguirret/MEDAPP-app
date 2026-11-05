@@ -1,13 +1,15 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import type { Drug, Route } from '@medapp/content-schema';
 import { formatClinical } from '@medapp/dose-engine';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { emergencyItems, type EmergencyItem } from '../domain/emergency';
-import { CLINICAL_DISCLAIMER, REASON_TEXT } from '../domain/messages';
-import { ageToDays, parseWeight } from '../domain/patientInput';
+import { CLINICAL_DISCLAIMER } from '../domain/messages';
+import { readPatient } from '../domain/patientInput';
 import { scheduleText } from '../domain/schedule';
-import { Card, NumberField, SectionTitle } from './components';
+import { usePatient } from '../state/patient';
+import { SectionTitle } from './components';
+import { PatientCard } from './PatientCard';
 import { family, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
 
 /** Orden de la hoja: primero lo que salva la vida en minutos. */
@@ -42,12 +44,6 @@ function rank(id: string): number {
   return i === -1 ? ORDER.length : i;
 }
 
-function parseCount(text: string): number | null {
-  const t = text.trim();
-  if (t === '') return 0;
-  return /^\d{1,3}$/.test(t) ? Number(t) : null;
-}
-
 export function EmergencySheet({
   drugs,
   recalled,
@@ -62,25 +58,17 @@ export function EmergencySheet({
   const c = useColors();
   const s = useMemo(() => makeStyles(c), [c]);
   const fmt = (n: number) => formatClinical(n, decimalSeparator);
-  const [weightText, setWeightText] = useState('');
-  const [yearsText, setYearsText] = useState('');
-  const [monthsText, setMonthsText] = useState('');
-
-  const weight = parseWeight(weightText);
-  const years = parseCount(yearsText);
-  const months = parseCount(monthsText);
-  const hasAge = yearsText.trim() !== '' || monthsText.trim() !== '';
-  const ageDays =
-    hasAge && years !== null && months !== null && months < 12 ? ageToDays(years, months) : null;
+  const patient = usePatient();
+  const { weightKg, ageDays, complete } = readPatient(patient);
 
   const items = useMemo(
     () =>
-      weight.ok && ageDays !== null
-        ? emergencyItems(drugs, recalled, weight.kg, ageDays).sort(
+      complete && weightKg !== null && ageDays !== null
+        ? emergencyItems(drugs, recalled, weightKg, ageDays).sort(
             (a, b) => rank(a.drug.id) - rank(b.drug.id),
           )
         : [],
-    [drugs, recalled, weight, ageDays],
+    [drugs, recalled, complete, weightKg, ageDays],
   );
 
   return (
@@ -95,44 +83,12 @@ export function EmergencySheet({
         </Text>
       </View>
 
-      <Card>
-        <NumberField
-          label="Peso en kilogramos"
-          suffix="kg"
-          value={weightText}
-          onChangeText={setWeightText}
-          placeholder="0"
-        />
-        <View style={s.row}>
-          <NumberField
-            label="Edad, años"
-            suffix="años"
-            value={yearsText}
-            onChangeText={setYearsText}
-            keyboardType="number-pad"
-            placeholder="0"
-          />
-          <NumberField
-            label="Edad, meses"
-            suffix="meses"
-            value={monthsText}
-            onChangeText={setMonthsText}
-            keyboardType="number-pad"
-            placeholder="0"
-          />
-        </View>
-        {weightText.trim() !== '' && !weight.ok ? (
-          <Text style={s.error}>{REASON_TEXT.invalid_weight}</Text>
-        ) : null}
-        {hasAge && ageDays === null ? (
-          <Text style={s.error}>Revise la edad (meses de 0 a 11).</Text>
-        ) : null}
-      </Card>
+      <PatientCard patient={patient} decimalSeparator={decimalSeparator} />
 
       {items.length === 0 ? (
         <View style={[s.empty, { borderColor: c.control }]}>
           <Text style={s.emptyText}>
-            {weight.ok && ageDays !== null
+            {complete
               ? 'Ninguna dosis de urgencia aplica a este peso y edad.'
               : 'Ingresa el peso y la edad para ver las dosis.'}
           </Text>
@@ -140,7 +96,7 @@ export function EmergencySheet({
       ) : (
         <View style={s.block}>
           <SectionTitle>
-            {items.length} dosis para {fmt(weight.ok ? weight.kg : 0)} kg
+            {items.length} dosis para {fmt(weightKg ?? 0)} kg
           </SectionTitle>
           {items.map((item) => (
             <Item
@@ -213,8 +169,6 @@ function makeStyles(c: Palette) {
     head: { gap: 6 },
     title: { fontFamily: family.serif, fontSize: 34, lineHeight: 38, color: c.text },
     lede: { fontFamily: family.regular, fontSize: 15, lineHeight: 21, color: c.muted },
-    row: { flexDirection: 'row', gap: space.md },
-    error: { fontFamily: family.regular, color: c.danger, fontSize: 15 },
     empty: {
       borderWidth: 1,
       borderStyle: 'dashed',

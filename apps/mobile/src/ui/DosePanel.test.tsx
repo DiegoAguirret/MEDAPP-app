@@ -2,6 +2,7 @@ import type { Bundle } from '@medapp/content-bundle';
 import type { Drug } from '@medapp/content-schema';
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { BUNDLE_JSON } from '../content/bundled';
+import { PatientProvider } from '../state/patient';
 import { DosePanel } from './DosePanel';
 
 const bundle = JSON.parse(BUNDLE_JSON) as Bundle;
@@ -127,9 +128,19 @@ describe('DosePanel — hierro (NTS 213-MINSA 2024)', () => {
 });
 
 describe('DosePanel — oseltamivir por bandas de peso (FDA)', () => {
-  it('18 kg, 5 años en la indicación de menores de 1 año: sugiere la banda de 15.1 a 23 kg', async () => {
+  it('18 kg, 5 años: elige sola la banda de 15.1 a 23 kg', async () => {
     await show('oseltamivir');
     await fillPatient('18', '5', '0');
+    expect(screen.getByText('Elegida según la edad y el peso')).toBeOnTheScreen();
+    expect(screen.getByTestId('result-mg')).toHaveTextContent('45 mg');
+  });
+
+  it('si se elige a mano una banda que no aplica, no calcula y sugiere la correcta', async () => {
+    await show('oseltamivir');
+    await fillPatient('18', '5', '0');
+    await fireEvent.press(screen.getByLabelText('Cambiar indicación'));
+    expect(screen.getAllByText('No aplica a este paciente').length).toBeGreaterThan(0);
+    await fireEvent.press(screen.getByText(/menores de 1 año/));
     expect(screen.queryByTestId('result-mg')).toBeNull();
     expect(screen.getByText(/Para este paciente: .*15\.1 a 23 kg/)).toBeOnTheScreen();
   });
@@ -235,5 +246,31 @@ describe('DosePanel — secciones plegables', () => {
     await show('metamizol');
     await fireEvent.press(screen.getByLabelText('Contraindicaciones'));
     expect(screen.getByText(/agranulocitosis o alteraciones de la médula/)).toBeOnTheScreen();
+  });
+});
+
+describe('DosePanel — paciente compartido', () => {
+  it('amoxicilina, 18 kg y 5 años: no se queda en «Lactantes de hasta 3 meses»', async () => {
+    await show('amoxicilina');
+    await fillPatient('18', '5', '0');
+    expect(screen.queryByText(/^Lactantes de hasta 3 meses/)).toBeNull();
+    expect(screen.getByTestId('result-mg')).toBeOnTheScreen();
+  });
+
+  it('el peso y la edad escritos en una ficha aparecen en la siguiente', async () => {
+    const first = await render(
+      <PatientProvider>
+        <DosePanel drug={drug('paracetamol')} decimalSeparator="." sources={sources} />
+        <DosePanel drug={drug('ibuprofeno')} decimalSeparator="." sources={sources} />
+      </PatientProvider>,
+    );
+    const weights = screen.getAllByLabelText('Peso en kilogramos');
+    await fireEvent.changeText(weights[0]!, '10');
+    await fireEvent.changeText(screen.getAllByLabelText('Edad, años')[0]!, '2');
+    expect(screen.getAllByLabelText('Peso en kilogramos')[1]).toHaveDisplayValue('10');
+    expect(screen.getAllByTestId('result-mg')).toHaveLength(2);
+    await fireEvent.press(screen.getAllByLabelText('Nuevo paciente')[0]!);
+    expect(screen.queryAllByTestId('result-mg')).toHaveLength(0);
+    first.unmount();
   });
 });

@@ -54,7 +54,7 @@ export default function TabsLayout() {
       />
       <Tabs.Screen
         name="calculadoras"
-        options={{ title: 'Calculadoras', tabBarIcon: icon('calculator-outline', 'calculator') }}
+        options={{ title: 'Cálculos', tabBarIcon: icon('calculator-outline', 'calculator') }}
       />
       <Tabs.Screen
         name="favoritos"

@@ -13,9 +13,12 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Pressable, ScrollView, Share, StyleSheet, Text, View } from 'react-native';
 import { CATEGORIES } from '../domain/categories';
 import { isScheduled, scheduleText } from '../domain/schedule';
+import { usePatient } from '../state/patient';
+import { PatientCard } from './PatientCard';
 import { customPresentation } from '../domain/custom';
 import { CLINICAL_DISCLAIMER, REASON_TEXT, WARNING_TEXT } from '../domain/messages';
-import { ageToDays, parseWeight } from '../domain/patientInput';
+import { readPatient } from '../domain/patientInput';
+import { ruleFits } from '../domain/rules';
 import {
   Banner,
   Card,
@@ -79,12 +82,6 @@ const FORM_LABEL: Record<Presentation['form'], string> = {
 type Choice = 'min' | 'usual' | 'max';
 const CUSTOM_ID = 'personalizada';
 
-function parseInt0(text: string): number | null {
-  const t = text.trim();
-  if (t === '') return 0;
-  return /^\d{1,4}$/.test(t) ? Number(t) : null;
-}
-
 function rangeText(rule: DoseRule, fmt: (n: number) => string): string {
   const unit = BASIS_LABEL[rule.basis];
   return rule.amountMin === rule.amountMax
@@ -112,12 +109,23 @@ export function DosePanel({
   const s = useMemo(() => makeStyles(c), [c]);
   const fmt = (n: number) => formatClinical(n, decimalSeparator);
 
-  // Vía e indicación
+  // Paciente: compartido entre fichas mientras la app está abierta; nunca se guarda en disco.
+  const patient = usePatient();
+  const reading = readPatient(patient);
+  const { weightKg, ageDays, hasAge } = reading;
+  const fits = (r: DoseRule) =>
+    ageDays !== null && weightKg !== null && ruleFits(r, ageDays, weightKg);
+
+  // Vía e indicación: sin elección manual, la primera que aplica al paciente.
   const routes = [...new Set(drug.rules.map((r) => r.route))];
   const [route, setRoute] = useState<Route>(routes[0] ?? 'VO');
   const rulesForRoute = drug.rules.filter((r) => r.route === route);
-  const [ruleId, setRuleId] = useState(rulesForRoute[0]?.id ?? '');
-  const rule = rulesForRoute.find((r) => r.id === ruleId) ?? rulesForRoute[0];
+  const [pickedRuleId, setPickedRuleId] = useState<string | null>(null);
+  const autoRule = rulesForRoute.find(fits) ?? rulesForRoute[0];
+  const picked =
+    pickedRuleId === null ? undefined : rulesForRoute.find((r) => r.id === pickedRuleId);
+  const rule = picked ?? autoRule;
+  const autoChosen = picked === undefined && reading.complete && rule !== undefined && fits(rule);
   const ruleIndex = rule ? rulesForRoute.indexOf(rule) : 0;
   const [pickingRule, setPickingRule] = useState(false);
   const [choice, setChoice] = useState<Choice>('usual');
@@ -133,27 +141,6 @@ export function DosePanel({
   const presentation =
     presId === CUSTOM_ID ? custom : (allowed.find((p) => p.id === presId) ?? allowed[0]);
 
-  // Paciente: solo en memoria de esta pantalla, nunca se guarda.
-  const [weightUnit, setWeightUnit] = useState<'kg' | 'lb'>('kg');
-  const [weightText, setWeightText] = useState('');
-  const [ageMode, setAgeMode] = useState<'ym' | 'd'>('ym');
-  const [yearsText, setYearsText] = useState('');
-  const [monthsText, setMonthsText] = useState('');
-  const [daysText, setDaysText] = useState('');
-
-  const weight = parseWeight(weightText, weightUnit);
-  let ageDays: number | null;
-  let hasAge: boolean;
-  if (ageMode === 'd') {
-    hasAge = daysText.trim() !== '';
-    ageDays = parseInt0(daysText);
-  } else {
-    hasAge = yearsText.trim() !== '' || monthsText.trim() !== '';
-    const y = parseInt0(yearsText);
-    const m = parseInt0(monthsText);
-    ageDays = y !== null && m !== null && m < 12 ? ageToDays(y, m) : null;
-  }
-
   const chosenValue = !rule
     ? undefined
     : choice === 'min'
@@ -162,7 +149,6 @@ export function DosePanel({
         ? rule.amountMax
         : (rule.usual ?? rule.amountMin);
 
-  const weightKg = weight.ok ? weight.kg : null;
   const result = useMemo(() => {
     if (!rule || !presentation || weightKg === null || ageDays === null || !hasAge) return null;
     return calculateDose({
@@ -178,13 +164,7 @@ export function DosePanel({
     (result.reason === 'age_out_of_rule' || result.reason === 'weight_out_of_rule') &&
     ageDays !== null &&
     weightKg !== null
-      ? drug.rules.filter(
-          (r) =>
-            ageDays >= r.ageMinDays &&
-            (r.ageMaxDays === undefined || ageDays <= r.ageMaxDays) &&
-            (r.weightMinKg === undefined || weightKg >= r.weightMinKg) &&
-            (r.weightMaxKg === undefined || weightKg < r.weightMaxKg),
-        )
+      ? drug.rules.filter((r) => ruleFits(r, ageDays, weightKg))
       : [];
 
   const orderedSources = (rule?.sourceIds ?? [])
@@ -198,7 +178,7 @@ export function DosePanel({
   const unit = presentation ? (UNIT_LABEL[presentation.unit] ?? presentation.unit) : '';
 
   const selectRule = (r: DoseRule) => {
-    setRuleId(r.id);
+    setPickedRuleId(r.id);
     setChoice('usual');
     setPickingRule(false);
     const nextAllowed = drug.presentations.filter(
@@ -227,6 +207,12 @@ export function DosePanel({
         <ReviewBadge review={drug.review} />
       </View>
 
+      <PatientCard
+        patient={patient}
+        decimalSeparator={decimalSeparator}
+        onClear={() => setPickedRuleId(null)}
+      />
+
       <Card>
         {routes.length > 1 ? (
           <Segmented
@@ -235,8 +221,8 @@ export function DosePanel({
             value={route}
             onChange={(r) => {
               setRoute(r);
-              const first = drug.rules.find((x) => x.route === r);
-              if (first) selectRule(first);
+              setPickedRuleId(null);
+              setPickingRule(false);
             }}
           />
         ) : null}
@@ -253,6 +239,7 @@ export function DosePanel({
             <Text style={s.indicationSub}>
               {rangeText(rule, fmt)} · {scheduleText(rule)}
             </Text>
+            {autoChosen ? <Text style={s.autoHint}>Elegida según la edad y el peso</Text> : null}
           </View>
           {rulesForRoute.length > 1 ? (
             <View style={s.indicationSide}>
@@ -284,6 +271,9 @@ export function DosePanel({
                     <Text style={s.optionSub}>
                       {rangeText(r, fmt)} · {scheduleText(r)}
                     </Text>
+                    {reading.complete && !fits(r) ? (
+                      <Text style={s.optionNo}>No aplica a este paciente</Text>
+                    ) : null}
                   </View>
                   {on ? <Ionicons name="checkmark" size={20} color={c.accent} /> : null}
                 </Pressable>
@@ -333,7 +323,9 @@ export function DosePanel({
                 onPress={() => setPresId(p.id)}
                 style={[s.presCard, on && s.presCardOn]}
               >
-                <Text style={s.presForm}>{FORM_LABEL[p.form]}</Text>
+                {p.label.toLowerCase().startsWith(FORM_LABEL[p.form].toLowerCase()) ? null : (
+                  <Text style={s.presForm}>{FORM_LABEL[p.form]}</Text>
+                )}
                 <Text style={s.presLabel}>{p.label}</Text>
                 {p.brandsPE.length > 0 ? (
                   <Text style={s.presBrands} numberOfLines={2}>
@@ -377,79 +369,6 @@ export function DosePanel({
           ) : null}
         </Card>
       ) : null}
-
-      <Card>
-        <View style={s.headRow}>
-          <SectionTitle>Peso</SectionTitle>
-          <Segmented
-            label="Unidad de peso"
-            options={[
-              { value: 'kg', label: 'kg' },
-              { value: 'lb', label: 'lb' },
-            ]}
-            value={weightUnit}
-            onChange={setWeightUnit}
-          />
-        </View>
-        <NumberField
-          label={weightUnit === 'kg' ? 'Peso en kilogramos' : 'Peso en libras'}
-          suffix={weightUnit}
-          value={weightText}
-          onChangeText={setWeightText}
-          placeholder="0"
-        />
-        {weightUnit === 'lb' && weight.ok ? (
-          <Text style={s.muted}>≈ {fmt(weight.kg)} kg</Text>
-        ) : null}
-        {weightText.trim() !== '' && !weight.ok ? (
-          <Text style={s.error}>{REASON_TEXT.invalid_weight}</Text>
-        ) : null}
-
-        <View style={[s.headRow, s.gapTop]}>
-          <SectionTitle>Edad</SectionTitle>
-          <Segmented
-            label="Formato de edad"
-            options={[
-              { value: 'ym', label: 'Años y meses' },
-              { value: 'd', label: 'Días' },
-            ]}
-            value={ageMode}
-            onChange={setAgeMode}
-          />
-        </View>
-        {ageMode === 'ym' ? (
-          <View style={s.row}>
-            <NumberField
-              label="Edad, años"
-              suffix="años"
-              value={yearsText}
-              onChangeText={setYearsText}
-              keyboardType="number-pad"
-              placeholder="0"
-            />
-            <NumberField
-              label="Edad, meses"
-              suffix="meses"
-              value={monthsText}
-              onChangeText={setMonthsText}
-              keyboardType="number-pad"
-              placeholder="0"
-            />
-          </View>
-        ) : (
-          <NumberField
-            label="Edad en días"
-            suffix="días"
-            value={daysText}
-            onChangeText={setDaysText}
-            keyboardType="number-pad"
-            placeholder="0"
-          />
-        )}
-        {hasAge && ageDays === null ? (
-          <Text style={s.error}>Revise la edad (meses de 0 a 11).</Text>
-        ) : null}
-      </Card>
 
       {result?.status === 'not_calculable' ? (
         <Banner tone="warning">
@@ -643,6 +562,10 @@ function makeStyles(c: Palette) {
     },
     presCardOn: { borderColor: c.ink, borderWidth: 2, padding: 13 },
     presCustom: { borderStyle: 'dashed', borderColor: c.control, justifyContent: 'center' },
+    clear: { fontFamily: family.semibold, fontSize: 14, color: c.accent },
+    fieldGroup: { fontFamily: family.medium, fontSize: 14, color: c.muted },
+    autoHint: { fontFamily: family.medium, fontSize: 13, color: c.accent, marginTop: 4 },
+    optionNo: { fontFamily: family.regular, fontSize: 12, color: c.warning, marginTop: 2 },
     presForm: { fontFamily: family.regular, color: c.muted, fontSize: 13 },
     presLabel: { fontFamily: family.semibold, color: c.text, fontSize: 15, lineHeight: 20 },
     presBrands: { fontFamily: family.regular, color: c.muted, fontSize: 13, lineHeight: 18 },

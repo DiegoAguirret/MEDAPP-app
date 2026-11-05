@@ -8,6 +8,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, type ReactNode } from 'react';
 import { useColorScheme } from 'react-native';
+import { PatientProvider } from '../state/patient';
 import { SettingsProvider, useSettings } from '../state/settings';
 import { Onboarding } from '../ui/Onboarding';
 import { darkColors, family, lightColors, ThemeContext, type Palette } from '../ui/theme';
@@ -70,9 +71,11 @@ export default function RootLayout() {
   if (!ready) return null;
   return (
     <SettingsProvider>
-      <Themed>
-        <Navigator />
-      </Themed>
+      <PatientProvider>
+        <Themed>
+          <Navigator />
+        </Themed>
+      </PatientProvider>
     </SettingsProvider>
   );
 }

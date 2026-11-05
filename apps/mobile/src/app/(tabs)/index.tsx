@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getContent } from '../../state/content';
+import { useSettings } from '../../state/settings';
 import { Banner } from '../../ui/components';
 import { Home } from '../../ui/Home';
 import { space, useColors } from '../../ui/theme';
@@ -9,12 +10,14 @@ import { space, useColors } from '../../ui/theme';
 export default function DosisTab() {
   const content = getContent();
   const c = useColors();
+  const { decimal } = useSettings();
 
   return (
     <SafeAreaView style={[s.flex, { backgroundColor: c.ground }]} edges={['top']}>
       <ScrollView keyboardShouldPersistTaps="handled">
         {content.ok ? (
           <Home
+            decimalSeparator={decimal}
             drugs={content.bundle.drugs}
             recalled={content.recalled}
             onOpenDrug={(id) => router.push({ pathname: '/farmaco/[id]', params: { id } })}

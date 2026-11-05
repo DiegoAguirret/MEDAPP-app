@@ -1,4 +1,4 @@
-import { ageToDays, parseHeight, parseWeight } from './patientInput';
+import { ageToDays, parseHeight, parseWeight, patientSummary, readPatient } from './patientInput';
 import { customPresentation, manualRule } from './custom';
 
 describe('parseWeight', () => {
@@ -102,5 +102,60 @@ describe('manualRule', () => {
     expect(
       manualRule({ amountText: 'abc', basis: 'mg/kg/dose', intervalHours: 6, maxPerDoseText: '' }),
     ).toBeNull();
+  });
+});
+
+describe('readPatient', () => {
+  const empty = {
+    weightUnit: 'kg' as const,
+    weightText: '',
+    ageMode: 'ym' as const,
+    yearsText: '',
+    monthsText: '',
+    daysText: '',
+  };
+
+  it('is incomplete when weight or age is missing', () => {
+    expect(readPatient({ ...empty, weightText: '12' }).complete).toBe(false);
+    expect(readPatient({ ...empty, yearsText: '2' }).complete).toBe(false);
+  });
+
+  it('12 kg, 2 años 0 meses → complete, 730 días', () => {
+    const p = readPatient({ ...empty, weightText: '12', yearsText: '2' });
+    expect(p).toMatchObject({ complete: true, weightKg: 12, ageDays: 730 });
+  });
+
+  it('reads pounds and days', () => {
+    const p = readPatient({
+      ...empty,
+      weightUnit: 'lb',
+      weightText: '22',
+      ageMode: 'd',
+      daysText: '90',
+    });
+    expect(p.weightKg).toBeCloseTo(9.979, 3);
+    expect(p.ageDays).toBe(90);
+  });
+
+  it('rejects 12 or more months', () => {
+    const p = readPatient({ ...empty, weightText: '10', yearsText: '1', monthsText: '12' });
+    expect(p.ageDays).toBeNull();
+    expect(p.ageInvalid).toBe(true);
+  });
+
+  it('summarises for the patient bar', () => {
+    expect(
+      patientSummary(
+        readPatient({ ...empty, weightText: '12', yearsText: '2', monthsText: '3' }),
+        '.',
+      ),
+    ).toBe('12 kg · 2 a 3 m');
+    expect(
+      patientSummary(
+        readPatient({ ...empty, weightText: '4.5', ageMode: 'd', daysText: '40' }),
+        ',',
+      ),
+    ).toBe('4,5 kg · 40 días');
+    expect(patientSummary(readPatient(empty), '.')).toBeNull();
   });
 });

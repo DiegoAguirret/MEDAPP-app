@@ -4,6 +4,8 @@ import { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { searchDrugs } from '../data/content';
 import { CATEGORIES, CATEGORY_ORDER } from '../domain/categories';
+import { patientSummary, readPatient } from '../domain/patientInput';
+import { usePatient } from '../state/patient';
 import { DrugList } from './DrugRow';
 import { family, font, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
 
@@ -13,7 +15,9 @@ export function Home({
   onOpenDrug,
   onOpenCategory,
   onOpenManual,
+  decimalSeparator = '.',
 }: {
+  decimalSeparator?: '.' | ',';
   drugs: Drug[];
   recalled: Set<string>;
   onOpenDrug: (id: string) => void;
@@ -23,6 +27,8 @@ export function Home({
   const c = useColors();
   const s = useMemo(() => makeStyles(c), [c]);
   const [query, setQuery] = useState('');
+  const patient = usePatient();
+  const summary = patientSummary(readPatient(patient), decimalSeparator);
   const visible = useMemo(
     () =>
       drugs.filter((d) => !recalled.has(d.id)).sort((a, b) => a.name.localeCompare(b.name, 'es')),
@@ -50,6 +56,23 @@ export function Home({
           {visible.length} fármacos con fuentes de DIGEMID (FNME), MINSA, FDA, AEMPS y OMS.
         </Text>
       </View>
+
+      {summary !== null ? (
+        <View style={s.patientBar}>
+          <View style={s.flex}>
+            <Text style={s.patientLabel}>Paciente actual</Text>
+            <Text style={s.patientValue}>{summary}</Text>
+          </View>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Nuevo paciente"
+            onPress={patient.clear}
+            hitSlop={10}
+          >
+            <Text style={s.patientClear}>Nuevo paciente</Text>
+          </Pressable>
+        </View>
+      ) : null}
 
       <View style={s.search}>
         <Ionicons name="search-outline" size={20} color={c.muted} />
@@ -144,6 +167,23 @@ function makeStyles(c: Palette) {
     head: { gap: 6 },
     brand: { fontFamily: family.serif, fontSize: 34, lineHeight: 38, color: c.text },
     lede: { fontFamily: family.regular, fontSize: 15, lineHeight: 21, color: c.muted },
+    patientBar: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: space.md,
+      backgroundColor: c.accentSoft,
+      borderRadius: radius.lg,
+      paddingHorizontal: space.lg,
+      paddingVertical: 12,
+    },
+    patientLabel: { fontFamily: family.medium, fontSize: 13, color: c.muted },
+    patientValue: {
+      fontFamily: family.semibold,
+      fontSize: 16,
+      color: c.text,
+      fontVariant: ['tabular-nums'],
+    },
+    patientClear: { fontFamily: family.semibold, fontSize: 14, color: c.accent },
     search: {
       flexDirection: 'row',
       alignItems: 'center',
