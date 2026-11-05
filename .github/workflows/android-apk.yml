@@ -2,11 +2,10 @@ name: APK de prueba (Android)
 
 # Compila el APK de prueba en Linux (sin el límite de 260 caracteres de Windows)
 # y lo publica como pre-release del repositorio.
+# Solo se ejecuta a mano (pestaña Actions → «Run workflow»), para no gastar minutos de
+# GitHub Actions en cada subida.
 on:
   workflow_dispatch:
-  push:
-    branches: [main, feat/verificacion-clinica]
-    paths: ['apps/mobile/**', 'packages/**', 'content/**', '.github/workflows/android-apk.yml']
 
 permissions:
   contents: write
