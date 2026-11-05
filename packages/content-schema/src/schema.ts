@@ -62,10 +62,12 @@ export const presentationSchema = z.object({
     'supositorio',
     'ampolla',
     'nebulizacion',
+    'inhalador',
+    'granulado',
   ]),
   /** mg contenidos en una unidad (`unit`). Suspensión 250 mg/5 mL → 50 (mg por mL). */
   mgPerUnit: positive,
-  unit: z.enum(['mL', 'gota', 'tableta', 'capsula', 'supositorio']),
+  unit: z.enum(['mL', 'gota', 'tableta', 'capsula', 'supositorio', 'puff', 'sobre']),
   /** Menor cantidad medible de `unit` (0.1 mL, 0.5 tableta, 1 supositorio). */
   step: positive,
   brandsPE: z.array(z.string().min(1)),

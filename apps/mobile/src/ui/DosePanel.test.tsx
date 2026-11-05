@@ -303,3 +303,13 @@ describe('DosePanel — neonatos', () => {
     expect(screen.getByText(/no es para menores de 1 mes/)).toBeOnTheScreen();
   });
 });
+
+describe('DosePanel — inhaladores (puffs)', () => {
+  it('salbutamol, 14 kg y 3 años: inhalador con aerocámara, 4 puffs cada 20 min', async () => {
+    await show('salbutamol');
+    await fillPatient('14', '3', '0');
+    expect(screen.getByTestId('result-amount')).toHaveTextContent('4 puffs');
+    expect(screen.getAllByText(/repetir a los 20 min si es necesario/).length).toBeGreaterThan(0);
+    expect(screen.getByText('Máximo de dosis')).toBeOnTheScreen();
+  });
+});

@@ -67,6 +67,8 @@ const UNIT_LABEL: Record<string, string> = {
   tableta: 'tableta(s)',
   capsula: 'cápsula(s)',
   supositorio: 'supositorio(s)',
+  puff: 'puffs',
+  sobre: 'sobre(s)',
 };
 const FORM_LABEL: Record<Presentation['form'], string> = {
   suspension: 'Suspensión',
@@ -77,6 +79,8 @@ const FORM_LABEL: Record<Presentation['form'], string> = {
   supositorio: 'Supositorio',
   ampolla: 'Ampolla',
   nebulizacion: 'Nebulización',
+  inhalador: 'Inhalador',
+  granulado: 'Granulado',
 };
 
 type Choice = 'min' | 'usual' | 'max';

@@ -1,0 +1,49 @@
+id: ipratropio
+name: Ipratropio (bromuro)
+category: respiratorio
+emergency: true
+synonyms: [bromuro de ipratropio, ipratropium]
+atc: R03BB01
+presentations:
+  - id: inh-20
+    label: Inhalador 0.02 mg (20 µg) por puff, con aerocámara
+    form: inhalador
+    mgPerUnit: 0.02
+    unit: puff
+    step: 1
+    brandsPE: []
+rules:
+  - id: crisis-hasta-5
+    indication: Crisis asmática moderada o severa, junto al salbutamol (5 años o menos)
+    route: INH
+    ageMinDays: 29
+    ageMaxDays: 2189
+    basis: fixed_by_age
+    amountMin: 0.08
+    amountMax: 0.08
+    usual: 0.08
+    repeatMinutes: { min: 20, max: 20 }
+    maxDoses: 3
+    maxPerDoseMg: 0.08
+    maxPerDayMg: 0.24
+    notes: >-
+      GINA 2025 — en crisis moderadamente severa o severa en niños de 5 años o menos, agregar 4 puffs
+      de 20 µg con el salbutamol cada 20 min, hasta 3 dosis. FNME — aerosol de 20 µg por dosis.
+    presentationIds: [inh-20]
+    sourceIds: [gina-2025, fnme-2008]
+warnings:
+  - Siempre junto al salbutamol, no en lugar de él (GINA 2025).
+contraindications:
+  - Hipersensibilidad al ipratropio o a los alcaloides de la belladona.
+diagnoses: [asma, crisis asmática, broncoespasmo, sibilancias, sob]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: crisis-hasta-5
+    presentationId: inh-20
+    weightKg: 14
+    ageDays: 1095
+    expect: { mgPerDose: 0.08, amount: 4, unit: puff }

@@ -298,3 +298,24 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=27009a05-4d2b-4618-be76-39f348240eda
   kind: regulador
   country: US
+- id: fda-montelukast
+  title: Singulair (montelukast) tablets, chewable tablets and oral granules — prescribing information (FDA, DailyMed set 482dcc92-b47f-4ea6-854a-f5ac2aea7842)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=482dcc92-b47f-4ea6-854a-f5ac2aea7842
+  kind: regulador
+  country: US
+- id: fda-desloratadine-sol
+  title: Desloratadine oral solution — prescribing information (FDA, DailyMed set 41d5e0d4-6188-847b-e063-6294a90a2e2f)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=41d5e0d4-6188-847b-e063-6294a90a2e2f
+  kind: regulador
+  country: US
+- id: fda-levocetirizine
+  title: Xyzal (levocetirizine) tablets and oral solution — prescribing information (FDA, DailyMed set 1673f7ff-0c7c-4403-86cf-c05eb1475222)
+  publisher: U.S. FDA / National Library of Medicine
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=1673f7ff-0c7c-4403-86cf-c05eb1475222
+  kind: regulador
+  country: US

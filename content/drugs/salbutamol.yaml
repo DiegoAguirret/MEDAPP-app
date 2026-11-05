@@ -19,6 +19,13 @@ presentations:
     unit: mL
     step: 0.1
     brandsPE: []
+  - id: inh-100
+    label: Inhalador 0.1 mg (100 µg) por puff, con aerocámara
+    form: inhalador
+    mgPerUnit: 0.1
+    unit: puff
+    step: 1
+    brandsPE: []
   - id: tab-4
     label: Tableta 4 mg
     form: tableta
@@ -27,6 +34,39 @@ presentations:
     step: 0.5
     brandsPE: []
 rules:
+  - id: crisis-inhalador-hasta-5
+    indication: Crisis asmática con inhalador y aerocámara (5 años o menos)
+    route: INH
+    ageMinDays: 29
+    ageMaxDays: 2189
+    basis: fixed_by_age
+    amountMin: 0.4
+    amountMax: 0.6
+    repeatMinutes: { min: 20, max: 20 }
+    maxDoses: 3
+    maxPerDoseMg: 0.6
+    maxPerDayMg: 1.8
+    notes: >-
+      GINA 2025 — niños de 5 años o menos: 4 a 6 puffs de 100 µg con inhalador y aerocámara, una vez
+      en crisis leve y cada 20 min hasta 3 veces en la primera hora en crisis moderada o severa.
+    presentationIds: [inh-100]
+    sourceIds: [gina-2025, fnme-2008]
+  - id: crisis-inhalador-6-o-mas
+    indication: Crisis asmática con inhalador y aerocámara (6 años o más)
+    route: INH
+    ageMinDays: 2190
+    basis: fixed_by_age
+    amountMin: 0.4
+    amountMax: 1
+    repeatMinutes: { min: 20, max: 20 }
+    maxDoses: 3
+    maxPerDoseMg: 1
+    maxPerDayMg: 3
+    notes: >-
+      GINA 2025 — adultos, adolescentes y niños de 6 a 11 años: 4 a 10 puffs cada 20 min, hasta 3
+      dosis en la primera hora, en crisis leve a moderada. FNME — aerosol de 100 µg por dosis.
+    presentationIds: [inh-100]
+    sourceIds: [gina-2025, fnme-2008]
   - id: crisis-nebulizado
     indication: Crisis asmática o broncoespasmo (nebulizado)
     route: INH
@@ -103,6 +143,16 @@ review:
   reviewers: []
   reviewedAt: 2026-11-04
 testCases:
+  - ruleId: crisis-inhalador-hasta-5
+    presentationId: inh-100
+    weightKg: 14
+    ageDays: 1095
+    expect: { mgPerDose: 0.4, amount: 4, unit: puff }
+  - ruleId: crisis-inhalador-6-o-mas
+    presentationId: inh-100
+    weightKg: 25
+    ageDays: 2920
+    expect: { mgPerDose: 0.4, amount: 4, unit: puff }
   - ruleId: crisis-nebulizado
     presentationId: neb-5
     weightKg: 14

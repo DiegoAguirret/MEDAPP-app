@@ -29,7 +29,7 @@ const ROUTE_SHORT: Record<Route, string> = {
   IM: 'IM',
   IR: 'Rectal',
   SL: 'SL',
-  INH: 'Nebulizado',
+  INH: 'Inhalado',
 };
 const UNIT_LABEL: Record<string, string> = {
   mL: 'mL',
@@ -37,6 +37,8 @@ const UNIT_LABEL: Record<string, string> = {
   tableta: 'tableta(s)',
   capsula: 'cápsula(s)',
   supositorio: 'supositorio(s)',
+  puff: 'puffs',
+  sobre: 'sobre(s)',
 };
 
 function rank(id: string): number {

@@ -207,3 +207,19 @@ En las reglas repetibles o de dosis única, `maxPerDayMg` es el **máximo acumul
 
 - **Ampicilina neonatal:** el texto de la OMS dice 50 mg/kg, pero su tabla de volúmenes (250 mg/1.5 mL) equivale a unos 100 mg/kg. El FNME da dosis **por día** (50–100 mg/kg/día según peso y edad) y su texto escaneado está dañado. Con tres cifras que no coinciden, no se calcula.
 - **Cefotaxima y cloxacilina neonatales:** dependen de si el bebé es prematuro, y la app todavía no pregunta la edad gestacional.
+
+## Lote 4: alergia y asma — verificado el 05/11/2026
+
+**Unidades nuevas:** `puff` (inhalador) y `sobre` (granulado). El resultado se lee como «4 puffs».
+
+| Fármaco                       | Dosis                                                                                                    | Fuentes                                           |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| Salbutamol inhalador (crisis) | 5 años o menos: 4–6 puffs de 100 µg; 6 años o más: 4–10 puffs; cada 20 min, hasta 3 dosis en la 1.ª hora | GINA 2025; FNME (aerosol de 100 µg)               |
+| Ipratropio inhalador (crisis) | 5 años o menos, crisis moderada o severa: 4 puffs de 20 µg con el salbutamol, cada 20 min × 3            | GINA 2025; FNME (aerosol de 20 µg)                |
+| Montelukast                   | 6–23 meses: 4 mg en granulado; 2–5 años: 4 mg; 6–14 años: 5 mg; 15 años o más: 10 mg; una vez al día     | FDA (incluye el recuadro negro neuropsiquiátrico) |
+| Desloratadina                 | 6–11 meses: 1 mg; 1–5 años: 1.25 mg; 6–11 años: 2.5 mg; 12 años o más: 5 mg                              | FDA (solución oral 0.5 mg/mL)                     |
+| Levocetirizina                | 6 meses a 5 años: 1.25 mg; 6–11 años: 2.5 mg; 12 años o más: 5 mg                                        | FDA (Xyzal)                                       |
+
+### No incluido
+
+- **Dexametasona en crup o asma:** las fuentes no dan un tope en mg. Además, la única presentación oral del FNME es la tableta de 0.5 mg, que no sirve para estas dosis.
