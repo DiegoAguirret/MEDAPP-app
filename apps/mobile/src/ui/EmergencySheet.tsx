@@ -1,4 +1,4 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import type { Drug, Route } from '@medapp/content-schema';
 import { formatClinical } from '@medapp/dose-engine';
 import { useMemo } from 'react';
@@ -86,7 +86,7 @@ export function EmergencySheet({
     <View style={s.screen}>
       <View style={s.head}>
         <View style={s.headIcon}>
-          <Ionicons name="medkit" size={22} color="#FFFFFF" />
+          <MaterialCommunityIcons name="alarm-light" size={24} color="#FFFFFF" />
         </View>
         <View style={s.flex}>
           <Text accessibilityRole="header" style={s.title}>

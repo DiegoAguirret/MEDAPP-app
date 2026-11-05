@@ -1,7 +1,15 @@
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import type { Category, Drug } from '@medapp/content-schema';
-import { useMemo, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import {
+  LayoutAnimation,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import { searchDrugs } from '../data/content';
 import { CATEGORIES, CATEGORY_ORDER } from '../domain/categories';
 import { readPatient } from '../domain/patientInput';
@@ -13,7 +21,16 @@ import { Enter, PressableScale, Reveal } from './motion';
 import { PatientBand } from './PatientBand';
 import { PatientCard } from './PatientCard';
 import { Tip } from './Tip';
-import { family, MIN_TOUCH, radius, space, type, useColors, type Palette } from './theme';
+import {
+  family,
+  MIN_TOUCH,
+  radius,
+  space,
+  type,
+  useColors,
+  WEB_NO_OUTLINE,
+  type Palette,
+} from './theme';
 
 /** Destino del índice alfabético completo (las categorías lo engloban; no se repite abajo). */
 export const ALL_DRUGS = 'todos';
@@ -45,6 +62,28 @@ export function Home({
   const [query, setQuery] = useState('');
   const patient = usePatient();
   const { complete } = readPatient(patient);
+  // Mientras se escribe, la tarjeta no se reemplaza por la franja (faltarían los meses).
+  const [typing, setTyping] = useState(false);
+  const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(
+    () => () => {
+      if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    },
+    [],
+  );
+  const onEditingChange = (editing: boolean) => {
+    if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    if (editing) {
+      setTyping(true);
+      return;
+    }
+    // Pasar de un campo a otro dispara blur y luego focus: se espera un instante.
+    leaveTimer.current = setTimeout(() => {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+      setTyping(false);
+    }, 150);
+  };
+  const showBand = complete && !typing;
   const tips = useTipQueue([
     ['paciente', !complete],
     ['franja', complete],
@@ -88,10 +127,15 @@ export function Home({
         </View>
       </View>
 
-      {complete ? (
+      {showBand ? (
         <PatientBand patient={patient} decimalSeparator={decimalSeparator} />
       ) : (
-        <PatientCard patient={patient} decimalSeparator={decimalSeparator} intro />
+        <PatientCard
+          patient={patient}
+          decimalSeparator={decimalSeparator}
+          intro
+          onEditingChange={onEditingChange}
+        />
       )}
       <Tip id="paciente" queue={tips} />
       <Tip id="franja" queue={tips} />
@@ -104,7 +148,7 @@ export function Home({
           placeholderTextColor={c.muted}
           value={query}
           onChangeText={setQuery}
-          style={s.searchInput}
+          style={[s.searchInput, WEB_NO_OUTLINE]}
           autoCorrect={false}
           returnKeyType="search"
         />

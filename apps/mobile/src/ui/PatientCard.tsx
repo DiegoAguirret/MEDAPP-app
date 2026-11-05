@@ -16,6 +16,7 @@ export function PatientCard({
   onClear,
   hideClear = false,
   intro = false,
+  onEditingChange,
 }: {
   patient: PatientState;
   decimalSeparator: '.' | ',';
@@ -24,12 +25,18 @@ export function PatientCard({
   hideClear?: boolean;
   /** En el inicio: pregunta por el paciente y muestra la cinta, que se marca al escribir el peso. */
   intro?: boolean;
+  /** true al enfocar un campo, false al salir de todos. */
+  onEditingChange?: (editing: boolean) => void;
 }) {
   const c = useColors();
   const s = useMemo(() => makeStyles(c), [c]);
   const fmt = (n: number) => formatClinical(n, decimalSeparator);
   const { weight, ageInvalid } = readPatient(patient);
   const zone = weight.ok ? weightZone(weight.kg) : null;
+  const focus = {
+    onFocus: () => onEditingChange?.(true),
+    onBlur: () => onEditingChange?.(false),
+  };
   const hasData =
     patient.weightText !== '' ||
     patient.yearsText !== '' ||
@@ -37,7 +44,7 @@ export function PatientCard({
     patient.daysText !== '';
 
   return (
-    <Card>
+    <Card style={intro ? { marginBottom: 0 } : undefined}>
       <View style={s.headRow}>
         {intro ? (
           <Text accessibilityRole="header" style={s.introTitle}>
@@ -81,6 +88,7 @@ export function PatientCard({
             value={patient.weightText}
             onChangeText={(v) => patient.update({ weightText: v })}
             placeholder="0"
+            {...focus}
           />
         </View>
         {patient.ageMode === 'ym' ? (
@@ -92,6 +100,7 @@ export function PatientCard({
               onChangeText={(v) => patient.update({ yearsText: v })}
               keyboardType="number-pad"
               placeholder="0"
+              {...focus}
             />
             <NumberField
               label="Edad, meses"
@@ -100,6 +109,7 @@ export function PatientCard({
               onChangeText={(v) => patient.update({ monthsText: v })}
               keyboardType="number-pad"
               placeholder="0"
+              {...focus}
             />
           </>
         ) : (
@@ -111,6 +121,7 @@ export function PatientCard({
               onChangeText={(v) => patient.update({ daysText: v })}
               keyboardType="number-pad"
               placeholder="0"
+              {...focus}
             />
           </View>
         )}

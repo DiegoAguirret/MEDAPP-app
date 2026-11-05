@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react';
+import { Platform, type TextStyle } from 'react-native';
 
 /**
  * Sistema visual «cinta de colores por peso»: tarjetas blancas sobre fondo gris frío, tinta
@@ -123,3 +124,10 @@ export const MIN_TOUCH = 48;
 
 export const ThemeContext = createContext<Palette>(lightColors);
 export const useColors = (): Palette => useContext(ThemeContext);
+
+/**
+ * Vista web: quita el contorno de foco del navegador en campos que ya marcan el foco con su
+ * propio borde (en Android no existe).
+ */
+export const WEB_NO_OUTLINE: TextStyle | undefined =
+  Platform.OS === 'web' ? ({ outlineStyle: 'none' } as unknown as TextStyle) : undefined;

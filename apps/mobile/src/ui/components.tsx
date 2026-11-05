@@ -11,7 +11,16 @@ import {
   type TextInputProps,
   type ViewStyle,
 } from 'react-native';
-import { family, font, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
+import {
+  family,
+  font,
+  MIN_TOUCH,
+  radius,
+  space,
+  useColors,
+  WEB_NO_OUTLINE,
+  type Palette,
+} from './theme';
 
 function makeStyles(c: Palette) {
   return StyleSheet.create({
@@ -274,17 +283,26 @@ export function NumberField({
 } & Omit<TextInputProps, 'style'>) {
   const s = useStyles();
   const c = useColors();
+  const [focused, setFocused] = useState(false);
   return (
     <View style={s.field}>
       <Text style={s.fieldLabel}>{caption ?? label}</Text>
-      <View style={s.inputRow}>
+      <View style={[s.inputRow, focused && { borderColor: c.accent }]}>
         <TextInput
           accessibilityLabel={label}
           keyboardType="decimal-pad"
           inputMode="decimal"
-          style={s.input}
+          style={[s.input, WEB_NO_OUTLINE]}
           placeholderTextColor={c.muted}
           {...props}
+          onFocus={(e) => {
+            setFocused(true);
+            props.onFocus?.(e);
+          }}
+          onBlur={(e) => {
+            setFocused(false);
+            props.onBlur?.(e);
+          }}
         />
         {suffix ? <Text style={s.suffix}>{suffix}</Text> : null}
       </View>

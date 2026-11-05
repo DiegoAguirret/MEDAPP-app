@@ -1,6 +1,6 @@
 import type { Bundle } from '@medapp/content-bundle';
 import type { Drug } from '@medapp/content-schema';
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react-native';
 import { Text } from 'react-native';
 import { BUNDLE_JSON } from '../content/bundled';
 import { SettingsProvider, useSettings } from '../state/settings';
@@ -69,6 +69,20 @@ describe('Home', () => {
     expect(screen.getByText('¿Para quién es la dosis?')).toBeOnTheScreen();
     await fireEvent.changeText(screen.getByLabelText('Peso en kilogramos'), '12');
     expect(screen.getByText('Franja amarilla · 12–14 kg')).toBeOnTheScreen();
+  });
+
+  it('keeps the patient fields while typing and shows the band after leaving them', async () => {
+    await render(<Home drugs={drugs} recalled={new Set()} {...handlers()} />);
+    await fireEvent.changeText(screen.getByLabelText('Peso en kilogramos'), '20');
+    await fireEvent(screen.getByLabelText('Edad, años'), 'focus');
+    await fireEvent.changeText(screen.getByLabelText('Edad, años'), '5');
+    expect(screen.getByLabelText('Edad, meses')).toBeOnTheScreen();
+    await fireEvent(screen.getByLabelText('Edad, años'), 'blur');
+    await fireEvent(screen.getByLabelText('Edad, meses'), 'focus');
+    await fireEvent.changeText(screen.getByLabelText('Edad, meses'), '3');
+    await fireEvent(screen.getByLabelText('Edad, meses'), 'blur');
+    await waitFor(() => expect(screen.queryByLabelText('Edad, meses')).toBeNull());
+    expect(screen.getByText(/20 kg · 5 a 3 m/)).toBeOnTheScreen();
   });
 
   it('shows recent drugs and opens them', async () => {
