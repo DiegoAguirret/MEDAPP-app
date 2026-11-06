@@ -16,6 +16,7 @@ import { Onboarding } from './Onboarding';
 const bundle = JSON.parse(BUNDLE_JSON) as Bundle;
 const drugs = bundle.drugs as Drug[];
 const antibiotics = `Antibióticos, ${drugs.filter((d) => d.category === 'antibiotico').length} fármacos`;
+const analgesics = drugs.filter((d) => d.category === 'analgesico');
 
 describe('Home', () => {
   const handlers = () => ({
@@ -28,7 +29,9 @@ describe('Home', () => {
     await render(<Home drugs={drugs} recalled={new Set()} {...handlers()} />);
     expect(screen.getByText('Antibióticos')).toBeOnTheScreen();
     expect(screen.getByLabelText(antibiotics)).toBeOnTheScreen();
-    expect(screen.getByLabelText('Analgésicos y antipiréticos, 3 fármacos')).toBeOnTheScreen();
+    expect(
+      screen.getByLabelText(`Analgésicos y antipiréticos, ${analgesics.length} fármacos`),
+    ).toBeOnTheScreen();
   });
 
   it('opens a category', async () => {
@@ -99,7 +102,9 @@ describe('Home', () => {
 
   it('hides recalled drugs from the counts', async () => {
     await render(<Home drugs={drugs} recalled={new Set(['metamizol'])} {...handlers()} />);
-    expect(screen.getByLabelText('Analgésicos y antipiréticos, 2 fármacos')).toBeOnTheScreen();
+    expect(
+      screen.getByLabelText(`Analgésicos y antipiréticos, ${analgesics.length - 1} fármacos`),
+    ).toBeOnTheScreen();
   });
 });
 
