@@ -1,0 +1,93 @@
+id: hidrocortisona
+name: Hidrocortisona
+category: corticoide
+synonyms: [hydrocortisone, Solu-Cortef]
+presentations:
+  - id: frasco-100
+    label: Frasco 100 mg reconstituido en 2 mL (50 mg/mL)
+    form: ampolla
+    mgPerUnit: 50
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: insuficiencia-suprarrenal
+    indication: Insuficiencia suprarrenal, IM o IV
+    route: IV
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 0.2
+    amountMax: 0.2
+    usual: 0.2
+    intervalHours: 8
+    maxPerDoseMg: 10
+    maxPerDayMg: 30
+    notes: FNME — niños, IM o IV 0.2 mg/kg/dosis c/8 h. La fuente no da tope en mg (el tope de la regla es técnico, 0.2 mg/kg con 50 kg).
+    presentationIds: [frasco-100]
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+  - id: asma-sin-via-oral
+    indication: Asma aguda grave, solo si no tolera la vía oral
+    route: IV
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 4
+    amountMax: 4
+    usual: 4
+    intervalHours: 4
+    maxPerDoseMg: 200
+    maxPerDayMg: 1200
+    notes: >-
+      OMS (Pocket Book 2013) — la hidrocortisona IV (4 mg/kg c/4 h) no aporta beneficio y solo se considera
+      en niños que no retienen la medicación oral. El tope de la regla es técnico (4 mg/kg con 50 kg).
+    presentationIds: [frasco-100]
+    sourceIds: [who-pocket-2013, digemid-pnume-2023]
+  - id: alergia-severa
+    indication: Enfermedad alérgica severa, IM
+    route: IM
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 0.5
+    amountMax: 4
+    usual: 0.5
+    intervalHours: 12
+    maxPerDoseMg: 200
+    maxPerDayMg: 400
+    notes: >-
+      FNME — niños, IM 0.5 a 4 mg/kg a intervalos de 12 a 24 h. La OMS usa dosis fijas por edad (25 mg en
+      menores de 6 meses, 50 mg de 6 meses a 6 años, 100 mg de 6 a 12 años, hasta 4 veces al día). El tope
+      de la regla es técnico.
+    presentationIds: [frasco-100]
+    sourceIds: [fnme-2008, who-mfc-2010, digemid-pnume-2023]
+warnings:
+  - La concentración de 50 mg/mL es la del frasco de 100 mg en 2 mL de la ficha FDA (sistema Act-O-Vial); confirmar con el frasco disponible.
+  - Se ha descrito miocardiopatía hipertrófica en prematuros que recibieron hidrocortisona (FDA).
+contraindications:
+  - Infecciones sistémicas sin tratamiento antimicrobiano específico.
+  - Infección sistémica por hongos.
+  - Vacunas con virus vivos en pacientes con dosis inmunosupresoras.
+interactions:
+  - AINE, alcohol y anticoagulantes orales aumentan el riesgo de úlcera o hemorragia digestiva (FNME).
+  - Anfotericina B y acetazolamida pueden producir hipopotasemia severa (FNME).
+  - Con insulina, puede requerir ajustar la dosis (FNME).
+  - Digitálicos y diuréticos, arritmias o toxicidad digitálica por hipopotasemia (FNME).
+renal: OMS — no es necesario reducir la dosis.
+diagnoses: [insuficiencia suprarrenal, asma grave, reacción alérgica severa, anafilaxia]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: insuficiencia-suprarrenal
+    presentationId: frasco-100
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 4, amount: 0.08, unit: mL }
+  - ruleId: asma-sin-via-oral
+    presentationId: frasco-100
+    weightKg: 15
+    ageDays: 1460
+    expect: { mgPerDose: 60, amount: 1.2, unit: mL }

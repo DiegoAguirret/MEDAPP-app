@@ -439,3 +439,15 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=42c758be-4d44-018a-e063-6294a90ae041
   kind: regulador
   country: US
+- id: fda-morphine-oral
+  title: Morfina solución oral 2 mg/mL — prescribing information (FDA, set 6e32b869-31c7-48c1-98ae-b21bd28151d7)
+  publisher: U.S. FDA / PAI
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=6e32b869-31c7-48c1-98ae-b21bd28151d7
+  kind: regulador
+  country: US
+- id: fda-hydrocortisone-inj
+  title: Solu-Cortef (hidrocortisona succinato sódico) — prescribing information (FDA, set f5bb0854-a477-4e59-914b-eeeaef92a596)
+  publisher: U.S. FDA / Pfizer
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=f5bb0854-a477-4e59-914b-eeeaef92a596
+  kind: regulador
+  country: US

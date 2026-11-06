@@ -1,0 +1,62 @@
+id: morfina
+name: Morfina (oral)
+category: analgesico
+synonyms: [morphine, opioide]
+presentations:
+  - id: liq-10-5
+    label: Solución oral 10 mg/5 mL (2 mg/mL)
+    form: solucion
+    mgPerUnit: 2
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: dolor-2-anos-o-mas
+    indication: Dolor moderado a severo, inicio (2 años o más)
+    route: VO
+    ageMinDays: 730
+    basis: mg/kg/dose
+    amountMin: 0.15
+    amountMax: 0.3
+    usual: 0.15
+    intervalHours: 4
+    maxPerDoseMg: 20
+    maxPerDayMg: 120
+    notes: >-
+      FDA (solución oral 2 mg/mL) — iniciar con 0.15 a 0.3 mg/kg c/4 h según necesidad, con la menor dosis
+      que alivie; no pasar de 20 mg como dosis inicial. OMS — de 2 a 12 años, 0.2 a 0.5 mg/kg c/4 h
+      (máximo 20 mg).
+    sourceIds: [fda-morphine-oral, who-mfc-2010, digemid-pnume-2023]
+warnings:
+  - Riesgo de depresión respiratoria potencialmente mortal; vigilar sobre todo al inicio y al subir la dosis (FDA, recuadro negro).
+  - La solución de 20 mg/mL no tiene seguridad ni eficacia establecidas en pediatría (FDA); usar la de 2 mg/mL.
+  - Medicamento de alto riesgo; confirmar la concentración antes de medir.
+contraindications:
+  - Depresión respiratoria importante.
+  - Asma aguda o grave sin monitoreo ni equipo de reanimación.
+  - Uso de IMAO en los últimos 14 días.
+interactions:
+  - Benzodiazepinas y otros depresores del sistema nervioso central, sedación profunda, depresión respiratoria y muerte (FDA, recuadro negro).
+  - Relajantes musculares, más depresión respiratoria (FDA, FNME).
+  - Metoclopramida antagoniza su efecto gastrointestinal (OMS, FNME).
+renal: >-
+  OMS — insuficiencia leve a moderada, reducir la dosis 25 %; grave, reducir 50 % o evitar. FDA — iniciar
+  con una dosis menor de la habitual y subir despacio.
+diagnoses: [dolor severo, dolor oncológico, cuidados paliativos]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: dolor-2-anos-o-mas
+    presentationId: liq-10-5
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 3, amount: 1.5, unit: mL }
+  - ruleId: dolor-2-anos-o-mas
+    presentationId: liq-10-5
+    weightKg: 80
+    ageDays: 5000
+    chosenMgPerKg: 0.3
+    expect: { mgPerDose: 20, amount: 10, unit: mL, capped: true }
