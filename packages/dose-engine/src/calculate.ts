@@ -13,6 +13,7 @@ const scheduleMinutes = (r: { min: number; max: number }): string =>
 
 export function calculateDose(input: CalculateInput): DoseResult {
   const { rule, presentation, patient, chosenMgPerKg } = input;
+  const u = input.doseUnit ?? 'mg';
   const { weightKg, ageDays } = patient;
 
   if (!(weightKg > 0) || weightKg > MAX_WEIGHT_KG) {
@@ -55,28 +56,28 @@ export function calculateDose(input: CalculateInput): DoseResult {
     toDose = (a) => weightKg * a;
     steps.push({
       label: 'Dosis por toma',
-      expression: `${f(weightKg)} kg × ${f(selected)} mg/kg`,
-      result: `${f(toDose(selected))} mg`,
+      expression: `${f(weightKg)} kg × ${f(selected)} ${u}/kg`,
+      result: `${f(toDose(selected))} ${u}`,
     });
   } else if (rule.basis === 'mg/kg/day') {
     toDose = (a) => (weightKg * a) / dosesPerDay;
     const daily = weightKg * selected;
     steps.push({
       label: 'Dosis diaria',
-      expression: `${f(weightKg)} kg × ${f(selected)} mg/kg/día`,
-      result: `${f(daily)} mg/día`,
+      expression: `${f(weightKg)} kg × ${f(selected)} ${u}/kg/día`,
+      result: `${f(daily)} ${u}/día`,
     });
     steps.push({
       label: 'Dosis por toma',
-      expression: `${f(daily)} mg ÷ ${f(dosesPerDay)} tomas`,
-      result: `${f(daily / dosesPerDay)} mg`,
+      expression: `${f(daily)} ${u} ÷ ${f(dosesPerDay)} tomas`,
+      result: `${f(daily / dosesPerDay)} ${u}`,
     });
   } else {
     toDose = (a) => a;
     steps.push({
       label: 'Dosis por edad',
       expression: 'Dosis fija según la edad',
-      result: `${f(selected)} mg`,
+      result: `${f(selected)} ${u}`,
     });
   }
 
@@ -90,11 +91,11 @@ export function calculateDose(input: CalculateInput): DoseResult {
       label: 'Tope aplicado',
       expression:
         cappedBy === 'per_dose'
-          ? `Máximo ${f(rule.maxPerDoseMg)} mg por toma`
+          ? `Máximo ${f(rule.maxPerDoseMg)} ${u} por toma`
           : rule.intervalHours !== undefined
-            ? `Máximo ${f(rule.maxPerDayMg)} mg/día ÷ ${f(dosesPerDay)} tomas`
-            : `Máximo acumulado ${f(rule.maxPerDayMg)} mg ÷ ${f(dosesPerDay)} dosis`,
-      result: `${f(cap)} mg`,
+            ? `Máximo ${f(rule.maxPerDayMg)} ${u}/día ÷ ${f(dosesPerDay)} tomas`
+            : `Máximo acumulado ${f(rule.maxPerDayMg)} ${u} ÷ ${f(dosesPerDay)} dosis`,
+      result: `${f(cap)} ${u}`,
     });
   }
   const chosen = Math.min(raw, cap);
@@ -129,7 +130,7 @@ export function calculateDose(input: CalculateInput): DoseResult {
   const unitLabel = presentation.unit;
   steps.push({
     label: 'Cantidad',
-    expression: `${f(chosen)} mg ÷ ${f(presentation.mgPerUnit)} mg/${unitLabel}`,
+    expression: `${f(chosen)} ${u} ÷ ${f(presentation.mgPerUnit)} ${u}/${unitLabel}`,
     result: `${f(rounding.value)} ${unitLabel}`,
   });
 

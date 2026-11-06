@@ -398,3 +398,14 @@ describe('DosePanel — guías de uso', () => {
     expect(screen.getByTestId('result-amount')).toHaveTextContent('6.3 mL');
   });
 });
+
+describe('DosePanel — dosis en UI', () => {
+  it('una ficha con doseUnit UI muestra UI en el rango y en el resultado, nunca mg', async () => {
+    const asUI = { ...drug('paracetamol'), doseUnit: 'UI' as const };
+    await render(<DosePanel drug={asUI} decimalSeparator="." sources={sources} />);
+    await fireEvent.press(screen.getByText('Jarabe 120 mg/5 mL'));
+    await fillPatient('10', '1', '1');
+    expect(screen.getByTestId('result-mg')).toHaveTextContent('150 UI');
+    expect(screen.getAllByText(/UI\/kg/).length).toBeGreaterThan(0);
+  });
+});

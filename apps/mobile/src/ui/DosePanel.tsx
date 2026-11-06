@@ -94,8 +94,11 @@ const FORM_LABEL: Record<Presentation['form'], string> = {
 type Choice = 'min' | 'usual' | 'max';
 const CUSTOM_ID = 'personalizada';
 
-function rangeText(rule: DoseRule, fmt: (n: number) => string): string {
-  const unit = BASIS_LABEL[rule.basis];
+/** «mg/kg/dosis» o, si la ficha dosifica en UI, «UI/kg/dosis». */
+const basisLabel = (rule: DoseRule, du: 'mg' | 'UI') => BASIS_LABEL[rule.basis].replace('mg', du);
+
+function rangeText(rule: DoseRule, fmt: (n: number) => string, du: 'mg' | 'UI' = 'mg'): string {
+  const unit = basisLabel(rule, du);
   return rule.amountMin === rule.amountMax
     ? `${fmt(rule.amountMin)} ${unit}`
     : `${fmt(rule.amountMin)}–${fmt(rule.amountMax)} ${unit}`;
@@ -120,6 +123,7 @@ export function DosePanel({
   const c = useColors();
   const s = useMemo(() => makeStyles(c), [c]);
   const fmt = (n: number) => formatClinical(n, decimalSeparator);
+  const du = drug.doseUnit ?? 'mg';
 
   // Paciente: compartido entre fichas mientras la app está abierta; nunca se guarda en disco.
   const patient = usePatient();
@@ -168,12 +172,13 @@ export function DosePanel({
   const result = useMemo(() => {
     if (!rule || !presentation || weightKg === null || ageDays === null || !hasAge) return null;
     return calculateDose({
+      doseUnit: du,
       rule: presentation.id === CUSTOM_ID ? withoutPresentationLimit(rule) : rule,
       presentation,
       patient: { weightKg, ageDays },
       ...(chosenValue === undefined ? {} : { chosenMgPerKg: chosenValue }),
     });
-  }, [rule, presentation, weightKg, ageDays, hasAge, chosenValue]);
+  }, [rule, presentation, weightKg, ageDays, hasAge, chosenValue, du]);
 
   const fittingRules =
     result?.status === 'not_calculable' &&
@@ -219,7 +224,7 @@ export function DosePanel({
     result?.status === 'ok' && presentation
       ? `${drug.name} ${presentation.label}: ${amountText} ${ROUTE_RX[rule.route]} ${scheduleText(rule)}` +
         (rule.durationText ? `, ${rule.durationText}` : '') +
-        ` (${fmt(result.mgPerDose.chosen)} mg por toma; ${fmt(result.mgPerDay)} mg/día).`
+        ` (${fmt(result.mgPerDose.chosen)} ${du} por toma; ${fmt(result.mgPerDay)} ${du}/día).`
       : '';
 
   return (
@@ -301,7 +306,7 @@ export function DosePanel({
           <View style={s.flex}>
             <Text style={s.indicationTitle}>{rule.indication}</Text>
             <View style={s.indicationMeta}>
-              <Text style={s.rangePill}>{rangeText(rule, fmt)}</Text>
+              <Text style={s.rangePill}>{rangeText(rule, fmt, du)}</Text>
               <Text style={s.indicationSub}>{scheduleText(rule)}</Text>
             </View>
             {autoChosen ? <Text style={s.autoHint}>Elegida según la edad y el peso</Text> : null}
@@ -337,7 +342,7 @@ export function DosePanel({
                 <View style={s.flex}>
                   <Text style={s.optionText}>{r.indication}</Text>
                   <View style={s.indicationMeta}>
-                    <Text style={s.rangePill}>{rangeText(r, fmt)}</Text>
+                    <Text style={s.rangePill}>{rangeText(r, fmt, du)}</Text>
                     <Text style={s.optionSub}>{scheduleText(r)}</Text>
                   </View>
                   {no ? <Text style={s.optionNo}>No aplica a este paciente</Text> : null}
@@ -350,7 +355,7 @@ export function DosePanel({
         {rule.amountMin !== rule.amountMax ? (
           <View style={s.wrap}>
             <Chip
-              label={`Mínima ${fmt(rule.amountMin)} ${BASIS_LABEL[rule.basis]}`}
+              label={`Mínima ${fmt(rule.amountMin)} ${basisLabel(rule, du)}`}
               selected={choice === 'min'}
               onPress={() => setChoice('min')}
             />
@@ -358,13 +363,13 @@ export function DosePanel({
             rule.usual !== rule.amountMin &&
             rule.usual !== rule.amountMax ? (
               <Chip
-                label={`Habitual ${fmt(rule.usual)} ${BASIS_LABEL[rule.basis]}`}
+                label={`Habitual ${fmt(rule.usual)} ${basisLabel(rule, du)}`}
                 selected={choice === 'usual'}
                 onPress={() => setChoice('usual')}
               />
             ) : null}
             <Chip
-              label={`Máxima ${fmt(rule.amountMax)} ${BASIS_LABEL[rule.basis]}`}
+              label={`Máxima ${fmt(rule.amountMax)} ${basisLabel(rule, du)}`}
               selected={choice === 'max' || (choice === 'usual' && rule.usual === rule.amountMax)}
               onPress={() => setChoice('max')}
             />
@@ -468,7 +473,7 @@ export function DosePanel({
           </Reveal>
           <Text style={s.resultLine}>
             <Text testID="result-mg" style={s.resultMg}>
-              {fmt(result.mgPerDose.chosen)} mg
+              {fmt(result.mgPerDose.chosen)} {du}
             </Text>
             {` por ${isScheduled(rule) ? 'toma' : 'dosis'} · ${ROUTE_RX[rule.route]} ${scheduleText(rule)}`}
           </Text>
@@ -476,19 +481,19 @@ export function DosePanel({
             {isScheduled(rule) ? (
               <>
                 <Fact s={s} label="Tomas al día" value={fmt(result.dosesPerDay)} />
-                <Fact s={s} label="Total diario" value={`${fmt(result.mgPerDay)} mg`} />
+                <Fact s={s} label="Total diario" value={`${fmt(result.mgPerDay)} ${du}`} />
               </>
             ) : null}
             {rule.maxDoses !== undefined ? (
               <Fact s={s} label="Máximo de dosis" value={fmt(rule.maxDoses)} />
             ) : null}
             {!isScheduled(rule) ? (
-              <Fact s={s} label="Tope por dosis" value={`${fmt(rule.maxPerDoseMg)} mg`} />
+              <Fact s={s} label="Tope por dosis" value={`${fmt(rule.maxPerDoseMg)} ${du}`} />
             ) : null}
             <Fact
               s={s}
               label={isScheduled(rule) ? 'Rango por toma' : 'Rango por dosis'}
-              value={`${fmt(result.mgPerDose.min)}–${fmt(result.mgPerDose.max)} mg`}
+              value={`${fmt(result.mgPerDose.min)}–${fmt(result.mgPerDose.max)} ${du}`}
             />
             {rule.durationText ? <Fact s={s} label="Duración" value={rule.durationText} /> : null}
           </View>

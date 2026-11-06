@@ -516,3 +516,27 @@ describe('calculateDose — urgencias (dosis repetibles y únicas)', () => {
     expect(r.steps.find((s) => s.label === 'Frecuencia')?.expression).toBe('Dosis única');
   });
 });
+
+describe('calculateDose — unidades internacionales (UI)', () => {
+  it('con doseUnit UI, los pasos dicen UI y nunca mg', () => {
+    const r = ok(
+      calculateDose({
+        rule: rule({
+          basis: 'mg/kg/dose',
+          amountMin: 50000,
+          amountMax: 50000,
+          usual: 50000,
+          maxPerDoseMg: 2400000,
+          maxPerDayMg: 2400000,
+        }),
+        presentation: presentation({ mgPerUnit: 300000, unit: 'mL', step: 0.1 }),
+        patient: toddler,
+        doseUnit: 'UI',
+      }),
+    );
+    expect(r.mgPerDose.chosen).toBe(500000);
+    const text = r.steps.map((s) => `${s.expression} ${s.result}`).join(' | ');
+    expect(text).toContain('UI/kg');
+    expect(text).not.toMatch(/\bmg\b/);
+  });
+});

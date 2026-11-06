@@ -249,3 +249,16 @@ Cada cifra se confirmó en el documento descargado (texto de openFDA, el FNME 20
 - **Vancomicina, dosis de la OMS (15 mg/kg c/8 h):** no se usa. No se pudo confirmar en el texto descargado.
 - **Topes técnicos:** donde la fuente no da tope en mg, el tope de la regla es técnico (dosis máxima por kg × 50 kg, o 1 a 5 kg en neonatos), y la nota lo dice.
 - **Interacciones y ajuste renal:** se agregan a las 7 fichas nuevas como secciones propias.
+
+## Neonatología: puntajes — verificado el 05/11/2026
+
+| Puntaje            | Tabla (signos y puntos)                                       | Interpretación                                                                                                     | Notas                                                                   |
+| ------------------ | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| Apgar              | NTS 214-MINSA/DGIESP-2024 (RM 545-2024), pág. 24–25           | ACOG 644 / AAP 2015: 7–10 tranquilizador, 4–6 moderadamente anormal, 0–3 bajo (5 min, término y pretérmino tardío) | MINSA no da franjas. La NTS 214 reemplaza a la NTS 106 (2013).          |
+| Silverman-Andersen | MINSA, GPC Atención del Recién Nacido 2007, pág. 132          | MINSA Nicaragua, Normativa 108 (2013): leve 0–3, moderada 4–6, severa >6                                           | Las franjas de la GPC 2007 se solapan («superior a 3» y «entre 3 y 5»). |
+| Capurro somático   | NTS 214, Anexo 4, pág. 61–62: 5 criterios; (puntos + 204) / 7 | Semanas y días; ± 9 días (NTS 106)                                                                                 | Pliegues, 3.ª opción: «1/3 anterior» (NTS 106); la NTS 214 dice «1/2».  |
+
+**No incluido:**
+
+- **Capurro somato-neurológico:** no está en ninguna fuente MINSA Perú; solo en la NOM-007 de México, con puntos somáticos distintos.
+- **Franjas de pretérmino y término:** no están en las fuentes peruanas.

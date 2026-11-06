@@ -181,7 +181,9 @@ function Item({
       </View>
       <View style={s.dose}>
         <Text style={s.amount}>{amount}</Text>
-        <Text style={s.mg}>{fmt(result.mgPerDose.chosen)} mg</Text>
+        <Text style={s.mg}>
+          {fmt(result.mgPerDose.chosen)} {drug.doseUnit ?? 'mg'}
+        </Text>
       </View>
     </PressableScale>
   );

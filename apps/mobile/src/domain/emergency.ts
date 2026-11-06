@@ -29,7 +29,12 @@ export function emergencyItems(
         (p) => rule.presentationIds === undefined || rule.presentationIds.includes(p.id),
       );
       if (!presentation) continue;
-      const result = calculateDose({ rule, presentation, patient: { weightKg, ageDays } });
+      const result = calculateDose({
+        rule,
+        presentation,
+        patient: { weightKg, ageDays },
+        doseUnit: drug.doseUnit ?? 'mg',
+      });
       if (result.status === 'ok') items.push({ drug, rule, presentation, result });
     }
   }
