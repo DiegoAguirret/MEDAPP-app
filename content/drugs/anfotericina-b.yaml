@@ -1,0 +1,62 @@
+id: anfotericina-b
+name: Anfotericina B (desoxicolato)
+category: antifungico
+synonyms: [amphotericin B, amfotericina]
+presentations:
+  - id: frasco-50
+    label: Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 %
+    form: ampolla
+    mgPerUnit: 5
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: dosis-diaria
+    indication: Infecciones micóticas sistémicas graves (1 mes o más)
+    route: IV
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 0.25
+    amountMax: 1
+    usual: 0.25
+    intervalHours: 24
+    maxPerDoseMg: 50
+    maxPerDayMg: 50
+    notes: >-
+      FDA — empezar con la dosis más baja, 0.25 mg/kg, y subir de forma gradual; nunca más de 1.5 mg/kg. Infundir
+      en unas 2 a 6 horas, diluida a 0.1 mg/mL. El tope de la regla es técnico (1 mg/kg con 50 kg).
+    presentationIds: [frasco-50]
+    sourceIds: [fda-amphotericin, digemid-pnume-2023]
+    countryNotes:
+      - country: PE
+        text: El FNME indica 0.5 a 1 mg/kg/día «con intervalos de 6 h»; la FDA y la OMS la dan una vez al día. Se sigue la FDA.
+        sourceIds: [fnme-2008]
+warnings:
+  - Nunca dar más de 1.5 mg/kg; verificar el nombre del producto y la dosis antes de administrar (FDA, recuadro negro).
+  - Se recomienda una dosis de prueba antes de la primera infusión y observar al paciente 30 minutos (OMS).
+  - No diluir en solución salina; usar dextrosa al 5 %.
+  - Vigilar función renal, potasio y magnesio.
+contraindications:
+  - Hipersensibilidad a la anfotericina B.
+interactions:
+  - Con corticoides (dexametasona, hidrocortisona), mayor riesgo de hipopotasemia (OMS).
+renal: OMS — no requiere reducir la dosis; FDA — usar con cuidado y vigilar la función renal.
+diagnoses: [candidiasis sistémica, criptococosis, micosis sistémica, leishmaniasis]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: dosis-diaria
+    presentationId: frasco-50
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 5, amount: 1, unit: mL }
+  - ruleId: dosis-diaria
+    presentationId: frasco-50
+    weightKg: 20
+    ageDays: 2190
+    chosenMgPerKg: 1
+    expect: { mgPerDose: 20, amount: 4, unit: mL }

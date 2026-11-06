@@ -322,3 +322,18 @@ Cada cifra se confirmó en el documento descargado (texto de openFDA, el FNME 20
 - **Budesonida:** dosis por niveles de GINA, no por peso.
 - **Combinaciones dispersables de TB:** no están en el PNUME 2023.
 - **Morfina IV:** ninguna fuente da la dilución del vial.
+
+## Lote 8B: vitamina K, nistatina, anfotericina B y lidocaína — verificado el 06/11/2026
+
+| Fármaco        | Reglas                                         | Fuente principal               | Cifras                                                                                     |
+| -------------- | ---------------------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------ |
+| Fitomenadiona  | Profilaxis neonatal >1500 g; sangrado neonatal | NTS 214-MINSA 2024; FNME = FDA | 1 mg (0.1 mL) IM en las primeras 6 h; tratamiento 1 mg IM o SC                             |
+| Nistatina (UI) | Neonatos; <5 años; >5 años                     | FNME (FDA concuerda)           | 100 000; 200 000; 400 000–600 000 UI c/6 h                                                 |
+| Anfotericina B | Dosis diaria, 1 mes o más                      | FDA                            | 0.25 → 1 mg/kg/día; nunca más de 1.5 mg/kg; 5 mg/mL reconstituida, 0.1 mg/mL para infundir |
+| Lidocaína 2 %  | Infiltración sin epinefrina, dosis máxima      | FNME = FDA                     | 4.5 mg/kg, total máximo 300 mg                                                             |
+
+**No incluido y discrepancias:**
+
+- **Vitamina K en prematuros de 1500 g o menos:** la NTS 214 escribe «0.3 mg mg/kg (0.03 mL)»; los volúmenes indican dosis fijas. No se calcula hasta confirmarlo.
+- **Anfotericina B:** el FNME dice «c/6 h»; la FDA y la OMS, una vez al día. Se sigue la FDA y se muestra la diferencia.
+- **Lidocaína:** no se usan el máximo de la OMS (3 mg/kg) ni la lidocaína con epinefrina, porque no se confirmaron en el texto descargado.

@@ -1,0 +1,72 @@
+id: fitomenadiona
+name: Fitomenadiona (vitamina K1)
+category: vitamina
+synonyms: [vitamina K, phytonadione]
+presentations:
+  - id: amp-10
+    label: Fitomenadiona 10 mg/mL (ampolla)
+    form: ampolla
+    mgPerUnit: 10
+    unit: mL
+    step: 0.01
+    brandsPE: []
+rules:
+  - id: profilaxis-mayor-1500
+    indication: Profilaxis de la enfermedad hemorrágica, recién nacido de más de 1500 g
+    route: IM
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 1
+    weightMinKg: 1.501
+    basis: fixed_by_age
+    amountMin: 1
+    amountMax: 1
+    usual: 1
+    once: true
+    maxPerDoseMg: 1
+    maxPerDayMg: 1
+    notes: >-
+      NTS 214-MINSA 2024 — a todo recién nacido, dentro de las primeras 6 horas de vida, IM en la cara
+      anterolateral externa del muslo izquierdo; con más de 1500 g, 1 mg (0.1 mL). FNME y FDA — 0.5 a 1 mg IM.
+    presentationIds: [amp-10]
+    sourceIds: [minsa-nts214-2024, fnme-2008, fda-phytonadione, digemid-pnume-2023]
+  - id: sangrado-neonatal
+    indication: Tratamiento de la enfermedad hemorrágica del recién nacido
+    route: IM
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    basis: fixed_by_age
+    amountMin: 1
+    amountMax: 1
+    usual: 1
+    once: true
+    maxPerDoseMg: 1
+    maxPerDayMg: 1
+    notes: FNME — 1 mg IM o SC. FDA — 1 mg SC o IM; pueden necesitarse dosis mayores si la madre recibió anticoagulantes orales.
+    presentationIds: [amp-10]
+    sourceIds: [fnme-2008, fda-phytonadione]
+warnings:
+  - En prematuros de 1500 g o menos, la NTS 214 escribe «0.3 mg mg/kg (0.03 mL) a 0.5 mg (0.05 mL) mg/kg»; los volúmenes indican dosis fijas de 0.3 a 0.5 mg. No se calcula hasta confirmarlo.
+  - Riesgo de reacciones de hipersensibilidad graves, incluso mortales, por vía IV o IM; se prefiere la vía SC cuando es posible (FDA, recuadro negro).
+  - Por vía IV, inyectar muy lento, sin pasar de 1 mg por minuto (FDA, FNME).
+contraindications:
+  - Hipersensibilidad a la fitomenadiona o a sus componentes.
+renal: FNME y OMS — sin ajuste.
+diagnoses: [profilaxis neonatal, enfermedad hemorrágica del recién nacido, déficit de vitamina K]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: profilaxis-mayor-1500
+    presentationId: amp-10
+    weightKg: 3.2
+    ageDays: 0
+    expect: { mgPerDose: 1, amount: 0.1, unit: mL }
+  - ruleId: sangrado-neonatal
+    presentationId: amp-10
+    weightKg: 3
+    ageDays: 5
+    expect: { mgPerDose: 1, amount: 0.1, unit: mL }

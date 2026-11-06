@@ -1,0 +1,52 @@
+id: lidocaina
+name: Lidocaína (anestesia local)
+category: otro
+synonyms: [lidocaine, xilocaína, anestésico local]
+presentations:
+  - id: amp-2
+    label: Lidocaína 2 % sin epinefrina (20 mg/mL)
+    form: ampolla
+    mgPerUnit: 20
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: infiltracion-maxima
+    indication: Infiltración o bloqueo de nervio periférico, sin epinefrina — dosis máxima total
+    route: IM
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 4.5
+    amountMax: 4.5
+    usual: 4.5
+    once: true
+    maxPerDoseMg: 300
+    maxPerDayMg: 300
+    notes: >-
+      FNME — niños, inyectable al 2 %: infiltración y bloqueo de nervio periférico hasta 4.5 mg/kg. FDA — sin
+      epinefrina, la dosis individual máxima no debe pasar de 4.5 mg/kg, y en general la dosis total máxima no
+      debe pasar de 300 mg. Es el máximo, no la dosis habitual: usar la menor dosis eficaz.
+    presentationIds: [amp-2]
+    sourceIds: [fnme-2008, fda-lidocaine, digemid-pnume-2023]
+warnings:
+  - Es un tope de seguridad, no una dosis a administrar; usar la menor dosis eficaz (FDA).
+contraindications:
+  - Alergia a los anestésicos locales de tipo amida.
+renal: En insuficiencia renal se acumulan sus metabolitos; no hay un ajuste numérico en las fuentes.
+diagnoses: [anestesia local, infiltración, sutura]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: infiltracion-maxima
+    presentationId: amp-2
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 90, amount: 4.5, unit: mL }
+  - ruleId: infiltracion-maxima
+    presentationId: amp-2
+    weightKg: 80
+    ageDays: 5500
+    expect: { mgPerDose: 300, amount: 15, unit: mL, capped: true }

@@ -496,3 +496,34 @@
   url: https://iris.who.int/server/api/core/bitstreams/f0881050-5ddb-4db3-abc3-2d7918b61989/content
   kind: guia
   country: INT
+- id: fda-phytonadione
+  title: Fitomenadiona (vitamina K1) inyectable — prescribing information (FDA, set 02a39690-38e6-42e9-9897-391c2df9e07e)
+  publisher: U.S. FDA / Fresenius Kabi
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=02a39690-38e6-42e9-9897-391c2df9e07e
+  kind: regulador
+  country: US
+- id: fda-nystatin
+  title: Nistatina suspensión oral — prescribing information (FDA, set 28b4e26e-206a-4e8a-abfe-774b780e91c3)
+  publisher: U.S. FDA / PAI
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=28b4e26e-206a-4e8a-abfe-774b780e91c3
+  kind: regulador
+  country: US
+- id: fda-amphotericin
+  title: Anfotericina B (desoxicolato) para inyección — prescribing information (FDA, set a0a54943-9ce4-4f3e-b681-a1a9144c16ce)
+  publisher: U.S. FDA / XGen
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=a0a54943-9ce4-4f3e-b681-a1a9144c16ce
+  kind: regulador
+  country: US
+- id: fda-lidocaine
+  title: Xylocaine (lidocaína) inyectable — prescribing information (FDA, set 4dd52202-8eef-4136-92dd-ada573b7cf74)
+  publisher: U.S. FDA / Fresenius Kabi
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=4dd52202-8eef-4136-92dd-ada573b7cf74
+  kind: regulador
+  country: US
+- id: minsa-nts214-2024
+  title: NTS N° 214-MINSA/DGIESP-2024, Norma Técnica de Salud para la Atención Integral de Salud Neonatal (RM 545-2024/MINSA)
+  publisher: Ministerio de Salud del Perú
+  year: 2024
+  url: https://bvs.minsa.gob.pe/local/MINSA/7546.pdf
+  kind: norma-peru
+  country: PE

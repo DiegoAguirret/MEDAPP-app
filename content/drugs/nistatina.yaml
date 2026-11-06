@@ -1,0 +1,84 @@
+id: nistatina
+name: Nistatina
+category: antifungico
+doseUnit: UI
+synonyms: [nystatin]
+presentations:
+  - id: susp-100000
+    label: Suspensión oral 100 000 UI/mL
+    form: suspension
+    mgPerUnit: 100000
+    unit: mL
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: neonatos
+    indication: Candidiasis oral, neonatos y prematuros
+    route: VO
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    basis: fixed_by_age
+    amountMin: 100000
+    amountMax: 100000
+    usual: 100000
+    intervalHours: 6
+    maxPerDoseMg: 100000
+    maxPerDayMg: 400000
+    notes: FNME — neonatos y prematuros, 100 000 UI de suspensión oral 4 veces al día. FDA — prematuros y bajo peso, 1 mL (100 000 U) 4 veces al día.
+    sourceIds: [fnme-2008, fda-nystatin, digemid-pnume-2023]
+  - id: menores-5-anos
+    indication: Candidiasis oral (1 mes a menos de 5 años)
+    route: VO
+    ageMinDays: 29
+    ageMaxDays: 1825
+    basis: fixed_by_age
+    amountMin: 200000
+    amountMax: 200000
+    usual: 200000
+    intervalHours: 6
+    maxPerDoseMg: 200000
+    maxPerDayMg: 800000
+    notes: FNME — menores de 5 años, 200 000 UI de suspensión oral 4 veces al día. FDA — lactantes, 2 mL (200 000 U) 4 veces al día; seguir al menos 48 h después de que desaparezcan los síntomas.
+    sourceIds: [fnme-2008, fda-nystatin, digemid-pnume-2023]
+  - id: mayores-5-anos
+    indication: Candidiasis orofaríngea (más de 5 años)
+    route: VO
+    ageMinDays: 1826
+    basis: fixed_by_age
+    amountMin: 400000
+    amountMax: 600000
+    usual: 400000
+    intervalHours: 6
+    maxPerDoseMg: 600000
+    maxPerDayMg: 2400000
+    durationText: 14 días (FNME).
+    notes: FNME — niños mayores de 5 años, suspensión oral 400 000 a 600 000 UI cuatro veces al día por 14 días.
+    sourceIds: [fnme-2008, fda-nystatin, digemid-pnume-2023]
+warnings:
+  - La OMS usa 100 000 UI 4 veces al día a todas las edades, por 7 días y 2 días más después de la curación.
+contraindications:
+  - Hipersensibilidad a la nistatina.
+renal: FNME — pobre o casi nula absorción por el tracto gastrointestinal; sin ajuste.
+diagnoses: [candidiasis oral, muguet, hongos]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: neonatos
+    presentationId: susp-100000
+    weightKg: 3.2
+    ageDays: 10
+    expect: { mgPerDose: 100000, amount: 1, unit: mL }
+  - ruleId: menores-5-anos
+    presentationId: susp-100000
+    weightKg: 10
+    ageDays: 365
+    expect: { mgPerDose: 200000, amount: 2, unit: mL }
+  - ruleId: mayores-5-anos
+    presentationId: susp-100000
+    weightKg: 22
+    ageDays: 2555
+    expect: { mgPerDose: 400000, amount: 4, unit: mL }

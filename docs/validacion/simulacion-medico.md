@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **6741** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **3070**. Fuera del rango de edad de la regla: 3671 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 3070/3070 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 3070/3070.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.55 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **6888** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **3127**. Fuera del rango de edad de la regla: 3761 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 3127/3127 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 3127/3127.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.56 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -493,6 +493,21 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 14 años (50 kg) | 2000 | 2000 | 10 | 10 mL | ✅ tope aplicado |
 | ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 16 años (58 kg) | 2000 | 2000 | 10 | 10 mL | ✅ tope aplicado |
 | ampicilina | moderada-severa-im | Vial 500 mg reconstituido con 2.1 mL de agua estéril = 500 mg/2.5 mL (200 mg/mL) | 17 años, obeso (95 kg) | 2000 | 2000 | 10 | 10 mL | ✅ tope aplicado |
+| anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 1 mes (4.2 kg) | 1.05 | 1.05 | 0.21 | 0.2 mL | ✅  |
+| anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 2 meses (5.1 kg) | 1.27 | 1.27 | 0.255 | 0.26 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 4 meses (6.4 kg) | 1.6 | 1.6 | 0.32 | 0.32 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 6 meses (7.6 kg) | 1.9 | 1.9 | 0.38 | 0.38 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 9 meses (8.6 kg) | 2.15 | 2.15 | 0.43 | 0.43 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 1 año (9.6 kg) | 2.4 | 2.4 | 0.48 | 0.5 mL | ✅  |
+| anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 18 meses (10.9 kg) | 2.73 | 2.73 | 0.545 | 0.55 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 2 años (12.2 kg) | 3.05 | 3.05 | 0.61 | 0.6 mL | ✅  |
+| anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 3 años (14.3 kg) | 3.58 | 3.58 | 0.715 | 0.7 mL | ✅  |
+| anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 4 años (16.3 kg) | 4.08 | 4.08 | 0.815 | 0.8 mL | ✅  |
+| anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 5 años (18.3 kg) | 4.58 | 4.58 | 0.915 | 0.9 mL | ✅  |
+| anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 6 años (20.5 kg) | 5.13 | 5.13 | 1.025 | 1 mL | ✅  |
+| anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 8 años (25.6 kg) | 6.4 | 6.4 | 1.28 | 1.3 mL | ✅  |
+| anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 10 años (32 kg) | 8 | 8 | 1.6 | 1.6 mL | ✅  |
+| anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 12 años (40 kg) | 10 | 10 | 2 | 2 mL | ✅  |
 | atropina | organofosforados | Ampolla 1 mg/mL | 1 mes (4.2 kg) | 0.21 | 0.21 | 0.21 | 0.2 mL | ✅  |
 | atropina | organofosforados | Ampolla 1 mg/mL | 2 meses (5.1 kg) | 0.26 | 0.26 | 0.255 | 0.25 mL | ✅  |
 | atropina | organofosforados | Ampolla 1 mg/mL | 4 meses (6.4 kg) | 0.32 | 0.32 | 0.32 | 0.32 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -1632,6 +1647,9 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | fenobarbital | estado-epileptico-carga | Ampolla 200 mg/2 mL (100 mg/mL) | 12 años (40 kg) | 600 | 600 | 6 | 6 mL | ✅  |
 | fenobarbital | neonato-convulsion | Ampolla 200 mg/2 mL (100 mg/mL) | 3 días, bajo peso (2 kg) (2 kg) | 40 | 40 | 0.4 | 0.4 mL | ✅  |
 | fenobarbital | neonato-convulsion | Ampolla 200 mg/2 mL (100 mg/mL) | 5 días (3.2 kg) (3.2 kg) | 64 | 64 | 0.64 | 0.65 mL | ✅  |
+| fitomenadiona | sangrado-neonatal | Fitomenadiona 10 mg/mL (ampolla) | 3 días, bajo peso (2 kg) (2 kg) | 1 | 1 | 0.1 | 0.1 mL | ✅  |
+| fitomenadiona | sangrado-neonatal | Fitomenadiona 10 mg/mL (ampolla) | 5 días (3.2 kg) (3.2 kg) | 1 | 1 | 0.1 | 0.1 mL | ✅  |
+| fitomenadiona | sangrado-neonatal | Fitomenadiona 10 mg/mL (ampolla) | 15 días (3.6 kg) (3.6 kg) | 1 | 1 | 0.1 | 0.1 mL | ✅  |
 | fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 1 mes (4.2 kg) | 25.2 | 25.2 | 2.52 | 2.5 mL | ✅  |
 | fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 2 meses (5.1 kg) | 30.6 | 30.6 | 3.06 | 3.1 mL | ✅  |
 | fluconazol | orofaringea-dia-1 | Suspensión 50 mg/5 mL | 4 meses (6.4 kg) | 38.4 | 38.4 | 3.84 | 3.8 mL | ✅  |
@@ -2116,6 +2134,24 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | levocetirizina | 12-anos-o-mas | Tableta ranurada 5 mg | 14 años (50 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
 | levocetirizina | 12-anos-o-mas | Tableta ranurada 5 mg | 16 años (58 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
 | levocetirizina | 12-anos-o-mas | Tableta ranurada 5 mg | 17 años, obeso (95 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 1 mes (4.2 kg) | 18.9 | 18.9 | 0.945 | 0.9 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 2 meses (5.1 kg) | 22.95 | 22.95 | 1.147 | 1.1 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 4 meses (6.4 kg) | 28.8 | 28.8 | 1.44 | 1.4 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 6 meses (7.6 kg) | 34.2 | 34.2 | 1.71 | 1.7 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 9 meses (8.6 kg) | 38.7 | 38.7 | 1.935 | 1.9 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 1 año (9.6 kg) | 43.2 | 43.2 | 2.16 | 2.2 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 18 meses (10.9 kg) | 49.05 | 49.05 | 2.453 | 2.5 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 2 años (12.2 kg) | 54.9 | 54.9 | 2.745 | 2.7 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 3 años (14.3 kg) | 64.35 | 64.35 | 3.218 | 3.2 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 4 años (16.3 kg) | 73.35 | 73.35 | 3.668 | 3.7 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 5 años (18.3 kg) | 82.35 | 82.35 | 4.118 | 4.1 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 6 años (20.5 kg) | 92.25 | 92.25 | 4.612 | 4.6 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 8 años (25.6 kg) | 115.2 | 115.2 | 5.76 | 5.8 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 10 años (32 kg) | 144 | 144 | 7.2 | 7.2 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 12 años (40 kg) | 180 | 180 | 9 | 9 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 14 años (50 kg) | 225 | 225 | 11.25 | 11.3 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 16 años (58 kg) | 261 | 261 | 13.05 | 13.1 mL | ✅  |
+| lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 17 años, obeso (95 kg) | 300 | 300 | 15 | 15 mL | ✅ tope aplicado |
 | loratadina | alergia-menos-30-kg | Jarabe 5 mg/5 mL | 2 años (12.2 kg) | 5 | 5 | 5 | 5 mL | ✅  |
 | loratadina | alergia-menos-30-kg | Jarabe 5 mg/5 mL | 3 años (14.3 kg) | 5 | 5 | 5 | 5 mL | ✅  |
 | loratadina | alergia-menos-30-kg | Jarabe 5 mg/5 mL | 4 años (16.3 kg) | 5 | 5 | 5 | 5 mL | ✅  |
@@ -2454,6 +2490,27 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | naloxona | intoxicacion-opiaceos | Ampolla 0.4 mg/mL | 14 años (50 kg) | 0.5 | 0.5 | 1.25 | 1.25 mL | ✅  |
 | naloxona | intoxicacion-opiaceos | Ampolla 0.4 mg/mL | 16 años (58 kg) | 0.58 | 0.58 | 1.45 | 1.45 mL | ✅  |
 | naloxona | intoxicacion-opiaceos | Ampolla 0.4 mg/mL | 17 años, obeso (95 kg) | 0.95 | 0.95 | 2.375 | 2.4 mL | ✅  |
+| nistatina | neonatos | Suspensión oral 100 000 UI/mL | 3 días, bajo peso (2 kg) (2 kg) | 100000 | 100000 | 1 | 1 mL | ✅  |
+| nistatina | neonatos | Suspensión oral 100 000 UI/mL | 5 días (3.2 kg) (3.2 kg) | 100000 | 100000 | 1 | 1 mL | ✅  |
+| nistatina | neonatos | Suspensión oral 100 000 UI/mL | 15 días (3.6 kg) (3.6 kg) | 100000 | 100000 | 1 | 1 mL | ✅  |
+| nistatina | menores-5-anos | Suspensión oral 100 000 UI/mL | 1 mes (4.2 kg) | 200000 | 200000 | 2 | 2 mL | ✅  |
+| nistatina | menores-5-anos | Suspensión oral 100 000 UI/mL | 2 meses (5.1 kg) | 200000 | 200000 | 2 | 2 mL | ✅  |
+| nistatina | menores-5-anos | Suspensión oral 100 000 UI/mL | 4 meses (6.4 kg) | 200000 | 200000 | 2 | 2 mL | ✅  |
+| nistatina | menores-5-anos | Suspensión oral 100 000 UI/mL | 6 meses (7.6 kg) | 200000 | 200000 | 2 | 2 mL | ✅  |
+| nistatina | menores-5-anos | Suspensión oral 100 000 UI/mL | 9 meses (8.6 kg) | 200000 | 200000 | 2 | 2 mL | ✅  |
+| nistatina | menores-5-anos | Suspensión oral 100 000 UI/mL | 1 año (9.6 kg) | 200000 | 200000 | 2 | 2 mL | ✅  |
+| nistatina | menores-5-anos | Suspensión oral 100 000 UI/mL | 18 meses (10.9 kg) | 200000 | 200000 | 2 | 2 mL | ✅  |
+| nistatina | menores-5-anos | Suspensión oral 100 000 UI/mL | 2 años (12.2 kg) | 200000 | 200000 | 2 | 2 mL | ✅  |
+| nistatina | menores-5-anos | Suspensión oral 100 000 UI/mL | 3 años (14.3 kg) | 200000 | 200000 | 2 | 2 mL | ✅  |
+| nistatina | menores-5-anos | Suspensión oral 100 000 UI/mL | 4 años (16.3 kg) | 200000 | 200000 | 2 | 2 mL | ✅  |
+| nistatina | menores-5-anos | Suspensión oral 100 000 UI/mL | 5 años (18.3 kg) | 200000 | 200000 | 2 | 2 mL | ✅  |
+| nistatina | mayores-5-anos | Suspensión oral 100 000 UI/mL | 6 años (20.5 kg) | 400000 | 400000 | 4 | 4 mL | ✅  |
+| nistatina | mayores-5-anos | Suspensión oral 100 000 UI/mL | 8 años (25.6 kg) | 400000 | 400000 | 4 | 4 mL | ✅  |
+| nistatina | mayores-5-anos | Suspensión oral 100 000 UI/mL | 10 años (32 kg) | 400000 | 400000 | 4 | 4 mL | ✅  |
+| nistatina | mayores-5-anos | Suspensión oral 100 000 UI/mL | 12 años (40 kg) | 400000 | 400000 | 4 | 4 mL | ✅  |
+| nistatina | mayores-5-anos | Suspensión oral 100 000 UI/mL | 14 años (50 kg) | 400000 | 400000 | 4 | 4 mL | ✅  |
+| nistatina | mayores-5-anos | Suspensión oral 100 000 UI/mL | 16 años (58 kg) | 400000 | 400000 | 4 | 4 mL | ✅  |
+| nistatina | mayores-5-anos | Suspensión oral 100 000 UI/mL | 17 años, obeso (95 kg) | 400000 | 400000 | 4 | 4 mL | ✅  |
 | nitazoxanida | diarrea-1-3-anos | Suspensión 100 mg/5 mL | 1 año (9.6 kg) | 100 | 100 | 5 | 5 mL | ✅  |
 | nitazoxanida | diarrea-1-3-anos | Suspensión 100 mg/5 mL | 18 meses (10.9 kg) | 100 | 100 | 5 | 5 mL | ✅  |
 | nitazoxanida | diarrea-1-3-anos | Suspensión 100 mg/5 mL | 2 años (12.2 kg) | 100 | 100 | 5 | 5 mL | ✅  |
