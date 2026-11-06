@@ -1,0 +1,73 @@
+id: gluconato-calcio
+name: Gluconato de calcio 10 %
+category: urgencia
+synonyms: [calcium gluconate, calcio]
+presentations:
+  - id: amp-10
+    label: Gluconato de calcio 10 % (100 mg/mL)
+    form: ampolla
+    mgPerUnit: 100
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: ninos-bolo
+    indication: Hipocalcemia aguda sintomática, bolo IV (más de 1 mes a menos de 17 años)
+    route: IV
+    ageMinDays: 29
+    ageMaxDays: 6208
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 29
+    amountMax: 60
+    usual: 29
+    intervalHours: 6
+    maxPerDoseMg: 3000
+    maxPerDayMg: 12000
+    notes: >-
+      FDA — bolo de 29 a 60 mg/kg; dosis siguientes de 29 a 60 mg/kg c/6 h si hace falta. Diluir a 10 a 50 mg/mL;
+      no pasar de 100 mg por minuto. La FDA no da máximo diario pediátrico (el tope es técnico, 60 mg/kg con 50 kg).
+    presentationIds: [amp-10]
+    sourceIds: [fda-calcium-gluconate, digemid-pnume-2023]
+  - id: neonatos-bolo
+    indication: Hipocalcemia aguda sintomática, bolo IV (neonatos)
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    weightMinKg: 1
+    weightMaxKg: 5
+    basis: mg/kg/dose
+    amountMin: 100
+    amountMax: 200
+    usual: 100
+    intervalHours: 6
+    maxPerDoseMg: 1000
+    maxPerDayMg: 4000
+    notes: FDA — neonatos de 1 mes o menos, bolo de 100 a 200 mg/kg; dosis siguientes c/6 h si hace falta. No pasar de 100 mg por minuto. El rango de 1 a 5 kg es técnico.
+    presentationIds: [amp-10]
+    sourceIds: [fda-calcium-gluconate, digemid-pnume-2023]
+warnings:
+  - No mezclar con ceftriaxona; en neonatos de 28 días o menos, no usar junto con ceftriaxona IV (FDA).
+  - Cada mL tiene 100 mg de gluconato de calcio y 9.3 mg (0.465 mEq) de calcio elemental (FDA); el PNUME indica 8.4 mg/mL de calcio.
+contraindications:
+  - Hipercalcemia.
+  - Neonatos de 28 días o menos que reciben ceftriaxona.
+renal: FDA — empezar con la dosis más baja y medir el calcio cada 4 horas.
+diagnoses: [hipocalcemia, tetania, hiperpotasemia]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: ninos-bolo
+    presentationId: amp-10
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 580, amount: 5.8, unit: mL }
+  - ruleId: neonatos-bolo
+    presentationId: amp-10
+    weightKg: 3
+    ageDays: 5
+    expect: { mgPerDose: 300, amount: 3, unit: mL }

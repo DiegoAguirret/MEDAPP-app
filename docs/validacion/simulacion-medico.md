@@ -5,16 +5,67 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **6888** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **3127**. Fuera del rango de edad de la regla: 3761 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 3127/3127 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 3127/3127.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.56 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **7140** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **3274**. Fuera del rango de edad de la regla: 3866 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 3274/3274 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 3274/3274.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.58 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
 | Fármaco | Regla | Presentación | Paciente | mg manual | mg app | Cantidad exacta | Cantidad app | Resultado |
 |---|---|---|---|---|---|---|---|---|
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 2 meses (5.1 kg) | 765 | 765 | 3.825 | 3.8 mL | ✅  |
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 4 meses (6.4 kg) | 960 | 960 | 4.8 | 4.8 mL | ✅  |
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 6 meses (7.6 kg) | 1140 | 1140 | 5.7 | 5.7 mL | ✅  |
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 9 meses (8.6 kg) | 1290 | 1290 | 6.45 | 6.5 mL | ✅  |
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 1 año (9.6 kg) | 1440 | 1440 | 7.2 | 7.2 mL | ✅  |
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 18 meses (10.9 kg) | 1635 | 1635 | 8.175 | 8.2 mL | ✅  |
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 2 años (12.2 kg) | 1830 | 1830 | 9.15 | 9.2 mL | ✅  |
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 3 años (14.3 kg) | 2145 | 2145 | 10.725 | 10.7 mL | ✅  |
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 4 años (16.3 kg) | 2445 | 2445 | 12.225 | 12.2 mL | ✅  |
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 5 años (18.3 kg) | 2745 | 2745 | 13.725 | 13.7 mL | ✅  |
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 6 años (20.5 kg) | 3075 | 3075 | 15.375 | 15.4 mL | ✅  |
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 8 años (25.6 kg) | 3840 | 3840 | 19.2 | 19.2 mL | ✅  |
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 10 años (32 kg) | 4800 | 4800 | 24 | 24 mL | ✅  |
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 12 años (40 kg) | 6000 | 6000 | 30 | 30 mL | ✅  |
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 14 años (50 kg) | 7500 | 7500 | 37.5 | 37.5 mL | ✅  |
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 16 años (58 kg) | 8700 | 8700 | 43.5 | 43.5 mL | ✅  |
+| acetilcisteina | fase-1 | Acetilcisteína 200 mg/mL (ampolla) | 17 años, obeso (95 kg) | 14250 | 14250 | 71.25 | 71.3 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 2 meses (5.1 kg) | 255 | 255 | 1.275 | 1.3 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 4 meses (6.4 kg) | 320 | 320 | 1.6 | 1.6 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 6 meses (7.6 kg) | 380 | 380 | 1.9 | 1.9 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 9 meses (8.6 kg) | 430 | 430 | 2.15 | 2.2 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 1 año (9.6 kg) | 480 | 480 | 2.4 | 2.4 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 18 meses (10.9 kg) | 545 | 545 | 2.725 | 2.7 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 2 años (12.2 kg) | 610 | 610 | 3.05 | 3.1 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 3 años (14.3 kg) | 715 | 715 | 3.575 | 3.6 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 4 años (16.3 kg) | 815 | 815 | 4.075 | 4.1 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 5 años (18.3 kg) | 915 | 915 | 4.575 | 4.6 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 6 años (20.5 kg) | 1025 | 1025 | 5.125 | 5.1 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 8 años (25.6 kg) | 1280 | 1280 | 6.4 | 6.4 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 10 años (32 kg) | 1600 | 1600 | 8 | 8 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 12 años (40 kg) | 2000 | 2000 | 10 | 10 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 14 años (50 kg) | 2500 | 2500 | 12.5 | 12.5 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 16 años (58 kg) | 2900 | 2900 | 14.5 | 14.5 mL | ✅  |
+| acetilcisteina | fase-2 | Acetilcisteína 200 mg/mL (ampolla) | 17 años, obeso (95 kg) | 4750 | 4750 | 23.75 | 23.8 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 2 meses (5.1 kg) | 510 | 510 | 2.55 | 2.6 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 4 meses (6.4 kg) | 640 | 640 | 3.2 | 3.2 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 6 meses (7.6 kg) | 760 | 760 | 3.8 | 3.8 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 9 meses (8.6 kg) | 860 | 860 | 4.3 | 4.3 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 1 año (9.6 kg) | 960 | 960 | 4.8 | 4.8 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 18 meses (10.9 kg) | 1090 | 1090 | 5.45 | 5.5 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 2 años (12.2 kg) | 1220 | 1220 | 6.1 | 6.1 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 3 años (14.3 kg) | 1430 | 1430 | 7.15 | 7.2 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 4 años (16.3 kg) | 1630 | 1630 | 8.15 | 8.2 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 5 años (18.3 kg) | 1830 | 1830 | 9.15 | 9.2 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 6 años (20.5 kg) | 2050 | 2050 | 10.25 | 10.3 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 8 años (25.6 kg) | 2560 | 2560 | 12.8 | 12.8 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 10 años (32 kg) | 3200 | 3200 | 16 | 16 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 12 años (40 kg) | 4000 | 4000 | 20 | 20 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 14 años (50 kg) | 5000 | 5000 | 25 | 25 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 16 años (58 kg) | 5800 | 5800 | 29 | 29 mL | ✅  |
+| acetilcisteina | fase-3 | Acetilcisteína 200 mg/mL (ampolla) | 17 años, obeso (95 kg) | 9500 | 9500 | 47.5 | 47.5 mL | ✅  |
 | aciclovir | varicela | Suspensión 200 mg/5 mL | 2 años (12.2 kg) | 244 | 244 | 6.1 | 6.1 mL | ✅  |
 | aciclovir | varicela | Suspensión 200 mg/5 mL | 3 años (14.3 kg) | 286 | 286 | 7.15 | 7.2 mL | ✅  |
 | aciclovir | varicela | Suspensión 200 mg/5 mL | 4 años (16.3 kg) | 326 | 326 | 8.15 | 8.2 mL | ✅  |
@@ -1647,6 +1698,14 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | fenobarbital | estado-epileptico-carga | Ampolla 200 mg/2 mL (100 mg/mL) | 12 años (40 kg) | 600 | 600 | 6 | 6 mL | ✅  |
 | fenobarbital | neonato-convulsion | Ampolla 200 mg/2 mL (100 mg/mL) | 3 días, bajo peso (2 kg) (2 kg) | 40 | 40 | 0.4 | 0.4 mL | ✅  |
 | fenobarbital | neonato-convulsion | Ampolla 200 mg/2 mL (100 mg/mL) | 5 días (3.2 kg) (3.2 kg) | 64 | 64 | 0.64 | 0.65 mL | ✅  |
+| fentanilo | anestesia-2-12a | Fentanilo 50 mcg/mL (0.05 mg/mL) | 2 años (12.2 kg) | 0.02 | 0.02 | 0.488 | 0.5 mL | ✅  |
+| fentanilo | anestesia-2-12a | Fentanilo 50 mcg/mL (0.05 mg/mL) | 3 años (14.3 kg) | 0.03 | 0.03 | 0.572 | 0.55 mL | ✅  |
+| fentanilo | anestesia-2-12a | Fentanilo 50 mcg/mL (0.05 mg/mL) | 4 años (16.3 kg) | 0.03 | 0.03 | 0.652 | 0.65 mL | ✅  |
+| fentanilo | anestesia-2-12a | Fentanilo 50 mcg/mL (0.05 mg/mL) | 5 años (18.3 kg) | 0.04 | 0.04 | 0.732 | 0.75 mL | ✅  |
+| fentanilo | anestesia-2-12a | Fentanilo 50 mcg/mL (0.05 mg/mL) | 6 años (20.5 kg) | 0.04 | 0.04 | 0.82 | 0.8 mL | ✅  |
+| fentanilo | anestesia-2-12a | Fentanilo 50 mcg/mL (0.05 mg/mL) | 8 años (25.6 kg) | 0.05 | 0.05 | 1.024 | 1 mL | ✅  |
+| fentanilo | anestesia-2-12a | Fentanilo 50 mcg/mL (0.05 mg/mL) | 10 años (32 kg) | 0.06 | 0.06 | 1.28 | 1.3 mL | ✅  |
+| fentanilo | anestesia-2-12a | Fentanilo 50 mcg/mL (0.05 mg/mL) | 12 años (40 kg) | 0.08 | 0.08 | 1.6 | 1.6 mL | ✅  |
 | fitomenadiona | sangrado-neonatal | Fitomenadiona 10 mg/mL (ampolla) | 3 días, bajo peso (2 kg) (2 kg) | 1 | 1 | 0.1 | 0.1 mL | ✅  |
 | fitomenadiona | sangrado-neonatal | Fitomenadiona 10 mg/mL (ampolla) | 5 días (3.2 kg) (3.2 kg) | 1 | 1 | 0.1 | 0.1 mL | ✅  |
 | fitomenadiona | sangrado-neonatal | Fitomenadiona 10 mg/mL (ampolla) | 15 días (3.6 kg) (3.6 kg) | 1 | 1 | 0.1 | 0.1 mL | ✅  |
@@ -1704,6 +1763,19 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 14 años (50 kg) | 300 | 300 | 150 | 150 mL | ✅  |
 | fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 16 años (58 kg) | 348 | 348 | 174 | 174 mL | ✅  |
 | fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 17 años, obeso (95 kg) | 570 | 570 | 285 | 285 mL | ✅  |
+| flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 1 año (9.6 kg) | 0.1 | 0.1 | 0.96 | 1 mL | ✅  |
+| flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 18 meses (10.9 kg) | 0.11 | 0.11 | 1.09 | 1.1 mL | ✅  |
+| flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 2 años (12.2 kg) | 0.12 | 0.12 | 1.22 | 1.2 mL | ✅  |
+| flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 3 años (14.3 kg) | 0.14 | 0.14 | 1.43 | 1.4 mL | ✅  |
+| flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 4 años (16.3 kg) | 0.16 | 0.16 | 1.63 | 1.6 mL | ✅  |
+| flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 5 años (18.3 kg) | 0.18 | 0.18 | 1.83 | 1.8 mL | ✅  |
+| flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 6 años (20.5 kg) | 0.2 | 0.2 | 2 | 2 mL | ✅ tope aplicado |
+| flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 8 años (25.6 kg) | 0.2 | 0.2 | 2 | 2 mL | ✅ tope aplicado |
+| flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 10 años (32 kg) | 0.2 | 0.2 | 2 | 2 mL | ✅ tope aplicado |
+| flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 12 años (40 kg) | 0.2 | 0.2 | 2 | 2 mL | ✅ tope aplicado |
+| flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 14 años (50 kg) | 0.2 | 0.2 | 2 | 2 mL | ✅ tope aplicado |
+| flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 16 años (58 kg) | 0.2 | 0.2 | 2 | 2 mL | ✅ tope aplicado |
+| flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 17 años, obeso (95 kg) | 0.2 | 0.2 | 2 | 2 mL | ✅ tope aplicado |
 | furosemida | edema-iv | Ampolla 10 mg/mL (2 mL) | 1 mes (4.2 kg) | 4.2 | 4.2 | 0.42 | 0.4 mL | ✅  |
 | furosemida | edema-iv | Ampolla 10 mg/mL (2 mL) | 2 meses (5.1 kg) | 5.1 | 5.1 | 0.51 | 0.5 mL | ✅  |
 | furosemida | edema-iv | Ampolla 10 mg/mL (2 mL) | 4 meses (6.4 kg) | 6.4 | 6.4 | 0.64 | 0.64 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -1761,6 +1833,24 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | gentamicina | semana-1-bajo-peso | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 3 días, bajo peso (2 kg) (2 kg) | 6 | 6 | 0.6 | 0.6 mL | ✅  |
 | gentamicina | semana-1-peso-normal | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 5 días (3.2 kg) (3.2 kg) | 16 | 16 | 1.6 | 1.6 mL | ✅  |
 | gentamicina | semanas-2-4 | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 15 días (3.6 kg) (3.6 kg) | 27 | 27 | 2.7 | 2.7 mL | ✅  |
+| gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 1 mes (4.2 kg) | 121.8 | 121.8 | 1.218 | 1.2 mL | ✅  |
+| gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 2 meses (5.1 kg) | 147.9 | 147.9 | 1.479 | 1.5 mL | ✅  |
+| gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 4 meses (6.4 kg) | 185.6 | 185.6 | 1.856 | 1.9 mL | ✅  |
+| gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 6 meses (7.6 kg) | 220.4 | 220.4 | 2.204 | 2.2 mL | ✅  |
+| gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 9 meses (8.6 kg) | 249.4 | 249.4 | 2.494 | 2.5 mL | ✅  |
+| gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 1 año (9.6 kg) | 278.4 | 278.4 | 2.784 | 2.8 mL | ✅  |
+| gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 18 meses (10.9 kg) | 316.1 | 316.1 | 3.161 | 3.2 mL | ✅  |
+| gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 2 años (12.2 kg) | 353.8 | 353.8 | 3.538 | 3.5 mL | ✅  |
+| gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 3 años (14.3 kg) | 414.7 | 414.7 | 4.147 | 4.1 mL | ✅  |
+| gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 4 años (16.3 kg) | 472.7 | 472.7 | 4.727 | 4.7 mL | ✅  |
+| gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 5 años (18.3 kg) | 530.7 | 530.7 | 5.307 | 5.3 mL | ✅  |
+| gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 6 años (20.5 kg) | 594.5 | 594.5 | 5.945 | 5.9 mL | ✅  |
+| gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 8 años (25.6 kg) | 742.4 | 742.4 | 7.424 | 7.4 mL | ✅  |
+| gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 10 años (32 kg) | 928 | 928 | 9.28 | 9.3 mL | ✅  |
+| gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 12 años (40 kg) | 1160 | 1160 | 11.6 | 11.6 mL | ✅  |
+| gluconato-calcio | neonatos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 3 días, bajo peso (2 kg) (2 kg) | 200 | 200 | 2 | 2 mL | ✅  |
+| gluconato-calcio | neonatos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 5 días (3.2 kg) (3.2 kg) | 320 | 320 | 3.2 | 3.2 mL | ✅  |
+| gluconato-calcio | neonatos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 15 días (3.6 kg) (3.6 kg) | 360 | 360 | 3.6 | 3.6 mL | ✅  |
 | glucosa | hipoglucemia | Dextrosa al 10 % (100 mg/mL) | 1 mes (4.2 kg) | 2100 | 2100 | 21 | 21 mL | ✅  |
 | glucosa | hipoglucemia | Dextrosa al 10 % (100 mg/mL) | 2 meses (5.1 kg) | 2550 | 2550 | 25.5 | 26 mL | ✅  |
 | glucosa | hipoglucemia | Dextrosa al 10 % (100 mg/mL) | 4 meses (6.4 kg) | 3200 | 3200 | 32 | 32 mL | ✅  |
@@ -2061,6 +2151,36 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | ivermectina | estrongiloidiasis-36-50-kg | Tableta 6 mg | 12 años (40 kg) | 9 | 9 | 1.5 | 1.5 tableta | ✅  |
 | ivermectina | estrongiloidiasis-36-50-kg | Tableta 6 mg | 14 años (50 kg) | 9 | 9 | 1.5 | 1.5 tableta | ✅  |
 | ivermectina | estrongiloidiasis-51-65-kg | Tableta 6 mg | 16 años (58 kg) | 12 | 12 | 2 | 2 tableta | ✅  |
+| ketamina | induccion-iv | Ketamina 50 mg/mL | 1 mes (4.2 kg) | 4.2 | 4.2 | 0.084 | 0.08 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ketamina | induccion-iv | Ketamina 50 mg/mL | 2 meses (5.1 kg) | 5.1 | 5.1 | 0.102 | 0.1 mL | ✅  |
+| ketamina | induccion-iv | Ketamina 50 mg/mL | 4 meses (6.4 kg) | 6.4 | 6.4 | 0.128 | 0.13 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ketamina | induccion-iv | Ketamina 50 mg/mL | 6 meses (7.6 kg) | 7.6 | 7.6 | 0.152 | 0.15 mL | ✅  |
+| ketamina | induccion-iv | Ketamina 50 mg/mL | 9 meses (8.6 kg) | 8.6 | 8.6 | 0.172 | 0.17 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ketamina | induccion-iv | Ketamina 50 mg/mL | 1 año (9.6 kg) | 9.6 | 9.6 | 0.192 | 0.2 mL | ✅  |
+| ketamina | induccion-iv | Ketamina 50 mg/mL | 18 meses (10.9 kg) | 10.9 | 10.9 | 0.218 | 0.22 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ketamina | induccion-iv | Ketamina 50 mg/mL | 2 años (12.2 kg) | 12.2 | 12.2 | 0.244 | 0.25 mL | ✅  |
+| ketamina | induccion-iv | Ketamina 50 mg/mL | 3 años (14.3 kg) | 14.3 | 14.3 | 0.286 | 0.3 mL | ✅  |
+| ketamina | induccion-iv | Ketamina 50 mg/mL | 4 años (16.3 kg) | 16.3 | 16.3 | 0.326 | 0.33 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ketamina | induccion-iv | Ketamina 50 mg/mL | 5 años (18.3 kg) | 18.3 | 18.3 | 0.366 | 0.35 mL | ✅  |
+| ketamina | induccion-iv | Ketamina 50 mg/mL | 6 años (20.5 kg) | 20.5 | 20.5 | 0.41 | 0.4 mL | ✅  |
+| ketamina | induccion-iv | Ketamina 50 mg/mL | 8 años (25.6 kg) | 25.6 | 25.6 | 0.512 | 0.5 mL | ✅  |
+| ketamina | induccion-iv | Ketamina 50 mg/mL | 10 años (32 kg) | 32 | 32 | 0.64 | 0.65 mL | ✅  |
+| ketamina | induccion-iv | Ketamina 50 mg/mL | 12 años (40 kg) | 40 | 40 | 0.8 | 0.8 mL | ✅  |
+| ketamina | induccion-im | Ketamina 50 mg/mL | 1 mes (4.2 kg) | 27.3 | 27.3 | 0.546 | 0.55 mL | ✅  |
+| ketamina | induccion-im | Ketamina 50 mg/mL | 2 meses (5.1 kg) | 33.15 | 33.15 | 0.663 | 0.65 mL | ✅  |
+| ketamina | induccion-im | Ketamina 50 mg/mL | 4 meses (6.4 kg) | 41.6 | 41.6 | 0.832 | 0.85 mL | ✅  |
+| ketamina | induccion-im | Ketamina 50 mg/mL | 6 meses (7.6 kg) | 49.4 | 49.4 | 0.988 | 1 mL | ✅  |
+| ketamina | induccion-im | Ketamina 50 mg/mL | 9 meses (8.6 kg) | 55.9 | 55.9 | 1.118 | 1.1 mL | ✅  |
+| ketamina | induccion-im | Ketamina 50 mg/mL | 1 año (9.6 kg) | 62.4 | 62.4 | 1.248 | 1.25 mL | ✅  |
+| ketamina | induccion-im | Ketamina 50 mg/mL | 18 meses (10.9 kg) | 70.85 | 70.85 | 1.417 | 1.4 mL | ✅  |
+| ketamina | induccion-im | Ketamina 50 mg/mL | 2 años (12.2 kg) | 79.3 | 79.3 | 1.586 | 1.6 mL | ✅  |
+| ketamina | induccion-im | Ketamina 50 mg/mL | 3 años (14.3 kg) | 92.95 | 92.95 | 1.859 | 1.85 mL | ✅  |
+| ketamina | induccion-im | Ketamina 50 mg/mL | 4 años (16.3 kg) | 105.95 | 105.95 | 2.119 | 2.1 mL | ✅  |
+| ketamina | induccion-im | Ketamina 50 mg/mL | 5 años (18.3 kg) | 118.95 | 118.95 | 2.379 | 2.4 mL | ✅  |
+| ketamina | induccion-im | Ketamina 50 mg/mL | 6 años (20.5 kg) | 133.25 | 133.25 | 2.665 | 2.65 mL | ✅  |
+| ketamina | induccion-im | Ketamina 50 mg/mL | 8 años (25.6 kg) | 166.4 | 166.4 | 3.328 | 3.35 mL | ✅  |
+| ketamina | induccion-im | Ketamina 50 mg/mL | 10 años (32 kg) | 208 | 208 | 4.16 | 4.15 mL | ✅  |
+| ketamina | induccion-im | Ketamina 50 mg/mL | 12 años (40 kg) | 260 | 260 | 5.2 | 5.2 mL | ✅  |
 | levetiracetam | focal-1-6-meses | Solución oral 100 mg/mL | 1 mes (4.2 kg) | 29.4 | 29.4 | 0.294 | 0.3 mL | ✅  |
 | levetiracetam | focal-1-6-meses | Solución oral 100 mg/mL | 2 meses (5.1 kg) | 35.7 | 35.7 | 0.357 | 0.36 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
 | levetiracetam | focal-1-6-meses | Solución oral 100 mg/mL | 4 meses (6.4 kg) | 44.8 | 44.8 | 0.448 | 0.45 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -2442,6 +2562,33 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | metronidazol | amebiasis | Tableta 500 mg | 14 años (50 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
 | metronidazol | amebiasis | Tableta 500 mg | 16 años (58 kg) | 580 | 580 | 1.16 | 1.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | metronidazol | amebiasis | Tableta 500 mg | 17 años, obeso (95 kg) | 750 | 750 | 1.5 | 1.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| midazolam | sedacion-iv-6m-5a | Midazolam 1 mg/mL | 6 meses (7.6 kg) | 0.38 | 0.38 | 0.38 | 0.38 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| midazolam | sedacion-iv-6m-5a | Midazolam 1 mg/mL | 9 meses (8.6 kg) | 0.43 | 0.43 | 0.43 | 0.45 mL | ✅  |
+| midazolam | sedacion-iv-6m-5a | Midazolam 1 mg/mL | 1 año (9.6 kg) | 0.48 | 0.48 | 0.48 | 0.5 mL | ✅  |
+| midazolam | sedacion-iv-6m-5a | Midazolam 1 mg/mL | 18 meses (10.9 kg) | 0.55 | 0.55 | 0.545 | 0.55 mL | ✅  |
+| midazolam | sedacion-iv-6m-5a | Midazolam 1 mg/mL | 2 años (12.2 kg) | 0.61 | 0.61 | 0.61 | 0.6 mL | ✅  |
+| midazolam | sedacion-iv-6m-5a | Midazolam 1 mg/mL | 3 años (14.3 kg) | 0.72 | 0.72 | 0.715 | 0.7 mL | ✅  |
+| midazolam | sedacion-iv-6m-5a | Midazolam 1 mg/mL | 4 años (16.3 kg) | 0.82 | 0.82 | 0.815 | 0.8 mL | ✅  |
+| midazolam | sedacion-iv-6m-5a | Midazolam 1 mg/mL | 5 años (18.3 kg) | 0.92 | 0.92 | 0.915 | 0.9 mL | ✅  |
+| midazolam | sedacion-iv-6m-5a | Midazolam 1 mg/mL | 6 años (20.5 kg) | 1.03 | 1.03 | 1.025 | 1.05 mL | ✅  |
+| midazolam | sedacion-iv-6-12a | Midazolam 1 mg/mL | 8 años (25.6 kg) | 0.64 | 0.64 | 0.64 | 0.65 mL | ✅  |
+| midazolam | sedacion-iv-6-12a | Midazolam 1 mg/mL | 10 años (32 kg) | 0.8 | 0.8 | 0.8 | 0.8 mL | ✅  |
+| midazolam | sedacion-iv-6-12a | Midazolam 1 mg/mL | 12 años (40 kg) | 1 | 1 | 1 | 1 mL | ✅  |
+| midazolam | sedacion-im | Midazolam 5 mg/mL | 6 meses (7.6 kg) | 0.76 | 0.76 | 0.152 | 0.15 mL | ✅  |
+| midazolam | sedacion-im | Midazolam 5 mg/mL | 9 meses (8.6 kg) | 0.86 | 0.86 | 0.172 | 0.17 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| midazolam | sedacion-im | Midazolam 5 mg/mL | 1 año (9.6 kg) | 0.96 | 0.96 | 0.192 | 0.2 mL | ✅  |
+| midazolam | sedacion-im | Midazolam 5 mg/mL | 18 meses (10.9 kg) | 1.09 | 1.09 | 0.218 | 0.22 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| midazolam | sedacion-im | Midazolam 5 mg/mL | 2 años (12.2 kg) | 1.22 | 1.22 | 0.244 | 0.25 mL | ✅  |
+| midazolam | sedacion-im | Midazolam 5 mg/mL | 3 años (14.3 kg) | 1.43 | 1.43 | 0.286 | 0.3 mL | ✅  |
+| midazolam | sedacion-im | Midazolam 5 mg/mL | 4 años (16.3 kg) | 1.63 | 1.63 | 0.326 | 0.33 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| midazolam | sedacion-im | Midazolam 5 mg/mL | 5 años (18.3 kg) | 1.83 | 1.83 | 0.366 | 0.35 mL | ✅  |
+| midazolam | sedacion-im | Midazolam 5 mg/mL | 6 años (20.5 kg) | 2.05 | 2.05 | 0.41 | 0.4 mL | ✅  |
+| midazolam | sedacion-im | Midazolam 5 mg/mL | 8 años (25.6 kg) | 2.56 | 2.56 | 0.512 | 0.5 mL | ✅  |
+| midazolam | sedacion-im | Midazolam 5 mg/mL | 10 años (32 kg) | 3.2 | 3.2 | 0.64 | 0.65 mL | ✅  |
+| midazolam | sedacion-im | Midazolam 5 mg/mL | 12 años (40 kg) | 4 | 4 | 0.8 | 0.8 mL | ✅  |
+| midazolam | sedacion-im | Midazolam 5 mg/mL | 14 años (50 kg) | 5 | 5 | 1 | 1 mL | ✅  |
+| midazolam | sedacion-im | Midazolam 5 mg/mL | 16 años (58 kg) | 5.8 | 5.8 | 1.16 | 1.15 mL | ✅  |
+| midazolam | sedacion-im | Midazolam 5 mg/mL | 17 años, obeso (95 kg) | 9.5 | 9.5 | 1.9 | 1.9 mL | ✅  |
 | montelukast | lactantes-6-23-meses | Sobre de granulado 4 mg | 6 meses (7.6 kg) | 4 | 4 | 1 | 1 sobre | ✅  |
 | montelukast | lactantes-6-23-meses | Sobre de granulado 4 mg | 9 meses (8.6 kg) | 4 | 4 | 1 | 1 sobre | ✅  |
 | montelukast | lactantes-6-23-meses | Sobre de granulado 4 mg | 1 año (9.6 kg) | 4 | 4 | 1 | 1 sobre | ✅  |

@@ -527,3 +527,39 @@
   url: https://bvs.minsa.gob.pe/local/MINSA/7546.pdf
   kind: norma-peru
   country: PE
+- id: fda-ketamine
+  title: Ketalar (ketamina) — prescribing information (FDA, set 14e8f864-8b8a-4e7e-8439-e510d3107063)
+  publisher: U.S. FDA / Par
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=14e8f864-8b8a-4e7e-8439-e510d3107063
+  kind: regulador
+  country: US
+- id: fda-fentanyl
+  title: Fentanilo citrato inyectable — prescribing information (FDA, set bfa8018a-4cbc-434b-e09e-782872b0340a)
+  publisher: U.S. FDA / Hospira
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=bfa8018a-4cbc-434b-e09e-782872b0340a
+  kind: regulador
+  country: US
+- id: fda-flumazenil
+  title: Flumazenil inyectable — prescribing information (FDA, set 436f5616-9626-4b6a-9deb-2986444179d0)
+  publisher: U.S. FDA / Hikma
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=436f5616-9626-4b6a-9deb-2986444179d0
+  kind: regulador
+  country: US
+- id: fda-acetylcysteine-iv
+  title: Acetadote (acetilcisteína inyectable) — prescribing information (FDA, set 472f158a-5ab9-4308-8e49-1116e6ea3d39)
+  publisher: U.S. FDA / Cumberland
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=472f158a-5ab9-4308-8e49-1116e6ea3d39
+  kind: regulador
+  country: US
+- id: fda-calcium-gluconate
+  title: Gluconato de calcio inyectable — prescribing information (FDA, set 8b77c3d2-992d-4261-8421-9cfd07328fbf)
+  publisher: U.S. FDA / Fresenius Kabi
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=8b77c3d2-992d-4261-8421-9cfd07328fbf
+  kind: regulador
+  country: US
+- id: fda-midazolam-inj
+  title: Midazolam inyectable — prescribing information (FDA, set 1abda8b8-48a8-4995-af86-39220d1aa240)
+  publisher: U.S. FDA / Hospira
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=1abda8b8-48a8-4995-af86-39220d1aa240
+  kind: regulador
+  country: US

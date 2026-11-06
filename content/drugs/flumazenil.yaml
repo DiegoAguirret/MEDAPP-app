@@ -1,0 +1,57 @@
+id: flumazenil
+name: Flumazenil
+category: urgencia
+synonyms: [antídoto de benzodiazepinas]
+presentations:
+  - id: amp-01
+    label: Flumazenil 0.1 mg/mL (100 mcg/mL)
+    form: ampolla
+    mgPerUnit: 0.1
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: reversion-sedacion
+    indication: Reversión de la sedación por benzodiazepinas (1 a 17 años)
+    route: IV
+    ageMinDays: 365
+    ageMaxDays: 6208
+    basis: mg/kg/dose
+    amountMin: 0.01
+    amountMax: 0.01
+    usual: 0.01
+    repeatMinutes: { min: 1, max: 1 }
+    maxDoses: 5
+    maxPerDoseMg: 0.2
+    maxPerDayMg: 1
+    notes: >-
+      FDA — dosis inicial 0.01 mg/kg (hasta 0.2 mg) IV en 15 segundos; si no hay respuesta en 45 segundos más,
+      repetir cada 60 segundos hasta 4 veces más, hasta un total de 0.05 mg/kg o 1 mg, lo que sea menor. FNME —
+      10 mcg/kg (máximo 0.2 mg) cada minuto, hasta 5 dosis.
+    presentationIds: [amp-01]
+    sourceIds: [fda-flumazenil, fnme-2008, digemid-pnume-2023]
+warnings:
+  - Puede provocar convulsiones, sobre todo en uso prolongado de benzodiazepinas o sobredosis de antidepresivos cíclicos (FDA, recuadro negro).
+  - No está establecida la seguridad de repetir la dosis por resedación en niños (FDA).
+contraindications:
+  - Benzodiazepina usada para controlar una condición grave (estado epiléptico, presión intracraneal).
+  - Signos de sobredosis grave de antidepresivos cíclicos.
+  - Hipersensibilidad al flumazenil o a las benzodiazepinas.
+renal: Sin ajuste.
+diagnoses: [sobredosis de benzodiazepinas, reversión de sedación]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: reversion-sedacion
+    presentationId: amp-01
+    weightKg: 15
+    ageDays: 1460
+    expect: { mgPerDose: 0.15, amount: 1.5, unit: mL }
+  - ruleId: reversion-sedacion
+    presentationId: amp-01
+    weightKg: 30
+    ageDays: 3285
+    expect: { mgPerDose: 0.2, amount: 2, unit: mL, capped: true }

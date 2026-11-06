@@ -1,0 +1,101 @@
+id: midazolam
+name: Midazolam
+category: otro
+synonyms: [benzodiazepina, sedación]
+presentations:
+  - id: amp-1
+    label: Midazolam 1 mg/mL
+    form: ampolla
+    mgPerUnit: 1
+    unit: mL
+    step: 0.05
+    brandsPE: []
+  - id: amp-5
+    label: Midazolam 5 mg/mL
+    form: ampolla
+    mgPerUnit: 5
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: sedacion-iv-6m-5a
+    indication: Sedación para procedimientos, IV, dosis inicial (6 meses a 5 años)
+    route: IV
+    ageMinDays: 183
+    ageMaxDays: 2190
+    basis: mg/kg/dose
+    amountMin: 0.05
+    amountMax: 0.1
+    usual: 0.05
+    once: true
+    maxPerDoseMg: 6
+    maxPerDayMg: 6
+    notes: >-
+      FDA — dosis inicial 0.05 a 0.1 mg/kg IV, en 2 a 3 minutos, y esperar otros 2 a 3 minutos antes de repetir.
+      La dosis total puede llegar a 0.6 mg/kg, pero en general no pasa de 6 mg.
+    presentationIds: [amp-1]
+    sourceIds: [fda-midazolam-inj, fnme-2008, digemid-pnume-2023]
+  - id: sedacion-iv-6-12a
+    indication: Sedación para procedimientos, IV, dosis inicial (6 a 12 años)
+    route: IV
+    ageMinDays: 2191
+    ageMaxDays: 4744
+    basis: mg/kg/dose
+    amountMin: 0.025
+    amountMax: 0.05
+    usual: 0.025
+    once: true
+    maxPerDoseMg: 10
+    maxPerDayMg: 10
+    notes: >-
+      FDA — dosis inicial 0.025 a 0.05 mg/kg IV; la dosis total puede llegar a 0.4 mg/kg, pero en general no pasa
+      de 10 mg.
+    presentationIds: [amp-1]
+    sourceIds: [fda-midazolam-inj, fnme-2008, digemid-pnume-2023]
+  - id: sedacion-im
+    indication: Sedación preoperatoria, IM
+    route: IM
+    ageMinDays: 183
+    basis: mg/kg/dose
+    amountMin: 0.1
+    amountMax: 0.15
+    usual: 0.1
+    once: true
+    maxPerDoseMg: 10
+    maxPerDayMg: 10
+    notes: FDA — 0.1 a 0.15 mg/kg IM suele ser eficaz; en pacientes muy ansiosos se ha llegado a 0.5 mg/kg; la dosis total en general no pasa de 10 mg.
+    presentationIds: [amp-5]
+    sourceIds: [fda-midazolam-inj, digemid-pnume-2023]
+warnings:
+  - Riesgo de depresión respiratoria; usar solo con monitoreo y equipo de reanimación disponibles (FDA).
+  - Con opioides, sedación profunda, depresión respiratoria y muerte (FDA, recuadro negro).
+  - Las dosis más altas pueden prolongar la sedación y causar hipoventilación (FDA).
+contraindications:
+  - Hipersensibilidad al midazolam.
+  - Glaucoma agudo de ángulo estrecho.
+interactions:
+  - Opioides y otros depresores del sistema nervioso central, depresión respiratoria (FDA).
+renal: FNME — con depuración de creatinina menor de 10 mL/min, 50 % de la dosis.
+diagnoses: [sedación para procedimientos, premedicación]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: sedacion-iv-6m-5a
+    presentationId: amp-1
+    weightKg: 12
+    ageDays: 730
+    expect: { mgPerDose: 0.6, amount: 0.6, unit: mL }
+  - ruleId: sedacion-iv-6-12a
+    presentationId: amp-1
+    weightKg: 25
+    ageDays: 2920
+    chosenMgPerKg: 0.05
+    expect: { mgPerDose: 1.25, amount: 1.25, unit: mL }
+  - ruleId: sedacion-im
+    presentationId: amp-5
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 2, amount: 0.4, unit: mL }

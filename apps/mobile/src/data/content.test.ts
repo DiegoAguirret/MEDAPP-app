@@ -41,7 +41,7 @@ describe('loadVerifiedContent', () => {
     const { raw, publicKeyHex } = signed(realBundle);
     const r = loadVerifiedContent(raw, publicKeyHex);
     expect(r.ok).toBe(true);
-    if (r.ok) expect(r.bundle.drugs.length).toBe(83);
+    if (r.ok) expect(r.bundle.drugs.length).toBe(89);
   });
 
   it('rejects a tampered bundle', () => {
@@ -95,11 +95,14 @@ describe('searchDrugs', () => {
   it('finds by partial word in a combination', () => {
     expect(ids('acido')).toContain('amoxicilina-clavulanico');
   });
-  it('finds by synonym', () => {
-    expect(ids('acetaminofen')).toEqual(['paracetamol']);
+  it('finds by synonym, and a name or synonym match comes before a diagnosis match', () => {
+    const found = ids('acetaminofen');
+    expect(found[0]).toBe('paracetamol');
+    // La N-acetilcisteína aparece después: es el antídoto de la sobredosis de acetaminofén.
+    expect(found).toContain('acetilcisteina');
   });
   it('returns all drugs sorted by name for an empty query', () => {
-    expect(ids('').length).toBe(83);
+    expect(ids('').length).toBe(89);
   });
   it('excludes recalled drugs', () => {
     expect(ids('fiebre', new Set(['metamizol']))).not.toContain('metamizol');

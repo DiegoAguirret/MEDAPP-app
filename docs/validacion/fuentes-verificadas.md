@@ -337,3 +337,21 @@ Cada cifra se confirmó en el documento descargado (texto de openFDA, el FNME 20
 - **Vitamina K en prematuros de 1500 g o menos:** la NTS 214 escribe «0.3 mg mg/kg (0.03 mL)»; los volúmenes indican dosis fijas. No se calcula hasta confirmarlo.
 - **Anfotericina B:** el FNME dice «c/6 h»; la FDA y la OMS, una vez al día. Se sigue la FDA y se muestra la diferencia.
 - **Lidocaína:** no se usan el máximo de la OMS (3 mg/kg) ni la lidocaína con epinefrina, porque no se confirmaron en el texto descargado.
+
+## Lote 8A: sedación y antídotos — verificado el 06/11/2026
+
+| Fármaco                  | Reglas                            | Fuente principal     | Cifras                                                                              |
+| ------------------------ | --------------------------------- | -------------------- | ----------------------------------------------------------------------------------- |
+| Flumazenil               | Reversión de sedación (1–17 años) | FDA (FNME concuerda) | 0.01 mg/kg (máx. 0.2 mg) cada minuto, hasta 5 dosis; total ≤0.05 mg/kg o 1 mg       |
+| Midazolam                | IV 6 m–5 a; IV 6–12 a; IM         | FDA                  | 0.05–0.1 mg/kg (total ≤6 mg); 0.025–0.05 mg/kg (≤10 mg); IM 0.1–0.15 mg/kg (≤10 mg) |
+| Ketamina                 | Inducción IV e IM                 | FNME = FDA           | IV 1–4.5 mg/kg; IM 6.5–13 mg/kg                                                     |
+| Fentanilo                | IV, 2–12 años                     | FNME = FDA           | 2–3 mcg/kg                                                                          |
+| N-acetilcisteína IV      | 3 bolsas                          | FDA                  | 150 mg/kg en 1 h, 50 mg/kg en 4 h, 100 mg/kg en 16 h; diluyente por peso            |
+| Gluconato de calcio 10 % | Niños; neonatos                   | FDA                  | 29–60 mg/kg c/6 h; neonatos 100–200 mg/kg; ≤100 mg/min                              |
+
+**Erratas de las fuentes que no se usan:**
+
+- **OMS Pocket Book, ketamina «5–8 mg IM»:** contradice su propia tabla (5–8 mg/kg).
+- **OMS MFC, gluconato de calcio «máximo 200 mg (20 mL)»:** 20 mL son 2 g.
+
+**No incluido:** ketamina IV para sedación con 0.2 mg/kg, porque con el vial de 50 mg/mL el volumen no se puede medir.

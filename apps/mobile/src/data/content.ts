@@ -59,5 +59,11 @@ export function searchDrugs(drugs: Drug[], query: string, recalled: Set<string>)
       const h = haystack(d);
       return terms.every((t) => h.includes(t));
     })
-    .sort((a, b) => a.name.localeCompare(b.name, 'es'));
+    .sort((a, b) => rank(a, terms) - rank(b, terms) || a.name.localeCompare(b.name, 'es'));
+}
+
+/** 0 si el nombre o un sinónimo contiene todos los términos; 1 si solo coincide por diagnóstico. */
+function rank(d: Drug, terms: string[]): number {
+  const names = normalize([d.name, d.tallMan ?? '', ...d.synonyms].join(' '));
+  return terms.every((t) => names.includes(t)) ? 0 : 1;
 }

@@ -1,0 +1,89 @@
+id: acetilcisteina
+name: N-acetilcisteína IV (intoxicación por paracetamol)
+category: urgencia
+synonyms: [acetilcisteína, NAC, Acetadote, antídoto de paracetamol]
+presentations:
+  - id: amp-200
+    label: Acetilcisteína 200 mg/mL (ampolla)
+    form: ampolla
+    mgPerUnit: 200
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: fase-1
+    indication: Intoxicación por paracetamol, 1.ª bolsa (carga en 1 hora)
+    route: IV
+    ageMinDays: 29
+    weightMinKg: 5
+    basis: mg/kg/dose
+    amountMin: 150
+    amountMax: 150
+    usual: 150
+    once: true
+    maxPerDoseMg: 15000
+    maxPerDayMg: 15000
+    notes: >-
+      FDA — régimen de 3 bolsas (300 mg/kg en 21 h): 150 mg/kg en 1 hora. Diluyente: de 5 a 20 kg, 3 mL/kg; de 21 a
+      40 kg, 100 mL; de 41 a 99 kg, 200 mL; con 100 kg o más, 15 000 mg en 200 mL.
+    presentationIds: [amp-200]
+    sourceIds: [fda-acetylcysteine-iv, digemid-pnume-2023]
+  - id: fase-2
+    indication: Intoxicación por paracetamol, 2.ª bolsa (en 4 horas)
+    route: IV
+    ageMinDays: 29
+    weightMinKg: 5
+    basis: mg/kg/dose
+    amountMin: 50
+    amountMax: 50
+    usual: 50
+    once: true
+    maxPerDoseMg: 5000
+    maxPerDayMg: 5000
+    notes: FDA — 50 mg/kg en 4 horas. Diluyente — de 5 a 20 kg, 7 mL/kg; de 21 a 40 kg, 250 mL; de 41 a 99 kg, 500 mL; con 100 kg o más, 5000 mg en 500 mL.
+    presentationIds: [amp-200]
+    sourceIds: [fda-acetylcysteine-iv, digemid-pnume-2023]
+  - id: fase-3
+    indication: Intoxicación por paracetamol, 3.ª bolsa (en 16 horas)
+    route: IV
+    ageMinDays: 29
+    weightMinKg: 5
+    basis: mg/kg/dose
+    amountMin: 100
+    amountMax: 100
+    usual: 100
+    once: true
+    maxPerDoseMg: 10000
+    maxPerDayMg: 10000
+    notes: FDA — 100 mg/kg en 16 horas. Diluyente — de 5 a 20 kg, 14 mL/kg; de 21 a 40 kg, 500 mL; de 41 a 99 kg, 1000 mL; con 100 kg o más, 10 000 mg en 1000 mL.
+    presentationIds: [amp-200]
+    sourceIds: [fda-acetylcysteine-iv, digemid-pnume-2023]
+warnings:
+  - Con 40 kg o menos, ajustar el volumen del diluyente para evitar sobrecarga de líquidos, hiponatremia y convulsiones (FDA).
+  - Riesgo de reacciones de hipersensibilidad, mayor en la primera hora (FDA).
+  - La OMS da las mismas dosis por kg, pero la carga en 15 minutos y en glucosa al 5 %.
+contraindications:
+  - Hipersensibilidad a la acetilcisteína.
+renal: Sin ajuste.
+diagnoses: [intoxicación por paracetamol, sobredosis de acetaminofén]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: fase-1
+    presentationId: amp-200
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 3000, amount: 15, unit: mL }
+  - ruleId: fase-2
+    presentationId: amp-200
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 1000, amount: 5, unit: mL }
+  - ruleId: fase-3
+    presentationId: amp-200
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 2000, amount: 10, unit: mL }

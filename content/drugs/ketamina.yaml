@@ -1,0 +1,69 @@
+id: ketamina
+name: Ketamina
+category: otro
+synonyms: [ketamine, Ketalar, anestésico disociativo]
+presentations:
+  - id: amp-50
+    label: Ketamina 50 mg/mL
+    form: ampolla
+    mgPerUnit: 50
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: induccion-iv
+    indication: Inducción anestésica, IV
+    route: IV
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 1
+    amountMax: 4.5
+    usual: 1
+    once: true
+    maxPerDoseMg: 225
+    maxPerDayMg: 225
+    notes: >-
+      FNME y FDA — dosis inicial IV de 1 a 4.5 mg/kg. El FNME dice que en niños es igual que en adultos. Las
+      fuentes no dan tope en mg (el tope es técnico, 4.5 mg/kg con 50 kg).
+    presentationIds: [amp-50]
+    sourceIds: [fnme-2008, fda-ketamine, digemid-pnume-2023]
+  - id: induccion-im
+    indication: Inducción anestésica, IM
+    route: IM
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 6.5
+    amountMax: 13
+    usual: 6.5
+    once: true
+    maxPerDoseMg: 650
+    maxPerDayMg: 650
+    notes: FNME y FDA — inicial IM de 6.5 a 13 mg/kg. Las fuentes no dan tope en mg (el tope es técnico, 13 mg/kg con 50 kg).
+    presentationIds: [amp-50]
+    sourceIds: [fnme-2008, fda-ketamine, digemid-pnume-2023]
+warnings:
+  - La FDA no ha establecido su seguridad y eficacia en menores de 16 años.
+  - Anestésicos y sedantes por más de 3 horas en niños de 3 años o menos pueden afectar el desarrollo cerebral (FDA).
+contraindications:
+  - Casos en que una subida importante de la presión arterial sería un riesgo grave (FDA).
+  - Hipersensibilidad a la ketamina.
+renal: Las fuentes no dan ajuste renal.
+diagnoses: [anestesia, sedación para procedimientos]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: induccion-iv
+    presentationId: amp-50
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 20, amount: 0.4, unit: mL }
+  - ruleId: induccion-im
+    presentationId: amp-50
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 130, amount: 2.6, unit: mL }

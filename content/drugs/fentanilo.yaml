@@ -1,0 +1,50 @@
+id: fentanilo
+name: Fentanilo
+category: analgesico
+synonyms: [fentanyl, opioide]
+presentations:
+  - id: amp-50mcg
+    label: Fentanilo 50 mcg/mL (0.05 mg/mL)
+    form: ampolla
+    mgPerUnit: 0.05
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: anestesia-2-12a
+    indication: Analgesia o anestesia, IV (2 a 12 años)
+    route: IV
+    ageMinDays: 730
+    ageMaxDays: 4744
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 0.002
+    amountMax: 0.003
+    usual: 0.002
+    once: true
+    maxPerDoseMg: 0.15
+    maxPerDayMg: 0.15
+    notes: >-
+      FNME y FDA — en niños de 2 a 12 años, iniciar con una dosis reducida de 2 a 3 mcg/kg (0.002 a 0.003 mg/kg).
+      La FDA no da tope pediátrico en mg (el tope es técnico, 3 mcg/kg con 50 kg).
+    presentationIds: [amp-50mcg]
+    sourceIds: [fnme-2008, fda-fentanyl, digemid-pnume-2023]
+warnings:
+  - Con benzodiazepinas u otros depresores, sedación profunda, depresión respiratoria y muerte (FDA, recuadro negro).
+  - Los inhibidores de CYP3A4 pueden aumentar sus niveles y la depresión respiratoria (FDA, recuadro negro).
+  - Riesgo de rigidez muscular esquelética (FDA).
+contraindications:
+  - Hipersensibilidad al fentanilo.
+renal: FDA — reducir la dosis en insuficiencia renal (sin cifra).
+diagnoses: [dolor severo, anestesia, sedación para procedimientos]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: anestesia-2-12a
+    presentationId: amp-50mcg
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 0.04, amount: 0.8, unit: mL }
