@@ -12,22 +12,22 @@
 
 ## Lo que hacen mejor otras apps
 
-| Función                                                                                         | Quién la tiene        | Nosotros                                                                |
-| ----------------------------------------------------------------------------------------------- | --------------------- | ----------------------------------------------------------------------- |
-| Más fármacos (solo antibióticos: 34; anticonvulsivantes: 10; cardiovasculares: 12)              | Pediatrum             | 52 fichas en total → por lotes verificados (fase 3)                     |
-| Vía como pestañas (Oral, IV)                                                                    | Pediatrum             | Sí (selector)                                                           |
-| Indicaciones en hoja inferior, cada una con su mg/kg                                            | Pediatrum             | Fase 1                                                                  |
-| Nota de la indicación junto a ella, con «Ver más»                                               | Pediatrum             | Fase 1                                                                  |
-| Campos «Requerido» resaltados (peso, edad)                                                      | Pediatrum             | Fase 1                                                                  |
-| Vías en la lista de fármacos (IV, IM, Oral)                                                     | Pediatrum             | Fase 1                                                                  |
-| Botón «i»: cómo funciona, fuentes y repetir tutorial                                            | Pediatrum             | Fase 1                                                                  |
-| Tutorial guiado paso a paso («Siguiente», puntos, «Omitir»)                                     | Pediatrum, Duolingo   | Guías en línea. Fase 1: «Siguiente»                                     |
-| Ajuste renal, interacciones y contraindicaciones con contadores                                 | Pediatrum, DosisPedia | Contraindicaciones y advertencias. Fase 3: interacciones y ajuste renal |
-| Neonatología: Apgar, Capurro, Silverman-Anderson, Ballard, bilirrubina (AAP 2022), líquidos     | Pediatrum             | Fase 2                                                                  |
-| Crecimiento con curvas OMS (peso/talla, IMC, perímetro cefálico), talla diana, presión arterial | Pediatrum             | Fase 4 (tablas LMS de la OMS)                                           |
-| Urgencias: hoja de paro por peso (energía de desfibrilación, tubo endotraqueal), sedación       | Pediatrum, Pedi STAT  | Hoja de rescate por peso. Fase 4: equipos y energía                     |
-| Presentaciones favoritas                                                                        | Pediatrum             | Pendiente                                                               |
-| Funciona sin internet                                                                           | El Peñita, todas      | Sí                                                                      |
+| Función                                                                                         | Quién la tiene        | Nosotros                                                                                                                 |
+| ----------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Más fármacos (solo antibióticos: 34; anticonvulsivantes: 10; cardiovasculares: 12)              | Pediatrum             | 59 fichas (lote 5: levetiracetam, valproato, carbamazepina, omeprazol, cefuroxima, amikacina, vancomicina); siguen lotes |
+| Vía como pestañas (Oral, IV)                                                                    | Pediatrum             | Sí (selector)                                                                                                            |
+| Indicaciones en hoja inferior, cada una con su mg/kg                                            | Pediatrum             | Hecho                                                                                                                    |
+| Nota de la indicación junto a ella, con «Ver más»                                               | Pediatrum             | Hecho                                                                                                                    |
+| Campos «Requerido» resaltados (peso, edad)                                                      | Pediatrum             | Hecho                                                                                                                    |
+| Vías en la lista de fármacos (IV, IM, Oral)                                                     | Pediatrum             | Hecho                                                                                                                    |
+| Botón «i»: cómo funciona, fuentes y repetir tutorial                                            | Pediatrum             | Hecho                                                                                                                    |
+| Tutorial guiado paso a paso («Siguiente», puntos, «Omitir»)                                     | Pediatrum, Duolingo   | Guías en línea. Fase 1: «Siguiente»                                                                                      |
+| Ajuste renal, interacciones y contraindicaciones con contadores                                 | Pediatrum, DosisPedia | Sí: secciones de interacciones y ajuste renal (fichas nuevas; las anteriores, por lotes)                                 |
+| Neonatología: Apgar, Capurro, Silverman-Anderson, Ballard, bilirrubina (AAP 2022), líquidos     | Pediatrum             | Fase 2                                                                                                                   |
+| Crecimiento con curvas OMS (peso/talla, IMC, perímetro cefálico), talla diana, presión arterial | Pediatrum             | Fase 4 (tablas LMS de la OMS)                                                                                            |
+| Urgencias: hoja de paro por peso (energía de desfibrilación, tubo endotraqueal), sedación       | Pediatrum, Pedi STAT  | Hoja de rescate por peso. Fase 4: equipos y energía                                                                      |
+| Presentaciones favoritas                                                                        | Pediatrum             | Pendiente                                                                                                                |
+| Funciona sin internet                                                                           | El Peñita, todas      | Sí                                                                                                                       |
 
 ## Lo que ya hacemos mejor
 

@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **4662** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **2059**. Fuera del rango de edad de la regla: 2603 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 2059/2059 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 2059/2059.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.51 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **5313** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **2320**. Fuera del rango de edad de la regla: 2993 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 2320/2320 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 2320/2320.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.54 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -48,6 +48,36 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | aciclovir | varicela | Tableta 400 mg | 14 años (50 kg) | 800 | 800 | 2 | 2 tableta | ✅ tope aplicado |
 | aciclovir | varicela | Tableta 400 mg | 16 años (58 kg) | 800 | 800 | 2 | 2 tableta | ✅ tope aplicado |
 | aciclovir | varicela | Tableta 400 mg | 17 años, obeso (95 kg) | 800 | 800 | 2 | 2 tableta | ✅ tope aplicado |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 250 mg/5 mL | 1 año (9.6 kg) | 72 | 72 | 1.44 | 1.4 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 250 mg/5 mL | 18 meses (10.9 kg) | 81.75 | 81.75 | 1.635 | 1.6 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 250 mg/5 mL | 2 años (12.2 kg) | 91.5 | 91.5 | 1.83 | 1.8 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 250 mg/5 mL | 3 años (14.3 kg) | 107.25 | 107.25 | 2.145 | 2.1 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 250 mg/5 mL | 4 años (16.3 kg) | 122.25 | 122.25 | 2.445 | 2.4 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 250 mg/5 mL | 5 años (18.3 kg) | 137.25 | 137.25 | 2.745 | 2.7 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 250 mg/5 mL | 6 años (20.5 kg) | 153.75 | 153.75 | 3.075 | 3.1 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 250 mg/5 mL | 8 años (25.6 kg) | 192 | 192 | 3.84 | 3.8 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 250 mg/5 mL | 10 años (32 kg) | 240 | 240 | 4.8 | 4.8 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 250 mg/5 mL | 12 años (40 kg) | 300 | 300 | 6 | 6 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 200 mg/mL | 1 año (9.6 kg) | 72 | 72 | 0.36 | 0.36 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 200 mg/mL | 18 meses (10.9 kg) | 81.75 | 81.75 | 0.409 | 0.4 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 200 mg/mL | 2 años (12.2 kg) | 91.5 | 91.5 | 0.458 | 0.46 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 200 mg/mL | 3 años (14.3 kg) | 107.25 | 107.25 | 0.536 | 0.54 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 200 mg/mL | 4 años (16.3 kg) | 122.25 | 122.25 | 0.611 | 0.6 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 200 mg/mL | 5 años (18.3 kg) | 137.25 | 137.25 | 0.686 | 0.7 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 200 mg/mL | 6 años (20.5 kg) | 153.75 | 153.75 | 0.769 | 0.8 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 200 mg/mL | 8 años (25.6 kg) | 192 | 192 | 0.96 | 1 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 200 mg/mL | 10 años (32 kg) | 240 | 240 | 1.2 | 1.2 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Solución oral 200 mg/mL | 12 años (40 kg) | 300 | 300 | 1.5 | 1.5 mL | ✅  |
+| acido-valproico | epilepsia-1-12-anos | Tableta de liberación modificada 500 mg | 1 año (9.6 kg) | 72 | 72 | 0.144 | 0.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| acido-valproico | epilepsia-1-12-anos | Tableta de liberación modificada 500 mg | 18 meses (10.9 kg) | 81.75 | 81.75 | 0.164 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| acido-valproico | epilepsia-1-12-anos | Tableta de liberación modificada 500 mg | 2 años (12.2 kg) | 91.5 | 91.5 | 0.183 | 0.18 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| acido-valproico | epilepsia-1-12-anos | Tableta de liberación modificada 500 mg | 3 años (14.3 kg) | 107.25 | 107.25 | 0.214 | 0.21 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| acido-valproico | epilepsia-1-12-anos | Tableta de liberación modificada 500 mg | 4 años (16.3 kg) | 122.25 | 122.25 | 0.244 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| acido-valproico | epilepsia-1-12-anos | Tableta de liberación modificada 500 mg | 5 años (18.3 kg) | 137.25 | 137.25 | 0.275 | 0.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| acido-valproico | epilepsia-1-12-anos | Tableta de liberación modificada 500 mg | 6 años (20.5 kg) | 153.75 | 153.75 | 0.307 | 0.31 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| acido-valproico | epilepsia-1-12-anos | Tableta de liberación modificada 500 mg | 8 años (25.6 kg) | 192 | 192 | 0.384 | 0.38 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| acido-valproico | epilepsia-1-12-anos | Tableta de liberación modificada 500 mg | 10 años (32 kg) | 240 | 240 | 0.48 | 0.48 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| acido-valproico | epilepsia-1-12-anos | Tableta de liberación modificada 500 mg | 12 años (40 kg) | 300 | 300 | 0.6 | 0.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | adrenalina | anafilaxia-im | Ampolla 1 mg/mL (1:1000) | 1 mes (4.2 kg) | 0.04 | 0.04 | 0.042 | 0.04 mL | ✅  |
 | adrenalina | anafilaxia-im | Ampolla 1 mg/mL (1:1000) | 2 meses (5.1 kg) | 0.05 | 0.05 | 0.051 | 0.05 mL | ✅  |
 | adrenalina | anafilaxia-im | Ampolla 1 mg/mL (1:1000) | 4 meses (6.4 kg) | 0.06 | 0.06 | 0.064 | 0.06 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -110,6 +140,84 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | albendazol | nematodos-1-2-anos | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 18 meses (10.9 kg) | 200 | 200 | 10 | 10 mL | ✅  |
 | albendazol | nematodos-1-2-anos | Tableta 200 mg | 1 año (9.6 kg) | 200 | 200 | 1 | 1 tableta | ✅  |
 | albendazol | nematodos-1-2-anos | Tableta 200 mg | 18 meses (10.9 kg) | 200 | 200 | 1 | 1 tableta | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 1 mes (4.2 kg) | 21 | 21 | 0.084 | 0.08 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 2 meses (5.1 kg) | 25.5 | 25.5 | 0.102 | 0.1 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 4 meses (6.4 kg) | 32 | 32 | 0.128 | 0.13 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 6 meses (7.6 kg) | 38 | 38 | 0.152 | 0.15 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 9 meses (8.6 kg) | 43 | 43 | 0.172 | 0.17 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 1 año (9.6 kg) | 48 | 48 | 0.192 | 0.2 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 18 meses (10.9 kg) | 54.5 | 54.5 | 0.218 | 0.22 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 2 años (12.2 kg) | 61 | 61 | 0.244 | 0.25 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 3 años (14.3 kg) | 71.5 | 71.5 | 0.286 | 0.3 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 4 años (16.3 kg) | 81.5 | 81.5 | 0.326 | 0.33 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 5 años (18.3 kg) | 91.5 | 91.5 | 0.366 | 0.35 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 6 años (20.5 kg) | 102.5 | 102.5 | 0.41 | 0.4 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 8 años (25.6 kg) | 128 | 128 | 0.512 | 0.5 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 10 años (32 kg) | 160 | 160 | 0.64 | 0.65 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 12 años (40 kg) | 200 | 200 | 0.8 | 0.8 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 14 años (50 kg) | 250 | 250 | 1 | 1 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 16 años (58 kg) | 290 | 290 | 1.16 | 1.15 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 17 años, obeso (95 kg) | 475 | 475 | 1.9 | 1.9 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 1 mes (4.2 kg) | 21 | 21 | 0.42 | 0.4 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 2 meses (5.1 kg) | 25.5 | 25.5 | 0.51 | 0.5 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 4 meses (6.4 kg) | 32 | 32 | 0.64 | 0.65 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 6 meses (7.6 kg) | 38 | 38 | 0.76 | 0.75 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 9 meses (8.6 kg) | 43 | 43 | 0.86 | 0.85 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 1 año (9.6 kg) | 48 | 48 | 0.96 | 0.95 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 18 meses (10.9 kg) | 54.5 | 54.5 | 1.09 | 1.1 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 2 años (12.2 kg) | 61 | 61 | 1.22 | 1.2 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 3 años (14.3 kg) | 71.5 | 71.5 | 1.43 | 1.45 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 4 años (16.3 kg) | 81.5 | 81.5 | 1.63 | 1.65 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 5 años (18.3 kg) | 91.5 | 91.5 | 1.83 | 1.85 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 6 años (20.5 kg) | 102.5 | 102.5 | 2.05 | 2.05 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 8 años (25.6 kg) | 128 | 128 | 2.56 | 2.55 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 10 años (32 kg) | 160 | 160 | 3.2 | 3.2 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 12 años (40 kg) | 200 | 200 | 4 | 4 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 14 años (50 kg) | 250 | 250 | 5 | 5 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 16 años (58 kg) | 290 | 290 | 5.8 | 5.8 mL | ✅  |
+| amikacina | ninos-cada-8-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 17 años, obeso (95 kg) | 475 | 475 | 9.5 | 9.5 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 1 mes (4.2 kg) | 31.5 | 31.5 | 0.126 | 0.13 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 2 meses (5.1 kg) | 38.25 | 38.25 | 0.153 | 0.15 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 4 meses (6.4 kg) | 48 | 48 | 0.192 | 0.2 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 6 meses (7.6 kg) | 57 | 57 | 0.228 | 0.23 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 9 meses (8.6 kg) | 64.5 | 64.5 | 0.258 | 0.25 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 1 año (9.6 kg) | 72 | 72 | 0.288 | 0.3 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 18 meses (10.9 kg) | 81.75 | 81.75 | 0.327 | 0.33 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 2 años (12.2 kg) | 91.5 | 91.5 | 0.366 | 0.35 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 3 años (14.3 kg) | 107.25 | 107.25 | 0.429 | 0.45 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 4 años (16.3 kg) | 122.25 | 122.25 | 0.489 | 0.5 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 5 años (18.3 kg) | 137.25 | 137.25 | 0.549 | 0.55 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 6 años (20.5 kg) | 153.75 | 153.75 | 0.615 | 0.6 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 8 años (25.6 kg) | 192 | 192 | 0.768 | 0.75 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 10 años (32 kg) | 240 | 240 | 0.96 | 0.95 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 12 años (40 kg) | 300 | 300 | 1.2 | 1.2 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 14 años (50 kg) | 375 | 375 | 1.5 | 1.5 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 16 años (58 kg) | 435 | 435 | 1.74 | 1.75 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 17 años, obeso (95 kg) | 712.5 | 712.5 | 2.85 | 2.85 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 1 mes (4.2 kg) | 31.5 | 31.5 | 0.63 | 0.65 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 2 meses (5.1 kg) | 38.25 | 38.25 | 0.765 | 0.75 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 4 meses (6.4 kg) | 48 | 48 | 0.96 | 0.95 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 6 meses (7.6 kg) | 57 | 57 | 1.14 | 1.15 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 9 meses (8.6 kg) | 64.5 | 64.5 | 1.29 | 1.3 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 1 año (9.6 kg) | 72 | 72 | 1.44 | 1.45 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 18 meses (10.9 kg) | 81.75 | 81.75 | 1.635 | 1.65 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 2 años (12.2 kg) | 91.5 | 91.5 | 1.83 | 1.85 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 3 años (14.3 kg) | 107.25 | 107.25 | 2.145 | 2.15 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 4 años (16.3 kg) | 122.25 | 122.25 | 2.445 | 2.45 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 5 años (18.3 kg) | 137.25 | 137.25 | 2.745 | 2.75 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 6 años (20.5 kg) | 153.75 | 153.75 | 3.075 | 3.1 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 8 años (25.6 kg) | 192 | 192 | 3.84 | 3.85 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 10 años (32 kg) | 240 | 240 | 4.8 | 4.8 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 12 años (40 kg) | 300 | 300 | 6 | 6 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 14 años (50 kg) | 375 | 375 | 7.5 | 7.5 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 16 años (58 kg) | 435 | 435 | 8.7 | 8.7 mL | ✅  |
+| amikacina | ninos-cada-12-h | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 17 años, obeso (95 kg) | 712.5 | 712.5 | 14.25 | 14.25 mL | ✅  |
+| amikacina | neonato-carga | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 3 días, bajo peso (2 kg) (2 kg) | 20 | 20 | 0.4 | 0.4 mL | ✅  |
+| amikacina | neonato-carga | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 5 días (3.2 kg) (3.2 kg) | 32 | 32 | 0.64 | 0.65 mL | ✅  |
+| amikacina | neonato-carga | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 15 días (3.6 kg) (3.6 kg) | 36 | 36 | 0.72 | 0.7 mL | ✅  |
+| amikacina | neonato-mantenimiento | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 3 días, bajo peso (2 kg) (2 kg) | 15 | 15 | 0.3 | 0.3 mL | ✅  |
+| amikacina | neonato-mantenimiento | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 5 días (3.2 kg) (3.2 kg) | 24 | 24 | 0.48 | 0.5 mL | ✅  |
+| amikacina | neonato-mantenimiento | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 15 días (3.6 kg) (3.6 kg) | 27 | 27 | 0.54 | 0.55 mL | ✅  |
 | amoxicilina-clavulanico | menores-3-meses | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 1 mes (4.2 kg) | 63 | 63 | 0.787 | 0.8 mL | ✅  |
 | amoxicilina-clavulanico | menores-3-meses | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 2 meses (5.1 kg) | 76.5 | 76.5 | 0.956 | 1 mL | ✅  |
 | amoxicilina-clavulanico | estandar-cada-12h | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 4 meses (6.4 kg) | 144 | 144 | 1.8 | 1.8 mL | ✅  |
@@ -482,6 +590,51 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | azitromicina | esquema-5-dias-dias-2-5 | Tableta 500 mg | 14 años (50 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | azitromicina | esquema-5-dias-dias-2-5 | Tableta 500 mg | 16 años (58 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | azitromicina | esquema-5-dias-dias-2-5 | Tableta 500 mg | 17 años, obeso (95 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Suspensión 100 mg/5 mL | 1 mes (4.2 kg) | 14 | 14 | 0.7 | 0.7 mL | ✅  |
+| carbamazepina | menores-6-anos | Suspensión 100 mg/5 mL | 2 meses (5.1 kg) | 17 | 17 | 0.85 | 0.85 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Suspensión 100 mg/5 mL | 4 meses (6.4 kg) | 21.33 | 21.33 | 1.067 | 1.1 mL | ✅  |
+| carbamazepina | menores-6-anos | Suspensión 100 mg/5 mL | 6 meses (7.6 kg) | 25.33 | 25.33 | 1.267 | 1.3 mL | ✅  |
+| carbamazepina | menores-6-anos | Suspensión 100 mg/5 mL | 9 meses (8.6 kg) | 28.67 | 28.67 | 1.433 | 1.4 mL | ✅  |
+| carbamazepina | menores-6-anos | Suspensión 100 mg/5 mL | 1 año (9.6 kg) | 32 | 32 | 1.6 | 1.6 mL | ✅  |
+| carbamazepina | menores-6-anos | Suspensión 100 mg/5 mL | 18 meses (10.9 kg) | 36.33 | 36.33 | 1.817 | 1.8 mL | ✅  |
+| carbamazepina | menores-6-anos | Suspensión 100 mg/5 mL | 2 años (12.2 kg) | 40.67 | 40.67 | 2.033 | 2 mL | ✅  |
+| carbamazepina | menores-6-anos | Suspensión 100 mg/5 mL | 3 años (14.3 kg) | 47.67 | 47.67 | 2.383 | 2.4 mL | ✅  |
+| carbamazepina | menores-6-anos | Suspensión 100 mg/5 mL | 4 años (16.3 kg) | 54.33 | 54.33 | 2.717 | 2.7 mL | ✅  |
+| carbamazepina | menores-6-anos | Suspensión 100 mg/5 mL | 5 años (18.3 kg) | 61 | 61 | 3.05 | 3.1 mL | ✅  |
+| carbamazepina | menores-6-anos | Suspensión 100 mg/5 mL | 6 años (20.5 kg) | 68.33 | 68.33 | 3.417 | 3.4 mL | ✅  |
+| carbamazepina | menores-6-anos | Tableta 100 mg | 1 mes (4.2 kg) | 14 | 14 | 0.14 | 0.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 100 mg | 2 meses (5.1 kg) | 17 | 17 | 0.17 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 100 mg | 4 meses (6.4 kg) | 21.33 | 21.33 | 0.213 | 0.21 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 100 mg | 6 meses (7.6 kg) | 25.33 | 25.33 | 0.253 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 100 mg | 9 meses (8.6 kg) | 28.67 | 28.67 | 0.287 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 100 mg | 1 año (9.6 kg) | 32 | 32 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 100 mg | 18 meses (10.9 kg) | 36.33 | 36.33 | 0.363 | 0.36 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 100 mg | 2 años (12.2 kg) | 40.67 | 40.67 | 0.407 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 100 mg | 3 años (14.3 kg) | 47.67 | 47.67 | 0.477 | 0.48 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 100 mg | 4 años (16.3 kg) | 54.33 | 54.33 | 0.543 | 0.54 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 100 mg | 5 años (18.3 kg) | 61 | 61 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 100 mg | 6 años (20.5 kg) | 68.33 | 68.33 | 0.683 | 0.68 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 200 mg | 1 mes (4.2 kg) | 14 | 14 | 0.07 | 0.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 200 mg | 2 meses (5.1 kg) | 17 | 17 | 0.085 | 0.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 200 mg | 4 meses (6.4 kg) | 21.33 | 21.33 | 0.107 | 0.11 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 200 mg | 6 meses (7.6 kg) | 25.33 | 25.33 | 0.127 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 200 mg | 9 meses (8.6 kg) | 28.67 | 28.67 | 0.143 | 0.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 200 mg | 1 año (9.6 kg) | 32 | 32 | 0.16 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 200 mg | 18 meses (10.9 kg) | 36.33 | 36.33 | 0.182 | 0.18 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 200 mg | 2 años (12.2 kg) | 40.67 | 40.67 | 0.203 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 200 mg | 3 años (14.3 kg) | 47.67 | 47.67 | 0.238 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 200 mg | 4 años (16.3 kg) | 54.33 | 54.33 | 0.272 | 0.27 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 200 mg | 5 años (18.3 kg) | 61 | 61 | 0.305 | 0.3 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | menores-6-anos | Tableta 200 mg | 6 años (20.5 kg) | 68.33 | 68.33 | 0.342 | 0.34 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | inicio-6-12-anos | Suspensión 100 mg/5 mL | 8 años (25.6 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| carbamazepina | inicio-6-12-anos | Suspensión 100 mg/5 mL | 10 años (32 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| carbamazepina | inicio-6-12-anos | Suspensión 100 mg/5 mL | 12 años (40 kg) | 100 | 100 | 5 | 5 mL | ✅  |
+| carbamazepina | inicio-6-12-anos | Tableta 100 mg | 8 años (25.6 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| carbamazepina | inicio-6-12-anos | Tableta 100 mg | 10 años (32 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| carbamazepina | inicio-6-12-anos | Tableta 100 mg | 12 años (40 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| carbamazepina | inicio-6-12-anos | Tableta 200 mg | 8 años (25.6 kg) | 100 | 100 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | inicio-6-12-anos | Tableta 200 mg | 10 años (32 kg) | 100 | 100 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| carbamazepina | inicio-6-12-anos | Tableta 200 mg | 12 años (40 kg) | 100 | 100 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cefadroxilo | usual | Suspensión 250 mg/5 mL | 1 mes (4.2 kg) | 63 | 63 | 1.26 | 1.3 mL | ✅  |
 | cefadroxilo | usual | Suspensión 250 mg/5 mL | 2 meses (5.1 kg) | 76.5 | 76.5 | 1.53 | 1.5 mL | ✅  |
 | cefadroxilo | usual | Suspensión 250 mg/5 mL | 4 meses (6.4 kg) | 96 | 96 | 1.92 | 1.9 mL | ✅  |
@@ -606,6 +759,32 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 14 años (50 kg) | 2000 | 2000 | 20 | 20 mL | ✅ tope aplicado |
 | ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 16 años (58 kg) | 2000 | 2000 | 20 | 20 mL | ✅ tope aplicado |
 | ceftriaxona | meningitis-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 17 años, obeso (95 kg) | 2000 | 2000 | 20 | 20 mL | ✅ tope aplicado |
+| cefuroxima | faringoamigdalitis | Suspensión 250 mg/5 mL | 4 meses (6.4 kg) | 64 | 64 | 1.28 | 1.3 mL | ✅  |
+| cefuroxima | faringoamigdalitis | Suspensión 250 mg/5 mL | 6 meses (7.6 kg) | 76 | 76 | 1.52 | 1.5 mL | ✅  |
+| cefuroxima | faringoamigdalitis | Suspensión 250 mg/5 mL | 9 meses (8.6 kg) | 86 | 86 | 1.72 | 1.7 mL | ✅  |
+| cefuroxima | faringoamigdalitis | Suspensión 250 mg/5 mL | 1 año (9.6 kg) | 96 | 96 | 1.92 | 1.9 mL | ✅  |
+| cefuroxima | faringoamigdalitis | Suspensión 250 mg/5 mL | 18 meses (10.9 kg) | 109 | 109 | 2.18 | 2.2 mL | ✅  |
+| cefuroxima | faringoamigdalitis | Suspensión 250 mg/5 mL | 2 años (12.2 kg) | 122 | 122 | 2.44 | 2.4 mL | ✅  |
+| cefuroxima | faringoamigdalitis | Suspensión 250 mg/5 mL | 3 años (14.3 kg) | 143 | 143 | 2.86 | 2.9 mL | ✅  |
+| cefuroxima | faringoamigdalitis | Suspensión 250 mg/5 mL | 4 años (16.3 kg) | 163 | 163 | 3.26 | 3.3 mL | ✅  |
+| cefuroxima | faringoamigdalitis | Suspensión 250 mg/5 mL | 5 años (18.3 kg) | 183 | 183 | 3.66 | 3.7 mL | ✅  |
+| cefuroxima | faringoamigdalitis | Suspensión 250 mg/5 mL | 6 años (20.5 kg) | 205 | 205 | 4.1 | 4.1 mL | ✅  |
+| cefuroxima | faringoamigdalitis | Suspensión 250 mg/5 mL | 8 años (25.6 kg) | 250 | 250 | 5 | 5 mL | ✅ tope aplicado |
+| cefuroxima | faringoamigdalitis | Suspensión 250 mg/5 mL | 10 años (32 kg) | 250 | 250 | 5 | 5 mL | ✅ tope aplicado |
+| cefuroxima | faringoamigdalitis | Suspensión 250 mg/5 mL | 12 años (40 kg) | 250 | 250 | 5 | 5 mL | ✅ tope aplicado |
+| cefuroxima | oma-sinusitis-impetigo | Suspensión 250 mg/5 mL | 4 meses (6.4 kg) | 96 | 96 | 1.92 | 1.9 mL | ✅  |
+| cefuroxima | oma-sinusitis-impetigo | Suspensión 250 mg/5 mL | 6 meses (7.6 kg) | 114 | 114 | 2.28 | 2.3 mL | ✅  |
+| cefuroxima | oma-sinusitis-impetigo | Suspensión 250 mg/5 mL | 9 meses (8.6 kg) | 129 | 129 | 2.58 | 2.6 mL | ✅  |
+| cefuroxima | oma-sinusitis-impetigo | Suspensión 250 mg/5 mL | 1 año (9.6 kg) | 144 | 144 | 2.88 | 2.9 mL | ✅  |
+| cefuroxima | oma-sinusitis-impetigo | Suspensión 250 mg/5 mL | 18 meses (10.9 kg) | 163.5 | 163.5 | 3.27 | 3.3 mL | ✅  |
+| cefuroxima | oma-sinusitis-impetigo | Suspensión 250 mg/5 mL | 2 años (12.2 kg) | 183 | 183 | 3.66 | 3.7 mL | ✅  |
+| cefuroxima | oma-sinusitis-impetigo | Suspensión 250 mg/5 mL | 3 años (14.3 kg) | 214.5 | 214.5 | 4.29 | 4.3 mL | ✅  |
+| cefuroxima | oma-sinusitis-impetigo | Suspensión 250 mg/5 mL | 4 años (16.3 kg) | 244.5 | 244.5 | 4.89 | 4.9 mL | ✅  |
+| cefuroxima | oma-sinusitis-impetigo | Suspensión 250 mg/5 mL | 5 años (18.3 kg) | 274.5 | 274.5 | 5.49 | 5.5 mL | ✅  |
+| cefuroxima | oma-sinusitis-impetigo | Suspensión 250 mg/5 mL | 6 años (20.5 kg) | 307.5 | 307.5 | 6.15 | 6.2 mL | ✅  |
+| cefuroxima | oma-sinusitis-impetigo | Suspensión 250 mg/5 mL | 8 años (25.6 kg) | 384 | 384 | 7.68 | 7.7 mL | ✅  |
+| cefuroxima | oma-sinusitis-impetigo | Suspensión 250 mg/5 mL | 10 años (32 kg) | 480 | 480 | 9.6 | 9.6 mL | ✅  |
+| cefuroxima | oma-sinusitis-impetigo | Suspensión 250 mg/5 mL | 12 años (40 kg) | 500 | 500 | 10 | 10 mL | ✅ tope aplicado |
 | cetirizina | alergia-6-23-meses | Solución oral 1 mg/mL (5 mg/5 mL) | 6 meses (7.6 kg) | 2.5 | 2.5 | 2.5 | 2.5 mL | ✅  |
 | cetirizina | alergia-6-23-meses | Solución oral 1 mg/mL (5 mg/5 mL) | 9 meses (8.6 kg) | 2.5 | 2.5 | 2.5 | 2.5 mL | ✅  |
 | cetirizina | alergia-6-23-meses | Solución oral 1 mg/mL (5 mg/5 mL) | 1 año (9.6 kg) | 2.5 | 2.5 | 2.5 | 2.5 mL | ✅  |
@@ -1353,6 +1532,57 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | ivermectina | estrongiloidiasis-36-50-kg | Tableta 6 mg | 12 años (40 kg) | 9 | 9 | 1.5 | 1.5 tableta | ✅  |
 | ivermectina | estrongiloidiasis-36-50-kg | Tableta 6 mg | 14 años (50 kg) | 9 | 9 | 1.5 | 1.5 tableta | ✅  |
 | ivermectina | estrongiloidiasis-51-65-kg | Tableta 6 mg | 16 años (58 kg) | 12 | 12 | 2 | 2 tableta | ✅  |
+| levetiracetam | focal-1-6-meses | Solución oral 100 mg/mL | 1 mes (4.2 kg) | 29.4 | 29.4 | 0.294 | 0.3 mL | ✅  |
+| levetiracetam | focal-1-6-meses | Solución oral 100 mg/mL | 2 meses (5.1 kg) | 35.7 | 35.7 | 0.357 | 0.36 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-1-6-meses | Solución oral 100 mg/mL | 4 meses (6.4 kg) | 44.8 | 44.8 | 0.448 | 0.45 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-1-6-meses | Tableta 500 mg | 1 mes (4.2 kg) | 29.4 | 29.4 | 0.059 | 0.06 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-1-6-meses | Tableta 500 mg | 2 meses (5.1 kg) | 35.7 | 35.7 | 0.071 | 0.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-1-6-meses | Tableta 500 mg | 4 meses (6.4 kg) | 44.8 | 44.8 | 0.09 | 0.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-1-6-meses | Tableta 1000 mg | 1 mes (4.2 kg) | 29.4 | 29.4 | 0.029 | 0.03 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-1-6-meses | Tableta 1000 mg | 2 meses (5.1 kg) | 35.7 | 35.7 | 0.036 | 0.04 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-1-6-meses | Tableta 1000 mg | 4 meses (6.4 kg) | 44.8 | 44.8 | 0.045 | 0.04 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-6-meses-4-anos | Solución oral 100 mg/mL | 6 meses (7.6 kg) | 76 | 76 | 0.76 | 0.76 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-6-meses-4-anos | Solución oral 100 mg/mL | 9 meses (8.6 kg) | 86 | 86 | 0.86 | 0.9 mL | ✅  |
+| levetiracetam | focal-6-meses-4-anos | Solución oral 100 mg/mL | 1 año (9.6 kg) | 96 | 96 | 0.96 | 1 mL | ✅  |
+| levetiracetam | focal-6-meses-4-anos | Solución oral 100 mg/mL | 18 meses (10.9 kg) | 109 | 109 | 1.09 | 1.1 mL | ✅  |
+| levetiracetam | focal-6-meses-4-anos | Solución oral 100 mg/mL | 2 años (12.2 kg) | 122 | 122 | 1.22 | 1.2 mL | ✅  |
+| levetiracetam | focal-6-meses-4-anos | Solución oral 100 mg/mL | 3 años (14.3 kg) | 143 | 143 | 1.43 | 1.4 mL | ✅  |
+| levetiracetam | focal-6-meses-4-anos | Solución oral 100 mg/mL | 4 años (16.3 kg) | 163 | 163 | 1.63 | 1.6 mL | ✅  |
+| levetiracetam | focal-6-meses-4-anos | Tableta 500 mg | 6 meses (7.6 kg) | 76 | 76 | 0.152 | 0.15 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-6-meses-4-anos | Tableta 500 mg | 9 meses (8.6 kg) | 86 | 86 | 0.172 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-6-meses-4-anos | Tableta 500 mg | 1 año (9.6 kg) | 96 | 96 | 0.192 | 0.19 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-6-meses-4-anos | Tableta 500 mg | 18 meses (10.9 kg) | 109 | 109 | 0.218 | 0.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-6-meses-4-anos | Tableta 500 mg | 2 años (12.2 kg) | 122 | 122 | 0.244 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-6-meses-4-anos | Tableta 500 mg | 3 años (14.3 kg) | 143 | 143 | 0.286 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-6-meses-4-anos | Tableta 500 mg | 4 años (16.3 kg) | 163 | 163 | 0.326 | 0.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-6-meses-4-anos | Tableta 1000 mg | 6 meses (7.6 kg) | 76 | 76 | 0.076 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-6-meses-4-anos | Tableta 1000 mg | 9 meses (8.6 kg) | 86 | 86 | 0.086 | 0.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-6-meses-4-anos | Tableta 1000 mg | 1 año (9.6 kg) | 96 | 96 | 0.096 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-6-meses-4-anos | Tableta 1000 mg | 18 meses (10.9 kg) | 109 | 109 | 0.109 | 0.11 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-6-meses-4-anos | Tableta 1000 mg | 2 años (12.2 kg) | 122 | 122 | 0.122 | 0.12 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-6-meses-4-anos | Tableta 1000 mg | 3 años (14.3 kg) | 143 | 143 | 0.143 | 0.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-6-meses-4-anos | Tableta 1000 mg | 4 años (16.3 kg) | 163 | 163 | 0.163 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-4-16-anos | Solución oral 100 mg/mL | 5 años (18.3 kg) | 183 | 183 | 1.83 | 1.8 mL | ✅  |
+| levetiracetam | focal-4-16-anos | Solución oral 100 mg/mL | 6 años (20.5 kg) | 205 | 205 | 2.05 | 2.1 mL | ✅  |
+| levetiracetam | focal-4-16-anos | Solución oral 100 mg/mL | 8 años (25.6 kg) | 256 | 256 | 2.56 | 2.6 mL | ✅  |
+| levetiracetam | focal-4-16-anos | Solución oral 100 mg/mL | 10 años (32 kg) | 320 | 320 | 3.2 | 3.2 mL | ✅  |
+| levetiracetam | focal-4-16-anos | Solución oral 100 mg/mL | 12 años (40 kg) | 400 | 400 | 4 | 4 mL | ✅  |
+| levetiracetam | focal-4-16-anos | Solución oral 100 mg/mL | 14 años (50 kg) | 500 | 500 | 5 | 5 mL | ✅  |
+| levetiracetam | focal-4-16-anos | Solución oral 100 mg/mL | 16 años (58 kg) | 580 | 580 | 5.8 | 5.8 mL | ✅  |
+| levetiracetam | focal-4-16-anos | Tableta 500 mg | 5 años (18.3 kg) | 183 | 183 | 0.366 | 0.37 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-4-16-anos | Tableta 500 mg | 6 años (20.5 kg) | 205 | 205 | 0.41 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-4-16-anos | Tableta 500 mg | 8 años (25.6 kg) | 256 | 256 | 0.512 | 0.51 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-4-16-anos | Tableta 500 mg | 10 años (32 kg) | 320 | 320 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-4-16-anos | Tableta 500 mg | 12 años (40 kg) | 400 | 400 | 0.8 | 0.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-4-16-anos | Tableta 500 mg | 14 años (50 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
+| levetiracetam | focal-4-16-anos | Tableta 500 mg | 16 años (58 kg) | 580 | 580 | 1.16 | 1.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-4-16-anos | Tableta 1000 mg | 5 años (18.3 kg) | 183 | 183 | 0.183 | 0.18 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-4-16-anos | Tableta 1000 mg | 6 años (20.5 kg) | 205 | 205 | 0.205 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-4-16-anos | Tableta 1000 mg | 8 años (25.6 kg) | 256 | 256 | 0.256 | 0.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-4-16-anos | Tableta 1000 mg | 10 años (32 kg) | 320 | 320 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-4-16-anos | Tableta 1000 mg | 12 años (40 kg) | 400 | 400 | 0.4 | 0.4 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-4-16-anos | Tableta 1000 mg | 14 años (50 kg) | 500 | 500 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levetiracetam | focal-4-16-anos | Tableta 1000 mg | 16 años (58 kg) | 580 | 580 | 0.58 | 0.58 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | levocetirizina | 6-meses-5-anos | Solución oral 2.5 mg/5 mL (0.5 mg/mL) | 6 meses (7.6 kg) | 1.25 | 1.25 | 2.5 | 2.5 mL | ✅  |
 | levocetirizina | 6-meses-5-anos | Solución oral 2.5 mg/5 mL (0.5 mg/mL) | 9 meses (8.6 kg) | 1.25 | 1.25 | 2.5 | 2.5 mL | ✅  |
 | levocetirizina | 6-meses-5-anos | Solución oral 2.5 mg/5 mL (0.5 mg/mL) | 1 año (9.6 kg) | 1.25 | 1.25 | 2.5 | 2.5 mL | ✅  |
@@ -1743,6 +1973,16 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | nitrofurantoina | profilaxis | Tableta 100 mg | 14 años (50 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | nitrofurantoina | profilaxis | Tableta 100 mg | 16 años (58 kg) | 58 | 58 | 0.58 | 0.58 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | nitrofurantoina | profilaxis | Tableta 100 mg | 17 años, obeso (95 kg) | 95 | 95 | 0.95 | 0.95 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| omeprazol | esofagitis-mayores-2-anos | Tableta de liberación modificada 20 mg | 3 años (14.3 kg) | 14.3 | 14.3 | 0.715 | 0.71 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| omeprazol | esofagitis-mayores-2-anos | Tableta de liberación modificada 20 mg | 4 años (16.3 kg) | 16.3 | 16.3 | 0.815 | 0.81 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| omeprazol | esofagitis-mayores-2-anos | Tableta de liberación modificada 20 mg | 5 años (18.3 kg) | 18.3 | 18.3 | 0.915 | 0.92 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| omeprazol | esofagitis-mayores-2-anos | Tableta de liberación modificada 20 mg | 6 años (20.5 kg) | 20.5 | 20.5 | 1.025 | 1 tableta | ✅  |
+| omeprazol | esofagitis-mayores-2-anos | Tableta de liberación modificada 20 mg | 8 años (25.6 kg) | 25.6 | 25.6 | 1.28 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| omeprazol | esofagitis-mayores-2-anos | Tableta de liberación modificada 20 mg | 10 años (32 kg) | 32 | 32 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| omeprazol | esofagitis-mayores-2-anos | Tableta de liberación modificada 20 mg | 12 años (40 kg) | 40 | 40 | 2 | 2 tableta | ✅  |
+| omeprazol | esofagitis-mayores-2-anos | Tableta de liberación modificada 20 mg | 14 años (50 kg) | 40 | 40 | 2 | 2 tableta | ✅ tope aplicado |
+| omeprazol | esofagitis-mayores-2-anos | Tableta de liberación modificada 20 mg | 16 años (58 kg) | 40 | 40 | 2 | 2 tableta | ✅ tope aplicado |
+| omeprazol | esofagitis-mayores-2-anos | Tableta de liberación modificada 20 mg | 17 años, obeso (95 kg) | 40 | 40 | 2 | 2 tableta | ✅ tope aplicado |
 | ondansetron | vomitos-gastroenteritis | Solución oral 4 mg/5 mL | 6 meses (7.6 kg) | 1.14 | 1.14 | 1.425 | 1.4 mL | ✅  |
 | ondansetron | vomitos-gastroenteritis | Solución oral 4 mg/5 mL | 9 meses (8.6 kg) | 1.29 | 1.29 | 1.612 | 1.6 mL | ✅  |
 | ondansetron | vomitos-gastroenteritis | Solución oral 4 mg/5 mL | 1 año (9.6 kg) | 1.44 | 1.44 | 1.8 | 1.8 mL | ✅  |
@@ -2056,6 +2296,27 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | salbutamol | vo-6-12-anos | Tableta 4 mg | 8 años (25.6 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
 | salbutamol | vo-6-12-anos | Tableta 4 mg | 10 años (32 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
 | salbutamol | vo-6-12-anos | Tableta 4 mg | 12 años (40 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
+| vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 1 mes (4.2 kg) | 42 | 42 | 0.84 | 0.85 mL | ✅  |
+| vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 2 meses (5.1 kg) | 51 | 51 | 1.02 | 1 mL | ✅  |
+| vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 4 meses (6.4 kg) | 64 | 64 | 1.28 | 1.3 mL | ✅  |
+| vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 6 meses (7.6 kg) | 76 | 76 | 1.52 | 1.5 mL | ✅  |
+| vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 9 meses (8.6 kg) | 86 | 86 | 1.72 | 1.7 mL | ✅  |
+| vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 1 año (9.6 kg) | 96 | 96 | 1.92 | 1.9 mL | ✅  |
+| vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 18 meses (10.9 kg) | 109 | 109 | 2.18 | 2.2 mL | ✅  |
+| vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 2 años (12.2 kg) | 122 | 122 | 2.44 | 2.45 mL | ✅  |
+| vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 3 años (14.3 kg) | 143 | 143 | 2.86 | 2.85 mL | ✅  |
+| vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 4 años (16.3 kg) | 163 | 163 | 3.26 | 3.25 mL | ✅  |
+| vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 5 años (18.3 kg) | 183 | 183 | 3.66 | 3.65 mL | ✅  |
+| vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 6 años (20.5 kg) | 205 | 205 | 4.1 | 4.1 mL | ✅  |
+| vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 8 años (25.6 kg) | 256 | 256 | 5.12 | 5.1 mL | ✅  |
+| vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 10 años (32 kg) | 320 | 320 | 6.4 | 6.4 mL | ✅  |
+| vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 12 años (40 kg) | 400 | 400 | 8 | 8 mL | ✅  |
+| vancomicina | neonato-carga | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 3 días, bajo peso (2 kg) (2 kg) | 30 | 30 | 0.6 | 0.6 mL | ✅  |
+| vancomicina | neonato-carga | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 5 días (3.2 kg) (3.2 kg) | 48 | 48 | 0.96 | 0.95 mL | ✅  |
+| vancomicina | neonato-carga | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 15 días (3.6 kg) (3.6 kg) | 54 | 54 | 1.08 | 1.1 mL | ✅  |
+| vancomicina | neonato-semana-1 | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 3 días, bajo peso (2 kg) (2 kg) | 20 | 20 | 0.4 | 0.4 mL | ✅  |
+| vancomicina | neonato-semana-1 | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 5 días (3.2 kg) (3.2 kg) | 32 | 32 | 0.64 | 0.65 mL | ✅  |
+| vancomicina | neonato-semanas-2-4 | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 15 días (3.6 kg) (3.6 kg) | 36 | 36 | 0.72 | 0.7 mL | ✅  |
 | zinc | diarrea-menor-6-meses | Tableta dispersable 20 mg (disolver en agua o leche materna) | 1 mes (4.2 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
 | zinc | diarrea-menor-6-meses | Tableta dispersable 20 mg (disolver en agua o leche materna) | 2 meses (5.1 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
 | zinc | diarrea-menor-6-meses | Tableta dispersable 20 mg (disolver en agua o leche materna) | 4 meses (6.4 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |

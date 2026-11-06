@@ -1,0 +1,130 @@
+id: vancomicina
+name: Vancomicina
+category: antibiotico
+synonyms: [vancomycin, glucopéptido]
+presentations:
+  - id: frasco-500-rec
+    label: Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril)
+    form: ampolla
+    mgPerUnit: 50
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: ninos-1-mes
+    indication: Infecciones graves por grampositivos (1 mes o más)
+    route: IV
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    intervalHours: 6
+    maxPerDoseMg: 500
+    maxPerDayMg: 2000
+    notes: >-
+      FNME y FDA — 10 mg/kg IV c/6 h (40 mg/kg/d), cada dosis en 60 min o más. La FDA no da tope
+      pediátrico en mg; el FNME dice «no exceder 2 g/d en niños» junto a la dosis oral. El tope de la
+      regla es técnico (10 mg/kg con 50 kg).
+    presentationIds: [frasco-500-rec]
+    sourceIds: [fnme-2008, fda-vancomycin, digemid-pnume-2023]
+  - id: neonato-carga
+    indication: Neonatos, dosis inicial
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    weightMinKg: 1
+    weightMaxKg: 5
+    basis: mg/kg/dose
+    amountMin: 15
+    amountMax: 15
+    usual: 15
+    once: true
+    maxPerDoseMg: 75
+    maxPerDayMg: 75
+    notes: >-
+      FNME y FDA — 15 mg/kg de inicio; luego 10 mg/kg c/12 h la primera semana y c/8 h hasta el mes. En
+      prematuros pueden necesitarse intervalos más largos (FDA). El rango de 1 a 5 kg de la regla es
+      técnico.
+    presentationIds: [frasco-500-rec]
+    sourceIds: [fnme-2008, fda-vancomycin]
+  - id: neonato-semana-1
+    indication: Neonatos, primera semana de vida (después de la dosis inicial)
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 6
+    weightMinKg: 1
+    weightMaxKg: 5
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    intervalHours: 12
+    maxPerDoseMg: 50
+    maxPerDayMg: 100
+    notes: FNME y FDA — 10 mg/kg IV c/12 h en la primera semana de vida.
+    presentationIds: [frasco-500-rec]
+    sourceIds: [fnme-2008, fda-vancomycin]
+  - id: neonato-semanas-2-4
+    indication: Neonatos, de la segunda semana al mes de vida
+    route: IV
+    neonatal: true
+    ageMinDays: 7
+    ageMaxDays: 28
+    weightMinKg: 1
+    weightMaxKg: 5
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    intervalHours: 8
+    maxPerDoseMg: 50
+    maxPerDayMg: 150
+    notes: FNME y FDA — 10 mg/kg IV c/8 h desde la segunda semana hasta el mes de vida.
+    presentationIds: [frasco-500-rec]
+    sourceIds: [fnme-2008, fda-vancomycin]
+warnings:
+  - Infundir cada dosis en 60 min o más, diluida a 5 mg/mL o menos (hasta 10 mg/mL si hay restricción de líquidos), FDA.
+  - Vigilar niveles séricos y función renal; en neonatos se recomienda vigilar niveles (FDA).
+  - Vigilar signos de ototoxicidad (FDA).
+  - En el Perú requiere autorización del Comité de Control de Infecciones Intrahospitalarias o, en su defecto, del Comité Farmacoterapéutico (PNUME 2023).
+contraindications:
+  - Hipersensibilidad a la vancomicina.
+interactions:
+  - Con piperacilina/tazobactam aumenta la lesión renal aguda; vigilar la función renal (FDA).
+  - Otros nefrotóxicos aumentan el riesgo de lesión renal (FDA).
+  - Con anestésicos, eritema y rubor por histamina; infundir antes de la inducción (FDA).
+  - Incompatible en la misma solución con betalactámicos; lavar la vía entre ambos (FDA).
+renal: >-
+  FDA — la dosis inicial no debe ser menor de 15 mg/kg en cualquier grado de insuficiencia; luego
+  guiarse por niveles valle. Anéfricos: 15 mg/kg y luego 1.9 mg/kg cada 24 h.
+diagnoses: [sepsis, infección por estafilococo resistente, endocarditis, meningitis]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: ninos-1-mes
+    presentationId: frasco-500-rec
+    weightKg: 20
+    ageDays: 1825
+    expect: { mgPerDose: 200, amount: 4, unit: mL }
+  - ruleId: neonato-carga
+    presentationId: frasco-500-rec
+    weightKg: 3
+    ageDays: 3
+    expect: { mgPerDose: 45, amount: 0.9, unit: mL }
+  - ruleId: neonato-semana-1
+    presentationId: frasco-500-rec
+    weightKg: 3
+    ageDays: 3
+    expect: { mgPerDose: 30, amount: 0.6, unit: mL }
+  - ruleId: neonato-semanas-2-4
+    presentationId: frasco-500-rec
+    weightKg: 3.5
+    ageDays: 14
+    expect: { mgPerDose: 35, amount: 0.7, unit: mL }

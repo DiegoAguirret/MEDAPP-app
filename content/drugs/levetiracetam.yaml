@@ -1,0 +1,122 @@
+id: levetiracetam
+name: Levetiracetam
+category: anticonvulsivante
+synonyms: [Keppra]
+presentations:
+  - id: sol-100
+    label: Solución oral 100 mg/mL
+    form: solucion
+    mgPerUnit: 100
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-500
+    label: Tableta 500 mg
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 1
+    brandsPE: []
+  - id: tab-1000
+    label: Tableta 1000 mg
+    form: tableta
+    mgPerUnit: 1000
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: focal-1-6-meses
+    indication: Crisis focales (1 a menos de 6 meses)
+    route: VO
+    ageMinDays: 29
+    ageMaxDays: 182
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 7
+    amountMax: 21
+    usual: 7
+    intervalHours: 12
+    maxPerDoseMg: 1050
+    maxPerDayMg: 2100
+    notes: >-
+      FDA — iniciar con 7 mg/kg c/12 h y subir 7 mg/kg por toma cada 2 semanas hasta la dosis
+      recomendada de 21 mg/kg c/12 h. La FDA no da tope en mg para este grupo (el tope de la regla es
+      técnico: 21 mg/kg con 50 kg).
+    sourceIds: [fda-keppra, digemid-pnume-2023]
+  - id: focal-6-meses-4-anos
+    indication: Crisis focales (6 meses a menos de 4 años)
+    route: VO
+    ageMinDays: 183
+    ageMaxDays: 1460
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 25
+    usual: 10
+    intervalHours: 12
+    maxPerDoseMg: 1250
+    maxPerDayMg: 2500
+    notes: >-
+      FDA — iniciar con 10 mg/kg c/12 h; a las 2 semanas, 25 mg/kg c/12 h (puede reducirse si no se
+      tolera). La FDA no da tope en mg para este grupo (el tope de la regla es técnico: 25 mg/kg con
+      50 kg).
+    sourceIds: [fda-keppra, digemid-pnume-2023]
+  - id: focal-4-16-anos
+    indication: Crisis focales (4 a menos de 16 años)
+    route: VO
+    ageMinDays: 1461
+    ageMaxDays: 5843
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 30
+    usual: 10
+    intervalHours: 12
+    maxPerDoseMg: 1500
+    maxPerDayMg: 3000
+    notes: >-
+      FDA — iniciar con 10 mg/kg c/12 h y subir 10 mg/kg por toma cada 2 semanas hasta 30 mg/kg c/12 h;
+      máximo 3000 mg/día. Con 20 kg o menos, usar la solución oral.
+    sourceIds: [fda-keppra, digemid-pnume-2023]
+warnings:
+  - No suspender de golpe, por riesgo de más crisis y de estado epiléptico (FDA).
+  - Con 20 kg o menos, la FDA indica la solución oral, no las tabletas.
+  - No hay dosis aprobada en menores de 1 mes ni para estado epiléptico en la ficha FDA.
+  - En el Perú no figura levetiracetam inyectable en el PNUME 2023.
+contraindications:
+  - Hipersensibilidad a levetiracetam (se han descrito anafilaxia y angioedema).
+interactions:
+  - Pocas interacciones farmacocinéticas (FDA).
+  - Inductores enzimáticos como carbamazepina aumentan su aclaramiento cerca de 22 %; la FDA no recomienda ajustar la dosis.
+  - Probenecid reduce 60 % la eliminación renal de su metabolito (FDA).
+renal: >-
+  FDA — en niños no hay información para ajustar la dosis. En adultos se ajusta según la depuración de
+  creatinina (siempre c/12 h; c/24 h en diálisis, con un suplemento de 250 a 500 mg tras cada sesión).
+diagnoses: [epilepsia, crisis focales, convulsiones]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: focal-4-16-anos
+    presentationId: sol-100
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 200, amount: 2, unit: mL }
+  - ruleId: focal-4-16-anos
+    presentationId: sol-100
+    weightKg: 60
+    ageDays: 5000
+    chosenMgPerKg: 30
+    expect: { mgPerDose: 1500, amount: 15, unit: mL, capped: true }
+  - ruleId: focal-1-6-meses
+    presentationId: sol-100
+    weightKg: 10
+    ageDays: 150
+    expect: { mgPerDose: 70, amount: 0.7, unit: mL }
+  - ruleId: focal-6-meses-4-anos
+    presentationId: sol-100
+    weightKg: 12
+    ageDays: 730
+    chosenMgPerKg: 25
+    expect: { mgPerDose: 300, amount: 3, unit: mL }

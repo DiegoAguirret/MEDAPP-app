@@ -88,6 +88,7 @@ const FORM_LABEL: Record<Presentation['form'], string> = {
   nebulizacion: 'Nebulización',
   inhalador: 'Inhalador',
   granulado: 'Granulado',
+  solucion: 'Solución oral',
 };
 
 type Choice = 'min' | 'usual' | 'max';
@@ -511,7 +512,11 @@ export function DosePanel({
           ))
         : null}
       {result?.status === 'ok' ? (
-        <Collapsible title="Cálculo paso a paso" count={result.steps.length}>
+        <Collapsible
+          icon="calculator-variant-outline"
+          title="Cálculo paso a paso"
+          count={result.steps.length}
+        >
           {result.steps.map((st) => (
             <Text key={st.label} style={s.body}>
               {st.label}: {st.expression.replace(/\./g, decimalSeparator)} ={' '}
@@ -521,8 +526,18 @@ export function DosePanel({
         </Collapsible>
       ) : null}
 
+      {drug.renal ? (
+        <Collapsible icon="water-outline" title="Ajuste renal" tone="ok">
+          <Text style={s.body}>{drug.renal}</Text>
+        </Collapsible>
+      ) : null}
       {drug.contraindications.length > 0 ? (
-        <Collapsible title="Contraindicaciones" count={drug.contraindications.length} tone="danger">
+        <Collapsible
+          icon="cancel"
+          title="Contraindicaciones"
+          count={drug.contraindications.length}
+          tone="danger"
+        >
           {drug.contraindications.map((x) => (
             <Text key={x} style={s.body}>
               {x}
@@ -530,8 +545,27 @@ export function DosePanel({
           ))}
         </Collapsible>
       ) : null}
+      {drug.interactions && drug.interactions.length > 0 ? (
+        <Collapsible
+          icon="swap-horizontal"
+          title="Interacciones"
+          count={drug.interactions.length}
+          tone="warning"
+        >
+          {drug.interactions.map((x) => (
+            <Text key={x} style={s.body}>
+              {x}
+            </Text>
+          ))}
+        </Collapsible>
+      ) : null}
       {drug.warnings.length > 0 ? (
-        <Collapsible title="Advertencias" count={drug.warnings.length} tone="warning">
+        <Collapsible
+          icon="alert-outline"
+          title="Advertencias"
+          count={drug.warnings.length}
+          tone="warning"
+        >
           {drug.warnings.map((x) => (
             <Text key={x} style={s.body}>
               {x}
@@ -540,7 +574,7 @@ export function DosePanel({
         </Collapsible>
       ) : null}
       {rule.countryNotes && rule.countryNotes.length > 0 ? (
-        <Collapsible title="Diferencias por país" count={rule.countryNotes.length}>
+        <Collapsible icon="earth" title="Diferencias por país" count={rule.countryNotes.length}>
           {rule.countryNotes.map((n) => (
             <Text key={n.country + n.text} style={s.body}>
               <Text style={s.strong}>{COUNTRY_LABEL[n.country]}: </Text>
@@ -549,7 +583,7 @@ export function DosePanel({
           ))}
         </Collapsible>
       ) : null}
-      <Collapsible title="Fuentes" count={orderedSources.length}>
+      <Collapsible icon="book-open-variant" title="Fuentes" count={orderedSources.length}>
         {orderedSources.map((src, i) => (
           <Text key={src.id} style={i === 0 ? s.body : s.muted}>
             {i === 0 ? `Fuente principal: ${sourceLabel(src)}` : sourceLabel(src)}

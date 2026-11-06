@@ -64,6 +64,7 @@ export const presentationSchema = z.object({
     'nebulizacion',
     'inhalador',
     'granulado',
+    'solucion',
   ]),
   /** mg contenidos en una unidad (`unit`). Suspensión 250 mg/5 mL → 50 (mg por mL). */
   mgPerUnit: positive,
@@ -245,6 +246,10 @@ export const drugSchema = z
     rules: z.array(doseRuleSchema).min(1),
     warnings: z.array(z.string().min(1)),
     contraindications: z.array(z.string().min(1)),
+    /** Interacciones clínicamente importantes, con su fuente en el texto. */
+    interactions: z.array(z.string().min(1)).optional(),
+    /** Ajuste en insuficiencia renal, tal como lo dicen las fuentes. */
+    renal: z.string().min(1).optional(),
     diagnoses: z.array(z.string().min(1)),
     review: reviewSchema,
     testCases: z.array(clinicalTestCaseSchema).min(1, 'Se requiere al menos un caso clínico'),

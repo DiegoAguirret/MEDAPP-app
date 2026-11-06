@@ -1,4 +1,5 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { LayoutAnimation } from 'react-native';
 import type { Review } from '@medapp/content-schema';
 import { useMemo, useState, type ReactNode } from 'react';
@@ -132,7 +133,25 @@ function makeStyles(c: Palette) {
       gap: space.sm,
     },
     collapsibleTitle: { flex: 1, fontFamily: family.medium, color: c.text, fontSize: font.body },
-    count: { fontFamily: family.medium, fontSize: 14, fontVariant: ['tabular-nums'] },
+    count: {
+      fontFamily: family.bold,
+      fontSize: 13,
+      fontVariant: ['tabular-nums'],
+      minWidth: 26,
+      height: 26,
+      lineHeight: 26,
+      paddingHorizontal: 7,
+      borderRadius: 13,
+      overflow: 'hidden',
+      textAlign: 'center',
+    },
+    collapsibleIcon: {
+      width: 34,
+      height: 34,
+      borderRadius: radius.sm,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     collapsibleBody: { gap: space.sm, paddingBottom: space.xs },
   });
 }
@@ -366,11 +385,14 @@ export function Collapsible({
   title,
   count,
   tone = 'primary',
+  icon,
   initiallyOpen = false,
   children,
 }: {
   title: string;
   count?: number;
+  /** Ícono a la izquierda, en un recuadro con el tono de la sección. */
+  icon?: keyof typeof MaterialCommunityIcons.glyphMap;
   tone?: 'primary' | 'danger' | 'warning' | 'ok';
   initiallyOpen?: boolean;
   children: ReactNode;
@@ -378,7 +400,10 @@ export function Collapsible({
   const s = useStyles();
   const c = useColors();
   const [open, setOpen] = useState(initiallyOpen);
-  const countColor = { primary: c.muted, danger: c.danger, warning: c.warning, ok: c.ok }[tone];
+  const countColor = { primary: c.accent, danger: c.danger, warning: c.warning, ok: c.ok }[tone];
+  const toneBg = { primary: c.accentSoft, danger: c.dangerBg, warning: c.warningBg, ok: c.okBg }[
+    tone
+  ];
   return (
     <View style={[s.card, { paddingVertical: space.sm }]}>
       <Pressable
@@ -391,8 +416,15 @@ export function Collapsible({
         }}
         style={s.collapsibleHead}
       >
+        {icon ? (
+          <View style={[s.collapsibleIcon, { backgroundColor: toneBg }]}>
+            <MaterialCommunityIcons name={icon} size={18} color={countColor} />
+          </View>
+        ) : null}
         <Text style={s.collapsibleTitle}>{title}</Text>
-        {count !== undefined ? <Text style={[s.count, { color: countColor }]}>{count}</Text> : null}
+        {count !== undefined ? (
+          <Text style={[s.count, { backgroundColor: countColor, color: c.surface }]}>{count}</Text>
+        ) : null}
         <Ionicons name={open ? 'chevron-up' : 'chevron-down'} size={18} color={c.muted} />
       </Pressable>
       {open ? <View style={s.collapsibleBody}>{children}</View> : null}

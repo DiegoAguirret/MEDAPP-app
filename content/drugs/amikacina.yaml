@@ -1,0 +1,137 @@
+id: amikacina
+name: Amikacina
+category: antibiotico
+synonyms: [amikacin, aminoglucósido]
+presentations:
+  - id: amp-250
+    label: Amikacina 250 mg/mL (ampolla 500 mg/2 mL)
+    form: ampolla
+    mgPerUnit: 250
+    unit: mL
+    step: 0.05
+    brandsPE: []
+  - id: amp-50
+    label: Amikacina 50 mg/mL (ampolla 100 mg/2 mL)
+    form: ampolla
+    mgPerUnit: 50
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: ninos-cada-8-h
+    indication: Infecciones graves, IV o IM, cada 8 h (1 mes o más)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 15
+    amountMax: 15
+    usual: 15
+    intervalHours: 8
+    maxPerDoseMg: 500
+    maxPerDayMg: 1500
+    durationText: 7 a 10 días.
+    notes: >-
+      FNME y FDA — 15 mg/kg/d IV o IM dividido c/8 a 12 h (5 mg/kg c/8 h); no pasar de 15 mg/kg/d ni de
+      1.5 g/d. Por vía IV, infundir en 30 a 60 min (1 a 2 h en lactantes, FDA).
+    presentationIds: [amp-250, amp-50]
+    sourceIds: [fnme-2008, fda-amikacin, digemid-pnume-2023]
+  - id: ninos-cada-12-h
+    indication: Infecciones graves, IV o IM, cada 12 h (1 mes o más)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 15
+    amountMax: 15
+    usual: 15
+    intervalHours: 12
+    maxPerDoseMg: 750
+    maxPerDayMg: 1500
+    durationText: 7 a 10 días.
+    notes: FNME y FDA — 15 mg/kg/d dividido c/12 h (7.5 mg/kg c/12 h); no pasar de 15 mg/kg/d ni de 1.5 g/d.
+    presentationIds: [amp-250, amp-50]
+    sourceIds: [fnme-2008, fda-amikacin, digemid-pnume-2023]
+  - id: neonato-carga
+    indication: Neonatos, dosis de carga
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    weightMinKg: 1
+    weightMaxKg: 5
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    once: true
+    maxPerDoseMg: 50
+    maxPerDayMg: 50
+    notes: >-
+      FNME y FDA — 10 mg/kg IM o IV de inicio; luego 7.5 mg/kg c/12 h. Las fuentes no dan bandas por
+      edad posnatal ni por peso (el rango de 1 a 5 kg de la regla es técnico).
+    presentationIds: [amp-50]
+    sourceIds: [fnme-2008, fda-amikacin]
+  - id: neonato-mantenimiento
+    indication: Neonatos, mantenimiento (después de la carga)
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    weightMinKg: 1
+    weightMaxKg: 5
+    basis: mg/kg/dose
+    amountMin: 7.5
+    amountMax: 7.5
+    usual: 7.5
+    intervalHours: 12
+    maxPerDoseMg: 37.5
+    maxPerDayMg: 75
+    notes: FNME y FDA — 7.5 mg/kg c/12 h después de la carga de 10 mg/kg.
+    presentationIds: [amp-50]
+    sourceIds: [fnme-2008, fda-amikacin]
+warnings:
+  - Ototoxicidad y nefrotoxicidad; vigilar niveles cuando sea posible. Evitar picos sobre 35 µg/mL y valles sobre 10 µg/mL (FDA, recuadro negro).
+  - No se ha establecido la seguridad más allá de 14 días (FDA).
+  - En el FNME es de uso restringido.
+contraindications:
+  - Hipersensibilidad a la amikacina o a otros aminoglucósidos.
+interactions:
+  - Evitar con diuréticos potentes como furosemida o ácido etacrínico (ototoxicidad, FDA).
+  - Evitar otros fármacos neuro o nefrotóxicos, como vancomicina, anfotericina B, colistina u otros aminoglucósidos (FDA).
+  - Riesgo de bloqueo neuromuscular y parálisis respiratoria con anestésicos y relajantes musculares (FDA).
+  - No mezclar con betalactámicos en la misma solución, porque se inactivan entre sí (FDA).
+renal: >-
+  FDA — alargar el intervalo: horas entre dosis = creatinina sérica × 9; o reducir la dosis en
+  proporción a la depuración de creatinina. FNME — por depuración: 60 mL/min o más, c/8 h; 40 a 60,
+  c/12 h; 20 a 40, c/24 h; menos de 20, guiarse por niveles.
+diagnoses: [sepsis, infección urinaria complicada, infecciones graves por gramnegativos]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: ninos-cada-8-h
+    presentationId: amp-250
+    weightKg: 10
+    ageDays: 1095
+    expect: { mgPerDose: 50, amount: 0.2, unit: mL }
+  - ruleId: ninos-cada-12-h
+    presentationId: amp-250
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 150, amount: 0.6, unit: mL }
+  - ruleId: ninos-cada-8-h
+    presentationId: amp-250
+    weightKg: 105
+    ageDays: 5500
+    expect: { mgPerDose: 500, amount: 2, unit: mL, capped: true }
+  - ruleId: neonato-carga
+    presentationId: amp-50
+    weightKg: 3
+    ageDays: 2
+    expect: { mgPerDose: 30, amount: 0.6, unit: mL }
+  - ruleId: neonato-mantenimiento
+    presentationId: amp-50
+    weightKg: 3
+    ageDays: 2
+    expect: { mgPerDose: 22.5, amount: 0.45, unit: mL }

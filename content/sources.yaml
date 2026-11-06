@@ -319,3 +319,66 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=1673f7ff-0c7c-4403-86cf-c05eb1475222
   kind: regulador
   country: US
+- id: fda-keppra
+  title: Keppra (levetiracetam) tabletas y solución oral — prescribing information (FDA, set 3ca9df05-a506-4ec8-a4fe-320f1219ab21)
+  publisher: U.S. FDA / UCB
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=3ca9df05-a506-4ec8-a4fe-320f1219ab21
+  kind: regulador
+  country: US
+- id: fda-depakote
+  title: Depakote (divalproato sódico) — prescribing information (FDA, set 08a65cf4-7749-4ceb-6895-8f4805e2b01f)
+  publisher: U.S. FDA / AbbVie
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=08a65cf4-7749-4ceb-6895-8f4805e2b01f
+  kind: regulador
+  country: US
+- id: fda-tegretol
+  title: Tegretol (carbamazepina) — prescribing information (FDA, set 8d409411-aa9f-4f3a-a52c-fbcb0c3ec053)
+  publisher: U.S. FDA / Novartis
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=8d409411-aa9f-4f3a-a52c-fbcb0c3ec053
+  kind: regulador
+  country: US
+- id: fda-prilosec
+  title: Prilosec (omeprazol) suspensión de liberación retardada — prescribing information (FDA, set b6761f84-53ac-4745-a8c8-1e5427d7e179)
+  publisher: U.S. FDA / Covis
+  year: 2024
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b6761f84-53ac-4745-a8c8-1e5427d7e179
+  kind: regulador
+  country: US
+- id: who-mfc-2010
+  title: WHO Model Formulary for Children 2010
+  publisher: Organización Mundial de la Salud
+  year: 2010
+  url: https://iris.who.int/handle/10665/44309
+  kind: guia
+  country: INT
+- id: digemid-pnume-2023
+  title: Petitorio Nacional Único de Medicamentos Esenciales 2023 (RM 633-2023/MINSA)
+  publisher: DIGEMID — Ministerio de Salud del Perú
+  year: 2023
+  url: https://repositorio-digemid.minsa.gob.pe/items/ea629572-1ea9-47e6-95d7-dd2e529db307
+  kind: norma-peru
+  country: PE
+- id: fda-cefuroxime-susp
+  title: Cefuroxima axetil para suspensión oral — prescribing information (FDA, DailyMed set 135e2dfc-eb47-4d04-a903-a081d36c267e)
+  publisher: U.S. FDA / Ranbaxy
+  year: 2013
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=135e2dfc-eb47-4d04-a903-a081d36c267e
+  kind: regulador
+  country: US
+- id: fda-amikacin
+  title: Amikacina sulfato inyectable — prescribing information (FDA, set c0f57839-1c9b-49e5-8c7a-708e2d16495d)
+  publisher: U.S. FDA / Fresenius Kabi
+  year: 2023
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=c0f57839-1c9b-49e5-8c7a-708e2d16495d
+  kind: regulador
+  country: US
+- id: fda-vancomycin
+  title: Vancomicina clorhidrato para inyección — prescribing information (FDA, set 0543b2b5-b1c7-4ad6-b38c-3be0086f0e06)
+  publisher: U.S. FDA / Glenmark
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=0543b2b5-b1c7-4ad6-b38c-3be0086f0e06
+  kind: regulador
+  country: US

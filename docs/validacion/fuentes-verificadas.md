@@ -223,3 +223,29 @@ En las reglas repetibles o de dosis única, `maxPerDayMg` es el **máximo acumul
 ### No incluido
 
 - **Dexametasona en crup o asma:** las fuentes no dan un tope en mg. Además, la única presentación oral del FNME es la tableta de 0.5 mg, que no sirve para estas dosis.
+
+## Lote 5: anticonvulsivantes, gastro y antibióticos hospitalarios — verificado el 05/11/2026
+
+Cada cifra se confirmó en el documento descargado (texto de openFDA, el FNME 2008 en PDF, el WHO Model Formulary 2010 y el PNUME 2023 de DIGEMID).
+
+| Fármaco           | Regla                                 | Fuente principal | Cifras                                                                       |
+| ----------------- | ------------------------------------- | ---------------- | ---------------------------------------------------------------------------- |
+| Levetiracetam     | Crisis focales, por edad              | FDA Keppra       | 1–<6 m: 7→21 mg/kg c/12 h. 6 m–<4 a: 10→25. 4–<16 a: 10→30, máx. 3000 mg/d   |
+| Ácido valproico   | Epilepsia 1–12 años                   | FNME             | 15–45 mg/kg/d en 2 tomas; OMS 5–7.5 → 12.5–15 mg/kg c/12 h                   |
+| Carbamazepina     | <6 años                               | FNME             | 10–20 mg/kg/d, mantenimiento ≤35 mg/kg/d (400 mg/d), c/6–8 h                 |
+| Carbamazepina     | 6–12 años, inicio                     | FNME             | 100 mg c/12 h                                                                |
+| Omeprazol         | >2 años, esofagitis por reflujo       | FNME             | 0.7–1.4 mg/kg/d, máx. 40 mg/d (OMS 1 mg/kg)                                  |
+| Cefuroxima axetil | Faringitis / OMA, sinusitis, impétigo | FDA suspensión   | 20 mg/kg/d (máx. 500) / 30 mg/kg/d (máx. 1000), c/12 h                       |
+| Amikacina         | Niños c/8 o c/12 h; neonatos          | FNME = FDA       | 15 mg/kg/d, máx. 1.5 g/d; neonatos 10 mg/kg y luego 7.5 mg/kg c/12 h         |
+| Vancomicina       | ≥1 mes; neonatos                      | FNME = FDA       | 10 mg/kg c/6 h; neonatos 15 mg/kg y luego 10 mg/kg c/12 h (semana 1) o c/8 h |
+
+**Presentaciones:** solo las que figuran en el PNUME 2023.
+
+**Decisiones:**
+
+- **Midazolam:** no se incluye. En el Perú solo hay inyectable, y no se encontró dosis para convulsión aguda en las fuentes descargadas.
+- **Nistatina:** no se incluye. Se dosifica en UI, y el motor solo maneja mg.
+- **Cefixima y cefuroxima IV:** no se incluyen porque no figuran en el PNUME 2023.
+- **Vancomicina, dosis de la OMS (15 mg/kg c/8 h):** no se usa. No se pudo confirmar en el texto descargado.
+- **Topes técnicos:** donde la fuente no da tope en mg, el tope de la regla es técnico (dosis máxima por kg × 50 kg, o 1 a 5 kg en neonatos), y la nota lo dice.
+- **Interacciones y ajuste renal:** se agregan a las 7 fichas nuevas como secciones propias.

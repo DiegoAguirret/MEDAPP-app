@@ -18,9 +18,7 @@ const ruleOf = (drugId: string, ruleId: string) => {
 
 describe('real content', () => {
   it('passes every clinical test case in tester mode', () => {
-    expect(checkContent(content.drugs, content.sources, 'tester', new Date('2026-11-05'))).toEqual(
-      [],
-    );
+    expect(checkContent(content.drugs, content.sources, 'tester', new Date())).toEqual([]);
   });
 
   it('does not allow high-dose amoxicillin for otitis before 6 months', () => {

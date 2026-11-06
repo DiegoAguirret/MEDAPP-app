@@ -1,0 +1,65 @@
+id: omeprazol
+name: Omeprazol
+category: gastrointestinal
+synonyms: [Prilosec]
+presentations:
+  - id: tab-20-lm
+    label: Tableta de liberación modificada 20 mg
+    form: tableta
+    mgPerUnit: 20
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: esofagitis-mayores-2-anos
+    indication: Esofagitis o ulceración grave por reflujo (mayores de 2 años)
+    route: VO
+    ageMinDays: 731
+    basis: mg/kg/day
+    amountMin: 0.7
+    amountMax: 1.4
+    usual: 1
+    intervalHours: 24
+    maxPerDoseMg: 40
+    maxPerDayMg: 40
+    durationText: 4 a 6 semanas.
+    notes: >-
+      FNME — mayores de 2 años con ulceración grave por reflujo o esofagitis, 0.7 a 1.4 mg/kg/d por 4 a 6
+      semanas, máximo 40 mg/d; debe iniciarlo el pediatra del hospital. OMS — 2 a 12 años, 1 mg/kg una o
+      dos veces al día (máximo 40 mg/día).
+    sourceIds: [fnme-2008, who-mfc-2010, fda-prilosec, digemid-pnume-2023]
+    countryNotes:
+      - country: US
+        text: FDA — ERGE de 1 a 16 años, dosis fija una vez al día por peso, 5 mg de 5 a menos de 10 kg, 10 mg de 10 a menos de 20 kg y 20 mg con 20 kg o más. En el Perú solo hay tableta de 20 mg (PNUME 2023).
+        sourceIds: [fda-prilosec, digemid-pnume-2023]
+warnings:
+  - En el Perú solo hay tableta de 20 mg de liberación modificada (PNUME 2023); para dosis menores no hay una presentación medible.
+  - Darlo antes de las comidas (FDA).
+contraindications:
+  - Hipersensibilidad a los benzimidazoles sustituidos.
+  - Uso de productos con rilpivirina.
+interactions:
+  - Evitar junto con clopidogrel (FDA).
+  - Puede elevar y prolongar los niveles de metotrexato (FDA).
+  - Rifampicina e hierba de San Juan bajan mucho sus niveles; evitar (FDA).
+  - Con warfarina, subida del INR y sangrado (FDA).
+  - Baja la absorción de fármacos que dependen del pH gástrico, como sales de hierro, ketoconazol e itraconazol (FDA).
+  - Puede aumentar los niveles de fenitoína (OMS) y de carbamazepina (FDA).
+renal: FDA y OMS — no requiere ajuste de dosis.
+diagnoses: [reflujo gastroesofágico, esofagitis]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: esofagitis-mayores-2-anos
+    presentationId: tab-20-lm
+    weightKg: 20
+    ageDays: 1825
+    expect: { mgPerDose: 20, amount: 1, unit: tableta }
+  - ruleId: esofagitis-mayores-2-anos
+    presentationId: tab-20-lm
+    weightKg: 45
+    ageDays: 4000
+    expect: { mgPerDose: 40, amount: 2, unit: tableta, capped: true }

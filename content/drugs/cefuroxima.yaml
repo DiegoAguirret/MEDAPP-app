@@ -1,0 +1,77 @@
+id: cefuroxima
+name: Cefuroxima (axetil, oral)
+category: antibiotico
+synonyms: [cefuroxima axetil, Ceftin]
+presentations:
+  - id: susp-250-5
+    label: Suspensión 250 mg/5 mL
+    form: suspension
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: faringoamigdalitis
+    indication: Faringoamigdalitis (3 meses a 12 años)
+    route: VO
+    ageMinDays: 90
+    ageMaxDays: 4744
+    basis: mg/kg/day
+    amountMin: 20
+    amountMax: 20
+    usual: 20
+    intervalHours: 12
+    maxPerDoseMg: 250
+    maxPerDayMg: 500
+    durationText: 10 días.
+    notes: FDA — suspensión, 20 mg/kg/día en 2 tomas por 10 días, máximo 500 mg/día. Darla con comida.
+    sourceIds: [fda-cefuroxime-susp, digemid-pnume-2023]
+  - id: oma-sinusitis-impetigo
+    indication: Otitis media aguda, sinusitis maxilar o impétigo (3 meses a 12 años)
+    route: VO
+    ageMinDays: 90
+    ageMaxDays: 4744
+    basis: mg/kg/day
+    amountMin: 30
+    amountMax: 30
+    usual: 30
+    intervalHours: 12
+    maxPerDoseMg: 500
+    maxPerDayMg: 1000
+    durationText: 10 días.
+    notes: FDA — suspensión, 30 mg/kg/día en 2 tomas por 10 días, máximo 1000 mg/día. Darla con comida.
+    sourceIds: [fda-cefuroxime-susp, digemid-pnume-2023]
+warnings:
+  - La tableta y la suspensión no son bioequivalentes ni se sustituyen mg por mg (FDA). Quien no traga la tableta entera debe recibir la suspensión.
+  - La suspensión contiene fenilalanina (4.5 mg por 5 mL); precaución en fenilcetonuria (FDA).
+  - En el Perú solo figuran la suspensión de 250 mg/5 mL y la tableta de 500 mg (PNUME 2023); no figura la cefuroxima inyectable.
+contraindications:
+  - Alergia a las cefalosporinas (o anafilaxia a otros betalactámicos, según la ficha FDA de las tabletas).
+interactions:
+  - No se recomienda junto con probenecid (FDA).
+  - Dar al menos 1 h antes o 2 h después de antiácidos de acción corta; evitar antihistamínicos H2 e inhibidores de bomba de protones (FDA).
+  - Puede reducir la eficacia de los anticonceptivos orales (FDA).
+  - Falso positivo de glucosa en orina con pruebas de reducción de cobre (FDA).
+renal: FDA — en insuficiencia renal no se ha establecido la seguridad ni la eficacia de la suspensión.
+diagnoses: [faringoamigdalitis, otitis media aguda, sinusitis, impétigo]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: oma-sinusitis-impetigo
+    presentationId: susp-250-5
+    weightKg: 12
+    ageDays: 730
+    expect: { mgPerDose: 180, amount: 3.6, unit: mL }
+  - ruleId: faringoamigdalitis
+    presentationId: susp-250-5
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 200, amount: 4, unit: mL }
+  - ruleId: faringoamigdalitis
+    presentationId: susp-250-5
+    weightKg: 30
+    ageDays: 3650
+    expect: { mgPerDose: 250, amount: 5, unit: mL, capped: true }

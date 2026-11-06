@@ -1,0 +1,95 @@
+id: acido-valproico
+name: Ácido valproico (valproato sódico)
+category: anticonvulsivante
+synonyms: [valproato, valproato sódico, divalproato, Depakene, Depakote]
+presentations:
+  - id: liq-250-5
+    label: Solución oral 250 mg/5 mL
+    form: solucion
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: liq-200
+    label: Solución oral 200 mg/mL
+    form: solucion
+    mgPerUnit: 200
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-500-lm
+    label: Tableta de liberación modificada 500 mg
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: epilepsia-1-12-anos
+    indication: Epilepsia, monoterapia (1 a 12 años)
+    route: VO
+    ageMinDays: 365
+    ageMaxDays: 4744
+    weightMaxKg: 50
+    basis: mg/kg/day
+    amountMin: 15
+    amountMax: 45
+    usual: 15
+    intervalHours: 12
+    maxPerDoseMg: 1125
+    maxPerDayMg: 2250
+    notes: >-
+      FNME — inicial 15 a 45 mg/kg/d; puede subirse cada semana 5 a 10 mg/kg/d según respuesta y
+      tolerancia; si la dosis total pasa de 250 mg/d, dividir en 2 tomas. Máximo en adultos 60 mg/kg/d.
+      Las fuentes no dan tope en mg (el tope de la regla es técnico: 45 mg/kg/d con 50 kg).
+    sourceIds: [fnme-2008, who-mfc-2010, fda-depakote, digemid-pnume-2023]
+    countryNotes:
+      - country: INT
+        text: OMS — inicio 5 a 7.5 mg/kg c/12 h; mantenimiento 12.5 a 15 mg/kg c/12 h; hasta 30 mg/kg c/12 h en espasmos infantiles.
+        sourceIds: [who-mfc-2010]
+      - country: US
+        text: FDA — desde 10 años en crisis parciales complejas, 10 a 15 mg/kg/día; en ausencias, 15 mg/kg/día; subir 5 a 10 mg/kg por semana; máximo 60 mg/kg/día.
+        sourceIds: [fda-depakote]
+warnings:
+  - En el Perú hay solución oral de 50 mg/mL (250 mg/5 mL) y de 200 mg/mL, cuatro veces más concentrada. Confirma la presentación antes de medir.
+  - Riesgo de hepatotoxicidad mortal, mucho mayor en menores de 2 años (FDA, recuadro negro).
+  - Pancreatitis potencialmente mortal y riesgo fetal (FDA, recuadro negro).
+  - Si la dosis pasa de 20 mg/kg c/12 h, controlar bioquímica y hemograma (OMS).
+  - Nivel sérico efectivo de 50 a 100 µg/mL (FNME).
+contraindications:
+  - Enfermedad o disfunción hepática significativa.
+  - Trastornos mitocondriales por mutaciones de POLG, y menores de 2 años con sospecha de ellos.
+  - Trastornos del ciclo de la urea.
+  - Hipersensibilidad al valproato.
+interactions:
+  - Carbapenémicos pueden bajar el valproato a niveles subterapéuticos, con pérdida del control de crisis (FDA).
+  - Con lamotrigina, reducir la dosis de lamotrigina (FDA).
+  - Con topiramato, hiperamonemia con o sin encefalopatía (FDA).
+  - La aspirina multiplica por 4 la fracción libre de valproato (FDA).
+  - Fenitoína, carbamazepina, fenobarbital y rifampicina aumentan su eliminación (FDA).
+renal: >-
+  FDA — no parece necesario ajustar la dosis; la unión a proteínas baja, así que los niveles totales
+  pueden engañar. OMS — reducir la dosis y ajustarla según la concentración libre de ácido valproico.
+diagnoses: [epilepsia, convulsiones, crisis de ausencia]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: epilepsia-1-12-anos
+    presentationId: liq-250-5
+    weightKg: 20
+    ageDays: 1825
+    expect: { mgPerDose: 150, amount: 3, unit: mL }
+  - ruleId: epilepsia-1-12-anos
+    presentationId: liq-200
+    weightKg: 16
+    ageDays: 1460
+    expect: { mgPerDose: 120, amount: 0.6, unit: mL }
+  - ruleId: epilepsia-1-12-anos
+    presentationId: liq-250-5
+    weightKg: 20
+    ageDays: 1825
+    chosenMgPerKg: 45
+    expect: { mgPerDose: 450, amount: 9, unit: mL }
