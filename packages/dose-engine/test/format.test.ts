@@ -45,3 +45,16 @@ describe('formatClinical', () => {
     expect(formatClinical(0.015, ',')).toBe('0,015');
   });
 });
+
+describe('formatClinical — miles', () => {
+  it('desde 10 000 agrupa los miles con un espacio fino que no se corta (nunca punto ni coma)', () => {
+    expect(formatClinical(200000)).toBe('200 000');
+    expect(formatClinical(12500.5)).toBe('12 500.5');
+    expect(formatClinical(12500.5, ',')).toBe('12 500,5');
+    expect(formatClinical(2400000)).toBe('2 400 000');
+  });
+  it('hasta 9999 no agrupa', () => {
+    expect(formatClinical(9999)).toBe('9999');
+    expect(formatClinical(1000)).toBe('1000');
+  });
+});
