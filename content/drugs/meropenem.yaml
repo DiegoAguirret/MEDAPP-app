@@ -1,0 +1,86 @@
+id: meropenem
+name: Meropenem
+category: antibiotico
+synonyms: [carbapenémico]
+presentations:
+  - id: frasco-500
+    label: Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV
+    form: ampolla
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: piel
+    indication: Infección complicada de piel y tejidos blandos (3 meses o más)
+    route: IV
+    ageMinDays: 91
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    intervalHours: 8
+    maxPerDoseMg: 500
+    maxPerDayMg: 1500
+    notes: FDA — 10 mg/kg c/8 h, máximo 500 mg por dosis.
+    presentationIds: [frasco-500]
+    sourceIds: [fda-meropenem, fnme-2008, digemid-pnume-2023]
+  - id: intraabdominal
+    indication: Infección intraabdominal complicada (3 meses o más)
+    route: IV
+    ageMinDays: 91
+    basis: mg/kg/dose
+    amountMin: 20
+    amountMax: 20
+    usual: 20
+    intervalHours: 8
+    maxPerDoseMg: 1000
+    maxPerDayMg: 3000
+    notes: FDA — 20 mg/kg c/8 h, máximo 1 g por dosis. FNME — mayores de 3 meses, 20 a 40 mg/kg c/8 h (máximo 1 g).
+    presentationIds: [frasco-500]
+    sourceIds: [fda-meropenem, fnme-2008, digemid-pnume-2023]
+  - id: meningitis
+    indication: Meningitis bacteriana (3 meses o más)
+    route: IV
+    ageMinDays: 91
+    basis: mg/kg/dose
+    amountMin: 40
+    amountMax: 40
+    usual: 40
+    intervalHours: 8
+    maxPerDoseMg: 2000
+    maxPerDayMg: 6000
+    notes: FDA y FNME — 40 mg/kg c/8 h, máximo 2 g por dosis.
+    presentationIds: [frasco-500]
+    sourceIds: [fda-meropenem, fnme-2008, digemid-pnume-2023]
+warnings:
+  - No hay experiencia en niños con insuficiencia renal (FDA).
+  - Para infusión, diluir a 1 a 20 mg/mL (FDA).
+contraindications:
+  - Hipersensibilidad al meropenem, a otros carbapenémicos o anafilaxia a betalactámicos.
+interactions:
+  - Baja el ácido valproico a niveles subterapéuticos, con riesgo de convulsiones (FDA).
+  - El probenecid aumenta sus niveles; no se recomienda junto (FDA).
+renal: FDA — no hay experiencia en niños con insuficiencia renal; la ficha solo trae ajuste para adultos.
+diagnoses: [meningitis, sepsis, infección intraabdominal, infecciones graves]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: piel
+    presentationId: frasco-500
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 200, amount: 4, unit: mL }
+  - ruleId: meningitis
+    presentationId: frasco-500
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 800, amount: 16, unit: mL }
+  - ruleId: piel
+    presentationId: frasco-500
+    weightKg: 60
+    ageDays: 5000
+    expect: { mgPerDose: 500, amount: 10, unit: mL, capped: true }

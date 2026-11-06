@@ -1,0 +1,89 @@
+id: ciprofloxacino
+name: Ciprofloxacino
+category: antibiotico
+synonyms: [ciprofloxacin, fluoroquinolona]
+presentations:
+  - id: susp-250-5
+    label: Suspensión 250 mg/5 mL
+    form: suspension
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-500
+    label: Tableta 500 mg
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 1
+    brandsPE: []
+  - id: iny-2
+    label: Solución para infusión 2 mg/mL (no se diluye)
+    form: ampolla
+    mgPerUnit: 2
+    unit: mL
+    step: 1
+    brandsPE: []
+rules:
+  - id: itu-complicada-vo
+    indication: Infección urinaria complicada o pielonefritis, oral (1 a 17 años)
+    route: VO
+    ageMinDays: 365
+    ageMaxDays: 6208
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 20
+    usual: 10
+    intervalHours: 12
+    maxPerDoseMg: 750
+    maxPerDayMg: 1500
+    durationText: 10 a 21 días.
+    notes: FDA — 10 a 20 mg/kg c/12 h, máximo 750 mg por dosis, por 10 a 21 días.
+    presentationIds: [susp-250-5, tab-500]
+    sourceIds: [fda-ciprofloxacin, digemid-pnume-2023]
+  - id: itu-complicada-iv
+    indication: Infección urinaria complicada o pielonefritis, IV (1 a 17 años)
+    route: IV
+    ageMinDays: 365
+    ageMaxDays: 6208
+    basis: mg/kg/dose
+    amountMin: 6
+    amountMax: 10
+    usual: 6
+    intervalHours: 8
+    maxPerDoseMg: 400
+    maxPerDayMg: 1200
+    durationText: 10 a 21 días.
+    notes: FDA — 6 a 10 mg/kg c/8 h IV, máximo 400 mg por dosis, por 10 a 21 días; infundir en 60 minutos.
+    presentationIds: [iny-2]
+    sourceIds: [fda-ciprofloxacin-iv, digemid-pnume-2023]
+warnings:
+  - Recuadro negro de la FDA por tendinitis y rotura de tendón, neuropatía periférica, efectos en el sistema nervioso central y empeoramiento de la miastenia gravis.
+  - El FNME dice que su uso en menores de 18 años no ha sido establecido; reservarlo para cuando no hay alternativa.
+contraindications:
+  - Hipersensibilidad al ciprofloxacino o a otras quinolonas.
+  - Uso de tizanidina.
+renal: FDA — no hay información para ajustar la dosis en niños con insuficiencia renal.
+diagnoses: [infección urinaria complicada, pielonefritis]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: itu-complicada-vo
+    presentationId: susp-250-5
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 200, amount: 4, unit: mL }
+  - ruleId: itu-complicada-vo
+    presentationId: susp-250-5
+    weightKg: 45
+    ageDays: 4380
+    chosenMgPerKg: 20
+    expect: { mgPerDose: 750, amount: 15, unit: mL, capped: true }
+  - ruleId: itu-complicada-iv
+    presentationId: iny-2
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 120, amount: 60, unit: mL }

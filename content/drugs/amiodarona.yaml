@@ -1,0 +1,63 @@
+id: amiodarona
+name: Amiodarona
+category: cardiovascular
+synonyms: [amiodarone, antiarrítmico]
+presentations:
+  - id: amp-50
+    label: Amiodarona 50 mg/mL (ampolla 150 mg/3 mL)
+    form: ampolla
+    mgPerUnit: 50
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: carga-iv
+    indication: Arritmias ventriculares o supraventriculares, carga IV en perfusión
+    route: IV
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 5
+    amountMax: 5
+    usual: 5
+    once: true
+    maxPerDoseMg: 250
+    maxPerDayMg: 250
+    notes: >-
+      FNME — perfusión IV por catéter venoso central: empezar con 5 mg/kg durante 20 a 120 min con
+      monitoreo de ECG; después, según la respuesta, hasta un máximo de 1.2 g en 24 h. El tope de la
+      regla es técnico (5 mg/kg con 50 kg).
+    presentationIds: [amp-50]
+    sourceIds: [fnme-2008, fda-amiodarone-iv, digemid-pnume-2023]
+warnings:
+  - La FDA no recomienda su uso en pediatría; en un ensayo de 61 niños hubo hipotensión (36 %), bradicardia (20 %) y bloqueo AV (15 %).
+  - Los inyectables con alcohol bencílico se asocian al síndrome de jadeo mortal en neonatos (FDA).
+  - En el FNME es de uso restringido; dar por catéter venoso central con monitoreo de ECG.
+contraindications:
+  - Shock cardiogénico.
+  - Bradicardia sinusal marcada o bloqueo AV de segundo o tercer grado sin marcapaso.
+  - Hipersensibilidad a la amiodarona o al yodo.
+  - Disfunción tiroidea (FNME).
+interactions:
+  - Con digoxina, reducir la digoxina a la mitad o suspenderla (FDA).
+  - Fármacos que prolongan el QT (macrólidos, fluoroquinolonas, azoles, otros antiarrítmicos), riesgo de torsade de pointes; evitar (FDA).
+  - Betabloqueantes, verapamilo y diltiazem, bradicardia y bloqueo AV (FDA, FNME).
+  - Las interacciones persisten semanas o meses después de suspenderla (FDA).
+renal: FDA — la insuficiencia renal no cambia su farmacocinética; sin ajuste. No se elimina por hemodiálisis (FNME).
+diagnoses: [taquicardia ventricular, arritmia supraventricular]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: carga-iv
+    presentationId: amp-50
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 50, amount: 1, unit: mL }
+  - ruleId: carga-iv
+    presentationId: amp-50
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 100, amount: 2, unit: mL }

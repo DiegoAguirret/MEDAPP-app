@@ -1,0 +1,74 @@
+id: ceftazidima
+name: Ceftazidima
+category: antibiotico
+synonyms: [ceftazidime, cefalosporina antipseudomona]
+presentations:
+  - id: frasco-1g-iv
+    label: Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV
+    form: ampolla
+    mgPerUnit: 100
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: ninos
+    indication: Infecciones graves (1 mes a 12 años)
+    route: IV
+    ageMinDays: 29
+    ageMaxDays: 4744
+    basis: mg/kg/dose
+    amountMin: 30
+    amountMax: 50
+    usual: 30
+    intervalHours: 8
+    maxPerDoseMg: 2000
+    maxPerDayMg: 6000
+    notes: FDA y FNME — 30 a 50 mg/kg IV c/8 h, hasta un máximo de 6 g por día.
+    presentationIds: [frasco-1g-iv]
+    sourceIds: [fnme-2008, fda-ceftazidime, digemid-pnume-2023]
+  - id: neonatos
+    indication: Neonatos (0 a 4 semanas)
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    weightMinKg: 1
+    weightMaxKg: 5
+    basis: mg/kg/dose
+    amountMin: 30
+    amountMax: 30
+    usual: 30
+    intervalHours: 12
+    maxPerDoseMg: 150
+    maxPerDayMg: 300
+    notes: FDA y FNME — neonatos de 0 a 4 semanas, 30 mg/kg IV c/12 h. El rango de 1 a 5 kg es técnico.
+    presentationIds: [frasco-1g-iv]
+    sourceIds: [fnme-2008, fda-ceftazidime]
+warnings:
+  - Reconstituir el frasco de 1 g con 10 mL para obtener unos 100 mg/mL por vía IV (FDA); al reconstituir se libera dióxido de carbono.
+contraindications:
+  - Hipersensibilidad a la ceftazidima o a otras cefalosporinas.
+renal: FDA — en insuficiencia renal, la ficha solo trae una tabla para adultos según la depuración de creatinina.
+diagnoses: [infecciones por Pseudomonas, sepsis, neutropenia febril, infecciones graves]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: ninos
+    presentationId: frasco-1g-iv
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 600, amount: 6, unit: mL }
+  - ruleId: ninos
+    presentationId: frasco-1g-iv
+    weightKg: 45
+    ageDays: 4380
+    chosenMgPerKg: 50
+    expect: { mgPerDose: 2000, amount: 20, unit: mL, capped: true }
+  - ruleId: neonatos
+    presentationId: frasco-1g-iv
+    weightKg: 3
+    ageDays: 10
+    expect: { mgPerDose: 90, amount: 0.9, unit: mL }

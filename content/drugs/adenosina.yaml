@@ -1,0 +1,84 @@
+id: adenosina
+name: Adenosina
+category: cardiovascular
+emergency: true
+synonyms: [adenosine]
+presentations:
+  - id: amp-3
+    label: Adenosina 3 mg/mL (ampolla)
+    form: ampolla
+    mgPerUnit: 3
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: primera-dosis
+    indication: Taquicardia supraventricular paroxística, primera dosis (menos de 50 kg)
+    route: IV
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 0.05
+    amountMax: 0.1
+    usual: 0.1
+    once: true
+    maxPerDoseMg: 5
+    maxPerDayMg: 5
+    notes: >-
+      FDA — 0.05 a 0.1 mg/kg en bolo IV rápido, central o periférico, seguido de un lavado con suero.
+      Con 50 kg o más, dosis de adulto (6 mg). El tope de la regla es técnico (0.1 mg/kg con 50 kg).
+    presentationIds: [amp-3]
+    sourceIds: [fda-adenosine, digemid-pnume-2023]
+  - id: dosis-siguientes
+    indication: Taquicardia supraventricular, dosis siguientes si no convierte (menos de 50 kg)
+    route: IV
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 0.1
+    amountMax: 0.3
+    usual: 0.1
+    repeatMinutes: { min: 1, max: 2 }
+    maxPerDoseMg: 12
+    maxPerDayMg: 12
+    notes: >-
+      FDA — si no hay conversión en 1 a 2 minutos, dar otra dosis aumentando 0.05 a 0.1 mg/kg, hasta
+      ritmo sinusal o hasta una dosis única máxima de 0.3 mg/kg. No se recomiendan dosis mayores de 12 mg.
+    presentationIds: [amp-3]
+    sourceIds: [fda-adenosine, digemid-pnume-2023]
+warnings:
+  - No convierte el flúter auricular, la fibrilación auricular ni la taquicardia ventricular (FDA).
+  - Bolo rápido seguido de lavado con suero; no refrigerar, porque puede cristalizarse (FDA).
+contraindications:
+  - Bloqueo AV de segundo o tercer grado, salvo con marcapaso funcionante.
+  - Enfermedad del nodo sinusal o bradicardia sintomática, salvo con marcapaso.
+  - Hipersensibilidad a la adenosina.
+interactions:
+  - Cafeína y teofilina reducen su efecto; pueden necesitarse dosis mayores o no ser eficaz (FDA).
+  - Dipiridamol potencia su efecto; pueden bastar dosis menores (FDA).
+  - Carbamazepina aumenta el bloqueo cardiaco (FDA).
+renal: FDA — no requiere función renal ni hepática para activarse o eliminarse; sin ajuste.
+diagnoses: [taquicardia supraventricular, taquicardia paroxística]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: primera-dosis
+    presentationId: amp-3
+    weightKg: 15
+    ageDays: 1095
+    expect: { mgPerDose: 1.5, amount: 0.5, unit: mL }
+  - ruleId: dosis-siguientes
+    presentationId: amp-3
+    weightKg: 15
+    ageDays: 1095
+    chosenMgPerKg: 0.2
+    expect: { mgPerDose: 3, amount: 1, unit: mL }
+  - ruleId: dosis-siguientes
+    presentationId: amp-3
+    weightKg: 45
+    ageDays: 4380
+    chosenMgPerKg: 0.3
+    expect: { mgPerDose: 12, amount: 4, unit: mL, capped: true }

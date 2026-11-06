@@ -1,0 +1,52 @@
+id: cefazolina
+name: Cefazolina
+category: antibiotico
+synonyms: [cefazolin, cefalosporina de primera generación]
+presentations:
+  - id: frasco-1g
+    label: Frasco 1 g reconstituido con 2.5 mL (330 mg/mL)
+    form: ampolla
+    mgPerUnit: 330
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: ninos
+    indication: Infecciones leves a moderadamente graves (1 mes o más)
+    route: IM
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/day
+    amountMin: 25
+    amountMax: 100
+    usual: 25
+    intervalHours: 8
+    maxPerDoseMg: 1666.7
+    maxPerDayMg: 5000
+    notes: >-
+      FDA — dosis diaria total de 25 a 50 mg/kg dividida en 3 o 4 dosis iguales en la mayoría de las
+      infecciones leves a moderadamente graves; puede subirse a 100 mg/kg en infecciones graves. La FDA
+      no da tope pediátrico en mg (el tope de la regla es técnico, 100 mg/kg con 50 kg).
+    presentationIds: [frasco-1g]
+    sourceIds: [fda-cefazolin, fnme-2008, digemid-pnume-2023]
+warnings:
+  - No se ha establecido su seguridad en prematuros ni en neonatos (FDA).
+  - La concentración de 330 mg/mL es la reconstitución para uso IM; para IV, diluir según la ficha.
+contraindications:
+  - Hipersensibilidad a la cefazolina o a otras cefalosporinas.
+renal: >-
+  FDA — en niños, después de una dosis de carga: depuración de 40 a 70 mL/min, 60 % de la dosis diaria
+  c/12 h; de 20 a 40, 25 % c/12 h; de 5 a 20, 10 % c/24 h.
+diagnoses: [infección de piel, celulitis, infección osteoarticular, profilaxis quirúrgica]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: ninos
+    presentationId: frasco-1g
+    weightKg: 20
+    ageDays: 2190
+    chosenMgPerKg: 99
+    expect: { mgPerDose: 660, amount: 2, unit: mL }

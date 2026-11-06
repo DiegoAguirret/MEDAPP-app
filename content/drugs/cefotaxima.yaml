@@ -1,0 +1,102 @@
+id: cefotaxima
+name: Cefotaxima
+category: antibiotico
+synonyms: [cefotaxime, cefalosporina de tercera generación]
+presentations:
+  - id: frasco-500-iv
+    label: Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV
+    form: ampolla
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: ninos
+    indication: Infecciones graves, incluida meningitis (1 mes a 12 años, menos de 50 kg)
+    route: IV
+    ageMinDays: 29
+    ageMaxDays: 4744
+    weightMaxKg: 50
+    basis: mg/kg/day
+    amountMin: 50
+    amountMax: 180
+    usual: 50
+    intervalHours: 6
+    maxPerDoseMg: 3000
+    maxPerDayMg: 12000
+    notes: >-
+      FDA y FNME — 50 a 180 mg/kg/día IM o IV en 4 a 6 dosis iguales; las dosis altas, en infecciones
+      más graves, incluida la meningitis. No pasar de 12 g/día.
+    presentationIds: [frasco-500-iv]
+    sourceIds: [fnme-2008, fda-cefotaxime, digemid-pnume-2023]
+  - id: neonato-semana-1
+    indication: Neonatos, primera semana de vida
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 6
+    weightMinKg: 1
+    weightMaxKg: 5
+    basis: mg/kg/dose
+    amountMin: 50
+    amountMax: 50
+    usual: 50
+    intervalHours: 12
+    maxPerDoseMg: 250
+    maxPerDayMg: 500
+    notes: FDA y FNME — de 0 a 1 semana, 50 mg/kg por dosis c/12 h IV. No hace falta distinguir prematuros de nacidos a término (FDA). El rango de 1 a 5 kg es técnico.
+    presentationIds: [frasco-500-iv]
+    sourceIds: [fnme-2008, fda-cefotaxime]
+  - id: neonato-semanas-1-4
+    indication: Neonatos, de 1 a 4 semanas
+    route: IV
+    neonatal: true
+    ageMinDays: 7
+    ageMaxDays: 28
+    weightMinKg: 1
+    weightMaxKg: 5
+    basis: mg/kg/dose
+    amountMin: 50
+    amountMax: 50
+    usual: 50
+    intervalHours: 8
+    maxPerDoseMg: 250
+    maxPerDayMg: 750
+    notes: FDA y FNME — de 1 a 4 semanas, 50 mg/kg por dosis c/8 h IV.
+    presentationIds: [frasco-500-iv]
+    sourceIds: [fnme-2008, fda-cefotaxime]
+warnings:
+  - Reconstituir el frasco de 500 mg con 10 mL para obtener 50 mg/mL por vía IV (FDA).
+contraindications:
+  - Alergia a las cefalosporinas.
+interactions:
+  - El probenecid interfiere con su eliminación renal y baja su depuración total (FDA).
+renal: FDA — con depuración de creatinina menor de 20 mL/min, dar la mitad de la dosis.
+diagnoses: [meningitis, sepsis, neumonía grave, infecciones graves]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: ninos
+    presentationId: frasco-500-iv
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 250, amount: 5, unit: mL }
+  - ruleId: ninos
+    presentationId: frasco-500-iv
+    weightKg: 20
+    ageDays: 2190
+    chosenMgPerKg: 180
+    expect: { mgPerDose: 900, amount: 18, unit: mL }
+  - ruleId: neonato-semana-1
+    presentationId: frasco-500-iv
+    weightKg: 3
+    ageDays: 3
+    expect: { mgPerDose: 150, amount: 3, unit: mL }
+  - ruleId: neonato-semanas-1-4
+    presentationId: frasco-500-iv
+    weightKg: 3.6
+    ageDays: 15
+    expect: { mgPerDose: 180, amount: 3.6, unit: mL }

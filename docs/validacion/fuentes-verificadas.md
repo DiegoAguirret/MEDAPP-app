@@ -262,3 +262,33 @@ Cada cifra se confirmó en el documento descargado (texto de openFDA, el FNME 20
 
 - **Capurro somato-neurológico:** no está en ninguna fuente MINSA Perú; solo en la NOM-007 de México, con puntos somáticos distintos.
 - **Franjas de pretérmino y término:** no están en las fuentes peruanas.
+
+## Lote 6: cardiovasculares, antibióticos IV y corticoides — verificado el 05/11/2026
+
+| Fármaco           | Reglas                                      | Fuente principal                 | Cifras                                                                                     |
+| ----------------- | ------------------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------ |
+| Hidroclorotiazida | <6 m, 6 m–2 a, 2–12 a                       | FDA (y FNME «hasta 2 mg/kg/día») | 1–2 mg/kg/día en 2 tomas (hasta 3 en <6 m); máx. 37.5 mg/d hasta 2 a, 100 mg/d de 2 a 12 a |
+| Espironolactona   | 1 mes–12 años                               | FNME                             | 1–3 mg/kg/d en 1 o 2–4 tomas (tope técnico)                                                |
+| Adenosina         | Primera dosis y siguientes, <50 kg          | FDA                              | 0.05–0.1 mg/kg; subir 0.05–0.1 hasta 0.3 mg/kg; nunca más de 12 mg                         |
+| Amiodarona        | Carga IV                                    | FNME                             | 5 mg/kg en 20–120 min por vía central; máx. 1.2 g/24 h                                     |
+| Cefotaxima        | Niños <50 kg; neonatos                      | FDA = FNME                       | 50–180 mg/kg/d en 4–6 dosis (máx. 12 g/d); neonatos 50 mg/kg c/12 h (1.ª semana) y c/8 h   |
+| Ceftazidima       | 1 m–12 a; neonatos                          | FDA = FNME                       | 30–50 mg/kg c/8 h (máx. 6 g/d); neonatos 30 mg/kg c/12 h                                   |
+| Meropenem         | Piel, intraabdominal, meningitis (≥3 meses) | FDA (FNME concuerda)             | 10 (máx. 500 mg), 20 (máx. 1 g), 40 mg/kg (máx. 2 g) c/8 h                                 |
+| Cefazolina        | ≥1 mes                                      | FDA                              | 25–50 mg/kg/d en 3–4 dosis, hasta 100 mg/kg/d                                              |
+| Ciprofloxacino    | ITU complicada VO e IV (1–17 años)          | FDA                              | VO 10–20 mg/kg c/12 h (máx. 750 mg); IV 6–10 mg/kg c/8 h (máx. 400 mg)                     |
+| Dexametasona      | Crup; asma (5 años o menos)                 | OMS Pocket Book; GINA 2025       | 0.6 mg/kg dosis única; 0.3–0.6 mg/kg (máx. 12 mg)                                          |
+
+**Presentaciones:** todas confirmadas fila por fila en el PNUME 2023.
+
+**No incluidos y por qué:**
+
+- **Captopril:** sin dosis pediátrica en ninguna fuente.
+- **Enalapril y propranolol:** en el Perú solo hay tabletas que no permiten medir la dosis pediátrica.
+- **Digoxina:** fármaco de alto riesgo y discrepancia FNME/FDA en las cargas por edad; queda para revisión médica.
+- **Ketorolaco y tramadol:** la FDA no los indica en niños; el tramadol está contraindicado en menores de 12 años.
+- **Naproxeno:** la dosis del FNME es el doble que la de la FDA.
+- **Lactulosa:** solo hay volúmenes fijos por edad.
+- **Penicilina benzatínica:** sus fuentes no coinciden en las dosis para faringitis.
+- **Penicilina G sódica:** no se pudo confirmar la reconstitución del frasco de 1 000 000 UI en el texto descargado.
+- **Metilprednisolona:** sin concentración reconstituida verificada.
+- **Morfina e hidrocortisona:** pendientes del lote siguiente.

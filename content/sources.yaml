@@ -382,3 +382,60 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=0543b2b5-b1c7-4ad6-b38c-3be0086f0e06
   kind: regulador
   country: US
+- id: fda-hctz
+  title: Hidroclorotiazida tabletas — prescribing information (FDA, set 076017ce-8aad-1336-e063-6394a90a76b5)
+  publisher: U.S. FDA / Northwind
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=076017ce-8aad-1336-e063-6394a90a76b5
+  kind: regulador
+  country: US
+- id: fda-adenosine
+  title: Adenosina inyectable 3 mg/mL — prescribing information (FDA, set 546642f2-662f-46cf-9d82-5bb3bdcc7677)
+  publisher: U.S. FDA / Sagent
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=546642f2-662f-46cf-9d82-5bb3bdcc7677
+  kind: regulador
+  country: US
+- id: fda-amiodarone-iv
+  title: Amiodarona inyectable 50 mg/mL — prescribing information (FDA, set 1f00c333-9667-4ebc-8849-009a3779c0c9)
+  publisher: U.S. FDA / Gland
+  year: 2021
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=1f00c333-9667-4ebc-8849-009a3779c0c9
+  kind: regulador
+  country: US
+- id: fda-cefotaxime
+  title: Cefotaxima para inyección — prescribing information (FDA, set 8efe3bd0-c43a-2bd6-e053-2a95a90a92fa)
+  publisher: U.S. FDA
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=8efe3bd0-c43a-2bd6-e053-2a95a90a92fa
+  kind: regulador
+  country: US
+- id: fda-ceftazidime
+  title: Ceftazidima para inyección — prescribing information (FDA, set 112c5457-8d71-49f5-b531-9761d7d38c93)
+  publisher: U.S. FDA
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=112c5457-8d71-49f5-b531-9761d7d38c93
+  kind: regulador
+  country: US
+- id: fda-meropenem
+  title: Meropenem para inyección — prescribing information (FDA, set 06d84c55-94ff-46e5-8477-b8881c12eb0a)
+  publisher: U.S. FDA
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=06d84c55-94ff-46e5-8477-b8881c12eb0a
+  kind: regulador
+  country: US
+- id: fda-cefazolin
+  title: Cefazolina para inyección — prescribing information (FDA, set 00dd6da7-50a8-44c9-b2dc-7948973df392)
+  publisher: U.S. FDA / Hikma
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=00dd6da7-50a8-44c9-b2dc-7948973df392
+  kind: regulador
+  country: US
+- id: fda-ciprofloxacin
+  title: Ciprofloxacino tabletas y suspensión oral — prescribing information (FDA, set 888dc7f9-ad9c-4c00-8d50-8ddfd9bd27c0)
+  publisher: U.S. FDA
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=888dc7f9-ad9c-4c00-8d50-8ddfd9bd27c0
+  kind: regulador
+  country: US
+- id: fda-ciprofloxacin-iv
+  title: Ciprofloxacino inyectable 2 mg/mL — prescribing information (FDA, set 42c758be-4d44-018a-e063-6294a90ae041)
+  publisher: U.S. FDA
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=42c758be-4d44-018a-e063-6294a90ae041
+  kind: regulador
+  country: US

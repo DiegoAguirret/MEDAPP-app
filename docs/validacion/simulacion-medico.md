@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **5313** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **2320**. Fuera del rango de edad de la regla: 2993 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 2320/2320 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 2320/2320.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.54 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **5922** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **2644**. Fuera del rango de edad de la regla: 3278 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 2644/2644 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 2644/2644.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.58 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -78,6 +78,36 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | acido-valproico | epilepsia-1-12-anos | Tableta de liberación modificada 500 mg | 8 años (25.6 kg) | 192 | 192 | 0.384 | 0.38 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | acido-valproico | epilepsia-1-12-anos | Tableta de liberación modificada 500 mg | 10 años (32 kg) | 240 | 240 | 0.48 | 0.48 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | acido-valproico | epilepsia-1-12-anos | Tableta de liberación modificada 500 mg | 12 años (40 kg) | 300 | 300 | 0.6 | 0.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| adenosina | primera-dosis | Adenosina 3 mg/mL (ampolla) | 1 mes (4.2 kg) | 0.42 | 0.42 | 0.14 | 0.14 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| adenosina | primera-dosis | Adenosina 3 mg/mL (ampolla) | 2 meses (5.1 kg) | 0.51 | 0.51 | 0.17 | 0.17 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| adenosina | primera-dosis | Adenosina 3 mg/mL (ampolla) | 4 meses (6.4 kg) | 0.64 | 0.64 | 0.213 | 0.21 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| adenosina | primera-dosis | Adenosina 3 mg/mL (ampolla) | 6 meses (7.6 kg) | 0.76 | 0.76 | 0.253 | 0.25 mL | ✅  |
+| adenosina | primera-dosis | Adenosina 3 mg/mL (ampolla) | 9 meses (8.6 kg) | 0.86 | 0.86 | 0.287 | 0.3 mL | ✅  |
+| adenosina | primera-dosis | Adenosina 3 mg/mL (ampolla) | 1 año (9.6 kg) | 0.96 | 0.96 | 0.32 | 0.32 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| adenosina | primera-dosis | Adenosina 3 mg/mL (ampolla) | 18 meses (10.9 kg) | 1.09 | 1.09 | 0.363 | 0.35 mL | ✅  |
+| adenosina | primera-dosis | Adenosina 3 mg/mL (ampolla) | 2 años (12.2 kg) | 1.22 | 1.22 | 0.407 | 0.4 mL | ✅  |
+| adenosina | primera-dosis | Adenosina 3 mg/mL (ampolla) | 3 años (14.3 kg) | 1.43 | 1.43 | 0.477 | 0.5 mL | ✅  |
+| adenosina | primera-dosis | Adenosina 3 mg/mL (ampolla) | 4 años (16.3 kg) | 1.63 | 1.63 | 0.543 | 0.55 mL | ✅  |
+| adenosina | primera-dosis | Adenosina 3 mg/mL (ampolla) | 5 años (18.3 kg) | 1.83 | 1.83 | 0.61 | 0.6 mL | ✅  |
+| adenosina | primera-dosis | Adenosina 3 mg/mL (ampolla) | 6 años (20.5 kg) | 2.05 | 2.05 | 0.683 | 0.7 mL | ✅  |
+| adenosina | primera-dosis | Adenosina 3 mg/mL (ampolla) | 8 años (25.6 kg) | 2.56 | 2.56 | 0.853 | 0.85 mL | ✅  |
+| adenosina | primera-dosis | Adenosina 3 mg/mL (ampolla) | 10 años (32 kg) | 3.2 | 3.2 | 1.067 | 1.05 mL | ✅  |
+| adenosina | primera-dosis | Adenosina 3 mg/mL (ampolla) | 12 años (40 kg) | 4 | 4 | 1.333 | 1.35 mL | ✅  |
+| adenosina | dosis-siguientes | Adenosina 3 mg/mL (ampolla) | 1 mes (4.2 kg) | 0.42 | 0.42 | 0.14 | 0.14 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| adenosina | dosis-siguientes | Adenosina 3 mg/mL (ampolla) | 2 meses (5.1 kg) | 0.51 | 0.51 | 0.17 | 0.17 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| adenosina | dosis-siguientes | Adenosina 3 mg/mL (ampolla) | 4 meses (6.4 kg) | 0.64 | 0.64 | 0.213 | 0.21 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| adenosina | dosis-siguientes | Adenosina 3 mg/mL (ampolla) | 6 meses (7.6 kg) | 0.76 | 0.76 | 0.253 | 0.25 mL | ✅  |
+| adenosina | dosis-siguientes | Adenosina 3 mg/mL (ampolla) | 9 meses (8.6 kg) | 0.86 | 0.86 | 0.287 | 0.3 mL | ✅  |
+| adenosina | dosis-siguientes | Adenosina 3 mg/mL (ampolla) | 1 año (9.6 kg) | 0.96 | 0.96 | 0.32 | 0.32 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| adenosina | dosis-siguientes | Adenosina 3 mg/mL (ampolla) | 18 meses (10.9 kg) | 1.09 | 1.09 | 0.363 | 0.35 mL | ✅  |
+| adenosina | dosis-siguientes | Adenosina 3 mg/mL (ampolla) | 2 años (12.2 kg) | 1.22 | 1.22 | 0.407 | 0.4 mL | ✅  |
+| adenosina | dosis-siguientes | Adenosina 3 mg/mL (ampolla) | 3 años (14.3 kg) | 1.43 | 1.43 | 0.477 | 0.5 mL | ✅  |
+| adenosina | dosis-siguientes | Adenosina 3 mg/mL (ampolla) | 4 años (16.3 kg) | 1.63 | 1.63 | 0.543 | 0.55 mL | ✅  |
+| adenosina | dosis-siguientes | Adenosina 3 mg/mL (ampolla) | 5 años (18.3 kg) | 1.83 | 1.83 | 0.61 | 0.6 mL | ✅  |
+| adenosina | dosis-siguientes | Adenosina 3 mg/mL (ampolla) | 6 años (20.5 kg) | 2.05 | 2.05 | 0.683 | 0.7 mL | ✅  |
+| adenosina | dosis-siguientes | Adenosina 3 mg/mL (ampolla) | 8 años (25.6 kg) | 2.56 | 2.56 | 0.853 | 0.85 mL | ✅  |
+| adenosina | dosis-siguientes | Adenosina 3 mg/mL (ampolla) | 10 años (32 kg) | 3.2 | 3.2 | 1.067 | 1.05 mL | ✅  |
+| adenosina | dosis-siguientes | Adenosina 3 mg/mL (ampolla) | 12 años (40 kg) | 4 | 4 | 1.333 | 1.35 mL | ✅  |
 | adrenalina | anafilaxia-im | Ampolla 1 mg/mL (1:1000) | 1 mes (4.2 kg) | 0.04 | 0.04 | 0.042 | 0.04 mL | ✅  |
 | adrenalina | anafilaxia-im | Ampolla 1 mg/mL (1:1000) | 2 meses (5.1 kg) | 0.05 | 0.05 | 0.051 | 0.05 mL | ✅  |
 | adrenalina | anafilaxia-im | Ampolla 1 mg/mL (1:1000) | 4 meses (6.4 kg) | 0.06 | 0.06 | 0.064 | 0.06 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -218,6 +248,21 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | amikacina | neonato-mantenimiento | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 3 días, bajo peso (2 kg) (2 kg) | 15 | 15 | 0.3 | 0.3 mL | ✅  |
 | amikacina | neonato-mantenimiento | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 5 días (3.2 kg) (3.2 kg) | 24 | 24 | 0.48 | 0.5 mL | ✅  |
 | amikacina | neonato-mantenimiento | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 15 días (3.6 kg) (3.6 kg) | 27 | 27 | 0.54 | 0.55 mL | ✅  |
+| amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 1 mes (4.2 kg) | 21 | 21 | 0.42 | 0.4 mL | ✅  |
+| amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 2 meses (5.1 kg) | 25.5 | 25.5 | 0.51 | 0.5 mL | ✅  |
+| amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 4 meses (6.4 kg) | 32 | 32 | 0.64 | 0.65 mL | ✅  |
+| amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 6 meses (7.6 kg) | 38 | 38 | 0.76 | 0.75 mL | ✅  |
+| amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 9 meses (8.6 kg) | 43 | 43 | 0.86 | 0.85 mL | ✅  |
+| amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 1 año (9.6 kg) | 48 | 48 | 0.96 | 0.95 mL | ✅  |
+| amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 18 meses (10.9 kg) | 54.5 | 54.5 | 1.09 | 1.1 mL | ✅  |
+| amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 2 años (12.2 kg) | 61 | 61 | 1.22 | 1.2 mL | ✅  |
+| amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 3 años (14.3 kg) | 71.5 | 71.5 | 1.43 | 1.45 mL | ✅  |
+| amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 4 años (16.3 kg) | 81.5 | 81.5 | 1.63 | 1.65 mL | ✅  |
+| amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 5 años (18.3 kg) | 91.5 | 91.5 | 1.83 | 1.85 mL | ✅  |
+| amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 6 años (20.5 kg) | 102.5 | 102.5 | 2.05 | 2.05 mL | ✅  |
+| amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 8 años (25.6 kg) | 128 | 128 | 2.56 | 2.55 mL | ✅  |
+| amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 10 años (32 kg) | 160 | 160 | 3.2 | 3.2 mL | ✅  |
+| amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 12 años (40 kg) | 200 | 200 | 4 | 4 mL | ✅  |
 | amoxicilina-clavulanico | menores-3-meses | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 1 mes (4.2 kg) | 63 | 63 | 0.787 | 0.8 mL | ✅  |
 | amoxicilina-clavulanico | menores-3-meses | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 2 meses (5.1 kg) | 76.5 | 76.5 | 0.956 | 1 mL | ✅  |
 | amoxicilina-clavulanico | estandar-cada-12h | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 4 meses (6.4 kg) | 144 | 144 | 1.8 | 1.8 mL | ✅  |
@@ -723,6 +768,57 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | cefalexina | infecciones-graves | Cápsula 500 mg | 14 años (50 kg) | 750 | 750 | 1.5 | 1.5 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cefalexina | infecciones-graves | Cápsula 500 mg | 16 años (58 kg) | 750 | 750 | 1.5 | 1.5 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cefalexina | infecciones-graves | Cápsula 500 mg | 17 años, obeso (95 kg) | 750 | 750 | 1.5 | 1.5 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cefazolina | ninos | Frasco 1 g reconstituido con 2.5 mL (330 mg/mL) | 1 mes (4.2 kg) | 35 | 35 | 0.106 | 0.11 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cefazolina | ninos | Frasco 1 g reconstituido con 2.5 mL (330 mg/mL) | 2 meses (5.1 kg) | 42.5 | 42.5 | 0.129 | 0.13 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cefazolina | ninos | Frasco 1 g reconstituido con 2.5 mL (330 mg/mL) | 4 meses (6.4 kg) | 53.33 | 53.33 | 0.162 | 0.16 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cefazolina | ninos | Frasco 1 g reconstituido con 2.5 mL (330 mg/mL) | 6 meses (7.6 kg) | 63.33 | 63.33 | 0.192 | 0.2 mL | ✅  |
+| cefazolina | ninos | Frasco 1 g reconstituido con 2.5 mL (330 mg/mL) | 9 meses (8.6 kg) | 71.67 | 71.67 | 0.217 | 0.22 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cefazolina | ninos | Frasco 1 g reconstituido con 2.5 mL (330 mg/mL) | 1 año (9.6 kg) | 80 | 80 | 0.242 | 0.25 mL | ✅  |
+| cefazolina | ninos | Frasco 1 g reconstituido con 2.5 mL (330 mg/mL) | 18 meses (10.9 kg) | 90.83 | 90.83 | 0.275 | 0.28 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cefazolina | ninos | Frasco 1 g reconstituido con 2.5 mL (330 mg/mL) | 2 años (12.2 kg) | 101.67 | 101.67 | 0.308 | 0.3 mL | ✅  |
+| cefazolina | ninos | Frasco 1 g reconstituido con 2.5 mL (330 mg/mL) | 3 años (14.3 kg) | 119.17 | 119.17 | 0.361 | 0.35 mL | ✅  |
+| cefazolina | ninos | Frasco 1 g reconstituido con 2.5 mL (330 mg/mL) | 4 años (16.3 kg) | 135.83 | 135.83 | 0.412 | 0.4 mL | ✅  |
+| cefazolina | ninos | Frasco 1 g reconstituido con 2.5 mL (330 mg/mL) | 5 años (18.3 kg) | 152.5 | 152.5 | 0.462 | 0.45 mL | ✅  |
+| cefazolina | ninos | Frasco 1 g reconstituido con 2.5 mL (330 mg/mL) | 6 años (20.5 kg) | 170.83 | 170.83 | 0.518 | 0.5 mL | ✅  |
+| cefazolina | ninos | Frasco 1 g reconstituido con 2.5 mL (330 mg/mL) | 8 años (25.6 kg) | 213.33 | 213.33 | 0.646 | 0.65 mL | ✅  |
+| cefazolina | ninos | Frasco 1 g reconstituido con 2.5 mL (330 mg/mL) | 10 años (32 kg) | 266.67 | 266.67 | 0.808 | 0.8 mL | ✅  |
+| cefazolina | ninos | Frasco 1 g reconstituido con 2.5 mL (330 mg/mL) | 12 años (40 kg) | 333.33 | 333.33 | 1.01 | 1 mL | ✅  |
+| cefotaxima | ninos | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 1 mes (4.2 kg) | 52.5 | 52.5 | 1.05 | 1.1 mL | ✅  |
+| cefotaxima | ninos | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 2 meses (5.1 kg) | 63.75 | 63.75 | 1.275 | 1.3 mL | ✅  |
+| cefotaxima | ninos | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 4 meses (6.4 kg) | 80 | 80 | 1.6 | 1.6 mL | ✅  |
+| cefotaxima | ninos | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 6 meses (7.6 kg) | 95 | 95 | 1.9 | 1.9 mL | ✅  |
+| cefotaxima | ninos | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 9 meses (8.6 kg) | 107.5 | 107.5 | 2.15 | 2.2 mL | ✅  |
+| cefotaxima | ninos | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 1 año (9.6 kg) | 120 | 120 | 2.4 | 2.4 mL | ✅  |
+| cefotaxima | ninos | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 18 meses (10.9 kg) | 136.25 | 136.25 | 2.725 | 2.7 mL | ✅  |
+| cefotaxima | ninos | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 2 años (12.2 kg) | 152.5 | 152.5 | 3.05 | 3.1 mL | ✅  |
+| cefotaxima | ninos | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 3 años (14.3 kg) | 178.75 | 178.75 | 3.575 | 3.6 mL | ✅  |
+| cefotaxima | ninos | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 4 años (16.3 kg) | 203.75 | 203.75 | 4.075 | 4.1 mL | ✅  |
+| cefotaxima | ninos | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 5 años (18.3 kg) | 228.75 | 228.75 | 4.575 | 4.6 mL | ✅  |
+| cefotaxima | ninos | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 6 años (20.5 kg) | 256.25 | 256.25 | 5.125 | 5.1 mL | ✅  |
+| cefotaxima | ninos | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 8 años (25.6 kg) | 320 | 320 | 6.4 | 6.4 mL | ✅  |
+| cefotaxima | ninos | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 10 años (32 kg) | 400 | 400 | 8 | 8 mL | ✅  |
+| cefotaxima | ninos | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 12 años (40 kg) | 500 | 500 | 10 | 10 mL | ✅  |
+| cefotaxima | neonato-semana-1 | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 3 días, bajo peso (2 kg) (2 kg) | 100 | 100 | 2 | 2 mL | ✅  |
+| cefotaxima | neonato-semana-1 | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 5 días (3.2 kg) (3.2 kg) | 160 | 160 | 3.2 | 3.2 mL | ✅  |
+| cefotaxima | neonato-semanas-1-4 | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 15 días (3.6 kg) (3.6 kg) | 180 | 180 | 3.6 | 3.6 mL | ✅  |
+| ceftazidima | ninos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 1 mes (4.2 kg) | 126 | 126 | 1.26 | 1.3 mL | ✅  |
+| ceftazidima | ninos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 2 meses (5.1 kg) | 153 | 153 | 1.53 | 1.5 mL | ✅  |
+| ceftazidima | ninos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 4 meses (6.4 kg) | 192 | 192 | 1.92 | 1.9 mL | ✅  |
+| ceftazidima | ninos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 6 meses (7.6 kg) | 228 | 228 | 2.28 | 2.3 mL | ✅  |
+| ceftazidima | ninos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 9 meses (8.6 kg) | 258 | 258 | 2.58 | 2.6 mL | ✅  |
+| ceftazidima | ninos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 1 año (9.6 kg) | 288 | 288 | 2.88 | 2.9 mL | ✅  |
+| ceftazidima | ninos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 18 meses (10.9 kg) | 327 | 327 | 3.27 | 3.3 mL | ✅  |
+| ceftazidima | ninos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 2 años (12.2 kg) | 366 | 366 | 3.66 | 3.7 mL | ✅  |
+| ceftazidima | ninos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 3 años (14.3 kg) | 429 | 429 | 4.29 | 4.3 mL | ✅  |
+| ceftazidima | ninos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 4 años (16.3 kg) | 489 | 489 | 4.89 | 4.9 mL | ✅  |
+| ceftazidima | ninos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 5 años (18.3 kg) | 549 | 549 | 5.49 | 5.5 mL | ✅  |
+| ceftazidima | ninos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 6 años (20.5 kg) | 615 | 615 | 6.15 | 6.2 mL | ✅  |
+| ceftazidima | ninos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 8 años (25.6 kg) | 768 | 768 | 7.68 | 7.7 mL | ✅  |
+| ceftazidima | ninos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 10 años (32 kg) | 960 | 960 | 9.6 | 9.6 mL | ✅  |
+| ceftazidima | ninos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 12 años (40 kg) | 1200 | 1200 | 12 | 12 mL | ✅  |
+| ceftazidima | neonatos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 3 días, bajo peso (2 kg) (2 kg) | 60 | 60 | 0.6 | 0.6 mL | ✅  |
+| ceftazidima | neonatos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 5 días (3.2 kg) (3.2 kg) | 96 | 96 | 0.96 | 1 mL | ✅  |
+| ceftazidima | neonatos | Frasco 1 g reconstituido con 10 mL (100 mg/mL), IV | 15 días (3.6 kg) (3.6 kg) | 108 | 108 | 1.08 | 1.1 mL | ✅  |
 | ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 1 mes (4.2 kg) | 315 | 315 | 3.15 | 3.2 mL | ✅  |
 | ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 2 meses (5.1 kg) | 382.5 | 382.5 | 3.825 | 3.8 mL | ✅  |
 | ceftriaxona | usual-iv | Vial 1 g reconstituido con 9.6 mL de agua estéril = 1 g/10 mL (100 mg/mL) | 4 meses (6.4 kg) | 480 | 480 | 4.8 | 4.8 mL | ✅  |
@@ -822,6 +918,45 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | cetirizina | alergia-6-anos-o-mas | Tableta 10 mg | 14 años (50 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
 | cetirizina | alergia-6-anos-o-mas | Tableta 10 mg | 16 años (58 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
 | cetirizina | alergia-6-anos-o-mas | Tableta 10 mg | 17 años, obeso (95 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
+| ciprofloxacino | itu-complicada-vo | Suspensión 250 mg/5 mL | 1 año (9.6 kg) | 96 | 96 | 1.92 | 1.9 mL | ✅  |
+| ciprofloxacino | itu-complicada-vo | Suspensión 250 mg/5 mL | 18 meses (10.9 kg) | 109 | 109 | 2.18 | 2.2 mL | ✅  |
+| ciprofloxacino | itu-complicada-vo | Suspensión 250 mg/5 mL | 2 años (12.2 kg) | 122 | 122 | 2.44 | 2.4 mL | ✅  |
+| ciprofloxacino | itu-complicada-vo | Suspensión 250 mg/5 mL | 3 años (14.3 kg) | 143 | 143 | 2.86 | 2.9 mL | ✅  |
+| ciprofloxacino | itu-complicada-vo | Suspensión 250 mg/5 mL | 4 años (16.3 kg) | 163 | 163 | 3.26 | 3.3 mL | ✅  |
+| ciprofloxacino | itu-complicada-vo | Suspensión 250 mg/5 mL | 5 años (18.3 kg) | 183 | 183 | 3.66 | 3.7 mL | ✅  |
+| ciprofloxacino | itu-complicada-vo | Suspensión 250 mg/5 mL | 6 años (20.5 kg) | 205 | 205 | 4.1 | 4.1 mL | ✅  |
+| ciprofloxacino | itu-complicada-vo | Suspensión 250 mg/5 mL | 8 años (25.6 kg) | 256 | 256 | 5.12 | 5.1 mL | ✅  |
+| ciprofloxacino | itu-complicada-vo | Suspensión 250 mg/5 mL | 10 años (32 kg) | 320 | 320 | 6.4 | 6.4 mL | ✅  |
+| ciprofloxacino | itu-complicada-vo | Suspensión 250 mg/5 mL | 12 años (40 kg) | 400 | 400 | 8 | 8 mL | ✅  |
+| ciprofloxacino | itu-complicada-vo | Suspensión 250 mg/5 mL | 14 años (50 kg) | 500 | 500 | 10 | 10 mL | ✅  |
+| ciprofloxacino | itu-complicada-vo | Suspensión 250 mg/5 mL | 16 años (58 kg) | 580 | 580 | 11.6 | 11.6 mL | ✅  |
+| ciprofloxacino | itu-complicada-vo | Suspensión 250 mg/5 mL | 17 años, obeso (95 kg) | 750 | 750 | 15 | 15 mL | ✅ tope aplicado |
+| ciprofloxacino | itu-complicada-vo | Tableta 500 mg | 1 año (9.6 kg) | 96 | 96 | 0.192 | 0.19 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ciprofloxacino | itu-complicada-vo | Tableta 500 mg | 18 meses (10.9 kg) | 109 | 109 | 0.218 | 0.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ciprofloxacino | itu-complicada-vo | Tableta 500 mg | 2 años (12.2 kg) | 122 | 122 | 0.244 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ciprofloxacino | itu-complicada-vo | Tableta 500 mg | 3 años (14.3 kg) | 143 | 143 | 0.286 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ciprofloxacino | itu-complicada-vo | Tableta 500 mg | 4 años (16.3 kg) | 163 | 163 | 0.326 | 0.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ciprofloxacino | itu-complicada-vo | Tableta 500 mg | 5 años (18.3 kg) | 183 | 183 | 0.366 | 0.37 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ciprofloxacino | itu-complicada-vo | Tableta 500 mg | 6 años (20.5 kg) | 205 | 205 | 0.41 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ciprofloxacino | itu-complicada-vo | Tableta 500 mg | 8 años (25.6 kg) | 256 | 256 | 0.512 | 0.51 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ciprofloxacino | itu-complicada-vo | Tableta 500 mg | 10 años (32 kg) | 320 | 320 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ciprofloxacino | itu-complicada-vo | Tableta 500 mg | 12 años (40 kg) | 400 | 400 | 0.8 | 0.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ciprofloxacino | itu-complicada-vo | Tableta 500 mg | 14 años (50 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
+| ciprofloxacino | itu-complicada-vo | Tableta 500 mg | 16 años (58 kg) | 580 | 580 | 1.16 | 1.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ciprofloxacino | itu-complicada-vo | Tableta 500 mg | 17 años, obeso (95 kg) | 750 | 750 | 1.5 | 1.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ciprofloxacino | itu-complicada-iv | Solución para infusión 2 mg/mL (no se diluye) | 1 año (9.6 kg) | 57.6 | 57.6 | 28.8 | 29 mL | ✅  |
+| ciprofloxacino | itu-complicada-iv | Solución para infusión 2 mg/mL (no se diluye) | 18 meses (10.9 kg) | 65.4 | 65.4 | 32.7 | 33 mL | ✅  |
+| ciprofloxacino | itu-complicada-iv | Solución para infusión 2 mg/mL (no se diluye) | 2 años (12.2 kg) | 73.2 | 73.2 | 36.6 | 37 mL | ✅  |
+| ciprofloxacino | itu-complicada-iv | Solución para infusión 2 mg/mL (no se diluye) | 3 años (14.3 kg) | 85.8 | 85.8 | 42.9 | 43 mL | ✅  |
+| ciprofloxacino | itu-complicada-iv | Solución para infusión 2 mg/mL (no se diluye) | 4 años (16.3 kg) | 97.8 | 97.8 | 48.9 | 49 mL | ✅  |
+| ciprofloxacino | itu-complicada-iv | Solución para infusión 2 mg/mL (no se diluye) | 5 años (18.3 kg) | 109.8 | 109.8 | 54.9 | 55 mL | ✅  |
+| ciprofloxacino | itu-complicada-iv | Solución para infusión 2 mg/mL (no se diluye) | 6 años (20.5 kg) | 123 | 123 | 61.5 | 62 mL | ✅  |
+| ciprofloxacino | itu-complicada-iv | Solución para infusión 2 mg/mL (no se diluye) | 8 años (25.6 kg) | 153.6 | 153.6 | 76.8 | 77 mL | ✅  |
+| ciprofloxacino | itu-complicada-iv | Solución para infusión 2 mg/mL (no se diluye) | 10 años (32 kg) | 192 | 192 | 96 | 96 mL | ✅  |
+| ciprofloxacino | itu-complicada-iv | Solución para infusión 2 mg/mL (no se diluye) | 12 años (40 kg) | 240 | 240 | 120 | 120 mL | ✅  |
+| ciprofloxacino | itu-complicada-iv | Solución para infusión 2 mg/mL (no se diluye) | 14 años (50 kg) | 300 | 300 | 150 | 150 mL | ✅  |
+| ciprofloxacino | itu-complicada-iv | Solución para infusión 2 mg/mL (no se diluye) | 16 años (58 kg) | 348 | 348 | 174 | 174 mL | ✅  |
+| ciprofloxacino | itu-complicada-iv | Solución para infusión 2 mg/mL (no se diluye) | 17 años, obeso (95 kg) | 400 | 400 | 200 | 200 mL | ✅ tope aplicado |
 | claritromicina | usual | Suspensión 125 mg/5 mL | 6 meses (7.6 kg) | 57 | 57 | 2.28 | 2.3 mL | ✅  |
 | claritromicina | usual | Suspensión 125 mg/5 mL | 9 meses (8.6 kg) | 64.5 | 64.5 | 2.58 | 2.6 mL | ✅  |
 | claritromicina | usual | Suspensión 125 mg/5 mL | 1 año (9.6 kg) | 72 | 72 | 2.88 | 2.9 mL | ✅  |
@@ -1026,6 +1161,87 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | desloratadina | 12-anos-o-mas | Tableta 5 mg | 14 años (50 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
 | desloratadina | 12-anos-o-mas | Tableta 5 mg | 16 años (58 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
 | desloratadina | 12-anos-o-mas | Tableta 5 mg | 17 años, obeso (95 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
+| dexametasona | crup | Solución oral 2 mg/5 mL | 1 mes (4.2 kg) | 2.52 | 2.52 | 6.3 | 6.5 mL | ✅  |
+| dexametasona | crup | Solución oral 2 mg/5 mL | 2 meses (5.1 kg) | 3.06 | 3.06 | 7.65 | 7.5 mL | ✅  |
+| dexametasona | crup | Solución oral 2 mg/5 mL | 4 meses (6.4 kg) | 3.84 | 3.84 | 9.6 | 9.5 mL | ✅  |
+| dexametasona | crup | Solución oral 2 mg/5 mL | 6 meses (7.6 kg) | 4.56 | 4.56 | 11.4 | 11.5 mL | ✅  |
+| dexametasona | crup | Solución oral 2 mg/5 mL | 9 meses (8.6 kg) | 5.16 | 5.16 | 12.9 | 13 mL | ✅  |
+| dexametasona | crup | Solución oral 2 mg/5 mL | 1 año (9.6 kg) | 5.76 | 5.76 | 14.4 | 14.5 mL | ✅  |
+| dexametasona | crup | Solución oral 2 mg/5 mL | 18 meses (10.9 kg) | 6.54 | 6.54 | 16.35 | 16.5 mL | ✅  |
+| dexametasona | crup | Solución oral 2 mg/5 mL | 2 años (12.2 kg) | 7.32 | 7.32 | 18.3 | 18.5 mL | ✅  |
+| dexametasona | crup | Solución oral 2 mg/5 mL | 3 años (14.3 kg) | 8.58 | 8.58 | 21.45 | 21.5 mL | ✅  |
+| dexametasona | crup | Solución oral 2 mg/5 mL | 4 años (16.3 kg) | 9.78 | 9.78 | 24.45 | 24.5 mL | ✅  |
+| dexametasona | crup | Solución oral 2 mg/5 mL | 5 años (18.3 kg) | 10.98 | 10.98 | 27.45 | 27.5 mL | ✅  |
+| dexametasona | crup | Solución oral 2 mg/5 mL | 6 años (20.5 kg) | 12.3 | 12.3 | 30.75 | 31 mL | ✅  |
+| dexametasona | crup | Solución oral 2 mg/5 mL | 8 años (25.6 kg) | 15.36 | 15.36 | 38.4 | 38.5 mL | ✅  |
+| dexametasona | crup | Solución oral 2 mg/5 mL | 10 años (32 kg) | 19.2 | 19.2 | 48 | 48 mL | ✅  |
+| dexametasona | crup | Solución oral 2 mg/5 mL | 12 años (40 kg) | 24 | 24 | 60 | 60 mL | ✅  |
+| dexametasona | crup | Tableta 4 mg | 1 mes (4.2 kg) | 2.52 | 2.52 | 0.63 | 0.63 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | crup | Tableta 4 mg | 2 meses (5.1 kg) | 3.06 | 3.06 | 0.765 | 0.77 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | crup | Tableta 4 mg | 4 meses (6.4 kg) | 3.84 | 3.84 | 0.96 | 1 tableta | ✅  |
+| dexametasona | crup | Tableta 4 mg | 6 meses (7.6 kg) | 4.56 | 4.56 | 1.14 | 1.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | crup | Tableta 4 mg | 9 meses (8.6 kg) | 5.16 | 5.16 | 1.29 | 1.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | crup | Tableta 4 mg | 1 año (9.6 kg) | 5.76 | 5.76 | 1.44 | 1.44 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | crup | Tableta 4 mg | 18 meses (10.9 kg) | 6.54 | 6.54 | 1.635 | 1.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | crup | Tableta 4 mg | 2 años (12.2 kg) | 7.32 | 7.32 | 1.83 | 1.83 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | crup | Tableta 4 mg | 3 años (14.3 kg) | 8.58 | 8.58 | 2.145 | 2.15 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | crup | Tableta 4 mg | 4 años (16.3 kg) | 9.78 | 9.78 | 2.445 | 2.44 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | crup | Tableta 4 mg | 5 años (18.3 kg) | 10.98 | 10.98 | 2.745 | 2.75 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | crup | Tableta 4 mg | 6 años (20.5 kg) | 12.3 | 12.3 | 3.075 | 3 tableta | ✅  |
+| dexametasona | crup | Tableta 4 mg | 8 años (25.6 kg) | 15.36 | 15.36 | 3.84 | 4 tableta | ✅  |
+| dexametasona | crup | Tableta 4 mg | 10 años (32 kg) | 19.2 | 19.2 | 4.8 | 5 tableta | ✅  |
+| dexametasona | crup | Tableta 4 mg | 12 años (40 kg) | 24 | 24 | 6 | 6 tableta | ✅  |
+| dexametasona | crup | Tableta 0.5 mg | 1 mes (4.2 kg) | 2.52 | 2.52 | 5.04 | 5 tableta | ✅  |
+| dexametasona | crup | Tableta 0.5 mg | 2 meses (5.1 kg) | 3.06 | 3.06 | 6.12 | 6 tableta | ✅  |
+| dexametasona | crup | Tableta 0.5 mg | 4 meses (6.4 kg) | 3.84 | 3.84 | 7.68 | 8 tableta | ✅  |
+| dexametasona | crup | Tableta 0.5 mg | 6 meses (7.6 kg) | 4.56 | 4.56 | 9.12 | 9 tableta | ✅  |
+| dexametasona | crup | Tableta 0.5 mg | 9 meses (8.6 kg) | 5.16 | 5.16 | 10.32 | 10 tableta | ✅  |
+| dexametasona | crup | Tableta 0.5 mg | 1 año (9.6 kg) | 5.76 | 5.76 | 11.52 | 12 tableta | ✅  |
+| dexametasona | crup | Tableta 0.5 mg | 18 meses (10.9 kg) | 6.54 | 6.54 | 13.08 | 13 tableta | ✅  |
+| dexametasona | crup | Tableta 0.5 mg | 2 años (12.2 kg) | 7.32 | 7.32 | 14.64 | 15 tableta | ✅  |
+| dexametasona | crup | Tableta 0.5 mg | 3 años (14.3 kg) | 8.58 | 8.58 | 17.16 | 17 tableta | ✅  |
+| dexametasona | crup | Tableta 0.5 mg | 4 años (16.3 kg) | 9.78 | 9.78 | 19.56 | 20 tableta | ✅  |
+| dexametasona | crup | Tableta 0.5 mg | 5 años (18.3 kg) | 10.98 | 10.98 | 21.96 | 22 tableta | ✅  |
+| dexametasona | crup | Tableta 0.5 mg | 6 años (20.5 kg) | 12.3 | 12.3 | 24.6 | 25 tableta | ✅  |
+| dexametasona | crup | Tableta 0.5 mg | 8 años (25.6 kg) | 15.36 | 15.36 | 30.72 | 31 tableta | ✅  |
+| dexametasona | crup | Tableta 0.5 mg | 10 años (32 kg) | 19.2 | 19.2 | 38.4 | 38 tableta | ✅  |
+| dexametasona | crup | Tableta 0.5 mg | 12 años (40 kg) | 24 | 24 | 48 | 48 tableta | ✅  |
+| dexametasona | asma-5-anos-o-menos | Solución oral 2 mg/5 mL | 1 mes (4.2 kg) | 1.26 | 1.26 | 3.15 | 3 mL | ✅  |
+| dexametasona | asma-5-anos-o-menos | Solución oral 2 mg/5 mL | 2 meses (5.1 kg) | 1.53 | 1.53 | 3.825 | 4 mL | ✅  |
+| dexametasona | asma-5-anos-o-menos | Solución oral 2 mg/5 mL | 4 meses (6.4 kg) | 1.92 | 1.92 | 4.8 | 5 mL | ✅  |
+| dexametasona | asma-5-anos-o-menos | Solución oral 2 mg/5 mL | 6 meses (7.6 kg) | 2.28 | 2.28 | 5.7 | 5.5 mL | ✅  |
+| dexametasona | asma-5-anos-o-menos | Solución oral 2 mg/5 mL | 9 meses (8.6 kg) | 2.58 | 2.58 | 6.45 | 6.5 mL | ✅  |
+| dexametasona | asma-5-anos-o-menos | Solución oral 2 mg/5 mL | 1 año (9.6 kg) | 2.88 | 2.88 | 7.2 | 7 mL | ✅  |
+| dexametasona | asma-5-anos-o-menos | Solución oral 2 mg/5 mL | 18 meses (10.9 kg) | 3.27 | 3.27 | 8.175 | 8 mL | ✅  |
+| dexametasona | asma-5-anos-o-menos | Solución oral 2 mg/5 mL | 2 años (12.2 kg) | 3.66 | 3.66 | 9.15 | 9 mL | ✅  |
+| dexametasona | asma-5-anos-o-menos | Solución oral 2 mg/5 mL | 3 años (14.3 kg) | 4.29 | 4.29 | 10.725 | 10.5 mL | ✅  |
+| dexametasona | asma-5-anos-o-menos | Solución oral 2 mg/5 mL | 4 años (16.3 kg) | 4.89 | 4.89 | 12.225 | 12 mL | ✅  |
+| dexametasona | asma-5-anos-o-menos | Solución oral 2 mg/5 mL | 5 años (18.3 kg) | 5.49 | 5.49 | 13.725 | 13.5 mL | ✅  |
+| dexametasona | asma-5-anos-o-menos | Solución oral 2 mg/5 mL | 6 años (20.5 kg) | 6.15 | 6.15 | 15.375 | 15.5 mL | ✅  |
+| dexametasona | asma-5-anos-o-menos | Tableta 4 mg | 1 mes (4.2 kg) | 1.26 | 1.26 | 0.315 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | asma-5-anos-o-menos | Tableta 4 mg | 2 meses (5.1 kg) | 1.53 | 1.53 | 0.382 | 0.38 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | asma-5-anos-o-menos | Tableta 4 mg | 4 meses (6.4 kg) | 1.92 | 1.92 | 0.48 | 0.48 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | asma-5-anos-o-menos | Tableta 4 mg | 6 meses (7.6 kg) | 2.28 | 2.28 | 0.57 | 0.57 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | asma-5-anos-o-menos | Tableta 4 mg | 9 meses (8.6 kg) | 2.58 | 2.58 | 0.645 | 0.65 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | asma-5-anos-o-menos | Tableta 4 mg | 1 año (9.6 kg) | 2.88 | 2.88 | 0.72 | 0.72 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | asma-5-anos-o-menos | Tableta 4 mg | 18 meses (10.9 kg) | 3.27 | 3.27 | 0.818 | 0.82 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | asma-5-anos-o-menos | Tableta 4 mg | 2 años (12.2 kg) | 3.66 | 3.66 | 0.915 | 0.92 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | asma-5-anos-o-menos | Tableta 4 mg | 3 años (14.3 kg) | 4.29 | 4.29 | 1.073 | 1.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | asma-5-anos-o-menos | Tableta 4 mg | 4 años (16.3 kg) | 4.89 | 4.89 | 1.222 | 1.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | asma-5-anos-o-menos | Tableta 4 mg | 5 años (18.3 kg) | 5.49 | 5.49 | 1.373 | 1.37 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | asma-5-anos-o-menos | Tableta 4 mg | 6 años (20.5 kg) | 6.15 | 6.15 | 1.537 | 1.54 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | asma-5-anos-o-menos | Tableta 0.5 mg | 1 mes (4.2 kg) | 1.26 | 1.26 | 2.52 | 2.52 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | asma-5-anos-o-menos | Tableta 0.5 mg | 2 meses (5.1 kg) | 1.53 | 1.53 | 3.06 | 3 tableta | ✅  |
+| dexametasona | asma-5-anos-o-menos | Tableta 0.5 mg | 4 meses (6.4 kg) | 1.92 | 1.92 | 3.84 | 4 tableta | ✅  |
+| dexametasona | asma-5-anos-o-menos | Tableta 0.5 mg | 6 meses (7.6 kg) | 2.28 | 2.28 | 4.56 | 4.56 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | asma-5-anos-o-menos | Tableta 0.5 mg | 9 meses (8.6 kg) | 2.58 | 2.58 | 5.16 | 5 tableta | ✅  |
+| dexametasona | asma-5-anos-o-menos | Tableta 0.5 mg | 1 año (9.6 kg) | 2.88 | 2.88 | 5.76 | 6 tableta | ✅  |
+| dexametasona | asma-5-anos-o-menos | Tableta 0.5 mg | 18 meses (10.9 kg) | 3.27 | 3.27 | 6.54 | 6.54 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dexametasona | asma-5-anos-o-menos | Tableta 0.5 mg | 2 años (12.2 kg) | 3.66 | 3.66 | 7.32 | 7 tableta | ✅  |
+| dexametasona | asma-5-anos-o-menos | Tableta 0.5 mg | 3 años (14.3 kg) | 4.29 | 4.29 | 8.58 | 9 tableta | ✅  |
+| dexametasona | asma-5-anos-o-menos | Tableta 0.5 mg | 4 años (16.3 kg) | 4.89 | 4.89 | 9.78 | 10 tableta | ✅  |
+| dexametasona | asma-5-anos-o-menos | Tableta 0.5 mg | 5 años (18.3 kg) | 5.49 | 5.49 | 10.98 | 11 tableta | ✅  |
+| dexametasona | asma-5-anos-o-menos | Tableta 0.5 mg | 6 años (20.5 kg) | 6.15 | 6.15 | 12.3 | 12 tableta | ✅  |
 | diazepam | convulsion-rectal | Ampolla 10 mg/2 mL (5 mg/mL) | 15 días (3.6 kg) (3.6 kg) | 1.8 | 1.8 | 0.36 | 0.35 mL | ✅  |
 | diazepam | convulsion-rectal | Ampolla 10 mg/2 mL (5 mg/mL) | 1 mes (4.2 kg) | 2.1 | 2.1 | 0.42 | 0.4 mL | ✅  |
 | diazepam | convulsion-rectal | Ampolla 10 mg/2 mL (5 mg/mL) | 2 meses (5.1 kg) | 2.55 | 2.55 | 0.51 | 0.5 mL | ✅  |
@@ -1250,6 +1466,36 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | eritromicina | tos-ferina | Tableta ranurada 500 mg | 8 años (25.6 kg) | 256 | 256 | 0.512 | 0.5 tableta | ✅  |
 | eritromicina | tos-ferina | Tableta ranurada 500 mg | 10 años (32 kg) | 320 | 320 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | eritromicina | tos-ferina | Tableta ranurada 500 mg | 12 años (40 kg) | 400 | 400 | 0.8 | 0.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 25 mg | 1 mes (4.2 kg) | 2.1 | 2.1 | 0.084 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 25 mg | 2 meses (5.1 kg) | 2.55 | 2.55 | 0.102 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 25 mg | 4 meses (6.4 kg) | 3.2 | 3.2 | 0.128 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 25 mg | 6 meses (7.6 kg) | 3.8 | 3.8 | 0.152 | 0.15 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 25 mg | 9 meses (8.6 kg) | 4.3 | 4.3 | 0.172 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 25 mg | 1 año (9.6 kg) | 4.8 | 4.8 | 0.192 | 0.19 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 25 mg | 18 meses (10.9 kg) | 5.45 | 5.45 | 0.218 | 0.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 25 mg | 2 años (12.2 kg) | 6.1 | 6.1 | 0.244 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 25 mg | 3 años (14.3 kg) | 7.15 | 7.15 | 0.286 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 25 mg | 4 años (16.3 kg) | 8.15 | 8.15 | 0.326 | 0.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 25 mg | 5 años (18.3 kg) | 9.15 | 9.15 | 0.366 | 0.37 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 25 mg | 6 años (20.5 kg) | 10.25 | 10.25 | 0.41 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 25 mg | 8 años (25.6 kg) | 12.8 | 12.8 | 0.512 | 0.51 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 25 mg | 10 años (32 kg) | 16 | 16 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 25 mg | 12 años (40 kg) | 20 | 20 | 0.8 | 0.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 100 mg | 1 mes (4.2 kg) | 2.1 | 2.1 | 0.021 | 0.02 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 100 mg | 2 meses (5.1 kg) | 2.55 | 2.55 | 0.025 | 0.03 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 100 mg | 4 meses (6.4 kg) | 3.2 | 3.2 | 0.032 | 0.03 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 100 mg | 6 meses (7.6 kg) | 3.8 | 3.8 | 0.038 | 0.04 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 100 mg | 9 meses (8.6 kg) | 4.3 | 4.3 | 0.043 | 0.04 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 100 mg | 1 año (9.6 kg) | 4.8 | 4.8 | 0.048 | 0.05 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 100 mg | 18 meses (10.9 kg) | 5.45 | 5.45 | 0.054 | 0.05 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 100 mg | 2 años (12.2 kg) | 6.1 | 6.1 | 0.061 | 0.06 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 100 mg | 3 años (14.3 kg) | 7.15 | 7.15 | 0.072 | 0.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 100 mg | 4 años (16.3 kg) | 8.15 | 8.15 | 0.082 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 100 mg | 5 años (18.3 kg) | 9.15 | 9.15 | 0.091 | 0.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 100 mg | 6 años (20.5 kg) | 10.25 | 10.25 | 0.102 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 100 mg | 8 años (25.6 kg) | 12.8 | 12.8 | 0.128 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 100 mg | 10 años (32 kg) | 16 | 16 | 0.16 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| espironolactona | ninos | Tableta 100 mg | 12 años (40 kg) | 20 | 20 | 0.2 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | fenitoina | estado-epileptico-carga | Ampolla 50 mg/mL | 1 mes (4.2 kg) | 63 | 63 | 1.26 | 1.3 mL | ✅  |
 | fenitoina | estado-epileptico-carga | Ampolla 50 mg/mL | 2 meses (5.1 kg) | 76.5 | 76.5 | 1.53 | 1.5 mL | ✅  |
 | fenitoina | estado-epileptico-carga | Ampolla 50 mg/mL | 4 meses (6.4 kg) | 96 | 96 | 1.92 | 1.9 mL | ✅  |
@@ -1413,6 +1659,36 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | griseofulvina | tinas-22-kg-o-mas | Tableta 500 mg (microsize) | 14 años (50 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅  |
 | griseofulvina | tinas-22-kg-o-mas | Tableta 500 mg (microsize) | 16 años (58 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅  |
 | griseofulvina | tinas-22-kg-o-mas | Tableta 500 mg (microsize) | 17 años, obeso (95 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅  |
+| hidroclorotiazida | menores-6-meses | Tableta 12.5 mg | 1 mes (4.2 kg) | 2.1 | 2.1 | 0.168 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | menores-6-meses | Tableta 12.5 mg | 2 meses (5.1 kg) | 2.55 | 2.55 | 0.204 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | menores-6-meses | Tableta 12.5 mg | 4 meses (6.4 kg) | 3.2 | 3.2 | 0.256 | 0.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | menores-6-meses | Tableta 25 mg | 1 mes (4.2 kg) | 2.1 | 2.1 | 0.084 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | menores-6-meses | Tableta 25 mg | 2 meses (5.1 kg) | 2.55 | 2.55 | 0.102 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | menores-6-meses | Tableta 25 mg | 4 meses (6.4 kg) | 3.2 | 3.2 | 0.128 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 6-meses-2-anos | Tableta 12.5 mg | 6 meses (7.6 kg) | 3.8 | 3.8 | 0.304 | 0.3 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 6-meses-2-anos | Tableta 12.5 mg | 9 meses (8.6 kg) | 4.3 | 4.3 | 0.344 | 0.34 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 6-meses-2-anos | Tableta 12.5 mg | 1 año (9.6 kg) | 4.8 | 4.8 | 0.384 | 0.38 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 6-meses-2-anos | Tableta 12.5 mg | 18 meses (10.9 kg) | 5.45 | 5.45 | 0.436 | 0.44 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 6-meses-2-anos | Tableta 12.5 mg | 2 años (12.2 kg) | 6.1 | 6.1 | 0.488 | 0.49 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 6-meses-2-anos | Tableta 25 mg | 6 meses (7.6 kg) | 3.8 | 3.8 | 0.152 | 0.15 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 6-meses-2-anos | Tableta 25 mg | 9 meses (8.6 kg) | 4.3 | 4.3 | 0.172 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 6-meses-2-anos | Tableta 25 mg | 1 año (9.6 kg) | 4.8 | 4.8 | 0.192 | 0.19 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 6-meses-2-anos | Tableta 25 mg | 18 meses (10.9 kg) | 5.45 | 5.45 | 0.218 | 0.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 6-meses-2-anos | Tableta 25 mg | 2 años (12.2 kg) | 6.1 | 6.1 | 0.244 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 2-12-anos | Tableta 12.5 mg | 3 años (14.3 kg) | 7.15 | 7.15 | 0.572 | 0.57 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 2-12-anos | Tableta 12.5 mg | 4 años (16.3 kg) | 8.15 | 8.15 | 0.652 | 0.65 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 2-12-anos | Tableta 12.5 mg | 5 años (18.3 kg) | 9.15 | 9.15 | 0.732 | 0.73 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 2-12-anos | Tableta 12.5 mg | 6 años (20.5 kg) | 10.25 | 10.25 | 0.82 | 0.82 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 2-12-anos | Tableta 12.5 mg | 8 años (25.6 kg) | 12.8 | 12.8 | 1.024 | 1 tableta | ✅  |
+| hidroclorotiazida | 2-12-anos | Tableta 12.5 mg | 10 años (32 kg) | 16 | 16 | 1.28 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 2-12-anos | Tableta 12.5 mg | 12 años (40 kg) | 20 | 20 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 2-12-anos | Tableta 25 mg | 3 años (14.3 kg) | 7.15 | 7.15 | 0.286 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 2-12-anos | Tableta 25 mg | 4 años (16.3 kg) | 8.15 | 8.15 | 0.326 | 0.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 2-12-anos | Tableta 25 mg | 5 años (18.3 kg) | 9.15 | 9.15 | 0.366 | 0.37 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 2-12-anos | Tableta 25 mg | 6 años (20.5 kg) | 10.25 | 10.25 | 0.41 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 2-12-anos | Tableta 25 mg | 8 años (25.6 kg) | 12.8 | 12.8 | 0.512 | 0.51 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 2-12-anos | Tableta 25 mg | 10 años (32 kg) | 16 | 16 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidroclorotiazida | 2-12-anos | Tableta 25 mg | 12 años (40 kg) | 20 | 20 | 0.8 | 0.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | hidroxicina | prurito-menor-6-anos | Jarabe 10 mg/5 mL | 1 mes (4.2 kg) | 2.1 | 2.1 | 1.05 | 1.1 mL | ✅  |
 | hidroxicina | prurito-menor-6-anos | Jarabe 10 mg/5 mL | 2 meses (5.1 kg) | 2.55 | 2.55 | 1.275 | 1.3 mL | ✅  |
 | hidroxicina | prurito-menor-6-anos | Jarabe 10 mg/5 mL | 4 meses (6.4 kg) | 3.2 | 3.2 | 1.6 | 1.6 mL | ✅  |
@@ -1681,6 +1957,54 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | mebendazol | oxiuros | Tableta 100 mg | 14 años (50 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
 | mebendazol | oxiuros | Tableta 100 mg | 16 años (58 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
 | mebendazol | oxiuros | Tableta 100 mg | 17 años, obeso (95 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| meropenem | piel | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 4 meses (6.4 kg) | 64 | 64 | 1.28 | 1.3 mL | ✅  |
+| meropenem | piel | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 6 meses (7.6 kg) | 76 | 76 | 1.52 | 1.5 mL | ✅  |
+| meropenem | piel | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 9 meses (8.6 kg) | 86 | 86 | 1.72 | 1.7 mL | ✅  |
+| meropenem | piel | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 1 año (9.6 kg) | 96 | 96 | 1.92 | 1.9 mL | ✅  |
+| meropenem | piel | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 18 meses (10.9 kg) | 109 | 109 | 2.18 | 2.2 mL | ✅  |
+| meropenem | piel | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 2 años (12.2 kg) | 122 | 122 | 2.44 | 2.4 mL | ✅  |
+| meropenem | piel | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 3 años (14.3 kg) | 143 | 143 | 2.86 | 2.9 mL | ✅  |
+| meropenem | piel | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 4 años (16.3 kg) | 163 | 163 | 3.26 | 3.3 mL | ✅  |
+| meropenem | piel | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 5 años (18.3 kg) | 183 | 183 | 3.66 | 3.7 mL | ✅  |
+| meropenem | piel | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 6 años (20.5 kg) | 205 | 205 | 4.1 | 4.1 mL | ✅  |
+| meropenem | piel | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 8 años (25.6 kg) | 256 | 256 | 5.12 | 5.1 mL | ✅  |
+| meropenem | piel | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 10 años (32 kg) | 320 | 320 | 6.4 | 6.4 mL | ✅  |
+| meropenem | piel | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 12 años (40 kg) | 400 | 400 | 8 | 8 mL | ✅  |
+| meropenem | piel | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 14 años (50 kg) | 500 | 500 | 10 | 10 mL | ✅  |
+| meropenem | piel | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 16 años (58 kg) | 500 | 500 | 10 | 10 mL | ✅ tope aplicado |
+| meropenem | piel | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 17 años, obeso (95 kg) | 500 | 500 | 10 | 10 mL | ✅ tope aplicado |
+| meropenem | intraabdominal | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 4 meses (6.4 kg) | 128 | 128 | 2.56 | 2.6 mL | ✅  |
+| meropenem | intraabdominal | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 6 meses (7.6 kg) | 152 | 152 | 3.04 | 3 mL | ✅  |
+| meropenem | intraabdominal | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 9 meses (8.6 kg) | 172 | 172 | 3.44 | 3.4 mL | ✅  |
+| meropenem | intraabdominal | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 1 año (9.6 kg) | 192 | 192 | 3.84 | 3.8 mL | ✅  |
+| meropenem | intraabdominal | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 18 meses (10.9 kg) | 218 | 218 | 4.36 | 4.4 mL | ✅  |
+| meropenem | intraabdominal | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 2 años (12.2 kg) | 244 | 244 | 4.88 | 4.9 mL | ✅  |
+| meropenem | intraabdominal | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 3 años (14.3 kg) | 286 | 286 | 5.72 | 5.7 mL | ✅  |
+| meropenem | intraabdominal | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 4 años (16.3 kg) | 326 | 326 | 6.52 | 6.5 mL | ✅  |
+| meropenem | intraabdominal | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 5 años (18.3 kg) | 366 | 366 | 7.32 | 7.3 mL | ✅  |
+| meropenem | intraabdominal | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 6 años (20.5 kg) | 410 | 410 | 8.2 | 8.2 mL | ✅  |
+| meropenem | intraabdominal | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 8 años (25.6 kg) | 512 | 512 | 10.24 | 10.2 mL | ✅  |
+| meropenem | intraabdominal | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 10 años (32 kg) | 640 | 640 | 12.8 | 12.8 mL | ✅  |
+| meropenem | intraabdominal | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 12 años (40 kg) | 800 | 800 | 16 | 16 mL | ✅  |
+| meropenem | intraabdominal | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 14 años (50 kg) | 1000 | 1000 | 20 | 20 mL | ✅  |
+| meropenem | intraabdominal | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 16 años (58 kg) | 1000 | 1000 | 20 | 20 mL | ✅ tope aplicado |
+| meropenem | intraabdominal | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 17 años, obeso (95 kg) | 1000 | 1000 | 20 | 20 mL | ✅ tope aplicado |
+| meropenem | meningitis | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 4 meses (6.4 kg) | 256 | 256 | 5.12 | 5.1 mL | ✅  |
+| meropenem | meningitis | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 6 meses (7.6 kg) | 304 | 304 | 6.08 | 6.1 mL | ✅  |
+| meropenem | meningitis | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 9 meses (8.6 kg) | 344 | 344 | 6.88 | 6.9 mL | ✅  |
+| meropenem | meningitis | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 1 año (9.6 kg) | 384 | 384 | 7.68 | 7.7 mL | ✅  |
+| meropenem | meningitis | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 18 meses (10.9 kg) | 436 | 436 | 8.72 | 8.7 mL | ✅  |
+| meropenem | meningitis | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 2 años (12.2 kg) | 488 | 488 | 9.76 | 9.8 mL | ✅  |
+| meropenem | meningitis | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 3 años (14.3 kg) | 572 | 572 | 11.44 | 11.4 mL | ✅  |
+| meropenem | meningitis | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 4 años (16.3 kg) | 652 | 652 | 13.04 | 13 mL | ✅  |
+| meropenem | meningitis | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 5 años (18.3 kg) | 732 | 732 | 14.64 | 14.6 mL | ✅  |
+| meropenem | meningitis | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 6 años (20.5 kg) | 820 | 820 | 16.4 | 16.4 mL | ✅  |
+| meropenem | meningitis | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 8 años (25.6 kg) | 1024 | 1024 | 20.48 | 20.5 mL | ✅  |
+| meropenem | meningitis | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 10 años (32 kg) | 1280 | 1280 | 25.6 | 25.6 mL | ✅  |
+| meropenem | meningitis | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 12 años (40 kg) | 1600 | 1600 | 32 | 32 mL | ✅  |
+| meropenem | meningitis | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 14 años (50 kg) | 2000 | 2000 | 40 | 40 mL | ✅  |
+| meropenem | meningitis | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 16 años (58 kg) | 2000 | 2000 | 40 | 40 mL | ✅ tope aplicado |
+| meropenem | meningitis | Frasco 500 mg reconstituido con 10 mL (50 mg/mL), IV | 17 años, obeso (95 kg) | 2000 | 2000 | 40 | 40 mL | ✅ tope aplicado |
 | metamizol | fiebre-dolor-vo | Jarabe 250 mg/5 mL | 4 meses (6.4 kg) | 64 | 64 | 1.28 | 1.3 mL | ✅  |
 | metamizol | fiebre-dolor-vo | Jarabe 250 mg/5 mL | 6 meses (7.6 kg) | 76 | 76 | 1.52 | 1.5 mL | ✅  |
 | metamizol | fiebre-dolor-vo | Jarabe 250 mg/5 mL | 9 meses (8.6 kg) | 86 | 86 | 1.72 | 1.7 mL | ✅  |

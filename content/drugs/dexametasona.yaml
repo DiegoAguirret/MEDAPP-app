@@ -1,0 +1,85 @@
+id: dexametasona
+name: Dexametasona
+category: corticoide
+synonyms: [dexamethasone, corticoide]
+presentations:
+  - id: liq-2-5
+    label: Solución oral 2 mg/5 mL
+    form: solucion
+    mgPerUnit: 0.4
+    unit: mL
+    step: 0.5
+    brandsPE: []
+  - id: tab-4
+    label: Tableta 4 mg
+    form: tableta
+    mgPerUnit: 4
+    unit: tableta
+    step: 1
+    brandsPE: []
+  - id: tab-05
+    label: Tableta 0.5 mg
+    form: tableta
+    mgPerUnit: 0.5
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: crup
+    indication: Crup (laringotraqueobronquitis), dosis única
+    route: VO
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 0.6
+    amountMax: 0.6
+    usual: 0.6
+    once: true
+    maxPerDoseMg: 30
+    maxPerDayMg: 30
+    notes: >-
+      OMS (Pocket Book 2013) — una dosis de dexametasona oral 0.6 mg/kg. La fuente no da tope en mg (el
+      tope de la regla es técnico, 0.6 mg/kg con 50 kg).
+    sourceIds: [who-pocket-2013, digemid-pnume-2023]
+  - id: asma-5-anos-o-menos
+    indication: Crisis de asma moderada o grave (5 años o menos)
+    route: VO
+    ageMinDays: 29
+    ageMaxDays: 2190
+    basis: mg/kg/dose
+    amountMin: 0.3
+    amountMax: 0.6
+    usual: 0.3
+    once: true
+    maxPerDoseMg: 12
+    maxPerDayMg: 12
+    notes: GINA 2025 — dosis inicial de dexametasona oral 0.3 a 0.6 mg/kg (máximo 12 mg), como alternativa a la prednisolona.
+    sourceIds: [gina-2025, digemid-pnume-2023]
+warnings:
+  - En el crup, elegir la solución oral; la dosis se mide mejor que con tabletas.
+contraindications:
+  - Infección sistémica por hongos.
+diagnoses: [crup, laringotraqueobronquitis, crisis asmática]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-05
+testCases:
+  - ruleId: crup
+    presentationId: liq-2-5
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 6, amount: 15, unit: mL }
+  - ruleId: asma-5-anos-o-menos
+    presentationId: liq-2-5
+    weightKg: 15
+    ageDays: 1460
+    chosenMgPerKg: 0.6
+    expect: { mgPerDose: 9, amount: 22.5, unit: mL }
+  - ruleId: asma-5-anos-o-menos
+    presentationId: tab-4
+    weightKg: 30
+    ageDays: 2000
+    chosenMgPerKg: 0.6
+    expect: { mgPerDose: 12, amount: 3, unit: tableta, capped: true }
