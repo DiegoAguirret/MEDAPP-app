@@ -1,0 +1,115 @@
+id: vitamina-a
+name: Vitamina A (retinol)
+category: vitamina
+doseUnit: UI
+synonyms: [retinol, palmitato de retinol]
+presentations:
+  - id: tab-100000
+    label: Tableta 100 000 UI
+    form: tableta
+    mgPerUnit: 100000
+    unit: tableta
+    step: 1
+    brandsPE: []
+  - id: tab-200000
+    label: Tableta 200 000 UI
+    form: tableta
+    mgPerUnit: 200000
+    unit: tableta
+    step: 1
+    brandsPE: []
+  - id: tab-50000
+    label: Tableta 50 000 UI
+    form: tableta
+    mgPerUnit: 50000
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: sarampion-6-11-meses
+    indication: Sarampión (6 a 11 meses)
+    route: VO
+    ageMinDays: 180
+    ageMaxDays: 364
+    basis: fixed_by_age
+    amountMin: 100000
+    amountMax: 100000
+    usual: 100000
+    once: true
+    maxPerDoseMg: 100000
+    maxPerDayMg: 100000
+    notes: FNME — de 6 meses a 1 año, 100 000 UI VO en dosis única.
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+    countryNotes:
+      - country: INT
+        text: OMS — una vez al día por 2 días (100 000 UI de 6 a 11 meses); una tercera dosis a las 2 a 4 semanas si hay signos oculares.
+        sourceIds: [who-pocket-2013]
+  - id: sarampion-1-ano-o-mas
+    indication: Sarampión (1 año o más)
+    route: VO
+    ageMinDays: 365
+    basis: fixed_by_age
+    amountMin: 200000
+    amountMax: 200000
+    usual: 200000
+    once: true
+    maxPerDoseMg: 200000
+    maxPerDayMg: 200000
+    notes: FNME — desde 1 año, 200 000 UI VO en dosis única.
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+    countryNotes:
+      - country: INT
+        text: OMS — una vez al día por 2 días (200 000 UI de 1 a 5 años); una tercera dosis a las 2 a 4 semanas si hay signos oculares.
+        sourceIds: [who-pocket-2013]
+  - id: prevencion-6-11-meses
+    indication: Suplementación preventiva (6 a 11 meses)
+    route: VO
+    ageMinDays: 180
+    ageMaxDays: 364
+    basis: fixed_by_age
+    amountMin: 100000
+    amountMax: 100000
+    usual: 100000
+    once: true
+    maxPerDoseMg: 100000
+    maxPerDayMg: 100000
+    notes: MINSA (programación UFANS 2025) — niños de 6 a 11 meses en pobreza monetaria, 1 dosis de 100 000 UI.
+    sourceIds: [minsa-ufans-2025, digemid-pnume-2023]
+  - id: prevencion-12-59-meses
+    indication: Suplementación preventiva (12 a 59 meses)
+    route: VO
+    ageMinDays: 365
+    ageMaxDays: 1825
+    basis: fixed_by_age
+    amountMin: 200000
+    amountMax: 200000
+    usual: 200000
+    once: true
+    maxPerDoseMg: 200000
+    maxPerDayMg: 200000
+    notes: MINSA (programación UFANS 2025) — niños de 12 a 59 meses, 2 dosis de 200 000 UI con 6 meses de intervalo.
+    sourceIds: [minsa-ufans-2025, digemid-pnume-2023]
+warnings:
+  - En menores de 6 meses el FNME no da dosis; la OMS usa 50 000 UI.
+  - La fuente peruana de la suplementación preventiva es un documento de programación presupuestal del MINSA, no una norma clínica.
+contraindications:
+  - Hipervitaminosis A.
+  - Sensibilidad a la vitamina A.
+renal: FNME — evaluar riesgo y beneficio en falla renal crónica (suben las concentraciones de vitamina A).
+diagnoses: [sarampión, deficiencia de vitamina A, suplementación]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: sarampion-1-ano-o-mas
+    presentationId: tab-200000
+    weightKg: 12
+    ageDays: 730
+    expect: { mgPerDose: 200000, amount: 1, unit: tableta }
+  - ruleId: prevencion-6-11-meses
+    presentationId: tab-100000
+    weightKg: 8
+    ageDays: 270
+    expect: { mgPerDose: 100000, amount: 1, unit: tableta }

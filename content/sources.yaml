@@ -451,3 +451,48 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=f5bb0854-a477-4e59-914b-eeeaef92a596
   kind: regulador
   country: US
+- id: fda-chloramphenicol
+  title: Cloranfenicol succinato sódico para inyección — prescribing information (FDA, set aed29594-211d-49ef-813f-131975a8d0e3)
+  publisher: U.S. FDA / Fresenius Kabi
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=aed29594-211d-49ef-813f-131975a8d0e3
+  kind: regulador
+  country: US
+- id: fda-magnesium-sulfate
+  title: Sulfato de magnesio 50 % inyectable — prescribing information (FDA, set 386d55c9-aeac-5597-e063-6294a90a0afe)
+  publisher: U.S. FDA / ProPharma
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=386d55c9-aeac-5597-e063-6294a90a0afe
+  kind: regulador
+  country: US
+- id: fda-praziquantel
+  title: Biltricide (praziquantel) — prescribing information (FDA, set 34ce1cdd-648e-4f1e-8512-bf3d4cc22eb9)
+  publisher: U.S. FDA / Bayer
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=34ce1cdd-648e-4f1e-8512-bf3d4cc22eb9
+  kind: regulador
+  country: US
+- id: fda-fluconazole-iv
+  title: Fluconazol inyectable 2 mg/mL — prescribing information (FDA, set 22ebc3fb-ee81-44bd-a6e3-5e759ee724a8)
+  publisher: U.S. FDA / Hospira
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=22ebc3fb-ee81-44bd-a6e3-5e759ee724a8
+  kind: regulador
+  country: US
+- id: minsa-ufans-2025
+  title: Criterios de programación 2025 — Intervención estratégica de nutrición y alimentación saludable (MINSA/DGIESP, UFANS)
+  publisher: Ministerio de Salud del Perú
+  year: 2025
+  url: https://cdn.www.gob.pe/uploads/document/file/6100425/5396086-1-criterios-programacion-2025-ufans.pdf
+  kind: norma-peru
+  country: PE
+- id: minsa-nts221-2024
+  title: NTS N° 221-MINSA/DGIESP-2024, Norma Técnica de Salud para la prevención y control de la tuberculosis (RM 894-2024-MINSA)
+  publisher: Ministerio de Salud del Perú
+  year: 2024
+  url: https://cdn.www.gob.pe/uploads/document/file/8228140/6873271-nts-para-la-prevencion-y-control-de-la-tb-2024.pdf
+  kind: norma-peru
+  country: PE
+- id: who-tb-children-2022
+  title: WHO operational handbook on tuberculosis, Module 5 — management of tuberculosis in children and adolescents
+  publisher: Organización Mundial de la Salud
+  year: 2022
+  url: https://iris.who.int/server/api/core/bitstreams/f0881050-5ddb-4db3-abc3-2d7918b61989/content
+  kind: guia
+  country: INT

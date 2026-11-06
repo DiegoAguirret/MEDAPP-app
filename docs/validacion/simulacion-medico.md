@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **5922** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **2644**. Fuera del rango de edad de la regla: 3278 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 2644/2644 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 2644/2644.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.58 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **6741** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **3070**. Fuera del rango de edad de la regla: 3671 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 3070/3070 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 3070/3070.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.55 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -1074,6 +1074,78 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | clindamicina | mas-severas | Cápsula 300 mg | 14 años (50 kg) | 283.33 | 283.33 | 0.944 | 0.94 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | clindamicina | mas-severas | Cápsula 300 mg | 16 años (58 kg) | 328.67 | 328.67 | 1.096 | 1.1 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | clindamicina | mas-severas | Cápsula 300 mg | 17 años, obeso (95 kg) | 450 | 450 | 1.5 | 1.5 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 1 mes (4.2 kg) | 52.5 | 52.5 | 1.05 | 1.1 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 2 meses (5.1 kg) | 63.75 | 63.75 | 1.275 | 1.3 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 4 meses (6.4 kg) | 80 | 80 | 1.6 | 1.6 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 6 meses (7.6 kg) | 95 | 95 | 1.9 | 1.9 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 9 meses (8.6 kg) | 107.5 | 107.5 | 2.15 | 2.2 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 1 año (9.6 kg) | 120 | 120 | 2.4 | 2.4 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 18 meses (10.9 kg) | 136.25 | 136.25 | 2.725 | 2.7 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 2 años (12.2 kg) | 152.5 | 152.5 | 3.05 | 3.1 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 3 años (14.3 kg) | 178.75 | 178.75 | 3.575 | 3.6 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 4 años (16.3 kg) | 203.75 | 203.75 | 4.075 | 4.1 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 5 años (18.3 kg) | 228.75 | 228.75 | 4.575 | 4.6 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 6 años (20.5 kg) | 256.25 | 256.25 | 5.125 | 5.1 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 8 años (25.6 kg) | 320 | 320 | 6.4 | 6.4 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 10 años (32 kg) | 400 | 400 | 8 | 8 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 12 años (40 kg) | 500 | 500 | 10 | 10 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 14 años (50 kg) | 625 | 625 | 12.5 | 12.5 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 16 años (58 kg) | 725 | 725 | 14.5 | 14.5 mL | ✅  |
+| cloranfenicol | oral | Suspensión 250 mg/5 mL (palmitato) | 17 años, obeso (95 kg) | 1000 | 1000 | 20 | 20 mL | ✅ tope aplicado |
+| cloranfenicol | oral | Tableta 250 mg | 1 mes (4.2 kg) | 52.5 | 52.5 | 0.21 | 0.21 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 250 mg | 2 meses (5.1 kg) | 63.75 | 63.75 | 0.255 | 0.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 250 mg | 4 meses (6.4 kg) | 80 | 80 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 250 mg | 6 meses (7.6 kg) | 95 | 95 | 0.38 | 0.38 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 250 mg | 9 meses (8.6 kg) | 107.5 | 107.5 | 0.43 | 0.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 250 mg | 1 año (9.6 kg) | 120 | 120 | 0.48 | 0.48 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 250 mg | 18 meses (10.9 kg) | 136.25 | 136.25 | 0.545 | 0.55 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 250 mg | 2 años (12.2 kg) | 152.5 | 152.5 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 250 mg | 3 años (14.3 kg) | 178.75 | 178.75 | 0.715 | 0.71 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 250 mg | 4 años (16.3 kg) | 203.75 | 203.75 | 0.815 | 0.81 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 250 mg | 5 años (18.3 kg) | 228.75 | 228.75 | 0.915 | 0.92 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 250 mg | 6 años (20.5 kg) | 256.25 | 256.25 | 1.025 | 1 tableta | ✅  |
+| cloranfenicol | oral | Tableta 250 mg | 8 años (25.6 kg) | 320 | 320 | 1.28 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 250 mg | 10 años (32 kg) | 400 | 400 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 250 mg | 12 años (40 kg) | 500 | 500 | 2 | 2 tableta | ✅  |
+| cloranfenicol | oral | Tableta 250 mg | 14 años (50 kg) | 625 | 625 | 2.5 | 2.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 250 mg | 16 años (58 kg) | 725 | 725 | 2.9 | 3 tableta | ✅  |
+| cloranfenicol | oral | Tableta 250 mg | 17 años, obeso (95 kg) | 1000 | 1000 | 4 | 4 tableta | ✅ tope aplicado |
+| cloranfenicol | oral | Tableta 500 mg | 1 mes (4.2 kg) | 52.5 | 52.5 | 0.105 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 500 mg | 2 meses (5.1 kg) | 63.75 | 63.75 | 0.127 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 500 mg | 4 meses (6.4 kg) | 80 | 80 | 0.16 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 500 mg | 6 meses (7.6 kg) | 95 | 95 | 0.19 | 0.19 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 500 mg | 9 meses (8.6 kg) | 107.5 | 107.5 | 0.215 | 0.21 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 500 mg | 1 año (9.6 kg) | 120 | 120 | 0.24 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 500 mg | 18 meses (10.9 kg) | 136.25 | 136.25 | 0.273 | 0.27 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 500 mg | 2 años (12.2 kg) | 152.5 | 152.5 | 0.305 | 0.3 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 500 mg | 3 años (14.3 kg) | 178.75 | 178.75 | 0.357 | 0.36 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 500 mg | 4 años (16.3 kg) | 203.75 | 203.75 | 0.407 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 500 mg | 5 años (18.3 kg) | 228.75 | 228.75 | 0.458 | 0.46 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 500 mg | 6 años (20.5 kg) | 256.25 | 256.25 | 0.512 | 0.51 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 500 mg | 8 años (25.6 kg) | 320 | 320 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 500 mg | 10 años (32 kg) | 400 | 400 | 0.8 | 0.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 500 mg | 12 años (40 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
+| cloranfenicol | oral | Tableta 500 mg | 14 años (50 kg) | 625 | 625 | 1.25 | 1.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 500 mg | 16 años (58 kg) | 725 | 725 | 1.45 | 1.45 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | oral | Tableta 500 mg | 17 años, obeso (95 kg) | 1000 | 1000 | 2 | 2 tableta | ✅ tope aplicado |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 1 mes (4.2 kg) | 52.5 | 52.5 | 0.525 | 0.5 mL | ✅  |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 2 meses (5.1 kg) | 63.75 | 63.75 | 0.637 | 0.64 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 4 meses (6.4 kg) | 80 | 80 | 0.8 | 0.8 mL | ✅  |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 6 meses (7.6 kg) | 95 | 95 | 0.95 | 0.95 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 9 meses (8.6 kg) | 107.5 | 107.5 | 1.075 | 1.1 mL | ✅  |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 1 año (9.6 kg) | 120 | 120 | 1.2 | 1.2 mL | ✅  |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 18 meses (10.9 kg) | 136.25 | 136.25 | 1.363 | 1.4 mL | ✅  |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 2 años (12.2 kg) | 152.5 | 152.5 | 1.525 | 1.5 mL | ✅  |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 3 años (14.3 kg) | 178.75 | 178.75 | 1.788 | 1.8 mL | ✅  |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 4 años (16.3 kg) | 203.75 | 203.75 | 2.038 | 2 mL | ✅  |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 5 años (18.3 kg) | 228.75 | 228.75 | 2.288 | 2.3 mL | ✅  |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 6 años (20.5 kg) | 256.25 | 256.25 | 2.563 | 2.6 mL | ✅  |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 8 años (25.6 kg) | 320 | 320 | 3.2 | 3.2 mL | ✅  |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 10 años (32 kg) | 400 | 400 | 4 | 4 mL | ✅  |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 12 años (40 kg) | 500 | 500 | 5 | 5 mL | ✅  |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 14 años (50 kg) | 625 | 625 | 6.25 | 6.3 mL | ✅  |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 16 años (58 kg) | 725 | 725 | 7.25 | 7.3 mL | ✅  |
+| cloranfenicol | iv | Frasco 1 g reconstituido con 9.2 mL (100 mg/mL), IV | 17 años, obeso (95 kg) | 1000 | 1000 | 10 | 10 mL | ✅ tope aplicado |
 | clorfenamina | alergia-2-5-anos | Gotas 1 mg/mL | 2 años (12.2 kg) | 1 | 1 | 1 | 1 mL | ✅  |
 | clorfenamina | alergia-2-5-anos | Gotas 1 mg/mL | 3 años (14.3 kg) | 1 | 1 | 1 | 1 mL | ✅  |
 | clorfenamina | alergia-2-5-anos | Gotas 1 mg/mL | 4 años (16.3 kg) | 1 | 1 | 1 | 1 mL | ✅  |
@@ -1496,6 +1568,38 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | espironolactona | ninos | Tableta 100 mg | 8 años (25.6 kg) | 12.8 | 12.8 | 0.128 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | espironolactona | ninos | Tableta 100 mg | 10 años (32 kg) | 16 | 16 | 0.16 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | espironolactona | ninos | Tableta 100 mg | 12 años (40 kg) | 20 | 20 | 0.2 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etambutol | tb-sensible | Suspensión 25 mg/mL | 1 mes (4.2 kg) | 84 | 84 | 3.36 | 3.4 mL | ✅  |
+| etambutol | tb-sensible | Suspensión 25 mg/mL | 2 meses (5.1 kg) | 102 | 102 | 4.08 | 4.1 mL | ✅  |
+| etambutol | tb-sensible | Suspensión 25 mg/mL | 4 meses (6.4 kg) | 128 | 128 | 5.12 | 5.1 mL | ✅  |
+| etambutol | tb-sensible | Suspensión 25 mg/mL | 6 meses (7.6 kg) | 152 | 152 | 6.08 | 6.1 mL | ✅  |
+| etambutol | tb-sensible | Suspensión 25 mg/mL | 9 meses (8.6 kg) | 172 | 172 | 6.88 | 6.9 mL | ✅  |
+| etambutol | tb-sensible | Suspensión 25 mg/mL | 1 año (9.6 kg) | 192 | 192 | 7.68 | 7.7 mL | ✅  |
+| etambutol | tb-sensible | Suspensión 25 mg/mL | 18 meses (10.9 kg) | 218 | 218 | 8.72 | 8.7 mL | ✅  |
+| etambutol | tb-sensible | Suspensión 25 mg/mL | 2 años (12.2 kg) | 244 | 244 | 9.76 | 9.8 mL | ✅  |
+| etambutol | tb-sensible | Suspensión 25 mg/mL | 3 años (14.3 kg) | 286 | 286 | 11.44 | 11.4 mL | ✅  |
+| etambutol | tb-sensible | Suspensión 25 mg/mL | 4 años (16.3 kg) | 326 | 326 | 13.04 | 13 mL | ✅  |
+| etambutol | tb-sensible | Suspensión 25 mg/mL | 5 años (18.3 kg) | 366 | 366 | 14.64 | 14.6 mL | ✅  |
+| etambutol | tb-sensible | Suspensión 25 mg/mL | 6 años (20.5 kg) | 410 | 410 | 16.4 | 16.4 mL | ✅  |
+| etambutol | tb-sensible | Suspensión 25 mg/mL | 8 años (25.6 kg) | 512 | 512 | 20.48 | 20.5 mL | ✅  |
+| etambutol | tb-sensible | Suspensión 25 mg/mL | 10 años (32 kg) | 640 | 640 | 25.6 | 25.6 mL | ✅  |
+| etambutol | tb-sensible | Suspensión 25 mg/mL | 12 años (40 kg) | 800 | 800 | 32 | 32 mL | ✅  |
+| etambutol | tb-sensible | Suspensión 25 mg/mL | 14 años (50 kg) | 1000 | 1000 | 40 | 40 mL | ✅  |
+| etambutol | tb-sensible | Tableta 400 mg | 1 mes (4.2 kg) | 84 | 84 | 0.21 | 0.21 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etambutol | tb-sensible | Tableta 400 mg | 2 meses (5.1 kg) | 102 | 102 | 0.255 | 0.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etambutol | tb-sensible | Tableta 400 mg | 4 meses (6.4 kg) | 128 | 128 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etambutol | tb-sensible | Tableta 400 mg | 6 meses (7.6 kg) | 152 | 152 | 0.38 | 0.38 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etambutol | tb-sensible | Tableta 400 mg | 9 meses (8.6 kg) | 172 | 172 | 0.43 | 0.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etambutol | tb-sensible | Tableta 400 mg | 1 año (9.6 kg) | 192 | 192 | 0.48 | 0.48 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etambutol | tb-sensible | Tableta 400 mg | 18 meses (10.9 kg) | 218 | 218 | 0.545 | 0.55 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etambutol | tb-sensible | Tableta 400 mg | 2 años (12.2 kg) | 244 | 244 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etambutol | tb-sensible | Tableta 400 mg | 3 años (14.3 kg) | 286 | 286 | 0.715 | 0.71 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etambutol | tb-sensible | Tableta 400 mg | 4 años (16.3 kg) | 326 | 326 | 0.815 | 0.81 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etambutol | tb-sensible | Tableta 400 mg | 5 años (18.3 kg) | 366 | 366 | 0.915 | 0.92 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etambutol | tb-sensible | Tableta 400 mg | 6 años (20.5 kg) | 410 | 410 | 1.025 | 1 tableta | ✅  |
+| etambutol | tb-sensible | Tableta 400 mg | 8 años (25.6 kg) | 512 | 512 | 1.28 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etambutol | tb-sensible | Tableta 400 mg | 10 años (32 kg) | 640 | 640 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etambutol | tb-sensible | Tableta 400 mg | 12 años (40 kg) | 800 | 800 | 2 | 2 tableta | ✅  |
+| etambutol | tb-sensible | Tableta 400 mg | 14 años (50 kg) | 1000 | 1000 | 2.5 | 2.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | fenitoina | estado-epileptico-carga | Ampolla 50 mg/mL | 1 mes (4.2 kg) | 63 | 63 | 1.26 | 1.3 mL | ✅  |
 | fenitoina | estado-epileptico-carga | Ampolla 50 mg/mL | 2 meses (5.1 kg) | 76.5 | 76.5 | 1.53 | 1.5 mL | ✅  |
 | fenitoina | estado-epileptico-carga | Ampolla 50 mg/mL | 4 meses (6.4 kg) | 96 | 96 | 1.92 | 1.9 mL | ✅  |
@@ -1564,6 +1668,24 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 14 años (50 kg) | 100 | 100 | 10 | 10 mL | ✅ tope aplicado |
 | fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 16 años (58 kg) | 100 | 100 | 10 | 10 mL | ✅ tope aplicado |
 | fluconazol | orofaringea-desde-dia-2 | Suspensión 50 mg/5 mL | 17 años, obeso (95 kg) | 100 | 100 | 10 | 10 mL | ✅ tope aplicado |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 1 mes (4.2 kg) | 25.2 | 25.2 | 12.6 | 13 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 2 meses (5.1 kg) | 30.6 | 30.6 | 15.3 | 15 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 4 meses (6.4 kg) | 38.4 | 38.4 | 19.2 | 19 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 6 meses (7.6 kg) | 45.6 | 45.6 | 22.8 | 23 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 9 meses (8.6 kg) | 51.6 | 51.6 | 25.8 | 26 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 1 año (9.6 kg) | 57.6 | 57.6 | 28.8 | 29 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 18 meses (10.9 kg) | 65.4 | 65.4 | 32.7 | 33 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 2 años (12.2 kg) | 73.2 | 73.2 | 36.6 | 37 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 3 años (14.3 kg) | 85.8 | 85.8 | 42.9 | 43 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 4 años (16.3 kg) | 97.8 | 97.8 | 48.9 | 49 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 5 años (18.3 kg) | 109.8 | 109.8 | 54.9 | 55 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 6 años (20.5 kg) | 123 | 123 | 61.5 | 62 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 8 años (25.6 kg) | 153.6 | 153.6 | 76.8 | 77 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 10 años (32 kg) | 192 | 192 | 96 | 96 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 12 años (40 kg) | 240 | 240 | 120 | 120 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 14 años (50 kg) | 300 | 300 | 150 | 150 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 16 años (58 kg) | 348 | 348 | 174 | 174 mL | ✅  |
+| fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 17 años, obeso (95 kg) | 570 | 570 | 285 | 285 mL | ✅  |
 | furosemida | edema-iv | Ampolla 10 mg/mL (2 mL) | 1 mes (4.2 kg) | 4.2 | 4.2 | 0.42 | 0.4 mL | ✅  |
 | furosemida | edema-iv | Ampolla 10 mg/mL (2 mL) | 2 meses (5.1 kg) | 5.1 | 5.1 | 0.51 | 0.5 mL | ✅  |
 | furosemida | edema-iv | Ampolla 10 mg/mL (2 mL) | 4 meses (6.4 kg) | 6.4 | 6.4 | 0.64 | 0.64 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -1689,6 +1811,51 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | hidroclorotiazida | 2-12-anos | Tableta 25 mg | 8 años (25.6 kg) | 12.8 | 12.8 | 0.512 | 0.51 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | hidroclorotiazida | 2-12-anos | Tableta 25 mg | 10 años (32 kg) | 16 | 16 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | hidroclorotiazida | 2-12-anos | Tableta 25 mg | 12 años (40 kg) | 20 | 20 | 0.8 | 0.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | insuficiencia-suprarrenal | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 1 mes (4.2 kg) | 0.84 | 0.84 | 0.017 | 0.02 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | insuficiencia-suprarrenal | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 2 meses (5.1 kg) | 1.02 | 1.02 | 0.02 | 0.02 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | insuficiencia-suprarrenal | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 4 meses (6.4 kg) | 1.28 | 1.28 | 0.026 | 0.03 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | insuficiencia-suprarrenal | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 6 meses (7.6 kg) | 1.52 | 1.52 | 0.03 | 0.03 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | insuficiencia-suprarrenal | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 9 meses (8.6 kg) | 1.72 | 1.72 | 0.034 | 0.03 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | insuficiencia-suprarrenal | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 1 año (9.6 kg) | 1.92 | 1.92 | 0.038 | 0.04 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | insuficiencia-suprarrenal | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 18 meses (10.9 kg) | 2.18 | 2.18 | 0.044 | 0.04 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | insuficiencia-suprarrenal | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 2 años (12.2 kg) | 2.44 | 2.44 | 0.049 | 0.05 mL | ✅  |
+| hidrocortisona | insuficiencia-suprarrenal | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 3 años (14.3 kg) | 2.86 | 2.86 | 0.057 | 0.06 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | insuficiencia-suprarrenal | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 4 años (16.3 kg) | 3.26 | 3.26 | 0.065 | 0.07 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | insuficiencia-suprarrenal | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 5 años (18.3 kg) | 3.66 | 3.66 | 0.073 | 0.07 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | insuficiencia-suprarrenal | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 6 años (20.5 kg) | 4.1 | 4.1 | 0.082 | 0.08 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | insuficiencia-suprarrenal | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 8 años (25.6 kg) | 5.12 | 5.12 | 0.102 | 0.1 mL | ✅  |
+| hidrocortisona | insuficiencia-suprarrenal | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 10 años (32 kg) | 6.4 | 6.4 | 0.128 | 0.13 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | insuficiencia-suprarrenal | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 12 años (40 kg) | 8 | 8 | 0.16 | 0.16 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | asma-sin-via-oral | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 1 mes (4.2 kg) | 16.8 | 16.8 | 0.336 | 0.35 mL | ✅  |
+| hidrocortisona | asma-sin-via-oral | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 2 meses (5.1 kg) | 20.4 | 20.4 | 0.408 | 0.4 mL | ✅  |
+| hidrocortisona | asma-sin-via-oral | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 4 meses (6.4 kg) | 25.6 | 25.6 | 0.512 | 0.5 mL | ✅  |
+| hidrocortisona | asma-sin-via-oral | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 6 meses (7.6 kg) | 30.4 | 30.4 | 0.608 | 0.6 mL | ✅  |
+| hidrocortisona | asma-sin-via-oral | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 9 meses (8.6 kg) | 34.4 | 34.4 | 0.688 | 0.7 mL | ✅  |
+| hidrocortisona | asma-sin-via-oral | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 1 año (9.6 kg) | 38.4 | 38.4 | 0.768 | 0.75 mL | ✅  |
+| hidrocortisona | asma-sin-via-oral | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 18 meses (10.9 kg) | 43.6 | 43.6 | 0.872 | 0.85 mL | ✅  |
+| hidrocortisona | asma-sin-via-oral | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 2 años (12.2 kg) | 48.8 | 48.8 | 0.976 | 1 mL | ✅  |
+| hidrocortisona | asma-sin-via-oral | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 3 años (14.3 kg) | 57.2 | 57.2 | 1.144 | 1.15 mL | ✅  |
+| hidrocortisona | asma-sin-via-oral | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 4 años (16.3 kg) | 65.2 | 65.2 | 1.304 | 1.3 mL | ✅  |
+| hidrocortisona | asma-sin-via-oral | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 5 años (18.3 kg) | 73.2 | 73.2 | 1.464 | 1.45 mL | ✅  |
+| hidrocortisona | asma-sin-via-oral | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 6 años (20.5 kg) | 82 | 82 | 1.64 | 1.65 mL | ✅  |
+| hidrocortisona | asma-sin-via-oral | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 8 años (25.6 kg) | 102.4 | 102.4 | 2.048 | 2.05 mL | ✅  |
+| hidrocortisona | asma-sin-via-oral | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 10 años (32 kg) | 128 | 128 | 2.56 | 2.55 mL | ✅  |
+| hidrocortisona | asma-sin-via-oral | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 12 años (40 kg) | 160 | 160 | 3.2 | 3.2 mL | ✅  |
+| hidrocortisona | alergia-severa | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 1 mes (4.2 kg) | 2.1 | 2.1 | 0.042 | 0.04 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | alergia-severa | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 2 meses (5.1 kg) | 2.55 | 2.55 | 0.051 | 0.05 mL | ✅  |
+| hidrocortisona | alergia-severa | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 4 meses (6.4 kg) | 3.2 | 3.2 | 0.064 | 0.06 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | alergia-severa | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 6 meses (7.6 kg) | 3.8 | 3.8 | 0.076 | 0.08 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | alergia-severa | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 9 meses (8.6 kg) | 4.3 | 4.3 | 0.086 | 0.09 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | alergia-severa | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 1 año (9.6 kg) | 4.8 | 4.8 | 0.096 | 0.1 mL | ✅  |
+| hidrocortisona | alergia-severa | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 18 meses (10.9 kg) | 5.45 | 5.45 | 0.109 | 0.11 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | alergia-severa | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 2 años (12.2 kg) | 6.1 | 6.1 | 0.122 | 0.12 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | alergia-severa | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 3 años (14.3 kg) | 7.15 | 7.15 | 0.143 | 0.15 mL | ✅  |
+| hidrocortisona | alergia-severa | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 4 años (16.3 kg) | 8.15 | 8.15 | 0.163 | 0.16 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | alergia-severa | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 5 años (18.3 kg) | 9.15 | 9.15 | 0.183 | 0.18 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | alergia-severa | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 6 años (20.5 kg) | 10.25 | 10.25 | 0.205 | 0.2 mL | ✅  |
+| hidrocortisona | alergia-severa | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 8 años (25.6 kg) | 12.8 | 12.8 | 0.256 | 0.25 mL | ✅  |
+| hidrocortisona | alergia-severa | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 10 años (32 kg) | 16 | 16 | 0.32 | 0.32 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hidrocortisona | alergia-severa | Frasco 100 mg reconstituido en 2 mL (50 mg/mL) | 12 años (40 kg) | 20 | 20 | 0.4 | 0.4 mL | ✅  |
 | hidroxicina | prurito-menor-6-anos | Jarabe 10 mg/5 mL | 1 mes (4.2 kg) | 2.1 | 2.1 | 1.05 | 1.1 mL | ✅  |
 | hidroxicina | prurito-menor-6-anos | Jarabe 10 mg/5 mL | 2 meses (5.1 kg) | 2.55 | 2.55 | 1.275 | 1.3 mL | ✅  |
 | hidroxicina | prurito-menor-6-anos | Jarabe 10 mg/5 mL | 4 meses (6.4 kg) | 3.2 | 3.2 | 1.6 | 1.6 mL | ✅  |
@@ -1800,6 +1967,74 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | ipratropio | crisis-hasta-5 | Inhalador 0.02 mg (20 µg) por puff, con aerocámara | 3 años (14.3 kg) | 0.08 | 0.08 | 4 | 4 puff | ✅  |
 | ipratropio | crisis-hasta-5 | Inhalador 0.02 mg (20 µg) por puff, con aerocámara | 4 años (16.3 kg) | 0.08 | 0.08 | 4 | 4 puff | ✅  |
 | ipratropio | crisis-hasta-5 | Inhalador 0.02 mg (20 µg) por puff, con aerocámara | 5 años (18.3 kg) | 0.08 | 0.08 | 4 | 4 puff | ✅  |
+| isoniazida | tb-sensible | Solución oral 50 mg/5 mL | 1 mes (4.2 kg) | 42 | 42 | 4.2 | 4.2 mL | ✅  |
+| isoniazida | tb-sensible | Solución oral 50 mg/5 mL | 2 meses (5.1 kg) | 51 | 51 | 5.1 | 5.1 mL | ✅  |
+| isoniazida | tb-sensible | Solución oral 50 mg/5 mL | 4 meses (6.4 kg) | 64 | 64 | 6.4 | 6.4 mL | ✅  |
+| isoniazida | tb-sensible | Solución oral 50 mg/5 mL | 6 meses (7.6 kg) | 76 | 76 | 7.6 | 7.6 mL | ✅  |
+| isoniazida | tb-sensible | Solución oral 50 mg/5 mL | 9 meses (8.6 kg) | 86 | 86 | 8.6 | 8.6 mL | ✅  |
+| isoniazida | tb-sensible | Solución oral 50 mg/5 mL | 1 año (9.6 kg) | 96 | 96 | 9.6 | 9.6 mL | ✅  |
+| isoniazida | tb-sensible | Solución oral 50 mg/5 mL | 18 meses (10.9 kg) | 109 | 109 | 10.9 | 10.9 mL | ✅  |
+| isoniazida | tb-sensible | Solución oral 50 mg/5 mL | 2 años (12.2 kg) | 122 | 122 | 12.2 | 12.2 mL | ✅  |
+| isoniazida | tb-sensible | Solución oral 50 mg/5 mL | 3 años (14.3 kg) | 143 | 143 | 14.3 | 14.3 mL | ✅  |
+| isoniazida | tb-sensible | Solución oral 50 mg/5 mL | 4 años (16.3 kg) | 163 | 163 | 16.3 | 16.3 mL | ✅  |
+| isoniazida | tb-sensible | Solución oral 50 mg/5 mL | 5 años (18.3 kg) | 183 | 183 | 18.3 | 18.3 mL | ✅  |
+| isoniazida | tb-sensible | Solución oral 50 mg/5 mL | 6 años (20.5 kg) | 205 | 205 | 20.5 | 20.5 mL | ✅  |
+| isoniazida | tb-sensible | Solución oral 50 mg/5 mL | 8 años (25.6 kg) | 256 | 256 | 25.6 | 25.6 mL | ✅  |
+| isoniazida | tb-sensible | Solución oral 50 mg/5 mL | 10 años (32 kg) | 300 | 300 | 30 | 30 mL | ✅ tope aplicado |
+| isoniazida | tb-sensible | Solución oral 50 mg/5 mL | 12 años (40 kg) | 300 | 300 | 30 | 30 mL | ✅ tope aplicado |
+| isoniazida | tb-sensible | Solución oral 50 mg/5 mL | 14 años (50 kg) | 300 | 300 | 30 | 30 mL | ✅ tope aplicado |
+| isoniazida | tb-sensible | Tableta 100 mg | 1 mes (4.2 kg) | 42 | 42 | 0.42 | 0.42 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | tb-sensible | Tableta 100 mg | 2 meses (5.1 kg) | 51 | 51 | 0.51 | 0.51 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | tb-sensible | Tableta 100 mg | 4 meses (6.4 kg) | 64 | 64 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | tb-sensible | Tableta 100 mg | 6 meses (7.6 kg) | 76 | 76 | 0.76 | 0.76 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | tb-sensible | Tableta 100 mg | 9 meses (8.6 kg) | 86 | 86 | 0.86 | 0.86 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | tb-sensible | Tableta 100 mg | 1 año (9.6 kg) | 96 | 96 | 0.96 | 1 tableta | ✅  |
+| isoniazida | tb-sensible | Tableta 100 mg | 18 meses (10.9 kg) | 109 | 109 | 1.09 | 1.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | tb-sensible | Tableta 100 mg | 2 años (12.2 kg) | 122 | 122 | 1.22 | 1.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | tb-sensible | Tableta 100 mg | 3 años (14.3 kg) | 143 | 143 | 1.43 | 1.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | tb-sensible | Tableta 100 mg | 4 años (16.3 kg) | 163 | 163 | 1.63 | 1.63 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | tb-sensible | Tableta 100 mg | 5 años (18.3 kg) | 183 | 183 | 1.83 | 1.83 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | tb-sensible | Tableta 100 mg | 6 años (20.5 kg) | 205 | 205 | 2.05 | 2 tableta | ✅  |
+| isoniazida | tb-sensible | Tableta 100 mg | 8 años (25.6 kg) | 256 | 256 | 2.56 | 2.56 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | tb-sensible | Tableta 100 mg | 10 años (32 kg) | 300 | 300 | 3 | 3 tableta | ✅ tope aplicado |
+| isoniazida | tb-sensible | Tableta 100 mg | 12 años (40 kg) | 300 | 300 | 3 | 3 tableta | ✅ tope aplicado |
+| isoniazida | tb-sensible | Tableta 100 mg | 14 años (50 kg) | 300 | 300 | 3 | 3 tableta | ✅ tope aplicado |
+| isoniazida | preventiva-menores-10 | Solución oral 50 mg/5 mL | 1 mes (4.2 kg) | 42 | 42 | 4.2 | 4.2 mL | ✅  |
+| isoniazida | preventiva-menores-10 | Solución oral 50 mg/5 mL | 2 meses (5.1 kg) | 51 | 51 | 5.1 | 5.1 mL | ✅  |
+| isoniazida | preventiva-menores-10 | Solución oral 50 mg/5 mL | 4 meses (6.4 kg) | 64 | 64 | 6.4 | 6.4 mL | ✅  |
+| isoniazida | preventiva-menores-10 | Solución oral 50 mg/5 mL | 6 meses (7.6 kg) | 76 | 76 | 7.6 | 7.6 mL | ✅  |
+| isoniazida | preventiva-menores-10 | Solución oral 50 mg/5 mL | 9 meses (8.6 kg) | 86 | 86 | 8.6 | 8.6 mL | ✅  |
+| isoniazida | preventiva-menores-10 | Solución oral 50 mg/5 mL | 1 año (9.6 kg) | 96 | 96 | 9.6 | 9.6 mL | ✅  |
+| isoniazida | preventiva-menores-10 | Solución oral 50 mg/5 mL | 18 meses (10.9 kg) | 109 | 109 | 10.9 | 10.9 mL | ✅  |
+| isoniazida | preventiva-menores-10 | Solución oral 50 mg/5 mL | 2 años (12.2 kg) | 122 | 122 | 12.2 | 12.2 mL | ✅  |
+| isoniazida | preventiva-menores-10 | Solución oral 50 mg/5 mL | 3 años (14.3 kg) | 143 | 143 | 14.3 | 14.3 mL | ✅  |
+| isoniazida | preventiva-menores-10 | Solución oral 50 mg/5 mL | 4 años (16.3 kg) | 163 | 163 | 16.3 | 16.3 mL | ✅  |
+| isoniazida | preventiva-menores-10 | Solución oral 50 mg/5 mL | 5 años (18.3 kg) | 183 | 183 | 18.3 | 18.3 mL | ✅  |
+| isoniazida | preventiva-menores-10 | Solución oral 50 mg/5 mL | 6 años (20.5 kg) | 205 | 205 | 20.5 | 20.5 mL | ✅  |
+| isoniazida | preventiva-menores-10 | Solución oral 50 mg/5 mL | 8 años (25.6 kg) | 256 | 256 | 25.6 | 25.6 mL | ✅  |
+| isoniazida | preventiva-menores-10 | Solución oral 50 mg/5 mL | 10 años (32 kg) | 300 | 300 | 30 | 30 mL | ✅ tope aplicado |
+| isoniazida | preventiva-menores-10 | Tableta 100 mg | 1 mes (4.2 kg) | 42 | 42 | 0.42 | 0.42 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | preventiva-menores-10 | Tableta 100 mg | 2 meses (5.1 kg) | 51 | 51 | 0.51 | 0.51 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | preventiva-menores-10 | Tableta 100 mg | 4 meses (6.4 kg) | 64 | 64 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | preventiva-menores-10 | Tableta 100 mg | 6 meses (7.6 kg) | 76 | 76 | 0.76 | 0.76 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | preventiva-menores-10 | Tableta 100 mg | 9 meses (8.6 kg) | 86 | 86 | 0.86 | 0.86 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | preventiva-menores-10 | Tableta 100 mg | 1 año (9.6 kg) | 96 | 96 | 0.96 | 1 tableta | ✅  |
+| isoniazida | preventiva-menores-10 | Tableta 100 mg | 18 meses (10.9 kg) | 109 | 109 | 1.09 | 1.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | preventiva-menores-10 | Tableta 100 mg | 2 años (12.2 kg) | 122 | 122 | 1.22 | 1.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | preventiva-menores-10 | Tableta 100 mg | 3 años (14.3 kg) | 143 | 143 | 1.43 | 1.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | preventiva-menores-10 | Tableta 100 mg | 4 años (16.3 kg) | 163 | 163 | 1.63 | 1.63 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | preventiva-menores-10 | Tableta 100 mg | 5 años (18.3 kg) | 183 | 183 | 1.83 | 1.83 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | preventiva-menores-10 | Tableta 100 mg | 6 años (20.5 kg) | 205 | 205 | 2.05 | 2 tableta | ✅  |
+| isoniazida | preventiva-menores-10 | Tableta 100 mg | 8 años (25.6 kg) | 256 | 256 | 2.56 | 2.56 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | preventiva-menores-10 | Tableta 100 mg | 10 años (32 kg) | 300 | 300 | 3 | 3 tableta | ✅ tope aplicado |
+| isoniazida | preventiva-10-o-mas | Solución oral 50 mg/5 mL | 12 años (40 kg) | 200 | 200 | 20 | 20 mL | ✅  |
+| isoniazida | preventiva-10-o-mas | Solución oral 50 mg/5 mL | 14 años (50 kg) | 250 | 250 | 25 | 25 mL | ✅  |
+| isoniazida | preventiva-10-o-mas | Solución oral 50 mg/5 mL | 16 años (58 kg) | 290 | 290 | 29 | 29 mL | ✅  |
+| isoniazida | preventiva-10-o-mas | Solución oral 50 mg/5 mL | 17 años, obeso (95 kg) | 300 | 300 | 30 | 30 mL | ✅ tope aplicado |
+| isoniazida | preventiva-10-o-mas | Tableta 100 mg | 12 años (40 kg) | 200 | 200 | 2 | 2 tableta | ✅  |
+| isoniazida | preventiva-10-o-mas | Tableta 100 mg | 14 años (50 kg) | 250 | 250 | 2.5 | 2.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| isoniazida | preventiva-10-o-mas | Tableta 100 mg | 16 años (58 kg) | 290 | 290 | 2.9 | 3 tableta | ✅  |
+| isoniazida | preventiva-10-o-mas | Tableta 100 mg | 17 años, obeso (95 kg) | 300 | 300 | 3 | 3 tableta | ✅ tope aplicado |
 | ivermectina | estrongiloidiasis-15-24-kg | Tableta 6 mg | 4 años (16.3 kg) | 3 | 3 | 0.5 | 0.5 tableta | ✅  |
 | ivermectina | estrongiloidiasis-15-24-kg | Tableta 6 mg | 5 años (18.3 kg) | 3 | 3 | 0.5 | 0.5 tableta | ✅  |
 | ivermectina | estrongiloidiasis-15-24-kg | Tableta 6 mg | 6 años (20.5 kg) | 3 | 3 | 0.5 | 0.5 tableta | ✅  |
@@ -2190,6 +2425,17 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | montelukast | 6-14-anos | Tableta masticable 5 mg | 14 años (50 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
 | montelukast | 15-anos-o-mas | Tableta 10 mg | 16 años (58 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
 | montelukast | 15-anos-o-mas | Tableta 10 mg | 17 años, obeso (95 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
+| morfina | dolor-2-anos-o-mas | Solución oral 10 mg/5 mL (2 mg/mL) | 2 años (12.2 kg) | 1.83 | 1.83 | 0.915 | 0.9 mL | ✅  |
+| morfina | dolor-2-anos-o-mas | Solución oral 10 mg/5 mL (2 mg/mL) | 3 años (14.3 kg) | 2.15 | 2.15 | 1.073 | 1.1 mL | ✅  |
+| morfina | dolor-2-anos-o-mas | Solución oral 10 mg/5 mL (2 mg/mL) | 4 años (16.3 kg) | 2.44 | 2.44 | 1.222 | 1.2 mL | ✅  |
+| morfina | dolor-2-anos-o-mas | Solución oral 10 mg/5 mL (2 mg/mL) | 5 años (18.3 kg) | 2.75 | 2.75 | 1.373 | 1.4 mL | ✅  |
+| morfina | dolor-2-anos-o-mas | Solución oral 10 mg/5 mL (2 mg/mL) | 6 años (20.5 kg) | 3.07 | 3.07 | 1.537 | 1.5 mL | ✅  |
+| morfina | dolor-2-anos-o-mas | Solución oral 10 mg/5 mL (2 mg/mL) | 8 años (25.6 kg) | 3.84 | 3.84 | 1.92 | 1.9 mL | ✅  |
+| morfina | dolor-2-anos-o-mas | Solución oral 10 mg/5 mL (2 mg/mL) | 10 años (32 kg) | 4.8 | 4.8 | 2.4 | 2.4 mL | ✅  |
+| morfina | dolor-2-anos-o-mas | Solución oral 10 mg/5 mL (2 mg/mL) | 12 años (40 kg) | 6 | 6 | 3 | 3 mL | ✅  |
+| morfina | dolor-2-anos-o-mas | Solución oral 10 mg/5 mL (2 mg/mL) | 14 años (50 kg) | 7.5 | 7.5 | 3.75 | 3.8 mL | ✅  |
+| morfina | dolor-2-anos-o-mas | Solución oral 10 mg/5 mL (2 mg/mL) | 16 años (58 kg) | 8.7 | 8.7 | 4.35 | 4.4 mL | ✅  |
+| morfina | dolor-2-anos-o-mas | Solución oral 10 mg/5 mL (2 mg/mL) | 17 años, obeso (95 kg) | 14.25 | 14.25 | 7.125 | 7.1 mL | ✅  |
 | naloxona | intoxicacion-opiaceos | Ampolla 0.4 mg/mL | 1 mes (4.2 kg) | 0.04 | 0.04 | 0.105 | 0.1 mL | ✅  |
 | naloxona | intoxicacion-opiaceos | Ampolla 0.4 mg/mL | 2 meses (5.1 kg) | 0.05 | 0.05 | 0.127 | 0.13 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
 | naloxona | intoxicacion-opiaceos | Ampolla 0.4 mg/mL | 4 meses (6.4 kg) | 0.06 | 0.06 | 0.16 | 0.16 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -2492,6 +2738,58 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | pirantel | uncinariasis | Tableta 125 mg | 14 años (50 kg) | 550 | 550 | 4.4 | 4.4 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | pirantel | uncinariasis | Tableta 125 mg | 16 años (58 kg) | 638 | 638 | 5.104 | 5 tableta | ✅  |
 | pirantel | uncinariasis | Tableta 125 mg | 17 años, obeso (95 kg) | 1000 | 1000 | 8 | 8 tableta | ✅ tope aplicado |
+| pirazinamida | tb-sensible | Suspensión 30 mg/mL | 1 mes (4.2 kg) | 147 | 147 | 4.9 | 4.9 mL | ✅  |
+| pirazinamida | tb-sensible | Suspensión 30 mg/mL | 2 meses (5.1 kg) | 178.5 | 178.5 | 5.95 | 6 mL | ✅  |
+| pirazinamida | tb-sensible | Suspensión 30 mg/mL | 4 meses (6.4 kg) | 224 | 224 | 7.467 | 7.5 mL | ✅  |
+| pirazinamida | tb-sensible | Suspensión 30 mg/mL | 6 meses (7.6 kg) | 266 | 266 | 8.867 | 8.9 mL | ✅  |
+| pirazinamida | tb-sensible | Suspensión 30 mg/mL | 9 meses (8.6 kg) | 301 | 301 | 10.033 | 10 mL | ✅  |
+| pirazinamida | tb-sensible | Suspensión 30 mg/mL | 1 año (9.6 kg) | 336 | 336 | 11.2 | 11.2 mL | ✅  |
+| pirazinamida | tb-sensible | Suspensión 30 mg/mL | 18 meses (10.9 kg) | 381.5 | 381.5 | 12.717 | 12.7 mL | ✅  |
+| pirazinamida | tb-sensible | Suspensión 30 mg/mL | 2 años (12.2 kg) | 427 | 427 | 14.233 | 14.2 mL | ✅  |
+| pirazinamida | tb-sensible | Suspensión 30 mg/mL | 3 años (14.3 kg) | 500.5 | 500.5 | 16.683 | 16.7 mL | ✅  |
+| pirazinamida | tb-sensible | Suspensión 30 mg/mL | 4 años (16.3 kg) | 570.5 | 570.5 | 19.017 | 19 mL | ✅  |
+| pirazinamida | tb-sensible | Suspensión 30 mg/mL | 5 años (18.3 kg) | 640.5 | 640.5 | 21.35 | 21.4 mL | ✅  |
+| pirazinamida | tb-sensible | Suspensión 30 mg/mL | 6 años (20.5 kg) | 717.5 | 717.5 | 23.917 | 23.9 mL | ✅  |
+| pirazinamida | tb-sensible | Suspensión 30 mg/mL | 8 años (25.6 kg) | 896 | 896 | 29.867 | 29.9 mL | ✅  |
+| pirazinamida | tb-sensible | Suspensión 30 mg/mL | 10 años (32 kg) | 1120 | 1120 | 37.333 | 37.3 mL | ✅  |
+| pirazinamida | tb-sensible | Suspensión 30 mg/mL | 12 años (40 kg) | 1400 | 1400 | 46.667 | 46.7 mL | ✅  |
+| pirazinamida | tb-sensible | Suspensión 30 mg/mL | 14 años (50 kg) | 1500 | 1500 | 50 | 50 mL | ✅ tope aplicado |
+| pirazinamida | tb-sensible | Tableta 500 mg | 1 mes (4.2 kg) | 147 | 147 | 0.294 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| pirazinamida | tb-sensible | Tableta 500 mg | 2 meses (5.1 kg) | 178.5 | 178.5 | 0.357 | 0.36 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| pirazinamida | tb-sensible | Tableta 500 mg | 4 meses (6.4 kg) | 224 | 224 | 0.448 | 0.45 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| pirazinamida | tb-sensible | Tableta 500 mg | 6 meses (7.6 kg) | 266 | 266 | 0.532 | 0.53 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| pirazinamida | tb-sensible | Tableta 500 mg | 9 meses (8.6 kg) | 301 | 301 | 0.602 | 0.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| pirazinamida | tb-sensible | Tableta 500 mg | 1 año (9.6 kg) | 336 | 336 | 0.672 | 0.67 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| pirazinamida | tb-sensible | Tableta 500 mg | 18 meses (10.9 kg) | 381.5 | 381.5 | 0.763 | 0.76 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| pirazinamida | tb-sensible | Tableta 500 mg | 2 años (12.2 kg) | 427 | 427 | 0.854 | 0.85 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| pirazinamida | tb-sensible | Tableta 500 mg | 3 años (14.3 kg) | 500.5 | 500.5 | 1.001 | 1 tableta | ✅  |
+| pirazinamida | tb-sensible | Tableta 500 mg | 4 años (16.3 kg) | 570.5 | 570.5 | 1.141 | 1.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| pirazinamida | tb-sensible | Tableta 500 mg | 5 años (18.3 kg) | 640.5 | 640.5 | 1.281 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| pirazinamida | tb-sensible | Tableta 500 mg | 6 años (20.5 kg) | 717.5 | 717.5 | 1.435 | 1.44 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| pirazinamida | tb-sensible | Tableta 500 mg | 8 años (25.6 kg) | 896 | 896 | 1.792 | 1.79 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| pirazinamida | tb-sensible | Tableta 500 mg | 10 años (32 kg) | 1120 | 1120 | 2.24 | 2.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| pirazinamida | tb-sensible | Tableta 500 mg | 12 años (40 kg) | 1400 | 1400 | 2.8 | 2.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| pirazinamida | tb-sensible | Tableta 500 mg | 14 años (50 kg) | 1500 | 1500 | 3 | 3 tableta | ✅ tope aplicado |
+| praziquantel | teniasis | Tableta 150 mg | 5 años (18.3 kg) | 91.5 | 91.5 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | teniasis | Tableta 150 mg | 6 años (20.5 kg) | 102.5 | 102.5 | 0.683 | 0.68 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | teniasis | Tableta 150 mg | 8 años (25.6 kg) | 128 | 128 | 0.853 | 0.85 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | teniasis | Tableta 150 mg | 10 años (32 kg) | 160 | 160 | 1.067 | 1.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | teniasis | Tableta 150 mg | 12 años (40 kg) | 200 | 200 | 1.333 | 1.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | teniasis | Tableta 600 mg | 5 años (18.3 kg) | 91.5 | 91.5 | 0.152 | 0.15 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | teniasis | Tableta 600 mg | 6 años (20.5 kg) | 102.5 | 102.5 | 0.171 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | teniasis | Tableta 600 mg | 8 años (25.6 kg) | 128 | 128 | 0.213 | 0.21 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | teniasis | Tableta 600 mg | 10 años (32 kg) | 160 | 160 | 0.267 | 0.27 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | teniasis | Tableta 600 mg | 12 años (40 kg) | 200 | 200 | 0.333 | 0.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | neurocisticercosis | Tableta 150 mg | 5 años (18.3 kg) | 305.61 | 305.61 | 2.037 | 2 tableta | ✅  |
+| praziquantel | neurocisticercosis | Tableta 150 mg | 6 años (20.5 kg) | 342.35 | 342.35 | 2.282 | 2.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | neurocisticercosis | Tableta 150 mg | 8 años (25.6 kg) | 427.52 | 427.52 | 2.85 | 2.85 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | neurocisticercosis | Tableta 150 mg | 10 años (32 kg) | 534.4 | 534.4 | 3.563 | 3.56 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | neurocisticercosis | Tableta 150 mg | 12 años (40 kg) | 668 | 668 | 4.453 | 4.45 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | neurocisticercosis | Tableta 600 mg | 5 años (18.3 kg) | 305.61 | 305.61 | 0.509 | 0.51 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | neurocisticercosis | Tableta 600 mg | 6 años (20.5 kg) | 342.35 | 342.35 | 0.571 | 0.57 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | neurocisticercosis | Tableta 600 mg | 8 años (25.6 kg) | 427.52 | 427.52 | 0.713 | 0.71 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | neurocisticercosis | Tableta 600 mg | 10 años (32 kg) | 534.4 | 534.4 | 0.891 | 0.89 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| praziquantel | neurocisticercosis | Tableta 600 mg | 12 años (40 kg) | 668 | 668 | 1.113 | 1.11 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | prednisolona | crisis-asmatica-1-2-anos | Solución oral 15 mg/5 mL | 1 año (9.6 kg) | 9.6 | 9.6 | 3.2 | 3.2 mL | ✅  |
 | prednisolona | crisis-asmatica-1-2-anos | Solución oral 15 mg/5 mL | 18 meses (10.9 kg) | 10.9 | 10.9 | 3.633 | 3.6 mL | ✅  |
 | prednisolona | crisis-asmatica-1-2-anos | Tableta 5 mg | 1 año (9.6 kg) | 9.6 | 9.6 | 1.92 | 2 tableta | ✅  |
@@ -2572,6 +2870,54 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | prednisona | antiinflamatorio | Tableta 20 mg | 14 años (50 kg) | 50 | 50 | 2.5 | 2.5 tableta | ✅  |
 | prednisona | antiinflamatorio | Tableta 20 mg | 16 años (58 kg) | 58 | 58 | 2.9 | 3 tableta | ✅  |
 | prednisona | antiinflamatorio | Tableta 20 mg | 17 años, obeso (95 kg) | 80 | 80 | 4 | 4 tableta | ✅ tope aplicado |
+| rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 1 mes (4.2 kg) | 63 | 63 | 3.15 | 3.2 mL | ✅  |
+| rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 2 meses (5.1 kg) | 76.5 | 76.5 | 3.825 | 3.8 mL | ✅  |
+| rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 4 meses (6.4 kg) | 96 | 96 | 4.8 | 4.8 mL | ✅  |
+| rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 6 meses (7.6 kg) | 114 | 114 | 5.7 | 5.7 mL | ✅  |
+| rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 9 meses (8.6 kg) | 129 | 129 | 6.45 | 6.5 mL | ✅  |
+| rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 1 año (9.6 kg) | 144 | 144 | 7.2 | 7.2 mL | ✅  |
+| rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 18 meses (10.9 kg) | 163.5 | 163.5 | 8.175 | 8.2 mL | ✅  |
+| rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 2 años (12.2 kg) | 183 | 183 | 9.15 | 9.2 mL | ✅  |
+| rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 3 años (14.3 kg) | 214.5 | 214.5 | 10.725 | 10.7 mL | ✅  |
+| rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 4 años (16.3 kg) | 244.5 | 244.5 | 12.225 | 12.2 mL | ✅  |
+| rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 5 años (18.3 kg) | 274.5 | 274.5 | 13.725 | 13.7 mL | ✅  |
+| rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 6 años (20.5 kg) | 307.5 | 307.5 | 15.375 | 15.4 mL | ✅  |
+| rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 8 años (25.6 kg) | 384 | 384 | 19.2 | 19.2 mL | ✅  |
+| rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 10 años (32 kg) | 480 | 480 | 24 | 24 mL | ✅  |
+| rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 12 años (40 kg) | 600 | 600 | 30 | 30 mL | ✅  |
+| rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 14 años (50 kg) | 600 | 600 | 30 | 30 mL | ✅ tope aplicado |
+| rifampicina | tb-sensible | Tableta 150 mg | 1 mes (4.2 kg) | 63 | 63 | 0.42 | 0.42 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 150 mg | 2 meses (5.1 kg) | 76.5 | 76.5 | 0.51 | 0.51 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 150 mg | 4 meses (6.4 kg) | 96 | 96 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 150 mg | 6 meses (7.6 kg) | 114 | 114 | 0.76 | 0.76 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 150 mg | 9 meses (8.6 kg) | 129 | 129 | 0.86 | 0.86 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 150 mg | 1 año (9.6 kg) | 144 | 144 | 0.96 | 1 tableta | ✅  |
+| rifampicina | tb-sensible | Tableta 150 mg | 18 meses (10.9 kg) | 163.5 | 163.5 | 1.09 | 1.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 150 mg | 2 años (12.2 kg) | 183 | 183 | 1.22 | 1.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 150 mg | 3 años (14.3 kg) | 214.5 | 214.5 | 1.43 | 1.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 150 mg | 4 años (16.3 kg) | 244.5 | 244.5 | 1.63 | 1.63 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 150 mg | 5 años (18.3 kg) | 274.5 | 274.5 | 1.83 | 1.83 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 150 mg | 6 años (20.5 kg) | 307.5 | 307.5 | 2.05 | 2 tableta | ✅  |
+| rifampicina | tb-sensible | Tableta 150 mg | 8 años (25.6 kg) | 384 | 384 | 2.56 | 2.56 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 150 mg | 10 años (32 kg) | 480 | 480 | 3.2 | 3.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 150 mg | 12 años (40 kg) | 600 | 600 | 4 | 4 tableta | ✅  |
+| rifampicina | tb-sensible | Tableta 150 mg | 14 años (50 kg) | 600 | 600 | 4 | 4 tableta | ✅ tope aplicado |
+| rifampicina | tb-sensible | Tableta 300 mg | 1 mes (4.2 kg) | 63 | 63 | 0.21 | 0.21 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 300 mg | 2 meses (5.1 kg) | 76.5 | 76.5 | 0.255 | 0.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 300 mg | 4 meses (6.4 kg) | 96 | 96 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 300 mg | 6 meses (7.6 kg) | 114 | 114 | 0.38 | 0.38 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 300 mg | 9 meses (8.6 kg) | 129 | 129 | 0.43 | 0.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 300 mg | 1 año (9.6 kg) | 144 | 144 | 0.48 | 0.48 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 300 mg | 18 meses (10.9 kg) | 163.5 | 163.5 | 0.545 | 0.55 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 300 mg | 2 años (12.2 kg) | 183 | 183 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 300 mg | 3 años (14.3 kg) | 214.5 | 214.5 | 0.715 | 0.71 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 300 mg | 4 años (16.3 kg) | 244.5 | 244.5 | 0.815 | 0.81 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 300 mg | 5 años (18.3 kg) | 274.5 | 274.5 | 0.915 | 0.92 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 300 mg | 6 años (20.5 kg) | 307.5 | 307.5 | 1.025 | 1 tableta | ✅  |
+| rifampicina | tb-sensible | Tableta 300 mg | 8 años (25.6 kg) | 384 | 384 | 1.28 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 300 mg | 10 años (32 kg) | 480 | 480 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rifampicina | tb-sensible | Tableta 300 mg | 12 años (40 kg) | 600 | 600 | 2 | 2 tableta | ✅  |
+| rifampicina | tb-sensible | Tableta 300 mg | 14 años (50 kg) | 600 | 600 | 2 | 2 tableta | ✅ tope aplicado |
 | salbutamol | crisis-inhalador-hasta-5 | Inhalador 0.1 mg (100 µg) por puff, con aerocámara | 1 mes (4.2 kg) | 0.4 | 0.4 | 4 | 4 puff | ✅  |
 | salbutamol | crisis-inhalador-hasta-5 | Inhalador 0.1 mg (100 µg) por puff, con aerocámara | 2 meses (5.1 kg) | 0.4 | 0.4 | 4 | 4 puff | ✅  |
 | salbutamol | crisis-inhalador-hasta-5 | Inhalador 0.1 mg (100 µg) por puff, con aerocámara | 4 meses (6.4 kg) | 0.4 | 0.4 | 4 | 4 puff | ✅  |
@@ -2620,6 +2966,17 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | salbutamol | vo-6-12-anos | Tableta 4 mg | 8 años (25.6 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
 | salbutamol | vo-6-12-anos | Tableta 4 mg | 10 años (32 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
 | salbutamol | vo-6-12-anos | Tableta 4 mg | 12 años (40 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
+| sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 2 años (12.2 kg) | 488 | 488 | 2.44 | 2.4 mL | ✅  |
+| sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 3 años (14.3 kg) | 572 | 572 | 2.86 | 2.9 mL | ✅  |
+| sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 4 años (16.3 kg) | 652 | 652 | 3.26 | 3.3 mL | ✅  |
+| sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 5 años (18.3 kg) | 732 | 732 | 3.66 | 3.7 mL | ✅  |
+| sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 6 años (20.5 kg) | 820 | 820 | 4.1 | 4.1 mL | ✅  |
+| sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 8 años (25.6 kg) | 1024 | 1024 | 5.12 | 5.1 mL | ✅  |
+| sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 10 años (32 kg) | 1280 | 1280 | 6.4 | 6.4 mL | ✅  |
+| sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 12 años (40 kg) | 1600 | 1600 | 8 | 8 mL | ✅  |
+| sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 14 años (50 kg) | 2000 | 2000 | 10 | 10 mL | ✅  |
+| sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 16 años (58 kg) | 2000 | 2000 | 10 | 10 mL | ✅ tope aplicado |
+| sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 17 años, obeso (95 kg) | 2000 | 2000 | 10 | 10 mL | ✅ tope aplicado |
 | vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 1 mes (4.2 kg) | 42 | 42 | 0.84 | 0.85 mL | ✅  |
 | vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 2 meses (5.1 kg) | 51 | 51 | 1.02 | 1 mL | ✅  |
 | vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 4 meses (6.4 kg) | 64 | 64 | 1.28 | 1.3 mL | ✅  |
@@ -2641,6 +2998,75 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | vancomicina | neonato-semana-1 | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 3 días, bajo peso (2 kg) (2 kg) | 20 | 20 | 0.4 | 0.4 mL | ✅  |
 | vancomicina | neonato-semana-1 | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 5 días (3.2 kg) (3.2 kg) | 32 | 32 | 0.64 | 0.65 mL | ✅  |
 | vancomicina | neonato-semanas-2-4 | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 15 días (3.6 kg) (3.6 kg) | 36 | 36 | 0.72 | 0.7 mL | ✅  |
+| vitamina-a | sarampion-6-11-meses | Tableta 100 000 UI | 6 meses (7.6 kg) | 100000 | 100000 | 1 | 1 tableta | ✅  |
+| vitamina-a | sarampion-6-11-meses | Tableta 100 000 UI | 9 meses (8.6 kg) | 100000 | 100000 | 1 | 1 tableta | ✅  |
+| vitamina-a | sarampion-6-11-meses | Tableta 200 000 UI | 6 meses (7.6 kg) | 100000 | 100000 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| vitamina-a | sarampion-6-11-meses | Tableta 200 000 UI | 9 meses (8.6 kg) | 100000 | 100000 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| vitamina-a | sarampion-6-11-meses | Tableta 50 000 UI | 6 meses (7.6 kg) | 100000 | 100000 | 2 | 2 tableta | ✅  |
+| vitamina-a | sarampion-6-11-meses | Tableta 50 000 UI | 9 meses (8.6 kg) | 100000 | 100000 | 2 | 2 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 100 000 UI | 1 año (9.6 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 100 000 UI | 18 meses (10.9 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 100 000 UI | 2 años (12.2 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 100 000 UI | 3 años (14.3 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 100 000 UI | 4 años (16.3 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 100 000 UI | 5 años (18.3 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 100 000 UI | 6 años (20.5 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 100 000 UI | 8 años (25.6 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 100 000 UI | 10 años (32 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 100 000 UI | 12 años (40 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 100 000 UI | 14 años (50 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 100 000 UI | 16 años (58 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 100 000 UI | 17 años, obeso (95 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 200 000 UI | 1 año (9.6 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 200 000 UI | 18 meses (10.9 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 200 000 UI | 2 años (12.2 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 200 000 UI | 3 años (14.3 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 200 000 UI | 4 años (16.3 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 200 000 UI | 5 años (18.3 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 200 000 UI | 6 años (20.5 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 200 000 UI | 8 años (25.6 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 200 000 UI | 10 años (32 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 200 000 UI | 12 años (40 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 200 000 UI | 14 años (50 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 200 000 UI | 16 años (58 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 200 000 UI | 17 años, obeso (95 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 50 000 UI | 1 año (9.6 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 50 000 UI | 18 meses (10.9 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 50 000 UI | 2 años (12.2 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 50 000 UI | 3 años (14.3 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 50 000 UI | 4 años (16.3 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 50 000 UI | 5 años (18.3 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 50 000 UI | 6 años (20.5 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 50 000 UI | 8 años (25.6 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 50 000 UI | 10 años (32 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 50 000 UI | 12 años (40 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 50 000 UI | 14 años (50 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 50 000 UI | 16 años (58 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | sarampion-1-ano-o-mas | Tableta 50 000 UI | 17 años, obeso (95 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | prevencion-6-11-meses | Tableta 100 000 UI | 6 meses (7.6 kg) | 100000 | 100000 | 1 | 1 tableta | ✅  |
+| vitamina-a | prevencion-6-11-meses | Tableta 100 000 UI | 9 meses (8.6 kg) | 100000 | 100000 | 1 | 1 tableta | ✅  |
+| vitamina-a | prevencion-6-11-meses | Tableta 200 000 UI | 6 meses (7.6 kg) | 100000 | 100000 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| vitamina-a | prevencion-6-11-meses | Tableta 200 000 UI | 9 meses (8.6 kg) | 100000 | 100000 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| vitamina-a | prevencion-6-11-meses | Tableta 50 000 UI | 6 meses (7.6 kg) | 100000 | 100000 | 2 | 2 tableta | ✅  |
+| vitamina-a | prevencion-6-11-meses | Tableta 50 000 UI | 9 meses (8.6 kg) | 100000 | 100000 | 2 | 2 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 100 000 UI | 1 año (9.6 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 100 000 UI | 18 meses (10.9 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 100 000 UI | 2 años (12.2 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 100 000 UI | 3 años (14.3 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 100 000 UI | 4 años (16.3 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 100 000 UI | 5 años (18.3 kg) | 200000 | 200000 | 2 | 2 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 200 000 UI | 1 año (9.6 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 200 000 UI | 18 meses (10.9 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 200 000 UI | 2 años (12.2 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 200 000 UI | 3 años (14.3 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 200 000 UI | 4 años (16.3 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 200 000 UI | 5 años (18.3 kg) | 200000 | 200000 | 1 | 1 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 50 000 UI | 1 año (9.6 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 50 000 UI | 18 meses (10.9 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 50 000 UI | 2 años (12.2 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 50 000 UI | 3 años (14.3 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 50 000 UI | 4 años (16.3 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
+| vitamina-a | prevencion-12-59-meses | Tableta 50 000 UI | 5 años (18.3 kg) | 200000 | 200000 | 4 | 4 tableta | ✅  |
 | zinc | diarrea-menor-6-meses | Tableta dispersable 20 mg (disolver en agua o leche materna) | 1 mes (4.2 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
 | zinc | diarrea-menor-6-meses | Tableta dispersable 20 mg (disolver en agua o leche materna) | 2 meses (5.1 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
 | zinc | diarrea-menor-6-meses | Tableta dispersable 20 mg (disolver en agua o leche materna) | 4 meses (6.4 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |

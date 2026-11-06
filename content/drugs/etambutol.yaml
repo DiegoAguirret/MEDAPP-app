@@ -1,0 +1,64 @@
+id: etambutol
+name: Etambutol (E)
+category: antibiotico
+synonyms: [ethambutol, antituberculoso]
+presentations:
+  - id: liq-25
+    label: Suspensión 25 mg/mL
+    form: suspension
+    mgPerUnit: 25
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-400
+    label: Tableta 400 mg
+    form: tableta
+    mgPerUnit: 400
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: tb-sensible
+    indication: Tuberculosis sensible, fase 1 (menores de 15 años)
+    route: VO
+    ageMinDays: 29
+    ageMaxDays: 5477
+    weightMinKg: 4
+    basis: mg/kg/day
+    amountMin: 15
+    amountMax: 25
+    usual: 20
+    intervalHours: 24
+    maxPerDoseMg: 1200
+    maxPerDayMg: 1200
+    durationText: Solo en la primera fase (2 meses, HREZ), diario de lunes a sábado (NTS 221).
+    notes: >-
+      NTS 221-MINSA 2024 — menores de 15 años, 15 a 25 mg/kg/día; máximo 1200 mg/día. Dosis habitual 20 mg/kg
+      (NTS 200-2023 y OMS).
+    sourceIds: [minsa-nts221-2024, who-tb-children-2022, digemid-pnume-2023]
+warnings:
+  - Usar con precaución en menores de 5 años (NTS 221). El FNME 2008 lo contraindica en menores de 7 años, pero la NTS 221, la NTS 200 y la OMS lo dosifican desde lactantes.
+contraindications:
+  - Problemas de visión según evaluación médica (si es posible, usar una alternativa).
+  - Neuritis óptica.
+  - Hipersensibilidad al etambutol.
+interactions:
+  - Otros neurotóxicos aumentan el riesgo de neuritis óptica y periférica.
+renal: NTS 221 — en enfermedad renal crónica severa, 20 a 25 mg/kg 3 veces por semana, no diario.
+diagnoses: [tuberculosis, tuberculosis pulmonar]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: tb-sensible
+    presentationId: liq-25
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 200, amount: 8, unit: mL }
+  - ruleId: tb-sensible
+    presentationId: tab-400
+    weightKg: 70
+    ageDays: 5100
+    expect: { mgPerDose: 1200, amount: 3, unit: tableta, capped: true }

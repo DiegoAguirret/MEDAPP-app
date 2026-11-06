@@ -1,0 +1,74 @@
+id: praziquantel
+name: Praziquantel
+category: antiparasitario
+synonyms: [prazicuantel, Biltricide]
+presentations:
+  - id: tab-150
+    label: Tableta 150 mg
+    form: tableta
+    mgPerUnit: 150
+    unit: tableta
+    step: 1
+    brandsPE: []
+  - id: tab-600
+    label: Tableta 600 mg
+    form: tableta
+    mgPerUnit: 600
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: teniasis
+    indication: Teniasis (T. solium, T. saginata), dosis única (mayores de 4 años)
+    route: VO
+    ageMinDays: 1461
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 5
+    amountMax: 10
+    usual: 5
+    once: true
+    maxPerDoseMg: 500
+    maxPerDayMg: 500
+    notes: FNME y OMS — 5 a 10 mg/kg VO en dosis única. Sin tope en mg en las fuentes (el tope de la regla es técnico, 10 mg/kg con 50 kg).
+    sourceIds: [fnme-2008, who-mfc-2010, digemid-pnume-2023]
+  - id: neurocisticercosis
+    indication: Neurocisticercosis (mayores de 4 años)
+    route: VO
+    ageMinDays: 1461
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 16.7
+    amountMax: 33
+    usual: 16.7
+    intervalHours: 8
+    maxPerDoseMg: 1650
+    maxPerDayMg: 4950
+    durationText: 14 a 21 días (FNME); 14 días, o 30 con quistes gigantes o subaracnoideos (OMS).
+    notes: FNME — 16.7 a 33 mg/kg 3 veces al día por 14 a 21 días. OMS — 17 a 33 mg/kg 3 veces al día. Sin tope en mg en las fuentes (el tope es técnico).
+    sourceIds: [fnme-2008, who-mfc-2010, digemid-pnume-2023]
+warnings:
+  - No usar en menores de 4 años (FNME); la FDA lo aprueba desde 1 año.
+contraindications:
+  - Hipersensibilidad al praziquantel.
+  - Cisticercosis ocular.
+  - Cisticercosis espinal.
+  - Uso de rifampicina (FDA).
+renal: FNME y OMS — no parece necesario ajustar la dosis.
+diagnoses: [teniasis, neurocisticercosis, parásitos]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: teniasis
+    presentationId: tab-150
+    weightKg: 30
+    ageDays: 3285
+    expect: { mgPerDose: 150, amount: 1, unit: tableta }
+  - ruleId: neurocisticercosis
+    presentationId: tab-600
+    weightKg: 36
+    ageDays: 3650
+    expect: { mgPerDose: 601.2, amount: 1, unit: tableta }

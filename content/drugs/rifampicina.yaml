@@ -1,0 +1,74 @@
+id: rifampicina
+name: Rifampicina (R)
+category: antibiotico
+synonyms: [rifampin, antituberculoso]
+presentations:
+  - id: liq-100-5
+    label: Suspensión 100 mg/5 mL
+    form: suspension
+    mgPerUnit: 20
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-150
+    label: Tableta 150 mg
+    form: tableta
+    mgPerUnit: 150
+    unit: tableta
+    step: 1
+    brandsPE: []
+  - id: tab-300
+    label: Tableta 300 mg
+    form: tableta
+    mgPerUnit: 300
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: tb-sensible
+    indication: Tuberculosis sensible, fases 1 y 2 (menores de 15 años)
+    route: VO
+    ageMinDays: 29
+    ageMaxDays: 5477
+    weightMinKg: 4
+    basis: mg/kg/day
+    amountMin: 10
+    amountMax: 20
+    usual: 15
+    intervalHours: 24
+    maxPerDoseMg: 600
+    maxPerDayMg: 600
+    durationText: 2HREZ/4HR, diario de lunes a sábado (NTS 221).
+    notes: >-
+      NTS 221-MINSA 2024 — menores de 15 años, 10 a 20 mg/kg/día; máximo 600 mg/día. Dosis habitual 15 mg/kg
+      (NTS 200-2023 y OMS). Con menos de 4 kg, la OMS indica consultar con un especialista en TB pediátrica.
+    sourceIds: [minsa-nts221-2024, who-tb-children-2022, digemid-pnume-2023]
+warnings:
+  - En insuficiencia hepática, evitar o no pasar de 8 mg/kg/día (OMS).
+contraindications:
+  - Hipersensibilidad a las rifamicinas.
+  - Ictericia.
+interactions:
+  - Reduce el efecto de los anticonceptivos orales (NTS 221).
+  - Anticoagulación subterapéutica con warfarina (NTS 221).
+  - Baja mucho los niveles de corticoides; puede necesitarse el doble de la dosis (NTS 221).
+  - Disminuye la actividad de antirretrovirales (inhibidores de proteasa, ITINN e inhibidores de integrasa) (NTS 221).
+  - Disminuye mucho el efecto de la fenitoína (NTS 221).
+renal: NTS 221 y OMS — no requiere ajuste. El FNME indica reducir 50 % con depuración menor de 10 mL/min.
+diagnoses: [tuberculosis, tuberculosis pulmonar]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: tb-sensible
+    presentationId: liq-100-5
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 150, amount: 7.5, unit: mL }
+  - ruleId: tb-sensible
+    presentationId: tab-300
+    weightKg: 50
+    ageDays: 5000
+    expect: { mgPerDose: 600, amount: 2, unit: tableta, capped: true }

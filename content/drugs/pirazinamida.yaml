@@ -1,0 +1,66 @@
+id: pirazinamida
+name: Pirazinamida (Z)
+category: antibiotico
+synonyms: [pyrazinamide, antituberculoso]
+presentations:
+  - id: liq-30
+    label: Suspensión 30 mg/mL
+    form: suspension
+    mgPerUnit: 30
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-500
+    label: Tableta 500 mg
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: tb-sensible
+    indication: Tuberculosis sensible, fase 1 (menores de 15 años)
+    route: VO
+    ageMinDays: 29
+    ageMaxDays: 5477
+    weightMinKg: 4
+    basis: mg/kg/day
+    amountMin: 30
+    amountMax: 40
+    usual: 35
+    intervalHours: 24
+    maxPerDoseMg: 1500
+    maxPerDayMg: 1500
+    durationText: Solo en la primera fase (2 meses, HREZ), diario de lunes a sábado (NTS 221).
+    notes: >-
+      NTS 221-MINSA 2024 — menores de 15 años, 30 a 40 mg/kg/día; máximo 1500 mg/día. Dosis habitual 35 mg/kg
+      (NTS 200-2023 y OMS).
+    sourceIds: [minsa-nts221-2024, who-tb-children-2022, digemid-pnume-2023]
+warnings:
+  - En hepatopatía (Child A), diseñar esquemas con solo 2 fármacos potencialmente hepatotóxicos y, de preferencia, evitar la pirazinamida (NTS 221).
+contraindications:
+  - Insuficiencia hepática severa.
+  - Ataque agudo de gota.
+  - Hipersensibilidad a la pirazinamida.
+  - Porfiria.
+interactions:
+  - Con alopurinol, aumento del ácido úrico; usar colchicina (NTS 221).
+  - Con rifampicina, riesgo de daño hepático grave (OMS).
+renal: NTS 221 — en enfermedad renal crónica severa, 25 a 30 mg/kg 3 veces por semana, no diario.
+diagnoses: [tuberculosis, tuberculosis pulmonar]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: tb-sensible
+    presentationId: liq-30
+    weightKg: 12
+    ageDays: 1095
+    expect: { mgPerDose: 420, amount: 14, unit: mL }
+  - ruleId: tb-sensible
+    presentationId: tab-500
+    weightKg: 50
+    ageDays: 5000
+    expect: { mgPerDose: 1500, amount: 3, unit: tableta, capped: true }

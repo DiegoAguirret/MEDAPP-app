@@ -18,6 +18,13 @@ presentations:
     unit: tableta
     step: 1
     brandsPE: []
+  - id: iny-2
+    label: Solución para infusión 2 mg/mL (lista para usar)
+    form: ampolla
+    mgPerUnit: 2
+    unit: mL
+    step: 1
+    brandsPE: []
 rules:
   - id: orofaringea-dia-1
     indication: Candidiasis orofaríngea o esofágica (primer día)
@@ -52,17 +59,34 @@ rules:
       los exámenes sean negativos.
     presentationIds: [susp-50-5]
     sourceIds: [fda-fluconazole, fnme-2008]
+  - id: candidiasis-sistemica-iv
+    indication: Candidiasis sistémica, IV (1 mes o más)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 6
+    amountMax: 12
+    usual: 6
+    intervalHours: 24
+    maxPerDoseMg: 600
+    maxPerDayMg: 600
+    notes: >-
+      FDA — infecciones sistémicas por Candida, 6 a 12 mg/kg/día; la dosis IV es igual a la oral; no pasar
+      de 600 mg/día. Infundir a no más de unos 200 mg por hora.
+    presentationIds: [iny-2]
+    sourceIds: [fda-fluconazole-iv, fnme-2008, digemid-pnume-2023]
 warnings:
   - En neonatos prematuros, durante las 2 primeras semanas de vida, la misma dosis se da cada 72 h (FDA).
   - Ajustar la dosis en insuficiencia renal (FDA).
 contraindications:
   - Hipersensibilidad al fluconazol.
-diagnoses: [candidiasis, muguet, candidiasis oral, hongos, micosis]
+diagnoses: [candidiasis, muguet, candidiasis oral, candidiasis sistémica, hongos, micosis]
+renal: FNME — depuración de creatinina de 21 a 49 mL/min, 50 % de la dosis. FDA — menos de 50 mL/min, 50 % de la dosis.
 review:
   status: verificado
   author: Diego
   reviewers: []
-  reviewedAt: 2026-11-04
+  reviewedAt: 2026-11-06
 testCases:
   - ruleId: orofaringea-dia-1
     presentationId: susp-50-5
@@ -79,3 +103,8 @@ testCases:
     weightKg: 40
     ageDays: 4380
     expect: { mgPerDose: 100, amount: 10, unit: mL }
+  - ruleId: candidiasis-sistemica-iv
+    presentationId: iny-2
+    weightKg: 10
+    ageDays: 365
+    expect: { mgPerDose: 60, amount: 30, unit: mL }

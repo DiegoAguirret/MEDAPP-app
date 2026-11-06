@@ -1,0 +1,99 @@
+id: isoniazida
+name: Isoniazida (H)
+category: antibiotico
+synonyms: [isoniacida, INH, antituberculoso]
+presentations:
+  - id: liq-50-5
+    label: Solución oral 50 mg/5 mL
+    form: solucion
+    mgPerUnit: 10
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-100
+    label: Tableta 100 mg
+    form: tableta
+    mgPerUnit: 100
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: tb-sensible
+    indication: Tuberculosis sensible, fases 1 y 2 (menores de 15 años)
+    route: VO
+    ageMinDays: 29
+    ageMaxDays: 5477
+    weightMinKg: 4
+    basis: mg/kg/day
+    amountMin: 10
+    amountMax: 15
+    usual: 10
+    intervalHours: 24
+    maxPerDoseMg: 300
+    maxPerDayMg: 300
+    durationText: 2HREZ/4HR, diario de lunes a sábado (NTS 221); TB miliar, del SNC u osteoarticular, 2HREZ/10HR; TB no grave en niños, 2HREZ/2HR.
+    notes: >-
+      NTS 221-MINSA 2024 — menores de 15 años, 10 a 15 mg/kg/día; máximo 300 mg/día. Dosis habitual 10 mg/kg
+      (NTS 200-2023 y OMS). Con menos de 4 kg, la OMS indica consultar con un especialista en TB pediátrica.
+    sourceIds: [minsa-nts221-2024, who-tb-children-2022, digemid-pnume-2023]
+  - id: preventiva-menores-10
+    indication: Terapia preventiva 6H (menores de 10 años)
+    route: VO
+    ageMinDays: 29
+    ageMaxDays: 3652
+    weightMinKg: 4
+    basis: mg/kg/day
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    intervalHours: 24
+    maxPerDoseMg: 300
+    maxPerDayMg: 300
+    durationText: 6 meses.
+    notes: NTS 221 — 6H, menores de 10 años 10 mg/kg/día, diario por 6 meses, máximo 300 mg/día. Se usa si no hay esquemas HP o HR en el establecimiento.
+    sourceIds: [minsa-nts221-2024, digemid-pnume-2023]
+  - id: preventiva-10-o-mas
+    indication: Terapia preventiva 6H (10 años o más)
+    route: VO
+    ageMinDays: 3653
+    basis: mg/kg/day
+    amountMin: 5
+    amountMax: 5
+    usual: 5
+    intervalHours: 24
+    maxPerDoseMg: 300
+    maxPerDayMg: 300
+    durationText: 6 meses.
+    notes: NTS 221 — 6H, desde 10 años 5 mg/kg/día, diario por 6 meses, máximo 300 mg/día.
+    sourceIds: [minsa-nts221-2024, digemid-pnume-2023]
+warnings:
+  - Todo esquema con isoniazida lleva piridoxina 50 mg/día (NTS 221); su Anexo 10 da 0.5 a 1 mg/kg/día en menores de 15 años. La OMS la indica en niños con VIH o desnutrición.
+contraindications:
+  - Enfermedad hepática inducida por medicamentos.
+  - Hipersensibilidad a la isoniazida.
+interactions:
+  - Antiácidos con aluminio; dar la isoniazida 2 h antes o 4 h después (NTS 221).
+  - Inhibe el metabolismo de carbamazepina y fenitoína; vigilar niveles (NTS 221).
+  - Baja los niveles de ketoconazol; no hay problema con el fluconazol (NTS 221).
+diagnoses: [tuberculosis, tuberculosis pulmonar, infección tuberculosa latente]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: tb-sensible
+    presentationId: liq-50-5
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 100, amount: 10, unit: mL }
+  - ruleId: tb-sensible
+    presentationId: tab-100
+    weightKg: 40
+    ageDays: 4380
+    expect: { mgPerDose: 300, amount: 3, unit: tableta, capped: true }
+  - ruleId: preventiva-10-o-mas
+    presentationId: tab-100
+    weightKg: 40
+    ageDays: 4380
+    expect: { mgPerDose: 200, amount: 2, unit: tableta }

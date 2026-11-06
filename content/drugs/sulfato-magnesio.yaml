@@ -1,0 +1,58 @@
+id: sulfato-magnesio
+name: Sulfato de magnesio
+category: respiratorio
+synonyms: [magnesium sulfate, MgSO4]
+presentations:
+  - id: amp-200
+    label: Sulfato de magnesio 20 % (200 mg/mL)
+    form: ampolla
+    mgPerUnit: 200
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: asma-grave
+    indication: Crisis de asma grave, dosis única IV (2 años o más)
+    route: IV
+    ageMinDays: 730
+    basis: mg/kg/dose
+    amountMin: 40
+    amountMax: 50
+    usual: 40
+    once: true
+    maxPerDoseMg: 2000
+    maxPerDayMg: 2000
+    notes: >-
+      GINA 2025 — sulfato de magnesio IV isotónico, una dosis de 40 a 50 mg/kg (máximo 2 g) en infusión lenta
+      de 20 a 60 minutos, en niños de 2 años o más con crisis grave, tras la primera hora de tratamiento.
+    presentationIds: [amp-200]
+    sourceIds: [gina-2025, digemid-pnume-2023]
+    countryNotes:
+      - country: INT
+        text: OMS (Pocket Book 2013) — 50 mg/kg (0.1 mL/kg de la solución al 50 %) IV en 20 minutos.
+        sourceIds: [who-pocket-2013]
+warnings:
+  - Para uso IV, la solución debe estar al 20 % o menos (FDA); la de 500 mg/mL (50 %) se diluye antes.
+  - El sulfato de magnesio nebulizado no se recomienda en el asma (GINA).
+  - En el Perú el FNME y el PNUME lo listan como anticonvulsivante y para hipomagnesemia; la indicación en asma viene de GINA y la OMS.
+contraindications:
+  - Hipersensibilidad al sulfato de magnesio.
+renal: FNME — en insuficiencia severa, no más de 20 g en 48 horas y vigilar los niveles séricos.
+diagnoses: [crisis asmática grave, asma]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-06
+testCases:
+  - ruleId: asma-grave
+    presentationId: amp-200
+    weightKg: 15
+    ageDays: 1460
+    expect: { mgPerDose: 600, amount: 3, unit: mL }
+  - ruleId: asma-grave
+    presentationId: amp-200
+    weightKg: 50
+    ageDays: 4380
+    chosenMgPerKg: 50
+    expect: { mgPerDose: 2000, amount: 10, unit: mL, capped: true }

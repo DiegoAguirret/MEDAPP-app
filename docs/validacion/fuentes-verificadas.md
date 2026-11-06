@@ -292,3 +292,33 @@ Cada cifra se confirmó en el documento descargado (texto de openFDA, el FNME 20
 - **Penicilina G sódica:** no se pudo confirmar la reconstitución del frasco de 1 000 000 UI en el texto descargado.
 - **Metilprednisolona:** sin concentración reconstituida verificada.
 - **Morfina e hidrocortisona:** pendientes del lote siguiente.
+
+## Lote 7: tuberculosis, morfina, hidrocortisona y otros — verificado el 06/11/2026
+
+| Fármaco             | Reglas                                                       | Fuente principal       | Cifras                                                          |
+| ------------------- | ------------------------------------------------------------ | ---------------------- | --------------------------------------------------------------- |
+| Isoniazida          | TB sensible <15 a; preventiva 6H                             | NTS 221-MINSA 2024     | 10–15 mg/kg/d (máx. 300); 6H: <10 a 10 mg/kg/d, ≥10 a 5 mg/kg/d |
+| Rifampicina         | TB sensible <15 a                                            | NTS 221                | 10–20 mg/kg/d (habitual 15), máx. 600                           |
+| Pirazinamida        | TB sensible, fase 1                                          | NTS 221                | 30–40 mg/kg/d (habitual 35), máx. 1500                          |
+| Etambutol           | TB sensible, fase 1                                          | NTS 221                | 15–25 mg/kg/d (habitual 20), máx. 1200                          |
+| Morfina oral        | Dolor, 2 años o más                                          | FDA (solución 2 mg/mL) | 0.15–0.3 mg/kg c/4 h, máx. 20 mg de inicio                      |
+| Hidrocortisona      | Insuficiencia suprarrenal; asma grave sin VO; alergia severa | FNME; OMS Pocket Book  | 0.2 mg/kg c/8 h; 4 mg/kg c/4 h; 0.5–4 mg/kg IM c/12–24 h        |
+| Cloranfenicol       | VO e IV, 1 mes o más                                         | FNME (OMS, FDA)        | 50–100 mg/kg/d c/6 h; máx. 1 g por dosis y 4 g/d                |
+| Vitamina A          | Sarampión; suplementación preventiva                         | FNME; MINSA UFANS 2025 | 100 000 UI (6–11 m) y 200 000 UI (1 año o más)                  |
+| Sulfato de magnesio | Asma grave, 2 años o más                                     | GINA 2025              | 40–50 mg/kg IV, máx. 2 g, en 20–60 min                          |
+| Praziquantel        | Teniasis; neurocisticercosis                                 | FNME = OMS             | 5–10 mg/kg dosis única; 16.7–33 mg/kg c/8 h                     |
+| Fluconazol IV       | Candidiasis sistémica (nueva regla)                          | FDA                    | 6–12 mg/kg/d; no más de 600 mg/día                              |
+
+**Discrepancias:**
+
+- **Etambutol:** el FNME 2008 lo contraindica en menores de 7 años; la NTS 221, la NTS 200 y la OMS lo dosifican desde lactantes. Se sigue la NTS 221 y se avisa en la ficha.
+- **Piridoxina:** la NTS 221 indica 50 mg/día a todo el que recibe isoniazida, y su Anexo 10 da 0.5–1 mg/kg/día.
+- **Isoniazida + rifampicina (3HR):** no se usa la Tabla 3 de la NTS 221, que contradice su Tabla 5, la NTS 200 y la OMS.
+
+**No incluidos:**
+
+- **Tinidazol:** no está en el PNUME.
+- **Ácido fólico:** solo hay tableta de 0.5 mg.
+- **Budesonida:** dosis por niveles de GINA, no por peso.
+- **Combinaciones dispersables de TB:** no están en el PNUME 2023.
+- **Morfina IV:** ninguna fuente da la dilución del vial.
