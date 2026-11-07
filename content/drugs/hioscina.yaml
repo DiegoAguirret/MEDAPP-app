@@ -1,0 +1,44 @@
+id: hioscina
+name: Hioscina butilbromuro (escopolamina)
+category: gastrointestinal
+synonyms: [escopolamina butilbromuro, butilescopolamina, Buscapina, antiespasmódico, cólico]
+presentations:
+  - id: tab-10
+    label: Tableta 10 mg
+    form: tableta
+    mgPerUnit: 10
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: espasmo-6-12a
+    indication: Espasmo gastrointestinal o genitourinario (6 a 12 años)
+    route: VO
+    ageMinDays: 2190
+    ageMaxDays: 4744
+    basis: fixed_by_age
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    intervalHours: 8
+    maxPerDoseMg: 10
+    maxPerDayMg: 30
+    notes: FNME — niños de 6 a 12 años, 10 mg 3 veces al día.
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+warnings:
+  - En niños puede causar fiebre y excitación (FNME).
+  - La dosis IM o IV del FNME para el espasmo agudo (20 mg) no se separa claramente de la del adulto; aquí no se calcula.
+contraindications:
+  - Glaucoma de ángulo cerrado, miastenia gravis, íleo paralítico o estenosis pilórica (FNME).
+diagnoses: [cólico abdominal, espasmo gastrointestinal, dolor abdominal tipo cólico]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: espasmo-6-12a
+    presentationId: tab-10
+    weightKg: 25
+    ageDays: 2920
+    expect: { mgPerDose: 10, amount: 1, unit: tableta }

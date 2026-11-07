@@ -545,3 +545,9 @@ La app ahora calcula infusiones: la dosis en mcg/kg/min o mg/kg/h da la velocida
 - **Itraconazol e inmunoglobulina humana:** openFDA no devolvió una dosis pediátrica legible.
 - **Codeína:** la FDA la contraindica en menores de 12 años.
 - **Bicarbonato de sodio, cloruro de potasio y cloruro de sodio al 20 %:** se dosifican en mEq, unidad que la app aún no maneja.
+
+## Lote 18: hioscina butilbromuro — verificado el 07/11/2026
+
+- **Hioscina butilbromuro** (PNUME 10 mg): FNME, de 6 a 12 años, 10 mg 3 veces al día. La dosis IM o IV del FNME (20 mg) no se separa claramente de la del adulto y no se calcula.
+
+**Revisados y no incluidos:** piridoxina y tiamina (el FNME no da dosis pediátricas por peso, solo rangos generales); calcitriol y levofloxacino (sin monografía en el FNME).

@@ -27,7 +27,7 @@ Peru-first sources: DIGEMID's FNME and MINSA norms, contrasted with FDA, AEMPS, 
 
 ## Capabilities and Constraints
 
-- 139 verified drug cards across 14 categories (emergencies, neonatal rules, anticonvulsants, hospital antibiotics, cardiovascular), plus neonatal scores (Apgar, Silverman-Andersen, Capurro).
+- 140 verified drug cards across 14 categories (emergencies, neonatal rules, anticonvulsants, hospital antibiotics, cardiovascular), plus neonatal scores (Apgar, Silverman-Andersen, Capurro).
 - Continuous infusions: doses in mcg/kg/min or mg/kg/h give the pump rate in mL/h for the chosen or a custom mixture (norepinephrine, dobutamine, epinephrine, midazolam, alprostadil, insulin).
 - Tools: manual calculator, fluids (Holliday-Segar), dehydration plans, body surface area.
 - Favorites, light and dark themes, choice of decimal separator.

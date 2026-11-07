@@ -5,10 +5,10 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **10227** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **4715**. Fuera del rango de edad de la regla: 5512 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 4715/4715 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 4709/4715.
+- Casos simulados: **10248** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **4719**. Fuera del rango de edad de la regla: 5529 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 4719/4719 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 4713/4719.
 - Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.59 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
@@ -2771,6 +2771,10 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | hierro | anemia-5-11-anos | Sulfato ferroso tableta 60 mg de hierro elemental | 6 años (20.5 kg) | 61.5 | 61.5 | 1.025 | 1 tableta | ✅  |
 | hierro | anemia-5-11-anos | Sulfato ferroso tableta 60 mg de hierro elemental | 8 años (25.6 kg) | 76.8 | 76.8 | 1.28 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | hierro | anemia-5-11-anos | Sulfato ferroso tableta 60 mg de hierro elemental | 10 años (32 kg) | 96 | 96 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| hioscina | espasmo-6-12a | Tableta 10 mg | 6 años (20.5 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
+| hioscina | espasmo-6-12a | Tableta 10 mg | 8 años (25.6 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
+| hioscina | espasmo-6-12a | Tableta 10 mg | 10 años (32 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
+| hioscina | espasmo-6-12a | Tableta 10 mg | 12 años (40 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
 | ibuprofeno | fiebre-dolor-vo | Suspensión 100 mg/5 mL | 6 meses (7.6 kg) | 76 | 76 | 3.8 | 3.8 mL | ✅  |
 | ibuprofeno | fiebre-dolor-vo | Suspensión 100 mg/5 mL | 9 meses (8.6 kg) | 86 | 86 | 4.3 | 4.3 mL | ✅  |
 | ibuprofeno | fiebre-dolor-vo | Suspensión 100 mg/5 mL | 1 año (9.6 kg) | 96 | 96 | 4.8 | 4.8 mL | ✅  |
