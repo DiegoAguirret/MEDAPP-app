@@ -355,3 +355,15 @@ Cada cifra se confirmó en el documento descargado (texto de openFDA, el FNME 20
 - **OMS MFC, gluconato de calcio «máximo 200 mg (20 mL)»:** 20 mL son 2 g.
 
 **No incluido:** ketamina IV para sedación con 0.2 mg/kg, porque con el vial de 50 mg/mL el volumen no se puede medir.
+
+## Lote 9B: gentamicina pediátrica y descartes — verificado el 07/11/2026
+
+- **Gentamicina, niños:**
+  - Menores de 5 años: 2.5 mg/kg/dosis c/8 h (FNME).
+  - Mayores de 5 años: 1.5–2.5 mg/kg/dosis c/8 h (FNME); 2–2.5 mg/kg c/8 h (FDA).
+  - Presentaciones del PNUME: 10 y 40 mg/mL. No se incluye la pauta diaria única de la OMS porque no se confirmó en el texto descargado.
+
+**Descartados:**
+
+- **Difenhidramina, ambroxol y domperidona:** no están en el PNUME ni en el FNME, y no se pudo confirmar qué presentaciones hay en el Perú. La domperidona no se debe usar en menores de 12 años ni de 35 kg (AEMPS).
+- **Clonazepam:** la solución de 2.5 mg/mL se da en gotas y falta el número de gotas por mL del producto peruano; sin ese dato la dosis no se puede medir. **Errata del FNME:** pone como tope 0.5 mg/kg/d, diez veces lo que dicen la FDA y la AEMPS (0.05 mg/kg/d al inicio).

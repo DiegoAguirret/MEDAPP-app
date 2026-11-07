@@ -5,10 +5,10 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **7140** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **3274**. Fuera del rango de edad de la regla: 3866 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 3274/3274 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 3274/3274.
+- Casos simulados: **7224** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **3304**. Fuera del rango de edad de la regla: 3920 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 3304/3304 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 3304/3304.
 - Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.58 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
@@ -1833,6 +1833,36 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | gentamicina | semana-1-bajo-peso | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 3 días, bajo peso (2 kg) (2 kg) | 6 | 6 | 0.6 | 0.6 mL | ✅  |
 | gentamicina | semana-1-peso-normal | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 5 días (3.2 kg) (3.2 kg) | 16 | 16 | 1.6 | 1.6 mL | ✅  |
 | gentamicina | semanas-2-4 | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 15 días (3.6 kg) (3.6 kg) | 27 | 27 | 2.7 | 2.7 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 1 mes (4.2 kg) | 10.5 | 10.5 | 1.05 | 1.05 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 2 meses (5.1 kg) | 12.75 | 12.75 | 1.275 | 1.3 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 4 meses (6.4 kg) | 16 | 16 | 1.6 | 1.6 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 6 meses (7.6 kg) | 19 | 19 | 1.9 | 1.9 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 9 meses (8.6 kg) | 21.5 | 21.5 | 2.15 | 2.15 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 1 año (9.6 kg) | 24 | 24 | 2.4 | 2.4 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 18 meses (10.9 kg) | 27.25 | 27.25 | 2.725 | 2.75 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 2 años (12.2 kg) | 30.5 | 30.5 | 3.05 | 3.05 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 3 años (14.3 kg) | 35.75 | 35.75 | 3.575 | 3.6 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 4 años (16.3 kg) | 40.75 | 40.75 | 4.075 | 4.1 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 5 años (18.3 kg) | 45.75 | 45.75 | 4.575 | 4.6 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 40 mg/mL (ampolla) | 1 mes (4.2 kg) | 10.5 | 10.5 | 0.263 | 0.25 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 40 mg/mL (ampolla) | 2 meses (5.1 kg) | 12.75 | 12.75 | 0.319 | 0.32 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| gentamicina | ninos-menores-5-anos | Gentamicina 40 mg/mL (ampolla) | 4 meses (6.4 kg) | 16 | 16 | 0.4 | 0.4 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 40 mg/mL (ampolla) | 6 meses (7.6 kg) | 19 | 19 | 0.475 | 0.47 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| gentamicina | ninos-menores-5-anos | Gentamicina 40 mg/mL (ampolla) | 9 meses (8.6 kg) | 21.5 | 21.5 | 0.537 | 0.55 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 40 mg/mL (ampolla) | 1 año (9.6 kg) | 24 | 24 | 0.6 | 0.6 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 40 mg/mL (ampolla) | 18 meses (10.9 kg) | 27.25 | 27.25 | 0.681 | 0.7 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 40 mg/mL (ampolla) | 2 años (12.2 kg) | 30.5 | 30.5 | 0.762 | 0.75 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 40 mg/mL (ampolla) | 3 años (14.3 kg) | 35.75 | 35.75 | 0.894 | 0.9 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 40 mg/mL (ampolla) | 4 años (16.3 kg) | 40.75 | 40.75 | 1.019 | 1 mL | ✅  |
+| gentamicina | ninos-menores-5-anos | Gentamicina 40 mg/mL (ampolla) | 5 años (18.3 kg) | 45.75 | 45.75 | 1.144 | 1.15 mL | ✅  |
+| gentamicina | ninos-mayores-5-anos | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 6 años (20.5 kg) | 41 | 41 | 4.1 | 4.1 mL | ✅  |
+| gentamicina | ninos-mayores-5-anos | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 8 años (25.6 kg) | 51.2 | 51.2 | 5.12 | 5.1 mL | ✅  |
+| gentamicina | ninos-mayores-5-anos | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 10 años (32 kg) | 64 | 64 | 6.4 | 6.4 mL | ✅  |
+| gentamicina | ninos-mayores-5-anos | Gentamicina 10 mg/mL (vial 20 mg/2 mL, o vial 80 mg/2 mL diluido a 8 mL con agua estéril) | 12 años (40 kg) | 80 | 80 | 8 | 8 mL | ✅  |
+| gentamicina | ninos-mayores-5-anos | Gentamicina 40 mg/mL (ampolla) | 6 años (20.5 kg) | 41 | 41 | 1.025 | 1.05 mL | ✅  |
+| gentamicina | ninos-mayores-5-anos | Gentamicina 40 mg/mL (ampolla) | 8 años (25.6 kg) | 51.2 | 51.2 | 1.28 | 1.3 mL | ✅  |
+| gentamicina | ninos-mayores-5-anos | Gentamicina 40 mg/mL (ampolla) | 10 años (32 kg) | 64 | 64 | 1.6 | 1.6 mL | ✅  |
+| gentamicina | ninos-mayores-5-anos | Gentamicina 40 mg/mL (ampolla) | 12 años (40 kg) | 80 | 80 | 2 | 2 mL | ✅  |
 | gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 1 mes (4.2 kg) | 121.8 | 121.8 | 1.218 | 1.2 mL | ✅  |
 | gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 2 meses (5.1 kg) | 147.9 | 147.9 | 1.479 | 1.5 mL | ✅  |
 | gluconato-calcio | ninos-bolo | Gluconato de calcio 10 % (100 mg/mL) | 4 meses (6.4 kg) | 185.6 | 185.6 | 1.856 | 1.9 mL | ✅  |

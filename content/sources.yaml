@@ -563,3 +563,9 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=1abda8b8-48a8-4995-af86-39220d1aa240
   kind: regulador
   country: US
+- id: fda-gentamicin-ped
+  title: Gentamicina pediátrica 10 mg/mL inyectable — prescribing information (FDA, set 63413469-c676-48a3-a945-7d2489b535ef)
+  publisher: U.S. FDA
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=63413469-c676-48a3-a945-7d2489b535ef
+  kind: regulador
+  country: US
