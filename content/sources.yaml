@@ -722,3 +722,17 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=01841345-bed3-458f-8e99-911fbd286512
   kind: regulador
   country: US
+- id: fda-nithiodote
+  title: Nithiodote (nitrito de sodio y tiosulfato de sodio) — prescribing information (FDA, set ff4941b3-9901-4aab-adcf-c5327bede34e)
+  publisher: U.S. FDA / Hope Pharmaceuticals
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=ff4941b3-9901-4aab-adcf-c5327bede34e
+  kind: regulador
+  country: US
+- id: fda-desferal
+  title: Desferal (deferoxamina) 500 mg — prescribing information (FDA, set a7174843-5965-49fc-b842-f7eff7b48bbc)
+  publisher: U.S. FDA / Novartis
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=a7174843-5965-49fc-b842-f7eff7b48bbc
+  kind: regulador
+  country: US

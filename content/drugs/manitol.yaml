@@ -1,0 +1,50 @@
+id: manitol
+name: Manitol 20 %
+category: otro
+synonyms: [mannitol, edema cerebral, hipertensión intracraneal, diurético osmótico]
+presentations:
+  - id: sol-20
+    label: Manitol al 20 % = 200 mg/mL
+    form: ampolla
+    mgPerUnit: 200
+    unit: mL
+    step: 1
+    brandsPE: []
+rules:
+  - id: edema-cerebral
+    indication: Edema cerebral o presión intraocular elevada (1 mes a 12 años)
+    route: IV
+    ageMinDays: 29
+    ageMaxDays: 4744
+    basis: mg/kg/dose
+    amountMin: 250
+    amountMax: 1500
+    usual: 250
+    once: true
+    maxPerDoseMg: 75000
+    maxPerDayMg: 75000
+    notes: >-
+      OMS — de 1 mes a 12 años, 0.25 a 1.5 g/kg (250 a 1500 mg/kg) en infusión de 30 a 60 minutos; puede repetirse 1
+      o 2 veces a las 4 a 8 horas. FNME — en el edema cerebral, 0.25 g/kg IV. Tope técnico (1.5 g/kg con 50 kg).
+    presentationIds: [sol-20]
+    sourceIds: [who-mfc-2010, fnme-2008, digemid-pnume-2023]
+warnings:
+  - Las dosis están en mg (1 g = 1000 mg). Vigilar líquidos, electrolitos y función renal (OMS).
+  - En insuficiencia renal, evitarlo salvo que una dosis de prueba (200 mg/kg) produzca diuresis (OMS).
+contraindications:
+  - Edema pulmonar o insuficiencia cardíaca congestiva grave.
+  - Sangrado intracraneal (salvo durante la craneotomía).
+  - Deshidratación grave.
+  - Insuficiencia renal sin respuesta a la dosis de prueba (OMS).
+diagnoses: [edema cerebral, hipertensión intracraneal, presión intraocular elevada]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: edema-cerebral
+    presentationId: sol-20
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 5000, amount: 25, unit: mL }

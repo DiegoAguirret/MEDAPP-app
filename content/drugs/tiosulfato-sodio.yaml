@@ -1,0 +1,47 @@
+id: tiosulfato-sodio
+name: Tiosulfato de sodio
+category: urgencia
+synonyms: [sodium thiosulfate, cianuro, antídoto, intoxicación por cianuro]
+presentations:
+  - id: amp-250
+    label: Tiosulfato de sodio 250 mg/mL (al 25 %)
+    form: ampolla
+    mgPerUnit: 250
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: cianuro
+    indication: Intoxicación por cianuro (después del nitrito de sodio)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 250
+    amountMax: 412.5
+    usual: 412.5
+    once: true
+    maxPerDoseMg: 12500
+    maxPerDayMg: 12500
+    notes: >-
+      FNME — niños, 412.5 mg/kg IV a 0.625 a 1.25 g/min; dosis máxima 12.5 g (50 mL). FDA (Nithiodote) — niños, 1
+      mL/kg (250 mg/kg), sin pasar de 50 mL, justo después del nitrito de sodio. Si reaparecen los signos, repetir la
+      mitad de la dosis.
+    presentationIds: [amp-250]
+    sourceIds: [fnme-2008, fda-nithiodote, digemid-pnume-2023]
+warnings:
+  - El FNME (412.5 mg/kg) y la FDA (250 mg/kg) difieren; ambos topan en 12.5 g (50 mL).
+contraindications:
+  - Hipersensibilidad al tiosulfato de sodio (FNME).
+diagnoses: [intoxicación por cianuro, intoxicación]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: cianuro
+    presentationId: amp-250
+    weightKg: 20
+    ageDays: 2190
+    chosenMgPerKg: 250
+    expect: { mgPerDose: 5000, amount: 20, unit: mL }

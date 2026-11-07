@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **9891** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **4520**. Fuera del rango de edad de la regla: 5371 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 4520/4520 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 4514/4520.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.59 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **10038** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **4643**. Fuera del rango de edad de la regla: 5395 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 4643/4643 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 4637/4643.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.60 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -880,6 +880,24 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | azitromicina | esquema-5-dias-dias-2-5 | Tableta 500 mg | 14 años (50 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | azitromicina | esquema-5-dias-dias-2-5 | Tableta 500 mg | 16 años (58 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | azitromicina | esquema-5-dias-dias-2-5 | Tableta 500 mg | 17 años, obeso (95 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 1 mes (4.2 kg) | 4.2 | 4.2 | 0.42 | 0.42 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 2 meses (5.1 kg) | 5.1 | 5.1 | 0.51 | 0.51 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 4 meses (6.4 kg) | 6.4 | 6.4 | 0.64 | 0.64 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 6 meses (7.6 kg) | 7.6 | 7.6 | 0.76 | 0.76 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 9 meses (8.6 kg) | 8.6 | 8.6 | 0.86 | 0.86 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 1 año (9.6 kg) | 9.6 | 9.6 | 0.96 | 0.96 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 18 meses (10.9 kg) | 10.9 | 10.9 | 1.09 | 1.09 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 2 años (12.2 kg) | 12.2 | 12.2 | 1.22 | 1.22 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 3 años (14.3 kg) | 14.3 | 14.3 | 1.43 | 1.43 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 4 años (16.3 kg) | 16.3 | 16.3 | 1.63 | 1.63 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 5 años (18.3 kg) | 18.3 | 18.3 | 1.83 | 1.83 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 6 años (20.5 kg) | 20.5 | 20.5 | 2.05 | 2.05 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 8 años (25.6 kg) | 25.6 | 25.6 | 2.56 | 2.56 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 10 años (32 kg) | 32 | 32 | 3.2 | 3.2 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 12 años (40 kg) | 40 | 40 | 4 | 4 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 14 años (50 kg) | 50 | 50 | 5 | 5 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 16 años (58 kg) | 58 | 58 | 5.8 | 5.8 mL | ✅  |
+| azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 17 años, obeso (95 kg) | 95 | 95 | 9.5 | 9.5 mL | ✅  |
 | benznidazol | chagas | Tableta 100 mg | 1 mes (4.2 kg) | 21 | 21 | 0.21 | 0.21 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | benznidazol | chagas | Tableta 100 mg | 2 meses (5.1 kg) | 25.5 | 25.5 | 0.255 | 0.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | benznidazol | chagas | Tableta 100 mg | 4 meses (6.4 kg) | 32 | 32 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -1530,6 +1548,24 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | cotrimoxazol | usual | Tableta 800/160 mg (dosis en trimetoprima) | 6 años (20.5 kg) | 82 | 82 | 0.512 | 0.5 tableta | ✅  |
 | cotrimoxazol | usual | Tableta 800/160 mg (dosis en trimetoprima) | 8 años (25.6 kg) | 102.4 | 102.4 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cotrimoxazol | usual | Tableta 800/160 mg (dosis en trimetoprima) | 10 años (32 kg) | 128 | 128 | 0.8 | 0.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 1 mes (4.2 kg) | 210 | 210 | 0.986 | 1 mL | ✅  |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 2 meses (5.1 kg) | 255 | 255 | 1.197 | 1.2 mL | ✅  |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 4 meses (6.4 kg) | 320 | 320 | 1.502 | 1.5 mL | ✅  |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 6 meses (7.6 kg) | 380 | 380 | 1.784 | 1.8 mL | ✅  |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 9 meses (8.6 kg) | 430 | 430 | 2.019 | 2 mL | ✅  |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 1 año (9.6 kg) | 480 | 480 | 2.254 | 2.3 mL | ✅  |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 18 meses (10.9 kg) | 545 | 545 | 2.559 | 2.6 mL | ✅  |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 2 años (12.2 kg) | 610 | 610 | 2.864 | 2.9 mL | ✅  |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 3 años (14.3 kg) | 715 | 715 | 3.357 | 3.4 mL | ✅  |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 4 años (16.3 kg) | 815 | 815 | 3.826 | 3.8 mL | ✅  |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 5 años (18.3 kg) | 915 | 915 | 4.296 | 4.3 mL | ✅  |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 6 años (20.5 kg) | 1025 | 1025 | 4.812 | 4.8 mL | ✅  |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 8 años (25.6 kg) | 1280 | 1280 | 6.009 | 6 mL | ✅  |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 10 años (32 kg) | 1500 | 1500 | 7.042 | 7 mL | ✅ tope aplicado |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 12 años (40 kg) | 1500 | 1500 | 7.042 | 7 mL | ✅ tope aplicado |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 14 años (50 kg) | 1500 | 1500 | 7.042 | 7 mL | ✅ tope aplicado |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 16 años (58 kg) | 1500 | 1500 | 7.042 | 7 mL | ✅ tope aplicado |
+| deferoxamina | hierro-im | Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA) | 17 años, obeso (95 kg) | 1500 | 1500 | 7.042 | 7 mL | ✅ tope aplicado |
 | desloratadina | 6-11-meses | Solución oral 2.5 mg/5 mL (0.5 mg/mL) | 6 meses (7.6 kg) | 1 | 1 | 2 | 2 mL | ✅  |
 | desloratadina | 6-11-meses | Solución oral 2.5 mg/5 mL (0.5 mg/mL) | 9 meses (8.6 kg) | 1 | 1 | 2 | 2 mL | ✅  |
 | desloratadina | 1-5-anos | Solución oral 2.5 mg/5 mL (0.5 mg/mL) | 1 año (9.6 kg) | 1.25 | 1.25 | 2.5 | 2.5 mL | ✅  |
@@ -1800,6 +1836,24 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | dimenhidrinato | mareo-6-11-anos | Tableta 50 mg | 6 años (20.5 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
 | dimenhidrinato | mareo-6-11-anos | Tableta 50 mg | 8 años (25.6 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
 | dimenhidrinato | mareo-6-11-anos | Tableta 50 mg | 10 años (32 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 1 mes (4.2 kg) | 12.6 | 12.6 | 0.252 | 0.25 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 2 meses (5.1 kg) | 15.3 | 15.3 | 0.306 | 0.3 mL | ✅  |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 4 meses (6.4 kg) | 19.2 | 19.2 | 0.384 | 0.4 mL | ✅  |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 6 meses (7.6 kg) | 22.8 | 22.8 | 0.456 | 0.46 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 9 meses (8.6 kg) | 25.8 | 25.8 | 0.516 | 0.5 mL | ✅  |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 1 año (9.6 kg) | 28.8 | 28.8 | 0.576 | 0.6 mL | ✅  |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 18 meses (10.9 kg) | 32.7 | 32.7 | 0.654 | 0.65 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 2 años (12.2 kg) | 36.6 | 36.6 | 0.732 | 0.7 mL | ✅  |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 3 años (14.3 kg) | 42.9 | 42.9 | 0.858 | 0.9 mL | ✅  |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 4 años (16.3 kg) | 48.9 | 48.9 | 0.978 | 1 mL | ✅  |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 5 años (18.3 kg) | 54.9 | 54.9 | 1.098 | 1.1 mL | ✅  |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 6 años (20.5 kg) | 61.5 | 61.5 | 1.23 | 1.2 mL | ✅  |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 8 años (25.6 kg) | 76.8 | 76.8 | 1.536 | 1.5 mL | ✅  |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 10 años (32 kg) | 96 | 96 | 1.92 | 1.9 mL | ✅  |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 12 años (40 kg) | 120 | 120 | 2.4 | 2.4 mL | ✅  |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 14 años (50 kg) | 150 | 150 | 3 | 3 mL | ✅  |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 16 años (58 kg) | 174 | 174 | 3.48 | 3.5 mL | ✅  |
+| dimercaprol | arsenico-mercurio-grave | Dimercaprol 50 mg/mL | 17 años, obeso (95 kg) | 250 | 250 | 5 | 5 mL | ✅ tope aplicado |
 | dobutamina | neonatos-infusion | Dobutamina 1000 mcg/mL (250 mg en 250 mL, FDA) | 3 días, bajo peso (2 kg) (2 kg) | 600 | 600 | 0.6 | 0.6 mL | ✅  |
 | dobutamina | neonatos-infusion | Dobutamina 1000 mcg/mL (250 mg en 250 mL, FDA) | 5 días (3.2 kg) (3.2 kg) | 960 | 960 | 0.96 | 1 mL | ✅  |
 | dobutamina | neonatos-infusion | Dobutamina 1000 mcg/mL (250 mg en 250 mL, FDA) | 15 días (3.6 kg) (3.6 kg) | 1080 | 1080 | 1.08 | 1.1 mL | ✅  |
@@ -1812,6 +1866,24 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | doxiciclina | mantenimiento | Tableta 100 mg | 8 años (25.6 kg) | 56.32 | 56.32 | 0.563 | 0.56 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | doxiciclina | mantenimiento | Tableta 100 mg | 10 años (32 kg) | 70.4 | 70.4 | 0.704 | 0.7 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | doxiciclina | mantenimiento | Tableta 100 mg | 12 años (40 kg) | 88 | 88 | 0.88 | 0.88 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 1 mes (4.2 kg) | 28 | 28 | 0.14 | 0.14 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 2 meses (5.1 kg) | 34 | 34 | 0.17 | 0.17 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 4 meses (6.4 kg) | 42.67 | 42.67 | 0.213 | 0.21 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 6 meses (7.6 kg) | 50.67 | 50.67 | 0.253 | 0.25 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 9 meses (8.6 kg) | 57.33 | 57.33 | 0.287 | 0.3 mL | ✅  |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 1 año (9.6 kg) | 64 | 64 | 0.32 | 0.32 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 18 meses (10.9 kg) | 72.67 | 72.67 | 0.363 | 0.36 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 2 años (12.2 kg) | 81.33 | 81.33 | 0.407 | 0.4 mL | ✅  |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 3 años (14.3 kg) | 95.33 | 95.33 | 0.477 | 0.5 mL | ✅  |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 4 años (16.3 kg) | 108.67 | 108.67 | 0.543 | 0.54 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 5 años (18.3 kg) | 122 | 122 | 0.61 | 0.6 mL | ✅  |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 6 años (20.5 kg) | 136.67 | 136.67 | 0.683 | 0.7 mL | ✅  |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 8 años (25.6 kg) | 170.67 | 170.67 | 0.853 | 0.85 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 10 años (32 kg) | 213.33 | 213.33 | 1.067 | 1.1 mL | ✅  |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 12 años (40 kg) | 266.67 | 266.67 | 1.333 | 1.3 mL | ✅  |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 14 años (50 kg) | 333.33 | 333.33 | 1.667 | 1.7 mL | ✅  |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 16 años (58 kg) | 386.67 | 386.67 | 1.933 | 1.9 mL | ✅  |
+| edetato-calcico | plomo-im | Edetato cálcico disódico 200 mg/mL | 17 años, obeso (95 kg) | 500 | 500 | 2.5 | 2.5 mL | ✅ tope aplicado |
 | ergocalciferol | suplemento-prematuros | Solución oral 10 000 UI/mL | 3 días, bajo peso (2 kg) (2 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
 | ergocalciferol | suplemento-prematuros | Solución oral 10 000 UI/mL | 5 días (3.2 kg) (3.2 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
 | ergocalciferol | suplemento-prematuros | Solución oral 10 000 UI/mL | 15 días (3.6 kg) (3.6 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
@@ -3035,6 +3107,21 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 14 años (50 kg) | 4 | 4 | 1 | 1 mL | ✅ tope aplicado |
 | lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 16 años (58 kg) | 4 | 4 | 1 | 1 mL | ✅ tope aplicado |
 | lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 17 años, obeso (95 kg) | 4 | 4 | 1 | 1 mL | ✅ tope aplicado |
+| manitol | edema-cerebral | Manitol al 20 % = 200 mg/mL | 1 mes (4.2 kg) | 1050 | 1050 | 5.25 | 5 mL | ✅  |
+| manitol | edema-cerebral | Manitol al 20 % = 200 mg/mL | 2 meses (5.1 kg) | 1275 | 1275 | 6.375 | 6.38 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| manitol | edema-cerebral | Manitol al 20 % = 200 mg/mL | 4 meses (6.4 kg) | 1600 | 1600 | 8 | 8 mL | ✅  |
+| manitol | edema-cerebral | Manitol al 20 % = 200 mg/mL | 6 meses (7.6 kg) | 1900 | 1900 | 9.5 | 9.5 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| manitol | edema-cerebral | Manitol al 20 % = 200 mg/mL | 9 meses (8.6 kg) | 2150 | 2150 | 10.75 | 11 mL | ✅  |
+| manitol | edema-cerebral | Manitol al 20 % = 200 mg/mL | 1 año (9.6 kg) | 2400 | 2400 | 12 | 12 mL | ✅  |
+| manitol | edema-cerebral | Manitol al 20 % = 200 mg/mL | 18 meses (10.9 kg) | 2725 | 2725 | 13.625 | 14 mL | ✅  |
+| manitol | edema-cerebral | Manitol al 20 % = 200 mg/mL | 2 años (12.2 kg) | 3050 | 3050 | 15.25 | 15 mL | ✅  |
+| manitol | edema-cerebral | Manitol al 20 % = 200 mg/mL | 3 años (14.3 kg) | 3575 | 3575 | 17.875 | 18 mL | ✅  |
+| manitol | edema-cerebral | Manitol al 20 % = 200 mg/mL | 4 años (16.3 kg) | 4075 | 4075 | 20.375 | 20 mL | ✅  |
+| manitol | edema-cerebral | Manitol al 20 % = 200 mg/mL | 5 años (18.3 kg) | 4575 | 4575 | 22.875 | 23 mL | ✅  |
+| manitol | edema-cerebral | Manitol al 20 % = 200 mg/mL | 6 años (20.5 kg) | 5125 | 5125 | 25.625 | 26 mL | ✅  |
+| manitol | edema-cerebral | Manitol al 20 % = 200 mg/mL | 8 años (25.6 kg) | 6400 | 6400 | 32 | 32 mL | ✅  |
+| manitol | edema-cerebral | Manitol al 20 % = 200 mg/mL | 10 años (32 kg) | 8000 | 8000 | 40 | 40 mL | ✅  |
+| manitol | edema-cerebral | Manitol al 20 % = 200 mg/mL | 12 años (40 kg) | 10000 | 10000 | 50 | 50 mL | ✅  |
 | mebendazol | tres-dias | Suspensión 100 mg/5 mL | 2 años (12.2 kg) | 100 | 100 | 5 | 5 mL | ✅  |
 | mebendazol | tres-dias | Suspensión 100 mg/5 mL | 3 años (14.3 kg) | 100 | 100 | 5 | 5 mL | ✅  |
 | mebendazol | tres-dias | Suspensión 100 mg/5 mL | 4 años (16.3 kg) | 100 | 100 | 5 | 5 mL | ✅  |
@@ -3474,6 +3561,24 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | nitazoxanida | diarrea-12-anos-o-mas | Tableta 500 mg | 14 años (50 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
 | nitazoxanida | diarrea-12-anos-o-mas | Tableta 500 mg | 16 años (58 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
 | nitazoxanida | diarrea-12-anos-o-mas | Tableta 500 mg | 17 años, obeso (95 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 1 mes (4.2 kg) | 25.2 | 25.2 | 0.84 | 0.8 mL | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 2 meses (5.1 kg) | 30.6 | 30.6 | 1.02 | 1 mL | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 4 meses (6.4 kg) | 38.4 | 38.4 | 1.28 | 1.3 mL | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 6 meses (7.6 kg) | 45.6 | 45.6 | 1.52 | 1.5 mL | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 9 meses (8.6 kg) | 51.6 | 51.6 | 1.72 | 1.7 mL | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 1 año (9.6 kg) | 57.6 | 57.6 | 1.92 | 1.9 mL | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 18 meses (10.9 kg) | 65.4 | 65.4 | 2.18 | 2.2 mL | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 2 años (12.2 kg) | 73.2 | 73.2 | 2.44 | 2.4 mL | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 3 años (14.3 kg) | 85.8 | 85.8 | 2.86 | 2.9 mL | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 4 años (16.3 kg) | 97.8 | 97.8 | 3.26 | 3.3 mL | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 5 años (18.3 kg) | 109.8 | 109.8 | 3.66 | 3.7 mL | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 6 años (20.5 kg) | 123 | 123 | 4.1 | 4.1 mL | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 8 años (25.6 kg) | 153.6 | 153.6 | 5.12 | 5.1 mL | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 10 años (32 kg) | 192 | 192 | 6.4 | 6.4 mL | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 12 años (40 kg) | 240 | 240 | 8 | 8 mL | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 14 años (50 kg) | 300 | 300 | 10 | 10 mL | ✅  |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 16 años (58 kg) | 300 | 300 | 10 | 10 mL | ✅ tope aplicado |
+| nitrito-sodio | cianuro | Nitrito de sodio 30 mg/mL (al 3 %) | 17 años, obeso (95 kg) | 300 | 300 | 10 | 10 mL | ✅ tope aplicado |
 | nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 1 mes (4.2 kg) | 5.25 | 5.25 | 1.05 | 1.1 mL | ✅  |
 | nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 2 meses (5.1 kg) | 6.38 | 6.38 | 1.275 | 1.3 mL | ✅  |
 | nitrofurantoina | itu-no-complicada | Suspensión 25 mg/5 mL | 4 meses (6.4 kg) | 8 | 8 | 1.6 | 1.6 mL | ✅  |
@@ -4411,6 +4516,24 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | tiamazol | mantenimiento | Tableta 20 mg | 14 años (50 kg) | 3.33 | 3.33 | 0.167 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | tiamazol | mantenimiento | Tableta 20 mg | 16 años (58 kg) | 3.33 | 3.33 | 0.167 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | tiamazol | mantenimiento | Tableta 20 mg | 17 años, obeso (95 kg) | 3.33 | 3.33 | 0.167 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 1 mes (4.2 kg) | 1732.5 | 1732.5 | 6.93 | 6.9 mL | ✅  |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 2 meses (5.1 kg) | 2103.75 | 2103.75 | 8.415 | 8.4 mL | ✅  |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 4 meses (6.4 kg) | 2640 | 2640 | 10.56 | 10.6 mL | ✅  |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 6 meses (7.6 kg) | 3135 | 3135 | 12.54 | 12.5 mL | ✅  |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 9 meses (8.6 kg) | 3547.5 | 3547.5 | 14.19 | 14.2 mL | ✅  |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 1 año (9.6 kg) | 3960 | 3960 | 15.84 | 15.8 mL | ✅  |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 18 meses (10.9 kg) | 4496.25 | 4496.25 | 17.985 | 18 mL | ✅  |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 2 años (12.2 kg) | 5032.5 | 5032.5 | 20.13 | 20.1 mL | ✅  |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 3 años (14.3 kg) | 5898.75 | 5898.75 | 23.595 | 23.6 mL | ✅  |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 4 años (16.3 kg) | 6723.75 | 6723.75 | 26.895 | 26.9 mL | ✅  |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 5 años (18.3 kg) | 7548.75 | 7548.75 | 30.195 | 30.2 mL | ✅  |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 6 años (20.5 kg) | 8456.25 | 8456.25 | 33.825 | 33.8 mL | ✅  |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 8 años (25.6 kg) | 10560 | 10560 | 42.24 | 42.2 mL | ✅  |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 10 años (32 kg) | 12500 | 12500 | 50 | 50 mL | ✅ tope aplicado |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 12 años (40 kg) | 12500 | 12500 | 50 | 50 mL | ✅ tope aplicado |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 14 años (50 kg) | 12500 | 12500 | 50 | 50 mL | ✅ tope aplicado |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 16 años (58 kg) | 12500 | 12500 | 50 | 50 mL | ✅ tope aplicado |
+| tiosulfato-sodio | cianuro | Tiosulfato de sodio 250 mg/mL (al 25 %) | 17 años, obeso (95 kg) | 12500 | 12500 | 50 | 50 mL | ✅ tope aplicado |
 | triclabendazol | fascioliasis | Tableta 250 mg | 5 años (18.3 kg) | 183 | 183 | 0.732 | 0.73 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | triclabendazol | fascioliasis | Tableta 250 mg | 6 años (20.5 kg) | 205 | 205 | 0.82 | 0.82 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | triclabendazol | fascioliasis | Tableta 250 mg | 8 años (25.6 kg) | 256 | 256 | 1.024 | 1 tableta | ✅  |

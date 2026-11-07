@@ -1,0 +1,50 @@
+id: dimercaprol
+name: Dimercaprol
+category: urgencia
+synonyms:
+  [BAL, British anti-Lewisite, quelante, intoxicación por arsénico, intoxicación por mercurio]
+presentations:
+  - id: amp-50
+    label: Dimercaprol 50 mg/mL
+    form: ampolla
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: arsenico-mercurio-grave
+    indication: Intoxicación grave por arsénico, oro o mercurio, primeros 2 días (IM)
+    route: IM
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 3
+    amountMax: 5
+    usual: 3
+    intervalHours: 4
+    maxPerDoseMg: 250
+    maxPerDayMg: 1500
+    durationText: 2 días; luego espaciar según la pauta del FNME.
+    notes: >-
+      FNME — adultos y niños: arsénico u oro grave, 3 a 5 mg/kg IM c/4 a 6 h por 2 días, luego c/6 h el tercer día y
+      c/12 h por 10 días; mercurio, 3 a 5 mg/kg c/4 h por 2 días, luego 2.5 a 3 mg/kg c/6 h por 2 días y c/12 h por
+      7 días. Tope técnico (5 mg/kg con 50 kg).
+    presentationIds: [amp-50]
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+warnings:
+  - Precaución en hipertensión e insuficiencia renal (OMS).
+contraindications:
+  - Hipersensibilidad al dimercaprol.
+  - Intoxicación por gas arsina, cadmio, selenio, plata, uranio o hierro (forma quelatos más tóxicos) (FNME, OMS).
+  - Insuficiencia hepática grave, salvo que sea por arsénico (OMS).
+diagnoses: [intoxicación por arsénico, intoxicación por mercurio, intoxicación por metales pesados]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: arsenico-mercurio-grave
+    presentationId: amp-50
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 60, amount: 1.2, unit: mL }

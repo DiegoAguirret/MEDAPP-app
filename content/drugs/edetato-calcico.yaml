@@ -1,0 +1,47 @@
+id: edetato-calcico
+name: Edetato cálcico disódico
+category: urgencia
+synonyms:
+  [calcioedetato sódico, EDTA cálcico, calcium disodium edetate, intoxicación por plomo, quelante]
+presentations:
+  - id: amp-200
+    label: Edetato cálcico disódico 200 mg/mL
+    form: ampolla
+    mgPerUnit: 200
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: plomo-im
+    indication: Intoxicación por plomo sin encefalopatía (IM profunda)
+    route: IM
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 20
+    amountMax: 30
+    usual: 20
+    intervalHours: 8
+    maxPerDoseMg: 500
+    maxPerDayMg: 1500
+    durationText: Hasta 5 días (OMS).
+    notes: >-
+      OMS — niños de todas las edades, 20 a 30 mg/kg/día IM profunda en 2 o 3 dosis (cada 8 a 12 horas) hasta 5 días;
+      también en infusión IV continua. Tope técnico (30 mg/kg/día con 50 kg).
+    presentationIds: [amp-200]
+    sourceIds: [who-mfc-2010, digemid-pnume-2023]
+warnings:
+  - Con encefalopatía por plomo y edema cerebral puede subir de forma mortal la presión intracraneal (OMS).
+  - El FNME no trae monografía del edetato cálcico.
+contraindications: []
+diagnoses: [intoxicación por plomo, saturnismo]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: plomo-im
+    presentationId: amp-200
+    weightKg: 30
+    ageDays: 2920
+    expect: { mgPerDose: 200, amount: 1, unit: mL }

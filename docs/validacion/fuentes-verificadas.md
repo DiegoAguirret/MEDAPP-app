@@ -511,3 +511,20 @@ La app ahora calcula infusiones: la dosis en mcg/kg/min o mg/kg/h da la velocida
 - **Enalapril y captopril:** el FNME dice que en niños no se ha establecido la eficacia del enalapril, y las tabletas del PNUME (10 y 25 mg) no permiten dar las dosis pediátricas por kg.
 - **Acetazolamida:** dosis pediátricas del FNME para glaucoma (8–30 mg/kg/día) que no se pueden medir con la tableta de 250 mg en niños pequeños.
 - **Labetalol y nifedipino:** sin dosis pediátrica en el FNME ni en el Model Formulary for Children.
+
+## Lote 16: antídotos — verificado el 07/11/2026
+
+- **Azul de metileno** (PNUME 1 %): FNME, metahemoglobinemia, 1–2 mg/kg IV lenta.
+- **Nitrito de sodio** (PNUME 30 mg/mL): FNME y FDA (Nithiodote), cianuro, 6 mg/kg (0.2 mL/kg), máximo 10 mL. Se da antes del tiosulfato.
+- **Tiosulfato de sodio** (PNUME 250 mg/mL): el FNME da 412.5 mg/kg y la FDA 250 mg/kg (1 mL/kg); los dos topan en 12.5 g (50 mL). La regla deja el rango entre ambas cifras y lo advierte.
+- **Manitol 20 %**: OMS, de 1 mes a 12 años, 0.25–1.5 g/kg en 30–60 min; el FNME da 0.25 g/kg en el edema cerebral.
+- **Deferoxamina** (PNUME 500 mg): OMS, IM, 50 mg/kg c/6 h, máximo 6 g/día. La FDA reconstituye a 213 mg/mL para la vía IM. La vía IV (15 mg/kg/h) no se calcula: la FDA no da una concentración final exacta («entre 3 y 3.5 mg/mL»).
+- **Dimercaprol** (PNUME 50 mg/mL): FNME, arsénico, oro o mercurio grave, 3–5 mg/kg IM c/4 h por 2 días; después se espacia.
+- **Edetato cálcico disódico** (PNUME 200 mg/mL): OMS, plomo sin encefalopatía, 20–30 mg/kg/día IM en 2 o 3 dosis hasta 5 días.
+
+**No incluidos:**
+
+- **Neostigmina:** el FNME la da cada 2 a 3 h en la miastenia, un intervalo que el esquema no admite. Para revertir el bloqueo neuromuscular no tiene dosis pediátrica.
+- **Protamina:** se dosifica según las unidades de heparina, no por peso.
+- **Suxametonio:** el frasco de 500 mg del PNUME no tiene una concentración final verificada.
+- **Hidroxocobalamina 1 mg/mL:** es la presentación para déficit de B12, no el antídoto del cianuro.

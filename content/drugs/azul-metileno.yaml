@@ -1,0 +1,47 @@
+id: azul-metileno
+name: Azul de metileno (metiltioninio)
+category: urgencia
+synonyms: [metiltioninio, methylene blue, metahemoglobinemia, antídoto]
+presentations:
+  - id: amp-1pct
+    label: Azul de metileno al 1 % = 10 mg/mL
+    form: ampolla
+    mgPerUnit: 10
+    unit: mL
+    step: 0.01
+    brandsPE: []
+rules:
+  - id: metahemoglobinemia
+    indication: Metahemoglobinemia inducida por fármacos (IV lenta)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 1
+    amountMax: 2
+    usual: 1
+    once: true
+    maxPerDoseMg: 100
+    maxPerDayMg: 100
+    notes: >-
+      FNME — adultos y niños, 1 a 2 mg/kg (0.1 a 0.2 mL/kg de la solución al 1 %) IV lenta. Tope técnico (2 mg/kg
+      con 50 kg).
+    presentationIds: [amp-1pct]
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+warnings:
+  - Tiñe de azul verdoso la orina y las heces (FNME).
+contraindications:
+  - Hipersensibilidad al azul de metileno.
+  - Vía subcutánea o intraespinal (FNME).
+  - Metahemoglobinemia inducida en la intoxicación por cianuro (FNME).
+diagnoses: [metahemoglobinemia, intoxicación por nitritos, intoxicación]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: metahemoglobinemia
+    presentationId: amp-1pct
+    weightKg: 15
+    ageDays: 1460
+    expect: { mgPerDose: 15, amount: 1.5, unit: mL }

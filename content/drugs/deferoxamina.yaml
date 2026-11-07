@@ -1,0 +1,48 @@
+id: deferoxamina
+name: Deferoxamina
+category: urgencia
+synonyms: [deferoxamine, Desferal, intoxicación por hierro, quelante]
+presentations:
+  - id: im-213
+    label: Deferoxamina 213 mg/mL (frasco de 500 mg con 2 mL de agua estéril, IM, FDA)
+    form: ampolla
+    mgPerUnit: 213
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: hierro-im
+    indication: Intoxicación aguda por hierro (IM)
+    route: IM
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 50
+    amountMax: 50
+    usual: 50
+    intervalHours: 6
+    maxPerDoseMg: 1500
+    maxPerDayMg: 6000
+    notes: >-
+      OMS — IM, 50 mg/kg por dosis cada 6 horas; máximo 6 g/día. La vía preferida es la IV (15 mg/kg/h al inicio,
+      OMS y FNME), que aquí no se calcula porque la FDA no da una concentración exacta de la mezcla (entre 3 y 3.5
+      mg/mL). Reconstitución IM de la FDA: 500 mg con 2 mL = 213 mg/mL.
+    presentationIds: [im-213]
+    sourceIds: [who-mfc-2010, fnme-2008, fda-desferal, digemid-pnume-2023]
+warnings:
+  - La FDA estableció su seguridad y eficacia en la intoxicación aguda por hierro desde los 3 años.
+  - Rara vez hace falta más de 24 horas de tratamiento en la sobredosis aguda (OMS).
+contraindications:
+  - Hipersensibilidad a la deferoxamina.
+  - Enfermedad renal grave o anuria (FDA).
+diagnoses: [intoxicación por hierro, sobredosis de hierro]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: hierro-im
+    presentationId: im-213
+    weightKg: 17.04
+    ageDays: 1825
+    expect: { mgPerDose: 852, amount: 4, unit: mL }

@@ -1,0 +1,48 @@
+id: nitrito-sodio
+name: Nitrito de sodio
+category: urgencia
+synonyms: [sodium nitrite, cianuro, antídoto, intoxicación por cianuro]
+presentations:
+  - id: amp-30
+    label: Nitrito de sodio 30 mg/mL (al 3 %)
+    form: ampolla
+    mgPerUnit: 30
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: cianuro
+    indication: Intoxicación por cianuro (antes del tiosulfato)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 6
+    amountMax: 6
+    usual: 6
+    once: true
+    maxPerDoseMg: 300
+    maxPerDayMg: 300
+    notes: >-
+      FNME — niños, 6 mg/kg IV a 75 a 150 mg/min. FDA (Nithiodote) — niños, 0.2 mL/kg (6 mg/kg) a 2.5 a 5 mL/min, sin
+      pasar de 10 mL (300 mg); enseguida, tiosulfato de sodio. Si reaparecen los signos, repetir la mitad de la dosis
+      de ambos.
+    presentationIds: [amp-30]
+    sourceIds: [fnme-2008, fda-nithiodote, digemid-pnume-2023]
+warnings:
+  - Con anemia conocida, reducir la dosis en proporción a la hemoglobina (FDA).
+  - Vigilar la presión arterial durante la infusión y bajar la velocidad si hay hipotensión (FDA).
+  - Vigilar al paciente al menos 24 a 48 horas (FDA).
+contraindications:
+  - Hipersensibilidad al nitrito de sodio y a otros nitratos (FNME).
+diagnoses: [intoxicación por cianuro, intoxicación]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: cianuro
+    presentationId: amp-30
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 120, amount: 4, unit: mL }
