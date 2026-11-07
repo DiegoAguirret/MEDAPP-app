@@ -458,3 +458,13 @@ La app ahora calcula infusiones: la dosis en mcg/kg/min o mg/kg/h da la velocida
 - **Dopamina:** el FNME solo da la dosis de adultos y la FDA no ha establecido su uso en pediatría.
 - **Midazolam en neonatos:** la FDA da la dosis según la edad gestacional (menos o más de 32 semanas), que la app no pide.
 - **Fentanilo, insulina y alprostadil en infusión:** quedan para otro lote. El fentanilo está cargado en mg y habría que pasarlo a mcg.
+
+## Más infusiones: alprostadil e insulina — verificado el 07/11/2026
+
+- **Alprostadil** (PNUME 500 mcg): FDA (Prostin VR Pediatric), para mantener abierto el ductus en neonatos con cardiopatía ductus dependiente. Inicio de 0.05–0.1 mcg/kg/min, luego bajar hasta 0.01 y subir como máximo a 0.4. Mezclas de la FDA: 500 mcg en 100 mL (unos 5 mcg/mL) o en 50 mL (unos 10 mcg/mL). Lleva el recuadro de apnea de la FDA.
+- **Insulina regular IV** (PNUME 100 UI/mL): OMS (Model Formulary for Children). Cetoacidosis, 0.05–0.1 UI/kg/h (máximo 0.2); hiperglucemia, 0.025–0.1 UI/kg/h en niños y 0.01–0.1 UI/kg/h en neonatos. Se diluye a 1 UI/mL en SF 0.9 %. El FNME no da dosis pediátricas en infusión.
+
+**No incluidos:**
+
+- **Fentanilo y morfina en infusión:** ni el FNME ni la FDA dan dosis pediátricas en infusión continua. La FDA solo da bolos de fentanilo (2–3 mcg/kg de 2 a 12 años).
+- **Heparina:** el FNME da en niños «dosis carga 50 UI/kg, luego 100 UI/kg c/4 h» bajo el título «Por infusión IV», sin aclarar si es infusión o bolos; además depende del TTPa.

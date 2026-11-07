@@ -687,3 +687,10 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=3b7a4364-668d-4eb2-a20c-04adc35aabe4
   kind: regulador
   country: US
+- id: fda-prostin-vr
+  title: Prostin VR Pediatric (alprostadil) 500 mcg/mL — prescribing information (FDA, set 930f8c02-46a8-4cff-a484-660468ab23c3)
+  publisher: U.S. FDA / Pharmacia & Upjohn
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=930f8c02-46a8-4cff-a484-660468ab23c3
+  kind: regulador
+  country: US

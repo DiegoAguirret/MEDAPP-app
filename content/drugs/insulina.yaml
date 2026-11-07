@@ -1,0 +1,88 @@
+id: insulina
+name: Insulina regular (cristalina) IV
+category: otro
+doseUnit: UI
+synonyms: [insulina cristalina, insulina humana, insulina soluble, cetoacidosis diabética, CAD]
+presentations:
+  - id: mezcla-1ui
+    label: Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS)
+    form: ampolla
+    mgPerUnit: 1
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: cetoacidosis
+    indication: Cetoacidosis o coma diabético, infusión continua (lactantes y niños)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/h
+    amountMin: 0.05
+    amountMax: 0.1
+    usual: 0.1
+    continuous: true
+    maxPerDoseMg: 10
+    maxPerDayMg: 240
+    notes: >-
+      OMS (Model Formulary for Children) — 0.05 a 0.1 UI/kg/h (máximo 0.2 UI/kg/h) según cómo baje la glucosa,
+      hasta corregir la acidosis y volver a la insulina subcutánea. Bajar la glucosa demasiado rápido puede causar
+      edema cerebral. El tope es el máximo de la OMS (0.2 UI/kg/h) con 50 kg.
+    presentationIds: [mezcla-1ui]
+    sourceIds: [who-mfc-2010, fnme-2008, digemid-pnume-2023]
+  - id: hiperglucemia-ninos
+    indication: Hiperglucemia o cirugía en niños con diabetes, infusión continua (lactantes y niños)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/h
+    amountMin: 0.025
+    amountMax: 0.1
+    usual: 0.025
+    continuous: true
+    maxPerDoseMg: 5
+    maxPerDayMg: 120
+    notes: OMS — 0.025 a 0.1 UI/kg/h, ajustando según la glucemia. Tope técnico (0.1 UI/kg/h con 50 kg).
+    presentationIds: [mezcla-1ui]
+    sourceIds: [who-mfc-2010, digemid-pnume-2023]
+  - id: hiperglucemia-neonatos
+    indication: Hiperglucemia en neonatos, infusión continua
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    basis: mg/kg/h
+    amountMin: 0.01
+    amountMax: 0.1
+    usual: 0.01
+    continuous: true
+    maxPerDoseMg: 0.5
+    maxPerDayMg: 12
+    notes: >-
+      OMS — neonatos, 0.01 a 0.1 UI/kg/h según la glucemia; empezar con la dosis más baja y vigilar de cerca, porque
+      son muy sensibles a la insulina. Tope técnico (0.1 UI/kg/h con 5 kg).
+    presentationIds: [mezcla-1ui]
+    sourceIds: [who-mfc-2010, digemid-pnume-2023]
+warnings:
+  - Diluir a 1 UI/mL con suero fisiológico al 0.9 % y mezclar bien; la insulina se adsorbe al plástico, así que hay que purgar el equipo con 5 mL de la mezcla (OMS).
+  - Riesgo de hipoglucemia y de hipopotasemia si se da sin potasio en la cetoacidosis (OMS).
+  - En insuficiencia renal puede necesitar menos dosis (OMS).
+  - El FNME no da dosis pediátricas de insulina en infusión.
+contraindications:
+  - Hipoglucemia (FNME).
+diagnoses: [cetoacidosis diabética, diabetes, hiperglucemia, coma diabético]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: cetoacidosis
+    presentationId: mezcla-1ui
+    weightKg: 30
+    ageDays: 3650
+    expect: { mgPerDose: 3, amount: 3, unit: mL/h }
+  - ruleId: hiperglucemia-neonatos
+    presentationId: mezcla-1ui
+    weightKg: 3
+    ageDays: 7
+    chosenMgPerKg: 0.1
+    expect: { mgPerDose: 0.3, amount: 0.3, unit: mL/h }

@@ -1,0 +1,72 @@
+id: alprostadil
+name: Alprostadil (prostaglandina E1)
+category: cardiovascular
+doseUnit: mcg
+synonyms: [prostaglandina E1, PGE1, Prostin VR, ductus dependiente, cardiopatía congénita]
+presentations:
+  - id: mezcla-5
+    label: Alprostadil 5 mcg/mL (1 ampolla de 500 mcg en 100 mL, FDA)
+    form: ampolla
+    mgPerUnit: 5
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: mezcla-10
+    label: Alprostadil 10 mcg/mL (1 ampolla de 500 mcg en 50 mL, FDA)
+    form: ampolla
+    mgPerUnit: 10
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: ductus-dependiente
+    indication: Mantener abierto el ductus en neonatos con cardiopatía congénita ductus dependiente, infusión continua
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    basis: mcg/kg/min
+    amountMin: 0.01
+    amountMax: 0.4
+    usual: 0.1
+    continuous: true
+    maxPerDoseMg: 120
+    maxPerDayMg: 2880
+    notes: >-
+      FDA (Prostin VR Pediatric) — iniciar con 0.05 a 0.1 mcg/kg/min (0.1 es la dosis inicial recomendada). Con
+      respuesta, bajar a la menor dosis que la mantenga (0.1 → 0.05 → 0.025 → 0.01 mcg/kg/min). Si 0.05 no basta,
+      se puede subir hasta 0.4 mcg/kg/min, aunque en general las dosis altas no dan más efecto. Mezclas de la FDA:
+      1 ampolla de 500 mcg en 100 mL (unos 5 mcg/mL) o en 50 mL (unos 10 mcg/mL). Tope técnico (0.4 mcg/kg/min
+      con 5 kg).
+    presentationIds: [mezcla-5, mezcla-10]
+    sourceIds: [fda-prostin-vr, digemid-pnume-2023]
+warnings:
+  - 'Recuadro de la FDA: apnea en el 10 a 12 % de los neonatos, sobre todo con menos de 2 kg al nacer y en la primera hora de infusión. Vigilar la respiración y tenerlo donde haya ventilación asistida disponible de inmediato.'
+  - Tratamiento paliativo hasta la cirugía, no definitivo (FDA).
+  - Diluir antes de usar; la solución sin diluir puede dañar las cámaras de plástico. Preparar mezcla nueva cada 24 horas (FDA).
+  - Si su mezcla es otra, use «Personalizar concentración».
+contraindications: []
+diagnoses:
+  [
+    cardiopatía congénita,
+    ductus arterioso,
+    atresia pulmonar,
+    transposición de grandes arterias,
+    coartación de aorta,
+  ]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: ductus-dependiente
+    presentationId: mezcla-5
+    weightKg: 2.8
+    ageDays: 1
+    expect: { mgPerDose: 16.8, amount: 3.4, unit: mL/h }
+  - ruleId: ductus-dependiente
+    presentationId: mezcla-10
+    weightKg: 3
+    ageDays: 2
+    expect: { mgPerDose: 18, amount: 1.8, unit: mL/h }

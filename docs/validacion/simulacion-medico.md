@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **8820** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **3870**. Fuera del rango de edad de la regla: 4950 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 3870/3870 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 3864/3870.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.57 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **8925** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **3915**. Fuera del rango de edad de la regla: 5010 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 3915/3915 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 3909/3915.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.58 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -239,6 +239,12 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | albendazol | nematodos-1-2-anos | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 18 meses (10.9 kg) | 200 | 200 | 10 | 10 mL | ✅  |
 | albendazol | nematodos-1-2-anos | Tableta 200 mg | 1 año (9.6 kg) | 200 | 200 | 1 | 1 tableta | ✅  |
 | albendazol | nematodos-1-2-anos | Tableta 200 mg | 18 meses (10.9 kg) | 200 | 200 | 1 | 1 tableta | ✅  |
+| alprostadil | ductus-dependiente | Alprostadil 5 mcg/mL (1 ampolla de 500 mcg en 100 mL, FDA) | 3 días, bajo peso (2 kg) (2 kg) | 12 | 12 | 2.4 | 2.4 mL | ✅  |
+| alprostadil | ductus-dependiente | Alprostadil 5 mcg/mL (1 ampolla de 500 mcg en 100 mL, FDA) | 5 días (3.2 kg) (3.2 kg) | 19.2 | 19.2 | 3.84 | 3.8 mL | ✅  |
+| alprostadil | ductus-dependiente | Alprostadil 5 mcg/mL (1 ampolla de 500 mcg en 100 mL, FDA) | 15 días (3.6 kg) (3.6 kg) | 21.6 | 21.6 | 4.32 | 4.3 mL | ✅  |
+| alprostadil | ductus-dependiente | Alprostadil 10 mcg/mL (1 ampolla de 500 mcg en 50 mL, FDA) | 3 días, bajo peso (2 kg) (2 kg) | 12 | 12 | 1.2 | 1.2 mL | ✅  |
+| alprostadil | ductus-dependiente | Alprostadil 10 mcg/mL (1 ampolla de 500 mcg en 50 mL, FDA) | 5 días (3.2 kg) (3.2 kg) | 19.2 | 19.2 | 1.92 | 1.9 mL | ✅  |
+| alprostadil | ductus-dependiente | Alprostadil 10 mcg/mL (1 ampolla de 500 mcg en 50 mL, FDA) | 15 días (3.6 kg) (3.6 kg) | 21.6 | 21.6 | 2.16 | 2.2 mL | ✅  |
 | amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 1 mes (4.2 kg) | 21 | 21 | 0.084 | 0.08 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
 | amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 2 meses (5.1 kg) | 25.5 | 25.5 | 0.102 | 0.1 mL | ✅  |
 | amikacina | ninos-cada-8-h | Amikacina 250 mg/mL (ampolla 500 mg/2 mL) | 4 meses (6.4 kg) | 32 | 32 | 0.128 | 0.13 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -2366,6 +2372,45 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | ibuprofeno | ductus-segunda-tercera | Ibuprofeno 5 mg/mL solución inyectable (ampolla de 10 mg/2 mL) | 3 días, bajo peso (2 kg) (2 kg) | 10 | 10 | 2 | 2 mL | ✅  |
 | ibuprofeno | ductus-segunda-tercera | Ibuprofeno 5 mg/mL solución inyectable (ampolla de 10 mg/2 mL) | 5 días (3.2 kg) (3.2 kg) | 16 | 16 | 3.2 | 3.2 mL | ✅  |
 | ibuprofeno | ductus-segunda-tercera | Ibuprofeno 5 mg/mL solución inyectable (ampolla de 10 mg/2 mL) | 15 días (3.6 kg) (3.6 kg) | 18 | 18 | 3.6 | 3.6 mL | ✅  |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 1 mes (4.2 kg) | 0.42 | 0.42 | 0.42 | 0.4 mL | ✅  |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 2 meses (5.1 kg) | 0.51 | 0.51 | 0.51 | 0.5 mL | ✅  |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 4 meses (6.4 kg) | 0.64 | 0.64 | 0.64 | 0.64 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 6 meses (7.6 kg) | 0.76 | 0.76 | 0.76 | 0.76 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 9 meses (8.6 kg) | 0.86 | 0.86 | 0.86 | 0.9 mL | ✅  |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 1 año (9.6 kg) | 0.96 | 0.96 | 0.96 | 1 mL | ✅  |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 18 meses (10.9 kg) | 1.09 | 1.09 | 1.09 | 1.1 mL | ✅  |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 2 años (12.2 kg) | 1.22 | 1.22 | 1.22 | 1.2 mL | ✅  |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 3 años (14.3 kg) | 1.43 | 1.43 | 1.43 | 1.4 mL | ✅  |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 4 años (16.3 kg) | 1.63 | 1.63 | 1.63 | 1.6 mL | ✅  |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 5 años (18.3 kg) | 1.83 | 1.83 | 1.83 | 1.8 mL | ✅  |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 6 años (20.5 kg) | 2.05 | 2.05 | 2.05 | 2.1 mL | ✅  |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 8 años (25.6 kg) | 2.56 | 2.56 | 2.56 | 2.6 mL | ✅  |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 10 años (32 kg) | 3.2 | 3.2 | 3.2 | 3.2 mL | ✅  |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 12 años (40 kg) | 4 | 4 | 4 | 4 mL | ✅  |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 14 años (50 kg) | 5 | 5 | 5 | 5 mL | ✅  |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 16 años (58 kg) | 5.8 | 5.8 | 5.8 | 5.8 mL | ✅  |
+| insulina | cetoacidosis | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 17 años, obeso (95 kg) | 9.5 | 9.5 | 9.5 | 9.5 mL | ✅  |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 1 mes (4.2 kg) | 0.11 | 0.11 | 0.105 | 0.1 mL | ✅  |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 2 meses (5.1 kg) | 0.13 | 0.13 | 0.128 | 0.13 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 4 meses (6.4 kg) | 0.16 | 0.16 | 0.16 | 0.16 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 6 meses (7.6 kg) | 0.19 | 0.19 | 0.19 | 0.19 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 9 meses (8.6 kg) | 0.21 | 0.21 | 0.215 | 0.21 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 1 año (9.6 kg) | 0.24 | 0.24 | 0.24 | 0.24 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 18 meses (10.9 kg) | 0.27 | 0.27 | 0.273 | 0.27 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 2 años (12.2 kg) | 0.3 | 0.3 | 0.305 | 0.3 mL | ✅  |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 3 años (14.3 kg) | 0.36 | 0.36 | 0.358 | 0.36 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 4 años (16.3 kg) | 0.41 | 0.41 | 0.408 | 0.4 mL | ✅  |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 5 años (18.3 kg) | 0.46 | 0.46 | 0.458 | 0.46 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 6 años (20.5 kg) | 0.51 | 0.51 | 0.513 | 0.5 mL | ✅  |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 8 años (25.6 kg) | 0.64 | 0.64 | 0.64 | 0.64 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 10 años (32 kg) | 0.8 | 0.8 | 0.8 | 0.8 mL | ✅  |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 12 años (40 kg) | 1 | 1 | 1 | 1 mL | ✅  |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 14 años (50 kg) | 1.25 | 1.25 | 1.25 | 1.3 mL | ✅  |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 16 años (58 kg) | 1.45 | 1.45 | 1.45 | 1.5 mL | ✅  |
+| insulina | hiperglucemia-ninos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 17 años, obeso (95 kg) | 2.38 | 2.38 | 2.375 | 2.4 mL | ✅  |
+| insulina | hiperglucemia-neonatos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 3 días, bajo peso (2 kg) (2 kg) | 0.02 | 0.02 | 0.02 | 0.02 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| insulina | hiperglucemia-neonatos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 5 días (3.2 kg) (3.2 kg) | 0.03 | 0.03 | 0.032 | 0.03 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| insulina | hiperglucemia-neonatos | Insulina 1 UI/mL (insulina regular diluida en SF 0.9 %, OMS) | 15 días (3.6 kg) (3.6 kg) | 0.04 | 0.04 | 0.036 | 0.04 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
 | ipratropio | crisis-hasta-5 | Inhalador 0.02 mg (20 µg) por puff, con aerocámara | 1 mes (4.2 kg) | 0.08 | 0.08 | 4 | 4 puff | ✅  |
 | ipratropio | crisis-hasta-5 | Inhalador 0.02 mg (20 µg) por puff, con aerocámara | 2 meses (5.1 kg) | 0.08 | 0.08 | 4 | 4 puff | ✅  |
 | ipratropio | crisis-hasta-5 | Inhalador 0.02 mg (20 µg) por puff, con aerocámara | 4 meses (6.4 kg) | 0.08 | 0.08 | 4 | 4 puff | ✅  |
