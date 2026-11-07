@@ -1,0 +1,90 @@
+id: penicilina-g-sodica
+name: Penicilina G sódica (bencilpenicilina sódica)
+category: antibiotico
+doseUnit: UI
+synonyms: [bencilpenicilina sódica, penicilina cristalina, penicillin G sodium, sífilis congénita]
+presentations:
+  - id: frasco-1mui-500000
+    label: 500 000 UI/mL (frasco de 1 000 000 UI reconstituido con 1.6 mL de agua estéril, OMS)
+    form: ampolla
+    mgPerUnit: 500000
+    unit: mL
+    step: 0.01
+    brandsPE: []
+rules:
+  - id: sifilis-congenita-primera-semana
+    indication: Sífilis congénita, primeros 7 días de vida
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 6
+    weightMinKg: 1
+    weightMaxKg: 5
+    basis: mg/kg/dose
+    amountMin: 50000
+    amountMax: 50000
+    usual: 50000
+    intervalHours: 12
+    maxPerDoseMg: 250000
+    maxPerDayMg: 500000
+    durationText: 10 días en total; 14 días si el LCR es compatible con neurosífilis (NTS 159).
+    notes: >-
+      NTS 159-MINSA — RN con alteraciones clínicas, radiológicas o de laboratorio (RPR reactivo a cualquier
+      dilución), de madre no tratada o mal tratada, 50 000 UI/kg/dosis EV cada 12 horas en los primeros 7 días de
+      vida y cada 8 horas después, por un total de 10 días; manejo hospitalario (nivel II o III). FNME — sífilis
+      congénita, 50 000 UI/kg c/12 h y luego c/8 h. OMS — 30 mg/kg (= 50 000 U/kg). Los topes son técnicos (la
+      dosis por kg con 5 kg); la NTS 159 no da tope.
+    presentationIds: [frasco-1mui-500000]
+    sourceIds: [minsa-nts159-2019, fnme-2008, who-pocket-2013, digemid-pnume-2023]
+  - id: sifilis-congenita-despues-7-dias
+    indication: Sífilis congénita, después de los 7 días de vida
+    route: IV
+    neonatal: true
+    ageMinDays: 7
+    ageMaxDays: 28
+    weightMinKg: 1
+    weightMaxKg: 5
+    basis: mg/kg/dose
+    amountMin: 50000
+    amountMax: 50000
+    usual: 50000
+    intervalHours: 8
+    maxPerDoseMg: 250000
+    maxPerDayMg: 750000
+    durationText: Completar 10 días en total; 14 días si el LCR es compatible con neurosífilis (NTS 159).
+    notes: >-
+      NTS 159-MINSA — 50 000 UI/kg/dosis EV cada 8 horas después de los 7 días de vida, hasta completar 10 días.
+      FNME — de la 2.ª a la 4.ª semana de vida, 50 000 UI/kg c/8 h; dosis máxima 4.8 millones UI/día. Los topes
+      son técnicos (la dosis por kg con 5 kg).
+    presentationIds: [frasco-1mui-500000]
+    sourceIds: [minsa-nts159-2019, fnme-2008, who-pocket-2013, digemid-pnume-2023]
+warnings:
+  - La dosis está en UI. La concentración de 500 000 UI/mL es la reconstitución de la OMS para el frasco de 1 000 000 UI; si se reconstituye con otro volumen, el volumen a dar cambia.
+  - El RN asintomático con RPR no reactivo recibe penicilina G benzatínica en dosis única IM (NTS 159); esa pauta no se calcula aquí.
+  - Puede producir reacción de Jarisch-Herxheimer (FNME).
+  - Una vez reconstituida, conserva su potencia 24 horas a temperatura ambiente o 7 días refrigerada entre 2 y 8 °C (FNME).
+contraindications:
+  - Hipersensibilidad a la penicilina.
+interactions:
+  - 'Aminoglucósidos: incompatibles; administrar por separado, con al menos una hora de diferencia (FNME).'
+  - 'Probenecid: aumenta los niveles y prolonga la vida media de la penicilina (FNME).'
+renal: >-
+  FNME — en neonatos la vida media se prolonga por la función renal incompleta. Con depuración de creatinina menor de
+  10 mL/min, usar del 20 al 50 % de la dosis usual.
+diagnoses: [sífilis congénita, neurosífilis, sífilis]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: sifilis-congenita-primera-semana
+    presentationId: frasco-1mui-500000
+    weightKg: 3
+    ageDays: 2
+    expect: { mgPerDose: 150000, amount: 0.3, unit: mL }
+  - ruleId: sifilis-congenita-despues-7-dias
+    presentationId: frasco-1mui-500000
+    weightKg: 3.5
+    ageDays: 14
+    expect: { mgPerDose: 175000, amount: 0.35, unit: mL }

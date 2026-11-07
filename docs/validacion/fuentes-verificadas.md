@@ -394,3 +394,16 @@ Cada cifra se confirmó en el documento descargado (texto de openFDA, el FNME 20
 
 - **Imipenem:** el FNME da 25 mg/kg c/6 h (3 meses–3 años) y 15 mg/kg c/6 h (más de 3 años), máximo 2 g/d. La ficha FDA no fija una concentración exacta («transferir a 100 mL» y lavar el vial con 10 mL más), y la dosis neonatal difiere entre FDA (25 mg/kg) y OMS (20 mg/kg).
 - **Cefepima y linezolid:** no están en el PNUME ni en el FNME.
+
+## Lote 10B: neonatología (sífilis congénita y apnea del prematuro) — verificado el 07/11/2026
+
+- **Penicilina G sódica** (PNUME bencilpenicilina sódica 1 000 000 UI; NTS 159-MINSA 2019, pág. 36): 50 000 UI/kg/dosis EV c/12 h en los primeros 7 días de vida y c/8 h después, por un total de 10 días (14 si hay neurosífilis). El FNME da la misma pauta. La concentración de 500 000 UI/mL es la reconstitución de la OMS (frasco de 1 000 000 U + 1.6 mL de agua estéril); ninguna fuente peruana da el volumen de diluyente. Los topes son técnicos (5 kg).
+- **Cafeína citrato** (PNUME 20 mg/mL inyectable y solución oral): carga de 20 mg/kg (IV en 30 min según FDA; oral o IV según OMS) y mantenimiento de 5 mg/kg c/24 h desde 24 h después de la carga, con aumento posible hasta 20 mg/kg/día (solo OMS). Dosis en mg de citrato (el doble de la cafeína base). Ni el FNME ni las normas MINSA leídas dan dosis de cafeína.
+
+**No incluidos:**
+
+- **Zidovudina (profilaxis VIH):** la NTS 159 da la dosis por edad gestacional (4 mg/kg c/12 h desde 35 semanas; 2 a 3 mg/kg en prematuros) y por escenario materno (4 o 6 semanas). La app no pide la edad gestacional, así que no puede elegir la pauta correcta. El FNME y la FDA usan otro esquema (2 mg/kg c/6 h).
+- **Nevirapina (profilaxis VIH):** la NTS 159 dice «12 mg/kg» en tres dosis (al nacer, al 3.er y al 7.º día). La OMS da dosis fijas diarias (10 mg con menos de 2500 g; 15 mg con más), y un RN de 3 kg recibiría 36 mg por dosis según el texto literal de la norma. Hay que confirmarlo con la DPVIH/MINSA antes de publicarlo.
+- **Penicilina G benzatínica y procaínica:** ninguna fuente peruana da el volumen de reconstitución de los frascos del PNUME, así que no se puede calcular el volumen exacto. La procaínica, además, no figura en la NTS 159.
+
+**Erratas para avisar:** el Anexo 14 de la NTS 159 dice bencilpenicilina «sódica» 50 000 UI/kg IM en dosis única, donde el cuerpo de la norma (pág. 37) dice «benzatínica». El Anexo 4 pone LPV/r donde el cuerpo y el Anexo 8 dicen lamivudina. La RM 159-2026-MINSA no modifica esta norma: modifica la NTS 244.

@@ -590,3 +590,17 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=19e89f8b-316b-4dd2-9724-bfe0faeba408
   kind: regulador
   country: US
+- id: minsa-nts159-2019
+  title: NTS N.° 159-MINSA/2019/DGIESP, Prevención de la transmisión materno infantil del VIH, sífilis y hepatitis B (RM N.° 1138-2019/MINSA)
+  publisher: Ministerio de Salud del Perú
+  year: 2019
+  url: https://cdn.www.gob.pe/uploads/document/file/441362/resolucion-ministerial-n-1138-2019-minsa.PDF
+  kind: norma-peru
+  country: PE
+- id: fda-caffeine-citrate
+  title: Citrato de cafeína inyectable y solución oral 20 mg/mL — prescribing information (FDA, set 5f38c395-0093-4afd-89ec-f96e5dc0934a)
+  publisher: U.S. FDA / Sagent
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=5f38c395-0093-4afd-89ec-f96e5dc0934a
+  kind: regulador
+  country: US

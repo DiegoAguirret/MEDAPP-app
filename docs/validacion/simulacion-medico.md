@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **7602** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **3459**. Fuera del rango de edad de la regla: 4143 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 3459/3459 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 3459/3459.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.57 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **7728** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **3474**. Fuera del rango de edad de la regla: 4254 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 3474/3474 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 3474/3474.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.56 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -719,6 +719,18 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | azitromicina | esquema-5-dias-dias-2-5 | Tableta 500 mg | 14 años (50 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | azitromicina | esquema-5-dias-dias-2-5 | Tableta 500 mg | 16 años (58 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | azitromicina | esquema-5-dias-dias-2-5 | Tableta 500 mg | 17 años, obeso (95 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cafeina-citrato | carga-iv | Solución inyectable 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 3 días, bajo peso (2 kg) (2 kg) | 40 | 40 | 2 | 2 mL | ✅  |
+| cafeina-citrato | carga-iv | Solución inyectable 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 5 días (3.2 kg) (3.2 kg) | 64 | 64 | 3.2 | 3.2 mL | ✅  |
+| cafeina-citrato | carga-iv | Solución inyectable 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 15 días (3.6 kg) (3.6 kg) | 72 | 72 | 3.6 | 3.6 mL | ✅  |
+| cafeina-citrato | carga-vo | Solución oral 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 3 días, bajo peso (2 kg) (2 kg) | 40 | 40 | 2 | 2 mL | ✅  |
+| cafeina-citrato | carga-vo | Solución oral 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 5 días (3.2 kg) (3.2 kg) | 64 | 64 | 3.2 | 3.2 mL | ✅  |
+| cafeina-citrato | carga-vo | Solución oral 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 15 días (3.6 kg) (3.6 kg) | 72 | 72 | 3.6 | 3.6 mL | ✅  |
+| cafeina-citrato | mantenimiento-iv | Solución inyectable 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 3 días, bajo peso (2 kg) (2 kg) | 10 | 10 | 0.5 | 0.5 mL | ✅  |
+| cafeina-citrato | mantenimiento-iv | Solución inyectable 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 5 días (3.2 kg) (3.2 kg) | 16 | 16 | 0.8 | 0.8 mL | ✅  |
+| cafeina-citrato | mantenimiento-iv | Solución inyectable 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 15 días (3.6 kg) (3.6 kg) | 18 | 18 | 0.9 | 0.9 mL | ✅  |
+| cafeina-citrato | mantenimiento-vo | Solución oral 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 3 días, bajo peso (2 kg) (2 kg) | 10 | 10 | 0.5 | 0.5 mL | ✅  |
+| cafeina-citrato | mantenimiento-vo | Solución oral 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 5 días (3.2 kg) (3.2 kg) | 16 | 16 | 0.8 | 0.8 mL | ✅  |
+| cafeina-citrato | mantenimiento-vo | Solución oral 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 15 días (3.6 kg) (3.6 kg) | 18 | 18 | 0.9 | 0.9 mL | ✅  |
 | carbamazepina | menores-6-anos | Suspensión 100 mg/5 mL | 1 mes (4.2 kg) | 14 | 14 | 0.7 | 0.7 mL | ✅  |
 | carbamazepina | menores-6-anos | Suspensión 100 mg/5 mL | 2 meses (5.1 kg) | 17 | 17 | 0.85 | 0.85 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
 | carbamazepina | menores-6-anos | Suspensión 100 mg/5 mL | 4 meses (6.4 kg) | 21.33 | 21.33 | 1.067 | 1.1 mL | ✅  |
@@ -2970,6 +2982,9 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | paracetamol | fiebre-dolor-vo | Tableta 500 mg | 14 años (50 kg) | 750 | 750 | 1.5 | 1.5 tableta | ✅  |
 | paracetamol | fiebre-dolor-vo | Tableta 500 mg | 16 años (58 kg) | 870 | 870 | 1.74 | 1.74 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | paracetamol | fiebre-dolor-vo | Tableta 500 mg | 17 años, obeso (95 kg) | 1000 | 1000 | 2 | 2 tableta | ✅ tope aplicado |
+| penicilina-g-sodica | sifilis-congenita-primera-semana | 500 000 UI/mL (frasco de 1 000 000 UI reconstituido con 1.6 mL de agua estéril, OMS) | 3 días, bajo peso (2 kg) (2 kg) | 100000 | 100000 | 0.2 | 0.2 mL | ✅  |
+| penicilina-g-sodica | sifilis-congenita-primera-semana | 500 000 UI/mL (frasco de 1 000 000 UI reconstituido con 1.6 mL de agua estéril, OMS) | 5 días (3.2 kg) (3.2 kg) | 160000 | 160000 | 0.32 | 0.32 mL | ✅  |
+| penicilina-g-sodica | sifilis-congenita-despues-7-dias | 500 000 UI/mL (frasco de 1 000 000 UI reconstituido con 1.6 mL de agua estéril, OMS) | 15 días (3.6 kg) (3.6 kg) | 180000 | 180000 | 0.36 | 0.36 mL | ✅  |
 | piperacilina-tazobactam | intraabdominal-2-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 4 meses (6.4 kg) | 576 | 576 | 2.844 | 2.8 mL | ✅  |
 | piperacilina-tazobactam | intraabdominal-2-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 6 meses (7.6 kg) | 684 | 684 | 3.378 | 3.4 mL | ✅  |
 | piperacilina-tazobactam | intraabdominal-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 9 meses (8.6 kg) | 967.5 | 967.5 | 4.778 | 4.8 mL | ✅  |

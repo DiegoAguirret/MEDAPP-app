@@ -1,0 +1,131 @@
+id: cafeina-citrato
+name: Cafeína citrato
+category: respiratorio
+synonyms: [citrato de cafeína, caffeine citrate, apnea del prematuro]
+presentations:
+  - id: iny-20
+    label: Solución inyectable 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL)
+    form: ampolla
+    mgPerUnit: 20
+    unit: mL
+    step: 0.01
+    brandsPE: []
+  - id: oral-20
+    label: Solución oral 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL)
+    form: solucion
+    mgPerUnit: 20
+    unit: mL
+    step: 0.01
+    brandsPE: []
+rules:
+  - id: carga-iv
+    indication: Apnea del prematuro, dosis de carga (IV)
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    weightMinKg: 1
+    weightMaxKg: 4.5
+    basis: mg/kg/dose
+    amountMin: 20
+    amountMax: 20
+    usual: 20
+    once: true
+    maxPerDoseMg: 90
+    maxPerDayMg: 90
+    notes: >-
+      FDA — carga de 20 mg/kg de citrato de cafeína (1 mL/kg) IV en 30 minutos con bomba de jeringa, una sola vez.
+      OMS — 20 mg/kg por vía oral o IV lenta en 30 min. El tope es técnico (20 mg/kg con 4.5 kg, el límite de la
+      tabla neonatal de la OMS).
+    presentationIds: [iny-20]
+    sourceIds: [fda-caffeine-citrate, who-pocket-2013, who-mfc-2010, digemid-pnume-2023]
+  - id: carga-vo
+    indication: Apnea del prematuro, dosis de carga (VO)
+    route: VO
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    weightMinKg: 1
+    weightMaxKg: 4.5
+    basis: mg/kg/dose
+    amountMin: 20
+    amountMax: 20
+    usual: 20
+    once: true
+    maxPerDoseMg: 90
+    maxPerDayMg: 90
+    notes: OMS — carga de 20 mg/kg de citrato de cafeína por vía oral (o IV en 30 min). La FDA solo describe la carga IV.
+    presentationIds: [oral-20]
+    sourceIds: [who-pocket-2013, who-mfc-2010, digemid-pnume-2023]
+  - id: mantenimiento-iv
+    indication: Apnea del prematuro, mantenimiento (IV), desde 24 h después de la carga
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    weightMinKg: 1
+    weightMaxKg: 4.5
+    basis: mg/kg/dose
+    amountMin: 5
+    amountMax: 20
+    usual: 5
+    intervalHours: 24
+    maxPerDoseMg: 90
+    maxPerDayMg: 90
+    notes: >-
+      FDA — 5 mg/kg (0.25 mL/kg) IV en 10 minutos cada 24 horas, empezando 24 horas después de la carga. OMS — se
+      puede subir 5 mg/kg cada 24 h hasta un máximo de 20 mg/kg/día, salvo efectos adversos; seguir 4 a 5 días
+      después de que cese la apnea. El tope es técnico (20 mg/kg con 4.5 kg).
+    presentationIds: [iny-20]
+    sourceIds: [fda-caffeine-citrate, who-pocket-2013, who-mfc-2010, digemid-pnume-2023]
+  - id: mantenimiento-vo
+    indication: Apnea del prematuro, mantenimiento (VO), desde 24 h después de la carga
+    route: VO
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    weightMinKg: 1
+    weightMaxKg: 4.5
+    basis: mg/kg/dose
+    amountMin: 5
+    amountMax: 20
+    usual: 5
+    intervalHours: 24
+    maxPerDoseMg: 90
+    maxPerDayMg: 90
+    notes: >-
+      FDA — 5 mg/kg (0.25 mL/kg) por vía oral cada 24 horas, empezando 24 horas después de la carga. OMS — hasta
+      20 mg/kg/día subiendo 5 mg/kg cada 24 h; seguir 4 a 5 días después de que cese la apnea.
+    presentationIds: [oral-20]
+    sourceIds: [fda-caffeine-citrate, who-pocket-2013, who-mfc-2010, digemid-pnume-2023]
+warnings:
+  - Las dosis son de citrato de cafeína; la dosis de cafeína base es la mitad (20 mg de citrato = 10 mg de cafeína base).
+  - La apnea del prematuro es un diagnóstico de exclusión; descartar antes otras causas (FDA, OMS).
+  - Vigilar la aparición de enterocolitis necrotizante (FDA).
+  - Medir la cafeína sérica basal si recibió teofilina o si la madre consumió cafeína antes del parto. Niveles mayores de 50 mg/L se asocian a toxicidad grave (FDA).
+  - Precaución en convulsiones, cardiopatía e insuficiencia renal o hepática (FDA).
+  - La OMS da esta pauta para recién nacidos de menos de 35 semanas y menos de 2 kg; la FDA, para prematuros.
+contraindications:
+  - Hipersensibilidad a cualquiera de sus componentes.
+interactions:
+  - 'Cimetidina y ketoconazol: pueden requerir dosis menores de cafeína (FDA).'
+  - 'Fenobarbital y fenitoína: pueden requerir dosis mayores de cafeína (FDA).'
+  - 'Teofilina: no se recomienda el uso conjunto (FDA).'
+renal: FDA — no hay estudios en insuficiencia renal; usar con precaución, medir niveles y ajustar la dosis.
+diagnoses: [apnea del prematuro, apnea, prematuro]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: carga-iv
+    presentationId: iny-20
+    weightKg: 1.5
+    ageDays: 1
+    expect: { mgPerDose: 30, amount: 1.5, unit: mL }
+  - ruleId: mantenimiento-vo
+    presentationId: oral-20
+    weightKg: 1.2
+    ageDays: 5
+    expect: { mgPerDose: 6, amount: 0.3, unit: mL }
