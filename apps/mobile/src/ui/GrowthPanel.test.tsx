@@ -41,13 +41,4 @@ describe('GrowthPanel', () => {
     expect(screen.queryByLabelText('Perímetro cefálico en centímetros')).toBeNull();
     expect(screen.queryByRole('radio', { name: 'Acostado' })).toBeNull();
   });
-
-  it('muestra la curva del indicador al pedirla', async () => {
-    await render(<GrowthPanel decimalSeparator="." />);
-    await fireEvent.press(screen.getByRole('radio', { name: 'Niño' }));
-    await fill('Edad en años', '1');
-    await fill('Peso en kilogramos', '9');
-    await fireEvent.press(screen.getByRole('button', { name: 'Ver curva: Peso para la edad' }));
-    expect(screen.getByLabelText(/Curva de peso para la edad/)).toBeOnTheScreen();
-  });
 });

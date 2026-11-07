@@ -40,7 +40,7 @@ export function ManualPanel({ decimalSeparator }: { decimalSeparator: '.' | ',' 
   return (
     <View>
       <Banner tone="warning">
-        Cálculo libre sin ficha: verifique la dosis, el intervalo y el máximo en una fuente oficial.
+        Cálculo libre sin ficha: verifica la dosis, el intervalo y el máximo en una fuente oficial.
       </Banner>
       <Card>
         <SectionTitle>Paciente</SectionTitle>

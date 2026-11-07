@@ -55,7 +55,7 @@ export function manualRule(input: {
     intervalHours: input.intervalHours,
     maxPerDoseMg: max,
     maxPerDayMg: max * dosesPerDay,
-    ...(maxText === '' ? { notes: 'Sin tope: verifique la dosis máxima del fármaco.' } : {}),
+    ...(maxText === '' ? { notes: 'Sin tope: verifica la dosis máxima del fármaco.' } : {}),
     sourceIds: ['manual'],
   };
 }

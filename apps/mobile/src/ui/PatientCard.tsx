@@ -169,7 +169,7 @@ export function PatientCard({
       {patient.weightText.trim() !== '' && !weight.ok ? (
         <Text style={s.error}>{REASON_TEXT.invalid_weight}</Text>
       ) : null}
-      {ageInvalid ? <Text style={s.error}>Revise la edad (meses de 0 a 11).</Text> : null}
+      {ageInvalid ? <Text style={s.error}>Revisa la edad (meses de 0 a 11).</Text> : null}
     </Card>
   );
 }

@@ -469,7 +469,7 @@ export function DosePanel({
             />
           </View>
           {customMg.trim() !== '' && customMl.trim() !== '' && !custom ? (
-            <Text style={s.error}>Ingrese {du} y mL mayores que cero.</Text>
+            <Text style={s.error}>Ingresa {du} y mL mayores que cero.</Text>
           ) : null}
         </Card>
       ) : null}

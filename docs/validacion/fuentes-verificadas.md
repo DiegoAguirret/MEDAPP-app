@@ -564,7 +564,7 @@ La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en inf
 - **Cloruro de sodio al 20 %:** las fuentes leídas no dan una pauta pediátrica para la hiponatremia.
 - **Mantenimiento de potasio** (1–2 mmol/kg/día, OMS): va dentro de los líquidos de mantenimiento, no como velocidad aparte.
 
-## Crecimiento: puntaje z, percentil, curvas OMS y clasificación NTS 238 — verificado el 07/11/2026
+## Crecimiento: puntaje z, percentil y clasificación NTS 238 — verificado el 07/11/2026
 
 - **Tablas LMS:** Patrones de Crecimiento Infantil OMS 2006 (menores de 5 años, tablas diarias) y Referencia de Crecimiento OMS 2007 (5 a 19 años, tablas mensuales). Se copiaron sin cambios de los paquetes oficiales de la OMS `anthro` y `anthroplus` (`data-raw/growthstandards`). Se generan con `scripts/gen-who-tables.mjs` en `apps/mobile/src/domain/growth/whoTables.ts`.
 - **Cálculo:** son las reglas del código de esos paquetes:

@@ -49,8 +49,6 @@ export interface IndicatorResult {
   z: number;
   percentile: number;
   reference: 'OMS 2006' | 'OMS 2007';
-  /** Tabla y punto x (días, meses o cm) para dibujar al paciente en la curva. */
-  chart: { table: TableId; x: number };
   nts?: NtsClass;
   note?: string;
 }
@@ -225,7 +223,6 @@ export function assessGrowth(input: GrowthInput): IndicatorResult[] {
       z,
       percentile: percentileFromZ(z),
       reference: table.endsWith('07') ? 'OMS 2007' : 'OMS 2006',
-      chart: { table, x },
       ...(nts ? { nts } : { note: noteFor(id, ageDays) }),
     });
   };
@@ -273,50 +270,4 @@ export function assessGrowth(input: GrowthInput): IndicatorResult[] {
     push('bfa', 'IMC para la edad', bmi, 'kg/m²', 'bfa07', months, true);
   }
   return out;
-}
-
-const DOMAINS: Record<TableId, { from: number; to: number }> = {
-  wfa: { from: 0, to: 1826 },
-  lfa: { from: 0, to: 1826 },
-  bfa: { from: 0, to: 1826 },
-  hcfa: { from: 0, to: 1826 },
-  acfa: { from: 91, to: 1826 },
-  wfl: { from: 45, to: 110 },
-  wfh: { from: 65, to: 120 },
-  wfa07: { from: 60, to: 120 },
-  hfa07: { from: 60, to: 228 },
-  bfa07: { from: 60, to: 228 },
-};
-
-/** Eje x válido de una tabla (días, meses o centímetros). */
-export function chartDomain(table: TableId): { from: number; to: number } {
-  return DOMAINS[table];
-}
-
-/** Unidad del eje x de una tabla. */
-export function chartAxis(table: TableId): 'days' | 'months' | 'cm' {
-  if (table === 'wfl' || table === 'wfh') return 'cm';
-  return table.endsWith('07') ? 'months' : 'days';
-}
-
-/** Líneas de desviación estándar (valor de la medida en k DE) a lo largo de la tabla. */
-export function sdLines(
-  table: TableId,
-  sex: Sex,
-  ks: readonly number[],
-  samples = 60,
-): { k: number; points: { x: number; y: number }[] }[] {
-  const { from, to } = DOMAINS[table];
-  const xs = Array.from({ length: samples + 1 }, (_, i) =>
-    i === samples ? to : Math.round((from + ((to - from) * i) / samples) * 10) / 10,
-  );
-  return ks.map((k) => ({
-    k,
-    points: xs.flatMap((x) => {
-      const lms = lmsAt(table, sex, x);
-      if (!lms) return [];
-      const y = k === 0 ? lms.m : lms.m * (1 + lms.l * lms.s * k) ** (1 / lms.l);
-      return [{ x, y }];
-    }),
-  }));
 }

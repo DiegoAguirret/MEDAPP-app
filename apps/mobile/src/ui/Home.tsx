@@ -158,7 +158,7 @@ export function Home({
     {
       id: 'crecimiento',
       title: 'Crecimiento',
-      text: 'Puntaje z, percentil y curvas OMS con la NTS 238',
+      text: 'Puntaje z, percentil con patrones OMS y NTS 238',
       icon: 'human-male-height',
       hue: '#047857',
     },

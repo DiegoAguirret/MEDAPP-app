@@ -47,8 +47,8 @@ export default function CalculadorasTab() {
         <Card>
           <SectionTitle>Crecimiento y estado nutricional</SectionTitle>
           <Text style={s.cardText}>
-            Peso, talla, IMC y perímetros con puntaje z, percentil y curvas OMS, clasificados con la
-            NTS 238 del MINSA.
+            Peso, talla, IMC y perímetros con puntaje z y percentil OMS, clasificados con la NTS 238
+            del MINSA.
           </Text>
           <Button
             label="Abrir valoración del crecimiento"

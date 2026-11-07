@@ -126,7 +126,7 @@ Cada entrada contiene:
 - Unidades claras: nunca "u", nunca ceros finales ("5 mL", no "5.0 mL"), siempre cero a la izquierda ("0,5 mg"). Se usan **mayúsculas diferenciales (tall-man)** para nombres parecidos.
 - Separación decimal según el formato peruano, de forma consistente en toda la app.
 - **Nunca hay anuncios** en la pantalla del resultado ni en el módulo de urgencias.
-- Aviso permanente: "Herramienta de apoyo. La decisión clínica es responsabilidad del médico tratante. Verifique con la ficha técnica." Lo exigen Apple 1.4.1 y Google Play.
+- Aviso permanente: "Herramienta de apoyo. La decisión clínica es responsabilidad del médico tratante. Verifica con la ficha técnica." Lo exigen Apple 1.4.1 y Google Play.
 
 ### 4.6 Gobernanza clínica
 

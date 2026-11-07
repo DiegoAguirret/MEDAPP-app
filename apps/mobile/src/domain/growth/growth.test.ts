@@ -1,7 +1,5 @@
 import {
   ageInDays,
-  chartDomain,
-  sdLines,
   assessGrowth,
   lmsAt,
   ntsClass,
@@ -199,30 +197,5 @@ describe('ntsClass (NTS N.° 238-MINSA/DGIESP-2025, Tabla 3)', () => {
     expect(ntsClass('bfa', 1, d)?.label).toBe('Normal');
     expect(ntsClass('bfa', -2.5, d)?.label).toBe('Delgadez');
     expect(ntsClass('bfa', -3.01, d)?.label).toBe('Delgadez severa');
-  });
-});
-
-describe('curvas de referencia', () => {
-  it('cada resultado dice qué tabla y qué punto usar en la gráfica', () => {
-    const r = assessGrowth({ sex: 'male', ageDays: 365, weightKg: 7.7, lengthCm: 70 });
-    const wfa = r.find((x) => x.id === 'wfa');
-    const wfl = r.find((x) => x.id === 'wfl');
-    expect(wfa?.chart).toEqual({ table: 'wfa', x: 365 });
-    expect(wfl?.chart).toEqual({ table: 'wfl', x: 70 });
-  });
-
-  it('sdLines devuelve la mediana en k = 0 y respeta el dominio de la tabla', () => {
-    const lines = sdLines('wfa', 'male', [0, 2]);
-    const median = lines.find((l) => l.k === 0);
-    expect(median?.points[0]).toEqual({ x: 0, y: 3.3464 });
-    const last = median?.points[median.points.length - 1];
-    expect(last?.x).toBe(1826);
-    expect(lines.find((l) => l.k === 2)?.points[0]?.y).toBeGreaterThan(3.3464);
-  });
-
-  it('chartDomain da el eje x de cada tabla', () => {
-    expect(chartDomain('wfl')).toEqual({ from: 45, to: 110 });
-    expect(chartDomain('acfa')).toEqual({ from: 91, to: 1826 });
-    expect(chartDomain('bfa07')).toEqual({ from: 60, to: 228 });
   });
 });

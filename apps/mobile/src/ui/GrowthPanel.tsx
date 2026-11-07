@@ -1,6 +1,6 @@
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useMemo, useState } from 'react';
-import { LayoutAnimation, Pressable, Share, StyleSheet, Text, View } from 'react-native';
+import { Pressable, Share, StyleSheet, Text, View } from 'react-native';
 import {
   ageInDays,
   assessGrowth,
@@ -11,7 +11,6 @@ import {
 } from '../domain/growth/growth';
 import { CLINICAL_DISCLAIMER } from '../domain/messages';
 import { Card, Chip, NumberField, SectionTitle } from './components';
-import { GrowthChart } from './GrowthChart';
 import { family, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
 
 const SOURCES = [
@@ -46,7 +45,6 @@ export function GrowthPanel({ decimalSeparator }: { decimalSeparator: '.' | ',' 
   const [position, setPosition] = useState<Position | null>(null);
   const [head, setHead] = useState('');
   const [arm, setArm] = useState('');
-  const [open, setOpen] = useState<string | null>(null);
 
   const dec = (n: number, digits: number) => n.toFixed(digits).replace('.', decimalSeparator);
   const y = int(years);
@@ -222,14 +220,8 @@ export function GrowthPanel({ decimalSeparator }: { decimalSeparator: '.' | ',' 
             <ResultCard
               key={r.id}
               r={r}
-              sex={sex ?? 'male'}
               s={s}
               c={c}
-              open={open === r.id}
-              onToggle={() => {
-                LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-                setOpen((o) => (o === r.id ? null : r.id));
-              }}
               zText={zText}
               pText={pText}
               dec={dec}
@@ -263,22 +255,16 @@ export function GrowthPanel({ decimalSeparator }: { decimalSeparator: '.' | ',' 
 
 function ResultCard({
   r,
-  sex,
   s,
   c,
-  open,
-  onToggle,
   zText,
   pText,
   dec,
   tone,
 }: {
   r: IndicatorResult;
-  sex: Sex;
   s: ReturnType<typeof makeStyles>;
   c: Palette;
-  open: boolean;
-  onToggle: () => void;
   zText: (z: number) => string;
   pText: (p: number) => string;
   dec: (n: number, digits: number) => string;
@@ -336,26 +322,6 @@ function ResultCard({
         ))}
       </View>
       {r.note ? <Text style={s.hint}>{r.note}</Text> : null}
-      <Pressable
-        accessibilityRole="button"
-        accessibilityLabel={`${open ? 'Ocultar' : 'Ver'} curva: ${r.label}`}
-        accessibilityState={{ expanded: open }}
-        onPress={onToggle}
-        style={({ pressed }) => [s.curveBtn, pressed && { opacity: 0.7 }]}
-      >
-        <MaterialCommunityIcons name="chart-line" size={18} color={c.accent} />
-        <Text style={s.curveText}>{open ? 'Ocultar curva' : 'Ver curva OMS'}</Text>
-      </Pressable>
-      {open ? (
-        <GrowthChart
-          table={r.chart.table}
-          sex={sex}
-          x={r.chart.x}
-          y={r.value}
-          label={r.label}
-          unit={r.unit}
-        />
-      ) : null}
     </View>
   );
 }
@@ -455,14 +421,6 @@ function makeStyles(c: Palette) {
       color: c.muted,
       textAlign: 'center',
     },
-    curveBtn: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      gap: 6,
-      minHeight: MIN_TOUCH,
-      alignSelf: 'flex-start',
-    },
-    curveText: { fontFamily: family.bold, fontSize: 15, color: c.accent },
     share: {
       flexDirection: 'row',
       alignItems: 'center',

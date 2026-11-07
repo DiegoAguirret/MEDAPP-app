@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react';
 import { LayoutAnimation, Pressable, Share, StyleSheet, Text, View } from 'react-native';
 import { scoreResult, type ScoreDef } from '../domain/scores';
 import { CLINICAL_DISCLAIMER } from '../domain/messages';
+import { hasScoreArt, ScoreArt } from './art/neonatalArt';
 import { Reveal } from './motion';
 import { Sheet } from './Sheet';
 import { family, MIN_TOUCH, radius, space, type, useColors, type Palette } from './theme';
@@ -164,8 +165,9 @@ export function ScorePanel({ def }: { def: ScoreDef }) {
           </Text>
         </View>
         <View style={s.options}>
-          {item.options.map((o) => {
+          {item.options.map((o, idx) => {
             const on = picks[item.id] === o.points;
+            const art = hasScoreArt(def.id, item.id, item.options.length);
             return (
               <Pressable
                 key={o.label}
@@ -173,12 +175,30 @@ export function ScorePanel({ def }: { def: ScoreDef }) {
                 accessibilityState={{ selected: on }}
                 accessibilityLabel={`${o.label}, ${o.points} ${o.points === 1 ? 'punto' : 'puntos'}`}
                 onPress={() => pick(item.id, o.points)}
-                style={({ pressed }) => [s.option, on && s.optionOn, pressed && { opacity: 0.8 }]}
+                style={({ pressed }) => [
+                  s.option,
+                  art && s.optionArt,
+                  on && s.optionOn,
+                  pressed && { opacity: 0.8 },
+                ]}
               >
-                <Text style={[s.points, on && { backgroundColor: c.accent, color: c.onAccent }]}>
+                {art ? (
+                  <View style={s.art} testID={`arte-${item.id}-${idx}`}>
+                    <ScoreArt scoreId={def.id} itemId={item.id} index={idx} />
+                  </View>
+                ) : null}
+                <Text
+                  style={[
+                    s.points,
+                    art && s.pointsOnArt,
+                    on && { backgroundColor: c.accent, color: c.onAccent },
+                  ]}
+                >
                   {o.points} {o.points === 1 ? 'pt' : 'pts'}
                 </Text>
-                <Text style={[s.optionText, on && s.optionTextOn]}>{o.label}</Text>
+                <Text style={[s.optionText, art && s.optionTextArt, on && s.optionTextOn]}>
+                  {o.label}
+                </Text>
               </Pressable>
             );
           })}
@@ -377,6 +397,16 @@ function makeStyles(c: Palette) {
       backgroundColor: c.ground,
     },
     optionOn: { borderColor: c.accent, backgroundColor: c.accentSoft },
+    optionArt: { padding: 0, overflow: 'hidden', gap: 0, backgroundColor: c.surface },
+    art: { width: '100%', aspectRatio: 160 / 110, backgroundColor: '#F8DFCF' },
+    pointsOnArt: {
+      position: 'absolute',
+      top: 8,
+      right: 8,
+      backgroundColor: c.text,
+      color: c.surface,
+    },
+    optionTextArt: { flex: 0, padding: space.md, minHeight: 64 },
     radio: {
       width: 20,
       height: 20,
