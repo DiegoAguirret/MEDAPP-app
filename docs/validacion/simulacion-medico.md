@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **10038** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **4643**. Fuera del rango de edad de la regla: 5395 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 4643/4643 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 4637/4643.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.60 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **10227** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **4715**. Fuera del rango de edad de la regla: 5512 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 4715/4715 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 4709/4715.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.59 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -239,6 +239,42 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | albendazol | nematodos-1-2-anos | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 18 meses (10.9 kg) | 200 | 200 | 10 | 10 mL | ✅  |
 | albendazol | nematodos-1-2-anos | Tableta 200 mg | 1 año (9.6 kg) | 200 | 200 | 1 | 1 tableta | ✅  |
 | albendazol | nematodos-1-2-anos | Tableta 200 mg | 18 meses (10.9 kg) | 200 | 200 | 1 | 1 tableta | ✅  |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 1 mes (4.2 kg) | 14 | 14 | 0.14 | 0.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 2 meses (5.1 kg) | 17 | 17 | 0.17 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 4 meses (6.4 kg) | 21.33 | 21.33 | 0.213 | 0.21 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 6 meses (7.6 kg) | 25.33 | 25.33 | 0.253 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 9 meses (8.6 kg) | 28.67 | 28.67 | 0.287 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 1 año (9.6 kg) | 32 | 32 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 18 meses (10.9 kg) | 36.33 | 36.33 | 0.363 | 0.36 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 2 años (12.2 kg) | 40.67 | 40.67 | 0.407 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 3 años (14.3 kg) | 47.67 | 47.67 | 0.477 | 0.5 tableta | ✅  |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 4 años (16.3 kg) | 54.33 | 54.33 | 0.543 | 0.54 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 5 años (18.3 kg) | 61 | 61 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 6 años (20.5 kg) | 68.33 | 68.33 | 0.683 | 0.68 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 8 años (25.6 kg) | 85.33 | 85.33 | 0.853 | 0.85 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 10 años (32 kg) | 106.67 | 106.67 | 1.067 | 1.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 12 años (40 kg) | 133.33 | 133.33 | 1.333 | 1.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 14 años (50 kg) | 166.67 | 166.67 | 1.667 | 1.67 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 16 años (58 kg) | 193.33 | 193.33 | 1.933 | 2 tableta | ✅  |
+| alopurinol | hiperuricemia-cancer | Tableta 100 mg | 17 años, obeso (95 kg) | 266.67 | 266.67 | 2.667 | 2.67 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 1 mes (4.2 kg) | 14 | 14 | 0.047 | 0.05 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 2 meses (5.1 kg) | 17 | 17 | 0.057 | 0.06 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 4 meses (6.4 kg) | 21.33 | 21.33 | 0.071 | 0.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 6 meses (7.6 kg) | 25.33 | 25.33 | 0.084 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 9 meses (8.6 kg) | 28.67 | 28.67 | 0.096 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 1 año (9.6 kg) | 32 | 32 | 0.107 | 0.11 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 18 meses (10.9 kg) | 36.33 | 36.33 | 0.121 | 0.12 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 2 años (12.2 kg) | 40.67 | 40.67 | 0.136 | 0.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 3 años (14.3 kg) | 47.67 | 47.67 | 0.159 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 4 años (16.3 kg) | 54.33 | 54.33 | 0.181 | 0.18 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 5 años (18.3 kg) | 61 | 61 | 0.203 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 6 años (20.5 kg) | 68.33 | 68.33 | 0.228 | 0.23 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 8 años (25.6 kg) | 85.33 | 85.33 | 0.284 | 0.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 10 años (32 kg) | 106.67 | 106.67 | 0.356 | 0.36 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 12 años (40 kg) | 133.33 | 133.33 | 0.444 | 0.44 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 14 años (50 kg) | 166.67 | 166.67 | 0.556 | 0.56 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 16 años (58 kg) | 193.33 | 193.33 | 0.644 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| alopurinol | hiperuricemia-cancer | Tableta 300 mg | 17 años, obeso (95 kg) | 266.67 | 266.67 | 0.889 | 0.89 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | alprostadil | ductus-dependiente | Alprostadil 5 mcg/mL (1 ampolla de 500 mcg en 100 mL, FDA) | 3 días, bajo peso (2 kg) (2 kg) | 12 | 12 | 2.4 | 2.4 mL | ✅  |
 | alprostadil | ductus-dependiente | Alprostadil 5 mcg/mL (1 ampolla de 500 mcg en 100 mL, FDA) | 5 días (3.2 kg) (3.2 kg) | 19.2 | 19.2 | 3.84 | 3.8 mL | ✅  |
 | alprostadil | ductus-dependiente | Alprostadil 5 mcg/mL (1 ampolla de 500 mcg en 100 mL, FDA) | 15 días (3.6 kg) (3.6 kg) | 21.6 | 21.6 | 4.32 | 4.3 mL | ✅  |
@@ -2385,6 +2421,18 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 14 años (50 kg) | 0.2 | 0.2 | 2 | 2 mL | ✅ tope aplicado |
 | flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 16 años (58 kg) | 0.2 | 0.2 | 2 | 2 mL | ✅ tope aplicado |
 | flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 17 años, obeso (95 kg) | 0.2 | 0.2 | 2 | 2 mL | ✅ tope aplicado |
+| fluoxetina | depresion | Tableta 20 mg | 8 años (25.6 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
+| fluoxetina | depresion | Tableta 20 mg | 10 años (32 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
+| fluoxetina | depresion | Tableta 20 mg | 12 años (40 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
+| fluoxetina | depresion | Tableta 20 mg | 14 años (50 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
+| fluoxetina | depresion | Tableta 20 mg | 16 años (58 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
+| fluoxetina | depresion | Tableta 20 mg | 17 años, obeso (95 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
+| fluoxetina | toc | Tableta 20 mg | 8 años (25.6 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
+| fluoxetina | toc | Tableta 20 mg | 10 años (32 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
+| fluoxetina | toc | Tableta 20 mg | 12 años (40 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
+| fluoxetina | toc | Tableta 20 mg | 14 años (50 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
+| fluoxetina | toc | Tableta 20 mg | 16 años (58 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
+| fluoxetina | toc | Tableta 20 mg | 17 años, obeso (95 kg) | 10 | 10 | 0.5 | 0.5 tableta | ✅  |
 | furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 1 mes (4.2 kg) | 5.25 | 5.25 | 0.525 | 0.5 mL | ✅  |
 | furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 2 meses (5.1 kg) | 6.38 | 6.38 | 0.637 | 0.64 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
 | furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 4 meses (6.4 kg) | 8 | 8 | 0.8 | 0.8 mL | ✅  |
@@ -3258,6 +3306,16 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | metamizol | fiebre-dolor-vo | Gotas 400 mg/mL (medir con jeringa de 1 mL) | 5 años (18.3 kg) | 183 | 183 | 0.458 | 0.45 mL | ✅  |
 | metamizol | fiebre-dolor-vo | Gotas 400 mg/mL (medir con jeringa de 1 mL) | 6 años (20.5 kg) | 205 | 205 | 0.512 | 0.5 mL | ✅  |
 | metamizol | fiebre-dolor-vo | Gotas 400 mg/mL (medir con jeringa de 1 mL) | 8 años (25.6 kg) | 256 | 256 | 0.64 | 0.65 mL | ✅  |
+| metformina | dm2-inicio | Tableta 500 mg | 10 años (32 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
+| metformina | dm2-inicio | Tableta 500 mg | 12 años (40 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
+| metformina | dm2-inicio | Tableta 500 mg | 14 años (50 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
+| metformina | dm2-inicio | Tableta 500 mg | 16 años (58 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
+| metformina | dm2-inicio | Tableta 500 mg | 17 años, obeso (95 kg) | 500 | 500 | 1 | 1 tableta | ✅  |
+| metformina | dm2-inicio | Tableta 850 mg | 10 años (32 kg) | 500 | 500 | 0.588 | 0.59 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metformina | dm2-inicio | Tableta 850 mg | 12 años (40 kg) | 500 | 500 | 0.588 | 0.59 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metformina | dm2-inicio | Tableta 850 mg | 14 años (50 kg) | 500 | 500 | 0.588 | 0.59 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metformina | dm2-inicio | Tableta 850 mg | 16 años (58 kg) | 500 | 500 | 0.588 | 0.59 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| metformina | dm2-inicio | Tableta 850 mg | 17 años, obeso (95 kg) | 500 | 500 | 0.588 | 0.59 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | metilfenidato | tdah-inicio | Tableta 10 mg | 6 años (20.5 kg) | 5 | 5 | 0.5 | 0.5 tableta | ✅  |
 | metilfenidato | tdah-inicio | Tableta 10 mg | 8 años (25.6 kg) | 5 | 5 | 0.5 | 0.5 tableta | ✅  |
 | metilfenidato | tdah-inicio | Tableta 10 mg | 10 años (32 kg) | 5 | 5 | 0.5 | 0.5 tableta | ✅  |
@@ -3838,6 +3896,13 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | oseltamivir | influenza-13-anos-o-mas | Cápsula 75 mg | 14 años (50 kg) | 75 | 75 | 1 | 1 capsula | ✅  |
 | oseltamivir | influenza-13-anos-o-mas | Cápsula 75 mg | 16 años (58 kg) | 75 | 75 | 1 | 1 capsula | ✅  |
 | oseltamivir | influenza-13-anos-o-mas | Cápsula 75 mg | 17 años, obeso (95 kg) | 75 | 75 | 1 | 1 capsula | ✅  |
+| oxibutinina | mayores-5a | Tableta 5 mg | 6 años (20.5 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
+| oxibutinina | mayores-5a | Tableta 5 mg | 8 años (25.6 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
+| oxibutinina | mayores-5a | Tableta 5 mg | 10 años (32 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
+| oxibutinina | mayores-5a | Tableta 5 mg | 12 años (40 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
+| oxibutinina | mayores-5a | Tableta 5 mg | 14 años (50 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
+| oxibutinina | mayores-5a | Tableta 5 mg | 16 años (58 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
+| oxibutinina | mayores-5a | Tableta 5 mg | 17 años, obeso (95 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
 | paracetamol | fiebre-dolor-vo | Solución oral 100 mg/mL | 1 mes (4.2 kg) | 63 | 63 | 0.63 | 0.6 mL | ✅  |
 | paracetamol | fiebre-dolor-vo | Solución oral 100 mg/mL | 2 meses (5.1 kg) | 76.5 | 76.5 | 0.765 | 0.8 mL | ✅  |
 | paracetamol | fiebre-dolor-vo | Solución oral 100 mg/mL | 4 meses (6.4 kg) | 96 | 96 | 0.96 | 1 mL | ✅  |
@@ -4433,6 +4498,13 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | salbutamol | vo-6-12-anos | Tableta 4 mg | 8 años (25.6 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
 | salbutamol | vo-6-12-anos | Tableta 4 mg | 10 años (32 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
 | salbutamol | vo-6-12-anos | Tableta 4 mg | 12 años (40 kg) | 2 | 2 | 0.5 | 0.5 tableta | ✅  |
+| sertralina | toc-6-12a | Tableta 50 mg | 6 años (20.5 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
+| sertralina | toc-6-12a | Tableta 50 mg | 8 años (25.6 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
+| sertralina | toc-6-12a | Tableta 50 mg | 10 años (32 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
+| sertralina | toc-6-12a | Tableta 50 mg | 12 años (40 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
+| sertralina | toc-13-17a | Tableta 50 mg | 14 años (50 kg) | 50 | 50 | 1 | 1 tableta | ✅  |
+| sertralina | toc-13-17a | Tableta 50 mg | 16 años (58 kg) | 50 | 50 | 1 | 1 tableta | ✅  |
+| sertralina | toc-13-17a | Tableta 50 mg | 17 años, obeso (95 kg) | 50 | 50 | 1 | 1 tableta | ✅  |
 | sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 2 años (12.2 kg) | 488 | 488 | 2.44 | 2.4 mL | ✅  |
 | sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 3 años (14.3 kg) | 572 | 572 | 2.86 | 2.9 mL | ✅  |
 | sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 4 años (16.3 kg) | 652 | 652 | 3.26 | 3.3 mL | ✅  |

@@ -1,0 +1,61 @@
+id: sertralina
+name: Sertralina
+category: otro
+synonyms: [sertraline, Zoloft, ISRS, trastorno obsesivo compulsivo, TOC]
+presentations:
+  - id: tab-50
+    label: Tableta 50 mg
+    form: tableta
+    mgPerUnit: 50
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: toc-6-12a
+    indication: Trastorno obsesivo compulsivo, dosis inicial (6 a 12 años)
+    route: VO
+    ageMinDays: 2190
+    ageMaxDays: 4744
+    basis: fixed_by_age
+    amountMin: 25
+    amountMax: 25
+    usual: 25
+    intervalHours: 24
+    maxPerDoseMg: 25
+    maxPerDayMg: 25
+    notes: >-
+      FDA (Zoloft) — TOC de 6 a 12 años, 25 mg/día al inicio; si la respuesta es insuficiente, subir 25 a 50 mg/día
+      una vez por semana hasta un máximo de 200 mg/día.
+    sourceIds: [fda-zoloft, digemid-pnume-2023]
+  - id: toc-13-17a
+    indication: Trastorno obsesivo compulsivo, dosis inicial (13 a 17 años)
+    route: VO
+    ageMinDays: 4745
+    ageMaxDays: 6574
+    basis: fixed_by_age
+    amountMin: 50
+    amountMax: 50
+    usual: 50
+    intervalHours: 24
+    maxPerDoseMg: 50
+    maxPerDayMg: 50
+    notes: FDA (Zoloft) — TOC desde los 13 años, 50 mg/día al inicio; máximo 200 mg/día.
+    sourceIds: [fda-zoloft, digemid-pnume-2023]
+warnings:
+  - 'Recuadro de la FDA: los antidepresivos aumentaron el riesgo de pensamientos y conductas suicidas en niños, adolescentes y adultos jóvenes. Vigilar de cerca el empeoramiento clínico.'
+  - Estas reglas son la dosis de inicio; el ajuste semanal llega hasta 200 mg/día (FDA).
+  - Para suspenderla, bajar la dosis de forma gradual (FDA).
+contraindications:
+  - Uso de IMAO (incluidos linezolid y azul de metileno IV) o en los 14 días después de suspenderlos (FDA).
+diagnoses: [trastorno obsesivo compulsivo, TOC]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: toc-6-12a
+    presentationId: tab-50
+    weightKg: 25
+    ageDays: 2920
+    expect: { mgPerDose: 25, amount: 0.5, unit: tableta }

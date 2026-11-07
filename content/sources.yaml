@@ -736,3 +736,38 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=a7174843-5965-49fc-b842-f7eff7b48bbc
   kind: regulador
   country: US
+- id: fda-zoloft
+  title: Zoloft (sertralina) — prescribing information (FDA, set fda754f6-d0f3-4dce-a17a-927d64f912f7)
+  publisher: U.S. FDA / Viatris
+  year: 2023
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=fda754f6-d0f3-4dce-a17a-927d64f912f7
+  kind: regulador
+  country: US
+- id: fda-fluoxetine
+  title: Fluoxetina — prescribing information (FDA, set 02283de9-6087-45f7-a9ce-3b082ce860de)
+  publisher: U.S. FDA
+  year: 2019
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=02283de9-6087-45f7-a9ce-3b082ce860de
+  kind: regulador
+  country: US
+- id: fda-allopurinol
+  title: Alopurinol tabletas — prescribing information (FDA, set 005048dd-844f-468c-bf56-1a09727e3477)
+  publisher: U.S. FDA
+  year: 2024
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=005048dd-844f-468c-bf56-1a09727e3477
+  kind: regulador
+  country: US
+- id: fda-metformin
+  title: Metformina tabletas — prescribing information (FDA, set 011de1a5-1ac0-4831-9e8d-26ec79ba2205)
+  publisher: U.S. FDA
+  year: 2024
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=011de1a5-1ac0-4831-9e8d-26ec79ba2205
+  kind: regulador
+  country: US
+- id: fda-oxybutynin
+  title: Oxibutinina tabletas de liberación inmediata — prescribing information (FDA, set 0697b3cf-b146-47c0-b5a5-5905ae8d1c97)
+  publisher: U.S. FDA
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=0697b3cf-b146-47c0-b5a5-5905ae8d1c97
+  kind: regulador
+  country: US

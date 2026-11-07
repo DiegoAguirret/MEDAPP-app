@@ -528,3 +528,20 @@ La app ahora calcula infusiones: la dosis en mcg/kg/min o mg/kg/h da la velocida
 - **Protamina:** se dosifica según las unidades de heparina, no por peso.
 - **Suxametonio:** el frasco de 500 mg del PNUME no tiene una concentración final verificada.
 - **Hidroxocobalamina 1 mg/mL:** es la presentación para déficit de B12, no el antídoto del cianuro.
+
+## Lote 17: sertralina, fluoxetina, alopurinol, metformina y oxibutinina — verificado el 07/11/2026
+
+- **Sertralina** (PNUME 50 mg): FDA (Zoloft), TOC, 25 mg/día al inicio de 6 a 12 años y 50 mg/día desde los 13; máximo 200 mg/día.
+- **Fluoxetina** (PNUME 20 mg): FDA, en pediatría 10–20 mg/día al inicio para la depresión y 10 mg/día para el TOC; no aprobada en menores de 7 años.
+- **Alopurinol** (PNUME 100 y 300 mg): FDA, hiperuricemia por tratamiento del cáncer, 10 mg/kg/día (100 mg/m² c/8–12 h), máximo 800 mg/día.
+- **Metformina** (PNUME 500 y 850 mg): FNME y FDA, de 10 a 16 años, 500 mg c/12 h al inicio, hasta 2000 mg/día.
+- **Oxibutinina** (PNUME 5 mg): FDA (liberación inmediata), mayores de 5 años, 5 mg c/12 h; máximo 5 mg c/8 h.
+
+**No incluidos (pendientes que necesitan otra fuente o presentación):**
+
+- **TB multirresistente** (levofloxacino, moxifloxacino, etionamida, cicloserina, estreptomicina, kanamicina, capreomicina): la NTS 221 solo da dosis de adulto. La OMS dosifica a los niños con tablas por banda de peso ligadas a formulaciones pediátricas que no están en el PNUME.
+- **Antirretrovirales pediátricos** (lamivudina, lopinavir/ritonavir, abacavir, efavirenz, nevirapina, zidovudina): hace falta la norma vigente del MINSA para el VIH pediátrico; varias dosis son por superficie corporal y el Model Formulary de la OMS (2010) está desactualizado.
+- **Risperidona:** la dosis inicial (0.25 mg con menos de 20 kg) no se puede medir con la tableta de 2 mg.
+- **Itraconazol e inmunoglobulina humana:** openFDA no devolvió una dosis pediátrica legible.
+- **Codeína:** la FDA la contraindica en menores de 12 años.
+- **Bicarbonato de sodio, cloruro de potasio y cloruro de sodio al 20 %:** se dosifican en mEq, unidad que la app aún no maneja.

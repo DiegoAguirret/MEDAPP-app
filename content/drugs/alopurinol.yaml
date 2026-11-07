@@ -1,0 +1,50 @@
+id: alopurinol
+name: Alopurinol
+category: otro
+synonyms: [allopurinol, Zyloprim, hiperuricemia, síndrome de lisis tumoral]
+presentations:
+  - id: tab-100
+    label: Tableta 100 mg
+    form: tableta
+    mgPerUnit: 100
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+  - id: tab-300
+    label: Tableta 300 mg
+    form: tableta
+    mgPerUnit: 300
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: hiperuricemia-cancer
+    indication: Hiperuricemia por tratamiento del cáncer
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    intervalHours: 8
+    maxPerDoseMg: 266.7
+    maxPerDayMg: 800
+    notes: >-
+      FDA — pacientes pediátricos, 100 mg/m² cada 8 a 12 horas (10 mg/kg/día, máximo 800 mg/día).
+    sourceIds: [fda-allopurinol, digemid-pnume-2023]
+warnings:
+  - En insuficiencia renal hay que ajustar la dosis (FDA).
+contraindications:
+  - Hipersensibilidad al alopurinol (FDA).
+diagnoses: [hiperuricemia, síndrome de lisis tumoral]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: hiperuricemia-cancer
+    presentationId: tab-100
+    weightKg: 30
+    ageDays: 3285
+    expect: { mgPerDose: 100, amount: 1, unit: tableta }

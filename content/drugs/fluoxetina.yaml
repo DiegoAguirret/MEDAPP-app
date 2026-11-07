@@ -1,0 +1,56 @@
+id: fluoxetina
+name: Fluoxetina
+category: otro
+synonyms: [fluoxetine, Prozac, ISRS, depresión, trastorno obsesivo compulsivo]
+presentations:
+  - id: tab-20
+    label: Tableta 20 mg
+    form: tableta
+    mgPerUnit: 20
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: depresion
+    indication: Depresión mayor, dosis inicial (7 años o más)
+    route: VO
+    ageMinDays: 2555
+    basis: fixed_by_age
+    amountMin: 10
+    amountMax: 20
+    usual: 10
+    intervalHours: 24
+    maxPerDoseMg: 20
+    maxPerDayMg: 20
+    notes: FDA — pediatría, depresión mayor, 10 a 20 mg/día al inicio. La FDA no la aprueba en menores de 7 años.
+    sourceIds: [fda-fluoxetine, digemid-pnume-2023]
+  - id: toc
+    indication: Trastorno obsesivo compulsivo, dosis inicial (7 años o más)
+    route: VO
+    ageMinDays: 2555
+    basis: fixed_by_age
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    intervalHours: 24
+    maxPerDoseMg: 10
+    maxPerDayMg: 10
+    notes: FDA — pediatría, TOC, 10 mg/día al inicio.
+    sourceIds: [fda-fluoxetine, digemid-pnume-2023]
+warnings:
+  - 'Recuadro de la FDA: los antidepresivos aumentaron el riesgo de pensamientos y conductas suicidas en niños, adolescentes y adultos jóvenes. Vigilar de cerca el empeoramiento clínico.'
+  - Estas reglas son la dosis de inicio; el ajuste lo decide el especialista.
+contraindications:
+  - Uso de IMAO para trastornos psiquiátricos o en las 5 semanas después de suspender la fluoxetina (FDA).
+diagnoses: [depresión, trastorno obsesivo compulsivo, TOC]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: toc
+    presentationId: tab-20
+    weightKg: 30
+    ageDays: 3285
+    expect: { mgPerDose: 10, amount: 0.5, unit: tableta }

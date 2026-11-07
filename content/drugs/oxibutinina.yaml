@@ -1,0 +1,43 @@
+id: oxibutinina
+name: Oxibutinina
+category: otro
+synonyms: [oxybutynin, Ditropan, vejiga hiperactiva, vejiga neurogénica]
+presentations:
+  - id: tab-5
+    label: Tableta 5 mg
+    form: tableta
+    mgPerUnit: 5
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: mayores-5a
+    indication: Vejiga hiperactiva o neurogénica (más de 5 años)
+    route: VO
+    ageMinDays: 1826
+    basis: fixed_by_age
+    amountMin: 5
+    amountMax: 5
+    usual: 5
+    intervalHours: 12
+    maxPerDoseMg: 5
+    maxPerDayMg: 15
+    notes: >-
+      FDA (liberación inmediata) — mayores de 5 años, 5 mg dos veces al día; máximo 5 mg tres veces al día.
+    sourceIds: [fda-oxybutynin, digemid-pnume-2023]
+warnings: []
+contraindications:
+  - Retención urinaria o gástrica u otros trastornos graves de la motilidad gastrointestinal (FDA).
+  - Glaucoma de ángulo estrecho no controlado (FDA).
+diagnoses: [vejiga hiperactiva, vejiga neurogénica, incontinencia urinaria]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: mayores-5a
+    presentationId: tab-5
+    weightKg: 25
+    ageDays: 2920
+    expect: { mgPerDose: 5, amount: 1, unit: tableta }

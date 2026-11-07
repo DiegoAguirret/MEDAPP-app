@@ -1,0 +1,55 @@
+id: metformina
+name: Metformina
+category: otro
+synonyms: [metformin, Glucophage, diabetes tipo 2]
+presentations:
+  - id: tab-500
+    label: Tableta 500 mg
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+  - id: tab-850
+    label: Tableta 850 mg
+    form: tableta
+    mgPerUnit: 850
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: dm2-inicio
+    indication: Diabetes tipo 2, dosis inicial (10 a 16 años)
+    route: VO
+    ageMinDays: 3650
+    ageMaxDays: 6209
+    basis: fixed_by_age
+    amountMin: 500
+    amountMax: 500
+    usual: 500
+    intervalHours: 12
+    maxPerDoseMg: 500
+    maxPerDayMg: 1000
+    notes: >-
+      FNME y FDA — de 10 a 16 años, 500 mg dos veces al día con las comidas; subir 500 mg por semana hasta un máximo de
+      2000 mg/día en 2 tomas. No se recomienda en menores de 10 años (FNME).
+    sourceIds: [fnme-2008, fda-metformin, digemid-pnume-2023]
+warnings:
+  - 'Recuadro de la FDA: acidosis láctica, a veces mortal.'
+  - Evaluar la función renal (TFG estimada) antes de empezar (FDA).
+contraindications:
+  - Insuficiencia renal grave (TFG menor de 30 mL/min/1.73 m²) (FDA).
+  - Acidosis metabólica aguda o crónica, incluida la cetoacidosis diabética (FDA).
+  - Hipersensibilidad a la metformina.
+diagnoses: [diabetes tipo 2]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: dm2-inicio
+    presentationId: tab-500
+    weightKg: 55
+    ageDays: 4380
+    expect: { mgPerDose: 500, amount: 1, unit: tableta }
