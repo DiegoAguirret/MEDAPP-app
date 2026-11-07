@@ -37,7 +37,8 @@ import {
 export const ALL_DRUGS = 'todos';
 
 /** Funciones de la app a las que lleva el inicio. */
-export type Tool = 'urgencias' | 'calculadoras' | 'favoritos' | 'manual' | CollectionId;
+export type Tool =
+  'urgencias' | 'calculadoras' | 'crecimiento' | 'favoritos' | 'manual' | CollectionId;
 
 type IconName = keyof typeof MaterialCommunityIcons.glyphMap;
 
@@ -153,6 +154,13 @@ export function Home({
       icon: 'baby-face-outline',
       hue: '#B4458C',
       badge: String(nNeonatal),
+    },
+    {
+      id: 'crecimiento',
+      title: 'Crecimiento',
+      text: 'Puntaje z, percentil y curvas OMS con la NTS 238',
+      icon: 'human-male-height',
+      hue: '#047857',
     },
     {
       id: 'calculadoras',

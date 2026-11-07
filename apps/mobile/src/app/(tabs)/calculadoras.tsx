@@ -45,6 +45,17 @@ export default function CalculadorasTab() {
           </View>
         ) : null}
         <Card>
+          <SectionTitle>Crecimiento y estado nutricional</SectionTitle>
+          <Text style={s.cardText}>
+            Peso, talla, IMC y perímetros con puntaje z, percentil y curvas OMS, clasificados con la
+            NTS 238 del MINSA.
+          </Text>
+          <Button
+            label="Abrir valoración del crecimiento"
+            onPress={() => router.push('/crecimiento')}
+          />
+        </Card>
+        <Card>
           <SectionTitle>Dosis libre</SectionTitle>
           <Button label="Abrir calculadora manual" onPress={() => router.push('/manual')} />
         </Card>
@@ -82,6 +93,7 @@ function makeStyles(c: Palette) {
       marginBottom: 6,
     },
     tileTitle: { fontFamily: family.bold, fontSize: 16, color: c.text },
+    cardText: { fontFamily: family.regular, fontSize: 14, lineHeight: 20, color: c.muted },
     tileSub: { fontFamily: family.regular, fontSize: type.label, lineHeight: 18, color: c.muted },
   });
 }

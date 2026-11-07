@@ -563,3 +563,26 @@ La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en inf
 
 - **Cloruro de sodio al 20 %:** las fuentes leídas no dan una pauta pediátrica para la hiponatremia.
 - **Mantenimiento de potasio** (1–2 mmol/kg/día, OMS): va dentro de los líquidos de mantenimiento, no como velocidad aparte.
+
+## Crecimiento: puntaje z, percentil, curvas OMS y clasificación NTS 238 — verificado el 07/11/2026
+
+- **Tablas LMS:** Patrones de Crecimiento Infantil OMS 2006 (menores de 5 años, tablas diarias) y Referencia de Crecimiento OMS 2007 (5 a 19 años, tablas mensuales). Se copiaron sin cambios de los paquetes oficiales de la OMS `anthro` y `anthroplus` (`data-raw/growthstandards`). Se generan con `scripts/gen-who-tables.mjs` en `apps/mobile/src/domain/growth/whoTables.ts`.
+- **Cálculo:** son las reglas del código de esos paquetes:
+  - Edad en días redondeada en menores de 5 años; edad en meses con interpolación lineal entre meses desde los 5 años.
+  - Corrección de 0,7 cm entre longitud y talla según la edad (731 días) y la forma de medir.
+  - Interpolación cada 0,1 cm en peso para la longitud (45–110 cm) y peso para la talla (65–120 cm).
+  - Puntaje z corregido más allá de ±3 DE en peso, IMC y perímetro braquial; fórmula simple en longitud/talla y perímetro cefálico.
+  - Límites de edad: P/E 2007 hasta antes de 121 meses; T/E e IMC 2007 hasta antes de 229 meses.
+- **Comprobación:** un niño de 12 meses con 7,7 kg da −2,05 DE, en línea con las tablas impresas de la OMS (−2 DE = 7,7 kg; mediana 9,6 kg). La mediana del IMC de una niña de 10 años es 16,6.
+- **Clasificación:** NTS N.° 238-MINSA/DGIESP-2025 (RM N.° 682-2025-MINSA), Tablas 2 y 3, leídas en la imagen de las páginas 15 y 16. Su fuente es la Guía Técnica de Valoración Nutricional Antropométrica (RM N.° 034-2024/MINSA).
+  - **Menores de 5 años:**
+    - P/E: sobrepeso > +2; normal de +2 a −2; bajo peso < −2 a −3; bajo peso severo < −3.
+    - P/T: obesidad > +3; sobrepeso > +2; normal; bajo peso (emaciado) < −2 a −3; bajo peso severo < −3.
+    - T/E: alto > +2; normal; talla baja < −2 a −3; talla baja severa < −3.
+    - PC/E: riesgo de microcefalia < −2; riesgo de macrocefalia > +2.
+  - **De 5 a 11 años, 11 meses y 29 días:**
+    - IMC/E: obesidad > +2, con obesidad severa desde ≥ +3; sobrepeso > +1 a +2; normal de +1 a −2; delgadez < −2 a −3; delgadez severa < −3.
+    - T/E: talla alta > +2; mismas categorías bajas que en menores de 5 años.
+  - **Rangos de edad (Tabla 2):** la clasificación empieza a los 29 días; el PC/E se clasifica hasta antes de los 3 años.
+  - **Fuera de esos rangos** la app muestra el puntaje z y el percentil sin clasificación y explica por qué. Esto aplica también al perímetro braquial (la NTS no le fija puntos de corte), a la P/E desde los 5 años y a los mayores de 12 años.
+- **Errata de la norma:** en la Tabla 3, el «Normal» del PC/E dice «≥ −2 a ≤ −2». Se interpreta como de −2 a +2, porque los riesgos de micro- y macrocefalia están en < −2 y > +2.
