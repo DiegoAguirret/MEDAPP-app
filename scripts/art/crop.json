@@ -1,27 +1,7 @@
 {
-  "capurro-pezon-0": [
-    0.5,
-    0.5,
-    1.6
-  ],
-  "capurro-pezon-1": [
-    0.5,
-    0.5,
-    1.6
-  ],
-  "capurro-pezon-2": [
-    0.5,
-    0.5,
-    1.6
-  ],
-  "capurro-pezon-3": [
-    0.5,
-    0.5,
-    1.6
-  ],
-  "capurro-mama-all": [
-    0.505,
-    0.52,
-    1.4
-  ]
+  "capurro-pezon-0": [0.5, 0.5, 1.6],
+  "capurro-pezon-1": [0.5, 0.5, 1.6],
+  "capurro-pezon-2": [0.5, 0.5, 1.6],
+  "capurro-pezon-3": [0.5, 0.5, 1.6],
+  "capurro-mama-all": [0.505, 0.52, 1.4]
 }
