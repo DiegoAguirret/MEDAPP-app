@@ -54,4 +54,33 @@ describe('ScorePanel', () => {
     await render(<ScorePanel def={demo} />);
     expect(screen.getByText('Fuente de prueba')).toBeOnTheScreen();
   });
+
+  it('muestra un criterio a la vez y pasa solo al siguiente', async () => {
+    await render(<ScorePanel def={demo} />);
+    expect(screen.queryByRole('radio', { name: 'b cero, 0 puntos' })).toBeNull();
+    await fireEvent.press(screen.getByRole('radio', { name: 'a cero, 0 puntos' }));
+    expect(screen.getByRole('radio', { name: 'b cero, 0 puntos' })).toBeOnTheScreen();
+  });
+
+  it('salta a cualquier criterio desde sus fichas', async () => {
+    await render(<ScorePanel def={demo} />);
+    await fireEvent.press(screen.getByRole('tab', { name: 'Criterio 2: Criterio B' }));
+    expect(screen.getByRole('radio', { name: 'b uno, 1 punto' })).toBeOnTheScreen();
+  });
+
+  it('ofrece compartir el resultado solo al completar', async () => {
+    await render(<ScorePanel def={demo} />);
+    expect(screen.queryByRole('button', { name: 'Compartir resultado' })).toBeNull();
+    await fireEvent.press(screen.getByRole('radio', { name: 'a dos, 2 puntos' }));
+    await fireEvent.press(screen.getByRole('radio', { name: 'b uno, 1 punto' }));
+    expect(screen.getByRole('button', { name: 'Compartir resultado' })).toBeOnTheScreen();
+  });
+
+  it('abre la hoja de información con la fórmula', async () => {
+    await render(
+      <ScorePanel def={{ ...demo, formula: { constant: 204, divisor: 7, unit: 'semanas' } }} />,
+    );
+    await fireEvent.press(screen.getByRole('button', { name: 'Cómo se usa' }));
+    expect(screen.getByText('EG (días) = 204 + suma de puntos')).toBeOnTheScreen();
+  });
 });
