@@ -1,6 +1,6 @@
 # Design — Dosis Pediátricas
 
-## World: «Cinta de colores por peso»
+## World: «Cinta de colores por peso» on clinical cyan
 
 The patient's weight falls in one of the color bands of pediatric resuscitation tapes (Broselow–Luten zones; the 2011 ranges are listed on WikEM). That band colors the patient header across the whole app. The doctor always sees whose doses are on screen. Outside 3–36 kg there is no band, and the header turns neutral.
 
@@ -18,15 +18,15 @@ The patient's weight falls in one of the color bands of pediatric resuscitation 
 
 ## Color strategy
 
-Committed. The band color owns the patient header and the tape strip. Everything else is a clean neutral ground: white surfaces on #F4F5F7, ink #1B2430, muted #5B6472. Primary actions use the brand blue #1F5FAD. Categories use their own hues: the icon on a solid hue square with a white glyph, over a tile with an 8 % tint and a hue hairline. Danger #C62828 and warning #B26A00 appear only where they mean something. The dark theme is first-class: ground #0E1116, surfaces #171B22, ink #F2F4F7. Band fills stay the same in dark.
+Clinical cyan, chosen with the ui-ux-pro-max design system for healthcare tools (calm cyan plus health green). The band color still owns the patient header and the tape strip. The ground is a cool tinted #F1F6F8 with white bento cards (border #DCE7EC), ink #0F2A36 and muted #4A6070. Actions use cyan #0E7490 (white text passes 4.5:1); verified and route chips use green #047857. The brand surface #0B5A70 carries the home's main card and the dose summary on the drug card. Categories keep their own hues. Danger #C62828 and warning #9A5B00 appear only where they mean something. The dark theme is first-class: ground #0B1418, surfaces #12212A, ink #EAF4F7, accent #5ED0E8. Band fills stay the same in dark.
 
 ## Type
 
-Roboto, the Android system face, loaded for web parity.
+Figtree (Google Fonts, @expo-google-fonts/figtree), a modern geometric sans with clear figures. Each weight is its own family on Android: 400, 500, 700 and 800.
 
 | Role        | Size and weight |
 | ----------- | --------------- |
-| Dose figure | 40/900          |
+| Dose figure | 42/800          |
 | Headline    | 26/800          |
 | Title       | 17/700          |
 | Body        | 15/400          |
@@ -37,9 +37,9 @@ Every figure uses tabular-nums. Weights carry the hierarchy; there is no second 
 
 ## Shape, density, elevation
 
-- Radius: 14 on cards, 10 on controls, 999 on chips.
-- 16 dp margins and 8 dp gaps. Rows run 52–60 dp, with 48 dp minimum touch targets.
-- Cards are white on the grey ground with a hairline border. No resting shadows, only tonal surfaces.
+- Bento: cards at radius 20, controls at 14, chips and buttons as pills.
+- 16 dp margins and 10 dp gaps in grids. Rows run 56 dp, with 48 dp minimum touch targets.
+- Cards are white on the tinted ground with a 1 dp border. No resting shadows, only tonal surfaces.
 
 ## Icons
 
@@ -58,16 +58,19 @@ React Native Animated (ui/motion.tsx), with every move honoring the system Reduc
 
 ## Home
 
-Patient first, then search, then browse. Each comes in one form only.
+Patient first, then search, then «¿Qué necesitas?»: every function of the app explained in one place.
 
 - **Patient:** «¿Para quién es la dosis?» shows the tape, which marks the zone while the weight is typed. With a complete patient, it turns into the band header.
 - **Search:** a pill field. Results come with a count; a search with no results offers «Abrir cálculo manual».
+- **¿Qué necesitas?:** a bento hub. The main card (brand surface) is «Dosis por fármaco» with the drug count, what the app gives (mg and volume for the weight, frequency, cap, source) and «Ver todos de la A a la Z». Below, two-column tool cards, each with a solid hue icon chip, a title and one line on what it does: Urgencias, Infusiones (count), Neonatología (count), Líquidos y superficie, Cálculo manual, Favoritos.
+- **Collections:** Infusiones and Neonatología open lists built from the rules (continuous or neonatal), never by hand. Neonatología adds Apgar, Silverman-Andersen and Capurro as pill shortcuts above the list.
 - **Recientes:** chips of the last 8 drug cards opened (ids only).
-- **Explorar:** vertical category tiles (icon and count on top, full name below, 114 dp). One «Todos A–Z» tile opens the lettered index.
-- Urgencias and Cálculos live only in the navigation bar, whose active tab gets an accent-soft pill that widens in over 220 ms. Icons are outline when idle and filled when active: medication, alarm-light, calculator, star, cog.
+- **Por categoría:** one card listing every category with its icon, name and count.
+- The navigation bar keeps Dosis, Urgencias, Cálculos, Favoritos and Ajustes; its active tab gets an accent-soft pill that widens in over 220 ms.
 
 ## Drug card (guided)
 
+- **Dose summary:** as soon as there is a result, a brand-surface strip under the patient shows «Rp/», the volume and the mg with the schedule, so the dose is visible without scrolling; the full result stays below.
 - **Indication:** the card shows the mg/kg range as an accent pill plus the schedule. «1 de N · Cambiar» opens a bottom sheet (ui/Sheet.tsx: scrim, handle, title, count, X) listing every option with its range. The chosen option has a 2 px accent border and a check, and options that don't fit read «No aplica a este paciente».
 - **Note:** the indication note sits under it, clamped to 2 lines, with «Ver más».
 - **Missing data:** fields still needed get a warning border, and the patient card header says what is missing («Faltan peso y edad»).

@@ -47,7 +47,7 @@ export function DrugRow({
             {drug.tallMan ?? drug.name}
           </Text>
           {routes.map((r) => (
-            <Text key={r} style={s.route}>
+            <Text key={r} style={s.route} numberOfLines={1}>
               {ROUTE_CHIP[r]}
             </Text>
           ))}
@@ -139,6 +139,7 @@ function makeStyles(c: Palette) {
       paddingVertical: 1,
       borderRadius: radius.pill,
       overflow: 'hidden',
+      flexShrink: 0,
     },
     sub: { fontFamily: family.regular, fontSize: type.label, color: c.muted },
     index: { gap: space.lg },

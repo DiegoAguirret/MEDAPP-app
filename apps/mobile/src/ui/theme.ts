@@ -2,9 +2,10 @@ import { createContext, useContext } from 'react';
 import { Platform, type TextStyle } from 'react-native';
 
 /**
- * Sistema visual «cinta de colores por peso»: tarjetas blancas sobre fondo gris frío, tinta
- * #1B2430, azul de marca para acciones; la franja de peso del paciente tiñe su cabecera.
- * Todos los textos superan 4.5:1 sobre la superficie donde se apoyan.
+ * Sistema visual «clínico cian»: fondo frío apenas teñido, tarjetas blancas en bento, cian
+ * clínico #0E7490 para acciones y verde #047857 para lo verificado. Cada categoría conserva su
+ * tono; la franja de peso del paciente sigue tiñendo su cabecera. Todos los textos superan 4.5:1
+ * sobre la superficie donde se apoyan, en claro y en oscuro.
  */
 export interface Palette {
   /** Fondo de pantalla. */
@@ -27,9 +28,13 @@ export interface Palette {
   accent: string;
   accentSoft: string;
   onAccent: string;
-  /** Botón principal (tinta). */
+  /** Botón principal. */
   ink: string;
   onInk: string;
+  /** Superficie destacada de la marca (tarjeta principal del inicio). */
+  hero: string;
+  onHero: string;
+  heroMuted: string;
   danger: string;
   dangerBg: string;
   warning: string;
@@ -43,71 +48,77 @@ export interface Palette {
 }
 
 export const lightColors: Palette = {
-  ground: '#F4F5F7',
+  ground: '#F1F6F8',
   surface: '#FFFFFF',
-  raised: '#F4F5F7',
-  border: '#E3E6EB',
-  rule: '#ECEEF2',
-  control: '#CBD1D9',
+  raised: '#EDF3F6',
+  border: '#DCE7EC',
+  rule: '#E6EEF2',
+  control: '#BFD0D8',
   selected: '#FFFFFF',
-  text: '#1B2430',
-  muted: '#5B6472',
-  accent: '#1F5FAD',
-  accentSoft: '#E7EEF8',
+  text: '#0F2A36',
+  muted: '#4A6070',
+  accent: '#0E7490',
+  accentSoft: '#DDF1F6',
   onAccent: '#FFFFFF',
-  ink: '#1F5FAD',
+  ink: '#0E7490',
   onInk: '#FFFFFF',
+  hero: '#0B5A70',
+  onHero: '#FFFFFF',
+  heroMuted: '#BFE6EF',
   danger: '#C62828',
   dangerBg: '#FDECEC',
   warning: '#9A5B00',
   warningBg: '#FFF4E0',
-  ok: '#1E7B45',
-  okBg: '#E5F4EA',
-  tip: '#1B2430',
+  ok: '#047857',
+  okBg: '#E3F5EE',
+  tip: '#0F2A36',
   onTip: '#FFFFFF',
-  tipMuted: '#B8C0CC',
+  tipMuted: '#B6CAD2',
 };
 
 export const darkColors: Palette = {
-  ground: '#0E1116',
-  surface: '#171B22',
-  raised: '#202631',
-  border: '#2A313C',
-  rule: '#232A34',
-  control: '#3A4350',
-  selected: '#2D3542',
-  text: '#F2F4F7',
-  muted: '#A9B2BF',
-  accent: '#7DB0FF',
-  accentSoft: '#162740',
-  onAccent: '#0E1116',
-  ink: '#7DB0FF',
-  onInk: '#0E1116',
+  ground: '#0B1418',
+  surface: '#12212A',
+  raised: '#1A2C37',
+  border: '#22394A',
+  rule: '#1C3040',
+  control: '#2F4B5A',
+  selected: '#22394A',
+  text: '#EAF4F7',
+  muted: '#A3BAC5',
+  accent: '#5ED0E8',
+  accentSoft: '#123643',
+  onAccent: '#062027',
+  ink: '#5ED0E8',
+  onInk: '#062027',
+  hero: '#0E4E61',
+  onHero: '#FFFFFF',
+  heroMuted: '#A8DDEA',
   danger: '#FF8A80',
   dangerBg: '#3A1B1B',
   warning: '#FFB74D',
   warningBg: '#33270F',
-  ok: '#73D49A',
-  okBg: '#12301F',
-  tip: '#2D3542',
-  onTip: '#F2F4F7',
-  tipMuted: '#B8C0CC',
+  ok: '#6EE7B7',
+  okBg: '#0F2E24',
+  tip: '#22394A',
+  onTip: '#EAF4F7',
+  tipMuted: '#B6CAD2',
 };
 
 /**
- * Roboto (cara del sistema Android), cargada también para la vista web. Cada peso es su propia
- * familia porque en Android una familia propia no responde a fontWeight.
+ * Figtree: sans geométrica moderna y muy legible en cifras. Cada peso es su propia familia
+ * porque en Android una familia propia no responde a fontWeight.
  */
 export const family = {
-  regular: 'Roboto_400Regular',
-  medium: 'Roboto_500Medium',
-  bold: 'Roboto_700Bold',
-  black: 'Roboto_900Black',
+  regular: 'Figtree_400Regular',
+  medium: 'Figtree_500Medium',
+  bold: 'Figtree_700Bold',
+  black: 'Figtree_800ExtraBold',
 } as const;
 
 /** Escala tipográfica (sp): cifra de dosis, titular, título, cuerpo, etiqueta, leyenda. */
 export const type = {
-  figure: 40,
+  figure: 42,
   headline: 26,
   title: 17,
   body: 15,
@@ -116,9 +127,9 @@ export const type = {
 } as const;
 
 export const space = { xs: 4, sm: 8, md: 12, lg: 16, xl: 24, xxl: 32 } as const;
-/** Paneles suaves; controles en píldora. */
-export const radius = { sm: 10, md: 12, lg: 14, pill: 999 } as const;
-export const font = { small: 13, body: 16, title: 20, big: 28, figure: 40 } as const;
+/** Bento: tarjetas de 20 dp, controles de 14 dp, chips y botones en píldora. */
+export const radius = { sm: 12, md: 14, lg: 20, pill: 999 } as const;
+export const font = { small: 13, body: 16, title: 20, big: 28, figure: 42 } as const;
 /** Área táctil mínima recomendada (dp). */
 export const MIN_TOUCH = 48;
 

@@ -60,14 +60,33 @@ describe('Home', () => {
     expect(h.onOpenManual).toHaveBeenCalled();
   });
 
-  it('does not repeat the tab bar or the full list: categories plus one A–Z entry', async () => {
+  it('does not list every drug on the home: categories plus one A–Z entry', async () => {
     const h = handlers();
     await render(<Home drugs={drugs} recalled={new Set()} {...h} />);
-    expect(screen.queryByLabelText('Hoja de urgencias')).toBeNull();
-    expect(screen.queryByLabelText('Calculadora manual')).toBeNull();
     expect(screen.queryByText(/^paracetamol$/i)).toBeNull();
     await fireEvent.press(screen.getByLabelText(`Todos de la A a la Z, ${drugs.length} fármacos`));
     expect(h.onOpenCategory).toHaveBeenCalledWith('todos');
+  });
+
+  it('explica todas las funciones de la app y abre cada una', async () => {
+    const onOpenTool = jest.fn();
+    await render(
+      <Home drugs={drugs} recalled={new Set()} {...handlers()} onOpenTool={onOpenTool} />,
+    );
+    expect(screen.getByText('¿Qué necesitas?')).toBeOnTheScreen();
+    const tools = [
+      ['Urgencias', 'urgencias'],
+      ['Infusiones', 'infusiones'],
+      ['Neonatología', 'neonatos'],
+      ['Líquidos y superficie', 'calculadoras'],
+      ['Cálculo manual', 'manual'],
+      ['Favoritos', 'favoritos'],
+    ] as const;
+    for (const [title, target] of tools) {
+      await fireEvent.press(screen.getByLabelText(new RegExp(`^${title}:`)));
+      expect(onOpenTool).toHaveBeenLastCalledWith(target);
+    }
+    expect(screen.getByText('Velocidad de la bomba en mL/h')).toBeOnTheScreen();
   });
 
   it('asks for the patient first', async () => {

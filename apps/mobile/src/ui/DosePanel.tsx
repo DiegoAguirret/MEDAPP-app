@@ -295,6 +295,24 @@ export function DosePanel({
       ) : null}
       <Tip id="paciente" queue={tips} />
 
+      {result?.status === 'ok' && presentation ? (
+        <View
+          style={s.quick}
+          accessible
+          accessibilityLabel={`Dosis calculada: ${amountText}, ${fmt(result.mgPerDose.chosen)} ${du}${rule.continuous === true ? ' por hora' : ''}, ${scheduleText(rule)}. El detalle está más abajo.`}
+        >
+          <Text style={s.quickRx}>Rp/</Text>
+          <View style={s.flex}>
+            <Text style={s.quickAmount}>{amountText}</Text>
+            <Text style={s.quickSub} numberOfLines={1}>
+              {fmt(result.mgPerDose.chosen)} {du}
+              {rule.continuous === true ? '/h' : ''} · {scheduleText(rule)}
+            </Text>
+          </View>
+          <MaterialCommunityIcons name="arrow-down" size={20} color={c.onHero} />
+        </View>
+      ) : null}
+
       <Card>
         {routes.length > 1 ? (
           <Segmented
@@ -786,6 +804,24 @@ function makeStyles(c: Palette) {
     presForm: { fontFamily: family.regular, color: c.muted, fontSize: 13 },
     presLabel: { fontFamily: family.bold, color: c.text, fontSize: 15, lineHeight: 20 },
     presBrands: { fontFamily: family.regular, color: c.muted, fontSize: 13, lineHeight: 18 },
+    quick: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 12,
+      backgroundColor: c.hero,
+      borderRadius: radius.lg,
+      paddingHorizontal: 16,
+      paddingVertical: 12,
+    },
+    quickRx: { fontFamily: family.black, fontSize: 18, color: c.heroMuted },
+    quickAmount: {
+      fontFamily: family.black,
+      fontSize: 28,
+      lineHeight: 32,
+      color: c.onHero,
+      fontVariant: ['tabular-nums'],
+    },
+    quickSub: { fontFamily: family.medium, fontSize: 13, color: c.heroMuted },
     result: {
       backgroundColor: c.accentSoft,
       borderRadius: radius.lg,

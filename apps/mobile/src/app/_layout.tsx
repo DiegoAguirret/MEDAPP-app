@@ -1,7 +1,7 @@
-import { Roboto_400Regular } from '@expo-google-fonts/roboto/400Regular';
-import { Roboto_500Medium } from '@expo-google-fonts/roboto/500Medium';
-import { Roboto_700Bold } from '@expo-google-fonts/roboto/700Bold';
-import { Roboto_900Black } from '@expo-google-fonts/roboto/900Black';
+import { Figtree_400Regular } from '@expo-google-fonts/figtree/400Regular';
+import { Figtree_500Medium } from '@expo-google-fonts/figtree/500Medium';
+import { Figtree_700Bold } from '@expo-google-fonts/figtree/700Bold';
+import { Figtree_800ExtraBold } from '@expo-google-fonts/figtree/800ExtraBold';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -59,10 +59,10 @@ function Navigator() {
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    Roboto_400Regular,
-    Roboto_500Medium,
-    Roboto_700Bold,
-    Roboto_900Black,
+    Figtree_400Regular,
+    Figtree_500Medium,
+    Figtree_700Bold,
+    Figtree_800ExtraBold,
   });
   const ready = loaded || error !== null;
 
