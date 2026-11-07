@@ -1,0 +1,71 @@
+id: triclabendazol
+name: Triclabendazol
+category: antiparasitario
+synonyms:
+  [
+    triclabendazole,
+    Egaten,
+    fasciola,
+    fascioliasis,
+    fasciolosis,
+    distomatosis hepática,
+    paragonimiasis,
+  ]
+presentations:
+  - id: tab-250
+    label: Tableta 250 mg
+    form: tableta
+    mgPerUnit: 250
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: fascioliasis
+    indication: Fascioliasis (más de 4 años)
+    route: VO
+    ageMinDays: 1461
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    once: true
+    maxPerDoseMg: 500
+    maxPerDayMg: 500
+    notes: >-
+      OMS — niños de más de 4 años, 10 mg/kg en dosis única. FNME — en niños la dosis exacta no se ha establecido;
+      sugiere 10 mg/kg VO en dosis única, que puede repetirse si hace falta. Tope técnico (10 mg/kg con 50 kg).
+    sourceIds: [who-mfc-2010, fnme-2008, digemid-pnume-2023]
+  - id: paragonimiasis
+    indication: Paragonimiasis (más de 4 años)
+    route: VO
+    ageMinDays: 1461
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    intervalHours: 12
+    maxPerDoseMg: 500
+    maxPerDayMg: 1000
+    durationText: 2 dosis en un solo día (OMS).
+    notes: >-
+      OMS — niños de más de 4 años, 10 mg/kg por dosis dos veces en un día. FNME — en niños sugiere 10 mg/kg en
+      dosis única. Tope técnico (10 mg/kg con 50 kg).
+    sourceIds: [who-mfc-2010, fnme-2008, digemid-pnume-2023]
+warnings:
+  - Tomar con alimentos (OMS).
+  - En la fascioliasis grave puede haber cólico biliar por la obstrucción que causan los parásitos muertos (OMS).
+  - La paragonimiasis se trata en el hospital, porque puede afectar el sistema nervioso central (OMS).
+contraindications:
+  - Hipersensibilidad al triclabendazol.
+diagnoses: [fascioliasis, fasciolosis, fasciola hepática, paragonimiasis]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: fascioliasis
+    presentationId: tab-250
+    weightKg: 25
+    ageDays: 2920
+    expect: { mgPerDose: 250, amount: 1, unit: tableta }

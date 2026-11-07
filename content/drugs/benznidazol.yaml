@@ -1,0 +1,52 @@
+id: benznidazol
+name: Benznidazol
+category: antiparasitario
+synonyms: [benznidazole, chagas, enfermedad de Chagas, tripanosomiasis americana]
+presentations:
+  - id: tab-100
+    label: Tableta 100 mg
+    form: tableta
+    mgPerUnit: 100
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: chagas
+    indication: Enfermedad de Chagas (menores de 15 años)
+    route: VO
+    ageMinDays: 29
+    ageMaxDays: 5843
+    basis: mg/kg/day
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    intervalHours: 12
+    maxPerDoseMg: 250
+    maxPerDayMg: 500
+    durationText: 30 días (FNME).
+    notes: >-
+      FNME — niños de 1 a 15 años y menores de 1 año, 10 mg/kg/día en 2 dosis por 30 días (también en Chagas agudo
+      complicado). Tope técnico (10 mg/kg/día con 50 kg).
+    countryNotes:
+      - country: INT
+        text: OMS (Model Formulary for Children) — menos de 40 kg, 7.5 mg/kg/día en 2 o 3 dosis por 60 días; 40 kg o más, 5 mg/kg/día. En el RN a término, 5 mg/kg/día y a los 3 días 10 mg/kg/día, por 60 días.
+        sourceIds: [who-mfc-2010]
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+warnings:
+  - La pauta del FNME (10 mg/kg/día por 30 días) y la de la OMS (7.5 mg/kg/día por 60 días) difieren; confirmar con la norma vigente del MINSA.
+  - Precaución en insuficiencia hepática o renal, trastornos hematológicos o antecedentes neurológicos (OMS). La toxicidad puede dar anemia, leucopenia o neutropenia (FNME).
+contraindications:
+  - Hipersensibilidad al benznidazol.
+  - Embarazo.
+diagnoses: [enfermedad de Chagas, chagas, tripanosomiasis americana]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: chagas
+    presentationId: tab-100
+    weightKg: 10
+    ageDays: 365
+    expect: { mgPerDose: 50, amount: 0.5, unit: tableta }

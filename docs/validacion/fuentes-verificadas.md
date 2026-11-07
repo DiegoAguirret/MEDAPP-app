@@ -468,3 +468,18 @@ La app ahora calcula infusiones: la dosis en mcg/kg/min o mg/kg/h da la velocida
 
 - **Fentanilo y morfina en infusión:** ni el FNME ni la FDA dan dosis pediátricas en infusión continua. La FDA solo da bolos de fentanilo (2–3 mcg/kg de 2 a 12 años).
 - **Heparina:** el FNME da en niños «dosis carga 50 UI/kg, luego 100 UI/kg c/4 h» bajo el título «Por infusión IV», sin aclarar si es infusión o bolos; además depende del TTPa.
+
+## Lote 13: antiparasitarios (fasciola, Chagas, leishmaniasis, giardiasis, amebiasis) — verificado el 07/11/2026
+
+- **Triclabendazol** (PNUME 250 mg): OMS, más de 4 años, 10 mg/kg en dosis única para la fascioliasis; en la paragonimiasis, 10 mg/kg dos veces en un día. El FNME sugiere 10 mg/kg en dosis única («la dosis exacta no se ha establecido»).
+- **Benznidazol** (PNUME 100 mg): FNME, 10 mg/kg/día en 2 dosis por 30 días. La OMS da 7.5 mg/kg/día por 60 días (5 mg/kg/día con 40 kg o más); va como nota y advertencia.
+- **Nifurtimox** (PNUME 120 mg): FNME, 20 mg/kg/día en menores de 1 año y 15 mg/kg/día de 1 a 15 años, en 3 dosis por 60 días. La OMS da 15–20 mg/kg/día con menos de 40 kg y 12.5–15 mg/kg/día desde 40 kg.
+- **Furazolidona** (PNUME 50 mg/5 mL): FNME, diarrea bacteriana 1.25 mg/kg c/6 h y giardiasis 6 mg/kg/día en 4 dosis; contraindicada en menores de 1 mes.
+- **Estibogluconato de sodio** (PNUME 100 mg de antimonio/mL): FNME, 20 mg de antimonio/kg/día IM o IV, máximo 850 mg.
+- **Antimoniato de meglumina** (PNUME 80–85 mg de antimonio/mL): FNME, 20 mg de antimonio/kg/día, máximo 1250 mg/día. Se ofrecen las dos concentraciones citadas, 85 mg/mL (FNME) y 81 mg/mL (OMS), con la advertencia de verificar la etiqueta del frasco.
+- **Diloxanida** (PNUME 500 mg): FNME, 20 mg/kg/día en 3 dosis por 10 días, máximo 1.5 g/día. La OMS la restringe a más de 25 kg.
+
+**No incluidos:**
+
+- **Miltefosina:** no está en el FNME ni en el Model Formulary for Children, y openFDA no devuelve la ficha de Impavido.
+- **Pirimetamina:** la toxoplasmosis se trata con un esquema combinado (sulfadiazina y ácido folínico) que no se verificó en este lote.

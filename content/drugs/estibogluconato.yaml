@@ -1,0 +1,65 @@
+id: estibogluconato
+name: Estibogluconato de sodio
+category: antiparasitario
+synonyms: [stibogluconate, Pentostam, antimonial, leishmaniasis, uta, espundia]
+presentations:
+  - id: amp-100sb
+    label: Estibogluconato de sodio 100 mg de antimonio pentavalente/mL
+    form: ampolla
+    mgPerUnit: 100
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: leishmaniasis-im
+    indication: Leishmaniasis cutánea, mucocutánea o visceral (IM)
+    route: IM
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 20
+    amountMax: 20
+    usual: 20
+    intervalHours: 24
+    maxPerDoseMg: 850
+    maxPerDayMg: 850
+    durationText: 20 a 28 días; hasta 60 en la visceral (FNME).
+    notes: >-
+      FNME — dosis en mg de antimonio pentavalente: 20 mg/kg/día (máximo 850 mg) 1 vez al día por 20 a 28 días y
+      hasta 60 en la visceral; niños igual que adultos. OMS — 20 mg/kg/día (mínimo 200 mg) por 28 a 30 días en la
+      visceral.
+    presentationIds: [amp-100sb]
+    sourceIds: [fnme-2008, who-mfc-2010, digemid-pnume-2023]
+  - id: leishmaniasis-iv
+    indication: Leishmaniasis cutánea, mucocutánea o visceral (IV)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 20
+    amountMax: 20
+    usual: 20
+    intervalHours: 24
+    maxPerDoseMg: 850
+    maxPerDayMg: 850
+    durationText: 20 a 28 días; hasta 60 en la visceral (FNME).
+    notes: FNME — IM o IV, 20 mg de antimonio/kg/día (máximo 850 mg).
+    presentationIds: [amp-100sb]
+    sourceIds: [fnme-2008, who-mfc-2010, digemid-pnume-2023]
+warnings:
+  - La dosis está en mg de antimonio pentavalente. El estibogluconato (100 mg/mL) y el antimoniato de meglumina (81 a 85 mg/mL) no son equivalentes (OMS).
+  - Precaución con fármacos que prolongan el QT (FNME).
+contraindications:
+  - Hipersensibilidad al estibogluconato.
+  - Enfermedad cardíaca, hepática, renal, pancreática o hematológica grave previa (OMS).
+  - Embarazo (OMS).
+diagnoses: [leishmaniasis, uta, espundia, leishmaniasis visceral]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: leishmaniasis-im
+    presentationId: amp-100sb
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 400, amount: 4, unit: mL }

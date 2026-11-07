@@ -1,0 +1,46 @@
+id: diloxanida
+name: Diloxanida
+category: antiparasitario
+synonyms: [diloxanide, furoato de diloxanida, amebiasis]
+presentations:
+  - id: tab-500
+    label: Tableta 500 mg (furoato)
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: amebiasis
+    indication: Amebiasis intestinal (más de 25 kg)
+    route: VO
+    ageMinDays: 29
+    weightMinKg: 25
+    basis: mg/kg/day
+    amountMin: 20
+    amountMax: 20
+    usual: 20
+    intervalHours: 8
+    maxPerDoseMg: 500
+    maxPerDayMg: 1500
+    durationText: 10 días.
+    notes: >-
+      FNME — niños, 20 mg/kg/día en 3 dosis por 10 días; máximo 1.5 g/día. OMS — niños de más de 25 kg, 7 mg/kg
+      (máximo 500 mg) 3 veces al día por 10 días.
+    sourceIds: [fnme-2008, who-mfc-2010, digemid-pnume-2023]
+warnings:
+  - No sirve contra la amebiasis hepática; se da 10 días después del metronidazol para eliminar las amebas del intestino (OMS).
+contraindications:
+  - Hipersensibilidad a la diloxanida.
+diagnoses: [amebiasis, amebiasis intestinal]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: amebiasis
+    presentationId: tab-500
+    weightKg: 37.5
+    ageDays: 4380
+    expect: { mgPerDose: 250, amount: 0.5, unit: tableta }

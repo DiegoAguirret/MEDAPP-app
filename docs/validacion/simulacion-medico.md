@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **8925** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **3915**. Fuera del rango de edad de la regla: 5010 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 3915/3915 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 3909/3915.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.58 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **9240** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **4119**. Fuera del rango de edad de la regla: 5121 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 4119/4119 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 4113/4119.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.59 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -619,6 +619,78 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 8 años (25.6 kg) | 6.4 | 6.4 | 1.28 | 1.3 mL | ✅  |
 | anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 10 años (32 kg) | 8 | 8 | 1.6 | 1.6 mL | ✅  |
 | anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 12 años (40 kg) | 10 | 10 | 2 | 2 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 1 mes (4.2 kg) | 84 | 84 | 0.988 | 1 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 2 meses (5.1 kg) | 102 | 102 | 1.2 | 1.2 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 4 meses (6.4 kg) | 128 | 128 | 1.506 | 1.5 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 6 meses (7.6 kg) | 152 | 152 | 1.788 | 1.8 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 9 meses (8.6 kg) | 172 | 172 | 2.024 | 2 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 1 año (9.6 kg) | 192 | 192 | 2.259 | 2.3 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 18 meses (10.9 kg) | 218 | 218 | 2.565 | 2.6 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 2 años (12.2 kg) | 244 | 244 | 2.871 | 2.9 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 3 años (14.3 kg) | 286 | 286 | 3.365 | 3.4 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 4 años (16.3 kg) | 326 | 326 | 3.835 | 3.8 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 5 años (18.3 kg) | 366 | 366 | 4.306 | 4.3 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 6 años (20.5 kg) | 410 | 410 | 4.824 | 4.8 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 8 años (25.6 kg) | 512 | 512 | 6.024 | 6 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 10 años (32 kg) | 640 | 640 | 7.529 | 7.5 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 12 años (40 kg) | 800 | 800 | 9.412 | 9.4 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 14 años (50 kg) | 1000 | 1000 | 11.765 | 11.8 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 16 años (58 kg) | 1160 | 1160 | 13.647 | 13.6 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 17 años, obeso (95 kg) | 1250 | 1250 | 14.706 | 14.7 mL | ✅ tope aplicado |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 1 mes (4.2 kg) | 84 | 84 | 1.037 | 1 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 2 meses (5.1 kg) | 102 | 102 | 1.259 | 1.3 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 4 meses (6.4 kg) | 128 | 128 | 1.58 | 1.6 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 6 meses (7.6 kg) | 152 | 152 | 1.877 | 1.9 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 9 meses (8.6 kg) | 172 | 172 | 2.123 | 2.1 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 1 año (9.6 kg) | 192 | 192 | 2.37 | 2.4 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 18 meses (10.9 kg) | 218 | 218 | 2.691 | 2.7 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 2 años (12.2 kg) | 244 | 244 | 3.012 | 3 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 3 años (14.3 kg) | 286 | 286 | 3.531 | 3.5 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 4 años (16.3 kg) | 326 | 326 | 4.025 | 4 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 5 años (18.3 kg) | 366 | 366 | 4.519 | 4.5 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 6 años (20.5 kg) | 410 | 410 | 5.062 | 5.1 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 8 años (25.6 kg) | 512 | 512 | 6.321 | 6.3 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 10 años (32 kg) | 640 | 640 | 7.901 | 7.9 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 12 años (40 kg) | 800 | 800 | 9.877 | 9.9 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 14 años (50 kg) | 1000 | 1000 | 12.346 | 12.3 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 16 años (58 kg) | 1160 | 1160 | 14.321 | 14.3 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-im | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 17 años, obeso (95 kg) | 1250 | 1250 | 15.432 | 15.4 mL | ✅ tope aplicado |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 1 mes (4.2 kg) | 84 | 84 | 0.988 | 1 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 2 meses (5.1 kg) | 102 | 102 | 1.2 | 1.2 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 4 meses (6.4 kg) | 128 | 128 | 1.506 | 1.5 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 6 meses (7.6 kg) | 152 | 152 | 1.788 | 1.8 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 9 meses (8.6 kg) | 172 | 172 | 2.024 | 2 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 1 año (9.6 kg) | 192 | 192 | 2.259 | 2.3 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 18 meses (10.9 kg) | 218 | 218 | 2.565 | 2.6 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 2 años (12.2 kg) | 244 | 244 | 2.871 | 2.9 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 3 años (14.3 kg) | 286 | 286 | 3.365 | 3.4 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 4 años (16.3 kg) | 326 | 326 | 3.835 | 3.8 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 5 años (18.3 kg) | 366 | 366 | 4.306 | 4.3 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 6 años (20.5 kg) | 410 | 410 | 4.824 | 4.8 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 8 años (25.6 kg) | 512 | 512 | 6.024 | 6 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 10 años (32 kg) | 640 | 640 | 7.529 | 7.5 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 12 años (40 kg) | 800 | 800 | 9.412 | 9.4 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 14 años (50 kg) | 1000 | 1000 | 11.765 | 11.8 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 16 años (58 kg) | 1160 | 1160 | 13.647 | 13.6 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME) | 17 años, obeso (95 kg) | 1250 | 1250 | 14.706 | 14.7 mL | ✅ tope aplicado |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 1 mes (4.2 kg) | 84 | 84 | 1.037 | 1 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 2 meses (5.1 kg) | 102 | 102 | 1.259 | 1.3 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 4 meses (6.4 kg) | 128 | 128 | 1.58 | 1.6 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 6 meses (7.6 kg) | 152 | 152 | 1.877 | 1.9 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 9 meses (8.6 kg) | 172 | 172 | 2.123 | 2.1 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 1 año (9.6 kg) | 192 | 192 | 2.37 | 2.4 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 18 meses (10.9 kg) | 218 | 218 | 2.691 | 2.7 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 2 años (12.2 kg) | 244 | 244 | 3.012 | 3 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 3 años (14.3 kg) | 286 | 286 | 3.531 | 3.5 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 4 años (16.3 kg) | 326 | 326 | 4.025 | 4 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 5 años (18.3 kg) | 366 | 366 | 4.519 | 4.5 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 6 años (20.5 kg) | 410 | 410 | 5.062 | 5.1 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 8 años (25.6 kg) | 512 | 512 | 6.321 | 6.3 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 10 años (32 kg) | 640 | 640 | 7.901 | 7.9 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 12 años (40 kg) | 800 | 800 | 9.877 | 9.9 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 14 años (50 kg) | 1000 | 1000 | 12.346 | 12.3 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 16 años (58 kg) | 1160 | 1160 | 14.321 | 14.3 mL | ✅  |
+| antimoniato-meglumina | leishmaniasis-iv | Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS) | 17 años, obeso (95 kg) | 1250 | 1250 | 15.432 | 15.4 mL | ✅ tope aplicado |
 | artesunato-mefloquina | menores-6-meses | Tableta 25 mg + 50 mg (artesunato + mefloquina) | 1 mes (4.2 kg) | 25 | 25 | 1 | 1 tableta | ✅  |
 | artesunato-mefloquina | menores-6-meses | Tableta 25 mg + 50 mg (artesunato + mefloquina) | 2 meses (5.1 kg) | 25 | 25 | 1 | 1 tableta | ✅  |
 | artesunato-mefloquina | menores-6-meses | Tableta 25 mg + 50 mg (artesunato + mefloquina) | 4 meses (6.4 kg) | 25 | 25 | 1 | 1 tableta | ✅  |
@@ -794,6 +866,23 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | azitromicina | esquema-5-dias-dias-2-5 | Tableta 500 mg | 14 años (50 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | azitromicina | esquema-5-dias-dias-2-5 | Tableta 500 mg | 16 años (58 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | azitromicina | esquema-5-dias-dias-2-5 | Tableta 500 mg | 17 años, obeso (95 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| benznidazol | chagas | Tableta 100 mg | 1 mes (4.2 kg) | 21 | 21 | 0.21 | 0.21 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| benznidazol | chagas | Tableta 100 mg | 2 meses (5.1 kg) | 25.5 | 25.5 | 0.255 | 0.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| benznidazol | chagas | Tableta 100 mg | 4 meses (6.4 kg) | 32 | 32 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| benznidazol | chagas | Tableta 100 mg | 6 meses (7.6 kg) | 38 | 38 | 0.38 | 0.38 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| benznidazol | chagas | Tableta 100 mg | 9 meses (8.6 kg) | 43 | 43 | 0.43 | 0.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| benznidazol | chagas | Tableta 100 mg | 1 año (9.6 kg) | 48 | 48 | 0.48 | 0.5 tableta | ✅  |
+| benznidazol | chagas | Tableta 100 mg | 18 meses (10.9 kg) | 54.5 | 54.5 | 0.545 | 0.55 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| benznidazol | chagas | Tableta 100 mg | 2 años (12.2 kg) | 61 | 61 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| benznidazol | chagas | Tableta 100 mg | 3 años (14.3 kg) | 71.5 | 71.5 | 0.715 | 0.71 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| benznidazol | chagas | Tableta 100 mg | 4 años (16.3 kg) | 81.5 | 81.5 | 0.815 | 0.81 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| benznidazol | chagas | Tableta 100 mg | 5 años (18.3 kg) | 91.5 | 91.5 | 0.915 | 0.92 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| benznidazol | chagas | Tableta 100 mg | 6 años (20.5 kg) | 102.5 | 102.5 | 1.025 | 1 tableta | ✅  |
+| benznidazol | chagas | Tableta 100 mg | 8 años (25.6 kg) | 128 | 128 | 1.28 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| benznidazol | chagas | Tableta 100 mg | 10 años (32 kg) | 160 | 160 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| benznidazol | chagas | Tableta 100 mg | 12 años (40 kg) | 200 | 200 | 2 | 2 tableta | ✅  |
+| benznidazol | chagas | Tableta 100 mg | 14 años (50 kg) | 250 | 250 | 2.5 | 2.5 tableta | ✅  |
+| benznidazol | chagas | Tableta 100 mg | 16 años (58 kg) | 250 | 250 | 2.5 | 2.5 tableta | ✅ tope aplicado |
 | cafeina-citrato | carga-iv | Solución inyectable 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 3 días, bajo peso (2 kg) (2 kg) | 40 | 40 | 2 | 2 mL | ✅  |
 | cafeina-citrato | carga-iv | Solución inyectable 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 5 días (3.2 kg) (3.2 kg) | 64 | 64 | 3.2 | 3.2 mL | ✅  |
 | cafeina-citrato | carga-iv | Solución inyectable 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 15 días (3.6 kg) (3.6 kg) | 72 | 72 | 3.6 | 3.6 mL | ✅  |
@@ -1666,6 +1755,12 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | digoxina | mantenimiento-mayores-10-anos | Tableta 250 mcg (0.25 mg) | 14 años (50 kg) | 150 | 150 | 0.6 | 0.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | digoxina | mantenimiento-mayores-10-anos | Tableta 250 mcg (0.25 mg) | 16 años (58 kg) | 174 | 174 | 0.696 | 0.7 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | digoxina | mantenimiento-mayores-10-anos | Tableta 250 mcg (0.25 mg) | 17 años, obeso (95 kg) | 285 | 285 | 1.14 | 1.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| diloxanida | amebiasis | Tableta 500 mg (furoato) | 8 años (25.6 kg) | 170.67 | 170.67 | 0.341 | 0.34 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| diloxanida | amebiasis | Tableta 500 mg (furoato) | 10 años (32 kg) | 213.33 | 213.33 | 0.427 | 0.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| diloxanida | amebiasis | Tableta 500 mg (furoato) | 12 años (40 kg) | 266.67 | 266.67 | 0.533 | 0.53 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| diloxanida | amebiasis | Tableta 500 mg (furoato) | 14 años (50 kg) | 333.33 | 333.33 | 0.667 | 0.67 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| diloxanida | amebiasis | Tableta 500 mg (furoato) | 16 años (58 kg) | 386.67 | 386.67 | 0.773 | 0.77 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| diloxanida | amebiasis | Tableta 500 mg (furoato) | 17 años, obeso (95 kg) | 500 | 500 | 1 | 1 tableta | ✅ tope aplicado |
 | dimenhidrinato | mareo-2-5-anos | Tableta 50 mg | 2 años (12.2 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
 | dimenhidrinato | mareo-2-5-anos | Tableta 50 mg | 3 años (14.3 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
 | dimenhidrinato | mareo-2-5-anos | Tableta 50 mg | 4 años (16.3 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
@@ -1870,6 +1965,42 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | espironolactona | ninos | Tableta 100 mg | 8 años (25.6 kg) | 12.8 | 12.8 | 0.128 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | espironolactona | ninos | Tableta 100 mg | 10 años (32 kg) | 16 | 16 | 0.16 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | espironolactona | ninos | Tableta 100 mg | 12 años (40 kg) | 20 | 20 | 0.2 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 1 mes (4.2 kg) | 84 | 84 | 0.84 | 0.8 mL | ✅  |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 2 meses (5.1 kg) | 102 | 102 | 1.02 | 1 mL | ✅  |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 4 meses (6.4 kg) | 128 | 128 | 1.28 | 1.3 mL | ✅  |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 6 meses (7.6 kg) | 152 | 152 | 1.52 | 1.5 mL | ✅  |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 9 meses (8.6 kg) | 172 | 172 | 1.72 | 1.7 mL | ✅  |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 1 año (9.6 kg) | 192 | 192 | 1.92 | 1.9 mL | ✅  |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 18 meses (10.9 kg) | 218 | 218 | 2.18 | 2.2 mL | ✅  |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 2 años (12.2 kg) | 244 | 244 | 2.44 | 2.4 mL | ✅  |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 3 años (14.3 kg) | 286 | 286 | 2.86 | 2.9 mL | ✅  |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 4 años (16.3 kg) | 326 | 326 | 3.26 | 3.3 mL | ✅  |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 5 años (18.3 kg) | 366 | 366 | 3.66 | 3.7 mL | ✅  |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 6 años (20.5 kg) | 410 | 410 | 4.1 | 4.1 mL | ✅  |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 8 años (25.6 kg) | 512 | 512 | 5.12 | 5.1 mL | ✅  |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 10 años (32 kg) | 640 | 640 | 6.4 | 6.4 mL | ✅  |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 12 años (40 kg) | 800 | 800 | 8 | 8 mL | ✅  |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 14 años (50 kg) | 850 | 850 | 8.5 | 8.5 mL | ✅ tope aplicado |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 16 años (58 kg) | 850 | 850 | 8.5 | 8.5 mL | ✅ tope aplicado |
+| estibogluconato | leishmaniasis-im | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 17 años, obeso (95 kg) | 850 | 850 | 8.5 | 8.5 mL | ✅ tope aplicado |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 1 mes (4.2 kg) | 84 | 84 | 0.84 | 0.8 mL | ✅  |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 2 meses (5.1 kg) | 102 | 102 | 1.02 | 1 mL | ✅  |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 4 meses (6.4 kg) | 128 | 128 | 1.28 | 1.3 mL | ✅  |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 6 meses (7.6 kg) | 152 | 152 | 1.52 | 1.5 mL | ✅  |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 9 meses (8.6 kg) | 172 | 172 | 1.72 | 1.7 mL | ✅  |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 1 año (9.6 kg) | 192 | 192 | 1.92 | 1.9 mL | ✅  |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 18 meses (10.9 kg) | 218 | 218 | 2.18 | 2.2 mL | ✅  |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 2 años (12.2 kg) | 244 | 244 | 2.44 | 2.4 mL | ✅  |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 3 años (14.3 kg) | 286 | 286 | 2.86 | 2.9 mL | ✅  |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 4 años (16.3 kg) | 326 | 326 | 3.26 | 3.3 mL | ✅  |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 5 años (18.3 kg) | 366 | 366 | 3.66 | 3.7 mL | ✅  |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 6 años (20.5 kg) | 410 | 410 | 4.1 | 4.1 mL | ✅  |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 8 años (25.6 kg) | 512 | 512 | 5.12 | 5.1 mL | ✅  |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 10 años (32 kg) | 640 | 640 | 6.4 | 6.4 mL | ✅  |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 12 años (40 kg) | 800 | 800 | 8 | 8 mL | ✅  |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 14 años (50 kg) | 850 | 850 | 8.5 | 8.5 mL | ✅ tope aplicado |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 16 años (58 kg) | 850 | 850 | 8.5 | 8.5 mL | ✅ tope aplicado |
+| estibogluconato | leishmaniasis-iv | Estibogluconato de sodio 100 mg de antimonio pentavalente/mL | 17 años, obeso (95 kg) | 850 | 850 | 8.5 | 8.5 mL | ✅ tope aplicado |
 | etambutol | tb-sensible | Suspensión 25 mg/mL | 1 mes (4.2 kg) | 84 | 84 | 3.36 | 3.4 mL | ✅  |
 | etambutol | tb-sensible | Suspensión 25 mg/mL | 2 meses (5.1 kg) | 102 | 102 | 4.08 | 4.1 mL | ✅  |
 | etambutol | tb-sensible | Suspensión 25 mg/mL | 4 meses (6.4 kg) | 128 | 128 | 5.12 | 5.1 mL | ✅  |
@@ -2048,6 +2179,42 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 14 años (50 kg) | 0.2 | 0.2 | 2 | 2 mL | ✅ tope aplicado |
 | flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 16 años (58 kg) | 0.2 | 0.2 | 2 | 2 mL | ✅ tope aplicado |
 | flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 17 años, obeso (95 kg) | 0.2 | 0.2 | 2 | 2 mL | ✅ tope aplicado |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 1 mes (4.2 kg) | 5.25 | 5.25 | 0.525 | 0.5 mL | ✅  |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 2 meses (5.1 kg) | 6.38 | 6.38 | 0.637 | 0.64 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 4 meses (6.4 kg) | 8 | 8 | 0.8 | 0.8 mL | ✅  |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 6 meses (7.6 kg) | 9.5 | 9.5 | 0.95 | 0.95 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 9 meses (8.6 kg) | 10.75 | 10.75 | 1.075 | 1.1 mL | ✅  |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 1 año (9.6 kg) | 12 | 12 | 1.2 | 1.2 mL | ✅  |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 18 meses (10.9 kg) | 13.63 | 13.63 | 1.363 | 1.4 mL | ✅  |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 2 años (12.2 kg) | 15.25 | 15.25 | 1.525 | 1.5 mL | ✅  |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 3 años (14.3 kg) | 17.88 | 17.88 | 1.788 | 1.8 mL | ✅  |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 4 años (16.3 kg) | 20.38 | 20.38 | 2.038 | 2 mL | ✅  |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 5 años (18.3 kg) | 22.88 | 22.88 | 2.288 | 2.3 mL | ✅  |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 6 años (20.5 kg) | 25.63 | 25.63 | 2.563 | 2.6 mL | ✅  |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 8 años (25.6 kg) | 32 | 32 | 3.2 | 3.2 mL | ✅  |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 10 años (32 kg) | 40 | 40 | 4 | 4 mL | ✅  |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 12 años (40 kg) | 50 | 50 | 5 | 5 mL | ✅  |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 14 años (50 kg) | 62.5 | 62.5 | 6.25 | 6.3 mL | ✅  |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 16 años (58 kg) | 72.5 | 72.5 | 7.25 | 7.3 mL | ✅  |
+| furazolidona | diarrea-bacteriana | Suspensión 50 mg/5 mL | 17 años, obeso (95 kg) | 100 | 100 | 10 | 10 mL | ✅ tope aplicado |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 1 mes (4.2 kg) | 6.3 | 6.3 | 0.63 | 0.6 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 2 meses (5.1 kg) | 7.65 | 7.65 | 0.765 | 0.8 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 4 meses (6.4 kg) | 9.6 | 9.6 | 0.96 | 1 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 6 meses (7.6 kg) | 11.4 | 11.4 | 1.14 | 1.1 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 9 meses (8.6 kg) | 12.9 | 12.9 | 1.29 | 1.3 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 1 año (9.6 kg) | 14.4 | 14.4 | 1.44 | 1.4 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 18 meses (10.9 kg) | 16.35 | 16.35 | 1.635 | 1.6 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 2 años (12.2 kg) | 18.3 | 18.3 | 1.83 | 1.8 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 3 años (14.3 kg) | 21.45 | 21.45 | 2.145 | 2.1 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 4 años (16.3 kg) | 24.45 | 24.45 | 2.445 | 2.4 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 5 años (18.3 kg) | 27.45 | 27.45 | 2.745 | 2.7 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 6 años (20.5 kg) | 30.75 | 30.75 | 3.075 | 3.1 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 8 años (25.6 kg) | 38.4 | 38.4 | 3.84 | 3.8 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 10 años (32 kg) | 48 | 48 | 4.8 | 4.8 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 12 años (40 kg) | 60 | 60 | 6 | 6 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 14 años (50 kg) | 75 | 75 | 7.5 | 7.5 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 16 años (58 kg) | 87 | 87 | 8.7 | 8.7 mL | ✅  |
+| furazolidona | giardiasis | Suspensión 50 mg/5 mL | 17 años, obeso (95 kg) | 100 | 100 | 10 | 10 mL | ✅ tope aplicado |
 | furosemida | edema-iv | Ampolla 10 mg/mL (2 mL) | 1 mes (4.2 kg) | 4.2 | 4.2 | 0.42 | 0.4 mL | ✅  |
 | furosemida | edema-iv | Ampolla 10 mg/mL (2 mL) | 2 meses (5.1 kg) | 5.1 | 5.1 | 0.51 | 0.5 mL | ✅  |
 | furosemida | edema-iv | Ampolla 10 mg/mL (2 mL) | 4 meses (6.4 kg) | 6.4 | 6.4 | 0.64 | 0.64 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -3065,6 +3232,27 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | naloxona | intoxicacion-opiaceos | Ampolla 0.4 mg/mL | 14 años (50 kg) | 0.5 | 0.5 | 1.25 | 1.25 mL | ✅  |
 | naloxona | intoxicacion-opiaceos | Ampolla 0.4 mg/mL | 16 años (58 kg) | 0.58 | 0.58 | 1.45 | 1.45 mL | ✅  |
 | naloxona | intoxicacion-opiaceos | Ampolla 0.4 mg/mL | 17 años, obeso (95 kg) | 0.95 | 0.95 | 2.375 | 2.4 mL | ✅  |
+| nifurtimox | menores-1-ano | Tableta 120 mg | 3 días, bajo peso (2 kg) (2 kg) | 13.33 | 13.33 | 0.111 | 0.11 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nifurtimox | menores-1-ano | Tableta 120 mg | 5 días (3.2 kg) (3.2 kg) | 21.33 | 21.33 | 0.178 | 0.18 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nifurtimox | menores-1-ano | Tableta 120 mg | 15 días (3.6 kg) (3.6 kg) | 24 | 24 | 0.2 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nifurtimox | menores-1-ano | Tableta 120 mg | 1 mes (4.2 kg) | 28 | 28 | 0.233 | 0.23 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nifurtimox | menores-1-ano | Tableta 120 mg | 2 meses (5.1 kg) | 34 | 34 | 0.283 | 0.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nifurtimox | menores-1-ano | Tableta 120 mg | 4 meses (6.4 kg) | 42.67 | 42.67 | 0.356 | 0.36 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nifurtimox | menores-1-ano | Tableta 120 mg | 6 meses (7.6 kg) | 50.67 | 50.67 | 0.422 | 0.42 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nifurtimox | menores-1-ano | Tableta 120 mg | 9 meses (8.6 kg) | 57.33 | 57.33 | 0.478 | 0.5 tableta | ✅  |
+| nifurtimox | 1-15-anos | Tableta 120 mg | 1 año (9.6 kg) | 48 | 48 | 0.4 | 0.4 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nifurtimox | 1-15-anos | Tableta 120 mg | 18 meses (10.9 kg) | 54.5 | 54.5 | 0.454 | 0.45 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nifurtimox | 1-15-anos | Tableta 120 mg | 2 años (12.2 kg) | 61 | 61 | 0.508 | 0.5 tableta | ✅  |
+| nifurtimox | 1-15-anos | Tableta 120 mg | 3 años (14.3 kg) | 71.5 | 71.5 | 0.596 | 0.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nifurtimox | 1-15-anos | Tableta 120 mg | 4 años (16.3 kg) | 81.5 | 81.5 | 0.679 | 0.68 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nifurtimox | 1-15-anos | Tableta 120 mg | 5 años (18.3 kg) | 91.5 | 91.5 | 0.762 | 0.76 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nifurtimox | 1-15-anos | Tableta 120 mg | 6 años (20.5 kg) | 102.5 | 102.5 | 0.854 | 0.85 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nifurtimox | 1-15-anos | Tableta 120 mg | 8 años (25.6 kg) | 128 | 128 | 1.067 | 1.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nifurtimox | 1-15-anos | Tableta 120 mg | 10 años (32 kg) | 160 | 160 | 1.333 | 1.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nifurtimox | 40-kg-o-mas | Tableta 120 mg | 12 años (40 kg) | 200 | 200 | 1.667 | 1.67 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nifurtimox | 40-kg-o-mas | Tableta 120 mg | 14 años (50 kg) | 250 | 250 | 2.083 | 2 tableta | ✅  |
+| nifurtimox | 40-kg-o-mas | Tableta 120 mg | 16 años (58 kg) | 250 | 250 | 2.083 | 2 tableta | ✅ tope aplicado |
+| nifurtimox | 40-kg-o-mas | Tableta 120 mg | 17 años, obeso (95 kg) | 250 | 250 | 2.083 | 2 tableta | ✅ tope aplicado |
 | nistatina | neonatos | Suspensión oral 100 000 UI/mL | 3 días, bajo peso (2 kg) (2 kg) | 100000 | 100000 | 1 | 1 mL | ✅  |
 | nistatina | neonatos | Suspensión oral 100 000 UI/mL | 5 días (3.2 kg) (3.2 kg) | 100000 | 100000 | 1 | 1 mL | ✅  |
 | nistatina | neonatos | Suspensión oral 100 000 UI/mL | 15 días (3.6 kg) (3.6 kg) | 100000 | 100000 | 1 | 1 mL | ✅  |
@@ -3822,6 +4010,22 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 14 años (50 kg) | 2000 | 2000 | 10 | 10 mL | ✅  |
 | sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 16 años (58 kg) | 2000 | 2000 | 10 | 10 mL | ✅ tope aplicado |
 | sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 17 años, obeso (95 kg) | 2000 | 2000 | 10 | 10 mL | ✅ tope aplicado |
+| triclabendazol | fascioliasis | Tableta 250 mg | 5 años (18.3 kg) | 183 | 183 | 0.732 | 0.73 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| triclabendazol | fascioliasis | Tableta 250 mg | 6 años (20.5 kg) | 205 | 205 | 0.82 | 0.82 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| triclabendazol | fascioliasis | Tableta 250 mg | 8 años (25.6 kg) | 256 | 256 | 1.024 | 1 tableta | ✅  |
+| triclabendazol | fascioliasis | Tableta 250 mg | 10 años (32 kg) | 320 | 320 | 1.28 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| triclabendazol | fascioliasis | Tableta 250 mg | 12 años (40 kg) | 400 | 400 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| triclabendazol | fascioliasis | Tableta 250 mg | 14 años (50 kg) | 500 | 500 | 2 | 2 tableta | ✅  |
+| triclabendazol | fascioliasis | Tableta 250 mg | 16 años (58 kg) | 500 | 500 | 2 | 2 tableta | ✅ tope aplicado |
+| triclabendazol | fascioliasis | Tableta 250 mg | 17 años, obeso (95 kg) | 500 | 500 | 2 | 2 tableta | ✅ tope aplicado |
+| triclabendazol | paragonimiasis | Tableta 250 mg | 5 años (18.3 kg) | 183 | 183 | 0.732 | 0.73 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| triclabendazol | paragonimiasis | Tableta 250 mg | 6 años (20.5 kg) | 205 | 205 | 0.82 | 0.82 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| triclabendazol | paragonimiasis | Tableta 250 mg | 8 años (25.6 kg) | 256 | 256 | 1.024 | 1 tableta | ✅  |
+| triclabendazol | paragonimiasis | Tableta 250 mg | 10 años (32 kg) | 320 | 320 | 1.28 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| triclabendazol | paragonimiasis | Tableta 250 mg | 12 años (40 kg) | 400 | 400 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| triclabendazol | paragonimiasis | Tableta 250 mg | 14 años (50 kg) | 500 | 500 | 2 | 2 tableta | ✅  |
+| triclabendazol | paragonimiasis | Tableta 250 mg | 16 años (58 kg) | 500 | 500 | 2 | 2 tableta | ✅ tope aplicado |
+| triclabendazol | paragonimiasis | Tableta 250 mg | 17 años, obeso (95 kg) | 500 | 500 | 2 | 2 tableta | ✅ tope aplicado |
 | vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 1 mes (4.2 kg) | 42 | 42 | 0.84 | 0.85 mL | ✅  |
 | vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 2 meses (5.1 kg) | 51 | 51 | 1.02 | 1 mL | ✅  |
 | vancomicina | ninos-1-mes | Frasco 500 mg reconstituido a 50 mg/mL (con 10 mL de agua estéril) | 4 meses (6.4 kg) | 64 | 64 | 1.28 | 1.3 mL | ✅  |

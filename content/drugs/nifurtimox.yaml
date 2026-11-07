@@ -1,0 +1,82 @@
+id: nifurtimox
+name: Nifurtimox
+category: antiparasitario
+synonyms: [Lampit, chagas, enfermedad de Chagas, tripanosomiasis americana]
+presentations:
+  - id: tab-120
+    label: Tableta 120 mg
+    form: tableta
+    mgPerUnit: 120
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: menores-1-ano
+    indication: Enfermedad de Chagas, menores de 1 año (incluye neonatos)
+    route: VO
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 364
+    basis: mg/kg/day
+    amountMin: 15
+    amountMax: 20
+    usual: 20
+    intervalHours: 8
+    maxPerDoseMg: 333.3
+    maxPerDayMg: 1000
+    durationText: 60 días.
+    notes: >-
+      FNME — menores de 1 año, 20 mg/kg/día en 3 dosis por 60 días. OMS — neonatos, lactantes y niños de menos de 40
+      kg, 15 a 20 mg/kg/día en 3 dosis (cada 8 h, después de comer) por 60 días. Tope técnico (20 mg/kg/día con 50 kg).
+    sourceIds: [fnme-2008, who-mfc-2010, digemid-pnume-2023]
+  - id: 1-15-anos
+    indication: Enfermedad de Chagas, 1 a 15 años (menos de 40 kg)
+    route: VO
+    ageMinDays: 365
+    ageMaxDays: 5843
+    weightMaxKg: 40
+    basis: mg/kg/day
+    amountMin: 15
+    amountMax: 20
+    usual: 15
+    intervalHours: 8
+    maxPerDoseMg: 266.7
+    maxPerDayMg: 800
+    durationText: 60 días.
+    notes: >-
+      FNME — de 1 a 15 años, 15 mg/kg/día en 3 dosis por 60 días. OMS — menos de 40 kg, 15 a 20 mg/kg/día en 3 dosis.
+      Tope técnico (20 mg/kg/día con 40 kg).
+    sourceIds: [fnme-2008, who-mfc-2010, digemid-pnume-2023]
+  - id: 40-kg-o-mas
+    indication: Enfermedad de Chagas, 40 kg o más
+    route: VO
+    ageMinDays: 365
+    weightMinKg: 40
+    basis: mg/kg/day
+    amountMin: 12.5
+    amountMax: 15
+    usual: 15
+    intervalHours: 8
+    maxPerDoseMg: 250
+    maxPerDayMg: 750
+    durationText: 60 días.
+    notes: OMS — 40 kg o más, 12.5 a 15 mg/kg/día en 3 dosis por 60 días. Tope técnico (15 mg/kg/día con 50 kg).
+    sourceIds: [who-mfc-2010, digemid-pnume-2023]
+warnings:
+  - Dar después de las comidas (OMS). El alcohol empeora los efectos adversos (FNME).
+contraindications:
+  - Hipersensibilidad al nifurtimox.
+  - Embarazo.
+  - Porfiria (OMS).
+diagnoses: [enfermedad de Chagas, chagas, tripanosomiasis americana]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: 1-15-anos
+    presentationId: tab-120
+    weightKg: 24
+    ageDays: 2190
+    expect: { mgPerDose: 120, amount: 1, unit: tableta }

@@ -1,0 +1,77 @@
+id: antimoniato-meglumina
+name: Antimoniato de meglumina
+category: antiparasitario
+synonyms: [meglumine antimoniate, Glucantime, antimonial, leishmaniasis, uta, espundia]
+presentations:
+  - id: amp-85sb
+    label: Antimoniato de meglumina 85 mg de antimonio pentavalente/mL (FNME)
+    form: ampolla
+    mgPerUnit: 85
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: amp-81sb
+    label: Antimoniato de meglumina 81 mg de antimonio pentavalente/mL (OMS)
+    form: ampolla
+    mgPerUnit: 81
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: leishmaniasis-im
+    indication: Leishmaniasis cutánea andina, mucocutánea o visceral (IM)
+    route: IM
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 20
+    amountMax: 20
+    usual: 20
+    intervalHours: 24
+    maxPerDoseMg: 1250
+    maxPerDayMg: 1250
+    durationText: Cutánea andina 10 días; mucocutánea 20 días; visceral 30 días (FNME).
+    notes: >-
+      FNME — dosis en mg de antimonio pentavalente: 20 mg/kg/día IM o IV; máximo 1250 mg/día; niños igual que
+      adultos. OMS — 20 mg/kg/día (mínimo 200 mg).
+    presentationIds: [amp-85sb, amp-81sb]
+    sourceIds: [fnme-2008, who-mfc-2010, digemid-pnume-2023]
+  - id: leishmaniasis-iv
+    indication: Leishmaniasis cutánea andina, mucocutánea o visceral (IV)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 20
+    amountMax: 20
+    usual: 20
+    intervalHours: 24
+    maxPerDoseMg: 1250
+    maxPerDayMg: 1250
+    durationText: Cutánea andina 10 días; mucocutánea 20 días; visceral 30 días (FNME).
+    notes: FNME — 20 mg de antimonio/kg/día IM o IV; máximo 1250 mg/día.
+    presentationIds: [amp-85sb, amp-81sb]
+    sourceIds: [fnme-2008, who-mfc-2010, digemid-pnume-2023]
+warnings:
+  - 'La dosis está en mg de antimonio pentavalente. Verificar en la etiqueta del frasco cuántos mg de antimonio tiene cada mL: el FNME dice 85 mg/mL, la OMS 81 mg/mL y el PNUME 80 a 85 mg/mL.'
+  - Precaución con fármacos que prolongan el QT (FNME).
+contraindications:
+  - Enfermedad cardíaca (FNME).
+  - Hipersensibilidad al antimoniato de meglumina o al estibogluconato.
+  - Enfermedad hepática, renal, pancreática o hematológica grave previa (OMS).
+  - Embarazo (OMS).
+diagnoses: [leishmaniasis, uta, espundia, leishmaniasis cutánea andina, leishmaniasis visceral]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: leishmaniasis-im
+    presentationId: amp-85sb
+    weightKg: 17
+    ageDays: 1825
+    expect: { mgPerDose: 340, amount: 4, unit: mL }
+  - ruleId: leishmaniasis-im
+    presentationId: amp-81sb
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 400, amount: 4.9, unit: mL }
