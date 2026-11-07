@@ -1,0 +1,83 @@
+id: fenoximetilpenicilina
+name: Fenoximetilpenicilina (penicilina V)
+category: antibiotico
+synonyms: [penicilina V, penicilina oral, phenoxymethylpenicillin, penicillin V]
+presentations:
+  - id: susp-300000-5
+    label: Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI)
+    form: suspension
+    mgPerUnit: 37.5
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: infecciones
+    indication: Faringitis estreptocócica, otitis media, celulitis o infecciones de la boca
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 12.5
+    usual: 12.5
+    intervalHours: 6
+    maxPerDoseMg: 500
+    maxPerDayMg: 2000
+    durationText: En infecciones estreptocócicas, 10 días (FNME y FDA, en adultos).
+    notes: >-
+      OMS — niños de todas las edades, 10 a 12.5 mg/kg por dosis (máximo 500 mg) cada 6 horas; la dosis puede
+      duplicarse en infecciones graves. La suspensión del PNUME viene en UI; se convierte con la equivalencia del
+      FNME (1 mg = 1600 UI): 300 000 UI/5 mL = 187.5 mg/5 mL.
+    sourceIds: [who-mfc-2010, fnme-2008, digemid-pnume-2023]
+  - id: profilaxis-fiebre-reumatica
+    indication: Profilaxis secundaria de fiebre reumática
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 12.5
+    usual: 12.5
+    intervalHours: 12
+    maxPerDoseMg: 500
+    maxPerDayMg: 1000
+    notes: >-
+      OMS — 10 a 12.5 mg/kg por dosis (máximo 500 mg) dos veces al día. El Pocket Book de la OMS da 250 mg dos
+      veces al día como alternativa a la penicilina benzatínica mensual.
+    sourceIds: [who-mfc-2010, who-pocket-2013, digemid-pnume-2023]
+warnings:
+  - El FNME da 15 a 62.5 mg/kg (25 000 a 100 000 UI) c/6–8 h en menores de 12 años, sin aclarar si es por dosis o por día (máximo 3 g/día); aquí se usa la pauta por dosis de la OMS.
+  - Tomar al menos 30 minutos antes o 2 horas después de comer (OMS).
+  - En mononucleosis infecciosa hay alta frecuencia de exantema (OMS).
+contraindications:
+  - Hipersensibilidad a las penicilinas o a las cefalosporinas (FNME).
+interactions:
+  - 'Aminoglucósidos: la penicilina puede inactivarlos; separar la administración 1 hora (OMS).'
+  - 'Metotrexato: menor excreción del metotrexato, con más riesgo de toxicidad (OMS).'
+renal: >-
+  OMS — no requiere ajuste. FNME — con depuración de creatinina menor de 10 mL/min, dar la dosis habitual cada 8
+  horas.
+diagnoses:
+  [
+    faringitis,
+    faringoamigdalitis,
+    amigdalitis,
+    escarlatina,
+    otitis media,
+    celulitis,
+    fiebre reumática,
+  ]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: infecciones
+    presentationId: susp-300000-5
+    weightKg: 12
+    ageDays: 1460
+    expect: { mgPerDose: 150, amount: 4, unit: mL }
+  - ruleId: profilaxis-fiebre-reumatica
+    presentationId: susp-300000-5
+    weightKg: 30
+    ageDays: 3285
+    expect: { mgPerDose: 375, amount: 10, unit: mL }

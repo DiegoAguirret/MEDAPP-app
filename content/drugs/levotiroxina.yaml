@@ -1,0 +1,145 @@
+id: levotiroxina
+name: Levotiroxina sódica
+category: otro
+doseUnit: mcg
+synonyms: [levothyroxine, tiroxina, T4, hipotiroidismo congénito]
+presentations:
+  - id: tab-50
+    label: Tableta 50 mcg
+    form: tableta
+    mgPerUnit: 50
+    unit: tableta
+    step: 1
+    brandsPE: []
+  - id: tab-75
+    label: Tableta 75 mcg
+    form: tableta
+    mgPerUnit: 75
+    unit: tableta
+    step: 1
+    brandsPE: []
+  - id: tab-100
+    label: Tableta 100 mcg
+    form: tableta
+    mgPerUnit: 100
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: hipotiroidismo-0-3-meses
+    indication: Hipotiroidismo congénito o adquirido, 0 a 3 meses
+    route: VO
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 90
+    basis: mg/kg/day
+    amountMin: 10
+    amountMax: 15
+    usual: 10
+    intervalHours: 24
+    maxPerDoseMg: 750
+    maxPerDayMg: 750
+    notes: >-
+      FDA (Synthroid), tabla 2 — de 0 a 3 meses, 10 a 15 mcg/kg/día en una toma. En el RN con riesgo de
+      insuficiencia cardíaca, empezar con menos y subir cada 4 a 6 semanas. El FNME da 25 mcg/día en el
+      hipotiroidismo congénito, ajustando 25 mcg cada 2 a 4 semanas. Los topes son técnicos (la dosis por kg con
+      50 kg).
+    sourceIds: [fda-synthroid, fnme-2008, digemid-pnume-2023]
+  - id: hipotiroidismo-3-6-meses
+    indication: Hipotiroidismo, 3 a 6 meses
+    route: VO
+    ageMinDays: 91
+    ageMaxDays: 182
+    basis: mg/kg/day
+    amountMin: 8
+    amountMax: 10
+    usual: 8
+    intervalHours: 24
+    maxPerDoseMg: 500
+    maxPerDayMg: 500
+    notes: FDA (Synthroid), tabla 2 — de 3 a 6 meses, 8 a 10 mcg/kg/día en una toma. Topes técnicos (50 kg).
+    sourceIds: [fda-synthroid, digemid-pnume-2023]
+  - id: hipotiroidismo-6-12-meses
+    indication: Hipotiroidismo, 6 a 12 meses
+    route: VO
+    ageMinDays: 183
+    ageMaxDays: 364
+    basis: mg/kg/day
+    amountMin: 6
+    amountMax: 8
+    usual: 6
+    intervalHours: 24
+    maxPerDoseMg: 400
+    maxPerDayMg: 400
+    notes: FDA (Synthroid), tabla 2 — de 6 a 12 meses, 6 a 8 mcg/kg/día en una toma. Topes técnicos (50 kg).
+    sourceIds: [fda-synthroid, digemid-pnume-2023]
+  - id: hipotiroidismo-1-5-anos
+    indication: Hipotiroidismo, 1 a 5 años
+    route: VO
+    ageMinDays: 365
+    ageMaxDays: 2189
+    basis: mg/kg/day
+    amountMin: 5
+    amountMax: 6
+    usual: 5
+    intervalHours: 24
+    maxPerDoseMg: 300
+    maxPerDayMg: 300
+    notes: FDA (Synthroid), tabla 2 — de 1 a 5 años, 5 a 6 mcg/kg/día en una toma. Topes técnicos (50 kg).
+    sourceIds: [fda-synthroid, digemid-pnume-2023]
+  - id: hipotiroidismo-6-12-anos
+    indication: Hipotiroidismo, 6 a 12 años
+    route: VO
+    ageMinDays: 2190
+    ageMaxDays: 4744
+    basis: mg/kg/day
+    amountMin: 4
+    amountMax: 5
+    usual: 4
+    intervalHours: 24
+    maxPerDoseMg: 250
+    maxPerDayMg: 250
+    notes: >-
+      FDA (Synthroid), tabla 2 — de 6 a 12 años, 4 a 5 mcg/kg/día en una toma. FNME — mixedema juvenil (más de 1
+      año), iniciar con 2.5 a 5 mcg/kg/día. Topes técnicos (50 kg).
+    sourceIds: [fda-synthroid, fnme-2008, digemid-pnume-2023]
+  - id: hipotiroidismo-mayores-12-anos
+    indication: Hipotiroidismo, más de 12 años con crecimiento y pubertad incompletos
+    route: VO
+    ageMinDays: 4745
+    basis: mg/kg/day
+    amountMin: 2
+    amountMax: 3
+    usual: 2
+    intervalHours: 24
+    maxPerDoseMg: 150
+    maxPerDayMg: 150
+    notes: >-
+      FDA (Synthroid), tabla 2 — más de 12 años con crecimiento y pubertad incompletos, 2 a 3 mcg/kg/día; con el
+      crecimiento y la pubertad completos, 1.6 mcg/kg/día. Topes técnicos (50 kg).
+    sourceIds: [fda-synthroid, digemid-pnume-2023]
+warnings:
+  - Las dosis están en microgramos (mcg) por día.
+  - Dar en una sola toma, en ayunas, de media hora a una hora antes del desayuno, y al menos 4 horas antes o después de los fármacos que interfieren con su absorción (FDA).
+  - Si el niño no puede tragar la tableta, triturarla, suspenderla en 5 a 10 mL de agua y darla de inmediato con cuchara o gotero; no guardar la suspensión (FDA).
+  - Con riesgo de hiperactividad, empezar con un cuarto de la dosis y subir un cuarto cada semana hasta la dosis completa (FDA).
+  - Ajustar la dosis según la respuesta clínica y los controles de laboratorio (FDA).
+contraindications:
+  - Insuficiencia suprarrenal no corregida.
+diagnoses: [hipotiroidismo, hipotiroidismo congénito, mixedema]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: hipotiroidismo-0-3-meses
+    presentationId: tab-50
+    weightKg: 5
+    ageDays: 60
+    expect: { mgPerDose: 50, amount: 1, unit: tableta }
+  - ruleId: hipotiroidismo-1-5-anos
+    presentationId: tab-75
+    weightKg: 15
+    ageDays: 1095
+    expect: { mgPerDose: 75, amount: 1, unit: tableta }

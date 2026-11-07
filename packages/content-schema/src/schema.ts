@@ -246,8 +246,8 @@ export const drugSchema = z
     rules: z.array(doseRuleSchema).min(1),
     warnings: z.array(z.string().min(1)),
     contraindications: z.array(z.string().min(1)),
-    /** Unidad de la dosis: mg (por defecto) o UI (penicilinas, nistatina). */
-    doseUnit: z.enum(['mg', 'UI']).optional(),
+    /** Unidad de la dosis: mg (por defecto), mcg (digoxina, levotiroxina) o UI (penicilinas, nistatina). */
+    doseUnit: z.enum(['mg', 'mcg', 'UI']).optional(),
     /** Interacciones clínicamente importantes, con su fuente en el texto. */
     interactions: z.array(z.string().min(1)).optional(),
     /** Ajuste en insuficiencia renal, tal como lo dicen las fuentes. */

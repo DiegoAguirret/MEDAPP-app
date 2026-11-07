@@ -95,9 +95,14 @@ type Choice = 'min' | 'usual' | 'max';
 const CUSTOM_ID = 'personalizada';
 
 /** «mg/kg/dosis» o, si la ficha dosifica en UI, «UI/kg/dosis». */
-const basisLabel = (rule: DoseRule, du: 'mg' | 'UI') => BASIS_LABEL[rule.basis].replace('mg', du);
+const basisLabel = (rule: DoseRule, du: 'mg' | 'mcg' | 'UI') =>
+  BASIS_LABEL[rule.basis].replace('mg', du);
 
-function rangeText(rule: DoseRule, fmt: (n: number) => string, du: 'mg' | 'UI' = 'mg'): string {
+function rangeText(
+  rule: DoseRule,
+  fmt: (n: number) => string,
+  du: 'mg' | 'mcg' | 'UI' = 'mg',
+): string {
   const unit = basisLabel(rule, du);
   return rule.amountMin === rule.amountMax
     ? `${fmt(rule.amountMin)} ${unit}`

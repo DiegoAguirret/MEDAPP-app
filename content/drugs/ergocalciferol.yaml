@@ -1,0 +1,93 @@
+id: ergocalciferol
+name: Vitamina D (ergocalciferol)
+category: vitamina
+doseUnit: UI
+synonyms: [vitamina D, vitamina D2, ergocalciferol, raquitismo]
+presentations:
+  - id: sol-10000
+    label: Solución oral 10 000 UI/mL
+    form: solucion
+    mgPerUnit: 10000
+    unit: mL
+    step: 0.01
+    brandsPE: []
+rules:
+  - id: suplemento-prematuros
+    indication: Suplemento en lactantes prematuros
+    route: VO
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 364
+    basis: fixed_by_age
+    amountMin: 400
+    amountMax: 800
+    usual: 400
+    intervalHours: 24
+    maxPerDoseMg: 800
+    maxPerDayMg: 800
+    notes: FNME — suplemento dietético en lactantes prematuros, 10 a 20 mcg/día (400 a 800 UI).
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+  - id: suplemento-sanos
+    indication: Suplemento en lactantes y niños sanos
+    route: VO
+    neonatal: true
+    ageMinDays: 0
+    basis: fixed_by_age
+    amountMin: 400
+    amountMax: 400
+    usual: 400
+    intervalHours: 24
+    maxPerDoseMg: 400
+    maxPerDayMg: 400
+    notes: FNME — suplemento dietético en lactantes y niños sanos, 10 mcg/día (400 UI).
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+  - id: raquitismo-nutricional
+    indication: Raquitismo nutricional (absorción intestinal normal)
+    route: VO
+    ageMinDays: 29
+    basis: fixed_by_age
+    amountMin: 1000
+    amountMax: 5000
+    usual: 1000
+    intervalHours: 24
+    maxPerDoseMg: 5000
+    maxPerDayMg: 5000
+    notes: FNME — raquitismo nutricional y osteomalacia en niños con absorción normal, 25 a 125 mcg/día (1000 a 5000 UI).
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+  - id: raquitismo-malabsorcion
+    indication: Raquitismo nutricional con malabsorción
+    route: VO
+    ageMinDays: 29
+    basis: fixed_by_age
+    amountMin: 10000
+    amountMax: 25000
+    usual: 10000
+    intervalHours: 24
+    maxPerDoseMg: 25000
+    maxPerDayMg: 25000
+    notes: FNME — niños con malabsorción, 250 a 625 mcg/día (10 000 a 25 000 UI).
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+warnings:
+  - Las dosis están en UI (1 mcg = 40 UI, FNME). Los volúmenes del suplemento son muy pequeños (0.04 mL para 400 UI); medir con una jeringa adecuada.
+  - Asume un aporte adecuado de calcio; mantener el calcio sérico entre 8.8 y 10.3 mg/dL (FNME).
+  - Dosis de 2000 a 4000 UI/día por períodos prolongados pueden producir toxicidad grave en niños (FNME).
+contraindications:
+  - Hipersensibilidad al ergocalciferol.
+  - Toxicidad por vitamina D o hipercalcemia.
+diagnoses: [raquitismo, deficiencia de vitamina D, prematuro]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: suplemento-sanos
+    presentationId: sol-10000
+    weightKg: 4
+    ageDays: 30
+    expect: { mgPerDose: 400, amount: 0.04, unit: mL }
+  - ruleId: raquitismo-nutricional
+    presentationId: sol-10000
+    weightKg: 12
+    ageDays: 730
+    expect: { mgPerDose: 1000, amount: 0.1, unit: mL }

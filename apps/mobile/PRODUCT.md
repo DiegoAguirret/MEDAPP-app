@@ -27,7 +27,7 @@ Peru-first sources: DIGEMID's FNME and MINSA norms, contrasted with FDA, AEMPS, 
 
 ## Capabilities and Constraints
 
-- 96 verified drug cards across 14 categories (emergencies, neonatal rules, anticonvulsants, hospital antibiotics, cardiovascular), plus neonatal scores (Apgar, Silverman-Andersen, Capurro).
+- 100 verified drug cards across 14 categories (emergencies, neonatal rules, anticonvulsants, hospital antibiotics, cardiovascular), plus neonatal scores (Apgar, Silverman-Andersen, Capurro).
 - Tools: manual calculator, fluids (Holliday-Segar), dehydration plans, body surface area.
 - Favorites, light and dark themes, choice of decimal separator.
 - Expo (React Native) app, Android first. Offline: no accounts, no servers.

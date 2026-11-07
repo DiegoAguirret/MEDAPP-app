@@ -407,3 +407,21 @@ Cada cifra se confirmó en el documento descargado (texto de openFDA, el FNME 20
 - **Penicilina G benzatínica y procaínica:** ninguna fuente peruana da el volumen de reconstitución de los frascos del PNUME, así que no se puede calcular el volumen exacto. La procaínica, además, no figura en la NTS 159.
 
 **Erratas para avisar:** el Anexo 14 de la NTS 159 dice bencilpenicilina «sódica» 50 000 UI/kg IM en dosis única, donde el cuerpo de la norma (pág. 37) dice «benzatínica». El Anexo 4 pone LPV/r donde el cuerpo y el Anexo 8 dicen lamivudina. La RM 159-2026-MINSA no modifica esta norma: modifica la NTS 244.
+
+## Lote 11: penicilina V, digoxina, levotiroxina y vitamina D — verificado el 07/11/2026
+
+La app ahora admite dosis en microgramos (`doseUnit: mcg`) para no mostrar dosis de 0.0056 mg/kg.
+
+- **Fenoximetilpenicilina** (PNUME 300 000 UI/5 mL): OMS (Model Formulary for Children) 10 a 12.5 mg/kg por dosis c/6 h, máximo 500 mg; profilaxis de fiebre reumática, la misma dosis c/12 h. Con la equivalencia del FNME (1 mg = 1600 UI), 300 000 UI/5 mL = 187.5 mg/5 mL.
+- **Digoxina** (PNUME 50 mcg/mL y tableta 250 mcg): mantenimiento de la tabla 2 de la FDA por edad, desde 1 mes. El tope es la dosis de mantenimiento máxima del adulto en el FNME (500 mcg/día).
+- **Levotiroxina** (PNUME tabletas de 50, 75 y 100 mcg): tabla pediátrica de la FDA (Synthroid), de 10–15 mcg/kg/día (0 a 3 meses) a 2–3 mcg/kg/día (más de 12 años).
+- **Vitamina D (ergocalciferol)** (PNUME 10 000 UI/mL): pautas del FNME en UI para suplemento y raquitismo nutricional.
+
+**No incluidos:**
+
+- **Oxacilina:** la FDA solo da una concentración exacta para la vía IM (1 g + 5.4 mL = 250 mg/1.5 mL). Para la vía IV indica 10 mL de diluyente sin declarar la concentración final.
+- **Clonazepam:** las dosis pediátricas (0.01–0.03 mg/kg/día) son demasiado pequeñas para medirlas en mL de la solución de 2.5 mg/mL, y ninguna fuente leída dice cuánto rinde cada gota. El FNME además tiene una errata (máximo «0.5 mg/kg/d», donde la FDA dice 0.05).
+- **Metilprednisolona:** ninguna fuente da la concentración tras reconstituir los frascos de 125 y 500 mg del PNUME.
+- **Ácido fólico:** la única presentación del PNUME es la tableta de 0.5 mg, y las dosis pediátricas del FNME van de 0.05 a 0.4 mg/día.
+
+**Discrepancias para avisar:** el FNME da la penicilina V a 15–62.5 mg/kg c/6–8 h sin decir si es por dosis o por día. En el hipotiroidismo congénito da una dosis fija de 25 mcg/día, mientras la FDA da 10–15 mcg/kg/día.

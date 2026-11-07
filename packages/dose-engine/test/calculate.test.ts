@@ -540,3 +540,27 @@ describe('calculateDose — unidades internacionales (UI)', () => {
     expect(text).not.toMatch(/\bmg\b/);
   });
 });
+
+describe('calculateDose — microgramos (mcg)', () => {
+  it('con doseUnit mcg, los pasos dicen mcg y nunca mg', () => {
+    const r = ok(
+      calculateDose({
+        rule: rule({
+          basis: 'mg/kg/dose',
+          amountMin: 5,
+          amountMax: 5,
+          usual: 5,
+          maxPerDoseMg: 250,
+          maxPerDayMg: 500,
+        }),
+        presentation: presentation({ mgPerUnit: 50, unit: 'mL', step: 0.1 }),
+        patient: toddler,
+        doseUnit: 'mcg',
+      }),
+    );
+    expect(r.mgPerDose.chosen).toBe(50);
+    const text = r.steps.map((s) => `${s.expression} ${s.result}`).join(' | ');
+    expect(text).toContain('mcg/kg');
+    expect(text).not.toMatch(/\bmg\b/);
+  });
+});

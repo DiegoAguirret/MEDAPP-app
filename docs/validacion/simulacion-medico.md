@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **7728** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **3474**. Fuera del rango de edad de la regla: 4254 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 3474/3474 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 3474/3474.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.56 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **8400** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **3674**. Fuera del rango de edad de la regla: 4726 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 3674/3674 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 3674/3674.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.55 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -1555,6 +1555,42 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | dicloxacilina | severa | Cápsula 500 mg | 6 años (20.5 kg) | 256.25 | 256.25 | 0.512 | 0.51 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | dicloxacilina | severa | Cápsula 500 mg | 8 años (25.6 kg) | 320 | 320 | 0.64 | 0.64 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
 | dicloxacilina | severa | Cápsula 500 mg | 10 años (32 kg) | 400 | 400 | 0.8 | 0.8 capsula | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-1-24-meses | Solución oral 50 mcg/mL | 1 mes (4.2 kg) | 23.52 | 23.52 | 0.47 | 0.47 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-1-24-meses | Solución oral 50 mcg/mL | 2 meses (5.1 kg) | 28.56 | 28.56 | 0.571 | 0.57 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-1-24-meses | Solución oral 50 mcg/mL | 4 meses (6.4 kg) | 35.84 | 35.84 | 0.717 | 0.7 mL | ✅  |
+| digoxina | mantenimiento-1-24-meses | Solución oral 50 mcg/mL | 6 meses (7.6 kg) | 42.56 | 42.56 | 0.851 | 0.85 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-1-24-meses | Solución oral 50 mcg/mL | 9 meses (8.6 kg) | 48.16 | 48.16 | 0.963 | 1 mL | ✅  |
+| digoxina | mantenimiento-1-24-meses | Solución oral 50 mcg/mL | 1 año (9.6 kg) | 53.76 | 53.76 | 1.075 | 1.1 mL | ✅  |
+| digoxina | mantenimiento-1-24-meses | Solución oral 50 mcg/mL | 18 meses (10.9 kg) | 61.04 | 61.04 | 1.221 | 1.2 mL | ✅  |
+| digoxina | mantenimiento-1-24-meses | Solución oral 50 mcg/mL | 2 años (12.2 kg) | 68.32 | 68.32 | 1.366 | 1.4 mL | ✅  |
+| digoxina | mantenimiento-1-24-meses | Tableta 250 mcg (0.25 mg) | 1 mes (4.2 kg) | 23.52 | 23.52 | 0.094 | 0.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-1-24-meses | Tableta 250 mcg (0.25 mg) | 2 meses (5.1 kg) | 28.56 | 28.56 | 0.114 | 0.11 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-1-24-meses | Tableta 250 mcg (0.25 mg) | 4 meses (6.4 kg) | 35.84 | 35.84 | 0.143 | 0.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-1-24-meses | Tableta 250 mcg (0.25 mg) | 6 meses (7.6 kg) | 42.56 | 42.56 | 0.17 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-1-24-meses | Tableta 250 mcg (0.25 mg) | 9 meses (8.6 kg) | 48.16 | 48.16 | 0.193 | 0.19 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-1-24-meses | Tableta 250 mcg (0.25 mg) | 1 año (9.6 kg) | 53.76 | 53.76 | 0.215 | 0.21 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-1-24-meses | Tableta 250 mcg (0.25 mg) | 18 meses (10.9 kg) | 61.04 | 61.04 | 0.244 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-1-24-meses | Tableta 250 mcg (0.25 mg) | 2 años (12.2 kg) | 68.32 | 68.32 | 0.273 | 0.27 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-2-5-anos | Solución oral 50 mcg/mL | 3 años (14.3 kg) | 67.21 | 67.21 | 1.344 | 1.3 mL | ✅  |
+| digoxina | mantenimiento-2-5-anos | Solución oral 50 mcg/mL | 4 años (16.3 kg) | 76.61 | 76.61 | 1.532 | 1.5 mL | ✅  |
+| digoxina | mantenimiento-2-5-anos | Solución oral 50 mcg/mL | 5 años (18.3 kg) | 86.01 | 86.01 | 1.72 | 1.7 mL | ✅  |
+| digoxina | mantenimiento-2-5-anos | Tableta 250 mcg (0.25 mg) | 3 años (14.3 kg) | 67.21 | 67.21 | 0.269 | 0.27 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-2-5-anos | Tableta 250 mcg (0.25 mg) | 4 años (16.3 kg) | 76.61 | 76.61 | 0.306 | 0.31 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-2-5-anos | Tableta 250 mcg (0.25 mg) | 5 años (18.3 kg) | 86.01 | 86.01 | 0.344 | 0.34 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-5-10-anos | Solución oral 50 mcg/mL | 6 años (20.5 kg) | 57.4 | 57.4 | 1.148 | 1.1 mL | ✅  |
+| digoxina | mantenimiento-5-10-anos | Solución oral 50 mcg/mL | 8 años (25.6 kg) | 71.68 | 71.68 | 1.434 | 1.4 mL | ✅  |
+| digoxina | mantenimiento-5-10-anos | Solución oral 50 mcg/mL | 10 años (32 kg) | 89.6 | 89.6 | 1.792 | 1.8 mL | ✅  |
+| digoxina | mantenimiento-5-10-anos | Tableta 250 mcg (0.25 mg) | 6 años (20.5 kg) | 57.4 | 57.4 | 0.23 | 0.23 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-5-10-anos | Tableta 250 mcg (0.25 mg) | 8 años (25.6 kg) | 71.68 | 71.68 | 0.287 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-5-10-anos | Tableta 250 mcg (0.25 mg) | 10 años (32 kg) | 89.6 | 89.6 | 0.358 | 0.36 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-mayores-10-anos | Solución oral 50 mcg/mL | 12 años (40 kg) | 120 | 120 | 2.4 | 2.4 mL | ✅  |
+| digoxina | mantenimiento-mayores-10-anos | Solución oral 50 mcg/mL | 14 años (50 kg) | 150 | 150 | 3 | 3 mL | ✅  |
+| digoxina | mantenimiento-mayores-10-anos | Solución oral 50 mcg/mL | 16 años (58 kg) | 174 | 174 | 3.48 | 3.5 mL | ✅  |
+| digoxina | mantenimiento-mayores-10-anos | Solución oral 50 mcg/mL | 17 años, obeso (95 kg) | 285 | 285 | 5.7 | 5.7 mL | ✅  |
+| digoxina | mantenimiento-mayores-10-anos | Tableta 250 mcg (0.25 mg) | 12 años (40 kg) | 120 | 120 | 0.48 | 0.5 tableta | ✅  |
+| digoxina | mantenimiento-mayores-10-anos | Tableta 250 mcg (0.25 mg) | 14 años (50 kg) | 150 | 150 | 0.6 | 0.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-mayores-10-anos | Tableta 250 mcg (0.25 mg) | 16 años (58 kg) | 174 | 174 | 0.696 | 0.7 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| digoxina | mantenimiento-mayores-10-anos | Tableta 250 mcg (0.25 mg) | 17 años, obeso (95 kg) | 285 | 285 | 1.14 | 1.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | dimenhidrinato | mareo-2-5-anos | Tableta 50 mg | 2 años (12.2 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
 | dimenhidrinato | mareo-2-5-anos | Tableta 50 mg | 3 años (14.3 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
 | dimenhidrinato | mareo-2-5-anos | Tableta 50 mg | 4 años (16.3 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
@@ -1568,6 +1604,71 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | doxiciclina | mantenimiento | Tableta 100 mg | 8 años (25.6 kg) | 56.32 | 56.32 | 0.563 | 0.56 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | doxiciclina | mantenimiento | Tableta 100 mg | 10 años (32 kg) | 70.4 | 70.4 | 0.704 | 0.7 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | doxiciclina | mantenimiento | Tableta 100 mg | 12 años (40 kg) | 88 | 88 | 0.88 | 0.88 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| ergocalciferol | suplemento-prematuros | Solución oral 10 000 UI/mL | 3 días, bajo peso (2 kg) (2 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-prematuros | Solución oral 10 000 UI/mL | 5 días (3.2 kg) (3.2 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-prematuros | Solución oral 10 000 UI/mL | 15 días (3.6 kg) (3.6 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-prematuros | Solución oral 10 000 UI/mL | 1 mes (4.2 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-prematuros | Solución oral 10 000 UI/mL | 2 meses (5.1 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-prematuros | Solución oral 10 000 UI/mL | 4 meses (6.4 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-prematuros | Solución oral 10 000 UI/mL | 6 meses (7.6 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-prematuros | Solución oral 10 000 UI/mL | 9 meses (8.6 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 3 días, bajo peso (2 kg) (2 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 5 días (3.2 kg) (3.2 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 15 días (3.6 kg) (3.6 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 1 mes (4.2 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 2 meses (5.1 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 4 meses (6.4 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 6 meses (7.6 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 9 meses (8.6 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 1 año (9.6 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 18 meses (10.9 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 2 años (12.2 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 3 años (14.3 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 4 años (16.3 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 5 años (18.3 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 6 años (20.5 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 8 años (25.6 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 10 años (32 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 12 años (40 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 14 años (50 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 16 años (58 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | suplemento-sanos | Solución oral 10 000 UI/mL | 17 años, obeso (95 kg) | 400 | 400 | 0.04 | 0.04 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 1 mes (4.2 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 2 meses (5.1 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 4 meses (6.4 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 6 meses (7.6 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 9 meses (8.6 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 1 año (9.6 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 18 meses (10.9 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 2 años (12.2 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 3 años (14.3 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 4 años (16.3 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 5 años (18.3 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 6 años (20.5 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 8 años (25.6 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 10 años (32 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 12 años (40 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 14 años (50 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 16 años (58 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-nutricional | Solución oral 10 000 UI/mL | 17 años, obeso (95 kg) | 1000 | 1000 | 0.1 | 0.1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 1 mes (4.2 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 2 meses (5.1 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 4 meses (6.4 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 6 meses (7.6 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 9 meses (8.6 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 1 año (9.6 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 18 meses (10.9 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 2 años (12.2 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 3 años (14.3 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 4 años (16.3 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 5 años (18.3 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 6 años (20.5 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 8 años (25.6 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 10 años (32 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 12 años (40 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 14 años (50 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 16 años (58 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
+| ergocalciferol | raquitismo-malabsorcion | Solución oral 10 000 UI/mL | 17 años, obeso (95 kg) | 10000 | 10000 | 1 | 1 mL | ✅  |
 | eritromicina | usual | Suspensión 250 mg/5 mL | 1 mes (4.2 kg) | 31.5 | 31.5 | 0.63 | 0.6 mL | ✅  |
 | eritromicina | usual | Suspensión 250 mg/5 mL | 2 meses (5.1 kg) | 38.25 | 38.25 | 0.765 | 0.8 mL | ✅  |
 | eritromicina | usual | Suspensión 250 mg/5 mL | 4 meses (6.4 kg) | 48 | 48 | 0.96 | 1 mL | ✅  |
@@ -1752,6 +1853,42 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | fenobarbital | estado-epileptico-carga | Ampolla 200 mg/2 mL (100 mg/mL) | 12 años (40 kg) | 600 | 600 | 6 | 6 mL | ✅  |
 | fenobarbital | neonato-convulsion | Ampolla 200 mg/2 mL (100 mg/mL) | 3 días, bajo peso (2 kg) (2 kg) | 40 | 40 | 0.4 | 0.4 mL | ✅  |
 | fenobarbital | neonato-convulsion | Ampolla 200 mg/2 mL (100 mg/mL) | 5 días (3.2 kg) (3.2 kg) | 64 | 64 | 0.64 | 0.65 mL | ✅  |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 1 mes (4.2 kg) | 52.5 | 52.5 | 1.4 | 1.4 mL | ✅  |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 2 meses (5.1 kg) | 63.75 | 63.75 | 1.7 | 1.7 mL | ✅  |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 4 meses (6.4 kg) | 80 | 80 | 2.133 | 2.1 mL | ✅  |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 6 meses (7.6 kg) | 95 | 95 | 2.533 | 2.5 mL | ✅  |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 9 meses (8.6 kg) | 107.5 | 107.5 | 2.867 | 2.9 mL | ✅  |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 1 año (9.6 kg) | 120 | 120 | 3.2 | 3.2 mL | ✅  |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 18 meses (10.9 kg) | 136.25 | 136.25 | 3.633 | 3.6 mL | ✅  |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 2 años (12.2 kg) | 152.5 | 152.5 | 4.067 | 4.1 mL | ✅  |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 3 años (14.3 kg) | 178.75 | 178.75 | 4.767 | 4.8 mL | ✅  |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 4 años (16.3 kg) | 203.75 | 203.75 | 5.433 | 5.4 mL | ✅  |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 5 años (18.3 kg) | 228.75 | 228.75 | 6.1 | 6.1 mL | ✅  |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 6 años (20.5 kg) | 256.25 | 256.25 | 6.833 | 6.8 mL | ✅  |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 8 años (25.6 kg) | 320 | 320 | 8.533 | 8.5 mL | ✅  |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 10 años (32 kg) | 400 | 400 | 10.667 | 10.7 mL | ✅  |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 12 años (40 kg) | 500 | 500 | 13.333 | 13.3 mL | ✅  |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 14 años (50 kg) | 500 | 500 | 13.333 | 13.3 mL | ✅ tope aplicado |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 16 años (58 kg) | 500 | 500 | 13.333 | 13.3 mL | ✅ tope aplicado |
+| fenoximetilpenicilina | infecciones | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 17 años, obeso (95 kg) | 500 | 500 | 13.333 | 13.3 mL | ✅ tope aplicado |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 1 mes (4.2 kg) | 52.5 | 52.5 | 1.4 | 1.4 mL | ✅  |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 2 meses (5.1 kg) | 63.75 | 63.75 | 1.7 | 1.7 mL | ✅  |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 4 meses (6.4 kg) | 80 | 80 | 2.133 | 2.1 mL | ✅  |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 6 meses (7.6 kg) | 95 | 95 | 2.533 | 2.5 mL | ✅  |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 9 meses (8.6 kg) | 107.5 | 107.5 | 2.867 | 2.9 mL | ✅  |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 1 año (9.6 kg) | 120 | 120 | 3.2 | 3.2 mL | ✅  |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 18 meses (10.9 kg) | 136.25 | 136.25 | 3.633 | 3.6 mL | ✅  |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 2 años (12.2 kg) | 152.5 | 152.5 | 4.067 | 4.1 mL | ✅  |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 3 años (14.3 kg) | 178.75 | 178.75 | 4.767 | 4.8 mL | ✅  |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 4 años (16.3 kg) | 203.75 | 203.75 | 5.433 | 5.4 mL | ✅  |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 5 años (18.3 kg) | 228.75 | 228.75 | 6.1 | 6.1 mL | ✅  |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 6 años (20.5 kg) | 256.25 | 256.25 | 6.833 | 6.8 mL | ✅  |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 8 años (25.6 kg) | 320 | 320 | 8.533 | 8.5 mL | ✅  |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 10 años (32 kg) | 400 | 400 | 10.667 | 10.7 mL | ✅  |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 12 años (40 kg) | 500 | 500 | 13.333 | 13.3 mL | ✅  |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 14 años (50 kg) | 500 | 500 | 13.333 | 13.3 mL | ✅ tope aplicado |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 16 años (58 kg) | 500 | 500 | 13.333 | 13.3 mL | ✅ tope aplicado |
+| fenoximetilpenicilina | profilaxis-fiebre-reumatica | Suspensión 187.5 mg/5 mL (300 000 UI/5 mL; 1 mg = 1600 UI) | 17 años, obeso (95 kg) | 500 | 500 | 13.333 | 13.3 mL | ✅ tope aplicado |
 | fentanilo | anestesia-2-12a | Fentanilo 50 mcg/mL (0.05 mg/mL) | 2 años (12.2 kg) | 0.02 | 0.02 | 0.488 | 0.5 mL | ✅  |
 | fentanilo | anestesia-2-12a | Fentanilo 50 mcg/mL (0.05 mg/mL) | 3 años (14.3 kg) | 0.03 | 0.03 | 0.572 | 0.55 mL | ✅  |
 | fentanilo | anestesia-2-12a | Fentanilo 50 mcg/mL (0.05 mg/mL) | 4 años (16.3 kg) | 0.03 | 0.03 | 0.652 | 0.65 mL | ✅  |
@@ -2338,6 +2475,69 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | levocetirizina | 12-anos-o-mas | Tableta ranurada 5 mg | 14 años (50 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
 | levocetirizina | 12-anos-o-mas | Tableta ranurada 5 mg | 16 años (58 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
 | levocetirizina | 12-anos-o-mas | Tableta ranurada 5 mg | 17 años, obeso (95 kg) | 5 | 5 | 1 | 1 tableta | ✅  |
+| levotiroxina | hipotiroidismo-0-3-meses | Tableta 50 mcg | 3 días, bajo peso (2 kg) (2 kg) | 20 | 20 | 0.4 | 0.4 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-0-3-meses | Tableta 50 mcg | 5 días (3.2 kg) (3.2 kg) | 32 | 32 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-0-3-meses | Tableta 50 mcg | 15 días (3.6 kg) (3.6 kg) | 36 | 36 | 0.72 | 0.72 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-0-3-meses | Tableta 50 mcg | 1 mes (4.2 kg) | 42 | 42 | 0.84 | 0.84 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-0-3-meses | Tableta 50 mcg | 2 meses (5.1 kg) | 51 | 51 | 1.02 | 1 tableta | ✅  |
+| levotiroxina | hipotiroidismo-0-3-meses | Tableta 75 mcg | 3 días, bajo peso (2 kg) (2 kg) | 20 | 20 | 0.267 | 0.27 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-0-3-meses | Tableta 75 mcg | 5 días (3.2 kg) (3.2 kg) | 32 | 32 | 0.427 | 0.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-0-3-meses | Tableta 75 mcg | 15 días (3.6 kg) (3.6 kg) | 36 | 36 | 0.48 | 0.48 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-0-3-meses | Tableta 75 mcg | 1 mes (4.2 kg) | 42 | 42 | 0.56 | 0.56 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-0-3-meses | Tableta 75 mcg | 2 meses (5.1 kg) | 51 | 51 | 0.68 | 0.68 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-0-3-meses | Tableta 100 mcg | 3 días, bajo peso (2 kg) (2 kg) | 20 | 20 | 0.2 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-0-3-meses | Tableta 100 mcg | 5 días (3.2 kg) (3.2 kg) | 32 | 32 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-0-3-meses | Tableta 100 mcg | 15 días (3.6 kg) (3.6 kg) | 36 | 36 | 0.36 | 0.36 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-0-3-meses | Tableta 100 mcg | 1 mes (4.2 kg) | 42 | 42 | 0.42 | 0.42 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-0-3-meses | Tableta 100 mcg | 2 meses (5.1 kg) | 51 | 51 | 0.51 | 0.51 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-3-6-meses | Tableta 50 mcg | 4 meses (6.4 kg) | 51.2 | 51.2 | 1.024 | 1 tableta | ✅  |
+| levotiroxina | hipotiroidismo-3-6-meses | Tableta 75 mcg | 4 meses (6.4 kg) | 51.2 | 51.2 | 0.683 | 0.68 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-3-6-meses | Tableta 100 mcg | 4 meses (6.4 kg) | 51.2 | 51.2 | 0.512 | 0.51 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-6-12-meses | Tableta 50 mcg | 6 meses (7.6 kg) | 45.6 | 45.6 | 0.912 | 0.91 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-6-12-meses | Tableta 50 mcg | 9 meses (8.6 kg) | 51.6 | 51.6 | 1.032 | 1 tableta | ✅  |
+| levotiroxina | hipotiroidismo-6-12-meses | Tableta 75 mcg | 6 meses (7.6 kg) | 45.6 | 45.6 | 0.608 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-6-12-meses | Tableta 75 mcg | 9 meses (8.6 kg) | 51.6 | 51.6 | 0.688 | 0.69 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-6-12-meses | Tableta 100 mcg | 6 meses (7.6 kg) | 45.6 | 45.6 | 0.456 | 0.46 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-6-12-meses | Tableta 100 mcg | 9 meses (8.6 kg) | 51.6 | 51.6 | 0.516 | 0.52 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 50 mcg | 1 año (9.6 kg) | 48 | 48 | 0.96 | 1 tableta | ✅  |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 50 mcg | 18 meses (10.9 kg) | 54.5 | 54.5 | 1.09 | 1.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 50 mcg | 2 años (12.2 kg) | 61 | 61 | 1.22 | 1.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 50 mcg | 3 años (14.3 kg) | 71.5 | 71.5 | 1.43 | 1.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 50 mcg | 4 años (16.3 kg) | 81.5 | 81.5 | 1.63 | 1.63 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 50 mcg | 5 años (18.3 kg) | 91.5 | 91.5 | 1.83 | 1.83 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 75 mcg | 1 año (9.6 kg) | 48 | 48 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 75 mcg | 18 meses (10.9 kg) | 54.5 | 54.5 | 0.727 | 0.73 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 75 mcg | 2 años (12.2 kg) | 61 | 61 | 0.813 | 0.81 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 75 mcg | 3 años (14.3 kg) | 71.5 | 71.5 | 0.953 | 1 tableta | ✅  |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 75 mcg | 4 años (16.3 kg) | 81.5 | 81.5 | 1.087 | 1.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 75 mcg | 5 años (18.3 kg) | 91.5 | 91.5 | 1.22 | 1.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 100 mcg | 1 año (9.6 kg) | 48 | 48 | 0.48 | 0.48 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 100 mcg | 18 meses (10.9 kg) | 54.5 | 54.5 | 0.545 | 0.55 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 100 mcg | 2 años (12.2 kg) | 61 | 61 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 100 mcg | 3 años (14.3 kg) | 71.5 | 71.5 | 0.715 | 0.71 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 100 mcg | 4 años (16.3 kg) | 81.5 | 81.5 | 0.815 | 0.81 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-1-5-anos | Tableta 100 mcg | 5 años (18.3 kg) | 91.5 | 91.5 | 0.915 | 0.92 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-6-12-anos | Tableta 50 mcg | 6 años (20.5 kg) | 82 | 82 | 1.64 | 1.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-6-12-anos | Tableta 50 mcg | 8 años (25.6 kg) | 102.4 | 102.4 | 2.048 | 2 tableta | ✅  |
+| levotiroxina | hipotiroidismo-6-12-anos | Tableta 50 mcg | 10 años (32 kg) | 128 | 128 | 2.56 | 2.56 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-6-12-anos | Tableta 50 mcg | 12 años (40 kg) | 160 | 160 | 3.2 | 3.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-6-12-anos | Tableta 75 mcg | 6 años (20.5 kg) | 82 | 82 | 1.093 | 1.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-6-12-anos | Tableta 75 mcg | 8 años (25.6 kg) | 102.4 | 102.4 | 1.365 | 1.37 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-6-12-anos | Tableta 75 mcg | 10 años (32 kg) | 128 | 128 | 1.707 | 1.71 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-6-12-anos | Tableta 75 mcg | 12 años (40 kg) | 160 | 160 | 2.133 | 2.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-6-12-anos | Tableta 100 mcg | 6 años (20.5 kg) | 82 | 82 | 0.82 | 0.82 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-6-12-anos | Tableta 100 mcg | 8 años (25.6 kg) | 102.4 | 102.4 | 1.024 | 1 tableta | ✅  |
+| levotiroxina | hipotiroidismo-6-12-anos | Tableta 100 mcg | 10 años (32 kg) | 128 | 128 | 1.28 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-6-12-anos | Tableta 100 mcg | 12 años (40 kg) | 160 | 160 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-mayores-12-anos | Tableta 50 mcg | 14 años (50 kg) | 100 | 100 | 2 | 2 tableta | ✅  |
+| levotiroxina | hipotiroidismo-mayores-12-anos | Tableta 50 mcg | 16 años (58 kg) | 116 | 116 | 2.32 | 2.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-mayores-12-anos | Tableta 50 mcg | 17 años, obeso (95 kg) | 150 | 150 | 3 | 3 tableta | ✅ tope aplicado |
+| levotiroxina | hipotiroidismo-mayores-12-anos | Tableta 75 mcg | 14 años (50 kg) | 100 | 100 | 1.333 | 1.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-mayores-12-anos | Tableta 75 mcg | 16 años (58 kg) | 116 | 116 | 1.547 | 1.55 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-mayores-12-anos | Tableta 75 mcg | 17 años, obeso (95 kg) | 150 | 150 | 2 | 2 tableta | ✅ tope aplicado |
+| levotiroxina | hipotiroidismo-mayores-12-anos | Tableta 100 mcg | 14 años (50 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| levotiroxina | hipotiroidismo-mayores-12-anos | Tableta 100 mcg | 16 años (58 kg) | 116 | 116 | 1.16 | 1.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| levotiroxina | hipotiroidismo-mayores-12-anos | Tableta 100 mcg | 17 años, obeso (95 kg) | 150 | 150 | 1.5 | 1.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 1 mes (4.2 kg) | 18.9 | 18.9 | 0.945 | 0.9 mL | ✅  |
 | lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 2 meses (5.1 kg) | 22.95 | 22.95 | 1.147 | 1.1 mL | ✅  |
 | lidocaina | infiltracion-maxima | Lidocaína 2 % sin epinefrina (20 mg/mL) | 4 meses (6.4 kg) | 28.8 | 28.8 | 1.44 | 1.4 mL | ✅  |

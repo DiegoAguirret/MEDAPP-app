@@ -250,6 +250,13 @@ describe('parseDrug', () => {
       ),
     ).toThrow();
   });
+  it('accepts doses in micrograms (doseUnit mcg)', () => {
+    expect(parseDrug(mutate((d) => (d.doseUnit = 'mcg'))).doseUnit).toBe('mcg');
+  });
+
+  it('rejects an unknown dose unit', () => {
+    expect(() => parseDrug(mutate((d) => (d.doseUnit = 'g')))).toThrow();
+  });
 });
 
 describe('parseSource', () => {

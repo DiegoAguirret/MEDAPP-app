@@ -16,7 +16,7 @@ export interface ManualResult {
  * Lee la concentración desde la etiqueta impresa: "Suspensión 250 mg/5 mL" → 50 mg por mL;
  * "Tableta 500 mg" → 500 mg por tableta; "Solución oral 1 mg/mL" → 1.
  * Si la etiqueta incluye dos fármacos ("400 mg/57 mg por 5 mL"), usa el primero.
- * En UI: "Tableta 200 000 UI" → 200000 UI por tableta.
+ * En UI: "Tableta 200 000 UI" → 200000 UI por tableta. En mcg: "Solución oral 50 mcg/mL" → 50.
  */
 export function concentrationFromLabel(label: string): number | null {
   const perDrop = /1\s*gota\s*=\s*(\d+(?:[.,]\d+)?)\s*mg/i.exec(label);
@@ -33,6 +33,12 @@ export function concentrationFromLabel(label: string): number | null {
   // Unidades internacionales por tableta: "Tableta 200 000 UI" (miles separados por espacio).
   const perUnitUI = /(\d{1,3}(?:\s\d{3})+|\d+)\s*UI\b/.exec(label);
   if (perUnitUI) return Number((perUnitUI[1] ?? '').replace(/\s/g, ''));
+  // Microgramos (digoxina, levotiroxina): "Solución oral 50 mcg/mL" → 50; "Tableta 75 mcg" → 75.
+  const mcg = /(\d+(?:[.,]\d+)?)\s*mcg(?:\s*\/\s*(\d+(?:[.,]\d+)?)?\s*mL)?/i.exec(label);
+  if (mcg) {
+    const amount = Number((mcg[1] ?? '').replace(',', '.'));
+    return mcg[2] === undefined ? amount : amount / Number(mcg[2].replace(',', '.'));
+  }
   const perUnit = /(\d+(?:[.,]\d+)?)\s*mg/i.exec(label);
   return perUnit ? Number((perUnit[1] ?? '').replace(',', '.')) : null;
 }

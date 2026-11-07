@@ -604,3 +604,17 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=5f38c395-0093-4afd-89ec-f96e5dc0934a
   kind: regulador
   country: US
+- id: fda-digoxin-solution
+  title: Digoxina solución oral 50 mcg/mL — prescribing information (FDA, set 1b7e5c6e-e052-41b0-a4ce-05dfe62faaaf)
+  publisher: U.S. FDA / Hikma
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=1b7e5c6e-e052-41b0-a4ce-05dfe62faaaf
+  kind: regulador
+  country: US
+- id: fda-synthroid
+  title: Synthroid (levotiroxina sódica) tabletas — prescribing information (FDA, set 1e11ad30-1041-4520-10b0-8f9d30d30fcc)
+  publisher: U.S. FDA / AbbVie
+  year: 2024
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=1e11ad30-1041-4520-10b0-8f9d30d30fcc
+  kind: regulador
+  country: US

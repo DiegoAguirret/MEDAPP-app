@@ -16,6 +16,8 @@ describe('concentrationFromLabel', () => {
     ['Solución oral 1 mg/mL (5 mg/5 mL)', 1],
     ['Tableta 200 000 UI', 200000],
     ['Tableta 50 000 UI', 50000],
+    ['Solución oral 50 mcg/mL', 50],
+    ['Tableta 75 mcg', 75],
   ])('%s → %s', (label, mg) => {
     expect(concentrationFromLabel(label)).toBeCloseTo(mg, 9);
   });

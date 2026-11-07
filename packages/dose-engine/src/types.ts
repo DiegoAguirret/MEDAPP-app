@@ -15,7 +15,7 @@ export interface CalculateInput {
    */
   chosenMgPerKg?: number;
   /** Unidad de la dosis en los pasos del cálculo (por defecto mg; UI para penicilinas, nistatina). */
-  doseUnit?: 'mg' | 'UI';
+  doseUnit?: 'mg' | 'mcg' | 'UI';
 }
 
 export interface CalcStep {
