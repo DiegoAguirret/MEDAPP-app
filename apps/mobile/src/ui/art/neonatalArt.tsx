@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { Image, StyleSheet, View } from 'react-native';
 import Svg, {
   Circle,
   ClipPath,
@@ -14,6 +15,7 @@ import Svg, {
   Text as SvgText,
 } from 'react-native-svg';
 import { family } from '../theme';
+import { PHOTOS } from './photos';
 
 /**
  * Ilustraciones didácticas de las opciones de las escalas neonatales. Cada dibujo muestra solo lo
@@ -748,11 +750,59 @@ const ART: Record<string, (id: string) => ReactNode> = {
   'silverman-andersen/quejido/2': (id) => <Grunt id={id} level={2} />,
 };
 
+/**
+ * Marcas vectoriales sobre una foto: medidas o movimientos que la imagen sola no muestra.
+ * Lienzo de 160 × 106.667 (3:2, como las fotos); fondo transparente.
+ */
+/** Pezones en la foto del tórax (coordenadas del lienzo, tras el recorte de 3:2). */
+const NIPPLES: [number, number][] = [
+  [44.8, 54.2],
+  [115.6, 53.7],
+];
+
+function GlandMarks({ r, label }: { r: number; label: string }) {
+  return (
+    <G>
+      {NIPPLES.map(([cx, cy]) => (
+        <Circle
+          key={cx}
+          cx={cx}
+          cy={cy}
+          r={r}
+          fill={K.mark}
+          fillOpacity={0.16}
+          stroke={K.mark}
+          strokeWidth={1.2}
+          strokeDasharray="2.5 1.8"
+        />
+      ))}
+      <Rect x={58} y={70} width={44} height={15} rx={7.5} fill={K.white} opacity={0.92} />
+      <SvgText
+        x={80}
+        y={81}
+        fontSize={10}
+        fontFamily={family.bold}
+        fill={K.mark}
+        textAnchor="middle"
+      >
+        {label}
+      </SvgText>
+    </G>
+  );
+}
+
+const OVERLAYS: Record<string, () => ReactNode> = {
+  'capurro/mama/0': () => <GlandMarks r={0} label="no palpable" />,
+  'capurro/mama/1': () => <GlandMarks r={4} label="< 5 mm" />,
+  'capurro/mama/2': () => <GlandMarks r={7} label="5–10 mm" />,
+  'capurro/mama/3': () => <GlandMarks r={10.5} label="> 10 mm" />,
+};
+
+const has = (k: string) => k in PHOTOS || k in ART;
+
 /** ¿Este criterio tiene ilustración para todas sus opciones? */
 export function hasScoreArt(scoreId: string, itemId: string, count: number): boolean {
-  return Array.from({ length: count }, (_, i) => `${scoreId}/${itemId}/${i}`).every(
-    (k) => k in ART,
-  );
+  return Array.from({ length: count }, (_, i) => `${scoreId}/${itemId}/${i}`).every(has);
 }
 
 /** Ilustración de la opción `index` del criterio, o null si no hay. */
@@ -766,6 +816,33 @@ export function ScoreArt({
   index: number;
 }) {
   const key = `${scoreId}/${itemId}/${index}`;
+  const photo = PHOTOS[key];
+  if (photo) {
+    const overlay = OVERLAYS[key];
+    return (
+      <View style={styles.fill}>
+        <Image
+          source={photo}
+          style={styles.fill}
+          resizeMode="cover"
+          accessibilityIgnoresInvertColors
+        />
+        {overlay ? (
+          <Svg
+            viewBox="0 0 160 106.667"
+            width="100%"
+            height="100%"
+            preserveAspectRatio="xMidYMid slice"
+            style={StyleSheet.absoluteFill}
+          >
+            {overlay()}
+          </Svg>
+        ) : null}
+      </View>
+    );
+  }
   const draw = ART[key];
   return draw ? <>{draw(key.replace(/[^a-z0-9]/gi, '-'))}</> : null;
 }
+
+const styles = StyleSheet.create({ fill: { width: '100%', height: '100%' } });

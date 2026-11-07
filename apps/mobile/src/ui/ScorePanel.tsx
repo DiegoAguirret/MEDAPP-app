@@ -398,7 +398,7 @@ function makeStyles(c: Palette) {
     },
     optionOn: { borderColor: c.accent, backgroundColor: c.accentSoft },
     optionArt: { padding: 0, overflow: 'hidden', gap: 0, backgroundColor: c.surface },
-    art: { width: '100%', aspectRatio: 160 / 110, backgroundColor: '#F8DFCF' },
+    art: { width: '100%', aspectRatio: 3 / 2, backgroundColor: '#F8DFCF' },
     pointsOnArt: {
       position: 'absolute',
       top: 8,
