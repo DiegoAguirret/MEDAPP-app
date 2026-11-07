@@ -66,6 +66,23 @@ rules:
     notes: FDA — 0.1 a 0.15 mg/kg IM suele ser eficaz; en pacientes muy ansiosos se ha llegado a 0.5 mg/kg; la dosis total en general no pasa de 10 mg.
     presentationIds: [amp-5]
     sourceIds: [fda-midazolam-inj, digemid-pnume-2023]
+  - id: sedacion-infusion
+    indication: Sedación en paciente intubado, infusión continua
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/h
+    amountMin: 0.06
+    amountMax: 0.12
+    usual: 0.06
+    continuous: true
+    maxPerDoseMg: 6
+    maxPerDayMg: 144
+    notes: >-
+      FDA — en pediatría, con el paciente intubado, iniciar la infusión continua a 0.06 a 0.12 mg/kg/h (1 a 2
+      mcg/kg/min) tras una carga IV; subir o bajar en general un 25 % según la respuesta. En neonatos la dosis depende
+      de la edad gestacional y no se calcula aquí. El tope es técnico (0.12 mg/kg/h con 50 kg).
+    presentationIds: [amp-1]
+    sourceIds: [fda-midazolam-inj, digemid-pnume-2023]
 warnings:
   - Riesgo de depresión respiratoria; usar solo con monitoreo y equipo de reanimación disponibles (FDA).
   - Con opioides, sedación profunda, depresión respiratoria y muerte (FDA, recuadro negro).
@@ -81,7 +98,7 @@ review:
   status: verificado
   author: Diego
   reviewers: []
-  reviewedAt: 2026-11-06
+  reviewedAt: 2026-11-07
 testCases:
   - ruleId: sedacion-iv-6m-5a
     presentationId: amp-1
@@ -99,3 +116,8 @@ testCases:
     weightKg: 20
     ageDays: 2190
     expect: { mgPerDose: 2, amount: 0.4, unit: mL }
+  - ruleId: sedacion-infusion
+    presentationId: amp-1
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 1.2, amount: 1.2, unit: mL/h }

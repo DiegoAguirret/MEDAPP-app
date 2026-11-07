@@ -87,8 +87,11 @@ export const doseRuleSchema = z
     weightMinKg: positive.optional(),
     /** Peso tope de la indicación (excluido), p. ej. «menos de 30 kg». */
     weightMaxKg: positive.optional(),
-    /** Con `fixed_by_age`, las cantidades son mg por dosis. */
-    basis: z.enum(['mg/kg/dose', 'mg/kg/day', 'fixed_by_age']),
+    /**
+     * Con `fixed_by_age`, las cantidades son mg por dosis. Infusión continua: `mcg/kg/min`
+     * (siempre microgramos) o `mg/kg/h` (en la unidad de la ficha: mg, mcg o UI).
+     */
+    basis: z.enum(['mg/kg/dose', 'mg/kg/day', 'fixed_by_age', 'mcg/kg/min', 'mg/kg/h']),
     amountMin: positive,
     amountMax: positive,
     usual: positive.optional(),
@@ -100,8 +103,11 @@ export const doseRuleSchema = z
     repeatMinutes: z.object({ min: positive, max: positive }).optional(),
     /** Dosis única (carga, antídoto). */
     once: z.literal(true).optional(),
+    /** Infusión continua: el resultado es una velocidad en mL/h. */
+    continuous: z.literal(true).optional(),
     /** Solo en reglas repetibles: número máximo de dosis del episodio. */
     maxDoses: z.number().int().positive().optional(),
+    /** Máximo por dosis; en infusión continua, máximo por hora. */
     maxPerDoseMg: positive,
     /** Máximo por día; en reglas repetibles o de dosis única, máximo acumulado del episodio. */
     maxPerDayMg: positive,
@@ -119,12 +125,23 @@ export const doseRuleSchema = z
     const schedules =
       (r.intervalHours === undefined ? 0 : 1) +
       (r.repeatMinutes === undefined ? 0 : 1) +
-      (r.once === undefined ? 0 : 1);
+      (r.once === undefined ? 0 : 1) +
+      (r.continuous === undefined ? 0 : 1);
     if (schedules !== 1) {
       ctx.addIssue({
         code: 'custom',
-        message: 'Cada regla necesita exactamente uno de intervalHours, repeatMinutes u once',
+        message:
+          'Cada regla necesita exactamente uno de intervalHours, repeatMinutes, once o continuous',
         path: ['intervalHours'],
+      });
+    }
+    const perTime = r.basis === 'mcg/kg/min' || r.basis === 'mg/kg/h';
+    if (perTime !== (r.continuous === true)) {
+      ctx.addIssue({
+        code: 'custom',
+        message:
+          'La infusión continua usa mcg/kg/min o mg/kg/h, y esas bases solo valen en infusión',
+        path: ['basis'],
       });
     }
     if (r.repeatMinutes !== undefined && r.repeatMinutes.min > r.repeatMinutes.max) {
@@ -277,7 +294,23 @@ export const drugSchema = z
             message: `presentación desconocida ${pid}`,
             path: ['rules', i],
           });
+        } else if (
+          r.continuous === true &&
+          d.presentations.find((p) => p.id === pid)?.unit !== 'mL'
+        ) {
+          ctx.addIssue({
+            code: 'custom',
+            message: `la infusión necesita una presentación en mL (${pid})`,
+            path: ['rules', i],
+          });
         }
+      }
+      if (r.basis === 'mcg/kg/min' && d.doseUnit === 'UI') {
+        ctx.addIssue({
+          code: 'custom',
+          message: 'mcg/kg/min no aplica a una ficha dosificada en UI',
+          path: ['rules', i],
+        });
       }
     });
     d.testCases.forEach((tc, i) => {

@@ -20,6 +20,9 @@ describe('scheduleText', () => {
   it('dosis única', () => {
     expect(scheduleText({ ...base, once: true })).toBe('dosis única');
   });
+  it('infusión: «en infusión continua»', () => {
+    expect(scheduleText({ ...base, continuous: true })).toBe('en infusión continua');
+  });
   it('isScheduled solo para pautas por horas', () => {
     expect(isScheduled({ ...base, intervalHours: 8 })).toBe(true);
     expect(isScheduled({ ...base, once: true })).toBe(false);

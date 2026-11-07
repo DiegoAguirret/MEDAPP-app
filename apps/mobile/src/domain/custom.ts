@@ -7,13 +7,18 @@ const toNumber = (text: string): number | null => {
 };
 
 /** Presentación que el médico escribe a mano ("250 mg en 5 mL"). */
-export function customPresentation(mgText: string, mlText: string): Presentation | null {
+/** `unit`: unidad de la ficha (mg, mcg o UI); la concentración queda en esa unidad por mL. */
+export function customPresentation(
+  mgText: string,
+  mlText: string,
+  unit: 'mg' | 'mcg' | 'UI' = 'mg',
+): Presentation | null {
   const mg = toNumber(mgText);
   const ml = toNumber(mlText);
   if (mg === null || ml === null || !(mg > 0) || !(ml > 0)) return null;
   return {
     id: 'personalizada',
-    label: `Personalizada ${mgText.trim()} mg/${mlText.trim()} mL`,
+    label: `Personalizada ${mgText.trim()} ${unit}/${mlText.trim()} mL`,
     form: 'suspension',
     mgPerUnit: mg / ml,
     unit: 'mL',

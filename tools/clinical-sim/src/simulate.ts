@@ -75,6 +75,7 @@ export function simulate(drugs: Drug[]): SimRow[] {
             rule,
             presentation: pres,
             patient: { weightKg: pt.weightKg, ageDays: pt.ageDays },
+            doseUnit: drug.doseUnit ?? 'mg',
           });
           if (!inAge) {
             rows.push({
@@ -91,7 +92,7 @@ export function simulate(drugs: Drug[]): SimRow[] {
             });
             continue;
           }
-          const manual = manualDose(rule, pres, pt.weightKg);
+          const manual = manualDose(rule, pres, pt.weightKg, undefined, drug.doseUnit ?? 'mg');
           const problems: string[] = [];
           if (labelConc === null || Math.abs(labelConc - pres.mgPerUnit) > 1e-9) {
             problems.push(

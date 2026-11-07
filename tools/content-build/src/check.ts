@@ -65,6 +65,7 @@ export function checkContent(
         rule,
         presentation,
         patient: { weightKg: tc.weightKg, ageDays: tc.ageDays },
+        doseUnit: drug.doseUnit ?? 'mg',
         ...(tc.chosenMgPerKg === undefined ? {} : { chosenMgPerKg: tc.chosenMgPerKg }),
       });
       const label = `caso ${i + 1} (${tc.ruleId}, ${tc.weightKg} kg)`;

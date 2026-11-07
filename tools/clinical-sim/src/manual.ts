@@ -48,13 +48,23 @@ export function manualDose(
   presentation: Presentation,
   weightKg: number,
   chosen?: number,
+  doseUnit: 'mg' | 'mcg' | 'UI' = 'mg',
 ): ManualResult {
   const value = chosen ?? rule.usual ?? rule.amountMin;
+  // Infusión continua: la «dosis» es la cantidad por hora (24 por día).
   const timesPerDay =
-    rule.intervalHours !== undefined ? 24 / rule.intervalHours : (rule.maxDoses ?? 1);
+    rule.continuous === true
+      ? 24
+      : rule.intervalHours !== undefined
+        ? 24 / rule.intervalHours
+        : (rule.maxDoses ?? 1);
 
   let perDose: number;
-  if (rule.basis === 'fixed_by_age') perDose = value;
+  if (rule.basis === 'mcg/kg/min') {
+    const mcgPerHour = weightKg * value * 60;
+    perDose = doseUnit === 'mcg' ? mcgPerHour : mcgPerHour / 1000;
+  } else if (rule.basis === 'mg/kg/h') perDose = weightKg * value;
+  else if (rule.basis === 'fixed_by_age') perDose = value;
   else if (rule.basis === 'mg/kg/dose') perDose = weightKg * value;
   else perDose = (weightKg * value) / timesPerDay;
 

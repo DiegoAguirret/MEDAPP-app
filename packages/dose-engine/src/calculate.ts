@@ -45,14 +45,43 @@ export function calculateDose(input: CalculateInput): DoseResult {
   }
 
   // Pauta programada: tomas por día. Repetible o única: dosis del episodio (tope acumulado).
-  const dosesPerDay =
-    rule.intervalHours !== undefined ? 24 / rule.intervalHours : (rule.maxDoses ?? 1);
+  // Infusión continua: 24 «tomas» de una hora; la dosis es la cantidad por hora.
+  const continuous = rule.continuous === true;
+  const dosesPerDay = continuous
+    ? 24
+    : rule.intervalHours !== undefined
+      ? 24 / rule.intervalHours
+      : (rule.maxDoses ?? 1);
+  const per = continuous ? '/h' : '';
   const selected = chosenMgPerKg ?? rule.usual ?? rule.amountMin;
   const steps: CalcStep[] = [];
 
   // mg por toma antes de aplicar topes.
   let toDose: (amount: number) => number;
-  if (rule.basis === 'mg/kg/dose') {
+  if (rule.basis === 'mcg/kg/min') {
+    // mcg/min × 60 = mcg/h; si la ficha va en mg, ÷ 1000.
+    const factor = u === 'mcg' ? 60 : 60 / 1000;
+    toDose = (a) => weightKg * a * factor;
+    const perMinute = weightKg * selected;
+    steps.push({
+      label: 'Dosis por minuto',
+      expression: `${f(weightKg)} kg × ${f(selected)} mcg/kg/min`,
+      result: `${f(perMinute)} mcg/min`,
+    });
+    steps.push({
+      label: 'Dosis por hora',
+      expression:
+        u === 'mcg' ? `${f(perMinute)} mcg/min × 60` : `${f(perMinute)} mcg/min × 60 ÷ 1000`,
+      result: `${f(toDose(selected))} ${u}/h`,
+    });
+  } else if (rule.basis === 'mg/kg/h') {
+    toDose = (a) => weightKg * a;
+    steps.push({
+      label: 'Dosis por hora',
+      expression: `${f(weightKg)} kg × ${f(selected)} ${u}/kg/h`,
+      result: `${f(toDose(selected))} ${u}/h`,
+    });
+  } else if (rule.basis === 'mg/kg/dose') {
     toDose = (a) => weightKg * a;
     steps.push({
       label: 'Dosis por toma',
@@ -91,11 +120,13 @@ export function calculateDose(input: CalculateInput): DoseResult {
       label: 'Tope aplicado',
       expression:
         cappedBy === 'per_dose'
-          ? `Máximo ${f(rule.maxPerDoseMg)} ${u} por toma`
+          ? continuous
+            ? `Máximo ${f(rule.maxPerDoseMg)} ${u}/h`
+            : `Máximo ${f(rule.maxPerDoseMg)} ${u} por toma`
           : rule.intervalHours !== undefined
             ? `Máximo ${f(rule.maxPerDayMg)} ${u}/día ÷ ${f(dosesPerDay)} tomas`
             : `Máximo acumulado ${f(rule.maxPerDayMg)} ${u} ÷ ${f(dosesPerDay)} dosis`,
-      result: `${f(cap)} ${u}`,
+      result: `${f(cap)} ${u}${per}`,
     });
   }
   const chosen = Math.min(raw, cap);
@@ -106,20 +137,24 @@ export function calculateDose(input: CalculateInput): DoseResult {
   };
 
   steps.push(
-    rule.intervalHours !== undefined
-      ? {
-          label: 'Frecuencia',
-          expression: `Cada ${f(rule.intervalHours)} h`,
-          result: `${f(dosesPerDay)} tomas/día`,
-        }
-      : rule.repeatMinutes !== undefined
+    continuous
+      ? { label: 'Frecuencia', expression: 'Infusión continua', result: '24 h' }
+      : rule.intervalHours !== undefined
         ? {
             label: 'Frecuencia',
-            expression: `Repetir cada ${scheduleMinutes(rule.repeatMinutes)} min si es necesario`,
-            result:
-              rule.maxDoses === undefined ? 'según respuesta' : `máximo ${f(rule.maxDoses)} dosis`,
+            expression: `Cada ${f(rule.intervalHours)} h`,
+            result: `${f(dosesPerDay)} tomas/día`,
           }
-        : { label: 'Frecuencia', expression: 'Dosis única', result: '1 dosis' },
+        : rule.repeatMinutes !== undefined
+          ? {
+              label: 'Frecuencia',
+              expression: `Repetir cada ${scheduleMinutes(rule.repeatMinutes)} min si es necesario`,
+              result:
+                rule.maxDoses === undefined
+                  ? 'según respuesta'
+                  : `máximo ${f(rule.maxDoses)} dosis`,
+            }
+          : { label: 'Frecuencia', expression: 'Dosis única', result: '1 dosis' },
   );
 
   const rounding = roundToStep(
@@ -127,10 +162,10 @@ export function calculateDose(input: CalculateInput): DoseResult {
     presentation.step,
     cap / presentation.mgPerUnit,
   );
-  const unitLabel = presentation.unit;
+  const unitLabel = continuous ? `${presentation.unit}/h` : presentation.unit;
   steps.push({
-    label: 'Cantidad',
-    expression: `${f(chosen)} ${u} ÷ ${f(presentation.mgPerUnit)} ${u}/${unitLabel}`,
+    label: continuous ? 'Velocidad' : 'Cantidad',
+    expression: `${f(chosen)} ${u}${per} ÷ ${f(presentation.mgPerUnit)} ${u}/${presentation.unit}`,
     result: `${f(rounding.value)} ${unitLabel}`,
   });
 

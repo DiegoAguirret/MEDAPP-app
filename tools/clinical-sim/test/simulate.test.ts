@@ -23,6 +23,82 @@ describe('concentrationFromLabel', () => {
   });
 });
 
+describe('manualDose — infusión continua', () => {
+  const base = {
+    id: 'inf',
+    indication: 'x',
+    route: 'IV' as const,
+    ageMinDays: 29,
+    continuous: true as const,
+    sourceIds: ['a'],
+    presentationIds: ['p'],
+  };
+  const mix = {
+    id: 'p',
+    label: 'x',
+    form: 'ampolla' as const,
+    unit: 'mL' as const,
+    step: 0.1,
+    brandsPE: [],
+  };
+
+  it('mcg/kg/min en un fármaco en mg: 0.1 × 10 kg × 60 ÷ 1000 = 0.06 mg/h; a 0.001 mg/mL = 60 mL/h', () => {
+    const r = manualDose(
+      {
+        ...base,
+        basis: 'mcg/kg/min',
+        amountMin: 0.1,
+        amountMax: 1.5,
+        usual: 0.1,
+        maxPerDoseMg: 4.5,
+        maxPerDayMg: 108,
+      },
+      { ...mix, mgPerUnit: 0.001 },
+      10,
+    );
+    expect(r.mgPerDose).toBeCloseTo(0.06, 12);
+    expect(r.exactAmount).toBeCloseTo(60, 9);
+  });
+
+  it('mcg/kg/min en un fármaco en mcg: 5 × 3 kg × 60 = 900 mcg/h; a 1000 mcg/mL = 0.9 mL/h', () => {
+    const r = manualDose(
+      {
+        ...base,
+        basis: 'mcg/kg/min',
+        amountMin: 5,
+        amountMax: 20,
+        usual: 5,
+        maxPerDoseMg: 6000,
+        maxPerDayMg: 144000,
+      },
+      { ...mix, mgPerUnit: 1000 },
+      3,
+      undefined,
+      'mcg',
+    );
+    expect(r.mgPerDose).toBe(900);
+    expect(r.exactAmount).toBeCloseTo(0.9, 12);
+  });
+
+  it('mg/kg/h: 0.1 × 20 kg = 2 mg/h; tope 1 mg/h', () => {
+    const r = manualDose(
+      {
+        ...base,
+        basis: 'mg/kg/h',
+        amountMin: 0.1,
+        amountMax: 0.1,
+        usual: 0.1,
+        maxPerDoseMg: 1,
+        maxPerDayMg: 24,
+      },
+      { ...mix, mgPerUnit: 1 },
+      20,
+    );
+    expect(r.mgPerDose).toBe(1);
+    expect(r.capped).toBe(true);
+  });
+});
+
 describe('manualDose (hand calculation)', () => {
   it('worked example: paracetamol 15 mg/kg, 10 kg, 120 mg/5 mL → 150 mg = 6.25 mL', () => {
     const r = manualDose(

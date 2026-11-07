@@ -666,3 +666,24 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=6f5ede6f-b0b7-4fc8-969e-652f60ead047
   kind: regulador
   country: US
+- id: fda-norepinephrine
+  title: Bitartrato de norepinefrina inyectable 1 mg/mL — prescribing information (FDA, set 0ea48ab6-e166-df31-b132-70ef982a2d02)
+  publisher: U.S. FDA / Biocon
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=0ea48ab6-e166-df31-b132-70ef982a2d02
+  kind: regulador
+  country: US
+- id: fda-dobutamine
+  title: Dobutamina inyectable 12.5 mg/mL — prescribing information (FDA, set 89becb0c-da60-4f43-0a98-29ff7a9eca58)
+  publisher: U.S. FDA / Hospira
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=89becb0c-da60-4f43-0a98-29ff7a9eca58
+  kind: regulador
+  country: US
+- id: fda-epinephrine-vial
+  title: Epinefrina inyectable 1 mg/mL — prescribing information (FDA, set 3b7a4364-668d-4eb2-a20c-04adc35aabe4)
+  publisher: U.S. FDA / Par Health
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=3b7a4364-668d-4eb2-a20c-04adc35aabe4
+  kind: regulador
+  country: US

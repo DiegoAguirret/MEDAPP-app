@@ -72,6 +72,18 @@ describe('DosePanel — cálculo', () => {
     expect(screen.getByTestId('result-amount')).toHaveTextContent('3 mL');
   });
 
+  it('asks the custom concentration in the card unit (mcg), never in mg', async () => {
+    await show('digoxina');
+    await fireEvent.press(screen.getByText('Personalizar concentración'));
+    expect(screen.queryByLabelText('mg del preparado')).toBeNull();
+    await fireEvent.changeText(screen.getByLabelText('mcg del preparado'), '50');
+    await fireEvent.changeText(screen.getByLabelText('en mL'), '1');
+    await fillPatient('12.5', '1', '8');
+    // 5.6 mcg/kg × 12.5 kg = 70 mcg; 70 ÷ 50 mcg/mL = 1.4 mL
+    expect(screen.getByTestId('result-amount')).toHaveTextContent('1.4 mL');
+    expect(screen.getAllByText('Personalizada 50 mcg/1 mL').length).toBeGreaterThan(0);
+  });
+
   it('lets the doctor choose the minimum of the range', async () => {
     await show('paracetamol');
     await fireEvent.press(screen.getByText('Jarabe 120 mg/5 mL'));
@@ -415,5 +427,39 @@ describe('DosePanel — dosis en UI', () => {
     await fillPatient('10', '1', '1');
     expect(screen.getByTestId('result-mg')).toHaveTextContent('150 mcg');
     expect(screen.getAllByText(/mcg\/kg/).length).toBeGreaterThan(0);
+  });
+});
+
+describe('DosePanel — infusión continua', () => {
+  it('muestra la velocidad en mL/h y la dosis por hora', async () => {
+    const base = drug('paracetamol');
+    const rule0 = base.rules[0]!;
+    const infusion: Drug = {
+      ...base,
+      rules: [
+        {
+          ...rule0,
+          id: 'infusion',
+          indication: 'Infusión de prueba',
+          route: 'IV',
+          intervalHours: undefined,
+          continuous: true,
+          basis: 'mg/kg/h',
+          amountMin: 0.1,
+          amountMax: 0.1,
+          usual: 0.1,
+          maxPerDoseMg: 6,
+          maxPerDayMg: 144,
+          presentationIds: ['jarabe-120-5'],
+        },
+      ],
+    };
+    await render(<DosePanel drug={infusion} decimalSeparator="." sources={sources} />);
+    await fillPatient('20', '6', '0');
+    // 0.1 mg/kg/h × 20 kg = 2 mg/h; 2 mg/h ÷ 24 mg/mL = 0.0833 mL/h (valor exacto)
+    expect(screen.getByTestId('result-mg')).toHaveTextContent('2 mg/h');
+    expect(screen.getByTestId('result-amount')).toHaveTextContent('0.0833 mL/h');
+    expect(screen.getAllByText(/en infusión continua/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/mg\/kg\/h/).length).toBeGreaterThan(0);
   });
 });

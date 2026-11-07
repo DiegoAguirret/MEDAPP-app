@@ -564,3 +564,104 @@ describe('calculateDose — microgramos (mcg)', () => {
     expect(text).not.toMatch(/\bmg\b/);
   });
 });
+
+describe('calculateDose — infusión continua', () => {
+  const infusion = (over: Parameters<typeof rule>[0]) =>
+    rule({
+      intervalHours: undefined,
+      continuous: true,
+      route: 'IV',
+      ...over,
+    });
+
+  it('mcg/kg/min con un fármaco en mg: 0.1 mcg/kg/min, 10 kg, 0.001 mg/mL → 0.06 mg/h = 60 mL/h', () => {
+    const r = ok(
+      calculateDose({
+        rule: infusion({
+          basis: 'mcg/kg/min',
+          amountMin: 0.1,
+          amountMax: 1.5,
+          usual: 0.1,
+          maxPerDoseMg: 4.5,
+          maxPerDayMg: 108,
+        }),
+        presentation: presentation({ mgPerUnit: 0.001, unit: 'mL', step: 0.1 }),
+        patient: toddler,
+      }),
+    );
+    expect(r.mgPerDose.chosen).toBeCloseTo(0.06, 12);
+    expect(r.dosesPerDay).toBe(24);
+    expect(r.mgPerDay).toBeCloseTo(1.44, 12);
+    expect(r.amount.value).toBe(60);
+    expect(r.amount.unit).toBe('mL/h');
+    const text = r.steps.map((s) => `${s.label}: ${s.expression} = ${s.result}`).join(' | ');
+    expect(text).toContain('1 mcg/min');
+    expect(text).toContain('0.06 mg/h');
+    expect(text).toContain('60 mL/h');
+  });
+
+  it('mcg/kg/min con un fármaco en mcg: 5 mcg/kg/min, 3 kg, 1000 mcg/mL → 900 mcg/h = 0.9 mL/h', () => {
+    const r = ok(
+      calculateDose({
+        rule: infusion({
+          basis: 'mcg/kg/min',
+          amountMin: 5,
+          amountMax: 20,
+          usual: 5,
+          maxPerDoseMg: 6000,
+          maxPerDayMg: 144000,
+          ageMinDays: 0,
+          neonatal: true,
+        }),
+        presentation: presentation({ mgPerUnit: 1000, unit: 'mL', step: 0.1 }),
+        patient: { weightKg: 3, ageDays: 5 },
+        doseUnit: 'mcg',
+      }),
+    );
+    expect(r.mgPerDose.chosen).toBe(900);
+    expect(r.amount.value).toBe(0.9);
+    const text = r.steps.map((s) => `${s.expression} ${s.result}`).join(' | ');
+    expect(text).not.toMatch(/\bmg\b/);
+  });
+
+  it('mg/kg/h: 0.1 mg/kg/h, 20 kg, 1 mg/mL → 2 mg/h = 2 mL/h', () => {
+    const r = ok(
+      calculateDose({
+        rule: infusion({
+          basis: 'mg/kg/h',
+          amountMin: 0.06,
+          amountMax: 0.12,
+          usual: 0.1,
+          maxPerDoseMg: 6,
+          maxPerDayMg: 144,
+        }),
+        presentation: presentation({ mgPerUnit: 1, unit: 'mL', step: 0.1 }),
+        patient: { weightKg: 20, ageDays: 2190 },
+      }),
+    );
+    expect(r.mgPerDose.chosen).toBeCloseTo(2, 12);
+    expect(r.amount.value).toBe(2);
+    expect(r.amount.unit).toBe('mL/h');
+  });
+
+  it('aplica el tope por hora', () => {
+    const r = ok(
+      calculateDose({
+        rule: infusion({
+          basis: 'mg/kg/h',
+          amountMin: 0.1,
+          amountMax: 0.1,
+          usual: 0.1,
+          maxPerDoseMg: 1,
+          maxPerDayMg: 24,
+        }),
+        presentation: presentation({ mgPerUnit: 1, unit: 'mL', step: 0.1 }),
+        patient: { weightKg: 20, ageDays: 2190 },
+      }),
+    );
+    expect(r.mgPerDose.chosen).toBe(1);
+    expect(r.cappedBy).toBe('per_dose');
+    const cap = r.steps.find((s) => s.label === 'Tope aplicado');
+    expect(cap?.expression).toBe('Máximo 1 mg/h');
+  });
+});

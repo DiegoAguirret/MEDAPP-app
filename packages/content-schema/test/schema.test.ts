@@ -187,6 +187,72 @@ describe('parseDrug', () => {
     expect(() => parseDrug(d)).not.toThrow();
   });
 
+  it('accepts a continuous infusion in mcg/kg/min', () => {
+    const d = mutate((x) => {
+      delete x.rules[0].intervalHours;
+      x.rules[0].continuous = true;
+      x.rules[0].basis = 'mcg/kg/min';
+      x.rules[0].route = 'IV';
+      x.rules[0].presentationIds = ['susp-120-5'];
+    });
+    expect(parseDrug(d).rules[0]?.continuous).toBe(true);
+  });
+
+  it('accepts a continuous infusion in mg/kg/h', () => {
+    const d = mutate((x) => {
+      delete x.rules[0].intervalHours;
+      x.rules[0].continuous = true;
+      x.rules[0].basis = 'mg/kg/h';
+      x.rules[0].route = 'IV';
+      x.rules[0].presentationIds = ['susp-120-5'];
+    });
+    expect(() => parseDrug(d)).not.toThrow();
+  });
+
+  it('rejects a per-time basis without continuous', () => {
+    expect(() => parseDrug(mutate((x) => (x.rules[0].basis = 'mcg/kg/min')))).toThrow();
+  });
+
+  it('rejects continuous with a per-dose basis', () => {
+    const d = mutate((x) => {
+      delete x.rules[0].intervalHours;
+      x.rules[0].continuous = true;
+    });
+    expect(() => parseDrug(d)).toThrow();
+  });
+
+  it('rejects continuous together with intervalHours', () => {
+    const d = mutate((x) => {
+      x.rules[0].continuous = true;
+      x.rules[0].basis = 'mg/kg/h';
+    });
+    expect(() => parseDrug(d)).toThrow();
+  });
+
+  it('rejects an infusion whose presentation is not measured in mL', () => {
+    const d = mutate((x) => {
+      delete x.rules[0].intervalHours;
+      x.rules[0].continuous = true;
+      x.rules[0].basis = 'mg/kg/h';
+      x.rules[0].route = 'IV';
+      x.rules[0].presentationIds = ['susp-120-5'];
+      x.presentations[0].unit = 'tableta';
+    });
+    expect(() => parseDrug(d)).toThrow();
+  });
+
+  it('rejects mcg/kg/min in a drug dosed in UI', () => {
+    const d = mutate((x) => {
+      delete x.rules[0].intervalHours;
+      x.rules[0].continuous = true;
+      x.rules[0].basis = 'mcg/kg/min';
+      x.rules[0].route = 'IV';
+      x.rules[0].presentationIds = ['susp-120-5'];
+      x.doseUnit = 'UI';
+    });
+    expect(() => parseDrug(d)).toThrow();
+  });
+
   it('rejects a rule with no schedule at all', () => {
     expect(() => parseDrug(mutate((x) => delete x.rules[0].intervalHours))).toThrow();
   });

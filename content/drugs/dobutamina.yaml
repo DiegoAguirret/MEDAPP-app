@@ -1,0 +1,64 @@
+id: dobutamina
+name: Dobutamina
+category: cardiovascular
+doseUnit: mcg
+synonyms: [dobutamine, inotrópico, infusión]
+presentations:
+  - id: mezcla-1000
+    label: Dobutamina 1000 mcg/mL (250 mg en 250 mL, FDA)
+    form: ampolla
+    mgPerUnit: 1000
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: mezcla-500
+    label: Dobutamina 500 mcg/mL (250 mg en 500 mL, FDA)
+    form: ampolla
+    mgPerUnit: 500
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: neonatos-infusion
+    indication: Soporte inotrópico en neonatos, infusión continua
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    basis: mcg/kg/min
+    amountMin: 5
+    amountMax: 20
+    usual: 5
+    continuous: true
+    maxPerDoseMg: 6000
+    maxPerDayMg: 144000
+    notes: >-
+      FNME — neonatos, 5 a 20 mcg/kg/min en perfusión IV. Diluciones de la FDA para el vial de 12.5 mg/mL: 250 mg en
+      250 mL (1000 mcg/mL) o en 500 mL (500 mcg/mL). El tope es técnico (20 mcg/kg/min con 5 kg).
+    presentationIds: [mezcla-1000, mezcla-500]
+    sourceIds: [fnme-2008, fda-dobutamine, digemid-pnume-2023]
+warnings:
+  - El FNME solo da dosis pediátrica para neonatos; la FDA dice que su seguridad y eficacia en pediatría no se han estudiado.
+  - Diluir a un volumen de al menos 50 mL antes de administrar; no mezclar con bicarbonato de sodio ni con soluciones fuertemente alcalinas (FDA).
+  - Corregir la hipovolemia y vigilar el potasio sérico (FNME).
+  - Si su mezcla es otra, use «Personalizar concentración».
+contraindications:
+  - Hipersensibilidad a la dobutamina.
+  - Estenosis subaórtica hipertrófica idiopática (FNME).
+diagnoses: [choque cardiogénico, insuficiencia cardíaca, soporte inotrópico]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: neonatos-infusion
+    presentationId: mezcla-1000
+    weightKg: 3
+    ageDays: 5
+    expect: { mgPerDose: 900, amount: 0.9, unit: mL/h }
+  - ruleId: neonatos-infusion
+    presentationId: mezcla-500
+    weightKg: 2
+    ageDays: 3
+    expect: { mgPerDose: 600, amount: 1.2, unit: mL/h }

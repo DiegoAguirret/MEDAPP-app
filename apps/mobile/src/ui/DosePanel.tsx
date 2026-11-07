@@ -67,6 +67,9 @@ const BASIS_LABEL = {
   'mg/kg/dose': 'mg/kg/dosis',
   'mg/kg/day': 'mg/kg/día',
   fixed_by_age: 'mg',
+  // «mcg» no contiene «mg»: queda igual aunque la ficha vaya en mg.
+  'mcg/kg/min': 'mcg/kg/min',
+  'mg/kg/h': 'mg/kg/h',
 } as const;
 const UNIT_LABEL: Record<string, string> = {
   mL: 'mL',
@@ -162,7 +165,7 @@ export function DosePanel({
   const [presId, setPresId] = useState(allowed[0]?.id ?? '');
   const [customMg, setCustomMg] = useState('');
   const [customMl, setCustomMl] = useState('');
-  const custom = presId === CUSTOM_ID ? customPresentation(customMg, customMl) : null;
+  const custom = presId === CUSTOM_ID ? customPresentation(customMg, customMl, du) : null;
   const presentation =
     presId === CUSTOM_ID ? custom : (allowed.find((p) => p.id === presId) ?? allowed[0]);
 
@@ -224,12 +227,17 @@ export function DosePanel({
     }
   };
 
-  const amountText = result?.status === 'ok' ? `${fmt(result.amount.value)} ${unit}` : '';
+  const amountText =
+    result?.status === 'ok'
+      ? `${fmt(result.amount.value)} ${rule?.continuous === true ? result.amount.unit : unit}`
+      : '';
   const rxLine =
     result?.status === 'ok' && presentation
       ? `${drug.name} ${presentation.label}: ${amountText} ${ROUTE_RX[rule.route]} ${scheduleText(rule)}` +
         (rule.durationText ? `, ${rule.durationText}` : '') +
-        ` (${fmt(result.mgPerDose.chosen)} ${du} por toma; ${fmt(result.mgPerDay)} ${du}/día).`
+        (rule.continuous === true
+          ? ` (${fmt(result.mgPerDose.chosen)} ${du}/h; ${fmt(result.mgPerDay)} ${du}/día).`
+          : ` (${fmt(result.mgPerDose.chosen)} ${du} por toma; ${fmt(result.mgPerDay)} ${du}/día).`)
       : '';
 
   return (
@@ -428,8 +436,8 @@ export function DosePanel({
         <Card>
           <View style={s.row}>
             <NumberField
-              label="mg del preparado"
-              suffix="mg"
+              label={`${du} del preparado`}
+              suffix={du}
               value={customMg}
               onChangeText={setCustomMg}
               placeholder="250"
@@ -443,7 +451,7 @@ export function DosePanel({
             />
           </View>
           {customMg.trim() !== '' && customMl.trim() !== '' && !custom ? (
-            <Text style={s.error}>Ingrese mg y mL mayores que cero.</Text>
+            <Text style={s.error}>Ingrese {du} y mL mayores que cero.</Text>
           ) : null}
         </Card>
       ) : null}
@@ -479,8 +487,11 @@ export function DosePanel({
           <Text style={s.resultLine}>
             <Text testID="result-mg" style={s.resultMg}>
               {fmt(result.mgPerDose.chosen)} {du}
+              {rule.continuous === true ? '/h' : ''}
             </Text>
-            {` por ${isScheduled(rule) ? 'toma' : 'dosis'} · ${ROUTE_RX[rule.route]} ${scheduleText(rule)}`}
+            {rule.continuous === true
+              ? ` · ${ROUTE_RX[rule.route]} ${scheduleText(rule)}`
+              : ` por ${isScheduled(rule) ? 'toma' : 'dosis'} · ${ROUTE_RX[rule.route]} ${scheduleText(rule)}`}
           </Text>
           <View style={s.facts}>
             {isScheduled(rule) ? (
@@ -492,13 +503,24 @@ export function DosePanel({
             {rule.maxDoses !== undefined ? (
               <Fact s={s} label="Máximo de dosis" value={fmt(rule.maxDoses)} />
             ) : null}
-            {!isScheduled(rule) ? (
+            {rule.continuous === true ? (
+              <>
+                <Fact s={s} label="Total diario" value={`${fmt(result.mgPerDay)} ${du}`} />
+                <Fact s={s} label="Tope por hora" value={`${fmt(rule.maxPerDoseMg)} ${du}/h`} />
+              </>
+            ) : !isScheduled(rule) ? (
               <Fact s={s} label="Tope por dosis" value={`${fmt(rule.maxPerDoseMg)} ${du}`} />
             ) : null}
             <Fact
               s={s}
-              label={isScheduled(rule) ? 'Rango por toma' : 'Rango por dosis'}
-              value={`${fmt(result.mgPerDose.min)}–${fmt(result.mgPerDose.max)} ${du}`}
+              label={
+                rule.continuous === true
+                  ? 'Rango por hora'
+                  : isScheduled(rule)
+                    ? 'Rango por toma'
+                    : 'Rango por dosis'
+              }
+              value={`${fmt(result.mgPerDose.min)}–${fmt(result.mgPerDose.max)} ${du}${rule.continuous === true ? '/h' : ''}`}
             />
             {rule.durationText ? <Fact s={s} label="Duración" value={rule.durationText} /> : null}
           </View>

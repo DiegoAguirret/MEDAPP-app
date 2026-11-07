@@ -443,3 +443,18 @@ La app ahora admite dosis en microgramos (`doseUnit: mcg`) para no mostrar dosis
 - **Tramadol:** la FDA lo contraindica en menores de 12 años.
 - **Ácido tranexámico, tiopental y vecuronio:** el PNUME no da la concentración final de la ampolla o del frasco reconstituido.
 - **Bicarbonato y cloruro de potasio:** se dosifican en mEq, unidad que la app aún no maneja.
+
+## Infusiones continuas — verificado el 07/11/2026
+
+La app ahora calcula infusiones: la dosis en mcg/kg/min o mg/kg/h da la velocidad de la bomba en mL/h, con la mezcla de la ficha o con una concentración personalizada. El tope por dosis de estas reglas es un tope por hora.
+
+- **Norepinefrina** (PNUME 1 mg/mL): FNME, niños, hipotensión, 0.05–0.3 mcg/kg/min. Mezclas: 40 mcg/mL (la concentración que el FNME usa en adultos) y 4 mcg/mL (4 mg en 1000 mL de dextrosa al 5 %, FDA).
+- **Dobutamina** (PNUME 12.5 mg/mL): FNME, neonatos, 5–20 mcg/kg/min. Mezclas de la FDA: 250 mg en 250 mL (1000 mcg/mL) o en 500 mL (500 mcg/mL). La FDA dice que no se ha estudiado en pediatría; el FNME no da dosis para niños mayores.
+- **Adrenalina:** FNME, niños, infusión tras el paro de 0.1 mcg/kg/min, que se sube de 0.1 en 0.1 hasta 1.5 mcg/kg/min. Errata del FNME: escribe «0,1 µg/g/minuto». Mezcla de la FDA: 1 mg en 1000 mL de dextrosa al 5 % = 1 mcg/mL.
+- **Midazolam:** FDA, paciente pediátrico intubado, 0.06–0.12 mg/kg/h, con la ampolla de 1 mg/mL.
+
+**No incluidos:**
+
+- **Dopamina:** el FNME solo da la dosis de adultos y la FDA no ha establecido su uso en pediatría.
+- **Midazolam en neonatos:** la FDA da la dosis según la edad gestacional (menos o más de 32 semanas), que la app no pide.
+- **Fentanilo, insulina y alprostadil en infusión:** quedan para otro lote. El fentanilo está cargado en mg y habría que pasarlo a mcg.

@@ -19,6 +19,13 @@ presentations:
     unit: mL
     step: 0.1
     brandsPE: []
+  - id: infusion-1mcg
+    label: Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA)
+    form: ampolla
+    mgPerUnit: 0.001
+    unit: mL
+    step: 0.1
+    brandsPE: []
 rules:
   - id: anafilaxia-im
     indication: Anafilaxia o broncoespasmo severo (IM)
@@ -56,9 +63,28 @@ rules:
       por dosis. Usar la dilución 1:10 000 (OMS: 1 mL de 1:1000 + 9 mL de SF o dextrosa al 5 %).
     presentationIds: [dil-1-10000]
     sourceIds: [fnme-2008, who-pocket-2013]
+  - id: infusion-continua
+    indication: Infusión continua después del paro cardiorrespiratorio (IV)
+    route: IV
+    ageMinDays: 29
+    basis: mcg/kg/min
+    amountMin: 0.1
+    amountMax: 1.5
+    usual: 0.1
+    continuous: true
+    maxPerDoseMg: 4.5
+    maxPerDayMg: 108
+    notes: >-
+      FNME — niños, tras los bolos IV, infusión a una velocidad inicial de 0.1 mcg/kg/min, que se sube de 0.1 en 0.1
+      mcg/kg/min si es necesario; máximo 1.5 mcg/kg/min (el FNME escribe «0,1 µg/g/minuto», errata por µg/kg). FDA
+      — diluir 1 mg en 1000 mL de dextrosa al 5 % (1 mcg/mL) e infundir en una vena grande. El tope es técnico (1.5
+      mcg/kg/min con 50 kg).
+    presentationIds: [infusion-1mcg]
+    sourceIds: [fnme-2008, fda-epinephrine-vial]
 warnings:
   - No confundir 1:1000 (1 mg/mL, para IM) con 1:10 000 (0.1 mg/mL, para IV).
   - Tener a mano bolsa y mascarilla, oxígeno y acceso venoso (OMS).
+  - 'Infusión: la mezcla de la FDA (1 mcg/mL) da volúmenes altos en niños; si usa una mezcla más concentrada, use «Personalizar concentración». No diluir solo en suero fisiológico (FDA).'
 contraindications:
   - Hipersensibilidad a la epinefrina.
 diagnoses:
@@ -74,7 +100,7 @@ review:
   status: verificado
   author: Diego
   reviewers: []
-  reviewedAt: 2026-11-04
+  reviewedAt: 2026-11-07
 testCases:
   - ruleId: anafilaxia-im
     presentationId: amp-1-1000
@@ -96,3 +122,8 @@ testCases:
     weightKg: 60
     ageDays: 5110
     expect: { mgPerDose: 0.5, amount: 5, unit: mL }
+  - ruleId: infusion-continua
+    presentationId: infusion-1mcg
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 0.06, amount: 60, unit: mL/h }

@@ -33,6 +33,35 @@ describe('emergencyItems', () => {
     expect(items.some((i) => i.drug.id === 'adrenalina')).toBe(false);
   });
 
+  it('leaves continuous infusions out of the emergency sheet', () => {
+    const adrenalina = drugs.find((d) => d.id === 'adrenalina')!;
+    const base = adrenalina.rules.find((r) => r.id === 'anafilaxia-im')!;
+    const withInfusion: Drug = {
+      ...adrenalina,
+      rules: [
+        ...adrenalina.rules,
+        {
+          ...base,
+          id: 'infusion-prueba',
+          route: 'IV',
+          once: undefined,
+          repeatMinutes: undefined,
+          maxDoses: undefined,
+          continuous: true,
+          basis: 'mcg/kg/min',
+          amountMin: 0.1,
+          amountMax: 1.5,
+          usual: 0.1,
+          maxPerDoseMg: 4.5,
+          maxPerDayMg: 108,
+        },
+      ],
+    };
+    const items = emergencyItems([withInfusion], new Set(), 12, 730);
+    expect(items.some((i) => i.rule.id === 'infusion-prueba')).toBe(false);
+    expect(items.some((i) => i.rule.id === 'anafilaxia-im')).toBe(true);
+  });
+
   it('returns nothing for an invalid weight', () => {
     expect(emergencyItems(drugs, new Set(), 0, 730)).toEqual([]);
   });

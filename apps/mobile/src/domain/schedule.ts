@@ -1,6 +1,6 @@
 import type { DoseRule } from '@medapp/content-schema';
 
-type Schedule = Pick<DoseRule, 'intervalHours' | 'repeatMinutes' | 'once'>;
+type Schedule = Pick<DoseRule, 'intervalHours' | 'repeatMinutes' | 'once' | 'continuous'>;
 
 /** Pauta programada por horas (no urgencia ni dosis única). */
 export function isScheduled(rule: Schedule): boolean {
@@ -9,6 +9,7 @@ export function isScheduled(rule: Schedule): boolean {
 
 /** Texto de la pauta tal como se escribe en la indicación. */
 export function scheduleText(rule: Schedule): string {
+  if (rule.continuous === true) return 'en infusión continua';
   if (rule.intervalHours !== undefined) return `cada ${rule.intervalHours} h`;
   if (rule.repeatMinutes !== undefined) {
     const { min, max } = rule.repeatMinutes;

@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **8694** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **3792**. Fuera del rango de edad de la regla: 4902 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 3792/3792 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 3792/3792.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.56 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **8820** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **3870**. Fuera del rango de edad de la regla: 4950 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 3870/3870 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 3864/3870.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.57 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -195,6 +195,24 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | adrenalina | paro-iv | Adrenalina 1:10 000 = 0.1 mg/mL (1 mL de la ampolla 1:1000 + 9 mL de SF) | 14 años (50 kg) | 0.5 | 0.5 | 5 | 5 mL | ✅  |
 | adrenalina | paro-iv | Adrenalina 1:10 000 = 0.1 mg/mL (1 mL de la ampolla 1:1000 + 9 mL de SF) | 16 años (58 kg) | 0.5 | 0.5 | 5 | 5 mL | ✅ tope aplicado |
 | adrenalina | paro-iv | Adrenalina 1:10 000 = 0.1 mg/mL (1 mL de la ampolla 1:1000 + 9 mL de SF) | 17 años, obeso (95 kg) | 0.5 | 0.5 | 5 | 5 mL | ✅ tope aplicado |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 1 mes (4.2 kg) | 0.03 | 0.03 | 25.2 | 25.2 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 2 meses (5.1 kg) | 0.03 | 0.03 | 30.6 | 30.6 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 4 meses (6.4 kg) | 0.04 | 0.04 | 38.4 | 38.4 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 6 meses (7.6 kg) | 0.05 | 0.05 | 45.6 | 45.6 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 9 meses (8.6 kg) | 0.05 | 0.05 | 51.6 | 51.6 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 1 año (9.6 kg) | 0.06 | 0.06 | 57.6 | 57.6 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 18 meses (10.9 kg) | 0.07 | 0.07 | 65.4 | 65.4 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 2 años (12.2 kg) | 0.07 | 0.07 | 73.2 | 73.2 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 3 años (14.3 kg) | 0.09 | 0.09 | 85.8 | 85.8 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 4 años (16.3 kg) | 0.1 | 0.1 | 97.8 | 97.8 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 5 años (18.3 kg) | 0.11 | 0.11 | 109.8 | 109.8 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 6 años (20.5 kg) | 0.12 | 0.12 | 123 | 123 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 8 años (25.6 kg) | 0.15 | 0.15 | 153.6 | 153.6 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 10 años (32 kg) | 0.19 | 0.19 | 192 | 192 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 12 años (40 kg) | 0.24 | 0.24 | 240 | 240 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 14 años (50 kg) | 0.3 | 0.3 | 300 | 300 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 16 años (58 kg) | 0.35 | 0.35 | 348 | 348 mL | ✅  |
+| adrenalina | infusion-continua | Adrenalina 0.001 mg/mL = 1 mcg/mL (1 mg en 1000 mL de dextrosa 5 %, FDA) | 17 años, obeso (95 kg) | 0.57 | 0.57 | 570 | 570 mL | ✅  |
 | albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 2 años (12.2 kg) | 400 | 400 | 20 | 20 mL | ✅  |
 | albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 3 años (14.3 kg) | 400 | 400 | 20 | 20 mL | ✅  |
 | albendazol | nematodos-2-anos-o-mas | Suspensión 100 mg/5 mL (frasco de 10 mL = 400 mg) | 4 años (16.3 kg) | 400 | 400 | 20 | 20 mL | ✅  |
@@ -1649,6 +1667,12 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | dimenhidrinato | mareo-6-11-anos | Tableta 50 mg | 6 años (20.5 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
 | dimenhidrinato | mareo-6-11-anos | Tableta 50 mg | 8 años (25.6 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
 | dimenhidrinato | mareo-6-11-anos | Tableta 50 mg | 10 años (32 kg) | 25 | 25 | 0.5 | 0.5 tableta | ✅  |
+| dobutamina | neonatos-infusion | Dobutamina 1000 mcg/mL (250 mg en 250 mL, FDA) | 3 días, bajo peso (2 kg) (2 kg) | 600 | 600 | 0.6 | 0.6 mL | ✅  |
+| dobutamina | neonatos-infusion | Dobutamina 1000 mcg/mL (250 mg en 250 mL, FDA) | 5 días (3.2 kg) (3.2 kg) | 960 | 960 | 0.96 | 1 mL | ✅  |
+| dobutamina | neonatos-infusion | Dobutamina 1000 mcg/mL (250 mg en 250 mL, FDA) | 15 días (3.6 kg) (3.6 kg) | 1080 | 1080 | 1.08 | 1.1 mL | ✅  |
+| dobutamina | neonatos-infusion | Dobutamina 500 mcg/mL (250 mg en 500 mL, FDA) | 3 días, bajo peso (2 kg) (2 kg) | 600 | 600 | 1.2 | 1.2 mL | ✅  |
+| dobutamina | neonatos-infusion | Dobutamina 500 mcg/mL (250 mg en 500 mL, FDA) | 5 días (3.2 kg) (3.2 kg) | 960 | 960 | 1.92 | 1.9 mL | ✅  |
+| dobutamina | neonatos-infusion | Dobutamina 500 mcg/mL (250 mg en 500 mL, FDA) | 15 días (3.6 kg) (3.6 kg) | 1080 | 1080 | 2.16 | 2.2 mL | ✅  |
 | doxiciclina | dia-1-o-severa | Tableta 100 mg | 8 años (25.6 kg) | 56.32 | 56.32 | 0.563 | 0.56 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | doxiciclina | dia-1-o-severa | Tableta 100 mg | 10 años (32 kg) | 70.4 | 70.4 | 0.704 | 0.7 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | doxiciclina | dia-1-o-severa | Tableta 100 mg | 12 años (40 kg) | 88 | 88 | 0.88 | 0.88 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -2930,6 +2954,24 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | midazolam | sedacion-im | Midazolam 5 mg/mL | 14 años (50 kg) | 5 | 5 | 1 | 1 mL | ✅  |
 | midazolam | sedacion-im | Midazolam 5 mg/mL | 16 años (58 kg) | 5.8 | 5.8 | 1.16 | 1.15 mL | ✅  |
 | midazolam | sedacion-im | Midazolam 5 mg/mL | 17 años, obeso (95 kg) | 9.5 | 9.5 | 1.9 | 1.9 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 1 mes (4.2 kg) | 0.25 | 0.25 | 0.252 | 0.25 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 2 meses (5.1 kg) | 0.31 | 0.31 | 0.306 | 0.3 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 4 meses (6.4 kg) | 0.38 | 0.38 | 0.384 | 0.4 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 6 meses (7.6 kg) | 0.46 | 0.46 | 0.456 | 0.45 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 9 meses (8.6 kg) | 0.52 | 0.52 | 0.516 | 0.5 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 1 año (9.6 kg) | 0.58 | 0.58 | 0.576 | 0.6 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 18 meses (10.9 kg) | 0.65 | 0.65 | 0.654 | 0.65 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 2 años (12.2 kg) | 0.73 | 0.73 | 0.732 | 0.75 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 3 años (14.3 kg) | 0.86 | 0.86 | 0.858 | 0.85 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 4 años (16.3 kg) | 0.98 | 0.98 | 0.978 | 1 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 5 años (18.3 kg) | 1.1 | 1.1 | 1.098 | 1.1 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 6 años (20.5 kg) | 1.23 | 1.23 | 1.23 | 1.25 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 8 años (25.6 kg) | 1.54 | 1.54 | 1.536 | 1.55 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 10 años (32 kg) | 1.92 | 1.92 | 1.92 | 1.9 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 12 años (40 kg) | 2.4 | 2.4 | 2.4 | 2.4 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 14 años (50 kg) | 3 | 3 | 3 | 3 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 16 años (58 kg) | 3.48 | 3.48 | 3.48 | 3.5 mL | ✅  |
+| midazolam | sedacion-infusion | Midazolam 1 mg/mL | 17 años, obeso (95 kg) | 5.7 | 5.7 | 5.7 | 5.7 mL | ✅  |
 | montelukast | lactantes-6-23-meses | Sobre de granulado 4 mg | 6 meses (7.6 kg) | 4 | 4 | 1 | 1 sobre | ✅  |
 | montelukast | lactantes-6-23-meses | Sobre de granulado 4 mg | 9 meses (8.6 kg) | 4 | 4 | 1 | 1 sobre | ✅  |
 | montelukast | lactantes-6-23-meses | Sobre de granulado 4 mg | 1 año (9.6 kg) | 4 | 4 | 1 | 1 sobre | ✅  |
@@ -3088,6 +3130,42 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | nitrofurantoina | profilaxis | Tableta 100 mg | 14 años (50 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | nitrofurantoina | profilaxis | Tableta 100 mg | 16 años (58 kg) | 58 | 58 | 0.58 | 0.58 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | nitrofurantoina | profilaxis | Tableta 100 mg | 17 años, obeso (95 kg) | 95 | 95 | 0.95 | 0.95 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 1 mes (4.2 kg) | 12.6 | 12.6 | 0.315 | 0.3 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 2 meses (5.1 kg) | 15.3 | 15.3 | 0.383 | 0.4 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 4 meses (6.4 kg) | 19.2 | 19.2 | 0.48 | 0.5 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 6 meses (7.6 kg) | 22.8 | 22.8 | 0.57 | 0.57 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 9 meses (8.6 kg) | 25.8 | 25.8 | 0.645 | 0.65 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 1 año (9.6 kg) | 28.8 | 28.8 | 0.72 | 0.7 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 18 meses (10.9 kg) | 32.7 | 32.7 | 0.818 | 0.8 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 2 años (12.2 kg) | 36.6 | 36.6 | 0.915 | 0.9 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 3 años (14.3 kg) | 42.9 | 42.9 | 1.073 | 1.1 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 4 años (16.3 kg) | 48.9 | 48.9 | 1.223 | 1.2 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 5 años (18.3 kg) | 54.9 | 54.9 | 1.373 | 1.4 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 6 años (20.5 kg) | 61.5 | 61.5 | 1.538 | 1.5 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 8 años (25.6 kg) | 76.8 | 76.8 | 1.92 | 1.9 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 10 años (32 kg) | 96 | 96 | 2.4 | 2.4 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 12 años (40 kg) | 120 | 120 | 3 | 3 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 14 años (50 kg) | 150 | 150 | 3.75 | 3.8 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 16 años (58 kg) | 174 | 174 | 4.35 | 4.4 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 17 años, obeso (95 kg) | 285 | 285 | 7.125 | 7.1 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 1 mes (4.2 kg) | 12.6 | 12.6 | 3.15 | 3.2 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 2 meses (5.1 kg) | 15.3 | 15.3 | 3.825 | 3.8 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 4 meses (6.4 kg) | 19.2 | 19.2 | 4.8 | 4.8 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 6 meses (7.6 kg) | 22.8 | 22.8 | 5.7 | 5.7 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 9 meses (8.6 kg) | 25.8 | 25.8 | 6.45 | 6.5 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 1 año (9.6 kg) | 28.8 | 28.8 | 7.2 | 7.2 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 18 meses (10.9 kg) | 32.7 | 32.7 | 8.175 | 8.2 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 2 años (12.2 kg) | 36.6 | 36.6 | 9.15 | 9.2 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 3 años (14.3 kg) | 42.9 | 42.9 | 10.725 | 10.7 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 4 años (16.3 kg) | 48.9 | 48.9 | 12.225 | 12.2 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 5 años (18.3 kg) | 54.9 | 54.9 | 13.725 | 13.7 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 6 años (20.5 kg) | 61.5 | 61.5 | 15.375 | 15.4 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 8 años (25.6 kg) | 76.8 | 76.8 | 19.2 | 19.2 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 10 años (32 kg) | 96 | 96 | 24 | 24 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 12 años (40 kg) | 120 | 120 | 30 | 30 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 14 años (50 kg) | 150 | 150 | 37.5 | 37.5 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 16 años (58 kg) | 174 | 174 | 43.5 | 43.5 mL | ✅  |
+| norepinefrina | hipotension-infusion | Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA) | 17 años, obeso (95 kg) | 285 | 285 | 71.25 | 71.3 mL | ✅  |
 | omeprazol | esofagitis-mayores-2-anos | Tableta de liberación modificada 20 mg | 3 años (14.3 kg) | 14.3 | 14.3 | 0.715 | 0.71 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | omeprazol | esofagitis-mayores-2-anos | Tableta de liberación modificada 20 mg | 4 años (16.3 kg) | 16.3 | 16.3 | 0.815 | 0.81 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | omeprazol | esofagitis-mayores-2-anos | Tableta de liberación modificada 20 mg | 5 años (18.3 kg) | 18.3 | 18.3 | 0.915 | 0.92 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |

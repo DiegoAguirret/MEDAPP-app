@@ -24,7 +24,8 @@ export function emergencyItems(
   for (const drug of drugs) {
     if (drug.emergency !== true || recalled.has(drug.id)) continue;
     for (const rule of drug.rules) {
-      if (rule.intervalHours !== undefined) continue;
+      // Solo bolos de urgencia: ni pautas programadas ni infusiones continuas.
+      if (rule.intervalHours !== undefined || rule.continuous === true) continue;
       const presentation = drug.presentations.find(
         (p) => rule.presentationIds === undefined || rule.presentationIds.includes(p.id),
       );

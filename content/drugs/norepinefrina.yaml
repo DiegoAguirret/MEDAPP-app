@@ -1,0 +1,63 @@
+id: norepinefrina
+name: Norepinefrina (noradrenalina)
+category: cardiovascular
+doseUnit: mcg
+synonyms: [noradrenalina, norepinephrine, vasopresor, infusión, choque]
+presentations:
+  - id: mezcla-40
+    label: Norepinefrina 40 mcg/mL (concentración del FNME)
+    form: ampolla
+    mgPerUnit: 40
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: mezcla-4
+    label: Norepinefrina 4 mcg/mL (4 mg en 1000 mL de dextrosa 5 %, FDA)
+    form: ampolla
+    mgPerUnit: 4
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: hipotension-infusion
+    indication: Hipotensión, infusión continua
+    route: IV
+    ageMinDays: 29
+    basis: mcg/kg/min
+    amountMin: 0.05
+    amountMax: 0.3
+    usual: 0.05
+    continuous: true
+    maxPerDoseMg: 900
+    maxPerDayMg: 21600
+    notes: >-
+      FNME — niños, hipotensión, 0.05 a 0.3 mcg/kg/min IV. En adultos el FNME usa una solución de 40 mcg/mL por
+      catéter venoso central; la FDA diluye 4 mg en 1000 mL de dextrosa al 5 % (4 mcg/mL) y usa soluciones más
+      concentradas si hay que restringir líquidos. El tope es técnico (0.3 mcg/kg/min con 50 kg).
+    presentationIds: [mezcla-40, mezcla-4]
+    sourceIds: [fnme-2008, fda-norepinephrine, digemid-pnume-2023]
+warnings:
+  - La dosis está en microgramos por kilo por minuto; la velocidad sale en mL/h según la mezcla elegida. Si su mezcla es otra, use «Personalizar concentración».
+  - Diluir en una solución con dextrosa; no se recomienda diluir solo en suero fisiológico (FDA).
+  - Infundir en una vena grande (FDA); en adultos, el FNME indica catéter venoso central.
+  - Vigilar con frecuencia la presión arterial y la velocidad de flujo (FNME).
+contraindications:
+  - Hipertensión (FNME).
+  - Déficit de volumen sanguíneo (FNME).
+diagnoses: [hipotensión, choque, choque séptico]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: hipotension-infusion
+    presentationId: mezcla-40
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 60, amount: 1.5, unit: mL/h }
+  - ruleId: hipotension-infusion
+    presentationId: mezcla-4
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 30, amount: 7.5, unit: mL/h }
