@@ -1,0 +1,105 @@
+id: piperacilina-tazobactam
+name: Piperacilina + tazobactam
+category: antibiotico
+synonyms: [pip-tazo, piperacillin tazobactam, Zosyn]
+presentations:
+  - id: frasco-4-5g
+    label: Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado)
+    form: ampolla
+    mgPerUnit: 202.5
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: intraabdominal-2-9-meses
+    indication: Apendicitis o peritonitis, 2 a 9 meses (40 kg o menos)
+    route: IV
+    ageMinDays: 61
+    ageMaxDays: 273
+    weightMaxKg: 40.01
+    basis: mg/kg/dose
+    amountMin: 90
+    amountMax: 90
+    usual: 90
+    intervalHours: 8
+    maxPerDoseMg: 3600
+    maxPerDayMg: 10800
+    notes: >-
+      FDA — de 2 a 9 meses, 90 mg/kg (80 mg de piperacilina + 10 mg de tazobactam) c/8 h, en infusión de 30
+      minutos. La dosis es del producto combinado. Para infundir, diluir a 20–80 mg/mL de piperacilina.
+    presentationIds: [frasco-4-5g]
+    sourceIds: [fda-piperacillin-tazobactam, fda-piperacillin-tazobactam-civica, digemid-pnume-2023]
+  - id: intraabdominal-mayores-9-meses
+    indication: Apendicitis o peritonitis, más de 9 meses (40 kg o menos)
+    route: IV
+    ageMinDays: 274
+    weightMaxKg: 40.01
+    basis: mg/kg/dose
+    amountMin: 112.5
+    amountMax: 112.5
+    usual: 112.5
+    intervalHours: 8
+    maxPerDoseMg: 4500
+    maxPerDayMg: 13500
+    notes: >-
+      FDA — más de 9 meses, 112.5 mg/kg (100 mg de piperacilina + 12.5 mg de tazobactam) c/8 h, en infusión de 30
+      minutos. Con más de 40 kg, dosis de adulto.
+    presentationIds: [frasco-4-5g]
+    sourceIds: [fda-piperacillin-tazobactam, fda-piperacillin-tazobactam-civica, digemid-pnume-2023]
+  - id: neumonia-nosocomial-2-9-meses
+    indication: Neumonía nosocomial, 2 a 9 meses (40 kg o menos)
+    route: IV
+    ageMinDays: 61
+    ageMaxDays: 273
+    weightMaxKg: 40.01
+    basis: mg/kg/dose
+    amountMin: 90
+    amountMax: 90
+    usual: 90
+    intervalHours: 6
+    maxPerDoseMg: 3600
+    maxPerDayMg: 14400
+    notes: FDA — neumonía nosocomial de 2 a 9 meses, 90 mg/kg c/6 h.
+    presentationIds: [frasco-4-5g]
+    sourceIds: [fda-piperacillin-tazobactam, fda-piperacillin-tazobactam-civica, digemid-pnume-2023]
+  - id: neumonia-nosocomial-mayores-9-meses
+    indication: Neumonía nosocomial, más de 9 meses (40 kg o menos)
+    route: IV
+    ageMinDays: 274
+    weightMaxKg: 40.01
+    basis: mg/kg/dose
+    amountMin: 112.5
+    amountMax: 112.5
+    usual: 112.5
+    intervalHours: 6
+    maxPerDoseMg: 4500
+    maxPerDayMg: 18000
+    notes: FDA — neumonía nosocomial de más de 9 meses, 112.5 mg/kg c/6 h. Con más de 40 kg, dosis de adulto.
+    presentationIds: [frasco-4-5g]
+    sourceIds: [fda-piperacillin-tazobactam, fda-piperacillin-tazobactam-civica, digemid-pnume-2023]
+warnings:
+  - No se ha establecido la dosis en menores de 2 meses ni el ajuste renal pediátrico (FDA).
+  - Los topes de las reglas son técnicos (la dosis por kg con 40 kg); la FDA no da un tope pediátrico en mg.
+contraindications:
+  - Alergia a penicilinas, cefalosporinas o inhibidores de betalactamasa.
+interactions:
+  - Inactiva a los aminoglucósidos si se mezclan; no darlos en la misma solución (FDA).
+  - Con vancomicina, mayor riesgo de lesión renal aguda (FDA).
+  - El probenecid prolonga su vida media (FDA).
+diagnoses: [apendicitis, peritonitis, neumonía nosocomial, infección intraabdominal]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: intraabdominal-mayores-9-meses
+    presentationId: frasco-4-5g
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 2250, amount: 11.1, unit: mL }
+  - ruleId: intraabdominal-2-9-meses
+    presentationId: frasco-4-5g
+    weightKg: 7
+    ageDays: 180
+    expect: { mgPerDose: 630, amount: 3.1, unit: mL }

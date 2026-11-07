@@ -5,10 +5,10 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **7518** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **3433**. Fuera del rango de edad de la regla: 4085 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 3433/3433 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 3433/3433.
+- Casos simulados: **7602** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **3459**. Fuera del rango de edad de la regla: 4143 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 3459/3459 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 3459/3459.
 - Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.57 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
@@ -2970,6 +2970,32 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | paracetamol | fiebre-dolor-vo | Tableta 500 mg | 14 años (50 kg) | 750 | 750 | 1.5 | 1.5 tableta | ✅  |
 | paracetamol | fiebre-dolor-vo | Tableta 500 mg | 16 años (58 kg) | 870 | 870 | 1.74 | 1.74 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | paracetamol | fiebre-dolor-vo | Tableta 500 mg | 17 años, obeso (95 kg) | 1000 | 1000 | 2 | 2 tableta | ✅ tope aplicado |
+| piperacilina-tazobactam | intraabdominal-2-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 4 meses (6.4 kg) | 576 | 576 | 2.844 | 2.8 mL | ✅  |
+| piperacilina-tazobactam | intraabdominal-2-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 6 meses (7.6 kg) | 684 | 684 | 3.378 | 3.4 mL | ✅  |
+| piperacilina-tazobactam | intraabdominal-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 9 meses (8.6 kg) | 967.5 | 967.5 | 4.778 | 4.8 mL | ✅  |
+| piperacilina-tazobactam | intraabdominal-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 1 año (9.6 kg) | 1080 | 1080 | 5.333 | 5.3 mL | ✅  |
+| piperacilina-tazobactam | intraabdominal-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 18 meses (10.9 kg) | 1226.25 | 1226.25 | 6.056 | 6.1 mL | ✅  |
+| piperacilina-tazobactam | intraabdominal-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 2 años (12.2 kg) | 1372.5 | 1372.5 | 6.778 | 6.8 mL | ✅  |
+| piperacilina-tazobactam | intraabdominal-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 3 años (14.3 kg) | 1608.75 | 1608.75 | 7.944 | 7.9 mL | ✅  |
+| piperacilina-tazobactam | intraabdominal-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 4 años (16.3 kg) | 1833.75 | 1833.75 | 9.056 | 9.1 mL | ✅  |
+| piperacilina-tazobactam | intraabdominal-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 5 años (18.3 kg) | 2058.75 | 2058.75 | 10.167 | 10.2 mL | ✅  |
+| piperacilina-tazobactam | intraabdominal-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 6 años (20.5 kg) | 2306.25 | 2306.25 | 11.389 | 11.4 mL | ✅  |
+| piperacilina-tazobactam | intraabdominal-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 8 años (25.6 kg) | 2880 | 2880 | 14.222 | 14.2 mL | ✅  |
+| piperacilina-tazobactam | intraabdominal-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 10 años (32 kg) | 3600 | 3600 | 17.778 | 17.8 mL | ✅  |
+| piperacilina-tazobactam | intraabdominal-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 12 años (40 kg) | 4500 | 4500 | 22.222 | 22.2 mL | ✅  |
+| piperacilina-tazobactam | neumonia-nosocomial-2-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 4 meses (6.4 kg) | 576 | 576 | 2.844 | 2.8 mL | ✅  |
+| piperacilina-tazobactam | neumonia-nosocomial-2-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 6 meses (7.6 kg) | 684 | 684 | 3.378 | 3.4 mL | ✅  |
+| piperacilina-tazobactam | neumonia-nosocomial-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 9 meses (8.6 kg) | 967.5 | 967.5 | 4.778 | 4.8 mL | ✅  |
+| piperacilina-tazobactam | neumonia-nosocomial-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 1 año (9.6 kg) | 1080 | 1080 | 5.333 | 5.3 mL | ✅  |
+| piperacilina-tazobactam | neumonia-nosocomial-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 18 meses (10.9 kg) | 1226.25 | 1226.25 | 6.056 | 6.1 mL | ✅  |
+| piperacilina-tazobactam | neumonia-nosocomial-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 2 años (12.2 kg) | 1372.5 | 1372.5 | 6.778 | 6.8 mL | ✅  |
+| piperacilina-tazobactam | neumonia-nosocomial-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 3 años (14.3 kg) | 1608.75 | 1608.75 | 7.944 | 7.9 mL | ✅  |
+| piperacilina-tazobactam | neumonia-nosocomial-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 4 años (16.3 kg) | 1833.75 | 1833.75 | 9.056 | 9.1 mL | ✅  |
+| piperacilina-tazobactam | neumonia-nosocomial-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 5 años (18.3 kg) | 2058.75 | 2058.75 | 10.167 | 10.2 mL | ✅  |
+| piperacilina-tazobactam | neumonia-nosocomial-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 6 años (20.5 kg) | 2306.25 | 2306.25 | 11.389 | 11.4 mL | ✅  |
+| piperacilina-tazobactam | neumonia-nosocomial-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 8 años (25.6 kg) | 2880 | 2880 | 14.222 | 14.2 mL | ✅  |
+| piperacilina-tazobactam | neumonia-nosocomial-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 10 años (32 kg) | 3600 | 3600 | 17.778 | 17.8 mL | ✅  |
+| piperacilina-tazobactam | neumonia-nosocomial-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 12 años (40 kg) | 4500 | 4500 | 22.222 | 22.2 mL | ✅  |
 | pirantel | ascaris-oxiuros | Suspensión 250 mg/5 mL (como pirantel base) | 2 años (12.2 kg) | 134.2 | 134.2 | 2.684 | 2.7 mL | ✅  |
 | pirantel | ascaris-oxiuros | Suspensión 250 mg/5 mL (como pirantel base) | 3 años (14.3 kg) | 157.3 | 157.3 | 3.146 | 3.1 mL | ✅  |
 | pirantel | ascaris-oxiuros | Suspensión 250 mg/5 mL (como pirantel base) | 4 años (16.3 kg) | 179.3 | 179.3 | 3.586 | 3.6 mL | ✅  |

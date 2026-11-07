@@ -576,3 +576,17 @@
   url: https://cdn.www.gob.pe/uploads/document/file/8654965/7163706-nts-n-233-minsa-dgiesp-2025.pdf
   kind: norma-peru
   country: PE
+- id: fda-piperacillin-tazobactam
+  title: Zosyn (piperacilina y tazobactam) — prescribing information (FDA, set 8ab9d90d-2f7f-4599-a44f-3d0a8f8ab623)
+  publisher: U.S. FDA / Pfizer
+  year: 2023
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=8ab9d90d-2f7f-4599-a44f-3d0a8f8ab623
+  kind: regulador
+  country: US
+- id: fda-piperacillin-tazobactam-civica
+  title: Piperacilina y tazobactam para inyección, viales de 4.5 g — prescribing information (FDA, set 19e89f8b-316b-4dd2-9724-bfe0faeba408)
+  publisher: U.S. FDA / Civica
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=19e89f8b-316b-4dd2-9724-bfe0faeba408
+  kind: regulador
+  country: US

@@ -385,3 +385,12 @@ Cada cifra se confirmó en el documento descargado (texto de openFDA, el FNME 20
 - **Mefloquina sola:** la tabla de la NTS 233 se contradice (12.5 mg/kg/día frente a «8 mg de sal/kg»).
 - **Artemetero + lumefantrina:** no está en el PNUME 2023, y las bandas de la norma se solapan en 15 kg y dejan sin banda los 35 kg.
 - **Leishmaniasis (antimoniato de meglumina):** no hay una norma MINSA de tratamiento vigente, y la concentración peruana viene como rango (80–85 mg Sb5+/mL).
+
+## Lote 10A: antibióticos hospitalarios — verificado el 07/11/2026
+
+- **Piperacilina + tazobactam** (PNUME 4 g + 500 mg; FDA Zosyn): 90 mg/kg del producto combinado de 2 a 9 meses y 112.5 mg/kg desde los 9 meses, c/8 h (apendicitis o peritonitis) o c/6 h (neumonía nosocomial), con 40 kg o menos. El frasco de 4.5 g con 20 mL da 202.5 mg/mL (FDA Civica).
+
+**No incluidos:**
+
+- **Imipenem:** el FNME da 25 mg/kg c/6 h (3 meses–3 años) y 15 mg/kg c/6 h (más de 3 años), máximo 2 g/d. La ficha FDA no fija una concentración exacta («transferir a 100 mL» y lavar el vial con 10 mL más), y la dosis neonatal difiere entre FDA (25 mg/kg) y OMS (20 mg/kg).
+- **Cefepima y linezolid:** no están en el PNUME ni en el FNME.
