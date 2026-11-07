@@ -1,0 +1,69 @@
+id: cloroquina
+name: Cloroquina
+category: antiparasitario
+synonyms: [chloroquine, fosfato de cloroquina, antimalárico, malaria, paludismo]
+presentations:
+  - id: tab-150
+    label: Tableta 150 mg base (fosfato de cloroquina 250 mg)
+    form: tableta
+    mgPerUnit: 150
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: dias-1-2
+    indication: Malaria por P. vivax, P. ovale o P. malariae, días 1 y 2 (6 meses o más, menos de 44 kg)
+    route: VO
+    ageMinDays: 183
+    weightMinKg: 5
+    weightMaxKg: 44
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    intervalHours: 24
+    maxPerDoseMg: 440
+    maxPerDayMg: 440
+    durationText: Días 1 y 2 (el día 3 es 5 mg/kg).
+    notes: >-
+      NTS 233-MINSA 2025 — cloroquina 10 mg base/kg/día el día 1, 10 mg/kg el día 2 y 5 mg/kg el día 3, junto con
+      primaquina. La dosis se calcula con los mg de cloroquina base (la tableta de fosfato tiene 150 o 155 mg base).
+      Con 44 kg o más, usar la tabla de adultos de la norma. FNME y OMS dan el mismo esquema.
+    sourceIds: [minsa-nts233-2025, fnme-2008, digemid-pnume-2023]
+  - id: dia-3
+    indication: Malaria por P. vivax, P. ovale o P. malariae, día 3 (6 meses o más, menos de 44 kg)
+    route: VO
+    ageMinDays: 183
+    weightMinKg: 5
+    weightMaxKg: 44
+    basis: mg/kg/dose
+    amountMin: 5
+    amountMax: 5
+    usual: 5
+    once: true
+    maxPerDoseMg: 220
+    maxPerDayMg: 220
+    notes: NTS 233-MINSA 2025 — día 3, 5 mg base/kg.
+    sourceIds: [minsa-nts233-2025, fnme-2008, digemid-pnume-2023]
+warnings:
+  - En menores de 6 meses o de menos de 5 kg, la NTS 233 indica artesunato + mefloquina en lugar de cloroquina.
+  - Los niños son especialmente sensibles a las 4-aminoquinolinas (FNME).
+contraindications:
+  - Hipersensibilidad a la cloroquina.
+diagnoses: [malaria, paludismo, malaria vivax, malaria no complicada]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: dias-1-2
+    presentationId: tab-150
+    weightKg: 15
+    ageDays: 1460
+    expect: { mgPerDose: 150, amount: 1, unit: tableta }
+  - ruleId: dia-3
+    presentationId: tab-150
+    weightKg: 30
+    ageDays: 3285
+    expect: { mgPerDose: 150, amount: 1, unit: tableta }

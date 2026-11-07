@@ -1,0 +1,89 @@
+id: primaquina
+name: Primaquina
+category: antiparasitario
+synonyms: [primaquine, antimalárico, malaria, paludismo]
+presentations:
+  - id: tab-5
+    label: Tableta 5 mg
+    form: tableta
+    mgPerUnit: 5
+    unit: tableta
+    step: 1
+    brandsPE: []
+  - id: tab-7-5
+    label: Tableta 7.5 mg
+    form: tableta
+    mgPerUnit: 7.5
+    unit: tableta
+    step: 1
+    brandsPE: []
+  - id: tab-15
+    label: Tableta 15 mg
+    form: tableta
+    mgPerUnit: 15
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: vivax-7-dias
+    indication: Malaria por P. vivax, P. ovale o mixta, 7 días (6 meses o más, 5 kg o más)
+    route: VO
+    ageMinDays: 183
+    weightMinKg: 5
+    weightMaxKg: 44
+    basis: mg/kg/dose
+    amountMin: 0.5
+    amountMax: 0.5
+    usual: 0.5
+    intervalHours: 24
+    maxPerDoseMg: 22
+    maxPerDayMg: 22
+    durationText: 7 días (en la recaída, 14 días según la NTS 233).
+    notes: >-
+      NTS 233-MINSA 2025 — primaquina 0.5 mg/kg/día por 7 días, junto con cloroquina. FNME — 0.5 mg de base/kg/d.
+      Con 44 kg o más, usar la tabla de adultos de la norma.
+    sourceIds: [minsa-nts233-2025, fnme-2008, digemid-pnume-2023]
+  - id: dosis-unica-malariae-falciparum
+    indication: Malaria por P. malariae o P. falciparum, dosis única (6 meses o más, 5 kg o más)
+    route: VO
+    ageMinDays: 183
+    weightMinKg: 5
+    weightMaxKg: 44
+    basis: mg/kg/dose
+    amountMin: 0.25
+    amountMax: 0.25
+    usual: 0.25
+    once: true
+    maxPerDoseMg: 11
+    maxPerDayMg: 11
+    notes: NTS 233-MINSA 2025 — 0.25 mg/kg en dosis única; se sugiere también en personas con deficiencia de G6PD.
+    sourceIds: [minsa-nts233-2025, digemid-pnume-2023]
+warnings:
+  - No se administra a gestantes ni a niños menores de 6 meses o que pesen menos de 5 kg (NTS 233).
+  - No prescribir durante el primer mes de lactancia (NTS 233).
+  - Precaución en deficiencia de G6PD.
+contraindications:
+  - Embarazo.
+  - Menores de 6 meses o de menos de 5 kg.
+diagnoses: [malaria, paludismo, malaria vivax, malaria falciparum]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: vivax-7-dias
+    presentationId: tab-5
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 5, amount: 1, unit: tableta }
+  - ruleId: vivax-7-dias
+    presentationId: tab-15
+    weightKg: 30
+    ageDays: 3285
+    expect: { mgPerDose: 15, amount: 1, unit: tableta }
+  - ruleId: dosis-unica-malariae-falciparum
+    presentationId: tab-7-5
+    weightKg: 30
+    ageDays: 3285
+    expect: { mgPerDose: 7.5, amount: 1, unit: tableta }

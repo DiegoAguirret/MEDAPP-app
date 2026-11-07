@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **7224** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **3304**. Fuera del rango de edad de la regla: 3920 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 3304/3304 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 3304/3304.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.58 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **7518** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **3433**. Fuera del rango de edad de la regla: 4085 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 3433/3433 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 3433/3433.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.57 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -559,6 +559,24 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 8 años (25.6 kg) | 6.4 | 6.4 | 1.28 | 1.3 mL | ✅  |
 | anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 10 años (32 kg) | 8 | 8 | 1.6 | 1.6 mL | ✅  |
 | anfotericina-b | dosis-diaria | Frasco 50 mg reconstituido con 10 mL (5 mg/mL); diluir a 0.1 mg/mL en dextrosa 5 % | 12 años (40 kg) | 10 | 10 | 2 | 2 mL | ✅  |
+| artesunato-mefloquina | menores-6-meses | Tableta 25 mg + 50 mg (artesunato + mefloquina) | 1 mes (4.2 kg) | 25 | 25 | 1 | 1 tableta | ✅  |
+| artesunato-mefloquina | menores-6-meses | Tableta 25 mg + 50 mg (artesunato + mefloquina) | 2 meses (5.1 kg) | 25 | 25 | 1 | 1 tableta | ✅  |
+| artesunato-mefloquina | menores-6-meses | Tableta 25 mg + 50 mg (artesunato + mefloquina) | 4 meses (6.4 kg) | 25 | 25 | 1 | 1 tableta | ✅  |
+| artesunato-mefloquina | banda-5-9-kg | Tableta 25 mg + 50 mg (artesunato + mefloquina) | 6 meses (7.6 kg) | 25 | 25 | 1 | 1 tableta | ✅  |
+| artesunato-mefloquina | banda-5-9-kg | Tableta 25 mg + 50 mg (artesunato + mefloquina) | 9 meses (8.6 kg) | 25 | 25 | 1 | 1 tableta | ✅  |
+| artesunato-mefloquina | banda-5-9-kg | Tableta 25 mg + 50 mg (artesunato + mefloquina) | 1 año (9.6 kg) | 25 | 25 | 1 | 1 tableta | ✅  |
+| artesunato-mefloquina | banda-10-18-kg | Tableta 25 mg + 50 mg (artesunato + mefloquina) | 18 meses (10.9 kg) | 50 | 50 | 2 | 2 tableta | ✅  |
+| artesunato-mefloquina | banda-10-18-kg | Tableta 25 mg + 50 mg (artesunato + mefloquina) | 2 años (12.2 kg) | 50 | 50 | 2 | 2 tableta | ✅  |
+| artesunato-mefloquina | banda-10-18-kg | Tableta 25 mg + 50 mg (artesunato + mefloquina) | 3 años (14.3 kg) | 50 | 50 | 2 | 2 tableta | ✅  |
+| artesunato-mefloquina | banda-10-18-kg | Tableta 25 mg + 50 mg (artesunato + mefloquina) | 4 años (16.3 kg) | 50 | 50 | 2 | 2 tableta | ✅  |
+| artesunato-mefloquina | banda-10-18-kg | Tableta 25 mg + 50 mg (artesunato + mefloquina) | 5 años (18.3 kg) | 50 | 50 | 2 | 2 tableta | ✅  |
+| artesunato-mefloquina | banda-19-29-kg | Tableta 100 mg + 200 mg (artesunato + mefloquina) | 6 años (20.5 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| artesunato-mefloquina | banda-19-29-kg | Tableta 100 mg + 200 mg (artesunato + mefloquina) | 8 años (25.6 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| artesunato-mefloquina | banda-30-kg-o-mas | Tableta 100 mg + 200 mg (artesunato + mefloquina) | 10 años (32 kg) | 200 | 200 | 2 | 2 tableta | ✅  |
+| artesunato-mefloquina | banda-30-kg-o-mas | Tableta 100 mg + 200 mg (artesunato + mefloquina) | 12 años (40 kg) | 200 | 200 | 2 | 2 tableta | ✅  |
+| artesunato-mefloquina | banda-30-kg-o-mas | Tableta 100 mg + 200 mg (artesunato + mefloquina) | 14 años (50 kg) | 200 | 200 | 2 | 2 tableta | ✅  |
+| artesunato-mefloquina | banda-30-kg-o-mas | Tableta 100 mg + 200 mg (artesunato + mefloquina) | 16 años (58 kg) | 200 | 200 | 2 | 2 tableta | ✅  |
+| artesunato-mefloquina | banda-30-kg-o-mas | Tableta 100 mg + 200 mg (artesunato + mefloquina) | 17 años, obeso (95 kg) | 200 | 200 | 2 | 2 tableta | ✅  |
 | atropina | organofosforados | Ampolla 1 mg/mL | 1 mes (4.2 kg) | 0.21 | 0.21 | 0.21 | 0.2 mL | ✅  |
 | atropina | organofosforados | Ampolla 1 mg/mL | 2 meses (5.1 kg) | 0.26 | 0.26 | 0.255 | 0.25 mL | ✅  |
 | atropina | organofosforados | Ampolla 1 mg/mL | 4 meses (6.4 kg) | 0.32 | 0.32 | 0.32 | 0.32 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -1241,6 +1259,30 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | clorfenamina | alergia-13-anos-o-mas | Tableta 4 mg | 14 años (50 kg) | 4 | 4 | 1 | 1 tableta | ✅  |
 | clorfenamina | alergia-13-anos-o-mas | Tableta 4 mg | 16 años (58 kg) | 4 | 4 | 1 | 1 tableta | ✅  |
 | clorfenamina | alergia-13-anos-o-mas | Tableta 4 mg | 17 años, obeso (95 kg) | 4 | 4 | 1 | 1 tableta | ✅  |
+| cloroquina | dias-1-2 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 6 meses (7.6 kg) | 76 | 76 | 0.507 | 0.5 tableta | ✅  |
+| cloroquina | dias-1-2 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 9 meses (8.6 kg) | 86 | 86 | 0.573 | 0.57 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dias-1-2 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 1 año (9.6 kg) | 96 | 96 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dias-1-2 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 18 meses (10.9 kg) | 109 | 109 | 0.727 | 0.73 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dias-1-2 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 2 años (12.2 kg) | 122 | 122 | 0.813 | 0.81 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dias-1-2 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 3 años (14.3 kg) | 143 | 143 | 0.953 | 1 tableta | ✅  |
+| cloroquina | dias-1-2 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 4 años (16.3 kg) | 163 | 163 | 1.087 | 1.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dias-1-2 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 5 años (18.3 kg) | 183 | 183 | 1.22 | 1.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dias-1-2 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 6 años (20.5 kg) | 205 | 205 | 1.367 | 1.37 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dias-1-2 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 8 años (25.6 kg) | 256 | 256 | 1.707 | 1.71 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dias-1-2 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 10 años (32 kg) | 320 | 320 | 2.133 | 2.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dias-1-2 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 12 años (40 kg) | 400 | 400 | 2.667 | 2.67 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dia-3 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 6 meses (7.6 kg) | 38 | 38 | 0.253 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dia-3 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 9 meses (8.6 kg) | 43 | 43 | 0.287 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dia-3 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 1 año (9.6 kg) | 48 | 48 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dia-3 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 18 meses (10.9 kg) | 54.5 | 54.5 | 0.363 | 0.36 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dia-3 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 2 años (12.2 kg) | 61 | 61 | 0.407 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dia-3 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 3 años (14.3 kg) | 71.5 | 71.5 | 0.477 | 0.5 tableta | ✅  |
+| cloroquina | dia-3 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 4 años (16.3 kg) | 81.5 | 81.5 | 0.543 | 0.54 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dia-3 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 5 años (18.3 kg) | 91.5 | 91.5 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dia-3 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 6 años (20.5 kg) | 102.5 | 102.5 | 0.683 | 0.68 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dia-3 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 8 años (25.6 kg) | 128 | 128 | 0.853 | 0.85 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dia-3 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 10 años (32 kg) | 160 | 160 | 1.067 | 1.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloroquina | dia-3 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 12 años (40 kg) | 200 | 200 | 1.333 | 1.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 2 meses (5.1 kg) | 20.4 | 20.4 | 2.55 | 2.6 mL | ✅  |
 | cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 4 meses (6.4 kg) | 25.6 | 25.6 | 3.2 | 3.2 mL | ✅  |
 | cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 6 meses (7.6 kg) | 30.4 | 30.4 | 3.8 | 3.8 mL | ✅  |
@@ -3104,6 +3146,93 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | prednisona | antiinflamatorio | Tableta 20 mg | 14 años (50 kg) | 50 | 50 | 2.5 | 2.5 tableta | ✅  |
 | prednisona | antiinflamatorio | Tableta 20 mg | 16 años (58 kg) | 58 | 58 | 2.9 | 3 tableta | ✅  |
 | prednisona | antiinflamatorio | Tableta 20 mg | 17 años, obeso (95 kg) | 80 | 80 | 4 | 4 tableta | ✅ tope aplicado |
+| primaquina | vivax-7-dias | Tableta 5 mg | 6 meses (7.6 kg) | 3.8 | 3.8 | 0.76 | 0.76 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 5 mg | 9 meses (8.6 kg) | 4.3 | 4.3 | 0.86 | 0.86 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 5 mg | 1 año (9.6 kg) | 4.8 | 4.8 | 0.96 | 1 tableta | ✅  |
+| primaquina | vivax-7-dias | Tableta 5 mg | 18 meses (10.9 kg) | 5.45 | 5.45 | 1.09 | 1.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 5 mg | 2 años (12.2 kg) | 6.1 | 6.1 | 1.22 | 1.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 5 mg | 3 años (14.3 kg) | 7.15 | 7.15 | 1.43 | 1.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 5 mg | 4 años (16.3 kg) | 8.15 | 8.15 | 1.63 | 1.63 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 5 mg | 5 años (18.3 kg) | 9.15 | 9.15 | 1.83 | 1.83 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 5 mg | 6 años (20.5 kg) | 10.25 | 10.25 | 2.05 | 2 tableta | ✅  |
+| primaquina | vivax-7-dias | Tableta 5 mg | 8 años (25.6 kg) | 12.8 | 12.8 | 2.56 | 2.56 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 5 mg | 10 años (32 kg) | 16 | 16 | 3.2 | 3.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 5 mg | 12 años (40 kg) | 20 | 20 | 4 | 4 tableta | ✅  |
+| primaquina | vivax-7-dias | Tableta 7.5 mg | 6 meses (7.6 kg) | 3.8 | 3.8 | 0.507 | 0.51 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 7.5 mg | 9 meses (8.6 kg) | 4.3 | 4.3 | 0.573 | 0.57 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 7.5 mg | 1 año (9.6 kg) | 4.8 | 4.8 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 7.5 mg | 18 meses (10.9 kg) | 5.45 | 5.45 | 0.727 | 0.73 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 7.5 mg | 2 años (12.2 kg) | 6.1 | 6.1 | 0.813 | 0.81 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 7.5 mg | 3 años (14.3 kg) | 7.15 | 7.15 | 0.953 | 1 tableta | ✅  |
+| primaquina | vivax-7-dias | Tableta 7.5 mg | 4 años (16.3 kg) | 8.15 | 8.15 | 1.087 | 1.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 7.5 mg | 5 años (18.3 kg) | 9.15 | 9.15 | 1.22 | 1.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 7.5 mg | 6 años (20.5 kg) | 10.25 | 10.25 | 1.367 | 1.37 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 7.5 mg | 8 años (25.6 kg) | 12.8 | 12.8 | 1.707 | 1.71 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 7.5 mg | 10 años (32 kg) | 16 | 16 | 2.133 | 2.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 7.5 mg | 12 años (40 kg) | 20 | 20 | 2.667 | 2.67 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 15 mg | 6 meses (7.6 kg) | 3.8 | 3.8 | 0.253 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 15 mg | 9 meses (8.6 kg) | 4.3 | 4.3 | 0.287 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 15 mg | 1 año (9.6 kg) | 4.8 | 4.8 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 15 mg | 18 meses (10.9 kg) | 5.45 | 5.45 | 0.363 | 0.36 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 15 mg | 2 años (12.2 kg) | 6.1 | 6.1 | 0.407 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 15 mg | 3 años (14.3 kg) | 7.15 | 7.15 | 0.477 | 0.48 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 15 mg | 4 años (16.3 kg) | 8.15 | 8.15 | 0.543 | 0.54 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 15 mg | 5 años (18.3 kg) | 9.15 | 9.15 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 15 mg | 6 años (20.5 kg) | 10.25 | 10.25 | 0.683 | 0.68 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 15 mg | 8 años (25.6 kg) | 12.8 | 12.8 | 0.853 | 0.85 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 15 mg | 10 años (32 kg) | 16 | 16 | 1.067 | 1.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | vivax-7-dias | Tableta 15 mg | 12 años (40 kg) | 20 | 20 | 1.333 | 1.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 5 mg | 6 meses (7.6 kg) | 1.9 | 1.9 | 0.38 | 0.38 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 5 mg | 9 meses (8.6 kg) | 2.15 | 2.15 | 0.43 | 0.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 5 mg | 1 año (9.6 kg) | 2.4 | 2.4 | 0.48 | 0.48 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 5 mg | 18 meses (10.9 kg) | 2.73 | 2.73 | 0.545 | 0.55 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 5 mg | 2 años (12.2 kg) | 3.05 | 3.05 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 5 mg | 3 años (14.3 kg) | 3.58 | 3.58 | 0.715 | 0.71 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 5 mg | 4 años (16.3 kg) | 4.08 | 4.08 | 0.815 | 0.81 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 5 mg | 5 años (18.3 kg) | 4.58 | 4.58 | 0.915 | 0.92 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 5 mg | 6 años (20.5 kg) | 5.13 | 5.13 | 1.025 | 1 tableta | ✅  |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 5 mg | 8 años (25.6 kg) | 6.4 | 6.4 | 1.28 | 1.28 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 5 mg | 10 años (32 kg) | 8 | 8 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 5 mg | 12 años (40 kg) | 10 | 10 | 2 | 2 tableta | ✅  |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 7.5 mg | 6 meses (7.6 kg) | 1.9 | 1.9 | 0.253 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 7.5 mg | 9 meses (8.6 kg) | 2.15 | 2.15 | 0.287 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 7.5 mg | 1 año (9.6 kg) | 2.4 | 2.4 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 7.5 mg | 18 meses (10.9 kg) | 2.73 | 2.73 | 0.363 | 0.36 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 7.5 mg | 2 años (12.2 kg) | 3.05 | 3.05 | 0.407 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 7.5 mg | 3 años (14.3 kg) | 3.58 | 3.58 | 0.477 | 0.48 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 7.5 mg | 4 años (16.3 kg) | 4.08 | 4.08 | 0.543 | 0.54 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 7.5 mg | 5 años (18.3 kg) | 4.58 | 4.58 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 7.5 mg | 6 años (20.5 kg) | 5.13 | 5.13 | 0.683 | 0.68 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 7.5 mg | 8 años (25.6 kg) | 6.4 | 6.4 | 0.853 | 0.85 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 7.5 mg | 10 años (32 kg) | 8 | 8 | 1.067 | 1.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 7.5 mg | 12 años (40 kg) | 10 | 10 | 1.333 | 1.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 15 mg | 6 meses (7.6 kg) | 1.9 | 1.9 | 0.127 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 15 mg | 9 meses (8.6 kg) | 2.15 | 2.15 | 0.143 | 0.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 15 mg | 1 año (9.6 kg) | 2.4 | 2.4 | 0.16 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 15 mg | 18 meses (10.9 kg) | 2.73 | 2.73 | 0.182 | 0.18 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 15 mg | 2 años (12.2 kg) | 3.05 | 3.05 | 0.203 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 15 mg | 3 años (14.3 kg) | 3.58 | 3.58 | 0.238 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 15 mg | 4 años (16.3 kg) | 4.08 | 4.08 | 0.272 | 0.27 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 15 mg | 5 años (18.3 kg) | 4.58 | 4.58 | 0.305 | 0.3 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 15 mg | 6 años (20.5 kg) | 5.13 | 5.13 | 0.342 | 0.34 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 15 mg | 8 años (25.6 kg) | 6.4 | 6.4 | 0.427 | 0.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 15 mg | 10 años (32 kg) | 8 | 8 | 0.533 | 0.53 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| primaquina | dosis-unica-malariae-falciparum | Tableta 15 mg | 12 años (40 kg) | 10 | 10 | 0.667 | 0.67 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 6 meses (7.6 kg) | 76 | 76 | 0.253 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 9 meses (8.6 kg) | 86 | 86 | 0.287 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 1 año (9.6 kg) | 96 | 96 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 18 meses (10.9 kg) | 109 | 109 | 0.363 | 0.36 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 2 años (12.2 kg) | 122 | 122 | 0.407 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 3 años (14.3 kg) | 143 | 143 | 0.477 | 0.5 tableta | ✅  |
+| quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 4 años (16.3 kg) | 163 | 163 | 0.543 | 0.54 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 5 años (18.3 kg) | 183 | 183 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 6 años (20.5 kg) | 205 | 205 | 0.683 | 0.68 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 8 años (25.6 kg) | 256 | 256 | 0.853 | 0.85 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 10 años (32 kg) | 320 | 320 | 1.067 | 1.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 12 años (40 kg) | 400 | 400 | 1.333 | 1.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 14 años (50 kg) | 500 | 500 | 1.667 | 1.67 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 16 años (58 kg) | 580 | 580 | 1.933 | 2 tableta | ✅  |
+| quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 17 años, obeso (95 kg) | 666.67 | 666.67 | 2.222 | 2.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 1 mes (4.2 kg) | 63 | 63 | 3.15 | 3.2 mL | ✅  |
 | rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 2 meses (5.1 kg) | 76.5 | 76.5 | 3.825 | 3.8 mL | ✅  |
 | rifampicina | tb-sensible | Suspensión 100 mg/5 mL | 4 meses (6.4 kg) | 96 | 96 | 4.8 | 4.8 mL | ✅  |

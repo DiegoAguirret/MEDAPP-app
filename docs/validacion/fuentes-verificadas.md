@@ -367,3 +367,21 @@ Cada cifra se confirmó en el documento descargado (texto de openFDA, el FNME 20
 
 - **Difenhidramina, ambroxol y domperidona:** no están en el PNUME ni en el FNME, y no se pudo confirmar qué presentaciones hay en el Perú. La domperidona no se debe usar en menores de 12 años ni de 35 kg (AEMPS).
 - **Clonazepam:** la solución de 2.5 mg/mL se da en gotas y falta el número de gotas por mL del producto peruano; sin ese dato la dosis no se puede medir. **Errata del FNME:** pone como tope 0.5 mg/kg/d, diez veces lo que dicen la FDA y la AEMPS (0.05 mg/kg/d al inicio).
+
+## Lote 9A: malaria — verificado el 07/11/2026
+
+**Fuente principal:** NTS 233-MINSA/DGIESP-2025 (RM 609-2025), que deroga la NTS 054-2007. Las cifras se confirmaron en la capa de texto del PDF.
+
+| Fármaco                 | Reglas                                                       | Cifras                                                                                                        |
+| ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| Cloroquina              | Días 1–2 y día 3 (P. vivax, P. ovale, P. malariae)           | 10, 10 y 5 mg base/kg; 6 meses o más, de 5 a menos de 44 kg (desde 44 kg, tabla de adultos)                   |
+| Primaquina              | 7 días (P. vivax); dosis única (P. malariae y P. falciparum) | 0.5 mg/kg/día; 0.25 mg/kg; no en menores de 6 meses ni con menos de 5 kg                                      |
+| Artesunato + mefloquina | Bandas de la Tabla 08                                        | >5–9 kg 25 + 50 mg; 10–18 kg 50 + 100 mg; 19–29 kg 100 + 200 mg; ≥30 kg 200 + 400 mg, 1 vez al día por 3 días |
+| Quinina oral            | Segunda opción (P. falciparum)                               | 10 mg de sal/kg c/8 h por 7 días, máximo 2 g/día                                                              |
+
+**No incluido:**
+
+- **Artesunato IV:** la norma dice 3 mg/kg por dosis en menores de 20 kg y 2.4 mg/kg desde 20 kg, pero solo «diluir en 5 a 10 cc», sin una concentración exacta. Se puede calcular con «Personalizar concentración».
+- **Mefloquina sola:** la tabla de la NTS 233 se contradice (12.5 mg/kg/día frente a «8 mg de sal/kg»).
+- **Artemetero + lumefantrina:** no está en el PNUME 2023, y las bandas de la norma se solapan en 15 kg y dejan sin banda los 35 kg.
+- **Leishmaniasis (antimoniato de meglumina):** no hay una norma MINSA de tratamiento vigente, y la concentración peruana viene como rango (80–85 mg Sb5+/mL).

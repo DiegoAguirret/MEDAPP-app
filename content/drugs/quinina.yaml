@@ -1,0 +1,45 @@
+id: quinina
+name: Quinina (oral)
+category: antiparasitario
+synonyms: [quinine, sulfato de quinina, antimalárico, malaria, paludismo]
+presentations:
+  - id: tab-300
+    label: Tableta 300 mg (sulfato de quinina)
+    form: tableta
+    mgPerUnit: 300
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: falciparum-segunda-opcion
+    indication: Malaria por P. falciparum, segunda opción si no hay terapia combinada con artemisinina
+    route: VO
+    ageMinDays: 183
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    intervalHours: 8
+    maxPerDoseMg: 666.7
+    maxPerDayMg: 2000
+    durationText: 7 días, con clindamicina 10 mg/kg c/12 h por 7 días y primaquina (NTS 233).
+    notes: >-
+      NTS 233-MINSA 2025, opción 02 — quinina sulfato 10 mg de sal/kg por dosis, 3 veces al día por 7 días; dosis
+      máxima 2 g (por día). Solo si no hay terapia combinada con artemisinina.
+    sourceIds: [minsa-nts233-2025, digemid-pnume-2023]
+warnings:
+  - La dosis está en mg de sal (sulfato de quinina).
+  - La quinina IV no figura en la NTS 233; en malaria grave la norma usa artesunato IV.
+contraindications: []
+diagnoses: [malaria, paludismo, malaria falciparum]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: falciparum-segunda-opcion
+    presentationId: tab-300
+    weightKg: 30
+    ageDays: 3285
+    expect: { mgPerDose: 300, amount: 1, unit: tableta }

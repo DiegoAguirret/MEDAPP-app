@@ -569,3 +569,10 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=63413469-c676-48a3-a945-7d2489b535ef
   kind: regulador
   country: US
+- id: minsa-nts233-2025
+  title: NTS N° 233-MINSA/DGIESP-2025, Norma Técnica de Salud para la atención integral de malaria no complicada y malaria grave en el Perú (RM 609-2025/MINSA)
+  publisher: Ministerio de Salud del Perú
+  year: 2025
+  url: https://cdn.www.gob.pe/uploads/document/file/8654965/7163706-nts-n-233-minsa-dgiesp-2025.pdf
+  kind: norma-peru
+  country: PE
