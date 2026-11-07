@@ -1,0 +1,70 @@
+id: aminofilina
+name: Aminofilina
+category: respiratorio
+synonyms: [aminophylline, teofilina IV, asma grave]
+presentations:
+  - id: amp-25
+    label: Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL)
+    form: ampolla
+    mgPerUnit: 25
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: carga-asma
+    indication: Asma grave que no mejora con broncodilatador inhalado y prednisolona, dosis de carga
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 5
+    amountMax: 6
+    usual: 5
+    once: true
+    maxPerDoseMg: 300
+    maxPerDayMg: 300
+    notes: >-
+      OMS (Pocket Book) — carga de 5 a 6 mg/kg (máximo 300 mg) IV en al menos 20 minutos, de preferencia en 1 hora.
+      Omitir la carga si recibió aminofilina o cafeína en las 24 horas previas. FNME — carga de 5 mg/kg IV en 20 a
+      30 min hasta los 16 años, expresada en equivalentes de teofilina anhidra.
+    presentationIds: [amp-25]
+    sourceIds: [who-pocket-2013, fnme-2008, digemid-pnume-2023]
+  - id: mantenimiento-asma
+    indication: Asma grave, mantenimiento después de la carga
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 5
+    amountMax: 5
+    usual: 5
+    intervalHours: 6
+    maxPerDoseMg: 250
+    maxPerDayMg: 1000
+    notes: >-
+      OMS (Pocket Book) — mantenimiento de 5 mg/kg cada 6 horas. El FNME usa infusión continua. Los topes son
+      técnicos (la dosis por kg con 50 kg).
+    presentationIds: [amp-25]
+    sourceIds: [who-pocket-2013, fnme-2008, digemid-pnume-2023]
+warnings:
+  - No se recomienda en el asma leve a moderada; se reserva para el niño que no mejora tras varias dosis de broncodilatador de acción rápida y prednisolona oral, de preferencia en cuidados intensivos (OMS).
+  - Es peligrosa en sobredosis o si se pasa demasiado rápido (OMS).
+  - Suspender de inmediato si el niño vomita, tiene pulso mayor de 180/min, cefalea o convulsiona (OMS).
+contraindications:
+  - Hipersensibilidad a las xantinas o a la etilendiamina (FNME).
+  - Úlcera péptica, glaucoma de ángulo agudo o psicosis (FNME).
+diagnoses: [asma, crisis asmática, broncoespasmo]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: carga-asma
+    presentationId: amp-25
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 100, amount: 4, unit: mL }
+  - ruleId: mantenimiento-asma
+    presentationId: amp-25
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 50, amount: 2, unit: mL }

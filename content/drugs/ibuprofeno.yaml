@@ -18,6 +18,13 @@ presentations:
     unit: mL
     step: 0.1
     brandsPE: [Doloral]
+  - id: iny-5
+    label: Ibuprofeno 5 mg/mL solución inyectable (ampolla de 10 mg/2 mL)
+    form: ampolla
+    mgPerUnit: 5
+    unit: mL
+    step: 0.01
+    brandsPE: []
 rules:
   - id: fiebre-dolor-vo
     indication: Fiebre o dolor leve a moderado (6 meses a 11 años)
@@ -36,14 +43,57 @@ rules:
       cada 6–8 h; no superar 40 mg/kg/día. Topes de 400 mg/toma y 1200 mg/día: dosis máxima
       de venta libre para 12 años o más (FDA). Libro Peña Camarena: 5–10 mg/kg/dosis cada 6–8 h.
       Administrar con alimentos.
+    presentationIds: [susp-100-5, gotas-40]
     sourceIds: [fnme-2008, fda-ibuprofen-susp, fda-ibuprofen-otc, pena-camarena]
     countryNotes:
       - country: PE
         text: El FNME indica 5 mg/kg (o 10 mg/kg en fiebre alta) cada 4–6 h según necesidad; la app usa cada 8 h, dentro del rango de la FDA (6–8 h).
         sourceIds: [fnme-2008]
+  - id: ductus-primera-dosis
+    indication: Ductus arterioso persistente en prematuros de menos de 34 semanas, 1.ª dosis IV
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    weightMinKg: 0.5
+    weightMaxKg: 5
+    basis: mg/kg/dose
+    amountMin: 10
+    amountMax: 10
+    usual: 10
+    once: true
+    maxPerDoseMg: 50
+    maxPerDayMg: 50
+    notes: >-
+      AEMPS (Pedea 5 mg/mL) — un ciclo son 3 inyecciones IV cada 24 horas: 1.ª de 10 mg/kg y 2.ª y 3.ª de 5 mg/kg;
+      la 1.ª, después de las 6 primeras horas de vida. Pasar en 15 minutos, de preferencia sin diluir. FDA (ibuprofeno
+      lisina) — mismo esquema, con el peso al nacer. Tope técnico (10 mg/kg con 5 kg).
+    presentationIds: [iny-5]
+    sourceIds: [aemps-ft-pedea, fda-neoprofen, digemid-pnume-2023]
+  - id: ductus-segunda-tercera
+    indication: Ductus arterioso persistente, 2.ª y 3.ª dosis IV (a las 24 y 48 horas de la 1.ª)
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    weightMinKg: 0.5
+    weightMaxKg: 5
+    basis: mg/kg/dose
+    amountMin: 5
+    amountMax: 5
+    usual: 5
+    intervalHours: 24
+    maxPerDoseMg: 25
+    maxPerDayMg: 25
+    durationText: 2 dosis, a las 24 y 48 horas de la 1.ª.
+    notes: AEMPS (Pedea) y FDA — 2.ª y 3.ª inyección de 5 mg/kg, cada 24 horas. Tope técnico (5 mg/kg con 5 kg).
+    presentationIds: [iny-5]
+    sourceIds: [aemps-ft-pedea, fda-neoprofen, digemid-pnume-2023]
 warnings:
   - Evitar en deshidratación por riesgo de lesión renal.
   - Riesgo de sangrado gastrointestinal.
+  - 'Ductus: solo en cuidados intensivos neonatales. Si hay anuria u oliguria marcada antes de la 2.ª o 3.ª dosis, posponerla hasta que la diuresis se normalice (AEMPS, FDA). La FDA dosifica con el peso al nacer.'
+  - 'Ductus, no usar con: infección grave, sangrado activo (sobre todo intracraneal o gastrointestinal), trombocitopenia o coagulopatía, insuficiencia renal importante, enterocolitis necrotizante, o cardiopatía que depende del ductus (AEMPS).'
 contraindications:
   - Hipersensibilidad a AINE o asma inducida por AINE.
 diagnoses: [fiebre, dolor]
@@ -51,7 +101,7 @@ review:
   status: verificado
   author: Diego
   reviewers: []
-  reviewedAt: 2026-11-04
+  reviewedAt: 2026-11-07
 testCases:
   - ruleId: fiebre-dolor-vo
     presentationId: susp-100-5
@@ -68,3 +118,13 @@ testCases:
     weightKg: 45
     ageDays: 4300
     expect: { mgPerDose: 400, amount: 20, unit: mL, capped: true }
+  - ruleId: ductus-primera-dosis
+    presentationId: iny-5
+    weightKg: 1
+    ageDays: 2
+    expect: { mgPerDose: 10, amount: 2, unit: mL }
+  - ruleId: ductus-segunda-tercera
+    presentationId: iny-5
+    weightKg: 1.2
+    ageDays: 3
+    expect: { mgPerDose: 6, amount: 1.2, unit: mL }

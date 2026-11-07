@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **8400** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **3674**. Fuera del rango de edad de la regla: 4726 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 3674/3674 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 3674/3674.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.55 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **8694** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **3792**. Fuera del rango de edad de la regla: 4902 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 3792/3792 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 3792/3792.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.56 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -299,6 +299,42 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | amikacina | neonato-mantenimiento | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 3 días, bajo peso (2 kg) (2 kg) | 15 | 15 | 0.3 | 0.3 mL | ✅  |
 | amikacina | neonato-mantenimiento | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 5 días (3.2 kg) (3.2 kg) | 24 | 24 | 0.48 | 0.5 mL | ✅  |
 | amikacina | neonato-mantenimiento | Amikacina 50 mg/mL (ampolla 100 mg/2 mL) | 15 días (3.6 kg) (3.6 kg) | 27 | 27 | 0.54 | 0.55 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 1 mes (4.2 kg) | 21 | 21 | 0.84 | 0.8 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 2 meses (5.1 kg) | 25.5 | 25.5 | 1.02 | 1 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 4 meses (6.4 kg) | 32 | 32 | 1.28 | 1.3 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 6 meses (7.6 kg) | 38 | 38 | 1.52 | 1.5 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 9 meses (8.6 kg) | 43 | 43 | 1.72 | 1.7 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 1 año (9.6 kg) | 48 | 48 | 1.92 | 1.9 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 18 meses (10.9 kg) | 54.5 | 54.5 | 2.18 | 2.2 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 2 años (12.2 kg) | 61 | 61 | 2.44 | 2.4 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 3 años (14.3 kg) | 71.5 | 71.5 | 2.86 | 2.9 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 4 años (16.3 kg) | 81.5 | 81.5 | 3.26 | 3.3 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 5 años (18.3 kg) | 91.5 | 91.5 | 3.66 | 3.7 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 6 años (20.5 kg) | 102.5 | 102.5 | 4.1 | 4.1 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 8 años (25.6 kg) | 128 | 128 | 5.12 | 5.1 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 10 años (32 kg) | 160 | 160 | 6.4 | 6.4 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 12 años (40 kg) | 200 | 200 | 8 | 8 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 14 años (50 kg) | 250 | 250 | 10 | 10 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 16 años (58 kg) | 290 | 290 | 11.6 | 11.6 mL | ✅  |
+| aminofilina | carga-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 17 años, obeso (95 kg) | 300 | 300 | 12 | 12 mL | ✅ tope aplicado |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 1 mes (4.2 kg) | 21 | 21 | 0.84 | 0.8 mL | ✅  |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 2 meses (5.1 kg) | 25.5 | 25.5 | 1.02 | 1 mL | ✅  |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 4 meses (6.4 kg) | 32 | 32 | 1.28 | 1.3 mL | ✅  |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 6 meses (7.6 kg) | 38 | 38 | 1.52 | 1.5 mL | ✅  |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 9 meses (8.6 kg) | 43 | 43 | 1.72 | 1.7 mL | ✅  |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 1 año (9.6 kg) | 48 | 48 | 1.92 | 1.9 mL | ✅  |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 18 meses (10.9 kg) | 54.5 | 54.5 | 2.18 | 2.2 mL | ✅  |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 2 años (12.2 kg) | 61 | 61 | 2.44 | 2.4 mL | ✅  |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 3 años (14.3 kg) | 71.5 | 71.5 | 2.86 | 2.9 mL | ✅  |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 4 años (16.3 kg) | 81.5 | 81.5 | 3.26 | 3.3 mL | ✅  |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 5 años (18.3 kg) | 91.5 | 91.5 | 3.66 | 3.7 mL | ✅  |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 6 años (20.5 kg) | 102.5 | 102.5 | 4.1 | 4.1 mL | ✅  |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 8 años (25.6 kg) | 128 | 128 | 5.12 | 5.1 mL | ✅  |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 10 años (32 kg) | 160 | 160 | 6.4 | 6.4 mL | ✅  |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 12 años (40 kg) | 200 | 200 | 8 | 8 mL | ✅  |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 14 años (50 kg) | 250 | 250 | 10 | 10 mL | ✅  |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 16 años (58 kg) | 250 | 250 | 10 | 10 mL | ✅ tope aplicado |
+| aminofilina | mantenimiento-asma | Aminofilina 25 mg/mL (ampolla de 250 mg/10 mL) | 17 años, obeso (95 kg) | 250 | 250 | 10 | 10 mL | ✅ tope aplicado |
 | amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 1 mes (4.2 kg) | 21 | 21 | 0.42 | 0.4 mL | ✅  |
 | amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 2 meses (5.1 kg) | 25.5 | 25.5 | 0.51 | 0.5 mL | ✅  |
 | amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 4 meses (6.4 kg) | 32 | 32 | 0.64 | 0.65 mL | ✅  |
@@ -577,6 +613,21 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | artesunato-mefloquina | banda-30-kg-o-mas | Tableta 100 mg + 200 mg (artesunato + mefloquina) | 14 años (50 kg) | 200 | 200 | 2 | 2 tableta | ✅  |
 | artesunato-mefloquina | banda-30-kg-o-mas | Tableta 100 mg + 200 mg (artesunato + mefloquina) | 16 años (58 kg) | 200 | 200 | 2 | 2 tableta | ✅  |
 | artesunato-mefloquina | banda-30-kg-o-mas | Tableta 100 mg + 200 mg (artesunato + mefloquina) | 17 años, obeso (95 kg) | 200 | 200 | 2 | 2 tableta | ✅  |
+| atracurio | inicial-1-mes-2-anos | Atracurio 10 mg/mL | 1 mes (4.2 kg) | 1.26 | 1.26 | 0.126 | 0.13 mL | ✅  |
+| atracurio | inicial-1-mes-2-anos | Atracurio 10 mg/mL | 2 meses (5.1 kg) | 1.53 | 1.53 | 0.153 | 0.15 mL | ✅  |
+| atracurio | inicial-1-mes-2-anos | Atracurio 10 mg/mL | 4 meses (6.4 kg) | 1.92 | 1.92 | 0.192 | 0.19 mL | ✅  |
+| atracurio | inicial-1-mes-2-anos | Atracurio 10 mg/mL | 6 meses (7.6 kg) | 2.28 | 2.28 | 0.228 | 0.23 mL | ✅  |
+| atracurio | inicial-1-mes-2-anos | Atracurio 10 mg/mL | 9 meses (8.6 kg) | 2.58 | 2.58 | 0.258 | 0.26 mL | ✅  |
+| atracurio | inicial-1-mes-2-anos | Atracurio 10 mg/mL | 1 año (9.6 kg) | 2.88 | 2.88 | 0.288 | 0.29 mL | ✅  |
+| atracurio | inicial-1-mes-2-anos | Atracurio 10 mg/mL | 18 meses (10.9 kg) | 3.27 | 3.27 | 0.327 | 0.33 mL | ✅  |
+| atracurio | inicial-2-anos-o-mas | Atracurio 10 mg/mL | 2 años (12.2 kg) | 4.88 | 4.88 | 0.488 | 0.49 mL | ✅  |
+| atracurio | inicial-2-anos-o-mas | Atracurio 10 mg/mL | 3 años (14.3 kg) | 5.72 | 5.72 | 0.572 | 0.57 mL | ✅  |
+| atracurio | inicial-2-anos-o-mas | Atracurio 10 mg/mL | 4 años (16.3 kg) | 6.52 | 6.52 | 0.652 | 0.65 mL | ✅  |
+| atracurio | inicial-2-anos-o-mas | Atracurio 10 mg/mL | 5 años (18.3 kg) | 7.32 | 7.32 | 0.732 | 0.73 mL | ✅  |
+| atracurio | inicial-2-anos-o-mas | Atracurio 10 mg/mL | 6 años (20.5 kg) | 8.2 | 8.2 | 0.82 | 0.82 mL | ✅  |
+| atracurio | inicial-2-anos-o-mas | Atracurio 10 mg/mL | 8 años (25.6 kg) | 10.24 | 10.24 | 1.024 | 1.02 mL | ✅  |
+| atracurio | inicial-2-anos-o-mas | Atracurio 10 mg/mL | 10 años (32 kg) | 12.8 | 12.8 | 1.28 | 1.28 mL | ✅  |
+| atracurio | inicial-2-anos-o-mas | Atracurio 10 mg/mL | 12 años (40 kg) | 16 | 16 | 1.6 | 1.6 mL | ✅  |
 | atropina | organofosforados | Ampolla 1 mg/mL | 1 mes (4.2 kg) | 0.21 | 0.21 | 0.21 | 0.2 mL | ✅  |
 | atropina | organofosforados | Ampolla 1 mg/mL | 2 meses (5.1 kg) | 0.26 | 0.26 | 0.255 | 0.25 mL | ✅  |
 | atropina | organofosforados | Ampolla 1 mg/mL | 4 meses (6.4 kg) | 0.32 | 0.32 | 0.32 | 0.32 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -2285,6 +2336,12 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | ibuprofeno | fiebre-dolor-vo | Gotas 40 mg/mL | 6 años (20.5 kg) | 205 | 205 | 5.125 | 5.1 mL | ✅  |
 | ibuprofeno | fiebre-dolor-vo | Gotas 40 mg/mL | 8 años (25.6 kg) | 256 | 256 | 6.4 | 6.4 mL | ✅  |
 | ibuprofeno | fiebre-dolor-vo | Gotas 40 mg/mL | 10 años (32 kg) | 320 | 320 | 8 | 8 mL | ✅  |
+| ibuprofeno | ductus-primera-dosis | Ibuprofeno 5 mg/mL solución inyectable (ampolla de 10 mg/2 mL) | 3 días, bajo peso (2 kg) (2 kg) | 20 | 20 | 4 | 4 mL | ✅  |
+| ibuprofeno | ductus-primera-dosis | Ibuprofeno 5 mg/mL solución inyectable (ampolla de 10 mg/2 mL) | 5 días (3.2 kg) (3.2 kg) | 32 | 32 | 6.4 | 6.4 mL | ✅  |
+| ibuprofeno | ductus-primera-dosis | Ibuprofeno 5 mg/mL solución inyectable (ampolla de 10 mg/2 mL) | 15 días (3.6 kg) (3.6 kg) | 36 | 36 | 7.2 | 7.2 mL | ✅  |
+| ibuprofeno | ductus-segunda-tercera | Ibuprofeno 5 mg/mL solución inyectable (ampolla de 10 mg/2 mL) | 3 días, bajo peso (2 kg) (2 kg) | 10 | 10 | 2 | 2 mL | ✅  |
+| ibuprofeno | ductus-segunda-tercera | Ibuprofeno 5 mg/mL solución inyectable (ampolla de 10 mg/2 mL) | 5 días (3.2 kg) (3.2 kg) | 16 | 16 | 3.2 | 3.2 mL | ✅  |
+| ibuprofeno | ductus-segunda-tercera | Ibuprofeno 5 mg/mL solución inyectable (ampolla de 10 mg/2 mL) | 15 días (3.6 kg) (3.6 kg) | 18 | 18 | 3.6 | 3.6 mL | ✅  |
 | ipratropio | crisis-hasta-5 | Inhalador 0.02 mg (20 µg) por puff, con aerocámara | 1 mes (4.2 kg) | 0.08 | 0.08 | 4 | 4 puff | ✅  |
 | ipratropio | crisis-hasta-5 | Inhalador 0.02 mg (20 µg) por puff, con aerocámara | 2 meses (5.1 kg) | 0.08 | 0.08 | 4 | 4 puff | ✅  |
 | ipratropio | crisis-hasta-5 | Inhalador 0.02 mg (20 µg) por puff, con aerocámara | 4 meses (6.4 kg) | 0.08 | 0.08 | 4 | 4 puff | ✅  |
@@ -3287,6 +3344,24 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | pirazinamida | tb-sensible | Tableta 500 mg | 10 años (32 kg) | 1120 | 1120 | 2.24 | 2.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | pirazinamida | tb-sensible | Tableta 500 mg | 12 años (40 kg) | 1400 | 1400 | 2.8 | 2.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | pirazinamida | tb-sensible | Tableta 500 mg | 14 años (50 kg) | 1500 | 1500 | 3 | 3 tableta | ✅ tope aplicado |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 1 mes (4.2 kg) | 105 | 105 | 2.1 | 2.1 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 2 meses (5.1 kg) | 127.5 | 127.5 | 2.55 | 2.6 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 4 meses (6.4 kg) | 160 | 160 | 3.2 | 3.2 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 6 meses (7.6 kg) | 190 | 190 | 3.8 | 3.8 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 9 meses (8.6 kg) | 215 | 215 | 4.3 | 4.3 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 1 año (9.6 kg) | 240 | 240 | 4.8 | 4.8 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 18 meses (10.9 kg) | 272.5 | 272.5 | 5.45 | 5.5 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 2 años (12.2 kg) | 305 | 305 | 6.1 | 6.1 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 3 años (14.3 kg) | 357.5 | 357.5 | 7.15 | 7.2 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 4 años (16.3 kg) | 407.5 | 407.5 | 8.15 | 8.2 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 5 años (18.3 kg) | 457.5 | 457.5 | 9.15 | 9.2 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 6 años (20.5 kg) | 512.5 | 512.5 | 10.25 | 10.3 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 8 años (25.6 kg) | 640 | 640 | 12.8 | 12.8 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 10 años (32 kg) | 800 | 800 | 16 | 16 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 12 años (40 kg) | 1000 | 1000 | 20 | 20 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 14 años (50 kg) | 1250 | 1250 | 25 | 25 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 16 años (58 kg) | 1450 | 1450 | 29 | 29 mL | ✅  |
+| pralidoxima | organofosforados | 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA) | 17 años, obeso (95 kg) | 2000 | 2000 | 40 | 40 mL | ✅ tope aplicado |
 | praziquantel | teniasis | Tableta 150 mg | 5 años (18.3 kg) | 91.5 | 91.5 | 0.61 | 0.61 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | praziquantel | teniasis | Tableta 150 mg | 6 años (20.5 kg) | 102.5 | 102.5 | 0.683 | 0.68 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | praziquantel | teniasis | Tableta 150 mg | 8 años (25.6 kg) | 128 | 128 | 0.853 | 0.85 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -3459,6 +3534,13 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | primaquina | dosis-unica-malariae-falciparum | Tableta 15 mg | 8 años (25.6 kg) | 6.4 | 6.4 | 0.427 | 0.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | primaquina | dosis-unica-malariae-falciparum | Tableta 15 mg | 10 años (32 kg) | 8 | 8 | 0.533 | 0.53 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | primaquina | dosis-unica-malariae-falciparum | Tableta 15 mg | 12 años (40 kg) | 10 | 10 | 0.667 | 0.67 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propofol | induccion-3-16-anos | Propofol 10 mg/mL (emulsión al 1 %) | 3 años (14.3 kg) | 35.75 | 35.75 | 3.575 | 3.6 mL | ✅  |
+| propofol | induccion-3-16-anos | Propofol 10 mg/mL (emulsión al 1 %) | 4 años (16.3 kg) | 40.75 | 40.75 | 4.075 | 4.1 mL | ✅  |
+| propofol | induccion-3-16-anos | Propofol 10 mg/mL (emulsión al 1 %) | 5 años (18.3 kg) | 45.75 | 45.75 | 4.575 | 4.6 mL | ✅  |
+| propofol | induccion-3-16-anos | Propofol 10 mg/mL (emulsión al 1 %) | 6 años (20.5 kg) | 51.25 | 51.25 | 5.125 | 5.1 mL | ✅  |
+| propofol | induccion-3-16-anos | Propofol 10 mg/mL (emulsión al 1 %) | 8 años (25.6 kg) | 64 | 64 | 6.4 | 6.4 mL | ✅  |
+| propofol | induccion-3-16-anos | Propofol 10 mg/mL (emulsión al 1 %) | 10 años (32 kg) | 80 | 80 | 8 | 8 mL | ✅  |
+| propofol | induccion-3-16-anos | Propofol 10 mg/mL (emulsión al 1 %) | 12 años (40 kg) | 100 | 100 | 10 | 10 mL | ✅  |
 | quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 6 meses (7.6 kg) | 76 | 76 | 0.253 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 9 meses (8.6 kg) | 86 | 86 | 0.287 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 1 año (9.6 kg) | 96 | 96 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -3522,6 +3604,42 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | rifampicina | tb-sensible | Tableta 300 mg | 10 años (32 kg) | 480 | 480 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | rifampicina | tb-sensible | Tableta 300 mg | 12 años (40 kg) | 600 | 600 | 2 | 2 tableta | ✅  |
 | rifampicina | tb-sensible | Tableta 300 mg | 14 años (50 kg) | 600 | 600 | 2 | 2 tableta | ✅ tope aplicado |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 3 días, bajo peso (2 kg) (2 kg) | 1.2 | 1.2 | 0.12 | 0.12 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 5 días (3.2 kg) (3.2 kg) | 1.92 | 1.92 | 0.192 | 0.19 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 15 días (3.6 kg) (3.6 kg) | 2.16 | 2.16 | 0.216 | 0.22 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 1 mes (4.2 kg) | 2.52 | 2.52 | 0.252 | 0.25 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 2 meses (5.1 kg) | 3.06 | 3.06 | 0.306 | 0.31 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 4 meses (6.4 kg) | 3.84 | 3.84 | 0.384 | 0.38 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 6 meses (7.6 kg) | 4.56 | 4.56 | 0.456 | 0.46 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 9 meses (8.6 kg) | 5.16 | 5.16 | 0.516 | 0.52 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 1 año (9.6 kg) | 5.76 | 5.76 | 0.576 | 0.58 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 18 meses (10.9 kg) | 6.54 | 6.54 | 0.654 | 0.65 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 2 años (12.2 kg) | 7.32 | 7.32 | 0.732 | 0.73 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 3 años (14.3 kg) | 8.58 | 8.58 | 0.858 | 0.86 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 4 años (16.3 kg) | 9.78 | 9.78 | 0.978 | 0.98 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 5 años (18.3 kg) | 10.98 | 10.98 | 1.098 | 1.1 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 6 años (20.5 kg) | 12.3 | 12.3 | 1.23 | 1.23 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 8 años (25.6 kg) | 15.36 | 15.36 | 1.536 | 1.54 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 10 años (32 kg) | 19.2 | 19.2 | 1.92 | 1.92 mL | ✅  |
+| rocuronio | intubacion | Rocuronio 10 mg/mL | 12 años (40 kg) | 24 | 24 | 2.4 | 2.4 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 3 días, bajo peso (2 kg) (2 kg) | 0.3 | 0.3 | 0.03 | 0.03 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 5 días (3.2 kg) (3.2 kg) | 0.48 | 0.48 | 0.048 | 0.05 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 15 días (3.6 kg) (3.6 kg) | 0.54 | 0.54 | 0.054 | 0.05 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 1 mes (4.2 kg) | 0.63 | 0.63 | 0.063 | 0.06 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 2 meses (5.1 kg) | 0.76 | 0.76 | 0.076 | 0.08 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 4 meses (6.4 kg) | 0.96 | 0.96 | 0.096 | 0.1 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 6 meses (7.6 kg) | 1.14 | 1.14 | 0.114 | 0.11 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 9 meses (8.6 kg) | 1.29 | 1.29 | 0.129 | 0.13 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 1 año (9.6 kg) | 1.44 | 1.44 | 0.144 | 0.14 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 18 meses (10.9 kg) | 1.64 | 1.64 | 0.164 | 0.16 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 2 años (12.2 kg) | 1.83 | 1.83 | 0.183 | 0.18 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 3 años (14.3 kg) | 2.15 | 2.15 | 0.214 | 0.21 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 4 años (16.3 kg) | 2.44 | 2.44 | 0.244 | 0.24 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 5 años (18.3 kg) | 2.75 | 2.75 | 0.275 | 0.27 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 6 años (20.5 kg) | 3.07 | 3.07 | 0.307 | 0.31 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 8 años (25.6 kg) | 3.84 | 3.84 | 0.384 | 0.38 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 10 años (32 kg) | 4.8 | 4.8 | 0.48 | 0.48 mL | ✅  |
+| rocuronio | mantenimiento | Rocuronio 10 mg/mL | 12 años (40 kg) | 6 | 6 | 0.6 | 0.6 mL | ✅  |
 | salbutamol | crisis-inhalador-hasta-5 | Inhalador 0.1 mg (100 µg) por puff, con aerocámara | 1 mes (4.2 kg) | 0.4 | 0.4 | 4 | 4 puff | ✅  |
 | salbutamol | crisis-inhalador-hasta-5 | Inhalador 0.1 mg (100 µg) por puff, con aerocámara | 2 meses (5.1 kg) | 0.4 | 0.4 | 4 | 4 puff | ✅  |
 | salbutamol | crisis-inhalador-hasta-5 | Inhalador 0.1 mg (100 µg) por puff, con aerocámara | 4 meses (6.4 kg) | 0.4 | 0.4 | 4 | 4 puff | ✅  |

@@ -425,3 +425,21 @@ La app ahora admite dosis en microgramos (`doseUnit: mcg`) para no mostrar dosis
 - **Ácido fólico:** la única presentación del PNUME es la tableta de 0.5 mg, y las dosis pediátricas del FNME van de 0.05 a 0.4 mg/día.
 
 **Discrepancias para avisar:** el FNME da la penicilina V a 15–62.5 mg/kg c/6–8 h sin decir si es por dosis o por día. En el hipotiroidismo congénito da una dosis fija de 25 mcg/día, mientras la FDA da 10–15 mcg/kg/día.
+
+## Lote 12: medicamentos hospitalarios, de anestesia y neonatales — verificado el 07/11/2026
+
+- **Aminofilina** (PNUME 25 mg/mL): OMS (Pocket Book), asma grave que no mejora con broncodilatador inhalado y prednisolona. Carga de 5–6 mg/kg (máximo 300 mg) en al menos 20 min y mantenimiento de 5 mg/kg c/6 h. El FNME expresa la carga en equivalentes de teofilina (5 mg/kg) y el mantenimiento en infusión continua.
+- **Rocuronio** (PNUME 10 mg/mL): FDA, intubación con 0.45–0.6 mg/kg desde el nacimiento y bolos de mantenimiento de 0.15 mg/kg. La FDA no lo recomienda para la secuencia rápida en niños.
+- **Atracurio** (PNUME 10 mg/mL): FDA, 0.3–0.4 mg/kg de 1 mes a 2 años y 0.4–0.5 mg/kg desde los 2 años.
+- **Propofol** (PNUME 1 % = 10 mg/mL): FDA (Diprivan), inducción con 2.5–3.5 mg/kg de 3 a 16 años. No se recomienda para la inducción en menores de 3 años.
+- **Pralidoxima** (PNUME 1 g): FNME, 25–50 mg/kg IV en 15–30 min. La FDA (Protopam) da 20–50 mg/kg, sin pasar de 2000 mg por dosis, y la solución de 50 mg/mL (1 g en 20 mL de agua).
+- **Indometacina IV** (PNUME 1 mg): FDA, cierre del ductus en prematuros de 500 a 1750 g. Es un ciclo de 3 dosis según la edad en la 1.ª dosis; con 1 mL de diluyente queda en 1 mg/mL (la FDA dice «aproximadamente»).
+- **Ibuprofeno IV para el ductus** (PNUME 5 mg/mL): se agregó a la ficha de ibuprofeno. Ficha técnica de Pedea 5 mg/mL (AEMPS), la misma concentración que el PNUME: 10 mg/kg y luego 5 mg/kg a las 24 y 48 h. La FDA (ibuprofeno lisina 10 mg/mL) usa el mismo esquema, pero su ficha no aclara si los mg/kg son de ibuprofeno o de la sal; por eso la fuente principal es Pedea.
+
+**No incluidos:**
+
+- **Budesonida y beclometasona inhaladas:** quedan para un lote de inhaladores con la tabla de dosis de GINA.
+- **Dopamina, dobutamina, norepinefrina, alprostadil e insulina:** se dan en infusión continua (mcg/kg/min o UI/kg/h), que la app todavía no calcula.
+- **Tramadol:** la FDA lo contraindica en menores de 12 años.
+- **Ácido tranexámico, tiopental y vecuronio:** el PNUME no da la concentración final de la ampolla o del frasco reconstituido.
+- **Bicarbonato y cloruro de potasio:** se dosifican en mEq, unidad que la app aún no maneja.

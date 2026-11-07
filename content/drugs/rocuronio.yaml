@@ -1,0 +1,73 @@
+id: rocuronio
+name: Rocuronio
+category: otro
+synonyms:
+  [rocuronium, bromuro de rocuronio, relajante muscular, bloqueante neuromuscular, intubación]
+presentations:
+  - id: amp-10
+    label: Rocuronio 10 mg/mL
+    form: ampolla
+    mgPerUnit: 10
+    unit: mL
+    step: 0.01
+    brandsPE: []
+rules:
+  - id: intubacion
+    indication: Intubación traqueal, dosis inicial (desde el nacimiento)
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 0.45
+    amountMax: 0.6
+    usual: 0.6
+    once: true
+    maxPerDoseMg: 30
+    maxPerDayMg: 30
+    notes: >-
+      FDA — en pediatría, dosis inicial de intubación de 0.6 mg/kg; puede usarse 0.45 mg/kg según la técnica
+      anestésica y la edad. El bloqueo máximo llega antes en lactantes de 28 días a 3 meses y más tarde en neonatos.
+      Tope técnico (0.6 mg/kg con 50 kg).
+    presentationIds: [amp-10]
+    sourceIds: [fda-rocuronium, digemid-pnume-2023]
+  - id: mantenimiento
+    indication: Mantenimiento del bloqueo, bolo (desde el nacimiento)
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 0.15
+    amountMax: 0.15
+    usual: 0.15
+    once: true
+    maxPerDoseMg: 7.5
+    maxPerDayMg: 7.5
+    notes: >-
+      FDA — con inducción con sevoflurano y mantenimiento con isoflurano/óxido nitroso, bolos de 0.15 mg/kg al
+      reaparecer T3, en todas las edades pediátricas. Repetir según la respuesta del estimulador de nervio periférico.
+    presentationIds: [amp-10]
+    sourceIds: [fda-rocuronium, digemid-pnume-2023]
+warnings:
+  - La FDA no lo recomienda para la intubación de secuencia rápida en pacientes pediátricos.
+  - Solo debe administrarlo un clínico con experiencia en bloqueantes neuromusculares, o personal entrenado bajo su supervisión (FDA).
+contraindications:
+  - Hipersensibilidad (por ejemplo, anafilaxia) al rocuronio o a otros bloqueantes neuromusculares.
+diagnoses: [intubación, secuencia de intubación, anestesia]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: intubacion
+    presentationId: amp-10
+    weightKg: 15
+    ageDays: 1460
+    expect: { mgPerDose: 9, amount: 0.9, unit: mL }
+  - ruleId: mantenimiento
+    presentationId: amp-10
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 3, amount: 0.3, unit: mL }

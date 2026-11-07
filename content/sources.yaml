@@ -618,3 +618,51 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=1e11ad30-1041-4520-10b0-8f9d30d30fcc
   kind: regulador
   country: US
+- id: fda-rocuronium
+  title: Bromuro de rocuronio inyectable 10 mg/mL — prescribing information (FDA, set 04c9812d-5aa3-4949-ad02-c618028f1bb0)
+  publisher: U.S. FDA / Fresenius Kabi
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=04c9812d-5aa3-4949-ad02-c618028f1bb0
+  kind: regulador
+  country: US
+- id: fda-atracurium
+  title: Besilato de atracurio inyectable 10 mg/mL — prescribing information (FDA, set 71d4bc78-57df-474b-8b19-811a959f1fce)
+  publisher: U.S. FDA / AuroMedics
+  year: 2022
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=71d4bc78-57df-474b-8b19-811a959f1fce
+  kind: regulador
+  country: US
+- id: fda-diprivan
+  title: Diprivan (propofol) emulsión inyectable 10 mg/mL — prescribing information (FDA, set d1ae9e26-ffd6-43df-bbd6-869cdede6afe)
+  publisher: U.S. FDA / Fresenius Kabi
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=d1ae9e26-ffd6-43df-bbd6-869cdede6afe
+  kind: regulador
+  country: US
+- id: fda-protopam
+  title: Protopam (cloruro de pralidoxima) 1 g — prescribing information (FDA, set 2741d8fd-51c2-46be-880b-99f2b20a6137)
+  publisher: U.S. FDA / Baxter
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=2741d8fd-51c2-46be-880b-99f2b20a6137
+  kind: regulador
+  country: US
+- id: fda-indomethacin-iv
+  title: Indometacina para inyección 1 mg — prescribing information (FDA, set 30e38747-c553-4e2d-bc23-634e1dd90b8d)
+  publisher: U.S. FDA / Fresenius Kabi
+  year: 2023
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=30e38747-c553-4e2d-bc23-634e1dd90b8d
+  kind: regulador
+  country: US
+- id: aemps-ft-pedea
+  title: Ficha técnica Pedea 5 mg/ml solución inyectable (ibuprofeno; nº reg. 04284001)
+  publisher: AEMPS — CIMA
+  url: https://cima.aemps.es/cima/dochtml/ft/04284001/FT_04284001.html
+  kind: regulador
+  country: ES
+- id: fda-neoprofen
+  title: NeoProfen (ibuprofeno lisina) inyectable — prescribing information (FDA, set 6f5ede6f-b0b7-4fc8-969e-652f60ead047)
+  publisher: U.S. FDA / Recordati
+  year: 2024
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=6f5ede6f-b0b7-4fc8-969e-652f60ead047
+  kind: regulador
+  country: US

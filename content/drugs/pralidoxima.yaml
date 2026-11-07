@@ -1,0 +1,50 @@
+id: pralidoxima
+name: Pralidoxima
+category: urgencia
+synonyms: [pralidoxime, Protopam, organofosforados, intoxicación por insecticidas, antídoto]
+presentations:
+  - id: frasco-1g-50
+    label: 50 mg/mL (frasco de 1 g disuelto en 20 mL de agua estéril, FDA)
+    form: ampolla
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: organofosforados
+    indication: Intoxicación por organofosforados, dosis inicial (junto con atropina)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 25
+    amountMax: 50
+    usual: 25
+    once: true
+    maxPerDoseMg: 2000
+    maxPerDayMg: 2000
+    notes: >-
+      FNME — niños, 25 a 50 mg/kg en infusión IV en 15 a 30 minutos; puede repetirse a la hora y luego cada 8 a 12
+      horas si persiste la debilidad muscular. FDA (Protopam) — 16 años o menos, 20 a 50 mg/kg (sin pasar de 2000
+      mg por dosis) en 15 a 30 minutos; si no es posible la infusión o hay edema pulmonar, inyección IV lenta (no
+      menos de 5 minutos) de la solución de 50 mg/mL.
+    presentationIds: [frasco-1g-50]
+    sourceIds: [fnme-2008, fda-protopam, digemid-pnume-2023]
+warnings:
+  - Siempre junto con atropina, descontaminación y soporte; la atropina va en cuanto mejora la hipoxemia (FDA).
+  - 'Pasarla lento: la infusión intermitente no debe superar 200 mg por minuto, porque puede empeorar transitoriamente los signos colinérgicos (FDA).'
+  - Sirve poco si se da más de 36 horas después de terminar la exposición. Vigilar al paciente al menos 48 a 72 horas (FDA).
+  - Evitar morfina, teofilina, aminofilina, reserpina y fenotiazinas en la intoxicación por organofosforados (FDA).
+contraindications:
+  - Hipersensibilidad a la pralidoxima.
+diagnoses: [intoxicación por organofosforados, intoxicación por insecticidas, intoxicación]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: organofosforados
+    presentationId: frasco-1g-50
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 500, amount: 10, unit: mL }

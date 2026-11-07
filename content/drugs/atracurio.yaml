@@ -1,0 +1,72 @@
+id: atracurio
+name: Atracurio
+category: otro
+synonyms:
+  [atracurium, besilato de atracurio, relajante muscular, bloqueante neuromuscular, intubación]
+presentations:
+  - id: amp-10
+    label: Atracurio 10 mg/mL
+    form: ampolla
+    mgPerUnit: 10
+    unit: mL
+    step: 0.01
+    brandsPE: []
+rules:
+  - id: inicial-1-mes-2-anos
+    indication: Dosis inicial, 1 mes a 2 años
+    route: IV
+    ageMinDays: 29
+    ageMaxDays: 729
+    basis: mg/kg/dose
+    amountMin: 0.3
+    amountMax: 0.4
+    usual: 0.3
+    once: true
+    maxPerDoseMg: 20
+    maxPerDayMg: 20
+    notes: >-
+      FDA — en lactantes de 1 mes a 2 años, dosis inicial de 0.3 a 0.4 mg/kg (bajo anestesia con halotano). Los
+      lactantes y niños pueden necesitar dosis de mantenimiento con algo más de frecuencia que los adultos. Tope
+      técnico (0.4 mg/kg con 50 kg).
+    presentationIds: [amp-10]
+    sourceIds: [fda-atracurium, digemid-pnume-2023]
+  - id: inicial-2-anos-o-mas
+    indication: Dosis inicial, 2 años o más
+    route: IV
+    ageMinDays: 730
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 0.4
+    amountMax: 0.5
+    usual: 0.4
+    once: true
+    maxPerDoseMg: 25
+    maxPerDayMg: 25
+    notes: >-
+      FDA — desde los 2 años no hace falta ajustar la dosis: 0.4 a 0.5 mg/kg en bolo IV, como en el adulto; buenas
+      condiciones de intubación no urgente en 2 a 2.5 minutos. Si se da bajo isoflurano o enflurano estables,
+      reducir la dosis inicial en un tercio (0.25 a 0.35 mg/kg). Tope técnico (0.5 mg/kg con 50 kg).
+    presentationIds: [amp-10]
+    sourceIds: [fda-atracurium, digemid-pnume-2023]
+warnings:
+  - Solo debe usarlo personal con experiencia en el manejo de la vía aérea y el soporte respiratorio, con equipo para intubar y ventilar disponible de inmediato (FDA).
+  - Con enfermedad cardiovascular importante o antecedente de anafilaxia o asma, dar 0.3 a 0.4 mg/kg lentamente o en dosis divididas durante un minuto (FDA).
+contraindications:
+  - Hipersensibilidad al atracurio.
+diagnoses: [intubación, anestesia]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: inicial-1-mes-2-anos
+    presentationId: amp-10
+    weightKg: 10
+    ageDays: 365
+    expect: { mgPerDose: 3, amount: 0.3, unit: mL }
+  - ruleId: inicial-2-anos-o-mas
+    presentationId: amp-10
+    weightKg: 25
+    ageDays: 2555
+    expect: { mgPerDose: 10, amount: 1, unit: mL }

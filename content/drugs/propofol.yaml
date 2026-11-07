@@ -1,0 +1,51 @@
+id: propofol
+name: Propofol
+category: otro
+synonyms: [Diprivan, anestésico, inducción anestésica]
+presentations:
+  - id: emulsion-10
+    label: Propofol 10 mg/mL (emulsión al 1 %)
+    form: ampolla
+    mgPerUnit: 10
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: induccion-3-16-anos
+    indication: Inducción de anestesia general, 3 a 16 años (ASA I o II)
+    route: IV
+    ageMinDays: 1095
+    ageMaxDays: 6209
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 2.5
+    amountMax: 3.5
+    usual: 2.5
+    once: true
+    maxPerDoseMg: 175
+    maxPerDayMg: 175
+    notes: >-
+      FDA (Diprivan) — de 3 a 16 años, ASA I o II, 2.5 a 3.5 mg/kg para la inducción sin premedicación o con
+      premedicación ligera; los más pequeños pueden necesitar dosis mayores. Dosis menor en ASA III o IV. Tope
+      técnico (3.5 mg/kg con 50 kg).
+    presentationIds: [emulsion-10]
+    sourceIds: [fda-diprivan, digemid-pnume-2023]
+warnings:
+  - No se recomienda para la inducción en menores de 3 años ni para el mantenimiento en menores de 2 meses (FDA).
+  - La sedación en UCI con propofol está aprobada solo en adultos (FDA).
+  - Puede causar depresión cardiorrespiratoria (hipotensión, apnea, obstrucción de la vía aérea, desaturación). Prevenir el dolor de la inyección en niños (FDA).
+contraindications:
+  - Hipersensibilidad al propofol o a sus componentes.
+  - Antecedente de anafilaxia al huevo, a productos de huevo, a la soya o a productos de soya.
+diagnoses: [anestesia, inducción anestésica, intubación]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: induccion-3-16-anos
+    presentationId: emulsion-10
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 50, amount: 5, unit: mL }

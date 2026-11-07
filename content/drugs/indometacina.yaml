@@ -1,0 +1,113 @@
+id: indometacina
+name: Indometacina IV (ductus)
+category: cardiovascular
+synonyms: [indomethacin, ductus arterioso persistente, PDA, cierre del ductus]
+presentations:
+  - id: frasco-1mg-1ml
+    label: Frasco 1 mg reconstituido con 1 mL = 1 mg/mL (aproximado, FDA)
+    form: ampolla
+    mgPerUnit: 1
+    unit: mL
+    step: 0.01
+    brandsPE: []
+rules:
+  - id: primera-dosis
+    indication: Ductus arterioso persistente en prematuros de 500 a 1750 g, 1.ª dosis (cualquier edad)
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    weightMinKg: 0.5
+    weightMaxKg: 1.751
+    basis: mg/kg/dose
+    amountMin: 0.2
+    amountMax: 0.2
+    usual: 0.2
+    once: true
+    maxPerDoseMg: 0.35
+    maxPerDayMg: 0.35
+    notes: >-
+      FDA — un ciclo son 3 dosis IV a intervalos de 12 a 24 horas, según la edad en la 1.ª dosis: menos de 48 h,
+      0.2 – 0.1 – 0.1 mg/kg; 2 a 7 días, 0.2 – 0.2 – 0.2 mg/kg; más de 7 días, 0.2 – 0.25 – 0.25 mg/kg. Tope
+      técnico (0.2 mg/kg con 1.75 kg).
+    presentationIds: [frasco-1mg-1ml]
+    sourceIds: [fda-indomethacin-iv, digemid-pnume-2023]
+  - id: dosis-2-3-primera-antes-48h
+    indication: 2.ª y 3.ª dosis, si la 1.ª se dio antes de las 48 horas de vida
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    weightMinKg: 0.5
+    weightMaxKg: 1.751
+    basis: mg/kg/dose
+    amountMin: 0.1
+    amountMax: 0.1
+    usual: 0.1
+    once: true
+    maxPerDoseMg: 0.175
+    maxPerDayMg: 0.175
+    notes: FDA — si la 1.ª dosis fue antes de las 48 h de vida, la 2.ª y la 3.ª son de 0.1 mg/kg, cada 12 a 24 horas.
+    presentationIds: [frasco-1mg-1ml]
+    sourceIds: [fda-indomethacin-iv, digemid-pnume-2023]
+  - id: dosis-2-3-primera-2-7-dias
+    indication: 2.ª y 3.ª dosis, si la 1.ª se dio entre los 2 y 7 días de vida
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    weightMinKg: 0.5
+    weightMaxKg: 1.751
+    basis: mg/kg/dose
+    amountMin: 0.2
+    amountMax: 0.2
+    usual: 0.2
+    once: true
+    maxPerDoseMg: 0.35
+    maxPerDayMg: 0.35
+    notes: FDA — si la 1.ª dosis fue entre los 2 y 7 días de vida, la 2.ª y la 3.ª son de 0.2 mg/kg, cada 12 a 24 horas.
+    presentationIds: [frasco-1mg-1ml]
+    sourceIds: [fda-indomethacin-iv, digemid-pnume-2023]
+  - id: dosis-2-3-primera-despues-7-dias
+    indication: 2.ª y 3.ª dosis, si la 1.ª se dio después de los 7 días de vida
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    weightMinKg: 0.5
+    weightMaxKg: 1.751
+    basis: mg/kg/dose
+    amountMin: 0.25
+    amountMax: 0.25
+    usual: 0.25
+    once: true
+    maxPerDoseMg: 0.4375
+    maxPerDayMg: 0.4375
+    notes: FDA — si la 1.ª dosis fue después de los 7 días de vida, la 2.ª y la 3.ª son de 0.25 mg/kg, cada 12 a 24 horas.
+    presentationIds: [frasco-1mg-1ml]
+    sourceIds: [fda-indomethacin-iv, digemid-pnume-2023]
+warnings:
+  - La dosis de la 2.ª y 3.ª inyección depende de la edad que tenía el bebé en la 1.ª dosis, no de la edad actual.
+  - Si hay anuria u oliguria marcada (menos de 0.6 mL/kg/h) al momento de la 2.ª o 3.ª dosis, no darla hasta que la función renal se normalice (FDA).
+  - Reconstituir con 1 mL de suero fisiológico o agua estéril SIN conservantes (el alcohol bencílico es tóxico en neonatos); preparar justo antes de cada dosis y desechar el sobrante (FDA).
+  - Si el ductus se reabre, puede darse un 2.º ciclo de 1 a 3 dosis; si no responde tras 2 ciclos, puede requerir cirugía (FDA).
+contraindications:
+  - Infección probada o sospechada sin tratar.
+  - Sangrado activo, sobre todo hemorragia intracraneal o gastrointestinal.
+  - Trombocitopenia o trastornos de la coagulación.
+  - Enterocolitis necrotizante probada o sospechada.
+  - Insuficiencia renal importante.
+  - Cardiopatía congénita que depende del ductus (por ejemplo, atresia pulmonar, tetralogía de Fallot grave, coartación aórtica grave).
+diagnoses: [ductus arterioso persistente, PDA, prematuro]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: primera-dosis
+    presentationId: frasco-1mg-1ml
+    weightKg: 1
+    ageDays: 1
+    expect: { mgPerDose: 0.2, amount: 0.2, unit: mL }
+  - ruleId: dosis-2-3-primera-despues-7-dias
+    presentationId: frasco-1mg-1ml
+    weightKg: 1.2
+    ageDays: 10
+    expect: { mgPerDose: 0.3, amount: 0.3, unit: mL }
