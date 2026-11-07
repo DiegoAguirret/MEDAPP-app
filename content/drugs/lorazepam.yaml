@@ -1,0 +1,57 @@
+id: lorazepam
+name: Lorazepam
+category: anticonvulsivante
+synonyms: [Ativan, benzodiazepina, estado epiléptico, status epiléptico, convulsión]
+presentations:
+  - id: amp-2
+    label: Lorazepam 2 mg/mL
+    form: ampolla
+    mgPerUnit: 2
+    unit: mL
+    step: 0.05
+    brandsPE: []
+  - id: amp-4
+    label: Lorazepam 4 mg/mL
+    form: ampolla
+    mgPerUnit: 4
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: estado-epileptico
+    indication: Estado epiléptico (IV lenta)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 0.05
+    amountMax: 0.1
+    usual: 0.1
+    repeatMinutes: { min: 10, max: 10 }
+    maxDoses: 2
+    maxPerDoseMg: 4
+    maxPerDayMg: 8
+    notes: >-
+      OMS (Model Formulary for Children) — neonatos, lactantes y niños, 50 a 100 mcg/kg (máximo 4 mg) IV lenta en
+      dosis única, que puede repetirse una vez a los 10 minutos. La app no calcula neonatos para este fármaco.
+    presentationIds: [amp-2, amp-4]
+    sourceIds: [who-mfc-2010, fda-lorazepam-inj, digemid-pnume-2023]
+warnings:
+  - 'FDA: no se ha establecido su eficacia en el estado epiléptico pediátrico; en un ensayo de 273 niños no superó al diazepam IV y el 18 % necesitó ventilación asistida.'
+  - El soporte ventilatorio debe estar disponible antes de administrarlo (FDA).
+  - La ampolla contiene alcohol bencílico y propilenglicol (FDA).
+  - En insuficiencia renal, más sensibilidad; usar una dosis inicial menor si es grave (OMS).
+contraindications:
+  - Depresión del SNC o coma, shock, depresión respiratoria, insuficiencia pulmonar aguda o apnea del sueño (OMS).
+  - Insuficiencia hepática grave (OMS).
+diagnoses: [estado epiléptico, convulsión, status epiléptico]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: estado-epileptico
+    presentationId: amp-2
+    weightKg: 15
+    ageDays: 1460
+    expect: { mgPerDose: 1.5, amount: 0.75, unit: mL }

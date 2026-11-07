@@ -483,3 +483,17 @@ La app ahora calcula infusiones: la dosis en mcg/kg/min o mg/kg/h da la velocida
 
 - **Miltefosina:** no está en el FNME ni en el Model Formulary for Children, y openFDA no devuelve la ficha de Impavido.
 - **Pirimetamina:** la toxoplasmosis se trata con un esquema combinado (sulfadiazina y ácido folínico) que no se verificó en este lote.
+
+## Lote 14: neurología y psiquiatría — verificado el 07/11/2026
+
+- **Etosuximida** (PNUME 250 mg/5 mL y 250 mg): OMS, de 1 mes a 6 años, 5 mg/kg (máximo 125 mg) c/12 h al inicio y 10–20 mg/kg (máximo 500 mg) de mantenimiento; de 6 a 12 años, 250 mg c/12 h al inicio y 500–750 mg c/12 h. No está en el FNME.
+- **Lorazepam** (PNUME 2 y 4 mg/mL): OMS, estado epiléptico, 0.05–0.1 mg/kg IV (máximo 4 mg), repetible una vez a los 10 min. La FDA advierte que en un ensayo pediátrico no superó al diazepam. La OMS incluye neonatos, pero la app no los calcula.
+- **Haloperidol en gotas** (PNUME 2 mg/mL): FNME, de 3 a 12 años (15–40 kg), 0.05 mg/kg/día en 2 o 3 tomas, máximo 0.15 mg/kg/día.
+- **Biperideno IM** (PNUME 5 mg/mL): FNME, reacción extrapiramidal por medicamentos, 0.04 mg/kg, repetible cada 30 min hasta 4 dosis al día.
+- **Metilfenidato** (PNUME 10 mg): FDA (Ritalin), 6 años o más, dosis de inicio de 5 mg c/12 h; sube 5–10 mg por semana hasta un máximo de 60 mg/día.
+
+**No incluidos:**
+
+- **Lamotrigina:** su dosis pediátrica depende del uso de valproato y de tablas por peso, y el PNUME solo tiene la tableta de 50 mg. No está en el FNME ni en el Model Formulary for Children.
+- **Clobazam:** no está en el FNME ni en el Model Formulary for Children, y openFDA no devolvió la ficha de Onfi.
+- **Haloperidol IM:** la OMS da 1–3 mg cada 4–8 h con un tope en mg/kg/día, y esa combinación no se puede cargar sin elegir un intervalo.

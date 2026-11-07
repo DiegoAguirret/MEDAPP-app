@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **9240** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **4119**. Fuera del rango de edad de la regla: 5121 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 4119/4119 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 4113/4119.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.59 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **9513** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **4246**. Fuera del rango de edad de la regla: 5267 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 4246/4246 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 4240/4246.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.60 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -883,6 +883,24 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | benznidazol | chagas | Tableta 100 mg | 12 años (40 kg) | 200 | 200 | 2 | 2 tableta | ✅  |
 | benznidazol | chagas | Tableta 100 mg | 14 años (50 kg) | 250 | 250 | 2.5 | 2.5 tableta | ✅  |
 | benznidazol | chagas | Tableta 100 mg | 16 años (58 kg) | 250 | 250 | 2.5 | 2.5 tableta | ✅ tope aplicado |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 1 mes (4.2 kg) | 0.17 | 0.17 | 0.034 | 0.03 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 2 meses (5.1 kg) | 0.2 | 0.2 | 0.041 | 0.04 mL | ✅  |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 4 meses (6.4 kg) | 0.26 | 0.26 | 0.051 | 0.05 mL | ✅  |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 6 meses (7.6 kg) | 0.3 | 0.3 | 0.061 | 0.06 mL | ✅  |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 9 meses (8.6 kg) | 0.34 | 0.34 | 0.069 | 0.07 mL | ✅  |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 1 año (9.6 kg) | 0.38 | 0.38 | 0.077 | 0.08 mL | ✅  |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 18 meses (10.9 kg) | 0.44 | 0.44 | 0.087 | 0.09 mL | ✅  |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 2 años (12.2 kg) | 0.49 | 0.49 | 0.098 | 0.1 mL | ✅  |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 3 años (14.3 kg) | 0.57 | 0.57 | 0.114 | 0.11 mL | ✅  |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 4 años (16.3 kg) | 0.65 | 0.65 | 0.13 | 0.13 mL | ✅  |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 5 años (18.3 kg) | 0.73 | 0.73 | 0.146 | 0.15 mL | ✅  |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 6 años (20.5 kg) | 0.82 | 0.82 | 0.164 | 0.16 mL | ✅  |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 8 años (25.6 kg) | 1.02 | 1.02 | 0.205 | 0.2 mL | ✅  |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 10 años (32 kg) | 1.28 | 1.28 | 0.256 | 0.26 mL | ✅  |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 12 años (40 kg) | 1.6 | 1.6 | 0.32 | 0.32 mL | ✅  |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 14 años (50 kg) | 2 | 2 | 0.4 | 0.4 mL | ✅  |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 16 años (58 kg) | 2 | 2 | 0.4 | 0.4 mL | ✅ tope aplicado |
+| biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 17 años, obeso (95 kg) | 2 | 2 | 0.4 | 0.4 mL | ✅ tope aplicado |
 | cafeina-citrato | carga-iv | Solución inyectable 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 3 días, bajo peso (2 kg) (2 kg) | 40 | 40 | 2 | 2 mL | ✅  |
 | cafeina-citrato | carga-iv | Solución inyectable 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 5 días (3.2 kg) (3.2 kg) | 64 | 64 | 3.2 | 3.2 mL | ✅  |
 | cafeina-citrato | carga-iv | Solución inyectable 20 mg/mL de citrato de cafeína (10 mg de cafeína base/mL) | 15 días (3.6 kg) (3.6 kg) | 72 | 72 | 3.6 | 3.6 mL | ✅  |
@@ -2033,6 +2051,66 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | etambutol | tb-sensible | Tableta 400 mg | 10 años (32 kg) | 640 | 640 | 1.6 | 1.6 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | etambutol | tb-sensible | Tableta 400 mg | 12 años (40 kg) | 800 | 800 | 2 | 2 tableta | ✅  |
 | etambutol | tb-sensible | Tableta 400 mg | 14 años (50 kg) | 1000 | 1000 | 2.5 | 2.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | inicial-1m-6a | Solución oral 250 mg/5 mL | 1 mes (4.2 kg) | 21 | 21 | 0.42 | 0.4 mL | ✅  |
+| etosuximida | inicial-1m-6a | Solución oral 250 mg/5 mL | 2 meses (5.1 kg) | 25.5 | 25.5 | 0.51 | 0.5 mL | ✅  |
+| etosuximida | inicial-1m-6a | Solución oral 250 mg/5 mL | 4 meses (6.4 kg) | 32 | 32 | 0.64 | 0.64 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | inicial-1m-6a | Solución oral 250 mg/5 mL | 6 meses (7.6 kg) | 38 | 38 | 0.76 | 0.76 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | inicial-1m-6a | Solución oral 250 mg/5 mL | 9 meses (8.6 kg) | 43 | 43 | 0.86 | 0.9 mL | ✅  |
+| etosuximida | inicial-1m-6a | Solución oral 250 mg/5 mL | 1 año (9.6 kg) | 48 | 48 | 0.96 | 1 mL | ✅  |
+| etosuximida | inicial-1m-6a | Solución oral 250 mg/5 mL | 18 meses (10.9 kg) | 54.5 | 54.5 | 1.09 | 1.1 mL | ✅  |
+| etosuximida | inicial-1m-6a | Solución oral 250 mg/5 mL | 2 años (12.2 kg) | 61 | 61 | 1.22 | 1.2 mL | ✅  |
+| etosuximida | inicial-1m-6a | Solución oral 250 mg/5 mL | 3 años (14.3 kg) | 71.5 | 71.5 | 1.43 | 1.4 mL | ✅  |
+| etosuximida | inicial-1m-6a | Solución oral 250 mg/5 mL | 4 años (16.3 kg) | 81.5 | 81.5 | 1.63 | 1.6 mL | ✅  |
+| etosuximida | inicial-1m-6a | Solución oral 250 mg/5 mL | 5 años (18.3 kg) | 91.5 | 91.5 | 1.83 | 1.8 mL | ✅  |
+| etosuximida | inicial-1m-6a | Tableta 250 mg | 1 mes (4.2 kg) | 21 | 21 | 0.084 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | inicial-1m-6a | Tableta 250 mg | 2 meses (5.1 kg) | 25.5 | 25.5 | 0.102 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | inicial-1m-6a | Tableta 250 mg | 4 meses (6.4 kg) | 32 | 32 | 0.128 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | inicial-1m-6a | Tableta 250 mg | 6 meses (7.6 kg) | 38 | 38 | 0.152 | 0.15 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | inicial-1m-6a | Tableta 250 mg | 9 meses (8.6 kg) | 43 | 43 | 0.172 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | inicial-1m-6a | Tableta 250 mg | 1 año (9.6 kg) | 48 | 48 | 0.192 | 0.19 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | inicial-1m-6a | Tableta 250 mg | 18 meses (10.9 kg) | 54.5 | 54.5 | 0.218 | 0.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | inicial-1m-6a | Tableta 250 mg | 2 años (12.2 kg) | 61 | 61 | 0.244 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | inicial-1m-6a | Tableta 250 mg | 3 años (14.3 kg) | 71.5 | 71.5 | 0.286 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | inicial-1m-6a | Tableta 250 mg | 4 años (16.3 kg) | 81.5 | 81.5 | 0.326 | 0.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | inicial-1m-6a | Tableta 250 mg | 5 años (18.3 kg) | 91.5 | 91.5 | 0.366 | 0.37 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | mantenimiento-1m-6a | Solución oral 250 mg/5 mL | 1 mes (4.2 kg) | 42 | 42 | 0.84 | 0.8 mL | ✅  |
+| etosuximida | mantenimiento-1m-6a | Solución oral 250 mg/5 mL | 2 meses (5.1 kg) | 51 | 51 | 1.02 | 1 mL | ✅  |
+| etosuximida | mantenimiento-1m-6a | Solución oral 250 mg/5 mL | 4 meses (6.4 kg) | 64 | 64 | 1.28 | 1.3 mL | ✅  |
+| etosuximida | mantenimiento-1m-6a | Solución oral 250 mg/5 mL | 6 meses (7.6 kg) | 76 | 76 | 1.52 | 1.5 mL | ✅  |
+| etosuximida | mantenimiento-1m-6a | Solución oral 250 mg/5 mL | 9 meses (8.6 kg) | 86 | 86 | 1.72 | 1.7 mL | ✅  |
+| etosuximida | mantenimiento-1m-6a | Solución oral 250 mg/5 mL | 1 año (9.6 kg) | 96 | 96 | 1.92 | 1.9 mL | ✅  |
+| etosuximida | mantenimiento-1m-6a | Solución oral 250 mg/5 mL | 18 meses (10.9 kg) | 109 | 109 | 2.18 | 2.2 mL | ✅  |
+| etosuximida | mantenimiento-1m-6a | Solución oral 250 mg/5 mL | 2 años (12.2 kg) | 122 | 122 | 2.44 | 2.4 mL | ✅  |
+| etosuximida | mantenimiento-1m-6a | Solución oral 250 mg/5 mL | 3 años (14.3 kg) | 143 | 143 | 2.86 | 2.9 mL | ✅  |
+| etosuximida | mantenimiento-1m-6a | Solución oral 250 mg/5 mL | 4 años (16.3 kg) | 163 | 163 | 3.26 | 3.3 mL | ✅  |
+| etosuximida | mantenimiento-1m-6a | Solución oral 250 mg/5 mL | 5 años (18.3 kg) | 183 | 183 | 3.66 | 3.7 mL | ✅  |
+| etosuximida | mantenimiento-1m-6a | Tableta 250 mg | 1 mes (4.2 kg) | 42 | 42 | 0.168 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | mantenimiento-1m-6a | Tableta 250 mg | 2 meses (5.1 kg) | 51 | 51 | 0.204 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | mantenimiento-1m-6a | Tableta 250 mg | 4 meses (6.4 kg) | 64 | 64 | 0.256 | 0.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | mantenimiento-1m-6a | Tableta 250 mg | 6 meses (7.6 kg) | 76 | 76 | 0.304 | 0.3 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | mantenimiento-1m-6a | Tableta 250 mg | 9 meses (8.6 kg) | 86 | 86 | 0.344 | 0.34 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | mantenimiento-1m-6a | Tableta 250 mg | 1 año (9.6 kg) | 96 | 96 | 0.384 | 0.38 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | mantenimiento-1m-6a | Tableta 250 mg | 18 meses (10.9 kg) | 109 | 109 | 0.436 | 0.44 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | mantenimiento-1m-6a | Tableta 250 mg | 2 años (12.2 kg) | 122 | 122 | 0.488 | 0.5 tableta | ✅  |
+| etosuximida | mantenimiento-1m-6a | Tableta 250 mg | 3 años (14.3 kg) | 143 | 143 | 0.572 | 0.57 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | mantenimiento-1m-6a | Tableta 250 mg | 4 años (16.3 kg) | 163 | 163 | 0.652 | 0.65 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | mantenimiento-1m-6a | Tableta 250 mg | 5 años (18.3 kg) | 183 | 183 | 0.732 | 0.73 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| etosuximida | inicial-6-12a | Solución oral 250 mg/5 mL | 6 años (20.5 kg) | 250 | 250 | 5 | 5 mL | ✅  |
+| etosuximida | inicial-6-12a | Solución oral 250 mg/5 mL | 8 años (25.6 kg) | 250 | 250 | 5 | 5 mL | ✅  |
+| etosuximida | inicial-6-12a | Solución oral 250 mg/5 mL | 10 años (32 kg) | 250 | 250 | 5 | 5 mL | ✅  |
+| etosuximida | inicial-6-12a | Solución oral 250 mg/5 mL | 12 años (40 kg) | 250 | 250 | 5 | 5 mL | ✅  |
+| etosuximida | inicial-6-12a | Tableta 250 mg | 6 años (20.5 kg) | 250 | 250 | 1 | 1 tableta | ✅  |
+| etosuximida | inicial-6-12a | Tableta 250 mg | 8 años (25.6 kg) | 250 | 250 | 1 | 1 tableta | ✅  |
+| etosuximida | inicial-6-12a | Tableta 250 mg | 10 años (32 kg) | 250 | 250 | 1 | 1 tableta | ✅  |
+| etosuximida | inicial-6-12a | Tableta 250 mg | 12 años (40 kg) | 250 | 250 | 1 | 1 tableta | ✅  |
+| etosuximida | mantenimiento-6-12a | Solución oral 250 mg/5 mL | 6 años (20.5 kg) | 500 | 500 | 10 | 10 mL | ✅  |
+| etosuximida | mantenimiento-6-12a | Solución oral 250 mg/5 mL | 8 años (25.6 kg) | 500 | 500 | 10 | 10 mL | ✅  |
+| etosuximida | mantenimiento-6-12a | Solución oral 250 mg/5 mL | 10 años (32 kg) | 500 | 500 | 10 | 10 mL | ✅  |
+| etosuximida | mantenimiento-6-12a | Solución oral 250 mg/5 mL | 12 años (40 kg) | 500 | 500 | 10 | 10 mL | ✅  |
+| etosuximida | mantenimiento-6-12a | Tableta 250 mg | 6 años (20.5 kg) | 500 | 500 | 2 | 2 tableta | ✅  |
+| etosuximida | mantenimiento-6-12a | Tableta 250 mg | 8 años (25.6 kg) | 500 | 500 | 2 | 2 tableta | ✅  |
+| etosuximida | mantenimiento-6-12a | Tableta 250 mg | 10 años (32 kg) | 500 | 500 | 2 | 2 tableta | ✅  |
+| etosuximida | mantenimiento-6-12a | Tableta 250 mg | 12 años (40 kg) | 500 | 500 | 2 | 2 tableta | ✅  |
 | fenitoina | estado-epileptico-carga | Ampolla 50 mg/mL | 1 mes (4.2 kg) | 63 | 63 | 1.26 | 1.3 mL | ✅  |
 | fenitoina | estado-epileptico-carga | Ampolla 50 mg/mL | 2 meses (5.1 kg) | 76.5 | 76.5 | 1.53 | 1.5 mL | ✅  |
 | fenitoina | estado-epileptico-carga | Ampolla 50 mg/mL | 4 meses (6.4 kg) | 96 | 96 | 1.92 | 1.9 mL | ✅  |
@@ -2358,6 +2436,12 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | griseofulvina | tinas-22-kg-o-mas | Tableta 500 mg (microsize) | 14 años (50 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅  |
 | griseofulvina | tinas-22-kg-o-mas | Tableta 500 mg (microsize) | 16 años (58 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅  |
 | griseofulvina | tinas-22-kg-o-mas | Tableta 500 mg (microsize) | 17 años, obeso (95 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅  |
+| haloperidol | psicosis-3-12a | Gotas 2 mg/mL | 4 años (16.3 kg) | 0.41 | 0.41 | 0.204 | 0.2 mL | ✅  |
+| haloperidol | psicosis-3-12a | Gotas 2 mg/mL | 5 años (18.3 kg) | 0.46 | 0.46 | 0.229 | 0.23 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| haloperidol | psicosis-3-12a | Gotas 2 mg/mL | 6 años (20.5 kg) | 0.51 | 0.51 | 0.256 | 0.25 mL | ✅  |
+| haloperidol | psicosis-3-12a | Gotas 2 mg/mL | 8 años (25.6 kg) | 0.64 | 0.64 | 0.32 | 0.32 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| haloperidol | psicosis-3-12a | Gotas 2 mg/mL | 10 años (32 kg) | 0.8 | 0.8 | 0.4 | 0.4 mL | ✅  |
+| haloperidol | psicosis-3-12a | Gotas 2 mg/mL | 12 años (40 kg) | 1 | 1 | 0.5 | 0.5 mL | ✅  |
 | hidroclorotiazida | menores-6-meses | Tableta 12.5 mg | 1 mes (4.2 kg) | 2.1 | 2.1 | 0.168 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | hidroclorotiazida | menores-6-meses | Tableta 12.5 mg | 2 meses (5.1 kg) | 2.55 | 2.55 | 0.204 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | hidroclorotiazida | menores-6-meses | Tableta 12.5 mg | 4 meses (6.4 kg) | 3.2 | 3.2 | 0.256 | 0.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -2859,6 +2943,42 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | loratadina | alergia-30-kg-o-mas | Jarabe 5 mg/5 mL | 12 años (40 kg) | 10 | 10 | 10 | 10 mL | ✅  |
 | loratadina | alergia-30-kg-o-mas | Tableta 10 mg | 10 años (32 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
 | loratadina | alergia-30-kg-o-mas | Tableta 10 mg | 12 años (40 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 1 mes (4.2 kg) | 0.42 | 0.42 | 0.21 | 0.2 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 2 meses (5.1 kg) | 0.51 | 0.51 | 0.255 | 0.25 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 4 meses (6.4 kg) | 0.64 | 0.64 | 0.32 | 0.32 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 6 meses (7.6 kg) | 0.76 | 0.76 | 0.38 | 0.38 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 9 meses (8.6 kg) | 0.86 | 0.86 | 0.43 | 0.45 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 1 año (9.6 kg) | 0.96 | 0.96 | 0.48 | 0.5 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 18 meses (10.9 kg) | 1.09 | 1.09 | 0.545 | 0.55 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 2 años (12.2 kg) | 1.22 | 1.22 | 0.61 | 0.6 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 3 años (14.3 kg) | 1.43 | 1.43 | 0.715 | 0.7 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 4 años (16.3 kg) | 1.63 | 1.63 | 0.815 | 0.8 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 5 años (18.3 kg) | 1.83 | 1.83 | 0.915 | 0.9 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 6 años (20.5 kg) | 2.05 | 2.05 | 1.025 | 1.05 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 8 años (25.6 kg) | 2.56 | 2.56 | 1.28 | 1.3 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 10 años (32 kg) | 3.2 | 3.2 | 1.6 | 1.6 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 12 años (40 kg) | 4 | 4 | 2 | 2 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 14 años (50 kg) | 4 | 4 | 2 | 2 mL | ✅ tope aplicado |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 16 años (58 kg) | 4 | 4 | 2 | 2 mL | ✅ tope aplicado |
+| lorazepam | estado-epileptico | Lorazepam 2 mg/mL | 17 años, obeso (95 kg) | 4 | 4 | 2 | 2 mL | ✅ tope aplicado |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 1 mes (4.2 kg) | 0.42 | 0.42 | 0.105 | 0.1 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 2 meses (5.1 kg) | 0.51 | 0.51 | 0.128 | 0.13 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 4 meses (6.4 kg) | 0.64 | 0.64 | 0.16 | 0.16 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 6 meses (7.6 kg) | 0.76 | 0.76 | 0.19 | 0.19 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 9 meses (8.6 kg) | 0.86 | 0.86 | 0.215 | 0.21 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 1 año (9.6 kg) | 0.96 | 0.96 | 0.24 | 0.25 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 18 meses (10.9 kg) | 1.09 | 1.09 | 0.273 | 0.27 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 2 años (12.2 kg) | 1.22 | 1.22 | 0.305 | 0.3 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 3 años (14.3 kg) | 1.43 | 1.43 | 0.358 | 0.35 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 4 años (16.3 kg) | 1.63 | 1.63 | 0.408 | 0.4 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 5 años (18.3 kg) | 1.83 | 1.83 | 0.458 | 0.45 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 6 años (20.5 kg) | 2.05 | 2.05 | 0.513 | 0.5 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 8 años (25.6 kg) | 2.56 | 2.56 | 0.64 | 0.65 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 10 años (32 kg) | 3.2 | 3.2 | 0.8 | 0.8 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 12 años (40 kg) | 4 | 4 | 1 | 1 mL | ✅  |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 14 años (50 kg) | 4 | 4 | 1 | 1 mL | ✅ tope aplicado |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 16 años (58 kg) | 4 | 4 | 1 | 1 mL | ✅ tope aplicado |
+| lorazepam | estado-epileptico | Lorazepam 4 mg/mL | 17 años, obeso (95 kg) | 4 | 4 | 1 | 1 mL | ✅ tope aplicado |
 | mebendazol | tres-dias | Suspensión 100 mg/5 mL | 2 años (12.2 kg) | 100 | 100 | 5 | 5 mL | ✅  |
 | mebendazol | tres-dias | Suspensión 100 mg/5 mL | 3 años (14.3 kg) | 100 | 100 | 5 | 5 mL | ✅  |
 | mebendazol | tres-dias | Suspensión 100 mg/5 mL | 4 años (16.3 kg) | 100 | 100 | 5 | 5 mL | ✅  |
@@ -2995,6 +3115,13 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | metamizol | fiebre-dolor-vo | Gotas 400 mg/mL (medir con jeringa de 1 mL) | 5 años (18.3 kg) | 183 | 183 | 0.458 | 0.45 mL | ✅  |
 | metamizol | fiebre-dolor-vo | Gotas 400 mg/mL (medir con jeringa de 1 mL) | 6 años (20.5 kg) | 205 | 205 | 0.512 | 0.5 mL | ✅  |
 | metamizol | fiebre-dolor-vo | Gotas 400 mg/mL (medir con jeringa de 1 mL) | 8 años (25.6 kg) | 256 | 256 | 0.64 | 0.65 mL | ✅  |
+| metilfenidato | tdah-inicio | Tableta 10 mg | 6 años (20.5 kg) | 5 | 5 | 0.5 | 0.5 tableta | ✅  |
+| metilfenidato | tdah-inicio | Tableta 10 mg | 8 años (25.6 kg) | 5 | 5 | 0.5 | 0.5 tableta | ✅  |
+| metilfenidato | tdah-inicio | Tableta 10 mg | 10 años (32 kg) | 5 | 5 | 0.5 | 0.5 tableta | ✅  |
+| metilfenidato | tdah-inicio | Tableta 10 mg | 12 años (40 kg) | 5 | 5 | 0.5 | 0.5 tableta | ✅  |
+| metilfenidato | tdah-inicio | Tableta 10 mg | 14 años (50 kg) | 5 | 5 | 0.5 | 0.5 tableta | ✅  |
+| metilfenidato | tdah-inicio | Tableta 10 mg | 16 años (58 kg) | 5 | 5 | 0.5 | 0.5 tableta | ✅  |
+| metilfenidato | tdah-inicio | Tableta 10 mg | 17 años, obeso (95 kg) | 5 | 5 | 0.5 | 0.5 tableta | ✅  |
 | metoclopramida | nauseas-vo | Jarabe 5 mg/5 mL | 18 meses (10.9 kg) | 1.09 | 1.09 | 1.09 | 1.1 mL | ✅  |
 | metoclopramida | nauseas-vo | Jarabe 5 mg/5 mL | 2 años (12.2 kg) | 1.22 | 1.22 | 1.22 | 1.2 mL | ✅  |
 | metoclopramida | nauseas-vo | Jarabe 5 mg/5 mL | 3 años (14.3 kg) | 1.43 | 1.43 | 1.43 | 1.4 mL | ✅  |

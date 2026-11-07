@@ -1,0 +1,49 @@
+id: haloperidol
+name: Haloperidol
+category: otro
+synonyms: [Haldol, antipsicótico, agitación psicomotriz, psicosis]
+presentations:
+  - id: gotas-2
+    label: Gotas 2 mg/mL
+    form: gotas
+    mgPerUnit: 2
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: psicosis-3-12a
+    indication: Psicosis o agitación, dosis inicial (3 a 12 años, 15 a 40 kg)
+    route: VO
+    ageMinDays: 1095
+    ageMaxDays: 4744
+    weightMinKg: 15
+    weightMaxKg: 40.01
+    basis: mg/kg/day
+    amountMin: 0.05
+    amountMax: 0.05
+    usual: 0.05
+    intervalHours: 12
+    maxPerDoseMg: 3
+    maxPerDayMg: 6
+    notes: >-
+      FNME — de 3 a 12 años (15 a 40 kg), 0.05 mg/kg/día en 2 o 3 tomas, subiendo según la respuesta; máximo 0.15
+      mg/kg/día. OMS — mantenimiento habitual de 0.025 a 0.05 mg/kg tres veces al día, máximo 0.15 mg/kg/día. Los
+      topes son 0.15 mg/kg/día con 40 kg.
+    sourceIds: [fnme-2008, who-mfc-2010, digemid-pnume-2023]
+warnings:
+  - No se recomienda en menores de 3 años; los niños son más propensos a reacciones extrapiramidales, sobre todo distonías (FNME).
+  - Las gotas se dosifican aquí en mL; ninguna fuente leída dice cuántos mg tiene cada gota.
+contraindications:
+  - Depresión del SNC con alteración de la conciencia, depresión de la médula ósea, feocromocitoma, porfiria, enfermedad de los ganglios basales o enfermedad hepática o cardíaca grave (OMS).
+diagnoses: [psicosis, agitación psicomotriz, esquizofrenia]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: psicosis-3-12a
+    presentationId: gotas-2
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 0.5, amount: 0.25, unit: mL }

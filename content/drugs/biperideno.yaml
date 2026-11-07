@@ -1,0 +1,46 @@
+id: biperideno
+name: Biperideno
+category: otro
+synonyms: [biperiden, Akineton, distonía, reacción extrapiramidal, metoclopramida]
+presentations:
+  - id: amp-5
+    label: Biperideno 5 mg/mL (lactato)
+    form: ampolla
+    mgPerUnit: 5
+    unit: mL
+    step: 0.01
+    brandsPE: []
+rules:
+  - id: extrapiramidal-im
+    indication: Reacciones extrapiramidales por medicamentos (IM)
+    route: IM
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 0.04
+    amountMax: 0.04
+    usual: 0.04
+    repeatMinutes: { min: 30, max: 30 }
+    maxDoses: 4
+    maxPerDoseMg: 2
+    maxPerDayMg: 8
+    notes: >-
+      FNME — niños, reacciones extrapiramidales por medicamentos, 0.04 mg/kg IM inicialmente; puede repetirse cada
+      media hora hasta 4 dosis al día. El tope por dosis es la dosis del adulto (2 mg).
+    presentationIds: [amp-5]
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+warnings:
+  - No se han hecho estudios que demuestren su seguridad en pediatría (FNME).
+contraindications:
+  - Hipersensibilidad al biperideno.
+diagnoses: [distonía aguda, reacción extrapiramidal, distonía por metoclopramida]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: extrapiramidal-im
+    presentationId: amp-5
+    weightKg: 12.5
+    ageDays: 1095
+    expect: { mgPerDose: 0.5, amount: 0.1, unit: mL }
