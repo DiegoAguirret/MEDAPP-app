@@ -1,0 +1,84 @@
+id: propranolol
+name: Propranolol
+category: cardiovascular
+synonyms: [propranolol, Inderal, betabloqueador]
+presentations:
+  - id: tab-10
+    label: Tableta 10 mg
+    form: tableta
+    mgPerUnit: 10
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+  - id: tab-40
+    label: Tableta 40 mg
+    form: tableta
+    mgPerUnit: 40
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: inicio
+    indication: Hipertensión u otras indicaciones cardiovasculares, dosis inicial
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 0.125
+    amountMax: 1
+    usual: 0.125
+    intervalHours: 12
+    maxPerDoseMg: 25
+    maxPerDayMg: 50
+    notes: >-
+      FNME — niños, 0.125 a 1 mg/kg/día VO en dosis divididas (2 a 4 tomas). Tope técnico (1 mg/kg/día con 50 kg).
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+  - id: mantenimiento
+    indication: Hipertensión u otras indicaciones cardiovasculares, mantenimiento
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 2
+    amountMax: 4
+    usual: 2
+    intervalHours: 12
+    maxPerDoseMg: 160
+    maxPerDayMg: 320
+    notes: >-
+      FNME — niños, mantenimiento de 2 a 4 mg/kg/día en 2 tomas. Los topes son el mantenimiento máximo del adulto en
+      la hipertensión (320 mg/día, FNME).
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+  - id: migrana
+    indication: Profilaxis de migraña (más de 2 años)
+    route: VO
+    ageMinDays: 731
+    basis: mg/kg/dose
+    amountMin: 0.2
+    amountMax: 0.5
+    usual: 0.2
+    intervalHours: 8
+    maxPerDoseMg: 25
+    maxPerDayMg: 75
+    notes: >-
+      OMS — niños de más de 2 años, 200 a 500 mcg/kg tres veces al día; máximo 4 mg/kg/día; dosis habitual de 10 a
+      20 mg 2 o 3 veces al día. Tope técnico (0.5 mg/kg con 50 kg).
+    sourceIds: [who-mfc-2010, digemid-pnume-2023]
+warnings:
+  - En insuficiencia renal grave empezar con dosis pequeñas; en insuficiencia hepática reducir la dosis oral (OMS).
+contraindications:
+  - Asma o antecedente de broncoespasmo.
+  - Choque cardiogénico o insuficiencia cardíaca no controlada.
+  - Bloqueo AV de segundo o tercer grado, bradicardia sinusal grave o enfermedad del nódulo sinusal.
+  - Hipotensión, acidosis metabólica, enfermedad arterial periférica grave o feocromocitoma (FNME).
+diagnoses: [hipertensión arterial, migraña, arritmia]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: inicio
+    presentationId: tab-10
+    weightKg: 20
+    ageDays: 2190
+    chosenMgPerKg: 1
+    expect: { mgPerDose: 10, amount: 1, unit: tableta }

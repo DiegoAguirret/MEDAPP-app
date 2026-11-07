@@ -1,0 +1,82 @@
+id: fludrocortisona
+name: Fludrocortisona
+category: corticoide
+doseUnit: mcg
+synonyms:
+  [
+    fludrocortisone,
+    Florinef,
+    mineralocorticoide,
+    insuficiencia suprarrenal,
+    hiperplasia suprarrenal,
+  ]
+presentations:
+  - id: tab-100
+    label: Tableta 100 mcg
+    form: tableta
+    mgPerUnit: 100
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: inicio-neonato
+    indication: Insuficiencia suprarrenal, dosis inicial en neonatos
+    route: VO
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    basis: fixed_by_age
+    amountMin: 100
+    amountMax: 100
+    usual: 100
+    intervalHours: 24
+    maxPerDoseMg: 100
+    maxPerDayMg: 100
+    notes: OMS — neonatos, reemplazo mineralocorticoide, inicialmente 100 mcg una vez al día.
+    sourceIds: [who-mfc-2010, digemid-pnume-2023]
+  - id: inicio-lactante-nino
+    indication: Insuficiencia suprarrenal, dosis inicial en lactantes y niños
+    route: VO
+    ageMinDays: 29
+    basis: fixed_by_age
+    amountMin: 50
+    amountMax: 100
+    usual: 50
+    intervalHours: 24
+    maxPerDoseMg: 100
+    maxPerDayMg: 100
+    notes: OMS — lactantes y niños, inicialmente 50 a 100 mcg una vez al día.
+    sourceIds: [who-mfc-2010, digemid-pnume-2023]
+  - id: mantenimiento
+    indication: Insuficiencia suprarrenal, mantenimiento (todas las edades)
+    route: VO
+    neonatal: true
+    ageMinDays: 0
+    basis: fixed_by_age
+    amountMin: 50
+    amountMax: 300
+    usual: 100
+    intervalHours: 24
+    maxPerDoseMg: 300
+    maxPerDayMg: 300
+    notes: OMS — mantenimiento de 50 a 300 mcg una vez al día, según la respuesta.
+    sourceIds: [who-mfc-2010, digemid-pnume-2023]
+warnings:
+  - Las dosis están en microgramos (100 mcg = 0.1 mg).
+  - Si hay retención de sodio y agua, edema, hipopotasemia o hipertensión, la dosis o la sal son excesivas (OMS).
+  - El FNME no trae monografía de fludrocortisona.
+contraindications:
+  - Insuficiencia cardíaca congestiva (OMS).
+  - Infección micótica sistémica (OMS).
+diagnoses: [insuficiencia suprarrenal, hiperplasia suprarrenal congénita, enfermedad de Addison]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: inicio-lactante-nino
+    presentationId: tab-100
+    weightKg: 8
+    ageDays: 200
+    expect: { mgPerDose: 50, amount: 0.5, unit: tableta }

@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **9513** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **4246**. Fuera del rango de edad de la regla: 5267 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 4246/4246 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 4240/4246.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.60 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **9891** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **4520**. Fuera del rango de edad de la regla: 5371 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 4520/4520 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 4514/4520.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.59 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -374,6 +374,20 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 8 años (25.6 kg) | 128 | 128 | 2.56 | 2.55 mL | ✅  |
 | amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 10 años (32 kg) | 160 | 160 | 3.2 | 3.2 mL | ✅  |
 | amiodarona | carga-iv | Amiodarona 50 mg/mL (ampolla 150 mg/3 mL) | 12 años (40 kg) | 200 | 200 | 4 | 4 mL | ✅  |
+| amlodipino | hipertension-6-17a | Tableta 5 mg | 6 años (20.5 kg) | 2.5 | 2.5 | 0.5 | 0.5 tableta | ✅  |
+| amlodipino | hipertension-6-17a | Tableta 5 mg | 8 años (25.6 kg) | 2.5 | 2.5 | 0.5 | 0.5 tableta | ✅  |
+| amlodipino | hipertension-6-17a | Tableta 5 mg | 10 años (32 kg) | 2.5 | 2.5 | 0.5 | 0.5 tableta | ✅  |
+| amlodipino | hipertension-6-17a | Tableta 5 mg | 12 años (40 kg) | 2.5 | 2.5 | 0.5 | 0.5 tableta | ✅  |
+| amlodipino | hipertension-6-17a | Tableta 5 mg | 14 años (50 kg) | 2.5 | 2.5 | 0.5 | 0.5 tableta | ✅  |
+| amlodipino | hipertension-6-17a | Tableta 5 mg | 16 años (58 kg) | 2.5 | 2.5 | 0.5 | 0.5 tableta | ✅  |
+| amlodipino | hipertension-6-17a | Tableta 5 mg | 17 años, obeso (95 kg) | 2.5 | 2.5 | 0.5 | 0.5 tableta | ✅  |
+| amlodipino | hipertension-6-17a | Tableta 10 mg | 6 años (20.5 kg) | 2.5 | 2.5 | 0.25 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amlodipino | hipertension-6-17a | Tableta 10 mg | 8 años (25.6 kg) | 2.5 | 2.5 | 0.25 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amlodipino | hipertension-6-17a | Tableta 10 mg | 10 años (32 kg) | 2.5 | 2.5 | 0.25 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amlodipino | hipertension-6-17a | Tableta 10 mg | 12 años (40 kg) | 2.5 | 2.5 | 0.25 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amlodipino | hipertension-6-17a | Tableta 10 mg | 14 años (50 kg) | 2.5 | 2.5 | 0.25 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amlodipino | hipertension-6-17a | Tableta 10 mg | 16 años (58 kg) | 2.5 | 2.5 | 0.25 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| amlodipino | hipertension-6-17a | Tableta 10 mg | 17 años, obeso (95 kg) | 2.5 | 2.5 | 0.25 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | amoxicilina-clavulanico | menores-3-meses | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 1 mes (4.2 kg) | 63 | 63 | 0.787 | 0.8 mL | ✅  |
 | amoxicilina-clavulanico | menores-3-meses | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 2 meses (5.1 kg) | 76.5 | 76.5 | 0.956 | 1 mL | ✅  |
 | amoxicilina-clavulanico | estandar-cada-12h | Suspensión 400 mg/57 mg por 5 mL (dosis como amoxicilina) | 4 meses (6.4 kg) | 144 | 144 | 1.8 | 1.8 mL | ✅  |
@@ -2244,6 +2258,48 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 14 años (50 kg) | 300 | 300 | 150 | 150 mL | ✅  |
 | fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 16 años (58 kg) | 348 | 348 | 174 | 174 mL | ✅  |
 | fluconazol | candidiasis-sistemica-iv | Solución para infusión 2 mg/mL (lista para usar) | 17 años, obeso (95 kg) | 570 | 570 | 285 | 285 mL | ✅  |
+| fludrocortisona | inicio-neonato | Tableta 100 mcg | 3 días, bajo peso (2 kg) (2 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | inicio-neonato | Tableta 100 mcg | 5 días (3.2 kg) (3.2 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | inicio-neonato | Tableta 100 mcg | 15 días (3.6 kg) (3.6 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 1 mes (4.2 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 2 meses (5.1 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 4 meses (6.4 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 6 meses (7.6 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 9 meses (8.6 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 1 año (9.6 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 18 meses (10.9 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 2 años (12.2 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 3 años (14.3 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 4 años (16.3 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 5 años (18.3 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 6 años (20.5 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 8 años (25.6 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 10 años (32 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 12 años (40 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 14 años (50 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 16 años (58 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | inicio-lactante-nino | Tableta 100 mcg | 17 años, obeso (95 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 3 días, bajo peso (2 kg) (2 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 5 días (3.2 kg) (3.2 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 15 días (3.6 kg) (3.6 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 1 mes (4.2 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 2 meses (5.1 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 4 meses (6.4 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 6 meses (7.6 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 9 meses (8.6 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 1 año (9.6 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 18 meses (10.9 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 2 años (12.2 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 3 años (14.3 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 4 años (16.3 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 5 años (18.3 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 6 años (20.5 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 8 años (25.6 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 10 años (32 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 12 años (40 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 14 años (50 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 16 años (58 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| fludrocortisona | mantenimiento | Tableta 100 mcg | 17 años, obeso (95 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
 | flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 1 año (9.6 kg) | 0.1 | 0.1 | 0.96 | 1 mL | ✅  |
 | flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 18 meses (10.9 kg) | 0.11 | 0.11 | 1.09 | 1.1 mL | ✅  |
 | flumazenil | reversion-sedacion | Flumazenil 0.1 mg/mL (100 mcg/mL) | 2 años (12.2 kg) | 0.12 | 0.12 | 1.22 | 1.2 mL | ✅  |
@@ -3490,6 +3546,60 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | nitrofurantoina | profilaxis | Tableta 100 mg | 14 años (50 kg) | 50 | 50 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | nitrofurantoina | profilaxis | Tableta 100 mg | 16 años (58 kg) | 58 | 58 | 0.58 | 0.58 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | nitrofurantoina | profilaxis | Tableta 100 mg | 17 años, obeso (95 kg) | 95 | 95 | 0.95 | 0.95 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 1 mes (4.2 kg) | 75.6 | 75.6 | 0.378 | 0.38 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 2 meses (5.1 kg) | 91.8 | 91.8 | 0.459 | 0.46 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 4 meses (6.4 kg) | 115.2 | 115.2 | 0.576 | 0.6 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 6 meses (7.6 kg) | 136.8 | 136.8 | 0.684 | 0.7 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 9 meses (8.6 kg) | 154.8 | 154.8 | 0.774 | 0.8 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 1 año (9.6 kg) | 172.8 | 172.8 | 0.864 | 0.9 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 18 meses (10.9 kg) | 196.2 | 196.2 | 0.981 | 1 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 2 años (12.2 kg) | 219.6 | 219.6 | 1.098 | 1.1 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 3 años (14.3 kg) | 257.4 | 257.4 | 1.287 | 1.3 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 4 años (16.3 kg) | 293.4 | 293.4 | 1.467 | 1.5 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 5 años (18.3 kg) | 329.4 | 329.4 | 1.647 | 1.6 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 6 años (20.5 kg) | 369 | 369 | 1.845 | 1.8 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 8 años (25.6 kg) | 460.8 | 460.8 | 2.304 | 2.3 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 10 años (32 kg) | 576 | 576 | 2.88 | 2.9 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 12 años (40 kg) | 720 | 720 | 3.6 | 3.6 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 14 años (50 kg) | 900 | 900 | 4.5 | 4.5 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 16 años (58 kg) | 1044 | 1044 | 5.22 | 5.2 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA) | 17 años, obeso (95 kg) | 1710 | 1710 | 8.55 | 8.6 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 1 mes (4.2 kg) | 75.6 | 75.6 | 0.756 | 0.76 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 2 meses (5.1 kg) | 91.8 | 91.8 | 0.918 | 0.9 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 4 meses (6.4 kg) | 115.2 | 115.2 | 1.152 | 1.2 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 6 meses (7.6 kg) | 136.8 | 136.8 | 1.368 | 1.4 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 9 meses (8.6 kg) | 154.8 | 154.8 | 1.548 | 1.5 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 1 año (9.6 kg) | 172.8 | 172.8 | 1.728 | 1.7 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 18 meses (10.9 kg) | 196.2 | 196.2 | 1.962 | 2 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 2 años (12.2 kg) | 219.6 | 219.6 | 2.196 | 2.2 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 3 años (14.3 kg) | 257.4 | 257.4 | 2.574 | 2.6 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 4 años (16.3 kg) | 293.4 | 293.4 | 2.934 | 2.9 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 5 años (18.3 kg) | 329.4 | 329.4 | 3.294 | 3.3 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 6 años (20.5 kg) | 369 | 369 | 3.69 | 3.7 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 8 años (25.6 kg) | 460.8 | 460.8 | 4.608 | 4.6 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 10 años (32 kg) | 576 | 576 | 5.76 | 5.8 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 12 años (40 kg) | 720 | 720 | 7.2 | 7.2 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 14 años (50 kg) | 900 | 900 | 9 | 9 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 16 años (58 kg) | 1044 | 1044 | 10.44 | 10.4 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA) | 17 años, obeso (95 kg) | 1710 | 1710 | 17.1 | 17.1 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 1 mes (4.2 kg) | 75.6 | 75.6 | 1.512 | 1.5 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 2 meses (5.1 kg) | 91.8 | 91.8 | 1.836 | 1.8 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 4 meses (6.4 kg) | 115.2 | 115.2 | 2.304 | 2.3 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 6 meses (7.6 kg) | 136.8 | 136.8 | 2.736 | 2.7 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 9 meses (8.6 kg) | 154.8 | 154.8 | 3.096 | 3.1 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 1 año (9.6 kg) | 172.8 | 172.8 | 3.456 | 3.5 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 18 meses (10.9 kg) | 196.2 | 196.2 | 3.924 | 3.9 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 2 años (12.2 kg) | 219.6 | 219.6 | 4.392 | 4.4 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 3 años (14.3 kg) | 257.4 | 257.4 | 5.148 | 5.1 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 4 años (16.3 kg) | 293.4 | 293.4 | 5.868 | 5.9 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 5 años (18.3 kg) | 329.4 | 329.4 | 6.588 | 6.6 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 6 años (20.5 kg) | 369 | 369 | 7.38 | 7.4 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 8 años (25.6 kg) | 460.8 | 460.8 | 9.216 | 9.2 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 10 años (32 kg) | 576 | 576 | 11.52 | 11.5 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 12 años (40 kg) | 720 | 720 | 14.4 | 14.4 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 14 años (50 kg) | 900 | 900 | 18 | 18 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 16 años (58 kg) | 1044 | 1044 | 20.88 | 20.9 mL | ✅  |
+| nitroprusiato | crisis-hipertensiva | Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA) | 17 años, obeso (95 kg) | 1710 | 1710 | 34.2 | 34.2 mL | ✅  |
 | norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 1 mes (4.2 kg) | 12.6 | 12.6 | 0.315 | 0.3 mL | ✅  |
 | norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 2 meses (5.1 kg) | 15.3 | 15.3 | 0.383 | 0.4 mL | ✅  |
 | norepinefrina | hipotension-infusion | Norepinefrina 40 mcg/mL (concentración del FNME) | 4 meses (6.4 kg) | 19.2 | 19.2 | 0.48 | 0.5 mL | ✅  |
@@ -3979,6 +4089,98 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | propofol | induccion-3-16-anos | Propofol 10 mg/mL (emulsión al 1 %) | 8 años (25.6 kg) | 64 | 64 | 6.4 | 6.4 mL | ✅  |
 | propofol | induccion-3-16-anos | Propofol 10 mg/mL (emulsión al 1 %) | 10 años (32 kg) | 80 | 80 | 8 | 8 mL | ✅  |
 | propofol | induccion-3-16-anos | Propofol 10 mg/mL (emulsión al 1 %) | 12 años (40 kg) | 100 | 100 | 10 | 10 mL | ✅  |
+| propranolol | inicio | Tableta 10 mg | 1 mes (4.2 kg) | 0.26 | 0.26 | 0.026 | 0.03 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 2 meses (5.1 kg) | 0.32 | 0.32 | 0.032 | 0.03 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 4 meses (6.4 kg) | 0.4 | 0.4 | 0.04 | 0.04 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 6 meses (7.6 kg) | 0.47 | 0.47 | 0.048 | 0.05 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 9 meses (8.6 kg) | 0.54 | 0.54 | 0.054 | 0.05 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 1 año (9.6 kg) | 0.6 | 0.6 | 0.06 | 0.06 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 18 meses (10.9 kg) | 0.68 | 0.68 | 0.068 | 0.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 2 años (12.2 kg) | 0.76 | 0.76 | 0.076 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 3 años (14.3 kg) | 0.89 | 0.89 | 0.089 | 0.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 4 años (16.3 kg) | 1.02 | 1.02 | 0.102 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 5 años (18.3 kg) | 1.14 | 1.14 | 0.114 | 0.11 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 6 años (20.5 kg) | 1.28 | 1.28 | 0.128 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 8 años (25.6 kg) | 1.6 | 1.6 | 0.16 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 10 años (32 kg) | 2 | 2 | 0.2 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 12 años (40 kg) | 2.5 | 2.5 | 0.25 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 14 años (50 kg) | 3.13 | 3.13 | 0.313 | 0.31 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 16 años (58 kg) | 3.63 | 3.63 | 0.362 | 0.36 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 10 mg | 17 años, obeso (95 kg) | 5.94 | 5.94 | 0.594 | 0.59 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 1 mes (4.2 kg) | 0.26 | 0.26 | 0.007 | 0.01 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 2 meses (5.1 kg) | 0.32 | 0.32 | 0.008 | 0.01 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 4 meses (6.4 kg) | 0.4 | 0.4 | 0.01 | 0.01 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 6 meses (7.6 kg) | 0.47 | 0.47 | 0.012 | 0.01 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 9 meses (8.6 kg) | 0.54 | 0.54 | 0.013 | 0.01 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 1 año (9.6 kg) | 0.6 | 0.6 | 0.015 | 0.01 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 18 meses (10.9 kg) | 0.68 | 0.68 | 0.017 | 0.02 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 2 años (12.2 kg) | 0.76 | 0.76 | 0.019 | 0.02 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 3 años (14.3 kg) | 0.89 | 0.89 | 0.022 | 0.02 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 4 años (16.3 kg) | 1.02 | 1.02 | 0.025 | 0.03 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 5 años (18.3 kg) | 1.14 | 1.14 | 0.029 | 0.03 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 6 años (20.5 kg) | 1.28 | 1.28 | 0.032 | 0.03 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 8 años (25.6 kg) | 1.6 | 1.6 | 0.04 | 0.04 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 10 años (32 kg) | 2 | 2 | 0.05 | 0.05 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 12 años (40 kg) | 2.5 | 2.5 | 0.063 | 0.06 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 14 años (50 kg) | 3.13 | 3.13 | 0.078 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 16 años (58 kg) | 3.63 | 3.63 | 0.091 | 0.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | inicio | Tableta 40 mg | 17 años, obeso (95 kg) | 5.94 | 5.94 | 0.148 | 0.15 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 10 mg | 1 mes (4.2 kg) | 4.2 | 4.2 | 0.42 | 0.42 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 10 mg | 2 meses (5.1 kg) | 5.1 | 5.1 | 0.51 | 0.5 tableta | ✅  |
+| propranolol | mantenimiento | Tableta 10 mg | 4 meses (6.4 kg) | 6.4 | 6.4 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 10 mg | 6 meses (7.6 kg) | 7.6 | 7.6 | 0.76 | 0.76 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 10 mg | 9 meses (8.6 kg) | 8.6 | 8.6 | 0.86 | 0.86 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 10 mg | 1 año (9.6 kg) | 9.6 | 9.6 | 0.96 | 1 tableta | ✅  |
+| propranolol | mantenimiento | Tableta 10 mg | 18 meses (10.9 kg) | 10.9 | 10.9 | 1.09 | 1.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 10 mg | 2 años (12.2 kg) | 12.2 | 12.2 | 1.22 | 1.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 10 mg | 3 años (14.3 kg) | 14.3 | 14.3 | 1.43 | 1.5 tableta | ✅  |
+| propranolol | mantenimiento | Tableta 10 mg | 4 años (16.3 kg) | 16.3 | 16.3 | 1.63 | 1.63 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 10 mg | 5 años (18.3 kg) | 18.3 | 18.3 | 1.83 | 1.83 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 10 mg | 6 años (20.5 kg) | 20.5 | 20.5 | 2.05 | 2 tableta | ✅  |
+| propranolol | mantenimiento | Tableta 10 mg | 8 años (25.6 kg) | 25.6 | 25.6 | 2.56 | 2.5 tableta | ✅  |
+| propranolol | mantenimiento | Tableta 10 mg | 10 años (32 kg) | 32 | 32 | 3.2 | 3.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 10 mg | 12 años (40 kg) | 40 | 40 | 4 | 4 tableta | ✅  |
+| propranolol | mantenimiento | Tableta 10 mg | 14 años (50 kg) | 50 | 50 | 5 | 5 tableta | ✅  |
+| propranolol | mantenimiento | Tableta 10 mg | 16 años (58 kg) | 58 | 58 | 5.8 | 6 tableta | ✅  |
+| propranolol | mantenimiento | Tableta 10 mg | 17 años, obeso (95 kg) | 95 | 95 | 9.5 | 9.5 tableta | ✅  |
+| propranolol | mantenimiento | Tableta 40 mg | 1 mes (4.2 kg) | 4.2 | 4.2 | 0.105 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 40 mg | 2 meses (5.1 kg) | 5.1 | 5.1 | 0.128 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 40 mg | 4 meses (6.4 kg) | 6.4 | 6.4 | 0.16 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 40 mg | 6 meses (7.6 kg) | 7.6 | 7.6 | 0.19 | 0.19 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 40 mg | 9 meses (8.6 kg) | 8.6 | 8.6 | 0.215 | 0.21 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 40 mg | 1 año (9.6 kg) | 9.6 | 9.6 | 0.24 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 40 mg | 18 meses (10.9 kg) | 10.9 | 10.9 | 0.273 | 0.27 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 40 mg | 2 años (12.2 kg) | 12.2 | 12.2 | 0.305 | 0.3 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 40 mg | 3 años (14.3 kg) | 14.3 | 14.3 | 0.358 | 0.36 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 40 mg | 4 años (16.3 kg) | 16.3 | 16.3 | 0.408 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 40 mg | 5 años (18.3 kg) | 18.3 | 18.3 | 0.458 | 0.46 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 40 mg | 6 años (20.5 kg) | 20.5 | 20.5 | 0.512 | 0.5 tableta | ✅  |
+| propranolol | mantenimiento | Tableta 40 mg | 8 años (25.6 kg) | 25.6 | 25.6 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 40 mg | 10 años (32 kg) | 32 | 32 | 0.8 | 0.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 40 mg | 12 años (40 kg) | 40 | 40 | 1 | 1 tableta | ✅  |
+| propranolol | mantenimiento | Tableta 40 mg | 14 años (50 kg) | 50 | 50 | 1.25 | 1.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | mantenimiento | Tableta 40 mg | 16 años (58 kg) | 58 | 58 | 1.45 | 1.5 tableta | ✅  |
+| propranolol | mantenimiento | Tableta 40 mg | 17 años, obeso (95 kg) | 95 | 95 | 2.375 | 2.38 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 10 mg | 3 años (14.3 kg) | 2.86 | 2.86 | 0.286 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 10 mg | 4 años (16.3 kg) | 3.26 | 3.26 | 0.326 | 0.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 10 mg | 5 años (18.3 kg) | 3.66 | 3.66 | 0.366 | 0.37 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 10 mg | 6 años (20.5 kg) | 4.1 | 4.1 | 0.41 | 0.41 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 10 mg | 8 años (25.6 kg) | 5.12 | 5.12 | 0.512 | 0.5 tableta | ✅  |
+| propranolol | migrana | Tableta 10 mg | 10 años (32 kg) | 6.4 | 6.4 | 0.64 | 0.64 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 10 mg | 12 años (40 kg) | 8 | 8 | 0.8 | 0.8 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 10 mg | 14 años (50 kg) | 10 | 10 | 1 | 1 tableta | ✅  |
+| propranolol | migrana | Tableta 10 mg | 16 años (58 kg) | 11.6 | 11.6 | 1.16 | 1.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 10 mg | 17 años, obeso (95 kg) | 19 | 19 | 1.9 | 1.9 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 40 mg | 3 años (14.3 kg) | 2.86 | 2.86 | 0.072 | 0.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 40 mg | 4 años (16.3 kg) | 3.26 | 3.26 | 0.082 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 40 mg | 5 años (18.3 kg) | 3.66 | 3.66 | 0.091 | 0.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 40 mg | 6 años (20.5 kg) | 4.1 | 4.1 | 0.103 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 40 mg | 8 años (25.6 kg) | 5.12 | 5.12 | 0.128 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 40 mg | 10 años (32 kg) | 6.4 | 6.4 | 0.16 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 40 mg | 12 años (40 kg) | 8 | 8 | 0.2 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 40 mg | 14 años (50 kg) | 10 | 10 | 0.25 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 40 mg | 16 años (58 kg) | 11.6 | 11.6 | 0.29 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| propranolol | migrana | Tableta 40 mg | 17 años, obeso (95 kg) | 19 | 19 | 0.475 | 0.47 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 6 meses (7.6 kg) | 76 | 76 | 0.253 | 0.25 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 9 meses (8.6 kg) | 86 | 86 | 0.287 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | quinina | falciparum-segunda-opcion | Tableta 300 mg (sulfato de quinina) | 1 año (9.6 kg) | 96 | 96 | 0.32 | 0.32 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
@@ -4137,6 +4339,78 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 14 años (50 kg) | 2000 | 2000 | 10 | 10 mL | ✅  |
 | sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 16 años (58 kg) | 2000 | 2000 | 10 | 10 mL | ✅ tope aplicado |
 | sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 17 años, obeso (95 kg) | 2000 | 2000 | 10 | 10 mL | ✅ tope aplicado |
+| tiamazol | inicio | Tableta 5 mg | 1 mes (4.2 kg) | 0.56 | 0.56 | 0.112 | 0.11 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 5 mg | 2 meses (5.1 kg) | 0.68 | 0.68 | 0.136 | 0.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 5 mg | 4 meses (6.4 kg) | 0.85 | 0.85 | 0.171 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 5 mg | 6 meses (7.6 kg) | 1.01 | 1.01 | 0.203 | 0.2 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 5 mg | 9 meses (8.6 kg) | 1.15 | 1.15 | 0.229 | 0.23 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 5 mg | 1 año (9.6 kg) | 1.28 | 1.28 | 0.256 | 0.26 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 5 mg | 18 meses (10.9 kg) | 1.45 | 1.45 | 0.291 | 0.29 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 5 mg | 2 años (12.2 kg) | 1.63 | 1.63 | 0.325 | 0.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 5 mg | 3 años (14.3 kg) | 1.91 | 1.91 | 0.381 | 0.38 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 5 mg | 4 años (16.3 kg) | 2.17 | 2.17 | 0.435 | 0.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 5 mg | 5 años (18.3 kg) | 2.44 | 2.44 | 0.488 | 0.5 tableta | ✅  |
+| tiamazol | inicio | Tableta 5 mg | 6 años (20.5 kg) | 2.73 | 2.73 | 0.547 | 0.55 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 5 mg | 8 años (25.6 kg) | 3.41 | 3.41 | 0.683 | 0.68 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 5 mg | 10 años (32 kg) | 4.27 | 4.27 | 0.853 | 0.85 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 5 mg | 12 años (40 kg) | 5.33 | 5.33 | 1.067 | 1.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 5 mg | 14 años (50 kg) | 6.67 | 6.67 | 1.333 | 1.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 5 mg | 16 años (58 kg) | 6.67 | 6.67 | 1.333 | 1.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 5 mg | 17 años, obeso (95 kg) | 6.67 | 6.67 | 1.333 | 1.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 1 mes (4.2 kg) | 0.56 | 0.56 | 0.028 | 0.03 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 2 meses (5.1 kg) | 0.68 | 0.68 | 0.034 | 0.03 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 4 meses (6.4 kg) | 0.85 | 0.85 | 0.043 | 0.04 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 6 meses (7.6 kg) | 1.01 | 1.01 | 0.051 | 0.05 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 9 meses (8.6 kg) | 1.15 | 1.15 | 0.057 | 0.06 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 1 año (9.6 kg) | 1.28 | 1.28 | 0.064 | 0.06 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 18 meses (10.9 kg) | 1.45 | 1.45 | 0.073 | 0.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 2 años (12.2 kg) | 1.63 | 1.63 | 0.081 | 0.08 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 3 años (14.3 kg) | 1.91 | 1.91 | 0.095 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 4 años (16.3 kg) | 2.17 | 2.17 | 0.109 | 0.11 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 5 años (18.3 kg) | 2.44 | 2.44 | 0.122 | 0.12 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 6 años (20.5 kg) | 2.73 | 2.73 | 0.137 | 0.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 8 años (25.6 kg) | 3.41 | 3.41 | 0.171 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 10 años (32 kg) | 4.27 | 4.27 | 0.213 | 0.21 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 12 años (40 kg) | 5.33 | 5.33 | 0.267 | 0.27 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 14 años (50 kg) | 6.67 | 6.67 | 0.333 | 0.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 16 años (58 kg) | 6.67 | 6.67 | 0.333 | 0.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | inicio | Tableta 20 mg | 17 años, obeso (95 kg) | 6.67 | 6.67 | 0.333 | 0.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 1 mes (4.2 kg) | 0.28 | 0.28 | 0.056 | 0.06 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 2 meses (5.1 kg) | 0.34 | 0.34 | 0.068 | 0.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 4 meses (6.4 kg) | 0.43 | 0.43 | 0.085 | 0.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 6 meses (7.6 kg) | 0.51 | 0.51 | 0.101 | 0.1 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 9 meses (8.6 kg) | 0.57 | 0.57 | 0.115 | 0.12 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 1 año (9.6 kg) | 0.64 | 0.64 | 0.128 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 18 meses (10.9 kg) | 0.73 | 0.73 | 0.145 | 0.14 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 2 años (12.2 kg) | 0.81 | 0.81 | 0.163 | 0.16 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 3 años (14.3 kg) | 0.95 | 0.95 | 0.191 | 0.19 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 4 años (16.3 kg) | 1.09 | 1.09 | 0.217 | 0.22 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 5 años (18.3 kg) | 1.22 | 1.22 | 0.244 | 0.24 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 6 años (20.5 kg) | 1.37 | 1.37 | 0.273 | 0.27 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 8 años (25.6 kg) | 1.71 | 1.71 | 0.341 | 0.34 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 10 años (32 kg) | 2.13 | 2.13 | 0.427 | 0.43 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 12 años (40 kg) | 2.67 | 2.67 | 0.533 | 0.53 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 14 años (50 kg) | 3.33 | 3.33 | 0.666 | 0.67 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 16 años (58 kg) | 3.33 | 3.33 | 0.666 | 0.67 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 5 mg | 17 años, obeso (95 kg) | 3.33 | 3.33 | 0.666 | 0.67 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 1 mes (4.2 kg) | 0.28 | 0.28 | 0.014 | 0.01 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 2 meses (5.1 kg) | 0.34 | 0.34 | 0.017 | 0.02 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 4 meses (6.4 kg) | 0.43 | 0.43 | 0.021 | 0.02 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 6 meses (7.6 kg) | 0.51 | 0.51 | 0.025 | 0.03 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 9 meses (8.6 kg) | 0.57 | 0.57 | 0.029 | 0.03 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 1 año (9.6 kg) | 0.64 | 0.64 | 0.032 | 0.03 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 18 meses (10.9 kg) | 0.73 | 0.73 | 0.036 | 0.04 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 2 años (12.2 kg) | 0.81 | 0.81 | 0.041 | 0.04 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 3 años (14.3 kg) | 0.95 | 0.95 | 0.048 | 0.05 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 4 años (16.3 kg) | 1.09 | 1.09 | 0.054 | 0.05 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 5 años (18.3 kg) | 1.22 | 1.22 | 0.061 | 0.06 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 6 años (20.5 kg) | 1.37 | 1.37 | 0.068 | 0.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 8 años (25.6 kg) | 1.71 | 1.71 | 0.085 | 0.09 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 10 años (32 kg) | 2.13 | 2.13 | 0.107 | 0.11 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 12 años (40 kg) | 2.67 | 2.67 | 0.133 | 0.13 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 14 años (50 kg) | 3.33 | 3.33 | 0.167 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 16 años (58 kg) | 3.33 | 3.33 | 0.167 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| tiamazol | mantenimiento | Tableta 20 mg | 17 años, obeso (95 kg) | 3.33 | 3.33 | 0.167 | 0.17 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | triclabendazol | fascioliasis | Tableta 250 mg | 5 años (18.3 kg) | 183 | 183 | 0.732 | 0.73 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | triclabendazol | fascioliasis | Tableta 250 mg | 6 años (20.5 kg) | 205 | 205 | 0.82 | 0.82 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | triclabendazol | fascioliasis | Tableta 250 mg | 8 años (25.6 kg) | 256 | 256 | 1.024 | 1 tableta | ✅  |

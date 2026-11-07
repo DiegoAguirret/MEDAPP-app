@@ -497,3 +497,17 @@ La app ahora calcula infusiones: la dosis en mcg/kg/min o mg/kg/h da la velocida
 - **Lamotrigina:** su dosis pediátrica depende del uso de valproato y de tablas por peso, y el PNUME solo tiene la tableta de 50 mg. No está en el FNME ni en el Model Formulary for Children.
 - **Clobazam:** no está en el FNME ni en el Model Formulary for Children, y openFDA no devolvió la ficha de Onfi.
 - **Haloperidol IM:** la OMS da 1–3 mg cada 4–8 h con un tope en mg/kg/día, y esa combinación no se puede cargar sin elegir un intervalo.
+
+## Lote 15: cardiovascular y endocrino — verificado el 07/11/2026
+
+- **Amlodipino** (PNUME 5 y 10 mg): FDA (Norvasc), de 6 a 17 años, 2.5–5 mg una vez al día. No se han estudiado dosis mayores de 5 mg en pediatría.
+- **Propranolol** (PNUME 10 y 40 mg): FNME, 0.125–1 mg/kg/día al inicio (2 a 4 tomas) y 2–4 mg/kg/día de mantenimiento (2 tomas). Para la profilaxis de migraña, OMS, más de 2 años, 0.2–0.5 mg/kg c/8 h.
+- **Tiamazol** (PNUME 5 y 20 mg): FNME, 0.4 mg/kg/día al inicio y 0.2 mg/kg/día de mantenimiento, en 1 a 3 dosis.
+- **Fludrocortisona** (PNUME 100 mcg): OMS, 100 mcg/día al inicio en neonatos, 50–100 mcg/día en lactantes y niños, y 50–300 mcg/día de mantenimiento. Dosis en mcg.
+- **Nitroprusiato** (PNUME 50 mg, infusión): FDA, 0.3–10 mcg/kg/min (media de unos 3) en adultos y niños. El máximo no debe durar más de 10 min. Mezclas: 50 mg en 250, 500 o 1000 mL de dextrosa al 5 %.
+
+**No incluidos:**
+
+- **Enalapril y captopril:** el FNME dice que en niños no se ha establecido la eficacia del enalapril, y las tabletas del PNUME (10 y 25 mg) no permiten dar las dosis pediátricas por kg.
+- **Acetazolamida:** dosis pediátricas del FNME para glaucoma (8–30 mg/kg/día) que no se pueden medir con la tableta de 250 mg en niños pequeños.
+- **Labetalol y nifedipino:** sin dosis pediátrica en el FNME ni en el Model Formulary for Children.

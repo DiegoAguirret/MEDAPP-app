@@ -1,0 +1,64 @@
+id: nitroprusiato
+name: Nitroprusiato de sodio
+category: cardiovascular
+doseUnit: mcg
+synonyms: [nitroprusside, Nipride, crisis hipertensiva, emergencia hipertensiva, infusión]
+presentations:
+  - id: mezcla-200
+    label: Nitroprusiato 200 mcg/mL (50 mg en 250 mL de dextrosa 5 %, FDA)
+    form: ampolla
+    mgPerUnit: 200
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: mezcla-100
+    label: Nitroprusiato 100 mcg/mL (50 mg en 500 mL de dextrosa 5 %, FDA)
+    form: ampolla
+    mgPerUnit: 100
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: mezcla-50
+    label: Nitroprusiato 50 mcg/mL (50 mg en 1000 mL de dextrosa 5 %, FDA)
+    form: ampolla
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: crisis-hipertensiva
+    indication: Crisis hipertensiva, infusión continua
+    route: IV
+    ageMinDays: 29
+    basis: mcg/kg/min
+    amountMin: 0.3
+    amountMax: 10
+    usual: 0.3
+    continuous: true
+    maxPerDoseMg: 30000
+    maxPerDayMg: 720000
+    notes: >-
+      FDA — en adultos y niños la velocidad media eficaz es de unos 3 mcg/kg/min; empezar muy bajo (0.3 mcg/kg/min) y
+      subir cada pocos minutos hasta el efecto o el máximo de 10 mcg/kg/min, que nunca debe durar más de 10 minutos.
+      Diluir 50 mg en 250 a 1000 mL de dextrosa al 5 %. Tope técnico (10 mcg/kg/min con 50 kg).
+    presentationIds: [mezcla-200, mezcla-100, mezcla-50]
+    sourceIds: [fda-nitroprusside, digemid-pnume-2023]
+warnings:
+  - 'Recuadro de la FDA: no se inyecta directo, se diluye en dextrosa al 5 %. Puede bajar la presión de forma brusca; usar solo con monitoreo continuo de la presión arterial.'
+  - Salvo en uso breve o a menos de 2 mcg/kg/min, produce cianuro en cantidades que pueden ser tóxicas o mortales. Si con el máximo durante 10 minutos no se controla la presión, suspender de inmediato (FDA).
+  - Proteger la solución de la luz (FDA).
+  - El FNME no trae monografía de nitroprusiato.
+contraindications:
+  - Hipertensión compensatoria por coartación aórtica o cortocircuito arteriovenoso (FDA).
+diagnoses: [crisis hipertensiva, emergencia hipertensiva, hipertensión arterial]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: crisis-hipertensiva
+    presentationId: mezcla-200
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 180, amount: 0.9, unit: mL/h }

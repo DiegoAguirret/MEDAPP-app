@@ -708,3 +708,17 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=20140b19-846b-425f-b191-670e17809945
   kind: regulador
   country: US
+- id: fda-norvasc
+  title: Norvasc (amlodipino) tabletas — prescribing information (FDA, set 7367289c-b0b0-466a-83e2-558e2985c29f)
+  publisher: U.S. FDA / Viatris
+  year: 2023
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=7367289c-b0b0-466a-83e2-558e2985c29f
+  kind: regulador
+  country: US
+- id: fda-nitroprusside
+  title: Nitroprusiato de sodio inyectable 50 mg — prescribing information (FDA, set 01841345-bed3-458f-8e99-911fbd286512)
+  publisher: U.S. FDA / BE Pharmaceuticals
+  year: 2021
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=01841345-bed3-458f-8e99-911fbd286512
+  kind: regulador
+  country: US

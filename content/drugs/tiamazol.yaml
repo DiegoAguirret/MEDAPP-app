@@ -1,0 +1,65 @@
+id: tiamazol
+name: Tiamazol (metimazol)
+category: otro
+synonyms: [metimazol, methimazole, Tapazol, hipertiroidismo, enfermedad de Graves]
+presentations:
+  - id: tab-5
+    label: Tableta 5 mg
+    form: tableta
+    mgPerUnit: 5
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+  - id: tab-20
+    label: Tableta 20 mg
+    form: tableta
+    mgPerUnit: 20
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: inicio
+    indication: Hipertiroidismo, dosis inicial
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 0.4
+    amountMax: 0.4
+    usual: 0.4
+    intervalHours: 8
+    maxPerDoseMg: 6.67
+    maxPerDayMg: 20
+    notes: FNME — niños, hipertiroidismo, 0.4 mg/kg/día VO en 1 a 3 dosis (c/8 h). Tope técnico (0.4 mg/kg/día con 50 kg).
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+  - id: mantenimiento
+    indication: Hipertiroidismo, mantenimiento
+    route: VO
+    ageMinDays: 29
+    basis: mg/kg/day
+    amountMin: 0.2
+    amountMax: 0.2
+    usual: 0.2
+    intervalHours: 8
+    maxPerDoseMg: 3.33
+    maxPerDayMg: 10
+    notes: >-
+      FNME — seguir con la dosis inicial 2 meses después de controlar los síntomas; luego 0.2 mg/kg/día en 1 a 3
+      dosis. Tope técnico (0.2 mg/kg/día con 50 kg).
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+warnings:
+  - En insuficiencia hepática la vida media se alarga (FNME).
+contraindications:
+  - Hipersensibilidad a los derivados de la tiocarbamida.
+  - Insuficiencia hepática (FNME).
+diagnoses: [hipertiroidismo, tirotoxicosis, enfermedad de Graves]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: inicio
+    presentationId: tab-5
+    weightKg: 37.5
+    ageDays: 4380
+    expect: { mgPerDose: 5, amount: 1, unit: tableta }

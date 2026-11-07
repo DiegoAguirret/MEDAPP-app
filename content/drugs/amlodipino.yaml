@@ -1,0 +1,53 @@
+id: amlodipino
+name: Amlodipino
+category: cardiovascular
+synonyms: [amlodipine, Norvasc, hipertensión arterial]
+presentations:
+  - id: tab-5
+    label: Tableta 5 mg
+    form: tableta
+    mgPerUnit: 5
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+  - id: tab-10
+    label: Tableta 10 mg
+    form: tableta
+    mgPerUnit: 10
+    unit: tableta
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: hipertension-6-17a
+    indication: Hipertensión arterial (6 a 17 años)
+    route: VO
+    ageMinDays: 2190
+    ageMaxDays: 6574
+    basis: fixed_by_age
+    amountMin: 2.5
+    amountMax: 5
+    usual: 2.5
+    intervalHours: 24
+    maxPerDoseMg: 5
+    maxPerDayMg: 5
+    notes: >-
+      FDA (Norvasc) — de 6 a 17 años, la dosis antihipertensiva eficaz es de 2.5 a 5 mg una vez al día; no se han
+      estudiado dosis mayores de 5 mg/día en pediatría.
+    sourceIds: [fda-norvasc, digemid-pnume-2023]
+warnings:
+  - El FNME no da dosis pediátricas de amlodipino.
+contraindications:
+  - Hipersensibilidad al amlodipino u otros antagonistas del calcio (FNME).
+  - Choque cardiogénico, angina inestable o estenosis aórtica importante (FNME).
+diagnoses: [hipertensión arterial]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: hipertension-6-17a
+    presentationId: tab-5
+    weightKg: 30
+    ageDays: 3650
+    expect: { mgPerDose: 2.5, amount: 0.5, unit: tableta }
