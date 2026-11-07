@@ -551,3 +551,15 @@ La app ahora calcula infusiones: la dosis en mcg/kg/min o mg/kg/h da la velocida
 - **Hioscina butilbromuro** (PNUME 10 mg): FNME, de 6 a 12 años, 10 mg 3 veces al día. La dosis IM o IV del FNME (20 mg) no se separa claramente de la del adulto y no se calcula.
 
 **Revisados y no incluidos:** piridoxina y tiamina (el FNME no da dosis pediátricas por peso, solo rangos generales); calcitriol y levofloxacino (sin monografía en el FNME).
+
+## Unidad mEq: bicarbonato de sodio y cloruro de potasio — verificado el 07/11/2026
+
+La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en infusión (mEq/kg/h) y en la concentración personalizada.
+
+- **Bicarbonato de sodio 8.4 %** (PNUME): 1 mEq/mL (OMS: 1 mmol de Na y 1 de HCO3 por mL). FNME: en el paro, 1 mEq/kg al inicio y 0.5 mEq/kg cada 10 min; en la acidosis metabólica menos urgente, 2–5 mEq/kg en 4–8 h. La OMS da 1–5 mmol/kg sin gasometría en mayores de 2 años y advierte hipernatremia por inyección rápida en menores de 2 años.
+- **Cloruro de potasio IV**: OMS, déficit agudo, 0.2–0.4 mmol/kg/h por 4–6 h solo por vía central en UCI con ECG (mezcla de 120 mmol/L o menos). Por vía periférica, máximo 0.2 mmol/kg/h con mezcla de 40 mmol/L o menos. La app calcula la velocidad (mL/h) de la mezcla, no la preparación con la ampolla al 20 % del PNUME: las fuentes leídas no dan sus mEq/mL.
+
+**No incluidos:**
+
+- **Cloruro de sodio al 20 %:** las fuentes leídas no dan una pauta pediátrica para la hiponatremia.
+- **Mantenimiento de potasio** (1–2 mmol/kg/día, OMS): va dentro de los líquidos de mantenimiento, no como velocidad aparte.

@@ -41,7 +41,7 @@ describe('loadVerifiedContent', () => {
     const { raw, publicKeyHex } = signed(realBundle);
     const r = loadVerifiedContent(raw, publicKeyHex);
     expect(r.ok).toBe(true);
-    if (r.ok) expect(r.bundle.drugs.length).toBe(140);
+    if (r.ok) expect(r.bundle.drugs.length).toBe(142);
   });
 
   it('rejects a tampered bundle', () => {
@@ -102,7 +102,7 @@ describe('searchDrugs', () => {
     expect(found).toContain('acetilcisteina');
   });
   it('returns all drugs sorted by name for an empty query', () => {
-    expect(ids('').length).toBe(140);
+    expect(ids('').length).toBe(142);
   });
   it('excludes recalled drugs', () => {
     expect(ids('fiebre', new Set(['metamizol']))).not.toContain('metamizol');

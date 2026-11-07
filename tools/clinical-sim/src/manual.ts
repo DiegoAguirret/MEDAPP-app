@@ -21,6 +21,12 @@ export interface ManualResult {
 export function concentrationFromLabel(label: string): number | null {
   const perDrop = /1\s*gota\s*=\s*(\d+(?:[.,]\d+)?)\s*mg/i.exec(label);
   if (perDrop) return Number((perDrop[1] ?? '').replace(',', '.'));
+  // Miliequivalentes (bicarbonato, potasio): "8.4 % = 1 mEq/mL" → 1; "0.04 mEq/mL" → 0.04.
+  const meq = /(\d+(?:[.,]\d+)?)\s*mEq\s*\/\s*(\d+(?:[.,]\d+)?)?\s*mL/.exec(label);
+  if (meq) {
+    const amount = Number((meq[1] ?? '').replace(',', '.'));
+    return meq[2] === undefined ? amount : amount / Number(meq[2].replace(',', '.'));
+  }
   const perVolume =
     /(\d+(?:[.,]\d+)?)\s*mg(?:\s*\/\s*\d+(?:[.,]\d+)?\s*mg)?\s*(?:\/|por)\s*(\d+(?:[.,]\d+)?)?\s*mL/i.exec(
       label,
@@ -48,7 +54,7 @@ export function manualDose(
   presentation: Presentation,
   weightKg: number,
   chosen?: number,
-  doseUnit: 'mg' | 'mcg' | 'UI' = 'mg',
+  doseUnit: 'mg' | 'mcg' | 'UI' | 'mEq' = 'mg',
 ): ManualResult {
   const value = chosen ?? rule.usual ?? rule.amountMin;
   // Infusión continua: la «dosis» es la cantidad por hora (24 por día).

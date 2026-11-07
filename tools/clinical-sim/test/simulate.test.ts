@@ -18,6 +18,8 @@ describe('concentrationFromLabel', () => {
     ['Tableta 50 000 UI', 50000],
     ['Solución oral 50 mcg/mL', 50],
     ['Tableta 75 mcg', 75],
+    ['Bicarbonato de sodio 8.4 % = 1 mEq/mL', 1],
+    ['Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L)', 0.04],
   ])('%s → %s', (label, mg) => {
     expect(concentrationFromLabel(label)).toBeCloseTo(mg, 9);
   });

@@ -665,3 +665,28 @@ describe('calculateDose — infusión continua', () => {
     expect(cap?.expression).toBe('Máximo 1 mg/h');
   });
 });
+
+describe('calculateDose — miliequivalentes (mEq)', () => {
+  it('con doseUnit mEq, los pasos dicen mEq y nunca mg', () => {
+    const r = ok(
+      calculateDose({
+        rule: rule({
+          basis: 'mg/kg/dose',
+          amountMin: 1,
+          amountMax: 1,
+          usual: 1,
+          maxPerDoseMg: 50,
+          maxPerDayMg: 50,
+        }),
+        presentation: presentation({ mgPerUnit: 1, unit: 'mL', step: 0.1 }),
+        patient: toddler,
+        doseUnit: 'mEq',
+      }),
+    );
+    expect(r.mgPerDose.chosen).toBe(10);
+    expect(r.amount.value).toBe(10);
+    const text = r.steps.map((s) => `${s.expression} ${s.result}`).join(' | ');
+    expect(text).toContain('mEq/kg');
+    expect(text).not.toMatch(/\bmg\b/);
+  });
+});

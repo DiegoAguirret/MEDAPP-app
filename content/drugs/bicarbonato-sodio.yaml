@@ -1,0 +1,89 @@
+id: bicarbonato-sodio
+name: Bicarbonato de sodio 8.4 %
+category: urgencia
+doseUnit: mEq
+synonyms: [bicarbonato, sodium bicarbonate, NaHCO3, acidosis metabólica, paro cardíaco]
+presentations:
+  - id: amp-84
+    label: Bicarbonato de sodio 8.4 % = 1 mEq/mL
+    form: ampolla
+    mgPerUnit: 1
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: paro-inicial
+    indication: Paro cardíaco, dosis inicial (IV)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 1
+    amountMax: 1
+    usual: 1
+    once: true
+    maxPerDoseMg: 50
+    maxPerDayMg: 50
+    notes: >-
+      FNME — alcalinizante sistémico en el paro cardíaco, 1 mEq/kg IV al inicio (en niños, la dosis usual del adulto).
+      Tope técnico (1 mEq/kg con 50 kg).
+    presentationIds: [amp-84]
+    sourceIds: [fnme-2008, who-mfc-2010, digemid-pnume-2023]
+  - id: paro-repetir
+    indication: Paro cardíaco, dosis siguientes (IV)
+    route: IV
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 0.5
+    amountMax: 0.5
+    usual: 0.5
+    repeatMinutes: { min: 10, max: 10 }
+    maxPerDoseMg: 25
+    maxPerDayMg: 100
+    notes: FNME — 0.5 mEq/kg cada 10 minutos mientras siga el paro. Topes técnicos (0.5 mEq/kg con 50 kg; 100 mEq acumulados).
+    presentationIds: [amp-84]
+    sourceIds: [fnme-2008, digemid-pnume-2023]
+  - id: acidosis-metabolica
+    indication: Acidosis metabólica menos urgente, sin gasometría (más de 2 años), infusión en 4 a 8 h
+    route: IV
+    ageMinDays: 731
+    basis: mg/kg/dose
+    amountMin: 2
+    amountMax: 5
+    usual: 2
+    once: true
+    maxPerDoseMg: 250
+    maxPerDayMg: 250
+    notes: >-
+      FNME — acidosis metabólica menos urgente, 2 a 5 mEq/kg en infusión IV a lo largo de 4 a 8 horas. OMS — sin
+      estado ácido-base, niños de más de 2 años, 1 a 5 mmol/kg; las dosis siguientes según la gasometría. Con
+      gasometría, la OMS calcula mmol = 0.5 × peso × (24 − HCO3 sérico) y da la mitad primero. Tope técnico (5
+      mEq/kg con 50 kg).
+    presentationIds: [amp-84]
+    sourceIds: [fnme-2008, who-mfc-2010, digemid-pnume-2023]
+warnings:
+  - La solución al 8.4 % tiene 1 mmol de sodio y 1 mmol de bicarbonato por mL (OMS).
+  - En menores de 2 años, la inyección rápida puede causar hipernatremia; velocidad máxima 10 mmol/min (OMS).
+  - Es hipertónica; la extravasación puede causar celulitis y necrosis. Usar una vena grande (OMS).
+  - No se usa por vía intraarterial ni intraósea (OMS).
+contraindications:
+  - Alcalosis metabólica o respiratoria.
+  - Hipocalcemia o hipernatremia (OMS).
+  - Ventilación inadecuada durante la reanimación (OMS).
+  - Pérdida de cloruro por vómitos o succión gastrointestinal continua (FNME).
+diagnoses: [acidosis metabólica, paro cardíaco, reanimación]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: paro-inicial
+    presentationId: amp-84
+    weightKg: 12
+    ageDays: 730
+    expect: { mgPerDose: 12, amount: 12, unit: mL }
+  - ruleId: acidosis-metabolica
+    presentationId: amp-84
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 40, amount: 40, unit: mL }

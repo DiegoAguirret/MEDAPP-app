@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **10248** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **4719**. Fuera del rango de edad de la regla: 5529 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 4719/4719 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 4713/4719.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.59 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **10374** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **4828**. Fuera del rango de edad de la regla: 5546 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 4828/4828 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 4822/4828.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.58 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -951,6 +951,52 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | benznidazol | chagas | Tableta 100 mg | 12 años (40 kg) | 200 | 200 | 2 | 2 tableta | ✅  |
 | benznidazol | chagas | Tableta 100 mg | 14 años (50 kg) | 250 | 250 | 2.5 | 2.5 tableta | ✅  |
 | benznidazol | chagas | Tableta 100 mg | 16 años (58 kg) | 250 | 250 | 2.5 | 2.5 tableta | ✅ tope aplicado |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 1 mes (4.2 kg) | 4.2 | 4.2 | 4.2 | 4.2 mL | ✅  |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 2 meses (5.1 kg) | 5.1 | 5.1 | 5.1 | 5.1 mL | ✅  |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 4 meses (6.4 kg) | 6.4 | 6.4 | 6.4 | 6.4 mL | ✅  |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 6 meses (7.6 kg) | 7.6 | 7.6 | 7.6 | 7.6 mL | ✅  |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 9 meses (8.6 kg) | 8.6 | 8.6 | 8.6 | 8.6 mL | ✅  |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 1 año (9.6 kg) | 9.6 | 9.6 | 9.6 | 9.6 mL | ✅  |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 18 meses (10.9 kg) | 10.9 | 10.9 | 10.9 | 10.9 mL | ✅  |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 2 años (12.2 kg) | 12.2 | 12.2 | 12.2 | 12.2 mL | ✅  |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 3 años (14.3 kg) | 14.3 | 14.3 | 14.3 | 14.3 mL | ✅  |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 4 años (16.3 kg) | 16.3 | 16.3 | 16.3 | 16.3 mL | ✅  |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 5 años (18.3 kg) | 18.3 | 18.3 | 18.3 | 18.3 mL | ✅  |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 6 años (20.5 kg) | 20.5 | 20.5 | 20.5 | 20.5 mL | ✅  |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 8 años (25.6 kg) | 25.6 | 25.6 | 25.6 | 25.6 mL | ✅  |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 10 años (32 kg) | 32 | 32 | 32 | 32 mL | ✅  |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 12 años (40 kg) | 40 | 40 | 40 | 40 mL | ✅  |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 14 años (50 kg) | 50 | 50 | 50 | 50 mL | ✅  |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 16 años (58 kg) | 50 | 50 | 50 | 50 mL | ✅ tope aplicado |
+| bicarbonato-sodio | paro-inicial | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 17 años, obeso (95 kg) | 50 | 50 | 50 | 50 mL | ✅ tope aplicado |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 1 mes (4.2 kg) | 2.1 | 2.1 | 2.1 | 2.1 mL | ✅  |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 2 meses (5.1 kg) | 2.55 | 2.55 | 2.55 | 2.6 mL | ✅  |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 4 meses (6.4 kg) | 3.2 | 3.2 | 3.2 | 3.2 mL | ✅  |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 6 meses (7.6 kg) | 3.8 | 3.8 | 3.8 | 3.8 mL | ✅  |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 9 meses (8.6 kg) | 4.3 | 4.3 | 4.3 | 4.3 mL | ✅  |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 1 año (9.6 kg) | 4.8 | 4.8 | 4.8 | 4.8 mL | ✅  |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 18 meses (10.9 kg) | 5.45 | 5.45 | 5.45 | 5.5 mL | ✅  |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 2 años (12.2 kg) | 6.1 | 6.1 | 6.1 | 6.1 mL | ✅  |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 3 años (14.3 kg) | 7.15 | 7.15 | 7.15 | 7.2 mL | ✅  |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 4 años (16.3 kg) | 8.15 | 8.15 | 8.15 | 8.2 mL | ✅  |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 5 años (18.3 kg) | 9.15 | 9.15 | 9.15 | 9.2 mL | ✅  |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 6 años (20.5 kg) | 10.25 | 10.25 | 10.25 | 10.3 mL | ✅  |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 8 años (25.6 kg) | 12.8 | 12.8 | 12.8 | 12.8 mL | ✅  |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 10 años (32 kg) | 16 | 16 | 16 | 16 mL | ✅  |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 12 años (40 kg) | 20 | 20 | 20 | 20 mL | ✅  |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 14 años (50 kg) | 25 | 25 | 25 | 25 mL | ✅  |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 16 años (58 kg) | 25 | 25 | 25 | 25 mL | ✅ tope aplicado |
+| bicarbonato-sodio | paro-repetir | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 17 años, obeso (95 kg) | 25 | 25 | 25 | 25 mL | ✅ tope aplicado |
+| bicarbonato-sodio | acidosis-metabolica | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 3 años (14.3 kg) | 28.6 | 28.6 | 28.6 | 28.6 mL | ✅  |
+| bicarbonato-sodio | acidosis-metabolica | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 4 años (16.3 kg) | 32.6 | 32.6 | 32.6 | 32.6 mL | ✅  |
+| bicarbonato-sodio | acidosis-metabolica | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 5 años (18.3 kg) | 36.6 | 36.6 | 36.6 | 36.6 mL | ✅  |
+| bicarbonato-sodio | acidosis-metabolica | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 6 años (20.5 kg) | 41 | 41 | 41 | 41 mL | ✅  |
+| bicarbonato-sodio | acidosis-metabolica | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 8 años (25.6 kg) | 51.2 | 51.2 | 51.2 | 51.2 mL | ✅  |
+| bicarbonato-sodio | acidosis-metabolica | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 10 años (32 kg) | 64 | 64 | 64 | 64 mL | ✅  |
+| bicarbonato-sodio | acidosis-metabolica | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 12 años (40 kg) | 80 | 80 | 80 | 80 mL | ✅  |
+| bicarbonato-sodio | acidosis-metabolica | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 14 años (50 kg) | 100 | 100 | 100 | 100 mL | ✅  |
+| bicarbonato-sodio | acidosis-metabolica | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 16 años (58 kg) | 116 | 116 | 116 | 116 mL | ✅  |
+| bicarbonato-sodio | acidosis-metabolica | Bicarbonato de sodio 8.4 % = 1 mEq/mL | 17 años, obeso (95 kg) | 190 | 190 | 190 | 190 mL | ✅  |
 | biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 1 mes (4.2 kg) | 0.17 | 0.17 | 0.034 | 0.03 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
 | biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 2 meses (5.1 kg) | 0.2 | 0.2 | 0.041 | 0.04 mL | ✅  |
 | biperideno | extrapiramidal-im | Biperideno 5 mg/mL (lactato) | 4 meses (6.4 kg) | 0.26 | 0.26 | 0.051 | 0.05 mL | ✅  |
@@ -1545,6 +1591,69 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | cloroquina | dia-3 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 8 años (25.6 kg) | 128 | 128 | 0.853 | 0.85 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cloroquina | dia-3 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 10 años (32 kg) | 160 | 160 | 1.067 | 1.07 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | cloroquina | dia-3 | Tableta 150 mg base (fosfato de cloroquina 250 mg) | 12 años (40 kg) | 200 | 200 | 1.333 | 1.33 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 3 días, bajo peso (2 kg) (2 kg) | 0.4 | 0.4 | 10 | 10 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 5 días (3.2 kg) (3.2 kg) | 0.64 | 0.64 | 16 | 16 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 15 días (3.6 kg) (3.6 kg) | 0.72 | 0.72 | 18 | 18 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 1 mes (4.2 kg) | 0.84 | 0.84 | 21 | 21 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 2 meses (5.1 kg) | 1.02 | 1.02 | 25.5 | 25.5 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 4 meses (6.4 kg) | 1.28 | 1.28 | 32 | 32 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 6 meses (7.6 kg) | 1.52 | 1.52 | 38 | 38 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 9 meses (8.6 kg) | 1.72 | 1.72 | 43 | 43 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 1 año (9.6 kg) | 1.92 | 1.92 | 48 | 48 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 18 meses (10.9 kg) | 2.18 | 2.18 | 54.5 | 54.5 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 2 años (12.2 kg) | 2.44 | 2.44 | 61 | 61 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 3 años (14.3 kg) | 2.86 | 2.86 | 71.5 | 71.5 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 4 años (16.3 kg) | 3.26 | 3.26 | 81.5 | 81.5 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 5 años (18.3 kg) | 3.66 | 3.66 | 91.5 | 91.5 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 6 años (20.5 kg) | 4.1 | 4.1 | 102.5 | 102.5 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 8 años (25.6 kg) | 5.12 | 5.12 | 128 | 128 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 10 años (32 kg) | 6.4 | 6.4 | 160 | 160 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 12 años (40 kg) | 8 | 8 | 200 | 200 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 14 años (50 kg) | 10 | 10 | 250 | 250 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 16 años (58 kg) | 11.6 | 11.6 | 290 | 290 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 17 años, obeso (95 kg) | 19 | 19 | 475 | 475 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 3 días, bajo peso (2 kg) (2 kg) | 0.4 | 0.4 | 3.333 | 3.3 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 5 días (3.2 kg) (3.2 kg) | 0.64 | 0.64 | 5.333 | 5.3 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 15 días (3.6 kg) (3.6 kg) | 0.72 | 0.72 | 6 | 6 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 1 mes (4.2 kg) | 0.84 | 0.84 | 7 | 7 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 2 meses (5.1 kg) | 1.02 | 1.02 | 8.5 | 8.5 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 4 meses (6.4 kg) | 1.28 | 1.28 | 10.667 | 10.7 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 6 meses (7.6 kg) | 1.52 | 1.52 | 12.667 | 12.7 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 9 meses (8.6 kg) | 1.72 | 1.72 | 14.333 | 14.3 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 1 año (9.6 kg) | 1.92 | 1.92 | 16 | 16 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 18 meses (10.9 kg) | 2.18 | 2.18 | 18.167 | 18.2 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 2 años (12.2 kg) | 2.44 | 2.44 | 20.333 | 20.3 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 3 años (14.3 kg) | 2.86 | 2.86 | 23.833 | 23.8 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 4 años (16.3 kg) | 3.26 | 3.26 | 27.167 | 27.2 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 5 años (18.3 kg) | 3.66 | 3.66 | 30.5 | 30.5 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 6 años (20.5 kg) | 4.1 | 4.1 | 34.167 | 34.2 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 8 años (25.6 kg) | 5.12 | 5.12 | 42.667 | 42.7 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 10 años (32 kg) | 6.4 | 6.4 | 53.333 | 53.3 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 12 años (40 kg) | 8 | 8 | 66.667 | 66.7 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 14 años (50 kg) | 10 | 10 | 83.333 | 83.3 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 16 años (58 kg) | 11.6 | 11.6 | 96.667 | 96.7 mL | ✅  |
+| cloruro-potasio | deficit-central | Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS) | 17 años, obeso (95 kg) | 19 | 19 | 158.333 | 158.3 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 3 días, bajo peso (2 kg) (2 kg) | 0.4 | 0.4 | 10 | 10 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 5 días (3.2 kg) (3.2 kg) | 0.64 | 0.64 | 16 | 16 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 15 días (3.6 kg) (3.6 kg) | 0.72 | 0.72 | 18 | 18 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 1 mes (4.2 kg) | 0.84 | 0.84 | 21 | 21 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 2 meses (5.1 kg) | 1.02 | 1.02 | 25.5 | 25.5 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 4 meses (6.4 kg) | 1.28 | 1.28 | 32 | 32 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 6 meses (7.6 kg) | 1.52 | 1.52 | 38 | 38 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 9 meses (8.6 kg) | 1.72 | 1.72 | 43 | 43 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 1 año (9.6 kg) | 1.92 | 1.92 | 48 | 48 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 18 meses (10.9 kg) | 2.18 | 2.18 | 54.5 | 54.5 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 2 años (12.2 kg) | 2.44 | 2.44 | 61 | 61 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 3 años (14.3 kg) | 2.86 | 2.86 | 71.5 | 71.5 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 4 años (16.3 kg) | 3.26 | 3.26 | 81.5 | 81.5 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 5 años (18.3 kg) | 3.66 | 3.66 | 91.5 | 91.5 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 6 años (20.5 kg) | 4.1 | 4.1 | 102.5 | 102.5 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 8 años (25.6 kg) | 5.12 | 5.12 | 128 | 128 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 10 años (32 kg) | 6.4 | 6.4 | 160 | 160 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 12 años (40 kg) | 8 | 8 | 200 | 200 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 14 años (50 kg) | 10 | 10 | 250 | 250 mL | ✅  |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 16 años (58 kg) | 10 | 10 | 250 | 250 mL | ✅ tope aplicado |
+| cloruro-potasio | periferica | Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS) | 17 años, obeso (95 kg) | 10 | 10 | 250 | 250 mL | ✅ tope aplicado |
 | cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 2 meses (5.1 kg) | 20.4 | 20.4 | 2.55 | 2.6 mL | ✅  |
 | cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 4 meses (6.4 kg) | 25.6 | 25.6 | 3.2 | 3.2 mL | ✅  |
 | cotrimoxazol | usual | Suspensión 200/40 mg por 5 mL (dosis en trimetoprima) | 6 meses (7.6 kg) | 30.4 | 30.4 | 3.8 | 3.8 mL | ✅  |

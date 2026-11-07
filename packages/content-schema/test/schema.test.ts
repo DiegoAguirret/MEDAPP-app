@@ -320,6 +320,22 @@ describe('parseDrug', () => {
     expect(parseDrug(mutate((d) => (d.doseUnit = 'mcg'))).doseUnit).toBe('mcg');
   });
 
+  it('accepts doses in milliequivalents (doseUnit mEq)', () => {
+    expect(parseDrug(mutate((d) => (d.doseUnit = 'mEq'))).doseUnit).toBe('mEq');
+  });
+
+  it('rejects mcg/kg/min in a drug dosed in mEq', () => {
+    const d = mutate((x) => {
+      delete x.rules[0].intervalHours;
+      x.rules[0].continuous = true;
+      x.rules[0].basis = 'mcg/kg/min';
+      x.rules[0].route = 'IV';
+      x.rules[0].presentationIds = ['susp-120-5'];
+      x.doseUnit = 'mEq';
+    });
+    expect(() => parseDrug(d)).toThrow();
+  });
+
   it('rejects an unknown dose unit', () => {
     expect(() => parseDrug(mutate((d) => (d.doseUnit = 'g')))).toThrow();
   });

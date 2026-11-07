@@ -7,11 +7,11 @@ const toNumber = (text: string): number | null => {
 };
 
 /** Presentación que el médico escribe a mano ("250 mg en 5 mL"). */
-/** `unit`: unidad de la ficha (mg, mcg o UI); la concentración queda en esa unidad por mL. */
+/** `unit`: unidad de la ficha (mg, mcg, UI o mEq); la concentración queda en esa unidad por mL. */
 export function customPresentation(
   mgText: string,
   mlText: string,
-  unit: 'mg' | 'mcg' | 'UI' = 'mg',
+  unit: 'mg' | 'mcg' | 'UI' | 'mEq' = 'mg',
 ): Presentation | null {
   const mg = toNumber(mgText);
   const ml = toNumber(mlText);

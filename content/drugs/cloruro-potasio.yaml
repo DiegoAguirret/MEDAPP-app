@@ -1,0 +1,80 @@
+id: cloruro-potasio
+name: Cloruro de potasio IV
+category: otro
+doseUnit: mEq
+synonyms: [potasio, KCl, potassium chloride, hipopotasemia, hipokalemia]
+presentations:
+  - id: mezcla-40
+    label: Cloruro de potasio 0.04 mEq/mL (mezcla de 40 mmol/L, vía periférica, OMS)
+    form: ampolla
+    mgPerUnit: 0.04
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: mezcla-120
+    label: Cloruro de potasio 0.12 mEq/mL (mezcla de 120 mmol/L, solo vía central, OMS)
+    form: ampolla
+    mgPerUnit: 0.12
+    unit: mL
+    step: 0.1
+    brandsPE: []
+rules:
+  - id: deficit-central
+    indication: Déficit agudo de potasio por vía central, en UCI con monitoreo ECG (infusión de 4 a 6 h)
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    basis: mg/kg/h
+    amountMin: 0.2
+    amountMax: 0.4
+    usual: 0.2
+    continuous: true
+    maxPerDoseMg: 20
+    maxPerDayMg: 480
+    durationText: 4 a 6 horas; controlar el potasio a las 3 horas.
+    notes: >-
+      OMS — neonatos, lactantes y niños, déficit agudo, 0.2 a 0.4 mmol/kg/h (1 mmol de K = 1 mEq) por 4 a 6 horas por
+      vía central, en UCI con ECG; diluir a 120 mmol/L o menos. Tope técnico (0.4 mEq/kg/h con 50 kg).
+    presentationIds: [mezcla-120, mezcla-40]
+    sourceIds: [who-mfc-2010, fnme-2008, digemid-pnume-2023]
+  - id: periferica
+    indication: Potasio por vía periférica, velocidad máxima
+    route: IV
+    neonatal: true
+    ageMinDays: 0
+    basis: mg/kg/h
+    amountMin: 0.2
+    amountMax: 0.2
+    usual: 0.2
+    continuous: true
+    maxPerDoseMg: 10
+    maxPerDayMg: 240
+    notes: >-
+      OMS — por vía periférica (o central fuera de UCI), diluir a 40 mmol/L o menos, de preferencia una solución ya
+      preparada, e infundir como máximo a 0.2 mmol/kg/h. Es un límite de velocidad, no una dosis recomendada.
+    presentationIds: [mezcla-40]
+    sourceIds: [who-mfc-2010, digemid-pnume-2023]
+warnings:
+  - 'Nunca en bolo ni para lavar la vía: una sobredosis puede causar paro cardíaco mortal (OMS).'
+  - Si se prepara la mezcla con la ampolla concentrada del PNUME (20 %), invertir la bolsa al menos 10 veces y no agregar potasio a una bolsa que ya está colgada (OMS).
+  - Controlar el potasio, el pulso, la presión y la diuresis cada 4 a 6 horas hasta estabilizar (OMS).
+  - En insuficiencia renal moderada a grave, evitar el uso de rutina por el riesgo de hiperpotasemia (OMS).
+contraindications:
+  - Potasio sérico mayor de 5 mmol/L (OMS).
+diagnoses: [hipopotasemia, hipokalemia]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-07
+testCases:
+  - ruleId: periferica
+    presentationId: mezcla-40
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 2, amount: 50, unit: mL/h }
+  - ruleId: deficit-central
+    presentationId: mezcla-120
+    weightKg: 15
+    ageDays: 1460
+    expect: { mgPerDose: 3, amount: 25, unit: mL/h }

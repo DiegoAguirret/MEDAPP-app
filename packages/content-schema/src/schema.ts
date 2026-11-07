@@ -263,8 +263,11 @@ export const drugSchema = z
     rules: z.array(doseRuleSchema).min(1),
     warnings: z.array(z.string().min(1)),
     contraindications: z.array(z.string().min(1)),
-    /** Unidad de la dosis: mg (por defecto), mcg (digoxina, levotiroxina) o UI (penicilinas, nistatina). */
-    doseUnit: z.enum(['mg', 'mcg', 'UI']).optional(),
+    /**
+     * Unidad de la dosis: mg (por defecto), mcg (digoxina, levotiroxina), UI (penicilinas, nistatina) o mEq
+     * (bicarbonato, cloruro de potasio).
+     */
+    doseUnit: z.enum(['mg', 'mcg', 'UI', 'mEq']).optional(),
     /** Interacciones clínicamente importantes, con su fuente en el texto. */
     interactions: z.array(z.string().min(1)).optional(),
     /** Ajuste en insuficiencia renal, tal como lo dicen las fuentes. */
@@ -305,10 +308,10 @@ export const drugSchema = z
           });
         }
       }
-      if (r.basis === 'mcg/kg/min' && d.doseUnit === 'UI') {
+      if (r.basis === 'mcg/kg/min' && (d.doseUnit === 'UI' || d.doseUnit === 'mEq')) {
         ctx.addIssue({
           code: 'custom',
-          message: 'mcg/kg/min no aplica a una ficha dosificada en UI',
+          message: 'mcg/kg/min solo aplica a fichas dosificadas en mg o mcg',
           path: ['rules', i],
         });
       }

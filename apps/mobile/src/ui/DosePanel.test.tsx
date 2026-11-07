@@ -420,6 +420,17 @@ describe('DosePanel — dosis en UI', () => {
     expect(screen.getByTestId('result-mg')).toHaveTextContent('150 UI');
     expect(screen.getAllByText(/UI\/kg/).length).toBeGreaterThan(0);
   });
+  it('una ficha con doseUnit mEq muestra mEq en el resultado y en la concentración personalizada', async () => {
+    const asMeq = { ...drug('paracetamol'), doseUnit: 'mEq' as const };
+    await render(<DosePanel drug={asMeq} decimalSeparator="." sources={sources} />);
+    await fireEvent.press(screen.getByText('Personalizar concentración'));
+    expect(screen.getByLabelText('mEq del preparado')).toBeOnTheScreen();
+    await fireEvent.press(screen.getByText('Jarabe 120 mg/5 mL'));
+    await fillPatient('10', '1', '1');
+    expect(screen.getByTestId('result-mg')).toHaveTextContent('150 mEq');
+    expect(screen.getAllByText(/mEq\/kg/).length).toBeGreaterThan(0);
+  });
+
   it('una ficha con doseUnit mcg muestra mcg en el rango y en el resultado', async () => {
     const asMcg = { ...drug('paracetamol'), doseUnit: 'mcg' as const };
     await render(<DosePanel drug={asMcg} decimalSeparator="." sources={sources} />);
