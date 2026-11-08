@@ -45,6 +45,7 @@ export type Tool =
   | 'corticoides-inhalados'
   | 'vacunas'
   | 'glasgow'
+  | 'bilirrubina'
   | 'favoritos'
   | 'manual'
   | CollectionId;
@@ -177,6 +178,13 @@ export function Home({
       text: 'Hitos por edad de 0 a 36 meses, según la NTS 238',
       icon: 'human-child',
       hue: '#7C4DCC',
+    },
+    {
+      id: 'bilirrubina',
+      title: 'Bilirrubina neonatal',
+      text: 'Umbral de fototerapia y exanguinotransfusión por hora (AAP 2022)',
+      icon: 'white-balance-sunny',
+      hue: '#B08900',
     },
     {
       id: 'glasgow',

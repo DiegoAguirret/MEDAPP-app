@@ -46,6 +46,15 @@ export default function CategoryScreen() {
       {collection ? <Text style={s.intro}>{INTRO[collection]}</Text> : null}
       {collection === 'neonatos' ? (
         <View style={s.scores}>
+          <PressableScale
+            accessibilityRole="button"
+            accessibilityLabel="Bilirrubina neonatal, umbrales AAP 2022"
+            onPress={() => router.push('/bilirrubina')}
+            style={s.score}
+          >
+            <MaterialCommunityIcons name="white-balance-sunny" size={20} color={c.accent} />
+            <Text style={s.scoreText}>Bilirrubina</Text>
+          </PressableScale>
           {NEONATAL_SCORES.map((sc) => (
             <PressableScale
               key={sc.id}

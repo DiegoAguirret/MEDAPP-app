@@ -630,3 +630,20 @@ La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en inf
   - Interpretación de la nota (*): ≤ 12 sugiere traumatismo encefálico grave; ≤ 8, la posible necesidad de intubación y ventilación y de controlar la presión intracraneal.
   - Nota (†): en el paciente intubado, inconsciente o que no habla, la respuesta motora es la parte más importante.
 - **Decisión de la app:** la tabla no fija una edad de corte entre lactante y niño, así que la pantalla deja elegir la columna y explica el criterio, en vez de imponer una edad. De 13 a 15 puntos solo dice que no se cumplen los criterios de gravedad de la tabla.
+
+## Bilirrubina neonatal: umbrales por hora — verificado el 07/11/2026
+
+- **Fuente:** Kemper AR et al., AAP 2022, Pediatrics 2022;150(3):e2022058859. Supplemental Tables 1–4, Tabla 2 (factores de riesgo de neurotoxicidad) y KAS 10 y 17–23.
+  - La copia del PDF de la AAP alojada en neored.net incluye las tablas suplementarias. publications.aap.org bloquea las descargas automáticas.
+- **Extracción (`scripts/bili/parse_aap2022.py`):** 18 tablas por edad gestacional y tipo de umbral, en mg/dL, de la hora 1 al día 14. Validaciones:
+  - el día 0 tiene 23 valores y los demás días 24;
+  - las horas son continuas;
+  - la celda marcada con «a» abre una meseta constante;
+  - ningún umbral baja con la edad.
+  - Comprobación puntual: 40 semanas sin factores da 13.3 mg/dL a las 24 h y 17.0 a las 48 h.
+- **Hallazgo:** en la Tabla 3 a 37 semanas, la nota dice «≥ 151 h», pero también «6 días y 10 h», que son 154 h, y la celda marcada está en la hora 154. Se usa la celda de la tabla.
+- **Lógica:**
+  - Fototerapia sin factores: tablas de 35 a 40 semanas (40 = 40 o más). Con factor de riesgo: de 35 a 38 (38 = 38 o más). Exanguinotransfusión: de 35 a 38.
+  - Escalamiento: 2 mg/dL bajo el umbral de exanguinotransfusión (KAS 17).
+  - Fuera de rango: menos de 35 semanas, hora 0 o más de 14 días.
+- **No incluido:** el seguimiento posalta de la Figura 7, cuyo texto en el PDF es ambiguo. La app remite a la figura de la guía.
