@@ -771,3 +771,17 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=0697b3cf-b146-47c0-b5a5-5905ae8d1c97
   kind: regulador
   country: US
+- id: fda-methylene-blue
+  title: Azul de metileno inyectable — prescribing information (FDA, set 2566ce72-9d19-42e5-80f9-8fc4612b1eff)
+  publisher: U.S. FDA
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=2566ce72-9d19-42e5-80f9-8fc4612b1eff
+  kind: regulador
+  country: US
+- id: fda-succimer
+  title: Chemet (succímero) cápsulas — prescribing information (FDA, set 62035612-9505-3a3f-1ac8-e2dbd711d24e)
+  publisher: U.S. FDA
+  year: 2025
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=62035612-9505-3a3f-1ac8-e2dbd711d24e
+  kind: regulador
+  country: US

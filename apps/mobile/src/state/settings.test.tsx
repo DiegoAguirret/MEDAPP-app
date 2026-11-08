@@ -41,3 +41,44 @@ describe('fármacos recientes', () => {
     expect(screen.getByTestId('recents')).toHaveTextContent(/^i,h,g,f,e,d,c,b$/);
   });
 });
+
+function PresProbe() {
+  const { favoritePresentation, setFavoritePresentation } = useSettings();
+  return (
+    <View>
+      <Text testID="amox">{favoritePresentation('amoxicilina') ?? 'ninguna'}</Text>
+      <Pressable
+        accessibilityRole="button"
+        onPress={() => setFavoritePresentation('amoxicilina', 'susp-250')}
+      >
+        <Text>fijar</Text>
+      </Pressable>
+      <Pressable
+        accessibilityRole="button"
+        onPress={() => setFavoritePresentation('amoxicilina', null)}
+      >
+        <Text>quitar</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+describe('presentación favorita por fármaco', () => {
+  it('se guarda, se recuerda al volver a abrir y se puede quitar', async () => {
+    const withPres = () =>
+      render(
+        <SettingsProvider>
+          <PresProbe />
+        </SettingsProvider>,
+      );
+    const first = await withPres();
+    expect(screen.getByTestId('amox')).toHaveTextContent('ninguna');
+    await fireEvent.press(screen.getByRole('button', { name: 'fijar' }));
+    expect(screen.getByTestId('amox')).toHaveTextContent('susp-250');
+    await first.unmount();
+    await withPres();
+    expect(screen.getByTestId('amox')).toHaveTextContent('susp-250');
+    await fireEvent.press(screen.getByRole('button', { name: 'quitar' }));
+    expect(screen.getByTestId('amox')).toHaveTextContent('ninguna');
+  });
+});

@@ -3,6 +3,7 @@ import type { Drug } from '@medapp/content-schema';
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { BUNDLE_JSON } from '../content/bundled';
 import { PatientProvider } from '../state/patient';
+import { SettingsProvider } from '../state/settings';
 import { TipsProvider } from '../state/tips';
 import { DosePanel } from './DosePanel';
 
@@ -472,5 +473,35 @@ describe('DosePanel — infusión continua', () => {
     expect(screen.getByTestId('result-amount')).toHaveTextContent('0.0833 mL/h');
     expect(screen.getAllByText(/en infusión continua/).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/mg\/kg\/h/).length).toBeGreaterThan(0);
+  });
+});
+
+describe('DosePanel — presentación habitual', () => {
+  const withSettings = () =>
+    render(
+      <SettingsProvider>
+        <DosePanel drug={drug('paracetamol')} decimalSeparator="." sources={sources} />
+      </SettingsProvider>,
+    );
+
+  it('recuerda la presentación marcada como habitual y la elige sola al volver', async () => {
+    const first = await withSettings();
+    await fireEvent.press(screen.getByText('Solución oral 100 mg/mL'));
+    await fireEvent.press(screen.getByRole('button', { name: 'Usar siempre esta presentación' }));
+    expect(screen.getByRole('button', { name: 'Presentación habitual. Quitar' })).toBeOnTheScreen();
+    await first.unmount();
+    await withSettings();
+    await fillPatient('10', '1', '1');
+    expect(screen.getByTestId('result-amount')).toHaveTextContent('1.5 mL');
+  });
+
+  it('se puede quitar', async () => {
+    await withSettings();
+    await fireEvent.press(screen.getByText('Solución oral 100 mg/mL'));
+    await fireEvent.press(screen.getByRole('button', { name: 'Usar siempre esta presentación' }));
+    await fireEvent.press(screen.getByRole('button', { name: 'Presentación habitual. Quitar' }));
+    expect(
+      screen.getByRole('button', { name: 'Usar siempre esta presentación' }),
+    ).toBeOnTheScreen();
   });
 });

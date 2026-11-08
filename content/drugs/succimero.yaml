@@ -1,0 +1,145 @@
+id: succimero
+name: Succímero
+category: urgencia
+synonyms: [succimer, DMSA, ácido dimercaptosuccínico, Chemet, quelante, plomo, saturnismo]
+presentations:
+  - id: tab-100
+    label: Tableta 100 mg
+    form: tableta
+    mgPerUnit: 100
+    unit: tableta
+    step: 1
+    brandsPE: []
+rules:
+  - id: plomo-8-kg
+    indication: Intoxicación por plomo (8 a 15 kg, desde 1 año)
+    route: VO
+    ageMinDays: 365
+    weightMinKg: 8
+    weightMaxKg: 16
+    basis: fixed_by_age
+    amountMin: 100
+    amountMax: 100
+    usual: 100
+    intervalHours: 8
+    maxPerDoseMg: 100
+    maxPerDayMg: 300
+    durationText: 5 días cada 8 h; luego la misma dosis cada 12 h por 14 días más
+    notes: >-
+      FDA (tabla de dosis pediátrica de Chemet) — 8 a 15 kg: 100 mg (1 tableta de 100 mg) cada 8 h por 5
+      días y luego cada 12 h por 14 días; equivale a unos 10 mg/kg o 350 mg/m² por dosis.
+    sourceIds: [fda-succimer, digemid-pnume-2023]
+  - id: plomo-16-kg
+    indication: Intoxicación por plomo (16 a 23 kg, desde 1 año)
+    route: VO
+    ageMinDays: 365
+    weightMinKg: 16
+    weightMaxKg: 24
+    basis: fixed_by_age
+    amountMin: 200
+    amountMax: 200
+    usual: 200
+    intervalHours: 8
+    maxPerDoseMg: 200
+    maxPerDayMg: 600
+    durationText: 5 días cada 8 h; luego la misma dosis cada 12 h por 14 días más
+    notes: >-
+      FDA (tabla de dosis pediátrica de Chemet) — 16 a 23 kg: 200 mg (2 tabletas de 100 mg) cada 8 h por 5
+      días y luego cada 12 h por 14 días; equivale a unos 10 mg/kg o 350 mg/m² por dosis.
+    sourceIds: [fda-succimer, digemid-pnume-2023]
+  - id: plomo-24-kg
+    indication: Intoxicación por plomo (24 a 34 kg, desde 1 año)
+    route: VO
+    ageMinDays: 365
+    weightMinKg: 24
+    weightMaxKg: 35
+    basis: fixed_by_age
+    amountMin: 300
+    amountMax: 300
+    usual: 300
+    intervalHours: 8
+    maxPerDoseMg: 300
+    maxPerDayMg: 900
+    durationText: 5 días cada 8 h; luego la misma dosis cada 12 h por 14 días más
+    notes: >-
+      FDA (tabla de dosis pediátrica de Chemet) — 24 a 34 kg: 300 mg (3 tabletas de 100 mg) cada 8 h por 5
+      días y luego cada 12 h por 14 días; equivale a unos 10 mg/kg o 350 mg/m² por dosis.
+    sourceIds: [fda-succimer, digemid-pnume-2023]
+  - id: plomo-35-kg
+    indication: Intoxicación por plomo (35 a 44 kg, desde 1 año)
+    route: VO
+    ageMinDays: 365
+    weightMinKg: 35
+    weightMaxKg: 45
+    basis: fixed_by_age
+    amountMin: 400
+    amountMax: 400
+    usual: 400
+    intervalHours: 8
+    maxPerDoseMg: 400
+    maxPerDayMg: 1200
+    durationText: 5 días cada 8 h; luego la misma dosis cada 12 h por 14 días más
+    notes: >-
+      FDA (tabla de dosis pediátrica de Chemet) — 35 a 44 kg: 400 mg (4 tabletas de 100 mg) cada 8 h por 5
+      días y luego cada 12 h por 14 días; equivale a unos 10 mg/kg o 350 mg/m² por dosis.
+    sourceIds: [fda-succimer, digemid-pnume-2023]
+  - id: plomo-45-kg-o-mas
+    indication: Intoxicación por plomo (45 kg o más, desde 1 año)
+    route: VO
+    ageMinDays: 365
+    weightMinKg: 45
+    basis: fixed_by_age
+    amountMin: 500
+    amountMax: 500
+    usual: 500
+    intervalHours: 8
+    maxPerDoseMg: 500
+    maxPerDayMg: 1500
+    durationText: 5 días cada 8 h; luego la misma dosis cada 12 h por 14 días más
+    notes: >-
+      FDA (tabla de dosis pediátrica de Chemet) — 45 kg o más: 500 mg (5 tabletas de 100 mg) cada 8 h por 5
+      días y luego cada 12 h por 14 días; equivale a unos 10 mg/kg o 350 mg/m² por dosis.
+    sourceIds: [fda-succimer, digemid-pnume-2023]
+warnings:
+  - Identificar y retirar la fuente de plomo antes de empezar (FDA).
+  - Controlar hemograma (suspender si los neutrófilos bajan de 1200/µL) y transaminasas (suspender si superan 5 veces el límite) (FDA).
+  - No se ha establecido la seguridad de más de 3 semanas seguidas (FDA).
+  - Si no puede tragar, se puede mezclar con un poco de comida blanda (FDA, para la cápsula).
+contraindications:
+  - Hipersensibilidad al succímero.
+interactions:
+  - No se recomienda junto con otro quelante como el edetato cálcico disódico (FDA).
+  - Falsos positivos de cetonas en orina y valores falsamente bajos de ácido úrico y CPK (FDA).
+renal: FDA — evaluar la función renal antes y durante el tratamiento.
+diagnoses: [intoxicación por plomo, saturnismo, plomo en sangre]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-08
+testCases:
+  - ruleId: plomo-8-kg
+    presentationId: tab-100
+    weightKg: 10
+    ageDays: 1095
+    expect: { mgPerDose: 100, amount: 1, unit: tableta }
+  - ruleId: plomo-16-kg
+    presentationId: tab-100
+    weightKg: 20
+    ageDays: 1095
+    expect: { mgPerDose: 200, amount: 2, unit: tableta }
+  - ruleId: plomo-24-kg
+    presentationId: tab-100
+    weightKg: 30
+    ageDays: 3650
+    expect: { mgPerDose: 300, amount: 3, unit: tableta }
+  - ruleId: plomo-35-kg
+    presentationId: tab-100
+    weightKg: 40
+    ageDays: 3650
+    expect: { mgPerDose: 400, amount: 4, unit: tableta }
+  - ruleId: plomo-45-kg-o-mas
+    presentationId: tab-100
+    weightKg: 50
+    ageDays: 3650
+    expect: { mgPerDose: 500, amount: 5, unit: tableta }

@@ -8,6 +8,7 @@ const KEYS = {
   theme: 'theme',
   favorites: 'favorites',
   recents: 'recentDrugsV1',
+  presentations: 'favoritePresentationsV1',
 } as const;
 
 /** Cuántos fármacos recientes se recuerdan (solo ids de fichas, nunca datos del paciente). */
@@ -28,6 +29,22 @@ interface Settings {
   /** Fichas abiertas hace poco, la última primero. */
   recents: string[];
   pushRecent: (id: string) => void;
+  /** Presentación que el médico usa siempre para un fármaco (id de la ficha → id de la presentación). */
+  favoritePresentation: (drugId: string) => string | undefined;
+  setFavoritePresentation: (drugId: string, presentationId: string | null) => void;
+}
+
+function readMap(key: string): Record<string, string> {
+  try {
+    const raw = prefs.get(key);
+    const parsed: unknown = raw ? JSON.parse(raw) : {};
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return {};
+    return Object.fromEntries(
+      Object.entries(parsed).filter((e): e is [string, string] => typeof e[1] === 'string'),
+    );
+  } catch {
+    return {};
+  }
 }
 
 function readIds(key: string): string[] {
@@ -53,6 +70,9 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   });
   const [favorites, setFavorites] = useState<string[]>(() => readIds(KEYS.favorites));
   const [recents, setRecents] = useState<string[]>(() => readIds(KEYS.recents));
+  const [presentations, setPresentations] = useState<Record<string, string>>(() =>
+    readMap(KEYS.presentations),
+  );
 
   const accept = useCallback(() => {
     prefs.set(KEYS.disclaimer, 'yes');
@@ -83,6 +103,17 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
+  const setFavoritePresentation = useCallback((drugId: string, presentationId: string | null) => {
+    setPresentations((prev) => {
+      const next =
+        presentationId === null
+          ? Object.fromEntries(Object.entries(prev).filter(([k]) => k !== drugId))
+          : { ...prev, [drugId]: presentationId };
+      prefs.set(KEYS.presentations, JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
   const value = useMemo<Settings>(
     () => ({
       accepted,
@@ -96,6 +127,8 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       toggleFavorite,
       recents,
       pushRecent,
+      favoritePresentation: (drugId) => presentations[drugId],
+      setFavoritePresentation,
     }),
     [
       accepted,
@@ -108,6 +141,8 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       toggleFavorite,
       recents,
       pushRecent,
+      presentations,
+      setFavoritePresentation,
     ],
   );
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;
@@ -117,4 +152,19 @@ export function useSettings(): Settings {
   const ctx = useContext(SettingsContext);
   if (ctx === null) throw new Error('useSettings debe usarse dentro de SettingsProvider');
   return ctx;
+}
+
+/**
+ * Presentación habitual de un fármaco. Fuera de `SettingsProvider` (pruebas aisladas) no recuerda
+ * nada y no falla.
+ */
+export function useFavoritePresentation(
+  drugId: string,
+): [string | undefined, (presentationId: string | null) => void] {
+  const ctx = useContext(SettingsContext);
+  const set = useCallback(
+    (presentationId: string | null) => ctx?.setFavoritePresentation(drugId, presentationId),
+    [ctx, drugId],
+  );
+  return [ctx?.favoritePresentation(drugId), set];
 }

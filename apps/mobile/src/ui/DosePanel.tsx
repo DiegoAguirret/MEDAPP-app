@@ -15,6 +15,7 @@ import { Pressable, ScrollView, Share, StyleSheet, Text, View } from 'react-nati
 import { CATEGORIES } from '../domain/categories';
 import { isScheduled, scheduleText } from '../domain/schedule';
 import { usePatient } from '../state/patient';
+import { useFavoritePresentation } from '../state/settings';
 import { useTipQueue } from '../state/tips';
 import { weightZone } from '../domain/zones';
 import { Reveal } from './motion';
@@ -162,12 +163,20 @@ export function DosePanel({
   const allowed = drug.presentations.filter(
     (p) => rule?.presentationIds === undefined || rule.presentationIds.includes(p.id),
   );
-  const [presId, setPresId] = useState(allowed[0]?.id ?? '');
+  const [favPresId, setFavPresId] = useFavoritePresentation(drug.id);
+  // La presentación habitual del médico, si la indicación la admite; si no, la primera.
+  const pickDefault = (list: typeof allowed) =>
+    (list.find((p) => p.id === favPresId) ?? list[0])?.id ?? '';
+  const [presId, setPresId] = useState(() => pickDefault(allowed));
   const [customMg, setCustomMg] = useState('');
   const [customMl, setCustomMl] = useState('');
   const custom = presId === CUSTOM_ID ? customPresentation(customMg, customMl, du) : null;
   const presentation =
-    presId === CUSTOM_ID ? custom : (allowed.find((p) => p.id === presId) ?? allowed[0]);
+    presId === CUSTOM_ID
+      ? custom
+      : (allowed.find((p) => p.id === presId) ??
+        allowed.find((p) => p.id === favPresId) ??
+        allowed[0]);
 
   const chosenValue = !rule
     ? undefined
@@ -223,7 +232,7 @@ export function DosePanel({
       (p) => r.presentationIds === undefined || r.presentationIds.includes(p.id),
     );
     if (presId !== CUSTOM_ID && !nextAllowed.some((p) => p.id === presId)) {
-      setPresId(nextAllowed[0]?.id ?? '');
+      setPresId(pickDefault(nextAllowed));
     }
   };
 
@@ -449,6 +458,30 @@ export function DosePanel({
           </Pressable>
         </ScrollView>
       </View>
+      {presentation && presId !== CUSTOM_ID && allowed.length > 1 ? (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={
+            favPresId === presentation.id
+              ? 'Presentación habitual. Quitar'
+              : 'Usar siempre esta presentación'
+          }
+          onPress={() => setFavPresId(favPresId === presentation.id ? null : presentation.id)}
+          hitSlop={8}
+          style={s.favPres}
+        >
+          <Ionicons
+            name={favPresId === presentation.id ? 'star' : 'star-outline'}
+            size={18}
+            color={c.accent}
+          />
+          <Text style={s.favPresText}>
+            {favPresId === presentation.id
+              ? 'Presentación habitual · quitar'
+              : 'Usar siempre esta presentación'}
+          </Text>
+        </Pressable>
+      ) : null}
       <Tip id="presentacion" queue={tips} />
       {presId === CUSTOM_ID ? (
         <Card>
@@ -785,6 +818,16 @@ function makeStyles(c: Palette) {
     optionText: { fontFamily: family.bold, color: c.text, fontSize: 16, lineHeight: 21 },
     optionSub: { fontFamily: family.regular, color: c.muted, fontSize: 13 },
     presRow: { gap: 10, paddingRight: 20 },
+    favPres: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 6,
+      alignSelf: 'flex-start',
+      minHeight: MIN_TOUCH,
+      marginTop: -6,
+      marginBottom: 6,
+    },
+    favPresText: { fontFamily: family.bold, fontSize: 14, color: c.accent },
     presCard: {
       width: 156,
       minHeight: 104,

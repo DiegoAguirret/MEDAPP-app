@@ -5,10 +5,10 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **10374** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **4828**. Fuera del rango de edad de la regla: 5546 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 4828/4828 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 4822/4828.
+- Casos simulados: **10500** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **4856**. Fuera del rango de edad de la regla: 5644 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 4856/4856 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 4850/4856.
 - Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.58 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
@@ -916,6 +916,21 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | azitromicina | esquema-5-dias-dias-2-5 | Tableta 500 mg | 14 años (50 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | azitromicina | esquema-5-dias-dias-2-5 | Tableta 500 mg | 16 años (58 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | azitromicina | esquema-5-dias-dias-2-5 | Tableta 500 mg | 17 años, obeso (95 kg) | 250 | 250 | 0.5 | 0.5 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
+| azul-de-metileno | metahemoglobinemia | Ampolla 1 % (10 mg/mL) | 1 mes (4.2 kg) | 4.2 | 4.2 | 0.42 | 0.4 mL | ✅  |
+| azul-de-metileno | metahemoglobinemia | Ampolla 1 % (10 mg/mL) | 2 meses (5.1 kg) | 5.1 | 5.1 | 0.51 | 0.5 mL | ✅  |
+| azul-de-metileno | metahemoglobinemia | Ampolla 1 % (10 mg/mL) | 4 meses (6.4 kg) | 6.4 | 6.4 | 0.64 | 0.65 mL | ✅  |
+| azul-de-metileno | metahemoglobinemia | Ampolla 1 % (10 mg/mL) | 6 meses (7.6 kg) | 7.6 | 7.6 | 0.76 | 0.75 mL | ✅  |
+| azul-de-metileno | metahemoglobinemia | Ampolla 1 % (10 mg/mL) | 9 meses (8.6 kg) | 8.6 | 8.6 | 0.86 | 0.85 mL | ✅  |
+| azul-de-metileno | metahemoglobinemia | Ampolla 1 % (10 mg/mL) | 1 año (9.6 kg) | 9.6 | 9.6 | 0.96 | 0.95 mL | ✅  |
+| azul-de-metileno | metahemoglobinemia | Ampolla 1 % (10 mg/mL) | 18 meses (10.9 kg) | 10.9 | 10.9 | 1.09 | 1.1 mL | ✅  |
+| azul-de-metileno | metahemoglobinemia | Ampolla 1 % (10 mg/mL) | 2 años (12.2 kg) | 12.2 | 12.2 | 1.22 | 1.2 mL | ✅  |
+| azul-de-metileno | metahemoglobinemia | Ampolla 1 % (10 mg/mL) | 3 años (14.3 kg) | 14.3 | 14.3 | 1.43 | 1.45 mL | ✅  |
+| azul-de-metileno | metahemoglobinemia | Ampolla 1 % (10 mg/mL) | 4 años (16.3 kg) | 16.3 | 16.3 | 1.63 | 1.65 mL | ✅  |
+| azul-de-metileno | metahemoglobinemia | Ampolla 1 % (10 mg/mL) | 5 años (18.3 kg) | 18.3 | 18.3 | 1.83 | 1.85 mL | ✅  |
+| azul-de-metileno | metahemoglobinemia | Ampolla 1 % (10 mg/mL) | 6 años (20.5 kg) | 20.5 | 20.5 | 2.05 | 2.05 mL | ✅  |
+| azul-de-metileno | metahemoglobinemia | Ampolla 1 % (10 mg/mL) | 8 años (25.6 kg) | 25.6 | 25.6 | 2.56 | 2.55 mL | ✅  |
+| azul-de-metileno | metahemoglobinemia | Ampolla 1 % (10 mg/mL) | 10 años (32 kg) | 32 | 32 | 3.2 | 3.2 mL | ✅  |
+| azul-de-metileno | metahemoglobinemia | Ampolla 1 % (10 mg/mL) | 12 años (40 kg) | 40 | 40 | 4 | 4 mL | ✅  |
 | azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 1 mes (4.2 kg) | 4.2 | 4.2 | 0.42 | 0.42 mL | ✅  |
 | azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 2 meses (5.1 kg) | 5.1 | 5.1 | 0.51 | 0.51 mL | ✅  |
 | azul-metileno | metahemoglobinemia | Azul de metileno al 1 % = 10 mg/mL | 4 meses (6.4 kg) | 6.4 | 6.4 | 0.64 | 0.64 mL | ✅  |
@@ -4618,6 +4633,19 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | sertralina | toc-13-17a | Tableta 50 mg | 14 años (50 kg) | 50 | 50 | 1 | 1 tableta | ✅  |
 | sertralina | toc-13-17a | Tableta 50 mg | 16 años (58 kg) | 50 | 50 | 1 | 1 tableta | ✅  |
 | sertralina | toc-13-17a | Tableta 50 mg | 17 años, obeso (95 kg) | 50 | 50 | 1 | 1 tableta | ✅  |
+| succimero | plomo-8-kg | Tableta 100 mg | 1 año (9.6 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| succimero | plomo-8-kg | Tableta 100 mg | 18 meses (10.9 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| succimero | plomo-8-kg | Tableta 100 mg | 2 años (12.2 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| succimero | plomo-8-kg | Tableta 100 mg | 3 años (14.3 kg) | 100 | 100 | 1 | 1 tableta | ✅  |
+| succimero | plomo-16-kg | Tableta 100 mg | 4 años (16.3 kg) | 200 | 200 | 2 | 2 tableta | ✅  |
+| succimero | plomo-16-kg | Tableta 100 mg | 5 años (18.3 kg) | 200 | 200 | 2 | 2 tableta | ✅  |
+| succimero | plomo-16-kg | Tableta 100 mg | 6 años (20.5 kg) | 200 | 200 | 2 | 2 tableta | ✅  |
+| succimero | plomo-24-kg | Tableta 100 mg | 8 años (25.6 kg) | 300 | 300 | 3 | 3 tableta | ✅  |
+| succimero | plomo-24-kg | Tableta 100 mg | 10 años (32 kg) | 300 | 300 | 3 | 3 tableta | ✅  |
+| succimero | plomo-35-kg | Tableta 100 mg | 12 años (40 kg) | 400 | 400 | 4 | 4 tableta | ✅  |
+| succimero | plomo-45-kg-o-mas | Tableta 100 mg | 14 años (50 kg) | 500 | 500 | 5 | 5 tableta | ✅  |
+| succimero | plomo-45-kg-o-mas | Tableta 100 mg | 16 años (58 kg) | 500 | 500 | 5 | 5 tableta | ✅  |
+| succimero | plomo-45-kg-o-mas | Tableta 100 mg | 17 años, obeso (95 kg) | 500 | 500 | 5 | 5 tableta | ✅  |
 | sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 2 años (12.2 kg) | 488 | 488 | 2.44 | 2.4 mL | ✅  |
 | sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 3 años (14.3 kg) | 572 | 572 | 2.86 | 2.9 mL | ✅  |
 | sulfato-magnesio | asma-grave | Sulfato de magnesio 20 % (200 mg/mL) | 4 años (16.3 kg) | 652 | 652 | 3.26 | 3.3 mL | ✅  |

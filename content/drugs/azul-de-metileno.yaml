@@ -1,0 +1,79 @@
+id: azul-de-metileno
+name: Azul de metileno
+category: urgencia
+emergency: true
+synonyms: [cloruro de metiltioninio, methylene blue, metahemoglobinemia, antídoto]
+atc: V03AB17
+presentations:
+  - id: amp-1pct
+    label: Ampolla 1 % (10 mg/mL)
+    form: ampolla
+    mgPerUnit: 10
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: metahemoglobinemia
+    indication: Metahemoglobinemia adquirida (IV lento)
+    route: IV
+    ageMinDays: 29
+    weightMaxKg: 50
+    basis: mg/kg/dose
+    amountMin: 1
+    amountMax: 2
+    usual: 1
+    repeatMinutes: { min: 60, max: 60 }
+    maxDoses: 2
+    maxPerDoseMg: 100
+    maxPerDayMg: 200
+    notes: >-
+      FDA — 1 mg/kg IV en 5 a 30 min; si la metahemoglobina sigue sobre 30 % o persisten los
+      síntomas, otra dosis de hasta 1 mg/kg a la hora. FNME — 1 a 2 mg/kg (0.1 a 0.2 mL/kg de la
+      solución al 1 %) IV lento, en niños igual que en adultos. Ninguna fuente da tope en mg; la app
+      calcula hasta 50 kg.
+    presentationIds: [amp-1pct]
+    sourceIds: [fda-methylene-blue, fnme-2008, digemid-pnume-2023]
+    countryNotes:
+      - country: PE
+        text: FNME — 1 a 2 mg/kg IV lento.
+        sourceIds: [fnme-2008]
+      - country: US
+        text: FDA — 1 mg/kg en 5 a 30 min; una segunda dosis de hasta 1 mg/kg a la hora si hace falta. En insuficiencia renal moderada o grave, una sola dosis.
+        sourceIds: [fda-methylene-blue]
+warnings:
+  - 'Recuadro de la FDA: síndrome serotoninérgico grave o mortal con ISRS, IRSN, IMAO u opioides; evitar la combinación.'
+  - En el déficit de G6PD puede causar hemólisis y no corregir la metahemoglobinemia (FNME).
+  - Se puede diluir en 50 mL de dextrosa al 5 % para evitar dolor local, sobre todo en niños (FDA).
+contraindications:
+  - Hipersensibilidad al azul de metileno.
+  - Administración subcutánea o intraespinal (FNME).
+  - Metahemoglobinemia inducida en el tratamiento de la intoxicación por cianuro (FNME).
+interactions:
+  - ISRS, IRSN, IMAO y opioides — riesgo de síndrome serotoninérgico (FDA).
+  - Dapsona — anemia hemolítica (FNME).
+renal: >-
+  FDA — en insuficiencia renal moderada o grave (TFG 15 a 59 mL/min/1.73 m²), una sola dosis de
+  1 mg/kg. FNME — requiere ajustar la dosis.
+diagnoses: [metahemoglobinemia, cianosis por fármacos, nitritos, dapsona, anilinas, intoxicación]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-08
+testCases:
+  - ruleId: metahemoglobinemia
+    presentationId: amp-1pct
+    weightKg: 4
+    ageDays: 60
+    expect: { mgPerDose: 4, amount: 0.4, unit: mL }
+  - ruleId: metahemoglobinemia
+    presentationId: amp-1pct
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 20, amount: 2, unit: mL }
+  - ruleId: metahemoglobinemia
+    presentationId: amp-1pct
+    weightKg: 49
+    ageDays: 4745
+    chosenMgPerKg: 2
+    expect: { mgPerDose: 98, amount: 9.8, unit: mL }
