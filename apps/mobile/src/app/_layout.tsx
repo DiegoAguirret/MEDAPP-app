@@ -55,6 +55,7 @@ function Navigator() {
       <Stack.Screen name="crecimiento" options={{ title: 'Crecimiento' }} />
       <Stack.Screen name="desarrollo" options={{ title: 'Desarrollo' }} />
       <Stack.Screen name="vacunas" options={{ title: 'Vacunas' }} />
+      <Stack.Screen name="glasgow" options={{ title: 'Glasgow pediátrico' }} />
       <Stack.Screen name="corticoides-inhalados" options={{ title: 'Corticoides inhalados' }} />
       <Stack.Screen name="neonato/[id]" options={{ title: 'Neonatología' }} />
     </Stack>

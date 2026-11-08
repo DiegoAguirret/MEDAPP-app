@@ -3,6 +3,7 @@ import { router } from 'expo-router';
 import { useMemo } from 'react';
 import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { NEONATAL_SCORES } from '../../domain/neonatalScores';
+import { PEDIATRIC_SCORES } from '../../domain/pediatricScores';
 import { useSettings } from '../../state/settings';
 import { Button, Card, SectionTitle } from '../../ui/components';
 import { FluidsPanel } from '../../ui/FluidsPanel';
@@ -24,6 +25,34 @@ export default function CalculadorasTab() {
             </View>
             <View style={s.grid}>
               {NEONATAL_SCORES.map((d, i) => (
+                <Enter key={d.id} index={i} style={s.tileOuter}>
+                  <PressableScale
+                    accessibilityRole="button"
+                    accessibilityLabel={`${d.title}, ${d.subtitle}`}
+                    onPress={() => router.push({ pathname: '/neonato/[id]', params: { id: d.id } })}
+                    style={s.tile}
+                  >
+                    <View style={s.tileIcon}>
+                      <MaterialCommunityIcons name={d.icon} size={22} color={c.accent} />
+                    </View>
+                    <Text style={s.tileTitle}>{d.title}</Text>
+                    <Text style={s.tileSub} numberOfLines={2}>
+                      {d.subtitle}
+                    </Text>
+                  </PressableScale>
+                </Enter>
+              ))}
+            </View>
+          </View>
+        ) : null}
+        {PEDIATRIC_SCORES.length > 0 ? (
+          <View style={s.block}>
+            <View style={s.sectionRow}>
+              <MaterialCommunityIcons name="head-alert-outline" size={18} color={c.muted} />
+              <Text style={s.section}>Estado de conciencia</Text>
+            </View>
+            <View style={s.grid}>
+              {PEDIATRIC_SCORES.map((d, i) => (
                 <Enter key={d.id} index={i} style={s.tileOuter}>
                   <PressableScale
                     accessibilityRole="button"

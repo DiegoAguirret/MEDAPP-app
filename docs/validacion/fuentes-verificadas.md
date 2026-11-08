@@ -622,3 +622,11 @@ La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en inf
   - Se copiaron tal cual cada visita, cada vacuna, cada dosis y las notas (*) a (****).
 - **Nirsevimab:** la indicación y la dosis vienen de la ficha 6.1.1.24 (pág. 44): dosis única de 50 mg IM si pesa menos de 5 kg y de 100 mg IM si pesa 5 kg o más. Se indica en recién nacidos de madres no vacunadas frente al VRS, nacidos de abril a septiembre, y excepcionalmente en menores de 6 meses.
 - **Lo que hace la app:** con la edad, resalta las visitas que corresponden (incluidos los rangos «1 a 6 meses», «5 a 11 años», etc.) y la próxima visita puntual. No calcula esquemas de rescate (Anexo 2) ni casos especiales (6.3).
+
+## Glasgow pediátrico — verificado el 07/11/2026
+
+- **Fuente:** Manual MSD, versión para profesionales en español, tabla «Escala del Coma de Glasgow modificada para lactantes y niños». La tabla la adapta de Davis 1987, James 1985, Morray (Crit Care Med 1984) y Carney (Neurosurgery 2017). No se encontró una guía MINSA con esta escala.
+  - Se copiaron los textos y puntos de cada columna, lactantes y niños: ojos 4–1, verbal 5–1 y motora 6–1.
+  - Interpretación de la nota (*): ≤ 12 sugiere traumatismo encefálico grave; ≤ 8, la posible necesidad de intubación y ventilación y de controlar la presión intracraneal.
+  - Nota (†): en el paciente intubado, inconsciente o que no habla, la respuesta motora es la parte más importante.
+- **Decisión de la app:** la tabla no fija una edad de corte entre lactante y niño, así que la pantalla deja elegir la columna y explica el criterio, en vez de imponer una edad. De 13 a 15 puntos solo dice que no se cumplen los criterios de gravedad de la tabla.

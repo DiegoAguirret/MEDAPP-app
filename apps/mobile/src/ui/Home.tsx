@@ -44,6 +44,7 @@ export type Tool =
   | 'desarrollo'
   | 'corticoides-inhalados'
   | 'vacunas'
+  | 'glasgow'
   | 'favoritos'
   | 'manual'
   | CollectionId;
@@ -176,6 +177,13 @@ export function Home({
       text: 'Hitos por edad de 0 a 36 meses, según la NTS 238',
       icon: 'human-child',
       hue: '#7C4DCC',
+    },
+    {
+      id: 'glasgow',
+      title: 'Glasgow pediátrico',
+      text: 'Escala del coma modificada para lactantes y niños',
+      icon: 'head-alert-outline',
+      hue: '#8A3B12',
     },
     {
       id: 'vacunas',

@@ -1,3 +1,4 @@
+import { PEDIATRIC_SCORES } from './pediatricScores';
 import type { ScoreDef } from './scores';
 
 /**
@@ -212,5 +213,6 @@ const capurro: ScoreDef = {
 
 export const NEONATAL_SCORES: ScoreDef[] = [apgar, silverman, capurro];
 
+/** Busca entre las escalas neonatales y las pediátricas (Glasgow). */
 export const findScore = (id: string): ScoreDef | undefined =>
-  NEONATAL_SCORES.find((d) => d.id === id);
+  [...NEONATAL_SCORES, ...PEDIATRIC_SCORES].find((d) => d.id === id);
