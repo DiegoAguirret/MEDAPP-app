@@ -18,6 +18,27 @@ presentations:
     unit: tableta
     step: 1
     brandsPE: []
+  - id: susp-125-31-5
+    label: Suspensión 125 mg/31.25 mg por 5 mL (4:1; dosis como amoxicilina)
+    form: suspension
+    mgPerUnit: 25
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: susp-250-62-5
+    label: Suspensión 250 mg/62.5 mg por 5 mL (4:1; dosis como amoxicilina)
+    form: suspension
+    mgPerUnit: 50
+    unit: mL
+    step: 0.1
+    brandsPE: []
+  - id: tab-500-125
+    label: Tableta 500 mg/125 mg (4:1; dosis como amoxicilina)
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 1
+    brandsPE: []
 rules:
   - id: menores-3-meses
     indication: Lactantes menores de 3 meses (dosis expresada como amoxicilina)
@@ -31,8 +52,10 @@ rules:
     intervalHours: 12
     maxPerDoseMg: 875
     maxPerDayMg: 1750
-    notes: FNME — 15 mg/kg cada 12 h; FDA — 30 mg/kg/día cada 12 h (misma dosis).
-    presentationIds: [susp-400-57-5]
+    notes: >-
+      FNME — 15 mg/kg cada 12 h; FDA — 30 mg/kg/día cada 12 h (misma dosis). La FDA recomienda en esta
+      edad la suspensión de 125 mg/31.25 mg por 5 mL.
+    presentationIds: [susp-125-31-5, susp-400-57-5]
     sourceIds: [fnme-2008, fda-amox-clav]
   - id: estandar-cada-12h
     indication: Infecciones susceptibles, pauta cada 12 h (dosis expresada como amoxicilina)
@@ -52,10 +75,31 @@ rules:
     sourceIds: [fnme-2008, fda-amox-clav]
     countryNotes:
       - country: PE
-        text: FNME — 12.5 mg/kg cada 12 h en infecciones leves o moderadas y 22.5 mg/kg cada 12 h en otitis, neumonía o sinusitis (25–45 mg/kg/día); en Perú la suspensión es 7:1.
+        text: FNME — 12.5 mg/kg cada 12 h en infecciones leves o moderadas y 22.5 mg/kg cada 12 h en otitis, neumonía o sinusitis (25–45 mg/kg/día). El PNUME 2023 lista las suspensiones 4:1 (125/31.25 y 250/62.5), que van con la pauta cada 8 h.
         sourceIds: [fnme-2008]
       - country: ES
         text: En España la suspensión 4:1 se dosifica de 20/5 a 60/15 mg/kg/día en tres tomas; no intercambiar presentaciones de distinta proporción.
+        sourceIds: [aemps-ft-64111]
+  - id: estandar-cada-8h
+    indication: Infecciones susceptibles, pauta cada 8 h con presentación 4:1 (dosis expresada como amoxicilina)
+    route: VO
+    ageMinDays: 90
+    basis: mg/kg/day
+    amountMin: 20
+    amountMax: 40
+    usual: 40
+    intervalHours: 8
+    maxPerDoseMg: 500
+    maxPerDayMg: 1500
+    notes: >-
+      FDA — desde las 12 semanas y con menos de 40 kg: 20 a 40 mg/kg/día cada 8 h con la suspensión de
+      125/31.25 o 250/62.5 mg por 5 mL; más de 40 kg, 250 o 500 mg cada 8 h. No intercambiar presentaciones
+      de distinta proporción de clavulánico.
+    presentationIds: [susp-125-31-5, susp-250-62-5, tab-500-125]
+    sourceIds: [fda-amox-clav, aemps-ft-64111, digemid-pnume-2023]
+    countryNotes:
+      - country: ES
+        text: AEMPS — suspensión 4:1 de 20/5 a 60/15 mg/kg/día en tres tomas.
         sourceIds: [aemps-ft-64111]
 warnings:
   - Diarrea frecuente por el componente clavulánico.
@@ -89,3 +133,18 @@ testCases:
     weightKg: 45
     ageDays: 4380
     expect: { mgPerDose: 875, amount: 1, unit: tableta, capped: true }
+  - ruleId: estandar-cada-8h
+    presentationId: susp-125-31-5
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 133.33, amount: 5.3, unit: mL }
+  - ruleId: estandar-cada-8h
+    presentationId: susp-250-62-5
+    weightKg: 20
+    ageDays: 2190
+    expect: { mgPerDose: 266.67, amount: 5.3, unit: mL }
+  - ruleId: estandar-cada-8h
+    presentationId: tab-500-125
+    weightKg: 45
+    ageDays: 4745
+    expect: { mgPerDose: 500, amount: 1, unit: tableta, capped: true }

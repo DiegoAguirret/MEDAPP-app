@@ -18,6 +18,13 @@ presentations:
     unit: tableta
     step: 0.5
     brandsPE: []
+  - id: liq-20-5
+    label: Solución oral 20 mg/5 mL (4 mg/mL)
+    form: solucion
+    mgPerUnit: 4
+    unit: mL
+    step: 0.1
+    brandsPE: []
 rules:
   - id: edema-iv
     indication: Edema (IV o IM lenta)
@@ -82,3 +89,8 @@ testCases:
     weightKg: 20
     ageDays: 2190
     expect: { mgPerDose: 20, amount: 0.5, unit: tableta }
+  - ruleId: edema-vo
+    presentationId: liq-20-5
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 10, amount: 2.5, unit: mL }

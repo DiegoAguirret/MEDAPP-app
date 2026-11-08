@@ -2,7 +2,7 @@
 
 ## Qué incluye
 
-- **146 fichas verificadas.** Fuente principal peruana (FNME de DIGEMID, PNUME y normas del MINSA), contrastada con FDA, AEMPS, OMS, GINA 2025 y otras guías. Las diferencias se muestran por país. Cada ficha tiene interacciones, contraindicaciones, advertencias y, si sus fuentes lo dan, ajuste renal (en 10 fichas, por tramos de TFG).
+- **147 fichas verificadas.** Fuente principal peruana (FNME de DIGEMID, PNUME y normas del MINSA), contrastada con FDA, AEMPS, OMS, GINA 2025 y otras guías. Las diferencias se muestran por país. Cada ficha tiene interacciones, contraindicaciones, advertencias y, si sus fuentes lo dan, ajuste renal (en 10 fichas, por tramos de TFG).
 - **Cálculo por peso y edad** con topes por toma y por día, redondeo a lo medible y cálculo paso a paso. Incluye bandas de peso, dosis de urgencia repetibles, dosis únicas, reglas neonatales, unidades mEq y UI, e infusiones en mL/h con goteo en gotas/min.
 - **Presentación habitual** por fármaco, favoritos y recientes.
 - **Urgencias:** hoja de rescate por peso.

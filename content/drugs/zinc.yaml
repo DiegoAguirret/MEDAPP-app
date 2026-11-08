@@ -11,6 +11,13 @@ presentations:
     unit: tableta
     step: 0.5
     brandsPE: []
+  - id: liq-10-5
+    label: Solución oral 10 mg de zinc/5 mL (2 mg/mL)
+    form: solucion
+    mgPerUnit: 2
+    unit: mL
+    step: 0.1
+    brandsPE: []
 rules:
   - id: diarrea-menor-6-meses
     indication: Diarrea aguda (menores de 6 meses)
@@ -62,3 +69,8 @@ testCases:
     weightKg: 10
     ageDays: 400
     expect: { mgPerDose: 20, amount: 1, unit: tableta }
+  - ruleId: diarrea-6-meses-o-mas
+    presentationId: liq-10-5
+    weightKg: 8
+    ageDays: 300
+    expect: { mgPerDose: 20, amount: 10, unit: mL }

@@ -10,6 +10,13 @@ presentations:
     unit: mL
     step: 0.1
     brandsPE: []
+  - id: tab-500
+    label: Tableta 500 mg (cefuroxima axetil)
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 1
+    brandsPE: []
 rules:
   - id: faringoamigdalitis
     indication: Faringoamigdalitis (3 meses a 12 años)
@@ -75,3 +82,8 @@ testCases:
     weightKg: 30
     ageDays: 3650
     expect: { mgPerDose: 250, amount: 5, unit: mL, capped: true }
+  - ruleId: oma-sinusitis-impetigo
+    presentationId: tab-500
+    weightKg: 33
+    ageDays: 3285
+    expect: { mgPerDose: 495, amount: 1, unit: tableta }

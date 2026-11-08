@@ -799,3 +799,28 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b31d1308-28c3-43f4-e0a6-2f3ed76b8975
   kind: regulador
   country: US
+- id: digemid-ft-ambroxol-3-jarabe
+  title: Ficha técnica, inserto y rotulados autorizados — Ambroxol hidrocloruro 3 mg/mL (15 mg/5 mL) jarabe, venta sin receta
+  publisher: DIGEMID — Ministerio de Salud del Perú
+  url: https://www.digemid.minsa.gob.pe/Archivos/PortalWeb/Informativo/RegistroSanitario/ProductosFarmaceuticos/SinReceta/AMBROXOL%20HIDROCLORURO%2015-5%20JARABE.pdf
+  kind: norma-peru
+  country: PE
+- id: digemid-ft-ambroxol-15-sol
+  title: Ficha técnica, inserto y rotulados autorizados — Ambroxol hidrocloruro 15 mg/5 mL solución oral, venta sin receta
+  publisher: DIGEMID — Ministerio de Salud del Perú
+  url: https://www.digemid.minsa.gob.pe/Archivos/PortalWeb/Informativo/RegistroSanitario/ProductosFarmaceuticos/SinReceta/AMBROXOL%2015.pdf
+  kind: norma-peru
+  country: PE
+- id: digemid-ft-ambroxol-30-sol
+  title: Ficha técnica, inserto y rotulados autorizados — Ambroxol hidrocloruro 30 mg/5 mL solución oral (reservado para adultos)
+  publisher: DIGEMID — Ministerio de Salud del Perú
+  url: https://www.digemid.minsa.gob.pe/Archivos/PortalWeb/Informativo/RegistroSanitario/ProductosFarmaceuticos/SinReceta/AMBROXOL%2030.pdf
+  kind: norma-peru
+  country: PE
+- id: aemps-ft-62248
+  title: Ficha técnica Ambroxol Sandoz Care 3 mg/ml jarabe EFG (nº reg. 62248)
+  publisher: AEMPS — CIMA
+  year: 2025
+  url: https://cima.aemps.es/cima/dochtml/ft/62248/FichaTecnica_62248.html
+  kind: regulador
+  country: ES

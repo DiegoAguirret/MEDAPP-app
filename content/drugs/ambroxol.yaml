@@ -1,0 +1,99 @@
+id: ambroxol
+name: Ambroxol
+category: respiratorio
+synonyms: [ambroxol hidrocloruro, mucolítico, expectorante]
+atc: R05CB06
+presentations:
+  - id: jarabe-15-5
+    label: Jarabe o solución oral 15 mg/5 mL (3 mg/mL)
+    form: jarabe
+    mgPerUnit: 3
+    unit: mL
+    step: 0.5
+    brandsPE: []
+rules:
+  - id: mucolitico-2-5-anos
+    indication: Secreciones espesas en catarro o gripe (2 a 5 años, bajo control médico)
+    route: VO
+    ageMinDays: 730
+    ageMaxDays: 2189
+    basis: fixed_by_age
+    amountMin: 7.5
+    amountMax: 7.5
+    usual: 7.5
+    intervalHours: 8
+    maxPerDoseMg: 7.5
+    maxPerDayMg: 22.5
+    notes: >-
+      DIGEMID (ficha técnica autorizada) — 2.5 mL (7.5 mg) cada 8 h, máximo 22.5 mg/día, bajo control
+      médico; tras 2–3 días, si mejora, se puede pasar a cada 12 h. De 2 a 6 años evaluar beneficio y
+      riesgo. Reevaluar si no mejora en 3 días (menores de 6 años).
+    presentationIds: [jarabe-15-5]
+    sourceIds: [digemid-ft-ambroxol-3-jarabe, digemid-ft-ambroxol-15-sol, aemps-ft-62248]
+  - id: mucolitico-6-12-anos
+    indication: Secreciones espesas en catarro o gripe (6 a 12 años)
+    route: VO
+    ageMinDays: 2190
+    ageMaxDays: 4744
+    basis: fixed_by_age
+    amountMin: 15
+    amountMax: 15
+    usual: 15
+    intervalHours: 8
+    maxPerDoseMg: 15
+    maxPerDayMg: 45
+    notes: >-
+      DIGEMID (ficha técnica autorizada) — 5 mL (15 mg) 2 o 3 veces al día (cada 8–12 h), máximo
+      45 mg/día; tras 2–3 días, si mejora, cada 12 h. Reevaluar si no mejora en 5 días.
+    presentationIds: [jarabe-15-5]
+    sourceIds: [digemid-ft-ambroxol-3-jarabe, digemid-ft-ambroxol-15-sol, aemps-ft-62248]
+  - id: mucolitico-mayor-12-anos
+    indication: Secreciones espesas en catarro o gripe (mayores de 12 años)
+    route: VO
+    ageMinDays: 4745
+    basis: fixed_by_age
+    amountMin: 30
+    amountMax: 30
+    usual: 30
+    intervalHours: 8
+    maxPerDoseMg: 30
+    maxPerDayMg: 90
+    notes: >-
+      DIGEMID (ficha técnica autorizada) — 10 mL de 15 mg/5 mL (30 mg) cada 8 h, máximo 90 mg/día;
+      tras 2–3 días, si mejora, cada 12 h. La solución de 30 mg/5 mL está reservada para adultos.
+    presentationIds: [jarabe-15-5]
+    sourceIds:
+      [digemid-ft-ambroxol-3-jarabe, digemid-ft-ambroxol-15-sol, digemid-ft-ambroxol-30-sol]
+warnings:
+  - >-
+    Suspender de inmediato si aparece una erupción progresiva, ampollas o lesiones en mucosas
+    (eritema multiforme, Stevens-Johnson, necrólisis epidérmica tóxica, PEGA).
+  - En insuficiencia renal o hepática grave, solo con supervisión médica; reducir la dosis o alargar el intervalo.
+  - No combinar con antitusivos; puede acumular secreciones al suprimir la tos.
+  - Precaución con antecedente de úlcera péptica.
+  - La solución de 30 mg/5 mL está reservada para adultos (DIGEMID); en niños usar la de 15 mg/5 mL.
+contraindications:
+  - Menores de 2 años.
+  - Hipersensibilidad al ambroxol.
+diagnoses: [catarro, gripe, resfriado común, bronquitis, tos productiva]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-08
+testCases:
+  - ruleId: mucolitico-2-5-anos
+    presentationId: jarabe-15-5
+    weightKg: 14
+    ageDays: 1095
+    expect: { mgPerDose: 7.5, amount: 2.5, unit: mL }
+  - ruleId: mucolitico-6-12-anos
+    presentationId: jarabe-15-5
+    weightKg: 25
+    ageDays: 2920
+    expect: { mgPerDose: 15, amount: 5, unit: mL }
+  - ruleId: mucolitico-mayor-12-anos
+    presentationId: jarabe-15-5
+    weightKg: 50
+    ageDays: 5110
+    expect: { mgPerDose: 30, amount: 10, unit: mL }

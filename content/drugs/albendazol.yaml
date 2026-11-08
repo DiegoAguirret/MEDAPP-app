@@ -18,6 +18,13 @@ presentations:
     unit: tableta
     step: 1
     brandsPE: [Zentel]
+  - id: tab-400
+    label: Tableta 400 mg
+    form: tableta
+    mgPerUnit: 400
+    unit: tableta
+    step: 1
+    brandsPE: []
 rules:
   - id: nematodos-2-anos-o-mas
     indication: Nemátodos intestinales (2 años o más)
@@ -78,3 +85,8 @@ testCases:
     weightKg: 10
     ageDays: 500
     expect: { mgPerDose: 200, amount: 10, unit: mL }
+  - ruleId: nematodos-2-anos-o-mas
+    presentationId: tab-400
+    weightKg: 15
+    ageDays: 1825
+    expect: { mgPerDose: 400, amount: 1, unit: tableta }

@@ -18,6 +18,13 @@ presentations:
     unit: tableta
     step: 1
     brandsPE: [Pantelmin, Penalcol]
+  - id: tab-500
+    label: Tableta 500 mg
+    form: tableta
+    mgPerUnit: 500
+    unit: tableta
+    step: 1
+    brandsPE: []
 rules:
   - id: tres-dias
     indication: Ascariasis, tricocefalosis o uncinariasis (3 días)
@@ -87,3 +94,8 @@ testCases:
     weightKg: 20
     ageDays: 2190
     expect: { mgPerDose: 100, amount: 1, unit: tableta }
+  - ruleId: dosis-unica-500
+    presentationId: tab-500
+    weightKg: 15
+    ageDays: 1825
+    expect: { mgPerDose: 500, amount: 1, unit: tableta }

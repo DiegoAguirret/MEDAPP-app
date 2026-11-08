@@ -642,7 +642,7 @@ La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en inf
 - **Fuente:** NTS N.° 238-MINSA/DGIESP-2025, Anexo 10 (págs. 32–36 de la segunda parte). Las tablas se leyeron en la imagen de la página porque el OCR no las reconoce.
   - Tabla N.° 1, edad corregida en prematuros menores de 2 años: se restan (40 − edad gestacional) × 7 días. La app reproduce el ejemplo de la norma: 130 días a las 32 semanas dan 74 días.
   - Tabla de pautas por edad: de 15 a 21 días y a los 2 meses → recién nacido; 3–5 → 3 meses; 6–8 → 6; 9–11 → 9; 12–17 → 12; 18–23 → 18; 24–29 → 24; 30–36 → 30.
-  - Tabla N.° 2, «Hitos del desarrollo según área»: adaptada de Huanca D., *Guía de Vigilancia del Neurodesarrollo* (2023). Tiene 5 áreas (motor grueso, motor fino, social, cognitivo y habla). El texto de cada hito se copió tal cual.
+  - Tabla N.° 2, «Hitos del desarrollo según área»: adaptada de Huanca D., _Guía de Vigilancia del Neurodesarrollo_ (2023). Tiene 5 áreas (motor grueso, motor fino, social, cognitivo y habla). El texto de cada hito se copió tal cual.
   - Se comprueban los hitos de la pauta y todos los de las pautas anteriores.
   - Interpretación:
     - Si no logra 1 hito: consejería, sesiones semanales de atención temprana y seguimiento al mes; si persiste, tamizaje con la prueba EDI.
@@ -669,7 +669,7 @@ La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en inf
 
 - **Fuente:** NTS N.° 246-MINSA/DGIESP-2026 (RM N.° 561-2026-MINSA, junio de 2026), descargada de gob.pe (partes 1 y 2). Reemplaza el esquema de la NTS 196-2022.
   - Las tablas 6.2.2 (niña y niño de 0 a 11 años, 11 meses y 29 días) y 6.2.3 (adolescente) se leyeron en la imagen de las págs. 45–47, porque el PDF es escaneado.
-  - Se copiaron tal cual cada visita, cada vacuna, cada dosis y las notas (*) a (****).
+  - Se copiaron tal cual cada visita, cada vacuna, cada dosis y las notas (_) a (_***).
 - **Nirsevimab:** la indicación y la dosis vienen de la ficha 6.1.1.24 (pág. 44): dosis única de 50 mg IM si pesa menos de 5 kg y de 100 mg IM si pesa 5 kg o más. Se indica en recién nacidos de madres no vacunadas frente al VRS, nacidos de abril a septiembre, y excepcionalmente en menores de 6 meses.
 - **Lo que hace la app:** con la edad, resalta las visitas que corresponden (incluidos los rangos «1 a 6 meses», «5 a 11 años», etc.) y la próxima visita puntual. No calcula esquemas de rescate (Anexo 2) ni casos especiales (6.3).
 
@@ -745,3 +745,27 @@ La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en inf
     - poplíteo: unos 180°, 155°, 131°, 112°, 100°, 84° y 48°.
   - Se descartaron y repitieron un rebote de 110–140 que salió a 150° y un poplíteo de 140 que salió a 114°. Flow rechazó una consigna con la palabra «desnudo» por su filtro de contenido; se reescribió como «con pañal».
   - **Bufanda y talón-oreja quedan sin imagen.** Flow volvió a bloquear con «actividad inusual» después de 3 de las 6 bufandas. Sus plantillas están en el script y subidas a Flow.
+
+## Lote 21: presentaciones que faltaban y ambroxol — verificado el 08/11/2026
+
+- **Presentaciones agregadas** (concentraciones del PNUME 2023 y de las fichas técnicas ya citadas en cada fármaco):
+  - cefuroxima tableta 500 mg (axetil);
+  - furosemida solución oral 4 mg/mL;
+  - ivermectina tableta 3 mg y solución oral 6 mg/mL;
+  - zinc solución oral 2 mg/mL;
+  - ibuprofeno tabletas 200 y 400 mg (en la pauta de fiebre y dolor);
+  - albendazol tableta 400 mg; mebendazol tableta 500 mg;
+  - eritromicina suspensión 125 mg/5 mL;
+  - amoxicilina/clavulánico suspensiones 125/31.25 y 250/62.5 por 5 mL y tableta 500/125.
+- **Amoxicilina/clavulánico cada 8 h:** pauta nueva desde los 3 meses, 20–40 mg/kg/día de amoxicilina (habitual 40), máximo 500 mg por dosis y 1500 mg/día (FDA Augmentin, AEMPS ficha 64111, PNUME). Se marcó como diferencia con España.
+- **Tabletas descartadas** por no servir en niños o no tener pauta pediátrica en sus fuentes: fenoximetilpenicilina 1 000 000 UI, furazolidona 100 mg y morfina 10 mg.
+- **Ambroxol (ficha nueva).** Fuente principal: fichas técnicas autorizadas por DIGEMID para venta sin receta.
+  - Jarabe 3 mg/mL (15 mg/5 mL) y solución oral 15 mg/5 mL:
+    - 2 a 5 años: 2.5 mL (7.5 mg) cada 8 h, máximo 22.5 mg/día, bajo control médico;
+    - 6 a 12 años: 5 mL (15 mg) 2 o 3 veces al día, máximo 45 mg/día;
+    - mayores de 12 años: 10 mL (30 mg) cada 8 h, máximo 90 mg/día;
+    - tras 2–3 días, si mejora, se puede bajar a cada 12 h.
+  - Contraindicado en menores de 2 años. Suspender ante erupción progresiva (Stevens-Johnson, NET, PEGA).
+  - La solución de 30 mg/5 mL está «reservada para adultos» según su ficha DIGEMID, así que no se ofrece en la app.
+  - Coincide con la AEMPS (Ambroxol Sandoz Care 3 mg/ml, ficha 62248).
+  - Las gotas no se agregaron: no se encontró una ficha peruana con su concentración y dosis.

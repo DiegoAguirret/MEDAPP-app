@@ -25,6 +25,20 @@ presentations:
     unit: mL
     step: 0.01
     brandsPE: []
+  - id: tab-200
+    label: Tableta 200 mg
+    form: tableta
+    mgPerUnit: 200
+    unit: tableta
+    step: 1
+    brandsPE: []
+  - id: tab-400
+    label: Tableta 400 mg
+    form: tableta
+    mgPerUnit: 400
+    unit: tableta
+    step: 1
+    brandsPE: []
 rules:
   - id: fiebre-dolor-vo
     indication: Fiebre o dolor leve a moderado (6 meses a 11 años)
@@ -43,7 +57,7 @@ rules:
       cada 6–8 h; no superar 40 mg/kg/día. Topes de 400 mg/toma y 1200 mg/día: dosis máxima
       de venta libre para 12 años o más (FDA). Libro Peña Camarena: 5–10 mg/kg/dosis cada 6–8 h.
       Administrar con alimentos.
-    presentationIds: [susp-100-5, gotas-40]
+    presentationIds: [susp-100-5, gotas-40, tab-200, tab-400]
     sourceIds: [fnme-2008, fda-ibuprofen-susp, fda-ibuprofen-otc, pena-camarena]
     countryNotes:
       - country: PE
@@ -128,3 +142,8 @@ testCases:
     weightKg: 1.2
     ageDays: 3
     expect: { mgPerDose: 6, amount: 1.2, unit: mL }
+  - ruleId: fiebre-dolor-vo
+    presentationId: tab-400
+    weightKg: 40
+    ageDays: 3650
+    expect: { mgPerDose: 400, amount: 1, unit: tableta }

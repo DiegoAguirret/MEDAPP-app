@@ -18,6 +18,13 @@ presentations:
     unit: tableta
     step: 0.5
     brandsPE: []
+  - id: susp-125-5
+    label: Suspensión 125 mg/5 mL
+    form: suspension
+    mgPerUnit: 25
+    unit: mL
+    step: 0.1
+    brandsPE: []
 rules:
   - id: usual
     indication: Infecciones respiratorias y de piel (dosis usual)
@@ -94,3 +101,8 @@ testCases:
     weightKg: 6
     ageDays: 120
     expect: { mgPerDose: 60, amount: 1.2, unit: mL }
+  - ruleId: usual
+    presentationId: susp-125-5
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 75, amount: 3, unit: mL }
