@@ -15,7 +15,7 @@ import {
   type Sex,
 } from '../domain/bp';
 import { CLINICAL_DISCLAIMER } from '../domain/messages';
-import { Card, Chip, NumberField, SectionTitle } from './components';
+import { Card, Chip, Collapsible, NumberField, SectionTitle } from './components';
 import { family, radius, space, useColors, type Palette } from './theme';
 
 function num(text: string): number | null {
@@ -201,10 +201,9 @@ export function BpPanel() {
         </Card>
       ) : null}
 
-      <Card>
-        <SectionTitle>Fuente</SectionTitle>
+      <Collapsible icon="book-open-variant" title="Fuente">
         <Text style={s.source}>{BP_SOURCE}</Text>
-      </Card>
+      </Collapsible>
       <Text style={s.hint}>{CLINICAL_DISCLAIMER}</Text>
     </View>
   );

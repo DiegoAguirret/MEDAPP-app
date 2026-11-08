@@ -9,7 +9,7 @@ import {
   type BiliLevel,
 } from '../domain/bilirubin';
 import { CLINICAL_DISCLAIMER } from '../domain/messages';
-import { Card, NumberField, SectionTitle } from './components';
+import { Card, Collapsible, NumberField, SectionTitle } from './components';
 import { family, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
 
 function num(text: string): number | null {
@@ -203,13 +203,12 @@ export function BilirubinPanel({ decimalSeparator }: { decimalSeparator: '.' | '
         </View>
       ) : null}
 
-      <Card>
-        <SectionTitle>Fuente</SectionTitle>
+      <Collapsible icon="book-open-variant" title="Fuente">
         <Text style={s.source}>{BILI_SOURCE}</Text>
         <Text style={s.source}>
           Los umbrales se basan en opinión de expertos, no en evidencia fuerte, como indica la guía.
         </Text>
-      </Card>
+      </Collapsible>
       <Text style={s.hint}>{CLINICAL_DISCLAIMER}</Text>
     </View>
   );

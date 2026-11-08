@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { ICS_GROUPS, ICS_NOTES, type IcsGroup } from '../domain/ics';
 import { CLINICAL_DISCLAIMER } from '../domain/messages';
-import { Card, SectionTitle, Segmented } from './components';
+import { Card, Collapsible, SectionTitle, Segmented } from './components';
 import { family, radius, space, useColors, type Palette } from './theme';
 
 /** Tabla de consulta de dosis diarias de corticoides inhalados (GINA 2025) por edad. */
@@ -60,14 +60,13 @@ export function IcsPanel() {
         ))}
       </Card>
 
-      <Card>
-        <SectionTitle>Fuente</SectionTitle>
+      <Collapsible icon="book-open-variant" title="Fuente">
         <Text style={s.source}>{group.source}</Text>
         <Text style={s.source}>
           Global Initiative for Asthma. Global Strategy for Asthma Management and Prevention,
           actualización 2025.
         </Text>
-      </Card>
+      </Collapsible>
       <Text style={s.hint}>{CLINICAL_DISCLAIMER}</Text>
     </View>
   );

@@ -1,15 +1,17 @@
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import type { Category } from '@medapp/content-schema';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { CATEGORIES } from '../../domain/categories';
 import { collectionDrugs, COLLECTIONS, isCollection } from '../../domain/collections';
 import { NEONATAL_SCORES } from '../../domain/neonatalScores';
+import { searchDrugs } from '../../data/content';
 import { getContent } from '../../state/content';
 import { DrugIndex, DrugList } from '../../ui/DrugRow';
 import { ALL_DRUGS } from '../../ui/Home';
 import { PressableScale } from '../../ui/motion';
+import { SearchBox } from '../../ui/SearchBox';
 import { family, radius, useColors, type Palette } from '../../ui/theme';
 
 const INTRO: Record<string, string> = {
@@ -33,6 +35,9 @@ export default function CategoryScreen() {
       : content.bundle.drugs
           .filter((d) => (all || d.category === id) && !content.recalled.has(d.id))
           .sort((a, b) => a.name.localeCompare(b.name, 'es'));
+  const [query, setQuery] = useState('');
+  const searching = query.trim() !== '';
+  const shown = searching && content.ok ? searchDrugs(drugs, query, content.recalled) : drugs;
   const open = (drugId: string) =>
     router.push({ pathname: '/farmaco/[id]', params: { id: drugId } });
   const title = all
@@ -78,7 +83,19 @@ export default function CategoryScreen() {
           ))}
         </View>
       ) : null}
-      {all ? <DrugIndex drugs={drugs} onOpen={open} /> : <DrugList drugs={drugs} onOpen={open} />}
+      <SearchBox
+        value={query}
+        onChangeText={setQuery}
+        placeholder={`Buscar en ${all ? 'todos los fármacos' : title.toLowerCase()}`}
+        label="Buscar fármaco en esta lista"
+      />
+      {searching && shown.length === 0 ? (
+        <Text style={s.intro}>Nada coincide con «{query.trim()}» en esta lista.</Text>
+      ) : all && !searching ? (
+        <DrugIndex drugs={shown} onOpen={open} />
+      ) : (
+        <DrugList drugs={shown} onOpen={open} />
+      )}
     </ScrollView>
   );
 }

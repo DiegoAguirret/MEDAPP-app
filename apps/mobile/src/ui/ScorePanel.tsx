@@ -4,6 +4,7 @@ import { LayoutAnimation, Pressable, Share, StyleSheet, Text, View } from 'react
 import { scoreResult, type ScoreDef } from '../domain/scores';
 import { CLINICAL_DISCLAIMER } from '../domain/messages';
 import { hasScoreArt, ScoreArt } from './art/neonatalArt';
+import { Collapsible } from './components';
 import { bandRange } from './bandRange';
 import { Reveal } from './motion';
 import { Sheet } from './Sheet';
@@ -262,13 +263,14 @@ export function ScorePanel({ def }: { def: ScoreDef }) {
             ))}
           </>
         ) : null}
-        <Text style={[s.itemLabel, s.gapTop]}>Fuentes</Text>
+      </View>
+      <Collapsible icon="book-open-variant" title="Fuentes" count={def.sources.length}>
         {def.sources.map((src) => (
           <Text key={src} style={s.source}>
             {src}
           </Text>
         ))}
-      </View>
+      </Collapsible>
       <Text style={s.disclaimer}>{CLINICAL_DISCLAIMER}</Text>
     </View>
   );
@@ -401,14 +403,15 @@ function makeStyles(c: Palette) {
     optionOn: { borderColor: c.accent, backgroundColor: c.accentSoft },
     optionArt: { padding: 0, overflow: 'hidden', gap: 0, backgroundColor: c.surface },
     art: { width: '100%', aspectRatio: 3 / 2, backgroundColor: '#F8DFCF' },
-    pointsOnArt: {
-      position: 'absolute',
-      top: 8,
-      right: 8,
-      backgroundColor: c.text,
-      color: c.surface,
+    // Los puntos van bajo la imagen, nunca encima: no tapan lo que la ilustración muestra.
+    pointsOnArt: { marginTop: space.sm, marginLeft: space.md },
+    optionTextArt: {
+      flex: 0,
+      paddingHorizontal: space.md,
+      paddingTop: 6,
+      paddingBottom: space.md,
+      minHeight: 56,
     },
-    optionTextArt: { flex: 0, padding: space.md, minHeight: 64 },
     radio: {
       width: 20,
       height: 20,

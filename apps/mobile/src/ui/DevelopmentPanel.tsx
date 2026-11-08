@@ -11,7 +11,7 @@ import {
   type Pauta,
 } from '../domain/development';
 import { CLINICAL_DISCLAIMER } from '../domain/messages';
-import { Card, NumberField, SectionTitle } from './components';
+import { Card, Collapsible, NumberField, SectionTitle } from './components';
 import { family, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
 
 const DAYS_PER_MONTH = 30.4375;
@@ -329,10 +329,9 @@ export function DevelopmentPanel() {
         </View>
       )}
 
-      <Card>
-        <SectionTitle>Fuente</SectionTitle>
+      <Collapsible icon="book-open-variant" title="Fuente">
         <Text style={s.source}>{DEVELOPMENT_SOURCE}</Text>
-      </Card>
+      </Collapsible>
       <Text style={s.hint}>{CLINICAL_DISCLAIMER}</Text>
     </View>
   );

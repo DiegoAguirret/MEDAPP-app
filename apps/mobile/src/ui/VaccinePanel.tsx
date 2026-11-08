@@ -9,7 +9,7 @@ import {
   visitsForAge,
   type Visit,
 } from '../domain/vaccines';
-import { Card, NumberField, SectionTitle } from './components';
+import { Card, Collapsible, NumberField, SectionTitle } from './components';
 import { family, radius, space, useColors, type Palette } from './theme';
 
 function int(text: string): number | null {
@@ -108,10 +108,9 @@ export function VaccinePanel() {
           </Text>
         ))}
       </Card>
-      <Card>
-        <SectionTitle>Fuente</SectionTitle>
+      <Collapsible icon="book-open-variant" title="Fuente">
         <Text style={s.source}>{VACCINE_SOURCE}</Text>
-      </Card>
+      </Collapsible>
       <Text style={s.hint}>{CLINICAL_DISCLAIMER}</Text>
     </View>
   );

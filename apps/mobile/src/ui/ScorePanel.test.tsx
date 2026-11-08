@@ -50,8 +50,10 @@ describe('ScorePanel', () => {
     expect(screen.getByText('0 de 2 criterios')).toBeOnTheScreen();
   });
 
-  it('muestra las fuentes', async () => {
+  it('oculta las fuentes hasta desplegarlas', async () => {
     await render(<ScorePanel def={demo} />);
+    expect(screen.queryByText('Fuente de prueba')).toBeNull();
+    await fireEvent.press(screen.getByRole('button', { name: 'Fuentes' }));
     expect(screen.getByText('Fuente de prueba')).toBeOnTheScreen();
   });
 

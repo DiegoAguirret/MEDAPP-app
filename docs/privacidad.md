@@ -20,7 +20,10 @@ La app no pide nombres, documentos de identidad ni ningún otro dato que identif
 
 ## Datos que se guardan en el teléfono
 
-Solo las preferencias del usuario: el tema (claro u oscuro), el separador decimal, los fármacos marcados como favoritos, las últimas fichas abiertas (solo el nombre del fármaco, hasta 8), las guías de uso ya vistas y la aceptación del aviso inicial. Se pueden borrar desinstalando la app o borrando sus datos desde los ajustes de Android.
+- **Preferencias del usuario:** el tema (claro u oscuro), el separador decimal, los fármacos marcados como favoritos, la presentación habitual de cada fármaco, las últimas fichas abiertas (solo el fármaco, hasta 8), las guías de uso ya vistas y la aceptación del aviso inicial.
+- **Historial de cálculos** (hasta 60): el fármaco, la indicación, la presentación, la dosis calculada y el peso y la edad con que se calculó, con la fecha y la hora. No incluye nombres ni ningún dato que identifique al paciente, y nunca sale del teléfono. Se borra desde la pantalla Historial o desde Ajustes.
+
+Todo se puede borrar también desinstalando la app o borrando sus datos desde los ajustes de Android.
 
 ## Compartir una indicación
 

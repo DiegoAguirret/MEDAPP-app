@@ -2,6 +2,7 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Tabs } from 'expo-router';
 import { useEffect, useRef } from 'react';
 import { Animated, Easing, StyleSheet, type ColorValue } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useReduceMotion } from '../../ui/motion';
 import { family, radius, useColors } from '../../ui/theme';
 
@@ -69,6 +70,8 @@ const s = StyleSheet.create({
 
 export default function TabsLayout() {
   const c = useColors();
+  // La barra de pestañas queda sobre la barra de navegación del celular, no debajo.
+  const { bottom } = useSafeAreaInsets();
   return (
     <Tabs
       screenOptions={{
@@ -79,9 +82,9 @@ export default function TabsLayout() {
           borderTopColor: c.border,
           borderTopWidth: StyleSheet.hairlineWidth,
           elevation: 0,
-          height: 68,
+          height: 68 + bottom,
           paddingTop: 6,
-          paddingBottom: 8,
+          paddingBottom: 8 + bottom,
         },
         tabBarLabelStyle: { fontFamily: family.bold, fontSize: 11, marginTop: 2 },
         headerStyle: { backgroundColor: c.ground },

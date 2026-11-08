@@ -10,7 +10,7 @@ import {
   type Tone,
 } from '../domain/growth/growth';
 import { CLINICAL_DISCLAIMER } from '../domain/messages';
-import { Card, Chip, NumberField, SectionTitle } from './components';
+import { Card, Chip, Collapsible, NumberField, SectionTitle } from './components';
 import { family, MIN_TOUCH, radius, space, useColors, type Palette } from './theme';
 
 const SOURCES = [
@@ -240,14 +240,13 @@ export function GrowthPanel({ decimalSeparator }: { decimalSeparator: '.' | ',' 
         </View>
       )}
 
-      <Card>
-        <SectionTitle>Fuentes</SectionTitle>
+      <Collapsible icon="book-open-variant" title="Fuentes">
         {SOURCES.map((src) => (
           <Text key={src} style={s.source}>
             {src}
           </Text>
         ))}
-      </Card>
+      </Collapsible>
       <Text style={s.hint}>{CLINICAL_DISCLAIMER}</Text>
     </View>
   );

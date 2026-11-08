@@ -48,6 +48,8 @@ export type Tool =
   | 'bilirrubina'
   | 'presion-arterial'
   | 'favoritos'
+  | 'historial'
+  | 'funcion-renal'
   | 'manual'
   | CollectionId;
 
@@ -235,6 +237,20 @@ export function Home({
       text: 'Las fichas que marcaste con la estrella',
       icon: 'star-outline',
       hue: '#B26A00',
+    },
+    {
+      id: 'historial',
+      title: 'Historial',
+      text: 'Las dosis que calculaste, para volver a abrirlas',
+      icon: 'history',
+      hue: '#455A64',
+    },
+    {
+      id: 'funcion-renal',
+      title: 'Función renal',
+      text: 'TFG de Schwartz y categoría KDIGO',
+      icon: 'water-outline',
+      hue: '#1565C0',
     },
   ];
 

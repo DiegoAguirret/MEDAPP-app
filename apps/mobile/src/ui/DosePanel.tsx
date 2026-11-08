@@ -8,12 +8,13 @@ import {
   type Source,
 } from '@medapp/content-schema';
 import { calculateDose, formatClinical } from '@medapp/dose-engine';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Pressable, ScrollView, Share, StyleSheet, Text, View } from 'react-native';
 import { CATEGORIES } from '../domain/categories';
 import { isScheduled, scheduleText } from '../domain/schedule';
+import { useHistory } from '../state/history';
 import { usePatient } from '../state/patient';
 import { useFavoritePresentation } from '../state/settings';
 import { useTipQueue } from '../state/tips';
@@ -27,7 +28,7 @@ import { PatientBand } from './PatientBand';
 import { PatientCard } from './PatientCard';
 import { customPresentation } from '../domain/custom';
 import { CLINICAL_DISCLAIMER, REASON_TEXT, WARNING_TEXT } from '../domain/messages';
-import { readPatient } from '../domain/patientInput';
+import { patientSummary, readPatient } from '../domain/patientInput';
 import { ruleFits } from '../domain/rules';
 import {
   Banner,
@@ -201,6 +202,39 @@ export function DosePanel({
       ...(chosenValue === undefined ? {} : { chosenMgPerKg: chosenValue }),
     });
   }, [rule, presentation, weightKg, ageDays, hasAge, chosenValue, du]);
+
+  // Historial: guarda el cálculo cuando el médico deja de cambiar datos; las correcciones en la
+  // misma visita actualizan el mismo registro.
+  const saveHistory = useHistory()?.save;
+  const historyId = useRef<string | undefined>(undefined);
+  const summary = patientSummary(reading, decimalSeparator);
+  useEffect(() => {
+    if (!saveHistory || result?.status !== 'ok' || !rule || !presentation || !summary) return;
+    const unitText =
+      rule.continuous === true
+        ? result.amount.unit
+        : (UNIT_LABEL[presentation.unit] ?? presentation.unit);
+    const dose = `${formatClinical(result.amount.value, decimalSeparator)} ${unitText} (${formatClinical(
+      result.mgPerDose.chosen,
+      decimalSeparator,
+    )} ${du}${rule.continuous === true ? '/h' : ''}) ${scheduleText(rule)}`;
+    const timer = setTimeout(() => {
+      historyId.current = saveHistory(
+        {
+          drugId: drug.id,
+          drugName: drug.name,
+          indication: rule.indication,
+          presentation: presentation.label,
+          dose,
+          patient: reading.fields,
+          patientSummary: summary,
+        },
+        historyId.current,
+      );
+    }, 2000);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- se guarda por el resultado, no por cada objeto
+  }, [saveHistory, result, rule, presentation, summary, decimalSeparator, du, drug.id, drug.name]);
 
   const fittingRules =
     result?.status === 'not_calculable' &&

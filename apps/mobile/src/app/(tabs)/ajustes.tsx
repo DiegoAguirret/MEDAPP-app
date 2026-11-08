@@ -1,4 +1,5 @@
 import Constants from 'expo-constants';
+import { router } from 'expo-router';
 import { useState } from 'react';
 import { Linking, ScrollView, StyleSheet, Text } from 'react-native';
 import { CLINICAL_DISCLAIMER } from '../../domain/messages';
@@ -91,8 +92,11 @@ export default function AjustesTab() {
           cerrar la app o al tocar «Nuevo paciente».
         </Text>
         <Text style={body}>
-          En el teléfono solo se guardan tus preferencias: tema, separador decimal y favoritos.
+          En el teléfono se guardan tus preferencias (tema, separador decimal, favoritos y
+          presentación habitual) y el historial de cálculos: fármaco, dosis, peso y edad, sin
+          nombres. Puedes borrar el historial cuando quieras.
         </Text>
+        <Button label="Ver o borrar el historial" onPress={() => router.push('/historial')} />
       </Card>
 
       <Card>

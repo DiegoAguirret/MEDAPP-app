@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { CLINICAL_DISCLAIMER } from '../domain/messages';
 import { kdigoCategory, SCHWARTZ_SOURCE, schwartzEgfr } from '../domain/renal';
-import { Card, NumberField, SectionTitle } from './components';
+import { Card, Collapsible, NumberField, SectionTitle } from './components';
 import { family, radius, space, useColors, type Palette } from './theme';
 
 function num(text: string): number | null {
@@ -84,10 +84,9 @@ export function RenalPanel({ decimalSeparator }: { decimalSeparator: '.' | ',' }
           crónica hace falta daño renal o TFG baja por más de 3 meses.
         </Text>
       </Card>
-      <Card>
-        <SectionTitle>Fuente</SectionTitle>
+      <Collapsible icon="book-open-variant" title="Fuente">
         <Text style={s.hint}>{SCHWARTZ_SOURCE}</Text>
-      </Card>
+      </Collapsible>
       <Text style={s.hint}>{CLINICAL_DISCLAIMER}</Text>
     </View>
   );

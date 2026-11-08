@@ -8,6 +8,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, type ReactNode } from 'react';
 import { useColorScheme } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { HistoryProvider } from '../state/history';
 import { PatientProvider } from '../state/patient';
 import { SettingsProvider, useSettings } from '../state/settings';
 import { TipsProvider } from '../state/tips';
@@ -36,6 +38,8 @@ function Themed({ children }: { children: ReactNode }) {
 function Navigator() {
   const { c } = usePalette();
   const { accepted, accept } = useSettings();
+  // Android 15+ dibuja la app detrás de la barra de navegación del sistema: se reserva su alto.
+  const { bottom } = useSafeAreaInsets();
   if (!accepted) return <Onboarding onDone={accept} />;
   return (
     <Stack
@@ -45,10 +49,13 @@ function Navigator() {
         headerTintColor: c.text,
         headerTitleStyle: { color: c.text, fontFamily: family.bold, fontSize: 18 },
         headerBackButtonDisplayMode: 'minimal',
-        contentStyle: { backgroundColor: c.ground },
+        contentStyle: { backgroundColor: c.ground, paddingBottom: bottom },
       }}
     >
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen
+        name="(tabs)"
+        options={{ headerShown: false, contentStyle: { backgroundColor: c.ground } }}
+      />
       <Stack.Screen name="farmaco/[id]" options={{ title: '' }} />
       <Stack.Screen name="categoria/[id]" options={{ title: 'Categoría' }} />
       <Stack.Screen name="manual" options={{ title: 'Calculadora manual' }} />
@@ -60,6 +67,7 @@ function Navigator() {
       <Stack.Screen name="ballard" options={{ title: 'Ballard' }} />
       <Stack.Screen name="presion-arterial" options={{ title: 'Presión arterial' }} />
       <Stack.Screen name="funcion-renal" options={{ title: 'Función renal' }} />
+      <Stack.Screen name="historial" options={{ title: 'Historial' }} />
       <Stack.Screen name="corticoides-inhalados" options={{ title: 'Corticoides inhalados' }} />
       <Stack.Screen name="neonato/[id]" options={{ title: 'Neonatología' }} />
     </Stack>
@@ -83,11 +91,13 @@ export default function RootLayout() {
   return (
     <SettingsProvider>
       <PatientProvider>
-        <TipsProvider>
-          <Themed>
-            <Navigator />
-          </Themed>
-        </TipsProvider>
+        <HistoryProvider>
+          <TipsProvider>
+            <Themed>
+              <Navigator />
+            </Themed>
+          </TipsProvider>
+        </HistoryProvider>
       </PatientProvider>
     </SettingsProvider>
   );
