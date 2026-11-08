@@ -195,9 +195,13 @@ export function ballardWeeks(total: number): string {
   return lower && upper ? `entre ${lower[1]} y ${upper[1]} semanas` : 'fuera de la tabla';
 }
 
+/** Una banda por interpretación: los totales seguidos con la misma lectura se agrupan. */
 const bands: ScoreBand[] = [];
 for (let t = -12; t <= 50; t++) {
-  bands.push({ min: t, max: t, label: ballardWeeks(t), tone: 'ok' });
+  const label = ballardWeeks(t);
+  const last = bands[bands.length - 1];
+  if (last?.label === label) last.max = t;
+  else bands.push({ min: t, max: t, label, tone: 'ok' });
 }
 
 const howTo =

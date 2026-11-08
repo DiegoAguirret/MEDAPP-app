@@ -4,6 +4,7 @@ import { LayoutAnimation, Pressable, Share, StyleSheet, Text, View } from 'react
 import { scoreResult, type ScoreDef } from '../domain/scores';
 import { CLINICAL_DISCLAIMER } from '../domain/messages';
 import { hasScoreArt, ScoreArt } from './art/neonatalArt';
+import { bandRange } from './bandRange';
 import { Reveal } from './motion';
 import { Sheet } from './Sheet';
 import { family, MIN_TOUCH, radius, space, type, useColors, type Palette } from './theme';
@@ -14,6 +15,7 @@ import { family, MIN_TOUCH, radius, space, type, useColors, type Palette } from 
  * interpretación quedan arriba; la hoja «Cómo se usa» reúne pasos, fórmula, interpretación y
  * fuentes.
  */
+
 export function ScorePanel({ def }: { def: ScoreDef }) {
   const c = useColors();
   const s = useMemo(() => makeStyles(c), [c]);
@@ -233,7 +235,7 @@ export function ScorePanel({ def }: { def: ScoreDef }) {
               <Text style={s.sheetHead}>Interpretación</Text>
               {def.bands.map((b) => (
                 <Text key={b.label} style={s.bandRow}>
-                  {def.bandsOn === 'derived' ? '' : `${b.min}–${b.max}: `}
+                  {def.bandsOn === 'derived' ? '' : `${bandRange(b)}: `}
                   {b.label}
                 </Text>
               ))}
@@ -254,7 +256,7 @@ export function ScorePanel({ def }: { def: ScoreDef }) {
             <Text style={s.itemLabel}>Interpretación</Text>
             {def.bands.map((b) => (
               <Text key={b.label} style={s.bandRow}>
-                {def.bandsOn === 'derived' ? '' : `${b.min}–${b.max}: `}
+                {def.bandsOn === 'derived' ? '' : `${bandRange(b)}: `}
                 {b.label}
               </Text>
             ))}

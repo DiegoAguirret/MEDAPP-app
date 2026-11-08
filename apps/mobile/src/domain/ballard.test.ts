@@ -41,4 +41,16 @@ describe('New Ballard Score (Ballard et al., J Pediatr 1991)', () => {
       expect(d.bands.some((b) => t >= b.min && t <= b.max)).toBe(true);
     }
   });
+
+  it('agrupa los totales con la misma interpretación en una sola banda', () => {
+    const d = BALLARD_SCORES[0];
+    if (!d) throw new Error('falta Ballard');
+    const labels = d.bands.map((b) => b.label);
+    expect(new Set(labels).size).toBe(labels.length);
+    expect(d.bands.find((b) => b.label === 'entre 32 y 34 semanas')).toMatchObject({
+      min: 21,
+      max: 24,
+    });
+    expect(d.bands.find((b) => b.label === '40 semanas')).toMatchObject({ min: 40, max: 40 });
+  });
 });

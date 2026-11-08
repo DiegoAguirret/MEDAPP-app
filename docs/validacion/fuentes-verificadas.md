@@ -682,3 +682,12 @@ La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en inf
   - postura: «rana» en el 3 y aducción de caderas en el 4.
 - **Decisión de la app:** entre dos filas de la tabla de madurez la app da el rango («entre 32 y 34 semanas») y no interpola. Por debajo de −10 informa que está fuera de la tabla.
 - **Sexo:** solo cambia el criterio de genitales; la app tiene una versión para niño y otra para niña.
+- **Ilustraciones (08/11/2026):** postura (5) y ventana cuadrada (6), generadas con Google Flow.
+  - Postura: ediciones de un mismo bebé pintado, revisadas una por una contra el texto de su opción.
+  - Ventana cuadrada: la IA no respeta ángulos finos si se le pide solo con texto. Por eso se dibujó una plantilla con el ángulo exacto de cada opción (`scripts/art/ballard-refs.mjs`) y en Flow se pintó encima conservando la pose. Cada resultado se midió sobre la imagen (eje del antebrazo contra eje de la mano):
+    - más de 90° → 124°;
+    - 90° → 87°;
+    - 60° → 58°;
+    - 45° → 45°;
+    - 30° y 0° se revisaron a ojo: la medición automática no sirve cuando mano y antebrazo quedan casi paralelos. Se descartó un primer intento de 30° que quedó en unos 50°.
+  - Rebote, ángulo poplíteo, bufanda y talón-oreja quedan sin imagen por ahora: Flow bloqueó la generación con un aviso de «actividad inusual». Sus plantillas ya están en el script.

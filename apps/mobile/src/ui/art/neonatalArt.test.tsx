@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react-native';
+import { BALLARD_SCORES } from '../../domain/ballard';
 import { NEONATAL_SCORES } from '../../domain/neonatalScores';
 import { ScorePanel } from '../ScorePanel';
 import { hasScoreArt } from './neonatalArt';
@@ -11,6 +12,17 @@ describe('ilustraciones de las escalas neonatales', () => {
       expect(hasScoreArt(id, item.id, item.options.length)).toBe(true);
     }
   });
+
+  it.each(['ballard-nino', 'ballard-nina'])(
+    '%s tiene imagen para cada opción de postura y ventana cuadrada',
+    (id) => {
+      const def = BALLARD_SCORES.find((d) => d.id === id);
+      for (const itemId of ['postura', 'ventana']) {
+        const item = def?.items.find((i) => i.id === itemId);
+        expect(item && hasScoreArt(id, item.id, item.options.length)).toBe(true);
+      }
+    },
+  );
 
   it('el Apgar no lleva imágenes', () => {
     const apgar = NEONATAL_SCORES.find((d) => d.id === 'apgar');
