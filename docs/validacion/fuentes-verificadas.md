@@ -575,6 +575,23 @@ La app ahora calcula infusiones: la dosis en mcg/kg/min o mg/kg/h da la velocida
 - **Ranitidina:** la FDA pidió retirarla del mercado en 2020.
 - **Loperamida:** la FDA la contraindica en menores de 2 años.
 
+## Lote 20: penicilina G benzatínica y petidina — verificado el 08/11/2026
+
+- **Penicilina G benzatínica** (PNUME 1 200 000 y 2 400 000 UI):
+  - Antes se había dejado fuera porque ninguna fuente peruana da cómo reconstituir el frasco. Ahora se incluye con el mismo criterio que la ceftriaxona y la ampicilina: la reconstitución de la OMS (frasco de 1 200 000 UI con 4 mL de agua estéril, 300 000 UI/mL nominal según su tabla por peso). Si el servicio la prepara distinto, se usa «Personalizar concentración».
+  - Faringitis: FNME, menos de 27 kg 600 000 UI y 27 kg o más 1 200 000 UI IM en dosis única. El FNME trae en otra línea 300 000 a 600 000 y 900 000 UI. FDA: 300 000 a 600 000 UI con menos de 60 lb y 900 000 UI en niños mayores. La app muestra todo el rango y usa la cifra del FNME como habitual.
+  - Sífilis congénita en el RN: NTS 159, 50 000 UI/kg IM en dosis única (RN de madre no tratada o mal tratada, sin alteraciones y con RPR no reactivo, o RN de madre bien tratada con RPR menor de 2 veces el materno). Hasta los 2 años: FNME, OMS y FDA, 50 000 UI/kg en dosis única, hasta 2 400 000 UI.
+  - La profilaxis de la fiebre reumática no se calcula (FNME 1 200 000 UI y OMS 600 000 UI cada 3 a 4 semanas); se deja como advertencia.
+  - Recuadro de la FDA: no es para uso IV.
+- **Petidina** (PNUME 50 mg/mL): FNME, niños 1.1 a 1.76 mg/kg IM o SC cada 3 a 4 h, sin pasar de 100 mg; la FDA (Demerol) da lo mismo en mg/lb. La FDA no ha establecido su seguridad en menores de 18 años; se calcula desde el mes de vida.
+- **No incluidos esta vez:** surfactante pulmonar (la vía intratraqueal no existe todavía en la app y el PNUME no dice qué producto ni qué concentración), nifedipino, enalapril, captopril, naproxeno y lamotrigina (con las tabletas del PNUME no se puede medir la dosis de un niño pequeño, o la dosis depende de otros fármacos).
+
+## Función renal (Schwartz) y goteo — verificado el 08/11/2026
+
+- **TFG a pie de cama:** Schwartz GJ et al., J Am Soc Nephrol 2009;20:629–637 (PubMed 19158356): 0.413 × talla (cm) / creatinina (mg/dL). Se derivó en niños de 1 a 16 años con enfermedad renal crónica y creatinina enzimática.
+- **Categorías:** KDIGO 2012, recomendación 1.2.3: G1 ≥ 90, G2 60–89, G3a 45–59, G3b 30–44, G4 15–29, G5 < 15 mL/min/1.73 m².
+- **Goteo:** gotas/min = mL/h × gotas por mL del equipo ÷ 60. No hay norma peruana que fije el factor; viene impreso en cada equipo. Por eso la app no supone ninguno: el médico elige 60 (microgotero), 20, 15 o 10.
+
 ## Unidad mEq: bicarbonato de sodio y cloruro de potasio — verificado el 07/11/2026
 
 La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en infusión (mEq/kg/h) y en la concentración personalizada.

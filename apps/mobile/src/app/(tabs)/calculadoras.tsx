@@ -137,6 +137,14 @@ export default function CalculadorasTab() {
           <Button label="Abrir presión arterial" onPress={() => router.push('/presion-arterial')} />
         </Card>
         <Card>
+          <SectionTitle>Función renal</SectionTitle>
+          <Text style={s.cardText}>
+            TFG estimada con la fórmula de Schwartz (talla y creatinina) y su categoría KDIGO, para
+            el ajuste renal de las fichas.
+          </Text>
+          <Button label="Abrir función renal" onPress={() => router.push('/funcion-renal')} />
+        </Card>
+        <Card>
           <SectionTitle>Vacunas</SectionTitle>
           <Text style={s.cardText}>
             Esquema Nacional de Inmunizaciones 2026 (NTS 246) y lo que toca a cada edad.

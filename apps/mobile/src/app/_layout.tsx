@@ -59,6 +59,7 @@ function Navigator() {
       <Stack.Screen name="bilirrubina" options={{ title: 'Bilirrubina neonatal' }} />
       <Stack.Screen name="ballard" options={{ title: 'Ballard' }} />
       <Stack.Screen name="presion-arterial" options={{ title: 'Presión arterial' }} />
+      <Stack.Screen name="funcion-renal" options={{ title: 'Función renal' }} />
       <Stack.Screen name="corticoides-inhalados" options={{ title: 'Corticoides inhalados' }} />
       <Stack.Screen name="neonato/[id]" options={{ title: 'Neonatología' }} />
     </Stack>

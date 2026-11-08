@@ -50,3 +50,24 @@
 2. **Neonatología:** puntajes publicados (Apgar, Silverman-Anderson, Capurro), cada uno con su fuente original.
 3. **Lote 5 de medicamentos y más:** anticonvulsivantes, antibióticos IV, antifúngicos y gastro, con interacciones y ajuste renal desde las fichas FDA.
 4. **Crecimiento** (OMS) y **urgencias ampliadas** (AHA PALS).
+
+## Comparación con Pediatrum 1.0.3 (XAPK revisado el 08/11/2026)
+
+Pediatrum es una app Flutter con 122 fármacos. Su base de datos dice venir de Pediamécum (AEPED) y BNFc. No se copia nada de ella: solo se usó la lista de nombres y la forma de los datos para encontrar huecos. Cada dato nuestro sale de fuentes primarias.
+
+**Lo que se tomó como idea y ya está:**
+
+- Ajuste renal con TFG: calculadora de Schwartz a pie de cama con categorías KDIGO, enlazada desde el apartado «Ajuste renal» de cada ficha.
+- Goteo sin bomba: gotas/min con microgotero o macrogotero, en el mantenimiento de líquidos y en las infusiones.
+- Presentación habitual por fármaco.
+- Ilustraciones de Ballard y Capurro.
+
+**Lo que tiene Pediatrum y aún no:**
+
+- Ajuste renal por tramos de TFG en cada ficha; nuestras fichas lo tienen como texto de las fuentes.
+- Ajuste hepático, monitoreo y efectos adversos graves como secciones propias.
+- Gravedad de cada interacción.
+- Marca de uso fuera de ficha técnica en cada indicación.
+- Surfactante pulmonar (falta la vía intratraqueal en la app).
+
+**Fármacos de Pediatrum que no tenemos:** la mayoría no está en el PNUME (cefixima, cefaclor, cefpodoxima, cefepima, ertapenem, voriconazol, caspofungina, terbinafina, oxcarbazepina, topiramato, dexmedetomidina, ketorolaco, midecamicina) o ya se revisó y se dejó fuera con su motivo (levofloxacino, risperidona, clonazepam, dopamina, zidovudina y otros antirretrovirales).

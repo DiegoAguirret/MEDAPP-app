@@ -1,4 +1,4 @@
-import { Stack, useLocalSearchParams } from 'expo-router';
+import { router, Stack, useLocalSearchParams } from 'expo-router';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useEffect, useState } from 'react';
 import { KeyboardAvoidingView, Pressable, ScrollView, StyleSheet, View } from 'react-native';
@@ -61,6 +61,7 @@ export default function DrugScreen() {
           drug={drug}
           decimalSeparator={decimal}
           sources={content.bundle.sources}
+          onOpenRenalCalc={() => router.push('/funcion-renal')}
         />
       </ScrollView>
       <DrugInfoSheet

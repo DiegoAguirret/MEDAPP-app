@@ -21,6 +21,7 @@ import { weightZone } from '../domain/zones';
 import { Reveal } from './motion';
 import { Sheet } from './Sheet';
 import { Tip } from './Tip';
+import { DripRate } from './DripRate';
 import { PatientBand } from './PatientBand';
 import { PatientCard } from './PatientCard';
 import { customPresentation } from '../domain/custom';
@@ -124,10 +125,13 @@ export function DosePanel({
   drug,
   decimalSeparator,
   sources,
+  onOpenRenalCalc,
 }: {
   drug: Drug;
   decimalSeparator: '.' | ',';
   sources: Source[];
+  /** Abre la calculadora de función renal (la pantalla pasa la navegación). */
+  onOpenRenalCalc?: () => void;
 }) {
   const c = useColors();
   const s = useMemo(() => makeStyles(c), [c]);
@@ -575,6 +579,9 @@ export function DosePanel({
             />
             {rule.durationText ? <Fact s={s} label="Duración" value={rule.durationText} /> : null}
           </View>
+          {rule.continuous === true && result.amount.unit === 'mL/h' ? (
+            <DripRate mlPerHour={result.amount.value} decimalSeparator={decimalSeparator} />
+          ) : null}
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Compartir indicación"
@@ -612,6 +619,17 @@ export function DosePanel({
       {drug.renal ? (
         <Collapsible icon="water-outline" title="Ajuste renal" tone="ok">
           <Text style={s.body}>{drug.renal}</Text>
+          {onOpenRenalCalc ? (
+            <Pressable
+              accessibilityRole="link"
+              onPress={onOpenRenalCalc}
+              hitSlop={8}
+              style={s.favPres}
+            >
+              <Ionicons name="calculator-outline" size={18} color={c.accent} />
+              <Text style={s.favPresText}>Calcular la TFG (Schwartz)</Text>
+            </Pressable>
+          ) : null}
         </Collapsible>
       ) : null}
       {drug.contraindications.length > 0 ? (

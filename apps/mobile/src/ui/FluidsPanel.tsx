@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { CLINICAL_DISCLAIMER, REASON_TEXT } from '../domain/messages';
 import { parseHeight, parseWeight } from '../domain/patientInput';
 import { Card, Chip, NumberField, SectionTitle } from './components';
+import { DripRate } from './DripRate';
 import { family, space, useColors, type Palette } from './theme';
 
 export function FluidsPanel({ decimalSeparator }: { decimalSeparator: '.' | ',' }) {
@@ -55,6 +56,7 @@ export function FluidsPanel({ decimalSeparator }: { decimalSeparator: '.' | ',' 
             100 mL/kg los primeros 10 kg, 50 mL/kg los 10 siguientes, 20 mL/kg el resto (máx. 2400
             mL/día).
           </Text>
+          <DripRate mlPerHour={maint.mlPerHour} decimalSeparator={decimalSeparator} />
         </Card>
       ) : null}
 
