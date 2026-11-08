@@ -647,3 +647,26 @@ La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en inf
   - Escalamiento: 2 mg/dL bajo el umbral de exanguinotransfusión (KAS 17).
   - Fuera de rango: menos de 35 semanas, hora 0 o más de 14 días.
 - **No incluido:** el seguimiento posalta de la Figura 7, cuyo texto en el PDF es ambiguo. La app remite a la figura de la guía.
+
+## Presión arterial de 1 a 17 años — verificado el 07/11/2026
+
+- **Fuente:** Flynn JT et al., AAP 2017, Pediatrics 2017;140(3):e20171904.
+  - Tablas 4 y 5: PA por edad, sexo y percentil de talla.
+  - Tabla 3: categorías.
+  - Sección 4.3: conducta.
+  - KAS 3: diagnóstico en 3 visitas.
+- **Extracción:** las Tablas 4 y 5 se leyeron celda por celda del HTML oficial de publications.aap.org (el usuario pasó la verificación de Cloudflare) y se guardaron como JSON en `scripts/bp/aap2017-bp.json`, sin transcribir a mano. Validaciones:
+  - 17 edades × 6 filas por sexo;
+  - tallas iguales en las columnas de PAS y PAD;
+  - «p95 + 12» exactamente igual a p95 + 12 en las 476 celdas.
+  - `scripts/bp/gen_bp_tables.py` genera `bpTables.ts`.
+- **Clasificación (Tabla 3):**
+  - De 1 a <13 años:
+    - elevada desde min(p90, 120/80);
+    - estadio 1 desde min(p95, 130/80);
+    - estadio 2 desde min(p95 + 12, 140/90).
+  - Desde los 13 años, cifras fijas: 120–129/<80, 130/80–139/89 y ≥ 140/90.
+  - Se toma la peor categoría entre sistólica y diastólica.
+- **Emergencia (4.3d):** estadio 2 con más de 30 mm Hg sobre el p95, o más de 180/120 en adolescentes; también si está sintomático.
+- **Decisión de la app:** la guía no dice qué columna usar cuando la talla medida cae entre dos. La app sugiere la columna de talla más cercana y deja cambiarla.
+- **Corrección propia:** la primera versión de la conducta estaba escrita de memoria. Se reemplazó por la traducción de la sección 4.3 leída en la guía.

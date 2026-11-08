@@ -95,6 +95,13 @@ export default function CalculadorasTab() {
           />
         </Card>
         <Card>
+          <SectionTitle>Presión arterial</SectionTitle>
+          <Text style={s.cardText}>
+            Percentiles por edad, sexo y talla y clasificación de la AAP 2017 (1 a 17 años).
+          </Text>
+          <Button label="Abrir presión arterial" onPress={() => router.push('/presion-arterial')} />
+        </Card>
+        <Card>
           <SectionTitle>Vacunas</SectionTitle>
           <Text style={s.cardText}>
             Esquema Nacional de Inmunizaciones 2026 (NTS 246) y lo que toca a cada edad.

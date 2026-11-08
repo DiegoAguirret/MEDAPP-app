@@ -46,6 +46,7 @@ export type Tool =
   | 'vacunas'
   | 'glasgow'
   | 'bilirrubina'
+  | 'presion-arterial'
   | 'favoritos'
   | 'manual'
   | CollectionId;
@@ -185,6 +186,13 @@ export function Home({
       text: 'Umbral de fototerapia y exanguinotransfusión por hora (AAP 2022)',
       icon: 'white-balance-sunny',
       hue: '#B08900',
+    },
+    {
+      id: 'presion-arterial',
+      title: 'Presión arterial',
+      text: 'Percentil por edad, sexo y talla y estadio de HTA (AAP 2017)',
+      icon: 'heart-pulse',
+      hue: '#9C2F4A',
     },
     {
       id: 'glasgow',

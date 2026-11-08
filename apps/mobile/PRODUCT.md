@@ -34,6 +34,7 @@ Peru-first sources: DIGEMID's FNME and MINSA norms, contrasted with FDA, AEMPS, 
 - Vaccines: Peru's 2026 national immunization schedule (NTS 246) for ages 0–17, highlighting what is due at the child's age and the next visit.
 - Pediatric Glasgow coma scale (infant and child columns, MSD Manual table) as a guided score.
 - Neonatal bilirubin: AAP 2022 hour-specific phototherapy, escalation-of-care and exchange-transfusion thresholds (≥35 weeks), with neurotoxicity risk factors.
+- Blood pressure: AAP 2017 percentiles by age, sex and height (1–17 years), category and the guideline's management, with an ED alert.
 - Growth: weight, length/height, BMI, head and arm circumference give the z-score, percentile against the WHO references (2006 standards under 5, 2007 reference 5–19), classified with the Peruvian NTS 238-MINSA 2025 cutoffs within its age ranges.
 - Tools: manual calculator, fluids (Holliday-Segar), dehydration plans, body surface area.
 - Favorites, light and dark themes, choice of decimal separator.
