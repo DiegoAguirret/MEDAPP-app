@@ -54,6 +54,11 @@ interactions:
 renal: >-
   FDA — en insuficiencia renal moderada o grave (TFG 15 a 59 mL/min/1.73 m²), una sola dosis de
   1 mg/kg. FNME — requiere ajustar la dosis.
+renalTiers:
+  - gfrMin: 15
+    gfrMax: 60
+    text: Una sola dosis de 1 mg/kg (TFG 15 a 59 mL/min/1.73 m²).
+    sourceIds: [fda-methylene-blue]
 diagnoses: [metahemoglobinemia, cianosis por fármacos, nitritos, dapsona, anilinas, intoxicación]
 review:
   status: verificado

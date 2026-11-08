@@ -55,6 +55,11 @@ interactions:
 renal: >-
   OMS — no requiere ajuste. FNME — con depuración de creatinina menor de 10 mL/min, dar la dosis habitual cada 8
   horas.
+renalTiers:
+  - gfrMin: 0
+    gfrMax: 10
+    text: Dosis habitual cada 8 horas (FNME). La OMS no indica ajuste.
+    sourceIds: [fnme-2008, who-mfc-2010]
 diagnoses:
   [
     faringitis,

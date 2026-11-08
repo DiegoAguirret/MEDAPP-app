@@ -57,6 +57,7 @@ Pediatrum es una app Flutter con 122 fármacos. Su base de datos dice venir de P
 
 **Lo que se tomó como idea y ya está:**
 
+- Ajuste renal por tramos de TFG en 10 fichas, con el tramo del paciente resaltado.
 - Ajuste renal con TFG: calculadora de Schwartz a pie de cama con categorías KDIGO, enlazada desde el apartado «Ajuste renal» de cada ficha.
 - Goteo sin bomba: gotas/min con microgotero o macrogotero, en el mantenimiento de líquidos y en las infusiones.
 - Presentación habitual por fármaco.
@@ -64,7 +65,7 @@ Pediatrum es una app Flutter con 122 fármacos. Su base de datos dice venir de P
 
 **Lo que tiene Pediatrum y aún no:**
 
-- Ajuste renal por tramos de TFG en cada ficha; nuestras fichas lo tienen como texto de las fuentes.
+- Ajuste renal por tramos en más fichas: hoy hay 10 con tramos; el resto solo trae texto, porque sus fuentes no dan umbrales pediátricos.
 - Ajuste hepático, monitoreo y efectos adversos graves como secciones propias.
 - Gravedad de cada interacción.
 - Marca de uso fuera de ficha técnica en cada indicación.

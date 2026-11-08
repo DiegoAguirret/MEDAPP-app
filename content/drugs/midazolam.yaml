@@ -93,6 +93,11 @@ contraindications:
 interactions:
   - Opioides y otros depresores del sistema nervioso central, depresión respiratoria (FDA).
 renal: FNME — con depuración de creatinina menor de 10 mL/min, 50 % de la dosis.
+renalTiers:
+  - gfrMin: 0
+    gfrMax: 10
+    text: 50 % de la dosis.
+    sourceIds: [fnme-2008]
 diagnoses: [sedación para procedimientos, premedicación]
 review:
   status: verificado

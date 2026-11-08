@@ -249,6 +249,13 @@ export const clinicalTestCaseSchema = z.object({
   }),
 });
 
+export const renalTierSchema = z.object({
+  gfrMin: nonNegative,
+  gfrMax: positive.optional(),
+  text: z.string().min(1),
+  sourceIds: z.array(id).min(1, 'Cada tramo renal necesita al menos una fuente'),
+});
+
 export const drugSchema = z
   .object({
     id,
@@ -272,11 +279,43 @@ export const drugSchema = z
     interactions: z.array(z.string().min(1)).optional(),
     /** Ajuste en insuficiencia renal, tal como lo dicen las fuentes. */
     renal: z.string().min(1).optional(),
+    /**
+     * El mismo ajuste por tramos de depuración de creatinina o TFG (mL/min), solo con los umbrales que
+     * dan las fuentes. `gfrMin` incluido, `gfrMax` excluido; sin `gfrMax`, el tramo no tiene techo.
+     */
+    renalTiers: z.array(renalTierSchema).min(1).optional(),
     diagnoses: z.array(z.string().min(1)),
     review: reviewSchema,
     testCases: z.array(clinicalTestCaseSchema).min(1, 'Se requiere al menos un caso clínico'),
   })
   .superRefine((d, ctx) => {
+    if (d.renalTiers !== undefined) {
+      if (d.renal === undefined) {
+        ctx.addIssue({
+          code: 'custom',
+          message: 'Los tramos renales necesitan también el texto renal',
+          path: ['renalTiers'],
+        });
+      }
+      const sorted = [...d.renalTiers].sort((a, b) => a.gfrMin - b.gfrMin);
+      sorted.forEach((t, i) => {
+        if (t.gfrMax !== undefined && t.gfrMax <= t.gfrMin) {
+          ctx.addIssue({
+            code: 'custom',
+            message: `tramo renal con mínimo ${t.gfrMin} mayor o igual que su máximo ${t.gfrMax}`,
+            path: ['renalTiers'],
+          });
+        }
+        const next = sorted[i + 1];
+        if (next && (t.gfrMax === undefined || t.gfrMax > next.gfrMin)) {
+          ctx.addIssue({
+            code: 'custom',
+            message: `tramos renales que se solapan desde ${next.gfrMin}`,
+            path: ['renalTiers'],
+          });
+        }
+      });
+    }
     const ruleIds = new Set(d.rules.map((r) => r.id));
     const presIds = new Set(d.presentations.map((p) => p.id));
     if (ruleIds.size !== d.rules.length) {
@@ -356,6 +395,7 @@ export type SourceKind = z.infer<typeof sourceKindSchema>;
 export type Country = z.infer<typeof countrySchema>;
 export type Category = z.infer<typeof categorySchema>;
 export type CountryNote = z.infer<typeof countryNoteSchema>;
+export type RenalTier = z.infer<typeof renalTierSchema>;
 
 export function parseDrug(raw: unknown): Drug {
   return drugSchema.parse(raw);

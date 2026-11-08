@@ -82,6 +82,11 @@ contraindications:
   - Hipersensibilidad al fluconazol.
 diagnoses: [candidiasis, muguet, candidiasis oral, candidiasis sistémica, hongos, micosis]
 renal: FNME — depuración de creatinina de 21 a 49 mL/min, 50 % de la dosis. FDA — menos de 50 mL/min, 50 % de la dosis.
+renalTiers:
+  - gfrMin: 0
+    gfrMax: 50
+    text: 50 % de la dosis (FDA, menos de 50 mL/min; el FNME lo indica de 21 a 49 mL/min).
+    sourceIds: [fda-fluconazole, fnme-2008]
 review:
   status: verificado
   author: Diego

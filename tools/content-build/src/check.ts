@@ -43,6 +43,18 @@ export function checkContent(
     }
     seen.add(drug.id);
 
+    for (const tier of drug.renalTiers ?? []) {
+      for (const sid of tier.sourceIds) {
+        if (!sourceIds.has(sid)) {
+          errors.push({
+            drugId: drug.id,
+            code: 'unknown_source',
+            detail: `tramo renal desde ${tier.gfrMin}: fuente desconocida ${sid}`,
+          });
+        }
+      }
+    }
+
     for (const rule of drug.rules) {
       const noteSources = (rule.countryNotes ?? []).flatMap((n) => n.sourceIds);
       for (const sid of [...rule.sourceIds, ...noteSources]) {

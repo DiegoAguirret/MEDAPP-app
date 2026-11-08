@@ -22,6 +22,7 @@ import { Reveal } from './motion';
 import { Sheet } from './Sheet';
 import { Tip } from './Tip';
 import { DripRate } from './DripRate';
+import { RenalTiers } from './RenalTiers';
 import { PatientBand } from './PatientBand';
 import { PatientCard } from './PatientCard';
 import { customPresentation } from '../domain/custom';
@@ -619,6 +620,7 @@ export function DosePanel({
       {drug.renal ? (
         <Collapsible icon="water-outline" title="Ajuste renal" tone="ok">
           <Text style={s.body}>{drug.renal}</Text>
+          {drug.renalTiers ? <RenalTiers tiers={drug.renalTiers} /> : null}
           {onOpenRenalCalc ? (
             <Pressable
               accessibilityRole="link"

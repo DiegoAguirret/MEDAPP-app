@@ -37,6 +37,19 @@ contraindications:
 renal: >-
   FDA — en niños, después de una dosis de carga: depuración de 40 a 70 mL/min, 60 % de la dosis diaria
   c/12 h; de 20 a 40, 25 % c/12 h; de 5 a 20, 10 % c/24 h.
+renalTiers:
+  - gfrMin: 5
+    gfrMax: 20
+    text: Tras la dosis de carga, 10 % de la dosis diaria cada 24 h.
+    sourceIds: [fda-cefazolin]
+  - gfrMin: 20
+    gfrMax: 40
+    text: Tras la dosis de carga, 25 % de la dosis diaria repartida cada 12 h.
+    sourceIds: [fda-cefazolin]
+  - gfrMin: 40
+    gfrMax: 70
+    text: Tras la dosis de carga, 60 % de la dosis diaria repartida cada 12 h.
+    sourceIds: [fda-cefazolin]
 diagnoses: [infección de piel, celulitis, infección osteoarticular, profilaxis quirúrgica]
 review:
   status: verificado

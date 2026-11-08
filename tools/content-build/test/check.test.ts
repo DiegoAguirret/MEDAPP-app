@@ -143,6 +143,14 @@ describe('checkContent', () => {
     expect(checkContent([d], sources, 'tester', today)[0]?.code).toBe('unknown_source');
   });
 
+  it('flags an unknown source in a renal tier', () => {
+    const d = drug({
+      renal: 'x',
+      renalTiers: [{ gfrMin: 0, gfrMax: 10, text: 'x', sourceIds: ['nope'] }],
+    });
+    expect(checkContent([d], sources, 'tester', today)[0]?.code).toBe('unknown_source');
+  });
+
   it('flags duplicate drug ids', () => {
     const errors = checkContent([drug(), drug()], sources, 'tester', today);
     expect(errors.map((e) => e.code)).toContain('duplicate_id');

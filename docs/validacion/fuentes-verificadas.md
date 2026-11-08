@@ -592,6 +592,16 @@ La app ahora calcula infusiones: la dosis en mcg/kg/min o mg/kg/h da la velocida
 - **Categorías:** KDIGO 2012, recomendación 1.2.3: G1 ≥ 90, G2 60–89, G3a 45–59, G3b 30–44, G4 15–29, G5 < 15 mL/min/1.73 m².
 - **Goteo:** gotas/min = mL/h × gotas por mL del equipo ÷ 60. No hay norma peruana que fije el factor; viene impreso en cada equipo. Por eso la app no supone ninguno: el médico elige 60 (microgotero), 20, 15 o 10.
 
+## Ajuste renal por tramos — verificado el 08/11/2026
+
+- Las fichas cuyo texto renal ya traía umbrales numéricos de sus fuentes tienen ahora esos mismos umbrales como tramos (`renalTiers`). No se agregó ningún dato nuevo: amikacina, azul de metileno, cefazolina, cefotaxima, fenoximetilpenicilina, fluconazol, hidroclorotiazida, midazolam, penicilina G sódica y rifampicina.
+- En la ficha, el médico escribe la TFG o la depuración y se resalta el tramo que corresponde. Si la fuente no dice nada para ese valor, la app lo dice y no inventa un ajuste.
+- **No se convirtieron:**
+  - ceftazidima y levetiracetam, porque su tabla es solo de adultos;
+  - digoxina, porque su ajuste depende de una tabla por peso magro.
+- Las fuentes hablan de depuración de creatinina en mL/min; la TFG de Schwartz está normalizada a 1.73 m². La app lo advierte junto a los tramos.
+- **Decisión de la app:** el mínimo de cada tramo está incluido y el máximo excluido (por ejemplo, «40 a 60» es de 40 a menos de 60). El esquema rechaza tramos que se solapen, tramos sin fuente y tramos sin el texto renal.
+
 ## Unidad mEq: bicarbonato de sodio y cloruro de potasio — verificado el 07/11/2026
 
 La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en infusión (mEq/kg/h) y en la concentración personalizada.

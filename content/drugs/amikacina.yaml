@@ -103,6 +103,22 @@ renal: >-
   FDA — alargar el intervalo: horas entre dosis = creatinina sérica × 9; o reducir la dosis en
   proporción a la depuración de creatinina. FNME — por depuración: 60 mL/min o más, c/8 h; 40 a 60,
   c/12 h; 20 a 40, c/24 h; menos de 20, guiarse por niveles.
+renalTiers:
+  - gfrMin: 0
+    gfrMax: 20
+    text: Guiarse por niveles séricos.
+    sourceIds: [fnme-2008]
+  - gfrMin: 20
+    gfrMax: 40
+    text: Cada 24 h.
+    sourceIds: [fnme-2008]
+  - gfrMin: 40
+    gfrMax: 60
+    text: Cada 12 h.
+    sourceIds: [fnme-2008]
+  - gfrMin: 60
+    text: Cada 8 h (intervalo habitual).
+    sourceIds: [fnme-2008]
 diagnoses: [sepsis, infección urinaria complicada, infecciones graves por gramnegativos]
 review:
   status: verificado

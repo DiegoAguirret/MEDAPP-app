@@ -73,6 +73,11 @@ interactions:
   - Los AINE reducen su efecto diurético y antihipertensivo (FDA).
   - Colestiramina y colestipol reducen su absorción; separar las tomas (FDA, FNME).
 renal: FNME — evitar si la depuración de creatinina es menor de 30 mL/min y vigilar electrolitos. FDA — en enfermedad renal puede precipitar azoemia; si la función renal empeora, suspender.
+renalTiers:
+  - gfrMin: 0
+    gfrMax: 30
+    text: Evitar y vigilar electrolitos.
+    sourceIds: [fnme-2008]
 diagnoses: [edema, hipertensión arterial, insuficiencia cardíaca]
 review:
   status: verificado

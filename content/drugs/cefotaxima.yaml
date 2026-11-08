@@ -72,6 +72,11 @@ contraindications:
 interactions:
   - El probenecid interfiere con su eliminación renal y baja su depuración total (FDA).
 renal: FDA — con depuración de creatinina menor de 20 mL/min, dar la mitad de la dosis.
+renalTiers:
+  - gfrMin: 0
+    gfrMax: 20
+    text: Dar la mitad de la dosis.
+    sourceIds: [fda-cefotaxime]
 diagnoses: [meningitis, sepsis, neumonía grave, infecciones graves]
 review:
   status: verificado

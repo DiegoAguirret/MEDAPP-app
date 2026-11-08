@@ -394,3 +394,44 @@ describe('parseDrug presentationIds', () => {
     ).toEqual(['susp-120-5']);
   });
 });
+
+describe('tramos de ajuste renal', () => {
+  const withTiers = (renalTiers: unknown) => ({ ...validDrug(), renal: 'Ver tramos.', renalTiers });
+
+  it('acepta tramos ordenados con su fuente', () => {
+    const d = parseDrug(
+      withTiers([
+        { gfrMin: 0, gfrMax: 20, text: 'Guiarse por niveles.', sourceIds: ['fnme-2008'] },
+        { gfrMin: 20, gfrMax: 40, text: 'Cada 24 h.', sourceIds: ['fnme-2008'] },
+        { gfrMin: 60, text: 'Cada 8 h.', sourceIds: ['fnme-2008'] },
+      ]),
+    );
+    expect(d.renalTiers).toHaveLength(3);
+  });
+
+  it('rechaza tramos que se solapan o con el mínimo mayor que el máximo', () => {
+    expect(() =>
+      parseDrug(
+        withTiers([
+          { gfrMin: 0, gfrMax: 30, text: 'a', sourceIds: ['x'] },
+          { gfrMin: 20, gfrMax: 40, text: 'b', sourceIds: ['x'] },
+        ]),
+      ),
+    ).toThrow(/solapan/);
+    expect(() =>
+      parseDrug(withTiers([{ gfrMin: 40, gfrMax: 20, text: 'a', sourceIds: ['x'] }])),
+    ).toThrow(/mínimo/);
+  });
+
+  it('exige el texto renal y una fuente por tramo', () => {
+    expect(() =>
+      parseDrug({
+        ...validDrug(),
+        renalTiers: [{ gfrMin: 0, gfrMax: 10, text: 'a', sourceIds: ['x'] }],
+      }),
+    ).toThrow(/renal/);
+    expect(() =>
+      parseDrug(withTiers([{ gfrMin: 0, gfrMax: 10, text: 'a', sourceIds: [] }])),
+    ).toThrow();
+  });
+});

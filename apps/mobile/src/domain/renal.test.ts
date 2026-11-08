@@ -1,4 +1,11 @@
-import { dropsPerMinute, DROP_FACTORS, kdigoCategory, schwartzEgfr } from './renal';
+import {
+  dropsPerMinute,
+  DROP_FACTORS,
+  kdigoCategory,
+  renalTierFor,
+  schwartzEgfr,
+  tierLabel,
+} from './renal';
 
 describe('TFG de Schwartz a pie de cama (Schwartz 2009)', () => {
   it('es 0.413 × talla (cm) / creatinina (mg/dL)', () => {
@@ -44,5 +51,29 @@ describe('goteo en gotas por minuto', () => {
 
   it('ofrece el microgotero y los macrogoteros comunes', () => {
     expect(DROP_FACTORS.map((f) => f.perMl)).toEqual([60, 20, 15, 10]);
+  });
+});
+
+describe('tramo renal del paciente', () => {
+  const tiers = [
+    { gfrMin: 0, gfrMax: 20, text: 'niveles', sourceIds: ['a'] },
+    { gfrMin: 20, gfrMax: 40, text: 'c/24 h', sourceIds: ['a'] },
+    { gfrMin: 60, text: 'c/8 h', sourceIds: ['a'] },
+  ];
+
+  it('elige el tramo con el mínimo incluido y el máximo excluido', () => {
+    expect(renalTierFor(tiers, 19.9)?.text).toBe('niveles');
+    expect(renalTierFor(tiers, 20)?.text).toBe('c/24 h');
+    expect(renalTierFor(tiers, 75)?.text).toBe('c/8 h');
+  });
+
+  it('no inventa un tramo donde la fuente no dice nada', () => {
+    expect(renalTierFor(tiers, 50)).toBeNull();
+  });
+
+  it('rotula cada tramo', () => {
+    expect(tierLabel(tiers[0]!)).toBe('< 20');
+    expect(tierLabel(tiers[1]!)).toBe('20 a < 40');
+    expect(tierLabel(tiers[2]!)).toBe('≥ 60');
   });
 });

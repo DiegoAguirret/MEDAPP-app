@@ -55,6 +55,11 @@ interactions:
   - Disminuye la actividad de antirretrovirales (inhibidores de proteasa, ITINN e inhibidores de integrasa) (NTS 221).
   - Disminuye mucho el efecto de la fenitoína (NTS 221).
 renal: NTS 221 y OMS — no requiere ajuste. El FNME indica reducir 50 % con depuración menor de 10 mL/min.
+renalTiers:
+  - gfrMin: 0
+    gfrMax: 10
+    text: Reducir 50 % según el FNME; la NTS 221 y la OMS no indican ajuste.
+    sourceIds: [fnme-2008, minsa-nts221-2024]
 diagnoses: [tuberculosis, tuberculosis pulmonar]
 review:
   status: verificado

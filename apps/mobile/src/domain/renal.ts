@@ -57,3 +57,22 @@ export const DROP_FACTORS = [
 export function dropsPerMinute(mlPerHour: number, dropsPerMl: number): number {
   return Math.round((mlPerHour * dropsPerMl) / 60);
 }
+
+/** Tramo de ajuste renal de una ficha (umbrales tal como los dan sus fuentes). */
+export interface RenalTierLike {
+  gfrMin: number;
+  gfrMax?: number;
+  text: string;
+  sourceIds: string[];
+}
+
+/** Tramo que corresponde a la TFG o depuración del paciente; null si la fuente no dice nada. */
+export function renalTierFor<T extends RenalTierLike>(tiers: readonly T[], gfr: number): T | null {
+  return tiers.find((t) => gfr >= t.gfrMin && (t.gfrMax === undefined || gfr < t.gfrMax)) ?? null;
+}
+
+export function tierLabel(t: RenalTierLike): string {
+  if (t.gfrMax === undefined) return `≥ ${t.gfrMin}`;
+  if (t.gfrMin === 0) return `< ${t.gfrMax}`;
+  return `${t.gfrMin} a < ${t.gfrMax}`;
+}

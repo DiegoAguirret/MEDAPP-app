@@ -71,6 +71,11 @@ interactions:
 renal: >-
   FNME — en neonatos la vida media se prolonga por la función renal incompleta. Con depuración de creatinina menor de
   10 mL/min, usar del 20 al 50 % de la dosis usual.
+renalTiers:
+  - gfrMin: 0
+    gfrMax: 10
+    text: Del 20 al 50 % de la dosis usual.
+    sourceIds: [fnme-2008]
 diagnoses: [sífilis congénita, neurosífilis, sífilis]
 review:
   status: verificado
