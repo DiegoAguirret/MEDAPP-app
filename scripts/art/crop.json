@@ -3,5 +3,15 @@
   "capurro-pezon-1": [0.5, 0.5, 1.6],
   "capurro-pezon-2": [0.5, 0.5, 1.6],
   "capurro-pezon-3": [0.5, 0.5, 1.6],
-  "capurro-mama-all": [0.505, 0.52, 1.4]
+  "capurro-mama-all": [0.505, 0.52, 1.4],
+  "silverman-movimientos-all": [0.505, 0.75, 1.1],
+  "silverman-aleteo-0": [0.5, 0.44, 2.0],
+  "silverman-aleteo-1": [0.5, 0.44, 2.0],
+  "silverman-aleteo-2": [0.5, 0.44, 2.0],
+  "silverman-xifoidea-0": [0.5, 0.56, 1.5],
+  "silverman-tiraje-0": [0.5, 0.47, 1.15],
+  "silverman-xifoidea-1": [0.5, 0.56, 1.5],
+  "silverman-tiraje-1": [0.5, 0.47, 1.15],
+  "silverman-xifoidea-2": [0.5, 0.56, 1.5],
+  "silverman-tiraje-2": [0.5, 0.47, 1.15]
 }

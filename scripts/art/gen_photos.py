@@ -3,7 +3,7 @@ from pathlib import Path
 
 ART = Path(r'C:/Users/Diego/Escritorio/MEDAPP/apps/mobile/assets/art')
 OUT = Path(r'C:/Users/Diego/Escritorio/MEDAPP/apps/mobile/src/ui/art/photos.ts')
-SHARED = {'capurro-mama': 4, 'silverman-movimientos': 3, 'silverman-quejido': 3}
+SHARED = {'capurro-mama': 4, 'silverman-movimientos': 3, }
 SCORES = {'capurro': 'capurro', 'silverman': 'silverman-andersen'}
 lines = [
     "import type { ImageSourcePropType } from 'react-native';",

@@ -18,6 +18,19 @@ import img15 from '../../../assets/art/capurro-pliegues-1.webp';
 import img16 from '../../../assets/art/capurro-pliegues-2.webp';
 import img17 from '../../../assets/art/capurro-pliegues-3.webp';
 import img18 from '../../../assets/art/capurro-pliegues-4.webp';
+import img19 from '../../../assets/art/silverman-aleteo-0.webp';
+import img20 from '../../../assets/art/silverman-aleteo-1.webp';
+import img21 from '../../../assets/art/silverman-aleteo-2.webp';
+import img22 from '../../../assets/art/silverman-movimientos-all.webp';
+import img23 from '../../../assets/art/silverman-quejido-0.webp';
+import img24 from '../../../assets/art/silverman-quejido-1.webp';
+import img25 from '../../../assets/art/silverman-quejido-2.webp';
+import img26 from '../../../assets/art/silverman-tiraje-0.webp';
+import img27 from '../../../assets/art/silverman-tiraje-1.webp';
+import img28 from '../../../assets/art/silverman-tiraje-2.webp';
+import img29 from '../../../assets/art/silverman-xifoidea-0.webp';
+import img30 from '../../../assets/art/silverman-xifoidea-1.webp';
+import img31 from '../../../assets/art/silverman-xifoidea-2.webp';
 
 /**
  * Ilustraciones raster de las opciones de las escalas neonatales (generadas con Google Flow,
@@ -46,4 +59,19 @@ export const PHOTOS: Record<string, ImageSourcePropType> = {
   'capurro/pliegues/2': img16,
   'capurro/pliegues/3': img17,
   'capurro/pliegues/4': img18,
+  'silverman-andersen/aleteo/0': img19,
+  'silverman-andersen/aleteo/1': img20,
+  'silverman-andersen/aleteo/2': img21,
+  'silverman-andersen/movimientos/0': img22,
+  'silverman-andersen/movimientos/1': img22,
+  'silverman-andersen/movimientos/2': img22,
+  'silverman-andersen/quejido/0': img23,
+  'silverman-andersen/quejido/1': img24,
+  'silverman-andersen/quejido/2': img25,
+  'silverman-andersen/tiraje/0': img26,
+  'silverman-andersen/tiraje/1': img27,
+  'silverman-andersen/tiraje/2': img28,
+  'silverman-andersen/xifoidea/0': img29,
+  'silverman-andersen/xifoidea/1': img30,
+  'silverman-andersen/xifoidea/2': img31,
 };
