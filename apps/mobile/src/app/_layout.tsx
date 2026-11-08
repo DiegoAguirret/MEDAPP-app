@@ -6,7 +6,7 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect, type ReactNode } from 'react';
+import { useCallback, useEffect, useState, type ReactNode } from 'react';
 import { useColorScheme } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { HistoryProvider } from '../state/history';
@@ -14,6 +14,7 @@ import { PatientProvider } from '../state/patient';
 import { SettingsProvider, useSettings } from '../state/settings';
 import { TipsProvider } from '../state/tips';
 import { Onboarding } from '../ui/Onboarding';
+import { StartScreen } from '../ui/StartScreen';
 import { darkColors, family, lightColors, ThemeContext, type Palette } from '../ui/theme';
 
 void SplashScreen.preventAutoHideAsync();
@@ -40,6 +41,9 @@ function Navigator() {
   const { accepted, accept } = useSettings();
   // Android 15+ dibuja la app detrás de la barra de navegación del sistema: se reserva su alto.
   const { bottom } = useSafeAreaInsets();
+  const [starting, setStarting] = useState(true);
+  const endStart = useCallback(() => setStarting(false), []);
+  if (starting) return <StartScreen onDone={endStart} />;
   if (!accepted) return <Onboarding onDone={accept} />;
   return (
     <Stack

@@ -2,6 +2,7 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import type { Category, Drug } from '@medapp/content-schema';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
+  Image,
   LayoutAnimation,
   Pressable,
   ScrollView,
@@ -10,8 +11,10 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import logo from '../../assets/images/logo.png';
 import { searchDrugs } from '../data/content';
 import { CATEGORIES, CATEGORY_ORDER } from '../domain/categories';
+import { APP_NAME } from './StartScreen';
 import { collectionDrugs, type CollectionId } from '../domain/collections';
 import { readPatient } from '../domain/patientInput';
 import { usePatient } from '../state/patient';
@@ -257,15 +260,14 @@ export function Home({
   return (
     <View style={s.screen}>
       <View style={s.head}>
-        <View style={s.mark}>
-          <Text style={s.markText}>Rp/</Text>
-        </View>
+        <Image source={logo} style={s.mark} resizeMode="contain" accessibilityIgnoresInvertColors />
         <View style={s.flex}>
           <Text accessibilityRole="header" style={s.brand}>
-            Dosis pediátricas
+            {APP_NAME}
           </Text>
           <Text style={s.lede}>
-            {visible.length} fármacos con fuente verificada · FNME, MINSA, OMS, FDA
+            Dosis pediátricas · {visible.length} fármacos con fuente verificada (FNME, MINSA, OMS,
+            FDA)
           </Text>
         </View>
       </View>
@@ -461,15 +463,7 @@ function makeStyles(c: Palette) {
     },
     flex: { flex: 1 },
     head: { flexDirection: 'row', alignItems: 'center', gap: space.md, marginBottom: 2 },
-    mark: {
-      width: 46,
-      height: 46,
-      borderRadius: 15,
-      backgroundColor: c.accent,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    markText: { fontFamily: family.black, fontSize: 17, color: c.onAccent },
+    mark: { width: 56, height: 56 },
     brand: { fontFamily: family.black, fontSize: type.headline, lineHeight: 30, color: c.text },
     lede: { fontFamily: family.regular, fontSize: type.label, color: c.muted },
     search: {

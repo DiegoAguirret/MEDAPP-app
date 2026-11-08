@@ -102,7 +102,7 @@ export default function AjustesTab() {
       <Card>
         <SectionTitle>Acerca de</SectionTitle>
         <Text style={body}>
-          Dosis Pediátricas · versión {Constants.expoConfig?.version ?? '1.0.0'}
+          Dosikid · dosis pediátricas · versión {Constants.expoConfig?.version ?? '1.0.0'}
         </Text>
         {content.ok ? (
           <Text style={body}>

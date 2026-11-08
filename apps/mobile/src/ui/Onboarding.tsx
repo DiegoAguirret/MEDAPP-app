@@ -1,7 +1,9 @@
 import { useMemo, useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import logo from '../../assets/images/logo.png';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from './components';
+import { APP_NAME } from './StartScreen';
 import { family, radius, space, useColors, type Palette } from './theme';
 
 /** Bienvenida de tres pasos. La primera muestra un resultado real de la app (10 kg, FNME). */
@@ -18,12 +20,18 @@ export function Onboarding({ onDone }: { onDone: () => void }) {
 
         {i === 0 ? (
           <>
+            <Image
+              source={logo}
+              style={s.logo}
+              resizeMode="contain"
+              accessibilityIgnoresInvertColors
+            />
             <Text accessibilityRole="header" style={s.title}>
-              Dosis pediátricas
+              {APP_NAME}
             </Text>
             <Text style={s.text}>
-              La dosis por peso en mg y en mL, con la fuente que la respalda: el Formulario Nacional
-              (DIGEMID), las normas del MINSA y las fichas de FDA y AEMPS.
+              Dosis pediátricas: la dosis por peso en mg y en mL, con la fuente que la respalda: el
+              Formulario Nacional (DIGEMID), las normas del MINSA y las fichas de FDA y AEMPS.
             </Text>
             <View style={s.specimen}>
               <View style={s.specimenTop}>
@@ -66,7 +74,8 @@ export function Onboarding({ onDone }: { onDone: () => void }) {
               presentación que tienes en la mano antes de indicar.
             </Text>
             <Text style={s.text}>
-              No se guardan datos de pacientes: el peso y la edad se borran al salir de la ficha.
+              No se guardan nombres de pacientes. El historial de cálculos (fármaco, dosis, peso y
+              edad) queda solo en tu teléfono y lo puedes borrar cuando quieras.
             </Text>
           </>
         ) : null}
@@ -101,6 +110,7 @@ function makeStyles(c: Palette) {
     content: { paddingHorizontal: space.xl, paddingTop: 56, paddingBottom: space.xl, gap: 20 },
     step: { fontFamily: family.medium, fontSize: 14, color: c.muted },
     title: { fontFamily: family.black, fontSize: 40, lineHeight: 44, color: c.text },
+    logo: { width: 112, height: 112, marginBottom: 8 },
     text: { fontFamily: family.regular, fontSize: 17, lineHeight: 26, color: c.text },
     strong: { fontFamily: family.bold },
     lines: { gap: 14 },
