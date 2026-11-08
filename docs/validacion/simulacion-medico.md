@@ -5,11 +5,11 @@ de la app: multiplica el peso por la dosis, divide entre las tomas, aplica los t
 concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/5 mL").
 
 ## Resumen
-- Casos simulados: **10500** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
-- Casos calculables: **4856**. Fuera del rango de edad de la regla: 5644 (la app se negó a calcular en todos, que es lo correcto).
-- **Coincidencias: 4856/4856 (100.0 %)**. Discrepancias: 0.
-- Dosis en mg idéntica al cálculo manual: 4850/4856.
-- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.58 %, máxima 4.92 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
+- Casos simulados: **10605** (10 fármacos × reglas × presentaciones × 18 pacientes típicos de 1 mes a 17 años).
+- Casos calculables: **4902**. Fuera del rango de edad de la regla: 5703 (la app se negó a calcular en todos, que es lo correcto).
+- **Coincidencias: 4902/4902 (100.0 %)**. Discrepancias: 0.
+- Dosis en mg idéntica al cálculo manual: 4896/4902.
+- Diferencia de volumen por redondeo a la medida (0.1 mL, 1 gota, ½ o 1 tableta): media 0.58 %, máxima 5.00 %. Nunca supera el 5 %; cuando el redondeo superaría el 5 %, la app muestra el valor exacto y avisa.
 - En ningún caso la cantidad mostrada supera la dosis máxima por toma.
 
 ## Casos calculables
@@ -4085,9 +4085,55 @@ concentración **leída del texto impreso de la presentación** (p. ej. "250 mg/
 | paracetamol | fiebre-dolor-vo | Tableta 500 mg | 14 años (50 kg) | 750 | 750 | 1.5 | 1.5 tableta | ✅  |
 | paracetamol | fiebre-dolor-vo | Tableta 500 mg | 16 años (58 kg) | 870 | 870 | 1.74 | 1.74 tableta | ✅ no medible con esta presentación: se muestra el valor exacto |
 | paracetamol | fiebre-dolor-vo | Tableta 500 mg | 17 años, obeso (95 kg) | 1000 | 1000 | 2 | 2 tableta | ✅ tope aplicado |
+| penicilina-g-benzatinica | faringitis-menos-27-kg | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 1 mes (4.2 kg) | 600000 | 600000 | 2 | 2 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-menos-27-kg | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 2 meses (5.1 kg) | 600000 | 600000 | 2 | 2 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-menos-27-kg | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 4 meses (6.4 kg) | 600000 | 600000 | 2 | 2 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-menos-27-kg | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 6 meses (7.6 kg) | 600000 | 600000 | 2 | 2 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-menos-27-kg | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 9 meses (8.6 kg) | 600000 | 600000 | 2 | 2 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-menos-27-kg | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 1 año (9.6 kg) | 600000 | 600000 | 2 | 2 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-menos-27-kg | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 18 meses (10.9 kg) | 600000 | 600000 | 2 | 2 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-menos-27-kg | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 2 años (12.2 kg) | 600000 | 600000 | 2 | 2 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-menos-27-kg | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 3 años (14.3 kg) | 600000 | 600000 | 2 | 2 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-menos-27-kg | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 4 años (16.3 kg) | 600000 | 600000 | 2 | 2 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-menos-27-kg | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 5 años (18.3 kg) | 600000 | 600000 | 2 | 2 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-menos-27-kg | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 6 años (20.5 kg) | 600000 | 600000 | 2 | 2 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-menos-27-kg | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 8 años (25.6 kg) | 600000 | 600000 | 2 | 2 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-27-kg-o-mas | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 10 años (32 kg) | 1200000 | 1200000 | 4 | 4 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-27-kg-o-mas | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 12 años (40 kg) | 1200000 | 1200000 | 4 | 4 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-27-kg-o-mas | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 14 años (50 kg) | 1200000 | 1200000 | 4 | 4 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-27-kg-o-mas | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 16 años (58 kg) | 1200000 | 1200000 | 4 | 4 mL | ✅  |
+| penicilina-g-benzatinica | faringitis-27-kg-o-mas | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 17 años, obeso (95 kg) | 1200000 | 1200000 | 4 | 4 mL | ✅  |
+| penicilina-g-benzatinica | sifilis-congenita-rn | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 3 días, bajo peso (2 kg) (2 kg) | 100000 | 100000 | 0.333 | 0.35 mL | ✅  |
+| penicilina-g-benzatinica | sifilis-congenita-rn | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 5 días (3.2 kg) (3.2 kg) | 160000 | 160000 | 0.533 | 0.55 mL | ✅  |
+| penicilina-g-benzatinica | sifilis-congenita-rn | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 15 días (3.6 kg) (3.6 kg) | 180000 | 180000 | 0.6 | 0.6 mL | ✅  |
+| penicilina-g-benzatinica | sifilis-congenita-hasta-2-anos | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 1 mes (4.2 kg) | 210000 | 210000 | 0.7 | 0.7 mL | ✅  |
+| penicilina-g-benzatinica | sifilis-congenita-hasta-2-anos | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 2 meses (5.1 kg) | 255000 | 255000 | 0.85 | 0.85 mL | ✅  |
+| penicilina-g-benzatinica | sifilis-congenita-hasta-2-anos | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 4 meses (6.4 kg) | 320000 | 320000 | 1.067 | 1.05 mL | ✅  |
+| penicilina-g-benzatinica | sifilis-congenita-hasta-2-anos | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 6 meses (7.6 kg) | 380000 | 380000 | 1.267 | 1.25 mL | ✅  |
+| penicilina-g-benzatinica | sifilis-congenita-hasta-2-anos | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 9 meses (8.6 kg) | 430000 | 430000 | 1.433 | 1.45 mL | ✅  |
+| penicilina-g-benzatinica | sifilis-congenita-hasta-2-anos | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 1 año (9.6 kg) | 480000 | 480000 | 1.6 | 1.6 mL | ✅  |
+| penicilina-g-benzatinica | sifilis-congenita-hasta-2-anos | 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS) | 18 meses (10.9 kg) | 545000 | 545000 | 1.817 | 1.8 mL | ✅  |
 | penicilina-g-sodica | sifilis-congenita-primera-semana | 500 000 UI/mL (frasco de 1 000 000 UI reconstituido con 1.6 mL de agua estéril, OMS) | 3 días, bajo peso (2 kg) (2 kg) | 100000 | 100000 | 0.2 | 0.2 mL | ✅  |
 | penicilina-g-sodica | sifilis-congenita-primera-semana | 500 000 UI/mL (frasco de 1 000 000 UI reconstituido con 1.6 mL de agua estéril, OMS) | 5 días (3.2 kg) (3.2 kg) | 160000 | 160000 | 0.32 | 0.32 mL | ✅  |
 | penicilina-g-sodica | sifilis-congenita-despues-7-dias | 500 000 UI/mL (frasco de 1 000 000 UI reconstituido con 1.6 mL de agua estéril, OMS) | 15 días (3.6 kg) (3.6 kg) | 180000 | 180000 | 0.36 | 0.36 mL | ✅  |
+| petidina | dolor-im | Ampolla 50 mg/mL | 1 mes (4.2 kg) | 4.62 | 4.62 | 0.092 | 0.09 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| petidina | dolor-im | Ampolla 50 mg/mL | 2 meses (5.1 kg) | 5.61 | 5.61 | 0.112 | 0.11 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| petidina | dolor-im | Ampolla 50 mg/mL | 4 meses (6.4 kg) | 7.04 | 7.04 | 0.141 | 0.14 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| petidina | dolor-im | Ampolla 50 mg/mL | 6 meses (7.6 kg) | 8.36 | 8.36 | 0.167 | 0.17 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| petidina | dolor-im | Ampolla 50 mg/mL | 9 meses (8.6 kg) | 9.46 | 9.46 | 0.189 | 0.19 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| petidina | dolor-im | Ampolla 50 mg/mL | 1 año (9.6 kg) | 10.56 | 10.56 | 0.211 | 0.21 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| petidina | dolor-im | Ampolla 50 mg/mL | 18 meses (10.9 kg) | 11.99 | 11.99 | 0.24 | 0.25 mL | ✅  |
+| petidina | dolor-im | Ampolla 50 mg/mL | 2 años (12.2 kg) | 13.42 | 13.42 | 0.268 | 0.27 mL | ✅ no medible con esta presentación: se muestra el valor exacto |
+| petidina | dolor-im | Ampolla 50 mg/mL | 3 años (14.3 kg) | 15.73 | 15.73 | 0.315 | 0.3 mL | ✅  |
+| petidina | dolor-im | Ampolla 50 mg/mL | 4 años (16.3 kg) | 17.93 | 17.93 | 0.359 | 0.35 mL | ✅  |
+| petidina | dolor-im | Ampolla 50 mg/mL | 5 años (18.3 kg) | 20.13 | 20.13 | 0.403 | 0.4 mL | ✅  |
+| petidina | dolor-im | Ampolla 50 mg/mL | 6 años (20.5 kg) | 22.55 | 22.55 | 0.451 | 0.45 mL | ✅  |
+| petidina | dolor-im | Ampolla 50 mg/mL | 8 años (25.6 kg) | 28.16 | 28.16 | 0.563 | 0.55 mL | ✅  |
+| petidina | dolor-im | Ampolla 50 mg/mL | 10 años (32 kg) | 35.2 | 35.2 | 0.704 | 0.7 mL | ✅  |
+| petidina | dolor-im | Ampolla 50 mg/mL | 12 años (40 kg) | 44 | 44 | 0.88 | 0.9 mL | ✅  |
+| petidina | dolor-im | Ampolla 50 mg/mL | 14 años (50 kg) | 55 | 55 | 1.1 | 1.1 mL | ✅  |
+| petidina | dolor-im | Ampolla 50 mg/mL | 16 años (58 kg) | 63.8 | 63.8 | 1.276 | 1.3 mL | ✅  |
+| petidina | dolor-im | Ampolla 50 mg/mL | 17 años, obeso (95 kg) | 100 | 100 | 2 | 2 mL | ✅ tope aplicado |
 | piperacilina-tazobactam | intraabdominal-2-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 4 meses (6.4 kg) | 576 | 576 | 2.844 | 2.8 mL | ✅  |
 | piperacilina-tazobactam | intraabdominal-2-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 6 meses (7.6 kg) | 684 | 684 | 3.378 | 3.4 mL | ✅  |
 | piperacilina-tazobactam | intraabdominal-mayores-9-meses | Frasco 4 g + 500 mg reconstituido con 20 mL (202.5 mg/mL del producto combinado) | 9 meses (8.6 kg) | 967.5 | 967.5 | 4.778 | 4.8 mL | ✅  |

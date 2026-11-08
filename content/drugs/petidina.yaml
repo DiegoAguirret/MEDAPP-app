@@ -1,0 +1,64 @@
+id: petidina
+name: Petidina (meperidina)
+category: analgesico
+synonyms: [meperidina, meperidine, Demerol, opioide]
+presentations:
+  - id: amp-50
+    label: Ampolla 50 mg/mL
+    form: ampolla
+    mgPerUnit: 50
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: dolor-im
+    indication: Dolor moderado a severo (IM o SC)
+    route: IM
+    ageMinDays: 29
+    basis: mg/kg/dose
+    amountMin: 1.1
+    amountMax: 1.76
+    usual: 1.1
+    intervalHours: 4
+    maxPerDoseMg: 100
+    maxPerDayMg: 600
+    notes: >-
+      FNME — niños, 1.1 a 1.76 mg/kg IM o SC cada 3 a 4 h según necesidad, sin pasar de 100 mg. FDA
+      (Demerol) — 0.5 a 0.8 mg/lb (1.1 a 1.76 mg/kg) IM o SC hasta la dosis de adulto, cada 3 a 4 h, con la
+      menor dosis que alivie.
+    presentationIds: [amp-50]
+    sourceIds: [fnme-2008, fda-demerol, digemid-pnume-2023]
+warnings:
+  - Riesgo de depresión respiratoria potencialmente mortal (FDA, recuadro negro).
+  - La FDA no ha establecido su seguridad ni eficacia en menores de 18 años; en neonatos y lactantes pequeños se elimina más lento.
+  - Medicamento de alto riesgo; tener naloxona disponible.
+contraindications:
+  - Hipersensibilidad a la petidina.
+  - Depresión respiratoria importante.
+  - Uso de IMAO en los últimos 14 días (FDA).
+interactions:
+  - Benzodiazepinas y otros depresores del sistema nervioso central, sedación profunda, depresión respiratoria y muerte (FDA, recuadro negro).
+  - IMAO, reacciones graves e impredecibles, incluido el síndrome serotoninérgico (FDA).
+renal: FDA — en insuficiencia renal se acumula su metabolito (normeperidina), que puede causar convulsiones; usar con precaución.
+diagnoses: [dolor severo, analgesia, dolor postoperatorio]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-08
+testCases:
+  - ruleId: dolor-im
+    presentationId: amp-50
+    weightKg: 10
+    ageDays: 730
+    expect: { mgPerDose: 11, amount: 0.22, unit: mL }
+  - ruleId: dolor-im
+    presentationId: amp-50
+    weightKg: 30
+    ageDays: 3285
+    expect: { mgPerDose: 33, amount: 0.65, unit: mL }
+  - ruleId: dolor-im
+    presentationId: amp-50
+    weightKg: 95
+    ageDays: 5000
+    expect: { mgPerDose: 100, amount: 2, unit: mL, capped: true }

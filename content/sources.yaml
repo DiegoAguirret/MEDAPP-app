@@ -785,3 +785,17 @@
   url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=62035612-9505-3a3f-1ac8-e2dbd711d24e
   kind: regulador
   country: US
+- id: fda-bicillin-la
+  title: Bicillin L-A (penicilina G benzatínica) — prescribing information (FDA, set 012d46f1-d0a0-4676-a879-cd320297ab16)
+  publisher: U.S. FDA
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=012d46f1-d0a0-4676-a879-cd320297ab16
+  kind: regulador
+  country: US
+- id: fda-demerol
+  title: Demerol (petidina) inyectable — prescribing information (FDA, set b31d1308-28c3-43f4-e0a6-2f3ed76b8975)
+  publisher: U.S. FDA
+  year: 2026
+  url: https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=b31d1308-28c3-43f4-e0a6-2f3ed76b8975
+  kind: regulador
+  country: US

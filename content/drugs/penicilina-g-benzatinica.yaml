@@ -1,0 +1,135 @@
+id: penicilina-g-benzatinica
+name: Penicilina G benzatínica (bencilpenicilina benzatina)
+category: antibiotico
+doseUnit: UI
+synonyms:
+  [
+    benzatina bencilpenicilina,
+    penicilina benzatínica,
+    Bicillin,
+    faringitis,
+    sífilis congénita,
+    fiebre reumática,
+  ]
+presentations:
+  - id: frasco-1-2mui-300000
+    label: 300 000 UI/mL (frasco de 1 200 000 UI reconstituido con 4 mL de agua estéril, OMS)
+    form: ampolla
+    mgPerUnit: 300000
+    unit: mL
+    step: 0.05
+    brandsPE: []
+rules:
+  - id: faringitis-menos-27-kg
+    indication: Faringitis estreptocócica (menos de 27 kg, dosis única IM)
+    route: IM
+    ageMinDays: 29
+    weightMaxKg: 27
+    basis: fixed_by_age
+    amountMin: 300000
+    amountMax: 600000
+    usual: 600000
+    once: true
+    maxPerDoseMg: 600000
+    maxPerDayMg: 600000
+    notes: >-
+      FNME — tratamiento de la faringitis con menos de 27 kg, 600 000 UI IM en dosis única (en otra línea el
+      FNME da 300 000 a 600 000 UI). FDA (Bicillin L-A) — menos de 60 lb (27 kg), 300 000 a 600 000 UI.
+    presentationIds: [frasco-1-2mui-300000]
+    sourceIds: [fnme-2008, fda-bicillin-la, who-pocket-2013, digemid-pnume-2023]
+  - id: faringitis-27-kg-o-mas
+    indication: Faringitis estreptocócica (27 kg o más, dosis única IM)
+    route: IM
+    ageMinDays: 29
+    weightMinKg: 27
+    basis: fixed_by_age
+    amountMin: 900000
+    amountMax: 1200000
+    usual: 1200000
+    once: true
+    maxPerDoseMg: 1200000
+    maxPerDayMg: 1200000
+    notes: >-
+      FNME — tratamiento de la faringitis con más de 27 kg, 1 200 000 UI IM en dosis única (en otra línea da
+      900 000 UI). FDA (Bicillin L-A) — niños mayores, 900 000 UI; adultos, 1 200 000 UI.
+    presentationIds: [frasco-1-2mui-300000]
+    sourceIds: [fnme-2008, fda-bicillin-la, who-pocket-2013, digemid-pnume-2023]
+    countryNotes:
+      - country: US
+        text: FDA — 900 000 UI en niños mayores y 1 200 000 UI en adultos.
+        sourceIds: [fda-bicillin-la]
+  - id: sifilis-congenita-rn
+    indication: Sífilis congénita sin alteraciones, recién nacido (dosis única IM)
+    route: IM
+    neonatal: true
+    ageMinDays: 0
+    ageMaxDays: 28
+    basis: mg/kg/dose
+    amountMin: 50000
+    amountMax: 50000
+    usual: 50000
+    once: true
+    maxPerDoseMg: 250000
+    maxPerDayMg: 250000
+    notes: >-
+      NTS 159-MINSA — RN de madre no tratada o mal tratada, sin alteraciones y con RPR no reactivo, o de madre
+      bien tratada con RPR del RN menor de 2 veces el materno: una dosis única de 50 000 UI/kg IM. OMS — RN
+      asintomático de madre con VDRL o RPR positivo, 50 000 UI/kg IM en dosis única. El tope es técnico
+      (50 000 UI/kg con 5 kg).
+    presentationIds: [frasco-1-2mui-300000]
+    sourceIds: [minsa-nts159-2019, who-pocket-2013, fnme-2008, digemid-pnume-2023]
+  - id: sifilis-congenita-hasta-2-anos
+    indication: Sífilis congénita sin compromiso del LCR (1 mes a 2 años, dosis única IM)
+    route: IM
+    ageMinDays: 29
+    ageMaxDays: 729
+    basis: mg/kg/dose
+    amountMin: 50000
+    amountMax: 50000
+    usual: 50000
+    once: true
+    maxPerDoseMg: 2400000
+    maxPerDayMg: 2400000
+    notes: >-
+      FNME — sífilis y sífilis congénita, 50 000 UI/kg IM en dosis única, hasta 2 400 000 UI. OMS (Model
+      Formulary for Children) — hasta 2 años, 50 000 UI/kg en dosis única si no hay compromiso del LCR. FDA —
+      menores de 2 años, 50 000 UI/kg.
+    presentationIds: [frasco-1-2mui-300000]
+    sourceIds: [fnme-2008, who-mfc-2010, fda-bicillin-la, digemid-pnume-2023]
+warnings:
+  - 'Recuadro de la FDA: NO es para uso intravenoso; la inyección IV se ha asociado a paro cardiorrespiratorio y muerte.'
+  - En recién nacidos y niños pequeños, inyectar en la cara lateral del muslo (FDA).
+  - La concentración depende de la reconstitución; la app usa la de la OMS (1 200 000 UI en 4 mL). Si el servicio la prepara distinto, usar «Personalizar concentración».
+  - Profilaxis de la fiebre reumática — FNME, 1 200 000 UI cada 3 a 4 semanas IM; OMS, 600 000 UI cada 3 a 4 semanas. No se calcula en la app.
+contraindications:
+  - Hipersensibilidad a cualquier penicilina.
+  - Neurosífilis (OMS); se trata con penicilina G sódica IV.
+interactions:
+  - Probenecid aumenta y prolonga sus niveles (FDA).
+diagnoses: [faringitis estreptocócica, amigdalitis, sífilis congénita, sífilis, fiebre reumática]
+review:
+  status: verificado
+  author: Diego
+  reviewers: []
+  reviewedAt: 2026-11-08
+testCases:
+  - ruleId: faringitis-menos-27-kg
+    presentationId: frasco-1-2mui-300000
+    weightKg: 18
+    ageDays: 1825
+    expect: { mgPerDose: 600000, amount: 2, unit: mL }
+  - ruleId: faringitis-27-kg-o-mas
+    presentationId: frasco-1-2mui-300000
+    weightKg: 32
+    ageDays: 3285
+    expect: { mgPerDose: 1200000, amount: 4, unit: mL }
+  - ruleId: sifilis-congenita-rn
+    presentationId: frasco-1-2mui-300000
+    weightKg: 3
+    ageDays: 2
+    expect: { mgPerDose: 150000, amount: 0.5, unit: mL }
+  - ruleId: sifilis-congenita-hasta-2-anos
+    presentationId: frasco-1-2mui-300000
+    weightKg: 9
+    ageDays: 300
+    expect: { mgPerDose: 450000, amount: 1.5, unit: mL }
