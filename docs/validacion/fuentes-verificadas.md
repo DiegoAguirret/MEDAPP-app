@@ -586,3 +586,18 @@ La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en inf
   - **Rangos de edad (Tabla 2):** la clasificación empieza a los 29 días; el PC/E se clasifica hasta antes de los 3 años.
   - **Fuera de esos rangos** la app muestra el puntaje z y el percentil sin clasificación y explica por qué. Esto aplica también al perímetro braquial (la NTS no le fija puntos de corte), a la P/E desde los 5 años y a los mayores de 12 años.
 - **Errata de la norma:** en la Tabla 3, el «Normal» del PC/E dice «≥ −2 a ≤ −2». Se interpreta como de −2 a +2, porque los riesgos de micro- y macrocefalia están en < −2 y > +2.
+
+## Desarrollo: vigilancia del neurodesarrollo de 0 a 36 meses — verificado el 07/11/2026
+
+- **Fuente:** NTS N.° 238-MINSA/DGIESP-2025, Anexo 10 (págs. 32–36 de la segunda parte). Las tablas se leyeron en la imagen de la página porque el OCR no las reconoce.
+  - Tabla N.° 1, edad corregida en prematuros menores de 2 años: se restan (40 − edad gestacional) × 7 días. La app reproduce el ejemplo de la norma: 130 días a las 32 semanas dan 74 días.
+  - Tabla de pautas por edad: de 15 a 21 días y a los 2 meses → recién nacido; 3–5 → 3 meses; 6–8 → 6; 9–11 → 9; 12–17 → 12; 18–23 → 18; 24–29 → 24; 30–36 → 30.
+  - Tabla N.° 2, «Hitos del desarrollo según área»: adaptada de Huanca D., *Guía de Vigilancia del Neurodesarrollo* (2023). Tiene 5 áreas (motor grueso, motor fino, social, cognitivo y habla). El texto de cada hito se copió tal cual.
+  - Se comprueban los hitos de la pauta y todos los de las pautas anteriores.
+  - Interpretación:
+    - Si no logra 1 hito: consejería, sesiones semanales de atención temprana y seguimiento al mes; si persiste, tamizaje con la prueba EDI.
+    - Si no logra 2 o más hitos: atención temprana y tamizaje con la prueba EDI.
+- **Decisión de la app:**
+  - Antes de los 3 meses se usa la pauta del recién nacido. La tabla solo menciona de 15 a 21 días y los 2 meses, y la norma dice que la prueba se aplica desde el recién nacido.
+  - El número de hitos no logrados cuenta todos los hitos evaluados, los de la pauta y los de las pautas anteriores.
+- **No incluido todavía:** la lista de habilidades y conductas de 4 a 11 años (págs. 38 y siguientes).

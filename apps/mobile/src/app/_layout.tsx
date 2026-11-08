@@ -53,6 +53,7 @@ function Navigator() {
       <Stack.Screen name="categoria/[id]" options={{ title: 'Categoría' }} />
       <Stack.Screen name="manual" options={{ title: 'Calculadora manual' }} />
       <Stack.Screen name="crecimiento" options={{ title: 'Crecimiento' }} />
+      <Stack.Screen name="desarrollo" options={{ title: 'Desarrollo' }} />
       <Stack.Screen name="neonato/[id]" options={{ title: 'Neonatología' }} />
     </Stack>
   );

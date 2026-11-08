@@ -38,7 +38,13 @@ export const ALL_DRUGS = 'todos';
 
 /** Funciones de la app a las que lleva el inicio. */
 export type Tool =
-  'urgencias' | 'calculadoras' | 'crecimiento' | 'favoritos' | 'manual' | CollectionId;
+  | 'urgencias'
+  | 'calculadoras'
+  | 'crecimiento'
+  | 'desarrollo'
+  | 'favoritos'
+  | 'manual'
+  | CollectionId;
 
 type IconName = keyof typeof MaterialCommunityIcons.glyphMap;
 
@@ -161,6 +167,13 @@ export function Home({
       text: 'Puntaje z, percentil con patrones OMS y NTS 238',
       icon: 'human-male-height',
       hue: '#047857',
+    },
+    {
+      id: 'desarrollo',
+      title: 'Desarrollo',
+      text: 'Hitos por edad de 0 a 36 meses, según la NTS 238',
+      icon: 'human-child',
+      hue: '#7C4DCC',
     },
     {
       id: 'calculadoras',

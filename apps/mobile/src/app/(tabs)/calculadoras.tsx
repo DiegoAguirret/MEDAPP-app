@@ -56,6 +56,16 @@ export default function CalculadorasTab() {
           />
         </Card>
         <Card>
+          <SectionTitle>Desarrollo infantil</SectionTitle>
+          <Text style={s.cardText}>
+            Hitos del desarrollo de 0 a 36 meses con edad corregida e interpretación de la NTS 238.
+          </Text>
+          <Button
+            label="Abrir vigilancia del desarrollo"
+            onPress={() => router.push('/desarrollo')}
+          />
+        </Card>
+        <Card>
           <SectionTitle>Dosis libre</SectionTitle>
           <Button label="Abrir calculadora manual" onPress={() => router.push('/manual')} />
         </Card>
