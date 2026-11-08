@@ -41,7 +41,8 @@
         }
       ],
       "expo-sqlite",
-      "./plugins/withRootProjectName"
+      "./plugins/withRootProjectName",
+      "./plugins/withShortCxxDir"
     ],
     "experiments": {
       "typedRoutes": true,

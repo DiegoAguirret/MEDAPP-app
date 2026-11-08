@@ -2,13 +2,26 @@
 
 ## Qué incluye
 
-- **52 fichas verificadas.** Fuente principal peruana (FNME de DIGEMID y normas del MINSA), contrastada con FDA, AEMPS, OMS, GINA 2025 y el libro de Peña Camarena. Las diferencias se muestran por país.
-- **Cálculo por peso y edad** con topes por toma y por día, redondeo a lo medible y cálculo paso a paso.
-- **Bandas de peso** por indicación, **dosis de urgencia** repetibles en minutos, **dosis únicas** de carga y **primeras reglas neonatales**.
-- **Paciente actual** compartido entre fichas, guardado solo en memoria. La app elige sola la indicación que corresponde.
-- **Pestañas:** Dosis, Urgencias (hoja por peso), Cálculos (líquidos, deshidratación, superficie corporal, calculadora manual), Favoritos y Ajustes.
-- **Contenido firmado:** si el paquete se altera, la app no muestra dosis. La versión final usa su propia clave (`keys/release.key`).
-- **Simulación del médico:** 2059 de 2059 casos coinciden con el cálculo manual. Pruebas automáticas: 181 del núcleo y 112 de la app.
+- **146 fichas verificadas.** Fuente principal peruana (FNME de DIGEMID, PNUME y normas del MINSA), contrastada con FDA, AEMPS, OMS, GINA 2025 y otras guías. Las diferencias se muestran por país. Cada ficha tiene interacciones, contraindicaciones, advertencias y, si sus fuentes lo dan, ajuste renal (en 10 fichas, por tramos de TFG).
+- **Cálculo por peso y edad** con topes por toma y por día, redondeo a lo medible y cálculo paso a paso. Incluye bandas de peso, dosis de urgencia repetibles, dosis únicas, reglas neonatales, unidades mEq y UI, e infusiones en mL/h con goteo en gotas/min.
+- **Presentación habitual** por fármaco, favoritos y recientes.
+- **Urgencias:** hoja de rescate por peso.
+- **Cálculos:**
+  - líquidos (Holliday-Segar), deshidratación (GPC EDA MINSA), superficie corporal y dosis libre;
+  - crecimiento OMS (NTS 238), desarrollo (NTS 238) y vacunas (NTS 246);
+  - corticoides inhalados (GINA 2025) y presión arterial (AAP 2017);
+  - función renal (Schwartz y KDIGO);
+  - Glasgow pediátrico;
+  - neonatos: Apgar, Silverman-Andersen, Capurro, Ballard y bilirrubina (AAP 2022).
+- **Ilustraciones:** Capurro y Silverman-Andersen completos. En Ballard: postura, ventana cuadrada, rebote del brazo y ángulo poplíteo.
+- **Contenido firmado:** si el paquete se altera, la app no muestra dosis. La versión final usa `keys/release.key`.
+- **Simulación del médico:** 4902 de 4902 casos coinciden con el cálculo manual. Pruebas automáticas: 215 del núcleo y 297 de la app.
+
+## Pendiente que no bloquea la primera versión
+
+- Ilustraciones de la bufanda y del talón-oreja (Ballard): Flow bloqueó la generación; el criterio funciona con texto.
+- Surfactante pulmonar (falta la vía intratraqueal).
+- Lo que solo puede cerrar un médico (lista de abajo) y las marcas en el registro de DIGEMID.
 
 ## Antes de entregar el APK
 
@@ -27,11 +40,14 @@
 
 ## Fabricar el APK
 
-En Windows la compilación local falla por el límite de 260 caracteres en las rutas. Opciones, todas sin costo:
+Se compila en esta PC, sin servicios en la nube ni costo, desde la copia de trabajo de ruta corta `C:\mdp`. La ruta corta evita el límite de 260 caracteres de Windows sin activar las rutas largas.
 
-- **GitHub Actions, ejecución manual.** Un workflow que se lanza a mano una sola vez. Usa unos 20 minutos de los incluidos en GitHub Pro, y el presupuesto de $0 impide cualquier cobro.
-- **EAS Build (Expo), plan gratuito.** Necesita una cuenta de Expo.
-- **Compilación local.** Requiere activar las rutas largas de Windows (cambio de sistema, con permisos de administrador).
+1. Poner `C:\mdp` al día: `git pull --ff-only origin main` y `npm ci`.
+2. Generar el proyecto Android con una carpeta corta para el código C++: `MEDAPP_CXX_DIR=C:/x npx expo prebuild --platform android --clean` (en `apps/mobile`). El plugin `plugins/withShortCxxDir.js` mueve `android/app/.cxx` a `C:/x`; sin eso, el código de gesture-handler supera los 260 caracteres de ruta.
+3. Compilar: `gradlew.bat assembleRelease -PreactNativeArchitectures=arm64-v8a,armeabi-v7a` (en `apps/mobile/android`). Tarda unos 15 minutos la primera vez.
+4. El APK queda en `apps/mobile/android/app/build/outputs/apk/release/app-release.apk`.
+
+El APK de prueba se firma con la clave de depuración estándar de Expo; sirve para instalarlo a mano. Para Play Store hace falta la clave de subida (ver abajo).
 
 ## Para Play Store (más adelante)
 
