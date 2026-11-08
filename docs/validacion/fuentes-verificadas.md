@@ -601,3 +601,16 @@ La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en inf
   - Antes de los 3 meses se usa la pauta del recién nacido. La tabla solo menciona de 15 a 21 días y los 2 meses, y la norma dice que la prueba se aplica desde el recién nacido.
   - El número de hitos no logrados cuenta todos los hitos evaluados, los de la pauta y los de las pautas anteriores.
 - **No incluido todavía:** la lista de habilidades y conductas de 4 a 11 años (págs. 38 y siguientes).
+
+## Corticoides inhalados: dosis diaria baja, media y alta — verificado el 07/11/2026
+
+- **Fuente:** GINA 2025 (fuente `gina-2025`), leída en el texto del PDF oficial.
+  - Box 4-2 (pág. 71): 6 a 11 años y 12 años o más.
+  - Box 11-3 (pág. 195): 5 años o menos; solo la dosis baja y la edad con datos de seguridad y eficacia.
+  - Valores copiados tal cual, en mcg/día de dosis medida.
+- **Por qué es una tabla y no una ficha por kg:** GINA da dosis diarias totales por fármaco y dispositivo, sin frecuencia. Una ficha por kg o por toma obligaría a suponer el intervalo.
+- **Advertencias que muestra la app, tomadas de GINA:**
+  - No es una tabla de equivalencia.
+  - Son dosis medidas, no liberadas.
+  - El pMDI se usa preferentemente con espaciador, y siempre en niños de 5 años o menos.
+  - La dosis alta se reserva para muy pocos pacientes.

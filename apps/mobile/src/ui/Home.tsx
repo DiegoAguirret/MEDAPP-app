@@ -42,6 +42,7 @@ export type Tool =
   | 'calculadoras'
   | 'crecimiento'
   | 'desarrollo'
+  | 'corticoides-inhalados'
   | 'favoritos'
   | 'manual'
   | CollectionId;
@@ -174,6 +175,13 @@ export function Home({
       text: 'Hitos por edad de 0 a 36 meses, según la NTS 238',
       icon: 'human-child',
       hue: '#7C4DCC',
+    },
+    {
+      id: 'corticoides-inhalados',
+      title: 'Corticoides inhalados',
+      text: 'Dosis diaria baja, media y alta por edad (GINA 2025)',
+      icon: 'lungs',
+      hue: '#2E7D9A',
     },
     {
       id: 'calculadoras',

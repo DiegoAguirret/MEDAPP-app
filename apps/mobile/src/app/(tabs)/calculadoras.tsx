@@ -66,6 +66,16 @@ export default function CalculadorasTab() {
           />
         </Card>
         <Card>
+          <SectionTitle>Asma: corticoides inhalados</SectionTitle>
+          <Text style={s.cardText}>
+            Dosis diaria total baja, media y alta por grupo de edad, según GINA 2025.
+          </Text>
+          <Button
+            label="Abrir tabla de corticoides inhalados"
+            onPress={() => router.push('/corticoides-inhalados')}
+          />
+        </Card>
+        <Card>
           <SectionTitle>Dosis libre</SectionTitle>
           <Button label="Abrir calculadora manual" onPress={() => router.push('/manual')} />
         </Card>
