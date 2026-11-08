@@ -14,10 +14,10 @@ describe('ilustraciones de las escalas neonatales', () => {
   });
 
   it.each(['ballard-nino', 'ballard-nina'])(
-    '%s tiene imagen para cada opción de postura y ventana cuadrada',
+    '%s tiene imagen para cada opción de los criterios ilustrados',
     (id) => {
       const def = BALLARD_SCORES.find((d) => d.id === id);
-      for (const itemId of ['postura', 'ventana']) {
+      for (const itemId of ['postura', 'ventana', 'rebote', 'popliteo']) {
         const item = def?.items.find((i) => i.id === itemId);
         expect(item && hasScoreArt(id, item.id, item.options.length)).toBe(true);
       }

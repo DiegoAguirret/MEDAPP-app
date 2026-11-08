@@ -552,6 +552,29 @@ La app ahora calcula infusiones: la dosis en mcg/kg/min o mg/kg/h da la velocida
 
 **Revisados y no incluidos:** piridoxina y tiamina (el FNME no da dosis pediátricas por peso, solo rangos generales); calcitriol y levofloxacino (sin monografía en el FNME).
 
+## Lote 19: antídotos (azul de metileno y succímero) — verificado el 08/11/2026
+
+- **Azul de metileno** (cloruro de metiltioninio, PNUME 10 mg/mL):
+  - FNME: metahemoglobinemia por fármacos, 1 a 2 mg/kg IV lento en niños y adultos. El FNME escribe «0,1 a 0,2 mL de una solución al 1 %»; por la dosis de 1 a 2 mg/kg se entiende que es por kg.
+  - FDA: 1 mg/kg IV en 5 a 30 min. Si la metahemoglobina sigue sobre 30 % o persisten los síntomas, otra dosis de hasta 1 mg/kg a la hora. En insuficiencia renal moderada o grave, una sola dosis.
+  - Recuadro de la FDA: síndrome serotoninérgico con ISRS, IRSN, IMAO u opioides.
+  - Ninguna fuente da tope en mg. Como en la atropina, la app calcula hasta 50 kg.
+- **Succímero** (PNUME 100 mg):
+  - FDA (Chemet): intoxicación por plomo desde 1 año, 10 mg/kg o 350 mg/m² cada 8 h por 5 días y luego cada 12 h por 14 días.
+  - Se usa la tabla de dosis por peso de la FDA (100 mg de 8 a 15 kg, 200 mg de 16 a 23, 300 mg de 24 a 34, 400 mg de 35 a 44 y 500 mg desde 45 kg), porque así la dosis es un número entero de tabletas.
+  - **Decisión de la app:** la tabla deja huecos entre bandas (15 a 16 kg, 23 a 24 kg, 34 a 35 kg y 44 a 45 kg). Cada banda se extiende hasta el inicio de la siguiente.
+  - El FNME no tiene monografía de succímero.
+
+**Revisados y no incluidos:**
+
+- **Pentamidina** (PNUME 200 mg): FNME y FDA dan 4 mg/kg/día desde los 4 meses, pero ninguna fuente leída da cómo reconstituir el vial de 200 mg. La FDA describe el de 300 mg.
+- **Gabapentina:** la FDA da 10 a 15 mg/kg/día de 3 a 11 años. Con la tableta de 300 mg del PNUME no se puede medir la dosis de un niño pequeño; es el mismo caso de la risperidona.
+- **Piridostigmina:** la FDA dice que no se ha establecido su uso en niños.
+- **Dapsona:** la FDA solo dice «dosis proporcionalmente menores» en niños, sin mg/kg.
+- **Enoxaparina:** la FDA no da dosis pediátrica.
+- **Ranitidina:** la FDA pidió retirarla del mercado en 2020.
+- **Loperamida:** la FDA la contraindica en menores de 2 años.
+
 ## Unidad mEq: bicarbonato de sodio y cloruro de potasio — verificado el 07/11/2026
 
 La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en infusión (mEq/kg/h) y en la concentración personalizada.
@@ -690,4 +713,8 @@ La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en inf
     - 60° → 58°;
     - 45° → 45°;
     - 30° y 0° se revisaron a ojo: la medición automática no sirve cuando mano y antebrazo quedan casi paralelos. Se descartó un primer intento de 30° que quedó en unos 50°.
-  - Rebote, ángulo poplíteo, bufanda y talón-oreja quedan sin imagen por ahora: Flow bloqueó la generación con un aviso de «actividad inusual». Sus plantillas ya están en el script.
+  - **Rebote del brazo (5) y ángulo poplíteo (7), agregados el 08/11/2026** con el mismo método (pintar sobre la plantilla exacta). El ángulo de cada imagen se midió a ojo sobre hombro, codo y puño o sobre cadera, rodilla y tobillo:
+    - rebote: 180°, unos 160°, unos 136° (rango 110–140), unos 94° (rango 90–110) y agudo (menos de 90);
+    - poplíteo: unos 180°, 155°, 131°, 112°, 100°, 84° y 48°.
+  - Se descartaron y repitieron un rebote de 110–140 que salió a 150° y un poplíteo de 140 que salió a 114°. Flow rechazó una consigna con la palabra «desnudo» por su filtro de contenido; se reescribió como «con pañal».
+  - **Bufanda y talón-oreja quedan sin imagen.** Flow volvió a bloquear con «actividad inusual» después de 3 de las 6 bufandas. Sus plantillas están en el script y subidas a Flow.
