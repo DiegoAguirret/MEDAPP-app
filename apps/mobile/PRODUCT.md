@@ -31,6 +31,7 @@ Peru-first sources: DIGEMID's FNME and MINSA norms, contrasted with FDA, AEMPS, 
 - Continuous infusions: doses in mcg/kg/min or mg/kg/h give the pump rate in mL/h for the chosen or a custom mixture (norepinephrine, dobutamine, epinephrine, midazolam, alprostadil, insulin).
 - Development: 0–36 month milestone surveillance from the Peruvian NTS 238 (Annex 10), with corrected age for preterm infants and the norm's interpretation.
 - Inhaled corticosteroids: GINA 2025 low/medium/high total daily doses by age group (≤5, 6–11, ≥12 years), as a lookup table.
+- Vaccines: Peru's 2026 national immunization schedule (NTS 246) for ages 0–17, highlighting what is due at the child's age and the next visit.
 - Growth: weight, length/height, BMI, head and arm circumference give the z-score, percentile against the WHO references (2006 standards under 5, 2007 reference 5–19), classified with the Peruvian NTS 238-MINSA 2025 cutoffs within its age ranges.
 - Tools: manual calculator, fluids (Holliday-Segar), dehydration plans, body surface area.
 - Favorites, light and dark themes, choice of decimal separator.

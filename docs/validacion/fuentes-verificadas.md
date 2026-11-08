@@ -614,3 +614,11 @@ La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en inf
   - Son dosis medidas, no liberadas.
   - El pMDI se usa preferentemente con espaciador, y siempre en niños de 5 años o menos.
   - La dosis alta se reserva para muy pocos pacientes.
+
+## Vacunas: Esquema Nacional de Inmunizaciones 2026 — verificado el 07/11/2026
+
+- **Fuente:** NTS N.° 246-MINSA/DGIESP-2026 (RM N.° 561-2026-MINSA, junio de 2026), descargada de gob.pe (partes 1 y 2). Reemplaza el esquema de la NTS 196-2022.
+  - Las tablas 6.2.2 (niña y niño de 0 a 11 años, 11 meses y 29 días) y 6.2.3 (adolescente) se leyeron en la imagen de las págs. 45–47, porque el PDF es escaneado.
+  - Se copiaron tal cual cada visita, cada vacuna, cada dosis y las notas (*) a (****).
+- **Nirsevimab:** la indicación y la dosis vienen de la ficha 6.1.1.24 (pág. 44): dosis única de 50 mg IM si pesa menos de 5 kg y de 100 mg IM si pesa 5 kg o más. Se indica en recién nacidos de madres no vacunadas frente al VRS, nacidos de abril a septiembre, y excepcionalmente en menores de 6 meses.
+- **Lo que hace la app:** con la edad, resalta las visitas que corresponden (incluidos los rangos «1 a 6 meses», «5 a 11 años», etc.) y la próxima visita puntual. No calcula esquemas de rescate (Anexo 2) ni casos especiales (6.3).

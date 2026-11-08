@@ -66,6 +66,13 @@ export default function CalculadorasTab() {
           />
         </Card>
         <Card>
+          <SectionTitle>Vacunas</SectionTitle>
+          <Text style={s.cardText}>
+            Esquema Nacional de Inmunizaciones 2026 (NTS 246) y lo que toca a cada edad.
+          </Text>
+          <Button label="Abrir esquema de vacunación" onPress={() => router.push('/vacunas')} />
+        </Card>
+        <Card>
           <SectionTitle>Asma: corticoides inhalados</SectionTitle>
           <Text style={s.cardText}>
             Dosis diaria total baja, media y alta por grupo de edad, según GINA 2025.

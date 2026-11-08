@@ -43,6 +43,7 @@ export type Tool =
   | 'crecimiento'
   | 'desarrollo'
   | 'corticoides-inhalados'
+  | 'vacunas'
   | 'favoritos'
   | 'manual'
   | CollectionId;
@@ -175,6 +176,13 @@ export function Home({
       text: 'Hitos por edad de 0 a 36 meses, según la NTS 238',
       icon: 'human-child',
       hue: '#7C4DCC',
+    },
+    {
+      id: 'vacunas',
+      title: 'Vacunas',
+      text: 'Esquema nacional 2026 y lo que toca a cada edad',
+      icon: 'needle',
+      hue: '#3B7D3F',
     },
     {
       id: 'corticoides-inhalados',
