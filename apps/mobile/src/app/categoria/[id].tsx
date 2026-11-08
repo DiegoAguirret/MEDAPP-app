@@ -55,6 +55,15 @@ export default function CategoryScreen() {
             <MaterialCommunityIcons name="white-balance-sunny" size={20} color={c.accent} />
             <Text style={s.scoreText}>Bilirrubina</Text>
           </PressableScale>
+          <PressableScale
+            accessibilityRole="button"
+            accessibilityLabel="Ballard, edad gestacional (New Ballard Score)"
+            onPress={() => router.push('/ballard')}
+            style={s.score}
+          >
+            <MaterialCommunityIcons name="calendar-clock" size={20} color={c.accent} />
+            <Text style={s.scoreText}>Ballard</Text>
+          </PressableScale>
           {NEONATAL_SCORES.map((sc) => (
             <PressableScale
               key={sc.id}

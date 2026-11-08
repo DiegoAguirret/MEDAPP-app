@@ -670,3 +670,15 @@ La app ahora admite dosis en miliequivalentes (`doseUnit: mEq`), también en inf
 - **Emergencia (4.3d):** estadio 2 con más de 30 mm Hg sobre el p95, o más de 180/120 en adolescentes; también si está sintomático.
 - **Decisión de la app:** la guía no dice qué columna usar cuando la talla medida cae entre dos. La app sugiere la columna de talla más cercana y deja cambiarla.
 - **Corrección propia:** la primera versión de la conducta estaba escrita de memoria. Se reemplazó por la traducción de la sección 4.3 leída en la guía.
+
+## Ballard: edad gestacional (New Ballard Score) — verificado el 07/11/2026
+
+- **Fuente:** Ballard JL, Khoury JC, Wedig K et al. New Ballard Score, expanded to include extremely premature infants. J Pediatr 1991;119(3):417–423.
+  - Figura 1: los 6 criterios neuromusculares, los 6 físicos y los puntajes de cada columna.
+  - Tabla de madurez: −10 = 20 semanas, 2 semanas más cada 5 puntos, hasta 50 = 44 semanas.
+- **Textos de los dibujos:** la figura 1 muestra la postura, la ventana cuadrada, el rebote, el ángulo poplíteo, la bufanda y el talón-oreja como dibujos. Las descripciones de la app vienen de las páginas oficiales de entrenamiento de ballardscore.com:
+  - bufanda: cuello, axilar opuesta, mamilar opuesta, xifoides, mamilar del mismo lado, axilar del mismo lado;
+  - talón-oreja: oreja, nariz, mentón, línea mamilar, ombligo, pliegue femoral;
+  - postura: «rana» en el 3 y aducción de caderas en el 4.
+- **Decisión de la app:** entre dos filas de la tabla de madurez la app da el rango («entre 32 y 34 semanas») y no interpola. Por debajo de −10 informa que está fuera de la tabla.
+- **Sexo:** solo cambia el criterio de genitales; la app tiene una versión para niño y otra para niña.

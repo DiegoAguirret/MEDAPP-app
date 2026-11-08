@@ -42,6 +42,41 @@ export default function CalculadorasTab() {
                   </PressableScale>
                 </Enter>
               ))}
+              {(
+                [
+                  {
+                    id: 'ballard',
+                    title: 'Ballard',
+                    subtitle: 'Edad gestacional, New Ballard Score',
+                    icon: 'calendar-clock',
+                    path: '/ballard',
+                  },
+                  {
+                    id: 'bilirrubina',
+                    title: 'Bilirrubina',
+                    subtitle: 'Umbrales por hora, AAP 2022',
+                    icon: 'white-balance-sunny',
+                    path: '/bilirrubina',
+                  },
+                ] as const
+              ).map((t, i) => (
+                <Enter key={t.id} index={NEONATAL_SCORES.length + i} style={s.tileOuter}>
+                  <PressableScale
+                    accessibilityRole="button"
+                    accessibilityLabel={`${t.title}, ${t.subtitle}`}
+                    onPress={() => router.push(t.path)}
+                    style={s.tile}
+                  >
+                    <View style={s.tileIcon}>
+                      <MaterialCommunityIcons name={t.icon} size={22} color={c.accent} />
+                    </View>
+                    <Text style={s.tileTitle}>{t.title}</Text>
+                    <Text style={s.tileSub} numberOfLines={2}>
+                      {t.subtitle}
+                    </Text>
+                  </PressableScale>
+                </Enter>
+              ))}
             </View>
           </View>
         ) : null}
